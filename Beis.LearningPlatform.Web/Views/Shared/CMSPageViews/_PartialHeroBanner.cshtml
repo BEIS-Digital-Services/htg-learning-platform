@@ -1,0 +1,56 @@
+﻿@using Beis.LearningPlatform.Web.Utils
+@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageViewModel
+@{
+    var _pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build();
+    var strsrc = "../../../assets/images/LandingPageImage.jpg"; 
+    var styleStringRight = "";
+    var styleStringLeft = "";
+}
+@foreach (var herobanner in Model.hero_banners)
+{
+    styleStringLeft = (herobanner.HeroImageLocation.Equals("left", StringComparison.OrdinalIgnoreCase) ? "url(" + @strsrc + ") 0% 0% / cover no-repeat" : "");
+    styleStringRight = (herobanner.HeroImageLocation.Equals("right", StringComparison.OrdinalIgnoreCase) ? "url(" + @strsrc + ") 0% 0% / cover no-repeat" : "");
+    strsrc = Model.CmsBaseUrl + (herobanner.HeroImage != null ? herobanner.HeroImage.url : "");
+
+    styleStringLeft = string.IsNullOrWhiteSpace(styleStringLeft) ? styleStringLeft : "style=\"background:" + styleStringLeft + "\"";
+    styleStringRight = string.IsNullOrWhiteSpace(styleStringRight) ? styleStringRight : "style=\"background:" + styleStringRight + "\"";
+
+    <div class="hero-banner">
+        <div class="govuk-grid-row beis-columns-same-height">
+            <div class="govuk-grid-column-one-half @(string.IsNullOrWhiteSpace(herobanner.leftBackgroundColor)? "": @CamelCaseConverter.Delimiter(herobanner.leftBackgroundColor, "-"))" @styleStringLeft>
+                <div class="govuk-grid-row">
+                    <div class="left-column">
+                        <div class="beis-columns">
+                            @if (herobanner.HeroImageLocation.Equals("right", StringComparison.OrdinalIgnoreCase))
+                            {
+                                <partial name="CMSPageViews/_PartialHeroBannerContent" model="@herobanner" /> }
+                            else
+                            {
+                                <partial name="CMSPageViews/_PartialHeroBannerImage" model="@herobanner" />}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="govuk-grid-column-one-half @(string.IsNullOrWhiteSpace(herobanner.rightBackgroundColor)? "": @CamelCaseConverter.Delimiter(herobanner.rightBackgroundColor, "-"))"
+                 style="background:@(herobanner.HeroImageLocation.Equals("right", StringComparison.OrdinalIgnoreCase)? "url(" + strsrc + ") 0% 0% / cover no-repeat" : "");">
+                <div class="govuk-grid-row">
+                    <div class="right-column">
+                        @if (herobanner.HeroImageLocation.Equals("left", StringComparison.OrdinalIgnoreCase))
+                        {
+                            <div class="beis-columns">
+                                <partial name="CMSPageViews/_PartialHeroBannerContent" model="@herobanner" />
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="beis-columns">
+                                <partial name="CMSPageViews/_PartialHeroBannerImage" model="@herobanner" />
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+}

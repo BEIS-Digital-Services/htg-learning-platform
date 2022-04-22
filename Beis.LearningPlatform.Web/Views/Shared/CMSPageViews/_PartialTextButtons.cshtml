@@ -1,0 +1,126 @@
+﻿@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
+@{
+    var _pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build();
+    var strclass = string.Empty;
+    var buttondisplaystyle = string.Empty;
+    var currentColor = string.Empty;
+
+    string setButtonType(string btnType, string background, string custom_class)
+    {
+        var className = "";
+
+        if (btnType == "positive" || btnType == "negative")
+        {
+            switch (background)
+            {
+                case "beisWhite":
+                    {
+                        if (btnType == "positive")
+                        {
+                            className = "beis-black-positive";
+                        }
+                        if (btnType == "negative")
+                        {
+                            className = "beis-black-negative";
+                        }
+                        currentColor = "white";
+                        break;
+                    }
+                case "beisBlack":
+                    {
+                        if (btnType == "positive")
+                        {
+                            className = "beis-white-positive";
+                        }
+                        if (btnType == "negative")
+                        {
+                            className = "beis-white-negative";
+                        }
+                        currentColor = "black";
+
+                        break;
+                    }
+                case "beisNavyBlue":
+                    {
+                        if (btnType == "positive")
+                        {
+                            className = "beis-white-positive";
+                        }
+                        if (btnType == "negative")
+                        {
+                            className = "beis-white-negative";
+                        }
+                        currentColor = "navyblue";
+
+                        break;
+                    }
+                default:
+                    {
+                        className = "";
+                        break;
+                    }
+            }
+        }
+        else
+        {
+            switch (btnType)
+            {
+                case "primary":
+                    {
+                        currentColor = "white";
+                        className = "primary";
+                        break;
+                    }
+                case "secondary":
+                    {
+                        currentColor = "black";
+                        className = "secondary";
+                        break;
+                    }
+            }
+        }
+
+
+        if (custom_class != null)
+        {
+            return className + " " + custom_class;
+        }
+        else
+        {
+            return className;
+        }
+    }
+}
+
+@{ 
+
+    Model.hide = Model.hide.HasValue ? Model.hide : false;
+
+    if (Model.hide == false)
+    {
+        <p class="govuk-button-group">
+            @if (Model.buttons != null)
+            {
+                @if (Model.buttons.Count > 0)
+                {
+
+                    @foreach (var button in Model.buttons)
+                    {
+                        buttondisplaystyle = string.Empty;
+                        strclass = @setButtonType(button.type, Model.background, button.custom_class);
+
+
+                        <a href="@button.url" style="display:@buttondisplaystyle" role="button" draggable="false" class="govuk-button govuk-button--start @strclass" data-module="govuk-button">
+                            @button.label
+                            @if (button.icon != null)
+                            {
+                                <svg xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false" class="govuk-button__start-icon">
+                                <path fill="@currentColor" d="M0 0h13l20 20-20 20H0l20-20z"></path></svg>
+                            }
+                        </a>
+                    }
+                }
+            }
+        </p>
+        }
+    }

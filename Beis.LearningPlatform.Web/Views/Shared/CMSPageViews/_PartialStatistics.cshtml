@@ -1,0 +1,94 @@
+﻿@using Beis.LearningPlatform.Web.Utils
+@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
+@{
+    var _pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build();
+    var strcopy = string.Empty;
+}
+
+@if (Model.textblocks != null)
+{
+    @if (Model.textblocks.Count > 1)
+    {
+        Model.textblocks[0].hide = Model.textblocks[0].hide.HasValue ? Model.textblocks[0].hide : false;
+
+        if (Model.textblocks[0].hide == false)
+        {
+        <div class="statistic" id="@("anchor" + ViewData["intCurrComponentIndex"])">
+            <div class="govuk-grid-row beis-columns-same-height">
+                @* Add background to class if set*@
+                <div class="govuk-grid-column-one-half beis-navy-blue">
+                    <div class="govuk-grid-row">
+                        <div class="left-column">
+                            <div class="beis-columns">
+                                @if (!string.IsNullOrWhiteSpace(Model.textblocks[0].subheader))
+                                {
+                                    <h1 class="govuk-heading-xl govuk-!-padding-top-8 @(CamelCaseConverter.Delimiter(Model.textblocks[0].subheaderColor, "-"))-text"> @Model.textblocks[0].subheader</h1>
+                                }
+                                @{ strcopy = Markdown.ToHtml(Model.textblocks[0].copy, _pipeline); }
+                                @Html.Raw(strcopy.Replace("<p>", "<p class=\"govuk-body\">").Replace("</p>", "</p>"))
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="govuk-grid-column-one-half beis-yellow">
+                    <div class="govuk-grid-row">
+                        <div class="right-column">
+                            <div class="beis-columns">
+                                @if (!string.IsNullOrWhiteSpace(Model.textblocks[1].subheader))
+                                {
+                                    <h1 class="govuk-heading-xl govuk-!-padding-top-8 @(CamelCaseConverter.Delimiter(Model.textblocks[1].subheaderColor, "-"))-text"> @Model.textblocks[1].subheader</h1>
+                                }                               
+                                @{ strcopy = Markdown.ToHtml(Model.textblocks[1].copy, _pipeline); }
+                                @Html.Raw(strcopy.Replace("<p>", "<p class=\"govuk-body\">").Replace("</p>", "</p>"))
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
+    }
+
+
+    <div class="govuk-width-container">
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full">
+                <div class="govuk-!-padding-top-6 govuk-!-padding-bottom-6">
+
+                    @foreach (var link in Model.links)
+                    {
+                    <div style="text-align:left;">
+                        @{ 
+                            link.hide = link.hide.HasValue ? link.hide : false;
+
+                            if (link.hide == false)
+                            {
+                                @if (link.icon != null)
+                                {
+                                    <vc:cms-image options='new CmsImageViewModel{ ImageUrl = link.icon.url, CssClass = "svgimg", CssStyle="vertical-align:middle; margin-right: 5px;", Width = link.icon.width, Height = link.icon.height }' />
+                                }
+
+                                @if (link.anchorlink != null)
+                                {
+                                    <a class="govuk-link @link.custom_class"
+                                       href="@link.anchorlink" aria-label="@(string.IsNullOrWhiteSpace(link.aria) ? "Read the article on " + link.id : link.aria)">
+                                        @Html.Raw(link.label)
+                                    </a>
+                                }
+
+                                @if (link.url != null)
+                                {
+                                    <a class="govuk-link @link.custom_class"
+                                       href="@link.url" aria-label="@(string.IsNullOrWhiteSpace(link.aria) ? "Read the article on " + link.id : link.aria)">
+                                        @Html.Raw(link.label)
+                                    </a>
+                                }
+                            }
+                        }
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+}

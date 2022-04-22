@@ -1,0 +1,17 @@
+﻿@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageViewModel
+@{
+    Model.pagename = string.IsNullOrWhiteSpace(Model.pagename) ? "" : Model.pagename;
+}
+
+<div class="govuk-grid-row">
+    <div class="beis-white govuk-grid-column-full">
+        <div class="govuk-width-container govuk-!-margin-top-6 govuk-!-margin-bottom-6">
+            <h1 class="govuk-heading-xl govuk-!-font-weight-regular">
+                @Model.pagename.ToUpper()
+            </h1>
+            <h2 class="govuk-heading-m">
+                No content was returned for the Page/Section. This could be because the page is under construction.
+            </h2>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,119 @@
+﻿@using Beis.LearningPlatform.Web.Models.DiagnosticTool
+@model Beis.LearningPlatform.Web.Models.DiagnosticTool.DiagnosticToolForm
+@{
+    var elementInfo = Model.CurrentElement;
+    var currentStep = elementInfo.CurrentStep;
+    var currentElement = elementInfo.CurrentElement;
+    var radioButtonParent = elementInfo.RadioButtonParent;
+    var z = elementInfo.ChildIndex;
+
+    var currentFormStepElement = elementInfo.CurrentFormStepElement;
+}
+@{
+    switch (currentFormStepElement.answerOptions[z].controlType)
+    {
+        case FormDisplayControlType.Text:
+            <div class="govuk-summary-list__key"> @currentFormStepElement.text</div>
+            <div class="govuk-summary-list__value"> @currentFormStepElement.answerOptions[z].text</div>
+            <div class="govuk-summary-list__actions">
+                @{
+                    IDictionary<string, string> routeData = new Dictionary<string, string>();
+                    routeData.Add("step", elementInfo.CurrentFormStep.id.ToString());
+                }
+                <button type="submit" asp-controller="DiagnosticTool" asp-action="GoToStep" asp-all-route-data="@routeData" class="govuk-link button-link"> Change <span class="govuk-visually-hidden"> @currentFormStepElement.text</span></button>
+            </div>
+            <input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].text" class="govuk-input govuk-input--width-20" />
+            break;
+
+        case FormDisplayControlType.Radio:
+            <div class="govuk-summary-list__key"> @currentFormStepElement.text</div>
+            <div class="govuk-summary-list__value">
+                @currentFormStepElement.value
+
+                @for (z = 0; z < currentFormStepElement.answerOptions.Count; z++)
+                {
+                    <input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].text" />
+                    <input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].value" />
+                    @if (currentFormStepElement.answerOptions[z].additionalInfoRequired &&
+                 currentFormStepElement.value == currentFormStepElement.answerOptions[z].value)
+                    {
+                        <br>
+                        <p class="govuk-summary-list__value">
+                            Additional Info:&nbsp;
+                            <span rows="5" aria-describedby="more-detail-hint more-detail" class="govuk-body">
+                                @currentFormStepElement.answerOptions[z].additionalInfo
+                            </span>
+                        </p>
+                    }
+                }
+                <br>
+            </div>
+            <div class="govuk-summary-list__actions">
+                @{
+                    IDictionary<string, string> routeData2 = new Dictionary<string, string>();
+                    routeData2.Add("step", elementInfo.CurrentFormStep.id.ToString());
+                }
+                <button type="submit" asp-controller="DiagnosticTool" asp-action="GoToStep" asp-all-route-data="@routeData2" class="govuk-link button-link"> Change <span class="govuk-visually-hidden"> @currentFormStepElement.text</span></button>
+            </div>
+            break;
+
+        case FormDisplayControlType.Checkbox:
+            <div class="govuk-summary-list__key"> @currentFormStepElement.text</div>
+            <div class="govuk-summary-list__value">
+                @for (z = 0; z < currentFormStepElement.answerOptions.Count; z++)
+                {
+                    if (currentFormStepElement.answerOptions[z].value.Equals("true", StringComparison.OrdinalIgnoreCase))
+                    {
+                        <p class="govuk-summary-list__value"> @currentFormStepElement.answerOptions[z].hint</p>
+                        <input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].text" class="govuk-checkboxes__input" />
+                        <input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].hint" class="govuk-checkboxes__input" />
+                        <input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].value" class="govuk-checkboxes__input" />
+                        @*<input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].additionalInfo" class="govuk-checkboxes__input" />*@
+
+                        @if (currentFormStepElement.answerOptions[z].additionalInfoRequired && currentFormStepElement.answerOptions[z].value.Equals("true", StringComparison.OrdinalIgnoreCase))
+                        {
+                            <br>
+                            <p class="govuk-summary-list__value">
+                                Additional Info:&nbsp;
+                                <span rows="5" aria-describedby="more-detail-hint more-detail" class="govuk-body">
+                                    @currentFormStepElement.answerOptions[z].additionalInfo
+                                </span>
+                            </p>
+                        }
+                        <br>
+                    }
+
+                }
+            </div>
+            <div class="govuk-summary-list__actions">
+                @{
+                    IDictionary<string, string> routeData3 = new Dictionary<string, string>();
+                    routeData3.Add("step", elementInfo.CurrentFormStep.id.ToString());
+                }
+                <button type="submit" asp-controller="DiagnosticTool" asp-action="GoToStep" asp-all-route-data="@routeData3" class="govuk-link button-link"> Change <span class="govuk-visually-hidden"> @currentFormStepElement.text</span></button>
+            </div>
+            break;
+
+        case FormDisplayControlType.ListItem:
+            <div class="govuk-summary-list__key"> @currentFormStepElement.text</div>
+            <div class="govuk-summary-list__value"> @currentFormStepElement.selectedValue</div>
+            <div class="govuk-summary-list__actions">
+                @{
+                    IDictionary<string, string> routeData4 = new Dictionary<string, string>();
+                    routeData4.Add("step", elementInfo.CurrentFormStep.id.ToString());
+                }
+                <button type="submit" asp-controller="DiagnosticTool" asp-action="GoToStep" asp-all-route-data="@routeData4" class="govuk-link button-link"> Change <span class="govuk-visually-hidden"> @currentFormStepElement.text</span></button>
+            </div>
+            @for (z = 0; z < currentFormStepElement.answerOptions.Count; z++)
+            {
+                <input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].text" />
+            }
+            break;
+
+        default:
+            <h4 class="govuk-heading-s govuk-!-font-weight-regular">
+                New Content Type @currentFormStepElement.answerOptions[z].controlType found.
+            </h4>
+            break;
+    }
+}

@@ -1,0 +1,147 @@
+﻿@using Beis.LearningPlatform.Web.Utils
+@model Beis.LearningPlatform.Web.Models.ComparisonToolProductCategoryViewModel
+@{
+    if (!Model.productsForCurrentCategoryToRender?.Any() ?? false)
+    {
+        return;
+    }
+    var countSelectedProducts = Model.productsSelected?.Count ?? 0;
+
+}
+
+<div class="govuk-grid-row govuk-!-margin-top-8">
+    <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-heading-l govuk-!-margin-0">@Model.subheader</h2>
+    </div>
+    <div class="govuk-grid-column-one-third compare-products">
+        @if (countSelectedProducts > 1)
+        {
+            var routeData = new Dictionary<string, string> { { "selectedProductCategoryIds", Model.SelectedProductCategoryId }, { "selectedProductIds", Model.SelectedProductId } };
+            <a asp-controller="comparisonTool" asp-action="CompareProductsNoJs" asp-all-route-data="routeData" class="govuk-button govuk-!-margin-0 primary">Compare @countSelectedProducts products</a>
+        }
+        else
+        {
+            <a role="button" class="govuk-button compare-btn primary govuk-button--disabled">Get your software discount</a>
+        }
+    </div>
+</div>
+
+@for (var i = 0; i < Model.productsForCurrentCategoryToRender.Count; i++)
+{
+    var includeProductUrl = "/comparison-tool";
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+            <div class="top-line"></div>
+        </div>
+    </div>
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+            <div class="govuk-grid-row frame">
+                <div class="checkboxes-column">
+                    <div class="govuk-checkboxes__item">
+                        @if (Model.productsSelected != null && Model.productsSelected.Contains(Model.productsForCurrentCategoryToRender[i].product_id.ToString()))
+                        {
+                            if (Model.productsCategorySelected.Count > 0)
+                            {
+                                includeProductUrl += "/filter-by/" + string.Join(",", Model.productsCategorySelected);
+                            }
+
+                            if (Model.productsSelected.Count > 0)
+                            {
+                                var tmpproductsSelected = Model.SelectedProductId.Split(",").ToList();
+                                tmpproductsSelected.Remove(Model.productsForCurrentCategoryToRender[i].product_id.ToString());
+                                includeProductUrl += "/include-product/" + string.Join(",", tmpproductsSelected);
+                            }
+
+                            <a href="@(includeProductUrl + "#prod" + Model.productsForCurrentCategoryToRender[i].product_id)"
+                               role="checkbox"
+                               name="@("prod" + Model.productsForCurrentCategoryToRender[i].product_id)"
+                               id="@("prod" + Model.productsForCurrentCategoryToRender[i].product_id)"
+                               class="govuk-checkboxes__input checked"
+                               aria-label="exclude @Model.productsForCurrentCategoryToRender[i].product_name"
+                               aria-checked="true"></a>
+                            <span id="@("prod" + Model.productsForCurrentCategoryToRender[i].product_id + "label")" class="govuk-label govuk-checkboxes__label">
+                            </span>
+                        }
+                        else
+                        {
+                            if (countSelectedProducts < 3)
+                            {
+                                if (Model.productsCategorySelected?.Count > 0)
+                                {
+                                    includeProductUrl += "/filter-by/" + string.Join(",", Model.productsCategorySelected);
+                                }
+                                if (countSelectedProducts > 0)
+                                {
+                                    var tmpproductsSelected = Model.SelectedProductId.Split(",").ToList();
+                                    tmpproductsSelected.Add(Model.productsForCurrentCategoryToRender[i].product_id.ToString());
+                                    includeProductUrl += "/include-product/" + string.Join(",", tmpproductsSelected);
+                                }
+                                else
+                                {
+                                    includeProductUrl += "/include-product/" + Model.productsForCurrentCategoryToRender[i].product_id.ToString();
+                                }
+
+
+
+                                <a href="@(includeProductUrl + "#prod" + Model.productsForCurrentCategoryToRender[i].product_id)"
+                                   role="checkbox"
+                                   id="@("prod" + Model.productsForCurrentCategoryToRender[i].product_id)"
+                                   name="@("prod" + Model.productsForCurrentCategoryToRender[i].product_id)"
+                                   aria-label="include @Model.productsForCurrentCategoryToRender[i].product_name"
+                                   class="govuk-checkboxes__input"
+                                   aria-checked="false"></a>
+
+                                <span id="@("prod" + Model.productsForCurrentCategoryToRender[i].product_id + "label")" class="govuk-label govuk-checkboxes__label">
+                                </span>
+                            }
+                        }
+
+
+                    </div>
+                </div>
+
+                <div class="product-image">
+                    <div class="image-mask">
+                        <img src="@Model.VendorProdLogorUrl/@Model.productsForCurrentCategoryToRender[i].product_logo" alt="">
+                    </div>
+                    <a href="@Model.productsForCurrentCategoryToRender[i].website_url" class="govuk-link">@ComparisonToolFieldValidator.ParseStringField(Model.productsForCurrentCategoryToRender[i].product_name)</a>
+                </div>
+                <div class="product-details">
+                    <partial name="ComparisonToolViews/_PartialProductCategoryDetails" model="Model.productsForCurrentCategoryToRender[i]" />
+                </div>
+                <div class="product-actions">
+                    @{
+                        IDictionary<string, string> routeDataFeatures = new Dictionary<string, string>();
+                        routeDataFeatures.Add("product_id", Model.productsForCurrentCategoryToRender[i].product_id.ToString());
+                    }
+                    <a role="button" aria-label="See features on @ComparisonToolFieldValidator.ParseStringField(Model.productsForCurrentCategoryToRender[i].product_name)" asp-controller="comparisonTool" asp-action="ProductDetailsNoJs" asp-all-route-data="routeDataFeatures" class="govuk-link button-link" data-module="govuk-button">
+                        See features
+                    </a>
+                    @{
+                        IDictionary<string, string> routeDataSoftware = new Dictionary<string, string>();
+                        routeDataSoftware.Add("product_id", Model.productsForCurrentCategoryToRender[i].product_id.ToString());
+                    }
+                    <a role="button" aria-label="Select @ComparisonToolFieldValidator.ParseStringField(Model.productsForCurrentCategoryToRender[i].product_name)" asp-controller="comparisonTool" asp-action="GetDiscount" asp-all-route-data="routeDataSoftware" class="govuk-button secondary" data-module="govuk-button">
+                        Get discount
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+<div class="govuk-grid-row govuk-!-margin-bottom-8">
+    <div class="govuk-grid-column-full compare-products">
+        @if (countSelectedProducts > 1)
+        {
+            var routeData = new Dictionary<string, string> { { "selectedProductCategoryIds", Model.SelectedProductCategoryId }, { "selectedProductIds", Model.SelectedProductId } };
+            <a role="button" asp-controller="comparisonTool" asp-action="CompareProductsNoJs" asp-all-route-data="routeData" class="govuk-button compare-btn primary">Compare @countSelectedProducts products</a>
+        }
+        else
+        {
+            <a role="button" class="govuk-button compare-btn primary govuk-button--disabled">Get your software discount</a>
+        }
+    </div>
+</div>

@@ -1,0 +1,5 @@
+﻿@model Beis.LearningPlatform.Web.Models.CmsImageViewModel
+@if (Model.IsValid)
+{
+    <img src="@Model.FullImageUrl" class="@Model.CssClass" alt="@Model.Title" width="@Model.Width" height="@Model.Height" style="@Model.CssStyle" />
+}

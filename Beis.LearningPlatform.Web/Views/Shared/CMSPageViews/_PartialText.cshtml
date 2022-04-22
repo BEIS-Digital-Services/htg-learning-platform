@@ -1,0 +1,55 @@
+﻿@using Beis.LearningPlatform.Web.Utils
+@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
+@{
+    var _pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build();
+    var strComponentBg = (!string.IsNullOrWhiteSpace(Model.background)) ? CamelCaseConverter.Delimiter(Model.background, "-") : "";
+    var topSpaceClass = Model.topSpace != "nospace" ? "govuk-!-padding-top-6" : "";
+    var bottomSpaceClass = Model.bottomSpace != "nospace" ? "govuk-!-padding-bottom-6" : "";
+    bool.TryParse(ViewData["showBackButton"]?.ToString(), out bool showBackButton);
+}
+
+<div class="beis-text" id="@("anchor" + ViewData["intCurrComponentIndex"])">
+    <div class="@strComponentBg">
+        <div class="govuk-width-container">
+            <div class="govuk-grid-row">
+                @if (Model.textblocks.Count > 0)
+                {
+                    foreach (var txtBlock in Model.textblocks)
+                    {
+                        txtBlock.hide = txtBlock.hide.HasValue ? txtBlock.hide : false;
+
+                        if (txtBlock.hide == false)
+                        {
+                            <div class="govuk-grid-column-full @topSpaceClass  @bottomSpaceClass">
+                                @if (!string.IsNullOrWhiteSpace(txtBlock.header))
+                                {
+                                    @if (showBackButton == true)
+                                    {
+                                        <a class="govuk-back-link" style="cursor:pointer;" onclick="history.back()">Back</a>
+                                    }
+                                    @Html.Raw("<h1 class=\"govuk-heading-xl \">");
+                                    @Html.Raw(Markdown.ToHtml(txtBlock.header).Replace("<p>", "<span>").Replace("</p>", "</span><br/>"))
+                                    @Html.Raw("</h1>");
+                                }
+
+                                @if (!string.IsNullOrWhiteSpace(txtBlock.subheader))
+                                {
+                                    @Html.Raw("<h2 class=\"govuk-heading-m \">");
+                                    @Html.Raw(Markdown.ToHtml(txtBlock.subheader).Replace("<p>", "<span>").Replace("</p>", "</span><br/>"))
+                                    @Html.Raw("</h2>");
+                                }
+
+                                @if (!string.IsNullOrWhiteSpace(txtBlock.copy))
+                                {
+                                    @Html.Raw("<div class=\"govuk-body\">" + Markdown.ToHtml(txtBlock.copy, _pipeline) + "</div>")
+                                }
+                            </div>
+                        }
+                    }
+                }
+                <partial name="CMSPageViews/_PartialTextButtons" model="@Model" />
+                <partial name="CMSPageViews/_PartialTextLinks" model="@Model.links" />
+            </div>
+        </div>
+    </div>
+</div>

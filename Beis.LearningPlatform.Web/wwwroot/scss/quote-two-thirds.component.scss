@@ -1,0 +1,14 @@
+@import 'beis-variables.scss';
+@import 'beis-mixins.scss';
+
+.quote-two-thirds {
+    .line-bars {
+        border-top: 1px solid $beis-blue;
+        border-bottom: 1px solid $beis-blue;
+        padding: 20px 0;
+
+        @include respond(mobile) {
+            padding: 20px;
+        }
+    }
+}

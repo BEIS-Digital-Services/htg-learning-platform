@@ -1,0 +1,18 @@
+﻿@model List<Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageSideNavigation>
+<div class="side-navigation govuk-!-padding-top-6">
+    @foreach (var sidenav in Model)
+    {
+        foreach (var block in sidenav.Side)
+        {
+            <ul>
+                @foreach (var item in block.links)
+                {
+                    <li>
+                        <a class="govuk-link" href="">@item.label</a>
+                    </li>
+                }
+
+            </ul>
+        }
+    }
+</div>

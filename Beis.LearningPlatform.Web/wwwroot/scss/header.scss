@@ -1,0 +1,9 @@
+﻿@import 'beis-variables.scss';
+.govuk-header {
+    border-bottom: 10px solid $beis-yellow;
+    padding-bottom: 10px;
+}
+
+.govuk-header__container {
+    border-bottom: 0;
+}

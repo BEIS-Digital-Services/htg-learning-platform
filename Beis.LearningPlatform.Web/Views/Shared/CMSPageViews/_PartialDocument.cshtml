@@ -1,0 +1,76 @@
+﻿@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
+@{
+    var pagename = ViewData["pagename"].ToString();
+    var strTopSpaceClass = Model.topSpace != "nospace" ? "govuk-!-margin-top-6" : "";
+    var strBottomSpaceClass = Model.bottomSpace != "nospace" ? "govuk-!-margin-bottom-6" : "";
+
+    var targetURL = Model.url;
+    if (string.IsNullOrEmpty(targetURL) && Model.media?.Count > 0)
+    {
+        targetURL = Model.media[0].url;
+    }
+    targetURL = ViewData["strapiApiUrl"].ToString() + targetURL;
+
+    var imageURL = default(string);
+    if (!string.IsNullOrEmpty(Model.abbr))
+    {
+        var loweredAbbr = Model.abbr.ToLower();
+        switch (loweredAbbr)
+        {
+            case "pdf":
+                imageURL = "/assets/images/pdf.svg";
+                break;
+            case "text":
+                imageURL = "/assets/images/txt.svg";
+                break;
+            case "csv":
+                imageURL = "/assets/images/csv.svg";
+                break;
+            case "word":
+                imageURL = "/assets/images/doc.svg";
+                break;
+            case "pp":
+                imageURL = "/assets/images/ppt.svg";
+                break;
+            case "excel":
+                imageURL = "/assets/images/xls.svg";
+                break;
+            default:
+                imageURL = "/assets/images/txt.svg";
+                break;
+        }
+    }
+}
+
+<div class="beis-text" id="@("anchor" + ViewData["intCurrComponentIndex"])">
+    @if (Model.media != null && Model.media.Count > 0)
+    {
+        <div class="govuk-width-container @strTopSpaceClass @strBottomSpaceClass">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-two-thirds">
+                    <section class="attachment embedded" id="attachment_@Model.media[0].name">
+                        <div class="attachment-thumb">
+                            <a aria-hidden="true" class="thumbnail" tabindex="-1" href="@targetURL">
+                                <img alt="" src="@imageURL">
+                            </a>
+                        </div>
+                        <div class="attachment-details">
+                            <h3 class="title govuk-!-font-size-27 govuk-!-font-weight-regular">
+                                <a class="govuk-link" href="@targetURL">
+                                    @Model.title
+                                </a>
+                            </h3>
+                            <p class="govuk-body">
+                                <span class="type">
+                                    <abbr title="@Model.media[0].mime">@Model.abbr</abbr>
+                                </span>,
+                                <span class="file-size">@Model.media[0].size KB</span>
+                            </p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>

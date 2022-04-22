@@ -1,0 +1,5 @@
+﻿@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageHeroBanner
+@if (Model.HeroImage != null)
+{
+    <vc:cms-image options='new CmsImageViewModel{ ImageUrl = Model.HeroImage.url, CssClass = "hero-mobile-image", Title = Model.HeroImage.alternativeText }' />
+}

@@ -1,0 +1,19 @@
+﻿@import 'beis-variables.scss';
+@import 'beis-mixins.scss';
+
+.quotes {
+    .quote {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+
+        .quote-icon {
+            width: 20px;
+            margin: 50px 15px 0 0;
+
+            @include respond(tablet) {
+                margin: 30px 15px 0 0;
+            }
+        }
+    }
+}

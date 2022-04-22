@@ -1,0 +1,215 @@
+@import 'beis-variables.scss';
+@import 'beis-mixins.scss';
+
+.card {
+
+    $beis-yellow-light: #FFF7BF;
+
+    .reverse-block {
+        display: inline-block;
+    }
+
+    .cards {
+
+        a.govuk-link,
+        p {
+            font-size: 24px;
+
+            @include respond(tablet) {
+                font-size: 17px;
+            }
+        }
+
+        height: 260px;
+        margin: 0 0 0 40px;
+        box-sizing: border-box;
+        position: relative;
+        padding: 10px 20px 10px 60px;
+        font-family: "GDS Transport", arial, sans-serif;
+
+        @media only screen and (min-width: 769px) {
+            width: 50%;
+            margin: 0;
+        }
+        
+        .number {
+            position: absolute;
+            cursor: pointer;
+            top: calc(50% - 32px);
+            width: 64px;
+            height: 64px;
+            font-size: 48px;
+            line-height: 64px;
+            font-family: "GDS Transport", arial, sans-serif;
+            font-weight: bold;
+            border-radius: 50px;
+            text-align: center;
+
+            &.one {
+                left: -27px;
+                outline: 10px solid $beis-aqua;
+                border: 2px solid $white;
+                color: $white;
+                z-index: 2;
+
+                @media only screen and (min-width: 769px) {
+                    left: unset;
+                    right: -74px;
+                    width: 96px;
+                    height: 96px;
+                    font-size: 64px;
+                    line-height: 94px;
+                }
+            }
+
+            &.two {
+                left: -27px;
+                outline: 10px solid $beis-yellow;
+                border: 2px solid $white;
+                color: $white;
+                z-index: 3;
+
+                @media only screen and (min-width: 769px) {
+                    left: calc(50% - 50px);
+                    top: unset;
+                    bottom: -82px;
+                    width: 96px;
+                    height: 96px;
+                    font-size: 64px;
+                    line-height: 94px;
+                }
+            }
+
+            &.three {
+                left: -27px;
+                outline: 10px solid $beis-blue-feedback;
+                border: 2px solid $white;
+                color: $white;
+                z-index: 2;
+
+                @media only screen and (min-width: 769px) {
+                    left: -80px;
+                    width: 96px;
+                    height: 96px;
+                    font-size: 64px;
+                    line-height: 94px;
+                }
+            }
+
+            &.four {
+                left: -27px;
+                outline: 10px solid $beis-yellow-light;
+                border: 2px solid $black;
+                color: $black;
+
+                @media only screen and (min-width: 769px) {
+                    left: calc(50% - 50px);
+                    top: -74px;
+                    width: 96px;
+                    height: 96px;
+                    font-size: 64px;
+                    line-height: 94px;
+                }
+            }
+        }
+    }
+
+    .one,
+    .two,
+    .three,
+    .four {
+        &.hidden-card {
+            background: transparent;
+            color: transparent;
+
+            a {
+                color: transparent;
+            }
+        }
+    }
+
+
+    .one {
+        background: $beis-aqua;
+        color: $black;
+
+        @media only screen and (min-width: 769px) {
+            float: left;
+            width: 400px;
+            height: 400px;
+
+            .card-content {
+                padding: 0 20px 0 0;
+            }
+
+            a {
+                padding: 20px 0 0 0;
+                display: inline-block;
+            }
+        }
+    }
+
+    .two {
+        background: $beis-yellow;
+        color: $black;
+
+        @media only screen and (min-width: 769px) {
+            float: left;
+            width: 400px;
+            height: 400px;
+
+            .card-content {
+                padding: 0 20px 0 60px;
+            }
+
+            a {
+                padding: 20px 0 0 0;
+                display: inline-block;
+            }
+        }
+    }
+
+    .three {
+        background: $beis-blue-feedback;
+        color: $white;
+
+        .govuk-link {
+            color: $beis-yellow;
+        }
+
+        @media only screen and (min-width: 769px) {
+            float: right;
+            width: 400px;
+            height: 400px;
+
+            .card-content {
+                padding: 70px 20px 0 0;
+            }
+
+            a {
+                padding: 20px 0 0 0;
+                display: inline-block;
+            }
+        }
+    }
+
+    .four {
+        background: $beis-yellow-light;
+        color: $black;
+
+        @media only screen and (min-width: 769px) {
+            float: right;
+            width: 400px;
+            height: 400px;
+
+            .card-content {
+                padding: 37px 75px 0 0;
+            }
+
+            a {
+                padding: 20px 0 0 0;
+                display: inline-block;
+            }
+        }
+    }
+}

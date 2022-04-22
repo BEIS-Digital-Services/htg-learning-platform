@@ -1,0 +1,18 @@
+{
+  "name": "web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "compile-sass": "sass Beis.LearningPlatform.Web/wwwroot/scss/main.scss Beis.LearningPlatform.Web/wwwroot/css/main.css"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dart-sass": "^1.25.0",
+    "govuk-frontend": "^3.13.0",
+    "node-sass": "^6.0.1",
+    "sass": "^1.37.5",
+    "save-dev": "0.0.1-security"
+  }
+}

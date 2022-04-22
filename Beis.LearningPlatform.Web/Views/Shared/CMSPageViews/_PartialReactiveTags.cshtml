@@ -1,0 +1,114 @@
+﻿@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
+@if (Model.hide == false)
+{
+
+    <div id="@("anchor" + ViewData["intCurrComponentIndex"])" class="govuk-width-container govuk-!-padding-bottom-8 resources">
+        <div class="govuk-grid-column-two-thirds">
+            @if (!string.IsNullOrWhiteSpace(Model.header))
+            {
+                <h1 class="govuk-heading-xl govuk-!-padding-top-3">@Model.header</h1>
+            }
+
+            @if (!string.IsNullOrWhiteSpace(Model.subheader))
+            {
+                <h2 class="govuk-heading-l govuk-!-padding-top-3">@Model.subheader</h2>
+            }
+
+
+            @if (Model.SelectedTags?.Count() > 0)
+            {
+                var icount = 1;
+                var idstring = "clip" + icount.ToString();
+
+                <div class="govuk-!-padding-bottom-3">
+
+                    @foreach (var tag in Model.SelectedTags)
+                    {
+                        idstring = "clip" + icount.ToString();
+                        var routeData = new Dictionary<string, string>
+                        {
+                            { "tag", tag },
+                            { "tagAction", "remove" },
+                            { "yourTags", Model.SelectedTagsCsv }
+                        };
+                        <a style="text-decoration: none" asp-controller="Home" asp-action="GuidanceAndToolsUpdateTags" asp-all-route-data="routeData" class="tag-button">
+                            <strong class="govuk-tag beis-tag">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#@idstring)">
+                                        <path d="M3.75717 10.8284L5.17139 12.2426L12.2425 5.17155L10.8282 3.75733L3.75717 10.8284Z" fill="#0B0C0C" />
+                                        <path d="M5.17154 3.75736L3.75732 5.17157L10.8284 12.2426L12.2426 10.8284L5.17154 3.75736Z" fill="#0B0C0C" />
+                                        <circle cx="8" cy="8" r="7.5" stroke="black" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="@idstring">
+                                            <rect width="16" height="16" fill="white" transform="translate(16) rotate(90)" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                                @tag
+                            </strong>
+                        </a>
+                        icount++;
+                    }
+                </div>
+            }
+
+            @if (Model.tags != null)
+            {
+                var icount = 1;
+                var idstring = "lowerclip" + icount.ToString();
+
+                if (Model.tags.Count > 0)
+                {
+                    <div class="details">
+                        <div class="beis-white">
+                            <details class="govuk-details" data-module="govuk-details" open>
+                                <summary class="govuk-details__summary">
+                                    <span class="govuk-details__summary-text">
+                                        Add tags
+                                    </span>
+                                </summary>
+                                <div class="govuk-details__text">
+
+                                    @foreach (var tag in Model.tags)
+                                    {
+                                        idstring = "lowerclip" + icount.ToString();
+                                        // Check to ensure it hasn't been selected for filtering
+                                        if (Model.SelectedTags == null || !Model.SelectedTags.Contains(tag.displayName))
+                                        {
+                                            var routeData = new Dictionary<string, string>
+                                            {
+                                                { "tag", tag.displayName },
+                                                { "tagAction", "add" },
+                                                { "yourTags", Model.SelectedTagsCsv }
+                                            };
+                                            <a style="text-decoration: none" asp-controller="Home" asp-action="GuidanceAndToolsUpdateTags" asp-all-route-data="routeData" class="tag-button">
+                                                <strong class="govuk-tag beis-tag">
+                                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <g clip-path="url(#@idstring)">
+                                                            <path d="M7 13L9 13L9 3L7 3L7 13Z" fill="#0B0C0C" />
+                                                            <path d="M3 7L3 9L13 9L13 7L3 7Z" fill="#0B0C0C" />
+                                                            <circle cx="8" cy="8" r="7.5" stroke="black" />
+                                                        </g>
+                                                        <defs>
+                                                            <clipPath id="@idstring">
+                                                                <rect width="16" height="16" fill="white" transform="translate(16) rotate(90)" />
+                                                            </clipPath>
+                                                        </defs>
+                                                    </svg>
+                                                    @tag.displayName
+                                                </strong>
+                                            </a>
+                                        }
+                                        icount++;
+                                    }
+                                </div>
+                            </details>
+                        </div>
+                    </div>
+                }
+            }
+
+        </div>
+    </div>
+}

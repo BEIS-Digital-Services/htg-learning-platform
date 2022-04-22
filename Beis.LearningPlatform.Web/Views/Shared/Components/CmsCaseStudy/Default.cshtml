@@ -1,0 +1,51 @@
+﻿@model Beis.LearningPlatform.Web.Models.CmsCaseStudyViewModel
+@if (!Model.HasContent)
+{
+    return;
+}
+<div class="case-studies">
+    <div class="govuk-width-container govuk-!-padding-top-6 govuk-!-padding-bottom-6">
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full">
+                <div class="mobile">
+                    <h1 class="beis-yellow-text govuk-heading-xl">@Model.Component.content.header</h1>
+                    <h2 class="govuk-heading-xl beis-white-text">@Model.Component.content.subheader</h2>
+                    @if (!string.IsNullOrWhiteSpace(Model.ImageUrl))
+                    {
+                        <img class="img" src="@Model.ImageUrl" alt="">
+                    }
+                    @if (!string.IsNullOrWhiteSpace(Model.Component.videoLink))
+                    {
+                        <div class="youtube-container">
+                            <iframe width="560" height="315" src="@Model.Component.videoLink" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    }
+                    <div class="govuk-body beis-white-text govuk-!-margin-top-6">
+                        @Html.Raw(Model.HtmlCopy)
+                    </div>
+                </div>
+                <div class="desktop">
+                    <div class="text-wrapper">
+                        <h1 class="beis-yellow-text govuk-heading-xl">@Model.Component.content.header</h1>
+                        <h2 class="govuk-heading-xl beis-white-text">@Model.Component.content.subheader</h2>
+                        <div class="govuk-body beis-white-text govuk-!-margin-top-6">
+                            @Html.Raw(Model.HtmlCopy)
+                        </div>
+                    </div>
+                    @if (!string.IsNullOrWhiteSpace(Model.ImageUrl))
+                    {
+                        <img class="img" src="@Model.ImageUrl" alt="">
+                    }
+                    @if (!string.IsNullOrWhiteSpace(Model.Component.videoLink))
+                    {
+                        <div class="img">
+                            <div class="youtube-container">
+                                <iframe width="560" height="315" src="@Model.Component.videoLink" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,166 @@
+﻿@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageViewModel
+@if (Model.components != null)
+{
+    @if (Model.components.Count > 0)
+    {
+        @foreach (var component in Model.components)
+        {
+            component.hide = component.hide.HasValue ? component.hide : false;
+
+            if (component.hide == false)
+            {
+                @switch (component.__component.ToLower())
+                {
+                    case "page.textblock":
+                        if (!string.IsNullOrWhiteSpace(component.type) && !string.IsNullOrWhiteSpace(component.type))
+                        {
+                            switch (component.type.ToLower())
+                            {
+                                case "text":
+                                case "textwithbuttons":
+                                    <partial name="CMSPageViews/_PartialText" model="@component" />
+                                    break;
+                                case "textwithlinks":
+                                    <partial name="CMSPageViews/_PartialTextWithLinks" model="@component" />
+                                    break;
+                                case "articleinternal":
+                                case "articleexternal":
+                                case "article":
+                                    ViewData["model"] = Model;
+                                    <partial name="CMSPageViews/_PartialArticle" model="@component" />
+                                    break;
+                                case "columns":
+                                    <partial name="CMSPageViews/_Partial2Columns" model="@component" />
+                                    break;
+                                case "statistic":
+                                    <partial name="CMSPageViews/_PartialStatistics" model="@component" />
+                                    break;
+                                case "quotes":
+                                    <partial name="CMSPageViews/_PartialQuotes" model="@component" />
+                                    break;
+                                case "tags":
+                                    <partial name="CMSPageViews/_PartialTags" model="@component" />
+                                    break;
+                                case "details":
+                                    <partial name="CMSPageViews/_PartialDetails" model="@component" />
+                                    break;
+                                case "imagecaption":
+                                    <partial name="CMSPageViews/_PartialImageCaption" model="@component" />
+                                    break;
+                                case "callout":
+                                    <partial name="CMSPageViews/_PartialCallout" model="@component" />
+                                    break;
+                                case "fact":
+                                    <partial name="CMSPageViews/_PartialFact" model="@component" />
+                                    break;
+                                case "phasebanner":
+                                    <partial name="CMSPageViews/_PartialPhaseBanner" model="@component" />
+                                    break;
+                                default:
+                                    // Alert that new TextBlock component.type found
+                                    <div class="govuk-grid-row">
+                                        <div class="beis-white govuk-grid-column-full">
+                                            <div class="govuk-width-container govuk-!-margin-top-6 govuk-!-margin-bottom-6">
+                                                <h1 class="govuk-heading-xl govuk-!-font-weight-regular">
+                                                    New Content Type <strong>@component.type</strong> found.
+                                                </h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    break;
+                            }
+                        }
+                        break;
+                    case "page.video":
+                        <partial name="CMSPageViews/_PartialVideo" model="@component" />
+                        break;
+                    case "page.document":
+                        <vc:cms-document-link component="@component" />
+                        break;
+                    case "page.global":
+                        <partial name="CMSPageViews/_PartialGlobal" model="@component" />
+                        break;
+                    case "page.devider":
+                    case "page.divider":
+                        <partial name="CMSPageViews/_PartialDivider" model="@component" />
+                        break;
+                    case "page.articles":
+                        <partial name="CMSPageViews/_PartialArticles" model="@component" />
+                        break;
+                    case "page.table":
+                        <partial name="CMSPageViews/_PartialTable" model="@component" />
+                        break;
+                    case "page.resources":
+                        <partial name="CMSPageViews/_PartialResources" model="@component" />
+                        break;
+                    case "page.article-block":
+                        <partial name="DiagnosticToolFormViews/_PartialSearchArticles" model="@component.search_articles" />
+                        break;
+                    case "page.reactive-tags":
+                        <partial name="CMSPageViews/_PartialReactiveTags" model="@component" />
+                        break;
+                    case "page.feedback-prompt":
+                        <vc:feedback-prompt cms-page-component="@component" />
+                        break;
+                    case "page.image-with-text":
+                        <vc:image-with-text cms-page-component="@component" />
+                        break;
+                    case "page.business-card":
+                        <vc:cms-business-card cms-page-component="@component" />
+                        break;
+                    case "page.top-tip":
+                        <vc:cms-top-tip cms-page-component="@component" />
+                        break;
+                    case "page.quote-callout":
+                        <vc:cms-quote-callout cms-page-component="@component" />
+                        break;
+                    case "page.statistics-text":
+                        <vc:cms-statistics-text cms-page-component="@component" />
+                        break;
+                    case "page.quote-column":
+                        <vc:cms-quote-column cms-page-component="@component" />
+                        break;
+                    case "page.quote-two-thirds":
+                        <vc:cms-quote-two-thirds-column cms-page-component="@component" />
+                        break;
+                    case "page.socialmedia":
+                        <vc:cms-social-media page-view-model="@Model" cms-page-component="@component" />
+                        break;
+                    case "page.case-studies":
+                        <vc:cms-case-study cms-page-component="@component" />
+                        break;
+                    case "page.card":
+                        <vc:cms-card cms-page-component="@component" />
+                        break;
+                    case "page.adaptive-image":
+                        <vc:cms-adaptive-image cms-page-component="@component" />
+                        break;
+                    case "page.three-levels":
+                        <vc:cms-three-levels cms-page-component="@component" />
+                        break;
+                   default:
+                <div class="govuk-grid-row">
+                    <div class="beis-white govuk-grid-column-full">
+                        <div class="govuk-width-container govuk-!-margin-top-6 govuk-!-margin-bottom-6">
+                            <h1 class="govuk-heading-xl govuk-!-font-weight-regular">
+                                New __component <strong>@component.__component</strong> found.
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+                break;
+        }
+            }
+
+            ViewData["intCurrComponentIndex"] = ((int)ViewData["intCurrComponentIndex"]) + 1;
+        }
+    }
+    else
+    {
+        <partial name="CMSPageViews/_PartialNoContent" model="@Model" />
+    }
+}
+else
+{
+    <partial name="CMSPageViews/_PartialNoContent" model="@Model" />
+}

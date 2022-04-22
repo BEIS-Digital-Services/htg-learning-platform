@@ -1,0 +1,26 @@
+﻿@model Beis.LearningPlatform.Web.Models.DiagnosticTool.DiagnosticToolForm
+@{
+    var elementInfo = Model.CurrentElement;
+    var currentStep = elementInfo.CurrentStep;
+    var currentElement = elementInfo.CurrentElement;
+    var radioButtonParent = elementInfo.RadioButtonParent;
+    var z = elementInfo.ChildIndex;
+    var currentFormStepElement = elementInfo.CurrentFormStepElement;
+}
+@{
+
+    <div class="govuk-summary-list__value">
+
+        @for (z = 0; z < currentFormStepElement.answerOptions.Count; z++)
+        {
+            @if (currentFormStepElement.answerOptions[z].value.Equals("true", StringComparison.OrdinalIgnoreCase))
+            {
+                @currentFormStepElement.value
+            }
+
+            <input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].text" />
+            <input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].value" />
+
+        }
+    </div>
+}

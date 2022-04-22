@@ -1,0 +1,16 @@
+﻿@model Beis.LearningPlatform.Web.ComparisonTool.Models.ComparisonToolProduct
+<div class="govuk-body ">
+    <p class="govuk-!-margin-bottom-2"><strong>Minimum contract term:</strong> @Model.contractTerm</p>
+    <p class="govuk-!-margin-bottom-2"><strong>Payment term:</strong> @Model.paymentTerm</p>
+    <p class="govuk-!-margin-bottom-2">
+        <strong>Price (excl. VAT):</strong>
+        @Model.priceDisplayed
+        @if (Model.ProductPriceNumberOfUsers.HasValue)
+        {
+            <span> for @Model.ProductPriceNumberOfUsers user@(Model.ProductPriceNumberOfUsers > 1 ? "s" : "")</span>
+        }
+    </p>
+    <p class="govuk-!-margin-bottom-2"><strong>Minimum number of licences:</strong> @Model.minLicences</p>
+    <p class="govuk-!-margin-bottom-2"><strong>Free trial:</strong> @Model.freeTrial</p>
+    <p class="govuk-!-margin-bottom-2"><strong>Contract discount:</strong> @Model.contractDiscount</p>
+</div>

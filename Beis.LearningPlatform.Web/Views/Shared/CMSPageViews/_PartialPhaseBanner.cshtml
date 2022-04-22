@@ -1,0 +1,51 @@
+﻿@using Beis.LearningPlatform.Web.Utils
+@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
+@{
+    var _pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build();
+    var strComponentBg = string.Empty;
+    var strSubheaderColor = string.Empty;
+}
+
+<div class="phase-banner">
+    <div class="@strComponentBg">
+        <div class="govuk-width-container govuk-!-padding-top-6 govuk-!-padding-bottom-6">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-full">
+                    @if (Model.textblocks != null)
+                    {
+                        @foreach (var textblock in Model.textblocks)
+                        {
+                            strSubheaderColor = (!string.IsNullOrWhiteSpace(textblock.subheaderColor)) ? CamelCaseConverter.Delimiter(textblock.subheaderColor, "-") : "";
+                            @if (!string.IsNullOrWhiteSpace(textblock.subheader))
+                            {
+                                <h2 class="govuk-heading-l govuk-!-font-size-24 @strSubheaderColor">
+                                    @Html.Raw(Markdown.ToHtml(textblock.subheader, _pipeline).Replace("<p>", "<p>").Replace("</p>", "</p>"))
+                                </h2>
+                            }
+
+                            <div class="banner">
+                                @if (!string.IsNullOrWhiteSpace(textblock.header))
+                                {
+                                    <div class="live-icon">
+                                        <!--TODO Live it for the case if colors comes from Strapi in the future designs
+                                          <p class="govuk-body" [ngClass]="setColor(true, component.backgroundColor)">{{component.header}}</p>
+                                          -->
+                                        <p class="govuk-body">@textblock.header</p>
+                                    </div>
+                                }
+
+                                @if (!string.IsNullOrWhiteSpace(textblock.copy))
+                                {
+                                    <div class="govuk-body @strSubheaderColor">
+                                        @Html.Raw(Markdown.ToHtml(textblock.copy, _pipeline))
+                                    </div>
+                                }
+                            </div>
+                            <hr class="beis-blue" aria-hidden="true">
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

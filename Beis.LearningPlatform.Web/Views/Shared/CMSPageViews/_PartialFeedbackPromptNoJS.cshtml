@@ -1,0 +1,291 @@
+﻿@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
+@{
+    var _pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build();
+
+    var showButtons = ViewData["showButtons"] != null ? (bool)ViewData["showButtons"] : true; // ViewData["showButtons"];
+    var isNoFeedback = ViewData["isNoFeedback"] != null ? (bool)ViewData["isNoFeedback"] : false; ;
+    var isReportProblem = ViewData["isReportProblem"] != null ? (bool)ViewData["isReportProblem"] : false;
+    var showButtonClass = showButtons ? "wrapper-left" : "";
+
+    var actionName = ViewContext.RouteData.Values["action"].ToString() + "/#feedback-prompt";
+    var controllerName = ViewContext.RouteData.Values["controller"].ToString();
+
+    string setButtonType(string btnType, string background, string custom_class)
+    {
+        var className = "";
+
+        switch (background)
+        {
+            case "beisWhite":
+                {
+                    if (btnType == "positive")
+                    {
+                        className = "beis-black-positive";
+                    }
+                    if (btnType == "negative")
+                    {
+                        className = "beis-black-negative";
+                    }
+                    break;
+                }
+            case "beisBlack":
+                {
+                    if (btnType == "positive")
+                    {
+                        className = "beis-white-positive";
+                    }
+                    if (btnType == "negative")
+                    {
+                        className = "beis-white-negative";
+                    }
+                    break;
+                }
+            case "beisNavyBlue":
+                {
+                    if (btnType == "positive")
+                    {
+                        className = "beis-white-positive";
+                    }
+                    if (btnType == "negative")
+                    {
+                        className = "beis-white-negative";
+                    }
+                    break;
+                }
+            default:
+                {
+                    className = "";
+                    break;
+                }
+        }
+
+        if (custom_class != null)
+        {
+            return className + " " + custom_class;
+        }
+        else
+        {
+            return className;
+        }
+    }
+}
+
+
+<div class="feedback-prompt" id="feedback-prompt">
+    <div class="feedback-bg-color">
+        <div class="govuk-width-container govuk-!-padding-1">
+            @if (!isNoFeedback && !isReportProblem)
+            {
+                <div class="govuk-grid-row">
+
+                    <div class="govuk-grid-column-one-half">
+                        <div class="@showButtonClass">
+                            @if (!string.IsNullOrWhiteSpace(Model.message))
+                            {
+                                <h2 class="message">@Model.message</h2>
+                            }
+
+                            @if (showButtons)
+                            {
+                                <p class="govuk-button-group">
+                                    @if (!string.IsNullOrWhiteSpace(Model.titleYes.url))
+                                    {
+                                        IDictionary<string, string> routeData = new Dictionary<string, string>();
+                                        routeData.Add("feedback", "yes");
+
+                                        <a role="button"
+                                           asp-controller="@controllerName"
+                                           asp-action="feedback"
+                                           asp-all-route-data="@routeData"
+                                           class="govuk-button @setButtonType(Model.titleYes.type, "beisBlack", Model.titleYes.custom_class)"
+                                           data-module="govuk-button">
+                                            @Model.titleYes.label
+                                        </a>
+                                    }
+
+                                    @if (!string.IsNullOrWhiteSpace(Model.titleNo.url))
+                                    {
+                                        IDictionary<string, string> routeData2 = new Dictionary<string, string>();
+                                        routeData2.Add("feedback", "no");
+
+                                        <a role="button"
+                                           asp-controller="@controllerName"
+                                           asp-action="feedback"
+                                           asp-all-route-data="@routeData2"
+                                           class="govuk-button @setButtonType(Model.titleNo.type, "beisBlack", Model.titleNo.custom_class)"
+                                           data-module="govuk-button">
+                                            @Model.titleNo.label
+                                        </a>
+                                    }
+                                </p>
+                            }
+
+
+                        </div>
+                    </div>
+
+                    @if (showButtons)
+                    {
+                        <div class="govuk-grid-column-one-half">
+
+                            <div class="wrapper-right">
+                                @if (!string.IsNullOrWhiteSpace(Model.titleReport.url))
+                                {
+                                    IDictionary<string, string> routeData3 = new Dictionary<string, string>();
+                                    routeData3.Add("feedback", "report");
+
+                                    <a role="button"
+                                       asp-controller="@controllerName"
+                                       asp-action="feedback"
+                                       asp-all-route-data="@routeData3"
+                                       class="govuk-button @setButtonType(Model.titleReport.type, "beisBlack", Model.titleReport.custom_class)"
+                                       data-module="govuk-button">
+                                        @Model.titleReport.label
+                                    </a>
+                                }
+
+                            </div>
+
+                        </div>
+                    }
+
+                </div>
+            }
+        </div>
+
+        @if (isNoFeedback)
+        {
+            <div class="feedback-no-container beis-white">
+                <div class="govuk-width-container">
+                @if (Model.NoCancelButton != null)
+                {
+                    IDictionary<string, string> routeData4 = new Dictionary<string, string>();
+                    routeData4.Add("feedback", "close");
+
+                    <a class="govuk-button secondary"
+                       asp-controller="@controllerName"
+                       asp-action="feedback"
+                       asp-all-route-data="@routeData4"
+                       data-track-category="yesNoFeedbackForm"
+                       data-track-action="FormClose"
+                       aria-controls="page-is-not-useful"
+                       aria-expanded="@isNoFeedback">
+                        @Model.NoCancelButton.label
+                    </a>
+                }
+
+
+                <div class="govuk-grid-row">
+                    <div class="govuk-grid-column-two-thirds" id="survey-wrapper">
+                        <h3>@Model.NoHeader</h3>
+                        <p id="survey_explanation" class="govuk-body">
+                            @if (!string.IsNullOrWhiteSpace(Model.NoCopy))
+                            {
+                                var strcopy = Markdown.ToHtml(Model.NoCopy, _pipeline).Replace("<p>", "<p class=\"govuk-body\">");
+                                @Html.Raw(strcopy);
+                            }
+                        </p>
+                        <div class="govuk-form-group">
+                            <label for="email" class="govuk-label">@Model.NoLabel1</label>
+                            <input name="email_survey_signup" class="govuk-input" id="email" type="email" autocomplete="email" aria-describedby="survey_explanation">
+                        </div>
+
+                        @if (showButtons && Model.NoSubmitButton != null)
+                        {
+                            <p class="govuk-button-group">
+                                <a role="button"
+                                   class="govuk-button primary">
+                                    @Model.NoSubmitButton.label
+                                </a>
+
+                                @if (Model.NoEmailAddressLink != null)
+                                {
+                                    <a href="https://www.smartsurvey.co.uk/s/gov-uk-banner/?c=/service-manual/service-assessments/get-feedback-page&amp;amp;gcl=2049733727.1626700136"
+                                       class="govuk-link"
+                                       id="take-survey"
+                                       target="_blank"
+                                       rel="noopener noreferrer">
+                                        @Model.NoEmailAddressLink.label
+                                    </a>
+                                }
+
+                            </p>
+                        }
+
+                    </div>
+                </div>
+                </div>
+            </div>
+        }
+
+        @if (isReportProblem)
+        {
+        <div class="report-poroblem-container beis-white">
+            <div class="govuk-width-container">
+                 @if (Model.ReportCancelButton != null) { IDictionary<string, string> routeData5 = new Dictionary<string, string>(); routeData5.Add("actionName", actionName); routeData5.Add("componentid", Model.id.ToString()); routeData5.Add("feedback", "close"); routeData5.Add("isNoFeedback", null); routeData5.Add("isReportProblem", null);  <a class="govuk-button secondary"
+                           asp-controller="@controllerName"
+                           asp-action="feedback"
+                           asp-all-route-data="@routeData5"
+                           data-track-category="yesNoFeedbackForm"
+                           data-track-action="fFormClose"
+                           aria-controls="page-is-not-useful"
+                           aria-expanded="@isReportProblem">
+                            @Model.ReportCancelButton.label
+                        </a>
+                    }
+
+            <form asp-action="feedback" method="post" class="form-horizontal">
+                <div class="govuk-grid-row">
+                    <div class="govuk-grid-column-two-thirds">
+
+                        <h3>@Model.ReportHeader</h3>
+                        <p id="feedback_explanation" class="govuk-body">
+                            @if (!string.IsNullOrWhiteSpace(Model.ReportCopy))
+                            {
+                                var strreportcopy = Markdown.ToHtml(Model.ReportCopy, _pipeline).Replace("<p>", "<p class=\"govuk-body\">");
+                                @Html.Raw(strreportcopy);
+                            }
+                        </p>
+
+                        <div class="govuk-form-group">
+                            <label for="whatIWasDoing" class="govuk-label">@Model.ReportLabel1</label>
+                            <input name="whatIWasDoing" class="govuk-input" id="doing" type="text" aria-describedby="feedback_explanation">
+                        </div>
+
+                        <div class="govuk-form-group">
+                            <label for="whatWentWrong" class="govuk-label">@Model.ReportLabel2</label>
+                            <input name="whatWentWrong" class="govuk-input" id="wrong" type="text">
+                        </div>
+
+                        @if (showButtons && Model.ReportSubmitButton != null)
+                        {
+                            IDictionary<string, string> routeData6 = new Dictionary<string, string>();
+                            routeData6.Add("feedback", "submit");
+
+                            <p class="govuk-button-group">
+                                @*<a role="button"
+                                   asp-controller="@controllerName"
+                                   asp-action="feedback"
+                                   asp-all-route-data="@routeData6"
+                                   class="govuk-button primary">
+                                    @Model.ReportSubmitButton.label
+                                </a>*@
+                                <button type="submit"
+                                   asp-controller="@controllerName"
+                                   asp-action="feedback"
+                                   asp-all-route-data="@routeData6"
+                                   class="govuk-button primary">
+                                    @Model.ReportSubmitButton.label
+                                </button>
+                            </p>
+                        }
+
+                    </div>
+                </div>
+            </form>
+
+            </div>
+                </div>
+        }
+    </div>
+</div>

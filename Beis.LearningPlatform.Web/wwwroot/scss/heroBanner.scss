@@ -1,0 +1,64 @@
+﻿@import 'beis-mixins.scss';
+@import 'beis-variables.scss';
+
+.hero-banner {
+    .govuk-grid-column-one-half
+     {
+        padding: 0;
+    }
+
+    .right-column {
+        .govuk-grid-column-full {
+            padding-left: 20px;
+        }
+    }
+
+    .beis-columns-same-height {
+        display: flex;
+
+        .hero-mobile-image {
+            display: none;
+            width: 100%;
+        }
+
+        @include respond(mobile) {
+            flex-direction: column-reverse;
+
+            .hero-mobile-image {
+                display: block;
+            }
+        }
+    }
+
+    .left-column {
+        justify-content: flex-end;
+    }
+
+    .right-column {
+        justify-content: flex-start;
+    }
+
+    .left-column,
+    .right-column {
+        display: flex;
+
+        .govuk-body {
+            padding: 0 0 60px 0;
+            margin: 0;
+        }
+
+        h1 {
+            margin-bottom: 0;
+        }
+    }
+
+    .beis-columns {
+        max-width: 480px;
+    }
+
+    .beis-htg-logo {
+        width: 80%;
+        height: auto;
+        display: block;
+    }
+}

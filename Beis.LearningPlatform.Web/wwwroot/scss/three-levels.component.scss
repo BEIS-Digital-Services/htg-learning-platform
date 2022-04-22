@@ -1,0 +1,95 @@
+@import 'beis-variables.scss';
+@import 'beis-mixins.scss';
+
+.three-levels {
+
+    $three-grey: #EEEFEF;
+
+    #header1,
+    #header2,
+    #header3 {
+        cursor: pointer;
+    }
+
+    .headers,
+    #header1,
+    #header2,
+    #header3 {
+        background: $beis-navy-blue;
+        color: $beis-yellow;
+        font-weight: 900;
+        height: 90px;
+        padding: 10px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        @include respond(tablet) {
+            display: inline-flex;
+            width: 116px;
+            height: auto;
+        }
+    }
+
+    .level {
+        background: $three-grey;
+    }
+
+    #level1,
+    #level2,
+    #level3 {
+        display: block;
+        width: 260px;
+
+        @include respond(tablet) {
+            display: flex;
+            flex-grow: 0;
+            flex-shrink: 0;
+            flex-basis: 50%;
+            width: 100%;
+        }
+    }
+
+    .copy {
+        padding: 14px;
+        display: block;
+        width: initial;
+        color: $black;
+
+        @include respond(tablet) {
+            display: inline-flex;
+            width: 100%;
+        }
+    }
+
+    .arrow-icon {
+        width: 46px;
+        height: 91px;
+        margin: 10px 20px;
+        background: url("/assets/images/three-horizontal-arrow.svg") no-repeat;
+        background-size: contain;
+
+        @include respond(tablet) {
+            margin: 10px 6px;
+            width: 81px;
+            height: 36px;
+            background: url("/assets/images/three-vertical-arrow.svg") no-repeat;
+        }
+    }
+
+    .levels {
+        display: flex;
+
+        @include respond(tablet) {
+            display: block;
+        }
+    }
+
+    .hidden-text {
+        visibility: hidden;
+    }
+    .hidden-level {
+        background: transparent;
+    }
+}

@@ -1,0 +1,32 @@
+﻿@using Beis.LearningPlatform.Web.StrapiApi.Models
+@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageViewModel
+@{
+
+    ViewData["intCurrComponentIndex"] = 0;
+}
+
+<main id="main-heading" role="main">
+    <partial name="CMSPageViews/_PartialDivider" model="@(new CMSPageComponent() { color = "beisGrey" })" />
+
+    @if (Model.hero_banners != null)
+    {
+        <partial name="CMSPageViews/_PartialHeroBanner" model="@Model" />
+    }
+
+    <div class="side-navigation-template">
+        <div class="govuk-width-container">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-third">
+                    @if (Model.side_navigations != null)
+                    {
+                        <partial name="CMSPageViews/_PartialSideNavigation" model="@Model.side_navigations" />
+                    }
+                </div>
+
+                <div class="govuk-grid-column-two-thirds">
+                    <partial name="CMSPageViews/_PartialRenderCMSComponents" model="@Model" />
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

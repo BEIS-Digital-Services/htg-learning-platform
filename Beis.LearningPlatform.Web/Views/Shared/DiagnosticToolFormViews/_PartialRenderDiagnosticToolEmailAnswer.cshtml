@@ -1,0 +1,50 @@
+﻿@using Beis.LearningPlatform.Web
+@model Beis.LearningPlatform.Web.Models.DiagnosticTool.EmailAnswer
+@{
+    var controlNameBasePath = string.Empty;
+
+    if (ViewData.ContainsKey("ControlNameBasePath"))
+    {
+        controlNameBasePath = ViewData["ControlNameBasePath"].ToString() + ".";
+        if (!controlNameBasePath.EndsWith('.'))
+            controlNameBasePath += ".";
+    }
+
+    var formType = FormTypes.DiagnosticTool;
+    if (ViewData.ContainsKey("FormType"))
+    {
+        formType = (FormTypes)ViewData["FormType"];
+    }
+}
+
+<div class="govuk-form-group govuk-grid-column-two-thirds govuk-!-margin-bottom-0 govuk-!-margin-top-3 govuk-footer__heading @(Model.HasEmailError ? "govuk-form-group--error" : string.Empty)" id="email">
+    <fieldset>
+        @if (formType == FormTypes.DiagnosticTool)
+        {
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h2 class="govuk-fieldset__heading ">Want to review your results later?</h2>
+            </legend>
+        }
+        <p class="govuk-body-m">Enter your email address and we'll send a copy of this page to your inbox.</p>
+    </fieldset>
+
+    <div class="govuk-form-group">
+        <label class="govuk-label govuk-body-m" for="emailAddress">Email Address</label>
+        @if (Model.HasEmailError && !string.IsNullOrWhiteSpace(Model.EmailErrorText))
+        {
+            <span class="govuk-error-message">@Model.EmailErrorText</span>
+        }
+        <input class="govuk-input govuk-input--width-20" id="emailAddress" name="@(controlNameBasePath)userEmailAddress" value="@Model.UserEmailAddress">
+    </div>
+
+    <div class="govuk-checkboxes">
+        <div class="govuk-checkboxes__item">
+            <input type="checkbox" class="govuk-checkboxes__input" id="HasConsentedToMarketing" name="@(controlNameBasePath)hasConsentedToMarketingText" value="@Model.HasConsentedToMarketingText" @(Model.IsOptedInForMarketing ? "checked" : "")>
+            <label for="HasConsentedToMarketing" class="govuk-label govuk-checkboxes__label">I consent to the Department for Business, Energy & Industrial Strategy (BEIS) contacting me by email to keep me informed about news and events relating to Help to Grow: Digital. I am freely consenting to BEIS holding and processing my personal data for marketing communication purposes.</label>
+        </div>
+        <div class="govuk-checkboxes__item">
+            <input type="checkbox" class="govuk-checkboxes__input" id="HasAcceptedPrivacyPolicy" name="@(controlNameBasePath)hasAcceptedPrivacyPolicyText" value="@Model.HasAcceptedPrivacyPolicyText" @(Model.IsPrivacyPolicyAccepted ? "checked" : "")>
+            <label for="HasAcceptedPrivacyPolicy" class="govuk-label govuk-checkboxes__label">Tick this box to confirm you have read our <a href="/privacy" target="_blank">privacy policy</a>.</label>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,1 @@
+﻿var skillModuleExpiryInMinutes = 60;

@@ -1,0 +1,9 @@
+﻿@model Beis.LearningPlatform.Web.Models.FeedbackPromptViewModel
+@if (Model.IsJavascriptEnabled ?? false)
+{
+    <partial name="CMSPageViews/_PartialFeedbackPromptJs" model="@Model.CmsPageComponent" />
+}
+else
+{
+    <partial name="CMSPageViews/_PartialFeedbackPromptNoJs" model="@Model.CmsPageComponent" />
+}

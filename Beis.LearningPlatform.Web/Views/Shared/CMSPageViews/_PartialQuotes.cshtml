@@ -1,0 +1,56 @@
+﻿@using Beis.LearningPlatform.Web.Utils
+@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
+@{
+    var _pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build();
+    var strcopy = string.Empty;
+    var topSpaceClass = Model.topSpace != "nospace" ? "govuk-!-padding-top-6" : "";
+    var bottomSpaceClass = Model.bottomSpace != "nospace" ? "govuk-!-padding-bottom-6" : "";
+    var strComponentBg = (!string.IsNullOrWhiteSpace(Model.background)) ? CamelCaseConverter.Delimiter(Model.background, "-") : "";
+}
+
+@if (Model.textblocks != null)
+{
+    if (Model.textblocks.Count > 0)
+    {
+        foreach (var textblock in Model.textblocks)
+        {
+            textblock.hide = textblock.hide.HasValue ? textblock.hide : false;
+
+            if (textblock.hide == false)
+            {
+                var strclass = CamelCaseConverter.Delimiter(Model.background, "-");
+                <div class="quotes" id="@("anchor" + ViewData["intCurrComponentIndex"])">
+                    <div class="@strComponentBg">
+                        <div class="govuk-width-container @topSpaceClass  @bottomSpaceClass">
+                            <div class="govuk-grid-row">
+                                <div class="govuk-grid-column-full @strclass">
+
+                                    @if (!string.IsNullOrWhiteSpace(textblock.subheader))
+                                    {
+                                        <h2 class="govuk-heading-l govuk-!-font-size-24">
+                                            @Html.Raw(Markdown.ToHtml(textblock.subheader, _pipeline))
+                                        </h2>
+                                    }
+
+                                    <div class="quote">
+                                        <div class="quote-icon">
+                                            <svg width="23" height="16" viewBox="0 0 23 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M18.5203 15.0962C20.9942 15.0962 23 13.0904 23 10.6166C23 8.07588 21.061 6.27065 18.5872 6.27065H18.0523V6.07006C18.0523 4.26483 19.7238 3.66309 21.4622 3.39565L22.2645 3.26192L22.064 0.788086L21.1279 0.85495C15.1773 1.25611 13.3052 5.60204 13.3052 9.34623C13.3052 12.823 15.5785 15.0962 18.5203 15.0962ZM5.21512 15.0962C7.68895 15.0962 9.69477 13.0904 9.69477 10.6166C9.69477 8.07588 7.75581 6.27065 5.28198 6.27065H4.74709V6.07006C4.74709 4.26483 6.4186 3.66309 8.15698 3.39565L8.9593 3.26192L8.75872 0.788086L7.82268 0.85495C1.87209 1.25611 0 5.60204 0 9.34623C0 12.823 2.27326 15.0962 5.21512 15.0962Z" fill="#1D3A64"></path>
+                                            </svg>
+                                        </div>
+                                        <div class="govuk-body govuk-!-font-size-36">
+                                            @{ strcopy = Markdown.ToHtml(textblock.copy, _pipeline);
+                                                @Html.Raw(strcopy);
+                                            }
+                                        </div>
+                                    </div>
+                                    <partial name="CMSPageViews/_PartialTextLinks" model="@Model.links" />
+                                </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            }
+        }

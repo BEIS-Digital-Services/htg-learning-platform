@@ -1,0 +1,19 @@
+﻿@model Beis.LearningPlatform.Web.Models.ComparisonToolPageViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var selectedProductIds = TempData["SelectedProductIds"]?.ToString() ?? string.Empty;
+}
+<main id="main-heading" role="main">
+    <hr class="beis-grey divider" aria-hidden="true">
+    <input type="hidden" id="selectedProductIds" value="@selectedProductIds" />
+
+    @if (Model.JavascriptEnabled)
+    {
+        <partial name="ComparisonToolViews/_PartialProduct" model="@Model" />
+        <script src="~/js/comparisontool.js"></script>
+    }
+    else
+    {
+        <partial name="ComparisonToolViews/_PartialProductNoJs" model="@Model" />
+    }
+</main>

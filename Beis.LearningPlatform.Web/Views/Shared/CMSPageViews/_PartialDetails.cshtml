@@ -1,0 +1,46 @@
+﻿@using Beis.LearningPlatform.Web.Utils
+@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
+@{
+    var strclass = CamelCaseConverter.Delimiter(Model.background, "-");
+    var _pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build();
+    var topSpaceClass = Model.topSpace != "nospace" ? "govuk-!-padding-top-6" : "";
+    var bottomSpaceClass = Model.bottomSpace != "nospace" ? "govuk-!-padding-bottom-6" : "";
+}
+<div class="details" id="@("anchor" + ViewData["intCurrComponentIndex"])">
+    <div class="@strclass">
+        <div class="govuk-width-container">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-full @topSpaceClass  @bottomSpaceClass">
+                    @if (Model.textblocks != null)
+                    {
+                        foreach (var item in Model.textblocks)
+                        {
+                            item.hide = item.hide.HasValue ? item.hide : false;
+
+                            if (item.hide == false)
+                            {
+                                <details class="govuk-details">
+                                    <summary class="govuk-details__summary">
+                                        @if (!string.IsNullOrWhiteSpace(item.subheader))
+                                        {
+                                            strclass = CamelCaseConverter.Delimiter(item.subheaderColor, "-");
+                                            @Html.Raw(Markdown.ToHtml(item.subheader, _pipeline).Replace("<p>", "").Replace("</p>", ""))
+                                        }
+                                    </summary>
+
+                                    @if (!string.IsNullOrWhiteSpace(item.copy))
+                                    {
+                                        <div class="govuk-details__text">
+                                            @Html.Raw(Markdown.ToHtml(item.copy, _pipeline).Replace("<p>", "<p>").Replace("</p>", "</p>"))
+                                        </div>
+                                    }
+                                </details>
+                            }
+                        }
+                    }
+                    <partial name="CMSPageViews/_PartialTextLinks" model="@Model.links" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

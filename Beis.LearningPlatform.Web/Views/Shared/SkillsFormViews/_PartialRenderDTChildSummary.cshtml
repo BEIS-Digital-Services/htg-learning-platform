@@ -1,0 +1,83 @@
+﻿@using Beis.LearningPlatform.Web.Models.DiagnosticTool
+@using Beis.LearningPlatform.Web.Utils
+@model Beis.LearningPlatform.Web.Models.DiagnosticTool.DiagnosticToolForm
+@{
+    var elementInfo = Model.CurrentElement;
+    var currentStep = elementInfo.CurrentStep;
+    var currentElement = elementInfo.CurrentElement;
+    var radioButtonParent = elementInfo.RadioButtonParent;
+    var z = elementInfo.ChildIndex;
+
+    var currentFormStepElement = elementInfo.CurrentFormStepElement;
+    var controlType = currentFormStepElement.answerOptions?.Any() == true ? currentFormStepElement.answerOptions[z].controlType : currentFormStepElement.controlType;
+    var greyClass = controlType == FormDisplayControlType.Textarea ? " summary-grey" : "";
+    var informationStorageQuestion = currentStep == 3;
+    List<string> checkboxAnswers = new List<string>();
+
+}
+@{
+    switch (controlType)
+    {
+        case FormDisplayControlType.Text:
+        case FormDisplayControlType.Textarea:
+
+            <div class="govuk-summary-list__value @greyClass"> @currentFormStepElement.value</div>
+            break;
+
+        case FormDisplayControlType.Radio:
+            @currentFormStepElement.value.ToLower()
+
+            @for (z = 0; z < currentFormStepElement.answerOptions.Count; z++)
+            {
+
+                <input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].text" />
+                <input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].value" />
+
+            }
+            break;
+
+        case FormDisplayControlType.Checkbox:
+
+            @foreach (var answer in Model.steps[currentStep].elements[0].answerOptions)
+            {
+                if (answer.value.Equals("true", StringComparison.OrdinalIgnoreCase))
+                {
+                    checkboxAnswers.Add(string.IsNullOrWhiteSpace(answer.additionalInfo) ? answer.ResultPageLabel : answer.additionalInfo);
+                }
+            }
+
+            @if (informationStorageQuestion)
+            {
+                <ul>
+                    @foreach (var answer in checkboxAnswers)
+                    {
+                        <li>@answer</li>
+                    }
+                </ul>
+            }
+            else
+            {
+                @ListJoinFormatter.ReplaceLastCharacterWith(string.Join("; ", checkboxAnswers), ";", "and")
+                @for (z = 0; z < currentFormStepElement.answerOptions.Count; z++)
+                {
+                    if (currentFormStepElement.answerOptions[z].value.Equals("true", StringComparison.OrdinalIgnoreCase))
+                    {
+
+                        <input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].text" class="govuk-checkboxes__input" />
+                        <input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].hint" class="govuk-checkboxes__input" />
+                        <input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].value" class="govuk-checkboxes__input" />
+                    }
+
+                }
+
+            }
+
+            break;
+
+        default:
+            <h4 class="govuk-heading-s govuk-!-font-weight-regular">
+                New Content Type @currentFormStepElement.answerOptions[z].controlType found.
+            </h4>
+            break;
+    }
+}

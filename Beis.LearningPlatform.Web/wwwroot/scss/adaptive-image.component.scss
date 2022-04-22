@@ -1,0 +1,24 @@
+@import 'beis-variables.scss';
+@import 'beis-mixins.scss';
+
+.adaptive-image {
+    .mobile {
+        img {
+            width: 100%;
+        }
+
+        @include respond(desktop) {
+            display: none;
+        }
+    }
+
+    .desktop {
+        img {
+            width: 100%;
+        }
+
+        @include respond(mobile) {
+            display: none;
+        }
+    }
+}

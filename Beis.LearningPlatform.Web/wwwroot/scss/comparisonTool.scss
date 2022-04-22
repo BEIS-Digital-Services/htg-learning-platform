@@ -1,0 +1,325 @@
+﻿@import 'beis-variables.scss';
+@import 'beis-mixins';
+
+.comparison-tool {
+    @include respond(tablet) {
+        h2.beis-blue-text {
+            font-size: 24px;
+        }
+    }
+}
+
+.govuk-summary-list__product1,
+.govuk-summary-list__product2,
+.govuk-summary-list__product3 {
+    display: table-cell;
+    padding-top: 10px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid $beis-grey;
+
+    p {
+        padding: 0;
+        margin: 0;
+    }
+
+    a {
+        display: block;
+        text-align: center;
+    }
+
+    .product-image {
+        width: 100%;
+        text-align: center;
+
+        @include respond(tablet) {
+            text-align: left;
+            margin: 0 0 20px 0;
+        }
+    }
+
+    .image-mask {
+        display: inline-block;
+        margin: 10px 0;
+
+        img {
+            width:110px;
+            height:110px;
+        }
+
+        @include respond(tablet) {
+            display: none;
+        }
+    }
+}
+
+.beis-summary-product-list {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    font-size: 1.1875rem;
+    line-height: 1.3157894737;
+    font-family: "GDS Transport", arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+
+    @include respond(tablet) {
+        display: none;
+    }
+}
+
+.govuk-summary-list {
+
+    .mobile-product-name {
+        display: none;
+        font-weight: 700;
+        padding: 10px 0;
+    }
+
+    @include respond(tablet) {
+        .mobile-product-name {
+            display: block;
+        }
+
+        dt {
+            font-size: 24px;
+        }
+
+        dd {
+            display: block;
+            border: 0;
+            margin: 0;
+
+            &:last-child {
+                margin: 0 0 15px 0;
+            }
+        }
+
+        dd.mobile-side-by-side {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0;
+
+            button {
+                width: 50%;
+                margin: 10px 0 10px 5px;
+            }
+        }
+    }
+}
+
+.govuk-summary-list-mobile {
+    display: none;
+
+    @include respond(tablet) {
+        display: block;
+
+        .product1,
+        .product2,
+        .product3 {
+            display: flex;
+            align-items: end;
+
+            div {
+                flex: 1;
+            }
+
+            .govuk-heading-m {
+                margin: 20px 0 0 0;
+            }
+
+            .web-link {
+                text-align: right;
+                flex-grow: 1;
+            }
+        }
+    }
+}
+
+.product-card {
+    .top-line {
+        background: #1C1C78;
+        height: 10px;
+        margin: 10px 0 0 0;
+        display: block;
+        box-sizing: border-box;
+    }
+
+    .compare-btn {
+        margin: 10px 0 0 0;
+
+        @include respond(tablet) {
+            margin: 20px 0 0 0;
+        }
+    }
+
+    .frame {
+        display: flex;
+        justify-content: space-between;
+        align-items: stretch;
+        border: 1px solid rgba(28, 28, 120, 0.3);
+        padding: 10px 30px;
+
+        @include respond(tablet) {
+            flex-direction: column;
+        }
+    }
+
+    .checked + .govuk-checkboxes__label:after {
+        opacity: 1;
+    }
+
+    .govuk-checkboxes__label {
+        padding: 0;
+
+        @include respond(tablet) {
+            padding: 8px 15px 5px;
+        }
+    }
+
+    .checkboxes-column {
+        padding: 10px 29px 10px 10px;
+        display: flex;
+        align-items: center;
+        border-right: 1px solid rgba(28, 28, 120, 0.3);
+
+        @include respond(tablet) {
+            border-right: 0;
+            order: 2;
+            padding: 20px 0 20px 0;
+        }
+    }
+
+    .image-mask {
+        display: inline-block;
+        width: 90px;
+        height: 90px;
+        border-radius: 90px;
+        overflow: hidden;
+        margin: 10px 0;
+
+        @include respond(tablet) {
+            display: none;
+        }
+    }
+
+    .product-image {
+        margin: 0 40px 0 0;
+        width: 120px;
+        text-align: center;
+
+        @include respond(tablet) {
+            text-align: left;
+            margin: 0 0 20px 0;
+        }
+    }
+
+    .product-details {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        @include respond(tablet) {
+            order: 0;
+        }
+
+        .govuk-body {
+            margin: 0;
+            display: inline;
+        }
+
+        p {
+            display: block;
+            padding: 0;
+            margin: 0;
+        }
+    }
+
+    .compare-products {
+        text-align: right;
+    }
+
+    .hide-element {
+        @include respond(tablet) {
+            height: auto;
+            margin: 0;
+            overflow: initial;
+            position: initial;
+            width: auto;
+            clip: initial;
+        }
+    }
+
+    .product-actions {
+        flex-grow: 1;
+        display: flex;
+        flex-flow: column;
+        align-items: end;
+        min-width: 180px;
+        justify-content: center;
+
+        a {
+            margin: 0 0 20px 0;
+        }
+
+        @include respond(tablet) {
+            align-items: start;
+            order: 3;
+        }
+
+        button {
+            display: block;
+            margin: 15px 0;
+
+            @include respond(tablet) {
+                margin: 0;
+            }
+        }
+
+        button:last-child {
+
+            @include respond(tablet) {
+                display: block;
+                margin: 15px 0 0 0;
+            }
+        }
+    }
+}
+
+.govuk-button.compare, .govuk-button.discount {
+    width: 100%;
+}
+
+.govuk-button.compare {
+    background-color: #FFFFFF;
+    color: #0B0C0C;
+    border-color: #000000;
+    border-width: 1px;
+}
+
+.govuk-button.discount {
+    background-color: #1C1C78;
+    color: #FFFFFF !important;
+    border-color: #000000;
+    border-width: 1px;
+}
+
+.govuk-button.compare.active {
+    color: white;
+    background-color: #00703c;
+}
+
+.govuk-button.compare.disabled {
+    color: grey;
+    background-color: #cececb;
+    pointer-events: none;
+    cursor: default;
+}
+
+@media only screen and (min-width: 40.0625em){
+    .govuk-button.compare, .govuk-button.discount {
+        width: 9.063rem;
+    }
+}
