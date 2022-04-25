@@ -1,9 +1,9 @@
-﻿@model Beis.LearningPlatform.Web.Models.CmsSocialMediaViewModel
+@model Beis.LearningPlatform.Web.Models.CmsSocialMediaViewModel
 <div class="social-media" id="@Model.Component.id">
     <div class="govuk-width-container">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
-                <a class="icon twitter" href="https://twitter.com/intent/tweet?url=@Model.ShareLink@Model.Component.twitter&text=@Model.ShareTitle"
+                <a id="link-cmssocialmedia-twitter" class="icon twitter" href="https://twitter.com/intent/tweet?url=@Model.ShareLink@Model.Component.twitter&text=@Model.ShareTitle"
                    aria-label="Tweet this page"
                    target="_blank">
                     <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -50,7 +50,7 @@
                     </div>
                 </div>
 
-                <a target="_blank"
+                <a id="link-cmssocialmedia-linkedin" target="_blank"
                    class="icon linkedin"
                    href="https://www.linkedin.com/shareArticle?mini=true&title=@Model.ShareTitle&url=@Model.ShareLink@Model.Component.linkedIn"
                    rel="noreferrer"
@@ -73,7 +73,7 @@
                      data-layout="button_count"
                      data-size="small"
                      aria-label="Post this page on Facebook">
-                    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=@Model.ShareLink@Model.Component.facebook&amp;src=sdkpreparse'" class="fb-xfbml-parse-ignore">
+                    <a id="link-cmssocialmedia-facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=@Model.ShareLink@Model.Component.facebook&amp;src=sdkpreparse'" class="fb-xfbml-parse-ignore">
                         <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M27.1099 0H7.34609C3.54083 0 0.456055 3.08478 0.456055 6.89004V26.6538C0.456055 30.4591 3.54083 33.5439 7.34609 33.5439H27.1099C30.9152 33.5439 33.9999 30.4591 33.9999 26.6538V6.89004C33.9999 3.08478 30.9152 0 27.1099 0Z" fill="#1D3A64" />
                             <path d="M13.941 29.9638H19.1937V16.7996H22.864L23.2546 12.3931H19.1937V9.88949C19.1937 8.84797 19.404 8.43739 20.4104 8.43739H23.2546V3.86572H19.6143C15.7036 3.86572 13.941 5.58823 13.941 8.87302V12.3781H11.207V16.8396H13.941V29.9638Z" fill="url(#paint0_linear_4518_84915)" />

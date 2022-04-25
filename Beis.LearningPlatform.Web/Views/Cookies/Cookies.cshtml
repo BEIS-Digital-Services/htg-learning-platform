@@ -1,4 +1,4 @@
-﻿@model Beis.LearningPlatform.Web.Models.DataPageViewModel<Beis.LearningPlatform.Web.Models.CookiePageViewModel>
+@model Beis.LearningPlatform.Web.Models.DataPageViewModel<Beis.LearningPlatform.Web.Models.CookiePageViewModel>
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     var isGaAccepted = Model.Data.UserCookiePreferences.IsGaAccepted;
@@ -144,7 +144,7 @@
                                         <label for="DontUseRememberSettingsCookies" id="DontUseRememberSettingsCookies_label" class="govuk-label govuk-radios__label">Do not use cookies that remember my settings on the site</label>
                                     </div>
                                 </div>
-                                <p class="govuk-body"><a href="https://www.gov.uk/help/cookies">Find out more about cookies on GOV.UK </a></p>
+                                <p class="govuk-body"><a id="link-cookies-find-out-more" href="https://www.gov.uk/help/cookies">Find out more about cookies on GOV.UK </a></p>
                             </fieldset>
                             <button type="submit" class="govuk-button govuk-button--start primary">
                                 Save Preferences

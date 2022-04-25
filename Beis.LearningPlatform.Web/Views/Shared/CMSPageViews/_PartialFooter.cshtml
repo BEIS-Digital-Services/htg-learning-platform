@@ -1,4 +1,4 @@
-﻿@model List<Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageFooter>
+@model List<Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageFooter>
 @if (Model != null)
 {
     <div class="govuk-grid-column-full" style="position:relative; bottom: 0px!important; padding-left: 0px; padding-right: 0px;">
@@ -14,7 +14,7 @@
                                 foreach (var link in footer.links)
                                 {
                                     <li class="govuk-footer__inline-list-item">
-                                        <a class="govuk-footer__link" href="@link.url">
+                                        <a id="link-cmspageviews-footer-@(link.GetGaLinkId())" class="govuk-footer__link" href="@link.url">
                                             @link.label
                                         </a>
                                     </li>
@@ -28,11 +28,11 @@
                         </svg>
                         <span class="govuk-footer__licence-description">
                             All content is available under the
-                            <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, except where otherwise stated
+                            <a id="link-cmspageviews-footer-open-government-licence" class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, except where otherwise stated
                         </span>
                     </div>
                     <div class="govuk-footer__meta-item">
-                        <a class="govuk-footer__link govuk-footer__copyright-logo" href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/">© Crown copyright</a>
+                        <a id="link-cmspageviews-footer-crown-copyright" class="govuk-footer__link govuk-footer__copyright-logo" href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/">© Crown copyright</a>
                     </div>
                 </div>
             </div>

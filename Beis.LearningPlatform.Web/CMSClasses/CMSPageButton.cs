@@ -1,4 +1,6 @@
-﻿namespace Beis.LearningPlatform.Web.StrapiApi.Models
+﻿using Beis.LearningPlatform.Web.Utils;
+
+namespace Beis.LearningPlatform.Web.StrapiApi.Models
 {
     public class CMSPageButton
     {
@@ -10,5 +12,16 @@
         public string anchorlink { get; set; }
         public string custom_class { get; set; }
         public CMSPageIcon icon { get; set; }
-    }
+
+		public string GetGaLinkId()
+		{
+			if (string.IsNullOrWhiteSpace(label))
+			{
+				return $"{id}";
+			}
+
+			var labelId = label.Replace(" ", "-").UrlEncode(true);
+			return $"{labelId}-{id}";
+		}
+	}
 }

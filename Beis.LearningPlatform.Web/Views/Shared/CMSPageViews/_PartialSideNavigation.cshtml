@@ -1,4 +1,4 @@
-﻿@model List<Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageSideNavigation>
+@model List<Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageSideNavigation>
 <div class="side-navigation govuk-!-padding-top-6">
     @foreach (var sidenav in Model)
     {
@@ -8,7 +8,7 @@
                 @foreach (var item in block.links)
                 {
                     <li>
-                        <a class="govuk-link" href="">@item.label</a>
+                        <a id="link-cmspageviews-sidenavigation-@(item.GetGaLinkId())" class="govuk-link" href="">@item.label</a>
                     </li>
                 }
 

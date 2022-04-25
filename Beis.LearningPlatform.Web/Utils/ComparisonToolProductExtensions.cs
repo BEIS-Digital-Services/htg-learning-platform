@@ -11,5 +11,17 @@ namespace Beis.LearningPlatform.Web.Utils
         {
             return products.OrderBy(p => Guid.NewGuid());
         }
-    }
+
+
+        public static string GetGaLinkId(this ComparisonToolProduct comparisonToolProduct)
+        {
+            if (string.IsNullOrWhiteSpace(comparisonToolProduct?.product_name))
+            {
+                return $"{comparisonToolProduct?.product_id}";
+            }
+
+            var gaId = comparisonToolProduct.product_name.Replace(" ", "-").UrlEncode(true);
+            return $"{gaId}-{comparisonToolProduct?.product_id}";
+        }
+    } 
 }

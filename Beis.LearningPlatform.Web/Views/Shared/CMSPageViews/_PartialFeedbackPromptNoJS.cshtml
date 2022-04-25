@@ -1,4 +1,4 @@
-﻿@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
+@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
 @{
     var _pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build();
 
@@ -93,7 +93,7 @@
                                         IDictionary<string, string> routeData = new Dictionary<string, string>();
                                         routeData.Add("feedback", "yes");
 
-                                        <a role="button"
+                                        <a id="link-cmspageviews-feedbackpromptnojs-yes" role="button"
                                            asp-controller="@controllerName"
                                            asp-action="feedback"
                                            asp-all-route-data="@routeData"
@@ -108,7 +108,7 @@
                                         IDictionary<string, string> routeData2 = new Dictionary<string, string>();
                                         routeData2.Add("feedback", "no");
 
-                                        <a role="button"
+                                        <a id="link-cmspageviews-feedbackpromptnojs-nnoo" role="button"
                                            asp-controller="@controllerName"
                                            asp-action="feedback"
                                            asp-all-route-data="@routeData2"
@@ -134,7 +134,7 @@
                                     IDictionary<string, string> routeData3 = new Dictionary<string, string>();
                                     routeData3.Add("feedback", "report");
 
-                                    <a role="button"
+                                    <a id="link-cmspageviews-feedbackpromptnojs-d8d5" role="button"
                                        asp-controller="@controllerName"
                                        asp-action="feedback"
                                        asp-all-route-data="@routeData3"
@@ -162,7 +162,7 @@
                     IDictionary<string, string> routeData4 = new Dictionary<string, string>();
                     routeData4.Add("feedback", "close");
 
-                    <a class="govuk-button secondary"
+                    <a id="link-cmspageviews-feedbackpromptnojs-e0c8" class="govuk-button secondary"
                        asp-controller="@controllerName"
                        asp-action="feedback"
                        asp-all-route-data="@routeData4"
@@ -193,14 +193,14 @@
                         @if (showButtons && Model.NoSubmitButton != null)
                         {
                             <p class="govuk-button-group">
-                                <a role="button"
+                                <a id="link-cmspageviews-feedbackpromptnojs-5cdd" role="button"
                                    class="govuk-button primary">
                                     @Model.NoSubmitButton.label
                                 </a>
 
                                 @if (Model.NoEmailAddressLink != null)
                                 {
-                                    <a href="https://www.smartsurvey.co.uk/s/gov-uk-banner/?c=/service-manual/service-assessments/get-feedback-page&amp;amp;gcl=2049733727.1626700136"
+                                    <a id="link-cmspageviews-feedbackpromptnojs-6b8e" href="https://www.smartsurvey.co.uk/s/gov-uk-banner/?c=/service-manual/service-assessments/get-feedback-page&amp;amp;gcl=2049733727.1626700136"
                                        class="govuk-link"
                                        id="take-survey"
                                        target="_blank"
@@ -222,7 +222,7 @@
         {
         <div class="report-poroblem-container beis-white">
             <div class="govuk-width-container">
-                 @if (Model.ReportCancelButton != null) { IDictionary<string, string> routeData5 = new Dictionary<string, string>(); routeData5.Add("actionName", actionName); routeData5.Add("componentid", Model.id.ToString()); routeData5.Add("feedback", "close"); routeData5.Add("isNoFeedback", null); routeData5.Add("isReportProblem", null);  <a class="govuk-button secondary"
+                 @if (Model.ReportCancelButton != null) { IDictionary<string, string> routeData5 = new Dictionary<string, string>(); routeData5.Add("actionName", actionName); routeData5.Add("componentid", Model.id.ToString()); routeData5.Add("feedback", "close"); routeData5.Add("isNoFeedback", null); routeData5.Add("isReportProblem", null);  <a id="link-cmspageviews-feedbackpromptnojs-0911" class="govuk-button secondary"
                            asp-controller="@controllerName"
                            asp-action="feedback"
                            asp-all-route-data="@routeData5"
@@ -263,7 +263,7 @@
                             routeData6.Add("feedback", "submit");
 
                             <p class="govuk-button-group">
-                                @*<a role="button"
+                                @*<a id="link-cmspageviews-feedbackpromptnojs-8c61" role="button"
                                    asp-controller="@controllerName"
                                    asp-action="feedback"
                                    asp-all-route-data="@routeData6"

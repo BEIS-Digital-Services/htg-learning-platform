@@ -1,9 +1,9 @@
-﻿@model Beis.LearningPlatform.Web.Models.PartialNavigationModel
+@model Beis.LearningPlatform.Web.Models.PartialNavigationModel
 <div role="banner">
     <header id="backToTop" class="govuk-header app-header" data-module="govuk-header">
         <div class="govuk-header__container govuk-width-container">
             <div class="govuk-header__logo">
-                <a href="/" class="govuk-header__link govuk-header__link--homepage">
+                <a id="link-cmspageviews-navigation-home-logo" href="/" class="govuk-header__link govuk-header__link--homepage">
                     <span class="govuk-header__logotype">
                         <!--[if gt IE 8]><!-->
                         <svg aria-hidden="true" focusable="false" class="govuk-header__logotype-crown" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 132 97" height="30" width="36">
@@ -18,11 +18,11 @@
                         </span>
                     </span>
                 </a>
-                <a href="#main-heading" class="accessibility-skip-to-content-link">Skip to content</a>
+                <a id="link-cmspageviews-navigation-skip-to-content" href="#main-heading" class="accessibility-skip-to-content-link">Skip to content</a>
 
             </div>
             <div class="govuk-header__content">
-                <a href="/" class="govuk-header__link govuk-header__link--service-name @if (Model.PageName.ToLower() == "help to grow")
+                <a id="link-cmspageviews-navigation-home" href="/" class="govuk-header__link govuk-header__link--service-name @if (Model.PageName.ToLower() == "help to grow")
                                                                                        { @Html.Raw("govuk-header__navigation-item--active");
                                                                                        }">
                     @if (Model.Navigation.Count() > 0) { @Html.Raw(Model.Navigation.First().title); }
@@ -52,16 +52,16 @@
                                 <li class="govuk-header__navigation-item @if (Model.PageName.ToLower() == link.label.Trim().ToLower()) { @Html.Raw("govuk-header__navigation-item--active"); }">
                                 @if (linkAction.Contains("comparison-tool"))
                                 {
-                                    <a id="@link.id" class="govuk-header__link jsLink" asp-controller="Home" asp-action="@linkAction.Replace("-", "_")">
+                                    <a id="link-cmspageviews-navigation-@(link.GetGaLinkId())" id="@link.id" class="govuk-header__link jsLink" asp-controller="Home" asp-action="@linkAction.Replace("-", "_")">
                                         @Html.Raw(link.label)
                                     </a>
-                                    <a id="@link.id" class="govuk-header__link noJsLink" asp-controller="Home" asp-action="@linkAction.Replace("-", "_")@("NoJs")">
+                                    <a id="link-cmspageviews-navigation-@(link.GetGaLinkId())" id="@link.id" class="govuk-header__link noJsLink" asp-controller="Home" asp-action="@linkAction.Replace("-", "_")@("NoJs")">
                                         @Html.Raw(link.label)
                                     </a>
                                 }
                                 else
                                 {
-                                    <a id="@link.id" class="govuk-header__link" asp-controller="Home" asp-action="@linkAction.Replace("-", "_")">
+                                    <a id="link-cmspageviews-navigation-@(link.GetGaLinkId())" id="@link.id" class="govuk-header__link" asp-controller="Home" asp-action="@linkAction.Replace("-", "_")">
                                         @Html.Raw(link.label)
                                     </a>
                                 }
@@ -93,7 +93,7 @@
                                 else
                                 {
                                     <p>
-                                        This is a new service – your <a asp-controller="SatisfactionSurvey" asp-action="Index" class="govuk-link">feedback</a> will help us to improve it.
+                                        This is a new service – your <a id="link-cmspageviews-navigation-satisfaction-survey" asp-controller="SatisfactionSurvey" asp-action="Index" class="govuk-link">feedback</a> will help us to improve it.
                                     </p>
                                 }
                             </div>

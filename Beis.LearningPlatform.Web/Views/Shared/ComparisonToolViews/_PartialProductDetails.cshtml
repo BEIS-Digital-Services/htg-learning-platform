@@ -1,4 +1,4 @@
-﻿@using Beis.LearningPlatform.Web.Utils
+@using Beis.LearningPlatform.Web.Utils
 @using Beis.LearningPlatform.Web.StrapiApi.Models
 @model Beis.LearningPlatform.Web.Models.ComparisonToolPageViewModel
 @if (Model.currentProduct != null)
@@ -6,7 +6,7 @@
     <div class="govuk-width-container comparison-tool-details">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-full">
-                <a href="@Model.Referrer" class="govuk-back-link">Back</a>
+                <a id="link-comparisontoolviews-productdetails-back-link" href="@Model.Referrer" class="govuk-back-link">Back</a>
             </div>
         </div>
 
@@ -37,7 +37,7 @@
                         </p>
                     </div>
                     <div class="product-links">
-                        <a class="govuk-link" href="@Model.currentProduct.website_url">
+                        <a id="link-comparisontoolviews-productdetails-website-@(Model.currentProduct.GetGaLinkId())" class="govuk-link" href="@Model.currentProduct.website_url">
                             Visit supplier website<span class="govuk-visually-hidden"> Visit supplier website</span>
                         </a>
                     </div>
@@ -331,7 +331,7 @@
                 IDictionary<string, string> routeData = new Dictionary<string, string>();
                 routeData.Add("product_id", Model.currentProduct.product_id.ToString());
             }
-            <a role="button" asp-controller="comparisonTool" asp-action="GetDiscount" asp-all-route-data="routeData" class="govuk-button primary-big" data-module="govuk-button">
+            <a id="link-comparisontoolviews-productdetails-get-discount-@(Model.currentProduct.GetGaLinkId())" role="button" asp-controller="comparisonTool" asp-action="GetDiscount" asp-all-route-data="routeData" class="govuk-button primary-big" data-module="govuk-button">
                 Get discount
             </a>
         </div>

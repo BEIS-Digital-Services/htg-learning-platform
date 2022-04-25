@@ -1,4 +1,4 @@
-﻿@using Beis.LearningPlatform.Web.Utils
+@using Beis.LearningPlatform.Web.Utils
 @model List<Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageLink>
 @{
     var _pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build();
@@ -35,11 +35,11 @@
                             </span>
                             @if (link.url.StartsWith("http"))
                             {
-                                <a class="govuk-link @strclass" href="@linkAction" target="" aria-label="@(string.IsNullOrWhiteSpace(link.aria) ? "Read the article on " + link.id : link.aria)"> @link.label </a>
+                                <a id="link-cmspageviews-textlinks-@(link.GetGaLinkId())" class="govuk-link @strclass" href="@linkAction" target="" aria-label="@(string.IsNullOrWhiteSpace(link.aria) ? "Read the article on " + link.id : link.aria)"> @link.label </a>
                             }
                             else
                             {
-                                <a class="govuk-link @strclass" href="/@linkAction" 
+                                <a id="link-cmspageviews-textlinks-@(link.GetGaLinkId())" class="govuk-link @strclass" href="/@linkAction" 
                                    aria-label="@(string.IsNullOrWhiteSpace(link.aria) ? "Read the article on " + link.id : link.aria)"> @link.label </a>
                             }
                         </div>

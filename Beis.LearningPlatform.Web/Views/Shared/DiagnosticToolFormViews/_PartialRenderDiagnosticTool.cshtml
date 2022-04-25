@@ -23,7 +23,7 @@
                     @if (Model.CurrStep == 1 && string.IsNullOrEmpty(Model.backURLfromQ1) == false)
                     {
                         <div class="p-left-20">
-                            <a href="@Model.backURLfromQ1" class="govuk-back-link">Back</a>
+                            <a id="link-diagnostictoolformviews-renderdiagnostictool-back" href="@Model.backURLfromQ1" class="govuk-back-link">Back</a>
                         </div>
                     }
 
@@ -48,7 +48,7 @@
                                         @foreach (var validationError in Model.validationErrors)
                                         {
                                             <li class="@validationError.displayControlClass">
-                                                <a href="#@validationError.htmlId">@Html.Raw(validationError.errorMessage)</a>
+                                                <a id="link-diagnostictoolformviews-renderdiagnostictool-validation-error-@(validationError.htmlId)" href="#@validationError.htmlId">@Html.Raw(validationError.errorMessage)</a>
                                             </li>
                                         }
                                         <li>

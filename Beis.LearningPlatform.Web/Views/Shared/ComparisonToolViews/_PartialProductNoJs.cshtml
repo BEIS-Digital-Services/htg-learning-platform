@@ -1,4 +1,4 @@
-﻿@model Beis.LearningPlatform.Web.Models.ComparisonToolPageViewModel
+@model Beis.LearningPlatform.Web.Models.ComparisonToolPageViewModel
 @{
     var icount = 0;
     var idstring = string.Empty;
@@ -26,7 +26,7 @@
                     tmpproductsCategorySelected.Remove(tag);
                     routeData.Add("productCategoryIds", string.Join(",", tmpproductsCategorySelected));
 
-                    <a style="text-decoration: none" asp-controller="comparisonTool" asp-action="FilterBy" asp-all-route-data="routeData">
+                    <a id="link-comparisontoolviews-productnojs-tag-unselect-@(tag?.ToLowerInvariant())" style="text-decoration: none" asp-controller="comparisonTool" asp-action="FilterBy" asp-all-route-data="routeData">
                         <strong class="govuk-tag beis-tag">
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g clip-path="url(#@idstring)">
@@ -76,7 +76,7 @@
                                 routeData.Add("productCategoryIds", tag.name);
                             }
 
-                            <a style="text-decoration: none" asp-controller="comparisonTool" asp-action="FilterBy" asp-all-route-data="routeData">
+                            <a id="link-comparisontoolviews-productnojs--tag-select-@(tag?.name?.ToLowerInvariant())" style="text-decoration: none" asp-controller="comparisonTool" asp-action="FilterBy" asp-all-route-data="routeData">
                                 <strong class="govuk-tag beis-tag">
                                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <g clip-path="url(#@idstring)">
