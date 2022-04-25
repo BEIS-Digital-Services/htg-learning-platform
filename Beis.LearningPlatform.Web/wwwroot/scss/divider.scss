@@ -1,0 +1,13 @@
+﻿hr {
+    display: block;
+    margin: 0;
+    padding: 0;
+    height: 2px;
+    width: 100%;
+    box-shadow: none;
+    border: 0;
+
+    &.divider10 {
+        height: 10px;
+    }
+}

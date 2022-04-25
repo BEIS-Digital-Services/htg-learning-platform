@@ -1,0 +1,37 @@
+﻿@import 'beis-mixins.scss';
+@import 'beis-variables.scss';
+
+.call-out {
+    .beis-yellow,
+    .beis-blue,
+    .beis-navy-blue,
+    .beis-black,
+    .beis-white,
+    .beis-aqua {
+        background: $white;
+    }
+
+    .beis-yellow {
+        border-color: $beis-yellow;
+    }
+
+    .beis-blue {
+        border-color: $beis-blue;
+    }
+
+    .beis-navy-blue {
+        border-color: $beis-navy-blue;
+    }
+
+    .beis-black {
+        border-color: $black;
+    }
+
+    .beis-aqua {
+        border-color: $beis-aqua;
+    }
+
+    .govuk-inset-text {
+        background: #F3F2F1;
+    }
+}

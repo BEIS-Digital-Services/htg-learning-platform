@@ -1,0 +1,20 @@
+﻿@model Beis.LearningPlatform.Web.Models.ArticleSearchTagViewModel
+@if (Model != null)
+{
+    <p class="govuk-button-group">
+        @foreach (var tag in Model.Tags)
+        {
+            var routeData = new Dictionary<string, string>
+            {
+                { "tag", tag.displayName },
+                { "tagAction", "add" },
+                { "yourTags", Model.YourTags }
+            };
+            <a style="text-decoration: none" asp-controller="Home" asp-action="GuidanceAndToolsUpdateTags" asp-all-route-data="routeData">
+                <strong class="govuk-tag beis-tag">
+                    @tag.displayName.Replace("_", "-")
+                </strong>
+            </a>
+        }
+    </p>
+}

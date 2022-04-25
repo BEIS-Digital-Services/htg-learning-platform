@@ -1,0 +1,340 @@
+﻿@using Beis.LearningPlatform.Web.Utils
+@using Beis.LearningPlatform.Web.StrapiApi.Models
+@model Beis.LearningPlatform.Web.Models.ComparisonToolPageViewModel
+@if (Model.currentProduct != null)
+{
+    <div class="govuk-width-container comparison-tool-details">
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full">
+                <a href="@Model.Referrer" class="govuk-back-link">Back</a>
+            </div>
+        </div>
+
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full">
+                <h1 class="govuk-heading-xl">More about this software</h1>
+            </div>
+        </div>
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds-from-desktop">
+                <p class="govuk-body-l">
+                    View a breakdown of what your selected software includes and any additional services available from the supplier.
+                </p>
+            </div>
+        </div>
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full">
+                <div class="beis-product-details">
+                    <div class="product-image">
+                        <div class="image-mask">
+                            <img src="@Model.VendorProdLogorUrl/@Model.currentProduct.product_logo" width="90" alt="">
+                        </div>
+                        <p class="govuk-heading-m">
+                            @(ComparisonToolFieldValidator.ParseStringField(Model.currentProduct.product_name))
+                        </p>
+                    </div>
+                    <div class="product-links">
+                        <a class="govuk-link" href="@Model.currentProduct.website_url">
+                            Visit supplier website<span class="govuk-visually-hidden"> Visit supplier website</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds-from-desktop">
+                <p class="govuk-body-l">
+                    <vc:html-text view-model="new HtmlTextInputViewModel { Text = Model.currentProduct?.product_description, CleanWhiteSpace = true, ConvertNewline = true }" />
+                </p>
+            </div>
+        </div>
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds-from-desktop comparison-tool">
+                <h2 class="govuk-heading-l beis-blue-text govuk-!-margin-bottom-6 govuk-!-margin-top-6">Features, support & compatibility</h2>
+                <p class="govuk-body beis-black-text">
+                    This section explains key features, compatibility and the support that’s included as standard.
+                </p>
+            </div>
+        </div>
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full">
+                <dl class="govuk-summary-list">
+                    <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Key features
+                    </dt>
+                    <dd class="govuk-summary-list">
+                        @foreach (var feature in Model.currentProduct.productCapabilities)
+                        {
+                            <p>@(Model.currentProduct.settingsProductCapabilities.Where(item=>item.capability_id ==  feature.capability_id).FirstOrDefault()?.capability_name)</p>
+                        }
+                        @if (!string.IsNullOrWhiteSpace(Model.currentProduct.other_capabilities))
+                        {
+                            <vc:html-text view-model="new HtmlTextInputViewModel { Text = Model.currentProduct?.other_capabilities, CleanWhiteSpace = true, ConvertNewline = true }" />
+                        }
+                    </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Deployment & supported platforms
+                </dt>
+                <dd class="govuk-summary-list">
+                    <p class="mobile-product-name">@ComparisonToolFieldValidator.ParseStringField(Model.currentProduct.product_name)</p>
+                    @foreach (var filter in Model.currentProduct.productPltatformCompatibilityFilters)
+                    {
+                        <p>@(Model.currentProduct.settingsProductPltatformCompatibilityFilters.Where(item=>item.filter_id ==  filter.filter_id).FirstOrDefault()?.filter_name)</p>
+                    }
+                </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Compatibility
+                </dt>
+                <dd class="govuk-summary-list">
+                    <p class="mobile-product-name">@ComparisonToolFieldValidator.ParseStringField(Model.currentProduct.product_name)</p>
+                    <vc:html-text view-model="new HtmlTextInputViewModel { Text = @Model.currentProduct?.other_compatability, CleanWhiteSpace = true, ConvertNewline = true }" />
+                </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Product support
+                </dt>
+                <dd class="govuk-summary-list">
+                    <p class="mobile-product-name">@ComparisonToolFieldValidator.ParseStringField(Model.currentProduct.product_name)</p>
+                    @foreach (var filter in Model.currentProduct.productSupportFilters)
+                    {
+                        <p>@(Model.currentProduct.settingsProductSupportFilters.Where(item=>item.filter_id ==  filter.filter_id).FirstOrDefault()?.filter_name)</p>
+                    }
+                </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Training
+                </dt>
+                <dd class="govuk-summary-list">
+                    <p class="mobile-product-name">@ComparisonToolFieldValidator.ParseStringField(Model.currentProduct.product_name)</p>
+                    @foreach (var filter in Model.currentProduct.productTrainingFilters)
+                    {
+                        <p>@(Model.currentProduct.settingsProductTrainingFilters.Where(item=>item.filter_id ==  filter.filter_id).FirstOrDefault()?.filter_name)</p>
+                    }
+                </dd>
+            </div>
+            </dl>
+        </div>
+    </div>
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds-from-desktop comparison-tool">
+            <h2 class="govuk-heading-l beis-blue-text">Pricing</h2>
+            <p class="govuk-body beis-black-text">Here you can find details of what you’ll pay before the Help to Grow: Digital discount has been applied, how long you’ll pay this fee for, and if this product includes a free trial.</p>
+        </div>
+    </div>
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+            <dl class="govuk-summary-list">
+                <div class="govuk-summary-list__row mobile-side-by-side">
+                <dt class="govuk-summary-list__key">
+                    Minimum contract term
+                </dt>
+                <dd class="govuk-summary-list">
+                    <p>@Model.currentProduct.contractTerm</p>
+                </dd>
+        </div>
+
+        <div class="govuk-summary-list__row mobile-side-by-side">
+            <dt class="govuk-summary-list__key">
+                Payment term
+            </dt>
+            <dd class="govuk-summary-list">
+                <p>@Model.currentProduct.paymentTerm</p>
+            </dd>
+        </div>
+        <div class="govuk-summary-list__row mobile-side-by-side">
+            <dt class="govuk-summary-list__key">
+                Minimum number of licences
+            </dt>
+            <dd class="govuk-summary-list">
+                <p>@Model.currentProduct.minLicences</p>
+            </dd>
+        </div>
+        <div class="govuk-summary-list__row mobile-side-by-side">
+            <dt class="govuk-summary-list__key">
+                Free trial
+            </dt>
+            <dd class="govuk-summary-list">
+                <p>@Model.currentProduct.freeTrial</p>
+            </dd>
+        </div>
+        <div class="govuk-summary-list__row mobile-side-by-side">
+            <dt class="govuk-summary-list__key">
+                Price (excl. VAT)
+            </dt>
+            <dd class="govuk-summary-list">
+                <p>
+                    From @Model.currentProduct.priceDisplayed
+                    @if (Model.currentProduct.ProductPriceNumberOfUsers.HasValue)
+                    {
+                        <span> for @Model.currentProduct.ProductPriceNumberOfUsers user@(Model.currentProduct.ProductPriceNumberOfUsers > 1 ? "s" : "")</span>
+                    }
+                </p>
+            </dd>
+        </div>
+        <div class="govuk-summary-list__row mobile-side-by-side">
+            <dt class="govuk-summary-list__key">
+                Contract discount
+            </dt>
+            <dd class="govuk-summary-list">
+                <p>@Model.currentProduct.contractDiscount</p>
+            </dd>
+        </div>
+        </dl>
+    </div>
+    </div>
+
+    @*<partial name="CMSPageViews/_PartialDivider" model="@(new CMSPageComponent() { color = "beisGrey" })"/>*@
+
+    @if (Model.currentProduct.HasAdditionalDiscounts())
+    {
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full govuk-!-margin-top-6">
+                <h2 class="govuk-heading-l beis-blue-text">Additional supplier discounts</h2>
+                <p class="govuk-body beis-black-text">These are offered by the software provider.</p>
+                @if (Model.currentProduct.productPrices[0].discount_flag)
+                {
+                    <dl class="govuk-summary-list">
+                        <div class="govuk-summary-list__row mobile-side-by-side">
+                        <dt class="govuk-summary-list__key">
+                            Contract discount
+                        </dt>
+                        <dd class="govuk-summary-list">
+                            <p>@Model.currentProduct.contractDiscount</p>
+                        </dd>
+                </div>
+                </dl>
+            }
+
+                @if (Model.currentProduct.productPrices[0].contract_duration_discount_flag)
+                {
+                    <p class="govuk-body beis-black-text govuk-!-font-size-24 govuk-!-font-weight-bold"><strong>Per length of contract</strong></p>
+                    <dl class="beis-discrount-table govuk-body beis-black-text">
+                        <dd>
+                            <strong>Contract Description</strong>
+                            <span>@(Model.currentProduct.productPrices.Count > 0 ? ComparisonToolFieldValidator.ParseStringField(Model.currentProduct.productPrices[0].contract_duration_discount_description) : "No ProductPrice record")</span>
+                        </dd>
+                        <dd>
+                            <strong>Discount</strong>
+                            <span>@Model.currentProduct.contractDurationDiscount</span>
+                        </dd>
+                    </dl>
+                }
+
+                @if (Model.currentProduct.productPrices[0].user_discount_flag && Model.currentProduct.productUserDiscount?.Count > 0)
+                {
+                    <p class="govuk-body beis-black-text govuk-!-font-size-24 govuk-!-font-weight-bold"><strong>Per number of licences</strong></p>
+                    <dl class="beis-discrount-table govuk-body beis-black-text">
+
+                        @for (var i = 0; i < Model.currentProduct.productUserDiscount?.Count; i++)
+                        {
+                            <dd>
+                                <strong>@Model.currentProduct.productUserDiscount[i].min_licenses to @Model.currentProduct.productUserDiscount[i].max_licenses.ToString().Replace("99999", "Unlimited") users </strong>
+                                @if (Model.currentProduct.productUserDiscount[i].discount_percentage > 0)
+                                {
+                                    <span>@(Model.currentProduct.productUserDiscount[i].discount_percentage)% off per user</span>
+                                }
+                                else if (Model.currentProduct.productUserDiscount[i].discount_price > 0)
+                                {
+                                    <span>£@(Model.currentProduct.productUserDiscount[i].discount_price.ToString("f2")) off per user</span>
+                                }
+                            </dd>
+                        }
+
+                    </dl>
+                }
+
+
+
+            </div>
+            </div>
+        }
+
+    @if (Model.currentProduct.productPriceSecondaryMetrics?.Count > 0)
+    {
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full">
+                <details class="govuk-details">
+                    <summary class="govuk-details__summary">
+                        <span class="govuk-heading-l beis-blue-text govuk-!-margin-0">
+                            What’s included
+                        </span>
+                    </summary>
+                    <div class="govuk-details__text">
+                        @for (var i = 0; i < Model.currentProduct.productPriceSecondaryMetrics?.Count; i++)
+                        {
+                            var descRecord = Model.currentProduct.productPriceSecondaryDescriptions.First(item => item.product_price_sec_description_id == Model.currentProduct.productPriceSecondaryMetrics[i].product_price_sec_description_id);
+                            string descValue = $"{(Model.currentProduct.productPriceSecondaryMetrics[i].metric_no > 0 ? ComparisonToolFieldValidator.ParseStringField(Model.currentProduct.productPriceSecondaryMetrics[i].metric_no.ToCurrencyFormat()) : string.Empty)} {ComparisonToolFieldValidator.ParseStringField(Model.currentProduct.productPriceSecondaryMetrics[i].metric_unit)}";
+
+                            <dl class="govuk-summary-list no-border">
+                                <dt class="govuk-summary-list__key">
+                                    @ComparisonToolFieldValidator.ParseStringField(descRecord.product_price_sec_description)
+                                </dt>
+                                <dd class="govuk-summary-list">
+                                    <p>@descValue</p>
+                                </dd>
+                            </dl>
+                        }
+
+                        <partial name="CMSPageViews/_PartialDivider" model="@(new CMSPageComponent() { color = "beisGrey" })" />
+                    </div>
+                </details>
+            </div>
+        </div>
+    }
+
+    @if (Model.currentProduct.productPrices != null && Model.currentProduct.productPrices.Any() && (Model.currentProduct.productPrices[0]?.additional_costs_flag).HasValue && (Model.currentProduct.productPrices[0]?.additional_costs_flag).Value == true)
+    {
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds-from-desktop comparison-tool">
+                <h2 class="govuk-heading-l beis-blue-text">Additional costs</h2>
+                <p class="govuk-body beis-black-text">These are extra services the supplier may offer that are not discounted by Help to Grow: Digital. All costs exclude VAT.</p>
+            </div>
+        </div>
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds-from-desktop comparison-tool">
+                <ul class="additional-costs govuk-body beis-black-text">
+                    @if (Model.currentProduct.productPriceAddCostDescriptions != null)
+                    {
+                        for (var i = 0; i < Model.currentProduct.productPriceAddCosts?.Count; i++)
+                        {
+                            <li>
+                                <div>@(Model.currentProduct.productPriceAddCostDescriptions.Where(x => x.additional_cost_desc_id == Model.currentProduct.productPriceAddCosts[i].additional_cost_desc_id).FirstOrDefault()?.additional_costDesc):</div>
+                                <div>@(Model.currentProduct.productPriceAddCosts[i]?.additionalCost.ToCurrencyFormat() + " " + Model.currentProduct.productPriceAddCosts[i]?.additional_cost_freq)</div>
+                                <div>@(Model.currentProduct.productPriceAddCosts[i].additional_cost_mandatory_flag ? "Mandatory" : "Optional")</div>
+                            </li>
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+    }
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds-from-desktop comparison-tool">
+            @{
+                IDictionary<string, string> routeData = new Dictionary<string, string>();
+                routeData.Add("product_id", Model.currentProduct.product_id.ToString());
+            }
+            <a role="button" asp-controller="comparisonTool" asp-action="GetDiscount" asp-all-route-data="routeData" class="govuk-button primary-big" data-module="govuk-button">
+                Get discount
+            </a>
+        </div>
+    </div>
+    </div>
+}

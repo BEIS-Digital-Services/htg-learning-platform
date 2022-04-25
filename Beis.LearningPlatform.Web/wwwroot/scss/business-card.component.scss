@@ -1,0 +1,40 @@
+@import 'beis-variables';
+@import 'beis-mixins';
+
+.business-card{
+    .grey {
+        background: #f3f2f1;
+    }
+    .optional {
+        padding: 20px 0;
+    }
+
+    .business-card-wrapper {
+        display: flex;
+        align-items: center;
+
+        @include respond(mobile) {
+            padding: 20px 0 0 0;
+            flex-direction: column;
+        }
+    }
+
+    .business-card-image {
+        margin: 76px 0;
+        width: 296px;
+
+        @include respond(mobile) {
+            margin: 0 0 20px 0;
+            width: 100%;
+        }
+    }
+
+    ul.left-column {
+        padding: 0;
+        li {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+    }
+}

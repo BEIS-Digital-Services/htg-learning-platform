@@ -1,0 +1,32 @@
+@import 'beis-variables.scss';
+@import 'beis-mixins.scss';
+
+.image-with-text {    
+    img {
+        width: 300px;
+
+        @include respond(mobile) {
+            width: 100%;
+        }
+    }
+
+    .text-float-left {
+        float: left;
+        padding: 0 20px 0px 0;
+
+        @include respond(tablet) {
+            float: none;
+            padding: 15px 0;
+        }
+    }
+
+    .text-float-right {
+        float: right;
+        padding: 0 0 0 20px;
+
+        @include respond(tablet) {
+            float: none;
+            padding: 15px 0;
+        }
+    }
+}

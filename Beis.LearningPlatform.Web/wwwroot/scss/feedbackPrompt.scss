@@ -1,0 +1,91 @@
+﻿@import 'beis-mixins.scss';
+@import 'beis-variables.scss';
+
+.feedback-prompt {
+    border-bottom: 1px solid $white;
+
+    .secondary {
+        float: right;
+        margin: 20px 15px 0 0;
+
+        @include respond(tablet) {
+            margin: 0 20px 20px 20px;
+            max-width: max-content;
+        }
+    }
+
+    h2 {
+        margin-left: 0;
+
+        @include respond(tablet) {
+            padding: 20px 0 0 0;
+            text-align: center;
+        }
+    }
+
+    .govuk-grid-row,
+    .wrapper-left,
+    .wrapper-right {
+        display: flex;
+        align-items: center;
+
+        @include respond(tablet) {
+            display: block;
+        }
+    }
+
+    .wrapper-left {
+        justify-content: flex-end;
+
+        .govuk-button-group {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .govuk-button {
+            margin: 5px 10px;
+            min-width: 100px;
+
+            @include respond(tablet) {
+                max-width: 100px;
+            }
+        }
+    }
+
+    .wrapper-right {
+        justify-content: center;
+
+        .govuk-button {
+            margin: 5px 10px;
+            min-width: 100px;
+
+            @include respond(tablet) {
+                margin: 4px 0 20px 0;
+            }
+        }
+    }
+
+    .feedback-bg-color {
+        background: #1C1C78;
+        min-height: 10px;
+    }
+
+    .feedback-no-container,
+    .report-poroblem-container,
+    .message {
+        font-family: "GDS Transport", arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        font-size: 1rem;
+        line-height: 1.25;
+    }
+
+    .message {
+        margin: 30px 20px;
+        font-weight: 700;
+        color: $white;
+    }
+}

@@ -1,0 +1,45 @@
+﻿@import 'beis-variables.scss';
+@import 'beis-mixins.scss';
+
+.resources {
+    .resources-intro-text {
+        font-size: 24px;
+        line-height: 32px;
+    }
+
+    .govuk-heading-xl {
+        margin: 0;
+    }
+
+    ul.author {
+        display: flex;
+        align-content: left;
+        margin-left: -20px;
+        list-style: none;
+
+        li {
+            margin-right: 40px;
+            position: relative;
+            color: $black;
+
+            &::before {
+                content: "\2022";
+                color: $beis-yellow;
+                font-weight: bold;
+                font-size: 36px;
+                position: absolute;
+                top: -10px;
+                left: -20px;
+            }
+        }
+
+        @include respond(tablet) {
+            flex-direction: column;
+        }
+    }
+
+    .govuk-grid-column-full,
+    .govuk-grid-column-two-thirds {
+        float: none;
+    }
+}

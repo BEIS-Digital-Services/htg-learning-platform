@@ -1,0 +1,72 @@
+﻿@using Beis.LearningPlatform.Web.Utils
+@model List<Beis.LearningPlatform.Web.StrapiApi.Models.CMSSearchArticle>
+@{
+    var _pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build();
+    var strcopy = string.Empty;
+    var strTopLineBg = string.Empty;
+}
+
+@if (Model != null)
+{
+    foreach (var article in Model.OrderBy(x => x.order))
+    {
+        article.hide = article.hide.HasValue ? article.hide : false;
+
+        if (article.hide == false)
+        {
+            strTopLineBg = (!string.IsNullOrWhiteSpace(article.Article.backgroundColor)) ? CamelCaseConverter.Delimiter(article.Article.backgroundColor, "-") : "";
+
+            <div class="govuk-width-container govuk-!-padding-top-4  govuk-!-padding-bottom-8 article">
+                <div class="govuk-grid-row">
+                    <div class="govuk-grid-column-full">
+                        @if (article.Article != null)
+                        {
+                            <div class="top-line @strTopLineBg">
+                            </div>
+                        }
+
+                    </div>
+                </div>
+
+                <div class="govuk-grid-row beis-columns-same-height">
+                    <div class="govuk-grid-column-one-half">
+                        <div class="govuk-grid-row">
+                            <div class="left-column ">
+                                @if (article.image != null)
+                                {
+                                    <vc:cms-image options='new CmsImageViewModel{ ImageUrl = article.image.url, CssClass = "hero-mobile-image" }' />
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                    @if (article.Article != null)
+                    {
+                        <div class="govuk-grid-column-one-half beis-stretch-content">
+                            <div class="govuk-grid-row">
+                                <div class="right-column">
+                                    @if (!string.IsNullOrWhiteSpace(article.Article.subheader) || !string.IsNullOrWhiteSpace(article.Article.header))
+                                    {
+                                        <h2 class="govuk-heading-l govuk-!-padding-top-3">
+                                            @(string.IsNullOrWhiteSpace(article.Article.header) ? article.Article.subheader : article.Article.header)
+                                        </h2>
+                                    }
+
+                                    @{
+                                        strcopy = (!string.IsNullOrWhiteSpace(article.Article.copy)) ? Markdown.ToHtml(article.Article.copy, _pipeline).Replace("<p>", "<p class=\"govuk-body\">") : "";
+                                    }
+                                    @Html.Raw(strcopy)
+
+                                    <partial name="CMSPageViews/_PartialTextLinks" model="@article.Links" />
+                                    <div class="stick-to-bottom">
+                                        <vc:article-search-tag search-tags="@article.tags" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    }
+}

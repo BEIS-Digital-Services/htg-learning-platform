@@ -1,0 +1,27 @@
+﻿$govuk-breakpoints: ( mobile: 479px, tablet: 641px, desktop: 769px, xl: 1005px, ) !default;
+
+@mixin respond ($breakpoint) {
+    @if $breakpoint==xl {
+        @media only screen and (max-width: 1005px) {
+            @content;
+        }
+    }
+
+    @if $breakpoint==desktop {
+        @media only screen and (min-width: 769px) {
+            @content;
+        }
+    }
+
+    @if $breakpoint==tablet {
+        @media only screen and (max-width: 641px) {
+            @content;
+        }
+    }
+
+    @if $breakpoint==mobile {
+        @media only screen and (max-width: 479px) {
+            @content;
+        }
+    }
+}

@@ -1,0 +1,97 @@
+﻿@using Beis.LearningPlatform.Web.Enums    
+@model Beis.LearningPlatform.Web.Models.CmsStatisticsTextViewModel
+@if (!Model.HasContent)
+{
+    return;
+}
+<div class="statistics-text" id="@Model.Component.id">
+    <div class="govuk-width-container govuk-!-margin-bottom-6 govuk-!-margin-top-6">
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+
+                @if (Model.Component.statisticBoxAlignment == AlignmentValue.Left)
+                {
+                    <div class="govuk-grid-row beis-columns-same-height">
+                        <div class="govuk-grid-column-one-half @(Model.ClassNameBackgroundColour)">
+                            <div class="govuk-grid-row">
+                                <div class="left-column">
+                                    <div class="beis-columns">
+                                        <h1 class="govuk-heading-xl govuk-!-padding-top-8 @(Model.ClassNameStatisticNumberColour)">
+                                            @Model.Component.statisticNumber
+                                        </h1>
+                                        <div class="govuk-body statistic-text @(Model.ClassNameStatisticTextColor)">
+                                            @Html.Raw(Model.HtmlStatisticText)
+                                        </div>
+                                        @if (Model.Component.statisticLink?.Any() == true)
+                                        {
+                                            <div class="statistic-link">
+                                                @if(!string.IsNullOrEmpty(Model.Component.statisticLink[0].url))
+                                                {
+                                                    <partial name="CMSPageViews/_PartialTextLinks" model="@Model.Component.statisticLink" />
+                                                }
+                                                else
+                                                {
+                                                    <p class="govuk-body">@Model.Component.statisticLink[0].label</p>
+                                                }
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="govuk-grid-column-one-half beis-white">
+                            <div class="govuk-grid-row">
+                                <div class="right-column">
+                                    <div class="govuk-body left plain-text">
+                                        @Html.Raw(Model.HtmlText)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                @if (Model.Component.statisticBoxAlignment == AlignmentValue.Right)
+                {
+                    <div class="govuk-grid-row beis-columns-same-height">
+                        <div class="govuk-grid-column-one-half beis-white">
+                            <div class="govuk-grid-row">
+                                <div class="left-column">
+                                   <div class="govuk-body left plain-text">
+                                       @Html.Raw(Model.HtmlText)
+                                   </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="govuk-grid-column-one-half @(Model.ClassNameBackgroundColour)">
+                            <div class="govuk-grid-row">
+                                <div class="right-column">
+                                    <div class="beis-columns">
+                                        <h1 class="govuk-heading-xl govuk-!-padding-top-8 @(Model.ClassNameStatisticNumberColour)">
+                                            @Model.Component.statisticNumber
+                                        </h1>
+                                        <div class="govuk-body statistic-text @(Model.ClassNameStatisticTextColor)">
+                                            @Html.Raw(Model.HtmlStatisticText)
+                                        </div>
+                                        @if (Model.Component.statisticLink?.Any() == true)
+                                        {
+                                            <div class="statistic-link">
+                                                @if(!string.IsNullOrEmpty(Model.Component.statisticLink[0].url))
+                                                {
+                                                    <partial name="CMSPageViews/_PartialTextLinks" model="@Model.Component.statisticLink" />
+                                                }
+                                                else
+                                                {
+                                                    <p class="govuk-body">@Model.Component.statisticLink[0].label</p>
+                                                }
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

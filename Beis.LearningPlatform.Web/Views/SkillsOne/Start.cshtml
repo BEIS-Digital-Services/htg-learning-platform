@@ -1,0 +1,12 @@
+﻿@model Beis.LearningPlatform.Web.Models.DiagnosticTool.DiagnosticToolForm
+@{ 
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Model.side_navigations != null)
+{
+    <partial name="CMSPageViews/_PartialSideNavigation" model="@Model" />
+}
+
+    <hr class="beis-grey divider" aria-hidden="true">
+    <partial name="DiagnosticToolFormViews/_PartialRenderDiagnosticTool" model="@Model" />

@@ -1,0 +1,10 @@
+﻿@using Beis.LearningPlatform.Web.Utils
+@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
+@if (string.IsNullOrWhiteSpace(Model.color))
+{
+    @Html.Raw("<hr aria-hidden=\"true\" id=\"anchor" + ViewData["intCurrComponentIndex"] + "\" class=\"beis-navy-blue\" />")
+}
+else
+{
+    @Html.Raw("<hr aria-hidden=\"true\" id=\"anchor" + ViewData["intCurrComponentIndex"] + "\" class=\"" + @CamelCaseConverter.Delimiter(Model.color, "-") + " " + Model.type + "\">")
+}

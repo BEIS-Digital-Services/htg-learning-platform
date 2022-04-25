@@ -1,0 +1,141 @@
+﻿@using Beis.LearningPlatform.Web.Models.DiagnosticTool
+@model Beis.LearningPlatform.Web.Models.DiagnosticTool.DiagnosticToolForm
+@{
+    var elementInfo = Model.CurrentElement;
+    var currentStep = elementInfo.CurrentStep;
+    var currentElement = elementInfo.CurrentElement;
+    var radioButtonParent = elementInfo.RadioButtonParent;
+    var z = elementInfo.ChildIndex;
+
+    var currentFormStepElement = elementInfo.CurrentFormStepElement;
+
+    var idPrefix = "steps_" + currentStep.ToString() + "__" + "elements_" + currentElement.ToString() + "__" + "answerOptions_" + z.ToString();
+
+}
+@{
+    switch (currentFormStepElement.answerOptions[z].controlType)
+    {
+        case FormDisplayControlType.Text:
+            @if (!string.IsNullOrWhiteSpace(Model.steps[currentStep].elements[currentElement].answerOptions[z].validationError))
+            {
+                <span asp-validation-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].textControlHtmlId" class="govuk-error-message">
+                    @Model.steps[currentStep].elements[currentElement].answerOptions[z].validationError
+                </span>
+            }
+            <input type="text" asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].text" class="govuk-input govuk-input--width-20" />
+
+            break;
+
+        case FormDisplayControlType.Radio:
+            <div class="govuk-radios__item">
+                <input id="@(idPrefix + "__value")" type="radio" asp-for="@Model.steps[currentStep].elements[currentElement].value" value="@Model.steps[currentStep].elements[currentElement].answerOptions[z].value" class="govuk-radios__input" />
+                <label for="@(idPrefix + "__value")"
+                       id="@(idPrefix + "__value__label")" class="govuk-label govuk-radios__label">@Html.Raw(($"<strong>{currentFormStepElement.answerOptions[z].strongText?.Replace("-", "&#8212;")}</strong>{currentFormStepElement.answerOptions[z].text}"))</label>
+                    <input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].strongText" />
+                    <input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].text" />
+                    <input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].value"
+                           id="@(idPrefix + "__value__hidden")" />
+                    @if (currentFormStepElement.answerOptions[z].additionalInfoRequired)
+                    {
+                        <br>
+                        <br>
+                        <label for="@(idPrefix + "__additionalInfo")"
+                               id="@(idPrefix + "__additionalInfo__label")">@Model.steps[currentStep].elements[currentElement].answerOptions[z].additionalInfoText</label>
+                            <span asp-validation-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].additionalInfo" class="govuk-error-message">
+                                @Model.steps[currentStep].elements[currentElement].answerOptions[z].validationError
+                            </span>
+                            <textarea asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].additionalInfo"
+                                      id="@(idPrefix + "__additionalInfo")"
+                                      rows="5" class="govuk-textarea">
+                        @currentFormStepElement.answerOptions[z].additionalInfo
+                    </textarea>
+                        }
+                </div>
+                break;
+
+            case FormDisplayControlType.Checkbox:
+
+                @if (currentFormStepElement.answerOptions[z].topDownBorder == true)
+                {
+                    <div style="border-top: 1px solid lightgray; border-bottom: 1px solid lightgray; padding: 20px 50px; margin-top:25px;">
+
+                        <div class="govuk-checkboxes__item">
+
+                            <input type="checkbox" style="position:absolute;" asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].value" class="govuk-checkboxes__input" />
+                            <label for="@(idPrefix + "__value")"
+                                   id="@(idPrefix + "__value__label")" class="govuk-label govuk-checkboxes__label">@currentFormStepElement.answerOptions[z].hint</label>
+
+                                @if (currentFormStepElement.answerOptions[z].additionalInfoRequired)
+                                {
+                                    <br>
+                                    <br>
+                                    <label for="@(idPrefix + "__additionalInfo")"
+                                           id="@(idPrefix + "__additionalInfo__label")">@Model.steps[currentStep].elements[currentElement].answerOptions[z].additionalInfoText</label>
+                                        @if (!string.IsNullOrWhiteSpace(Model.steps[currentStep].elements[currentElement].answerOptions[z].validationError))
+                                        {
+                                            <span class="govuk-error-message">
+                                                @Model.steps[currentStep].elements[currentElement].answerOptions[z].validationError
+                                            </span>
+                                        }
+                                        <textarea asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].additionalInfo"
+                                                  id="@(idPrefix + "__additionalInfo")"
+                                                  rows="5" class="govuk-textarea">
+                                                    @currentFormStepElement.answerOptions[z].additionalInfo
+                                                </textarea>
+                                    }
+                            </div>
+
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="govuk-checkboxes__item">
+                            <input type="checkbox" asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].value" class="govuk-checkboxes__input" />
+                            <label for="@(idPrefix + "__value")"
+                                   id="@(idPrefix + "__value__label")" class="govuk-label govuk-checkboxes__label">@currentFormStepElement.answerOptions[z].hint</label>
+                                @if (currentFormStepElement.answerOptions[z].additionalInfoRequired)
+                                {
+                                    <br>
+                                    <br>
+                                    <label for="@(idPrefix + "__additionalInfo")"
+                                           id="@(idPrefix + "__additionalInfo__label")">@Model.steps[currentStep].elements[currentElement].answerOptions[z].additionalInfoText</label>
+                                        @if (!string.IsNullOrWhiteSpace(Model.steps[currentStep].elements[currentElement].answerOptions[z].validationError))
+                                        {
+                                            <span class="govuk-error-message">
+                                                @Model.steps[currentStep].elements[currentElement].answerOptions[z].validationError
+                                            </span>
+                                        }
+                                        <textarea asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].additionalInfo"
+                                                  id="@(idPrefix + "__additionalInfo")"
+                                                  rows="5" class="govuk-textarea">
+                        @currentFormStepElement.answerOptions[z].additionalInfo
+                    </textarea>
+                                    }
+                            </div>
+                        }
+
+                break;
+
+            case FormDisplayControlType.ListItem:
+                if (currentFormStepElement.selectedValue == currentFormStepElement.answerOptions[z].value)
+                {
+                    <option value="@Model.steps[currentStep].elements[currentElement].answerOptions[z].value" selected class="form-control col-sm-3">
+                        @Model.steps[currentStep].elements[currentElement].answerOptions[z].text
+                    </option>
+                }
+                else
+                {
+                    <option value="@Model.steps[currentStep].elements[currentElement].answerOptions[z].value" class="form-control col-sm-3">
+                        @currentFormStepElement.answerOptions[z].text
+                    </option>
+                }
+
+                break;
+
+            default:
+                <h4 class="govuk-heading-s govuk-!-font-weight-regular">
+                    New Content Type @currentFormStepElement.answerOptions[z].controlType found.
+                </h4>
+                break;
+        }
+}

@@ -1,0 +1,349 @@
+﻿@model Form
+@*
+    ******************************************************************************************
+       RENDERS The object
+*@
+
+@{
+    ViewData["CurrStep"] = Model.CurrStep;
+    //Model.CurrStep = Model.steps.Count > 0 ? 1 : 0;
+}
+<partial name="CMSPageViews/_PartialCookieBannerNoJS" />
+
+
+<div class="govuk-grid-column-full">
+    <div class="beis-white govuk-grid-column-two-thirds">
+        <div class="govuk-width-container govuk-!-margin-top-6 govuk-!-margin-bottom-6">
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                        <h1 class="govuk-heading-xl govuk-!-padding-top-3">@Model.title</h1>
+                    </legend>
+                </fieldset>
+            </div>
+
+
+            <form asp-action="Index" method="post" class="form-horizontal">
+
+                @if (Model.instructions != null)
+                {
+                    @if (Model.instructions.Count > 0 && (bool)ViewData["DiagnosticToolInstructionPage"])
+                    {
+                        ViewData["CurrStep"] = 0;
+                        @foreach (var instruction in Model.instructions)
+                        {
+                            <input type="hidden" asp-for="@instruction.id" class="form-control col-sm-3" />
+                            <input type="hidden" asp-for="@instruction.htmlId" class="form-control col-sm-3" />
+                            <input type="hidden" asp-for="@instruction.text" class="form-control col-sm-3" />
+                            <input type="hidden" asp-for="@instruction.displayClass" class="form-control col-sm-3" />
+                        }
+
+                        <div class="govuk-grid-column-full">
+                            <p class="govuk-body">Use this service to:</p>
+                            <ul>
+                                @foreach (var instruction in Model.instructions)
+                                {
+                                    <li class="@instruction.displayClass">Instruction: @Html.Raw(instruction.text)</li>
+                                }
+                            </ul>
+
+                            <p class="govuk-body">Registering takes around 5 minutes</p>
+
+
+                            <button type="submit" asp-action="StartForm" class="btn btn-primary">Start</button>
+
+                            <p class="govuk-error-summary__title">Before you start</p>
+
+                            <p class="govuk-body">Example Copy Here to <a href="/diagnostic-tool/start">Link</a></p>
+                            <p class="govuk-body">Some more example copy here that might have a <a href="/diagnostic-tool/start">link in it</a></p>
+                        </div>
+                    }
+                    else
+                    {
+                        @*<div class="govuk-grid-column-full">
+                                <h2>No Start Page</h2>
+                            </div>*@
+                    }
+                }
+
+@if (Model.steps != null)
+{
+
+
+    var x = 0;
+    <form asp-action="Index" method="post" class="form-horizontal">
+        <input type="hidden" asp-for="CurrStep" value="@Model.CurrStep" />
+
+        <input type="hidden" asp-for="id" class="form-control col-sm-3" />
+        <input type="hidden" asp-for="title" class="form-control col-sm-3" />
+        <input type="hidden" asp-for="htmlId" class="form-control col-sm-3" />
+        <input type="hidden" asp-for="created_at" class="form-control col-sm-3" />
+        <input type="hidden" asp-for="published_at" class="form-control col-sm-3" />
+
+        <div class="govuk-grid-column-full">
+            <div class="beis-white govuk-grid-column-two-thirds">
+                <div class="govuk-width-container govuk-!-margin-top-6 govuk-!-margin-bottom-6">
+                    <h1>@Model.title</h1>
+                    @if (Model.validationErrors != null)
+                    {
+                        @if (Model.validationErrors.Count > 0)
+                        {
+                            <div class="govuk-grid-column-full">
+                                <ul>
+                                    @foreach (var validationError in Model.validationErrors)
+                                    {
+                                        <li class="@validationError.displayControlClass">Error: @Html.Raw(validationError.errorMessage)</li>
+                                    }
+                                </ul>
+                            </div>
+                        }
+                    }
+
+                    @foreach (var step in Model.steps)
+                    {
+                        var styleString = "style=\"\"";
+                        @if (Model.CurrStep != Model.steps[Model.steps.Count - 1].id || Model.validationErrors.Count != 0 || !((bool)ViewData["FormComplete"]))
+                        {
+                            if (step.id.ToString() != ViewData["CurrStep"].ToString())
+                            {
+                                styleString = "style=display:none";
+                            }
+                        }
+                        <input type="hidden" asp-for="@Model.steps[x].id" class="form-control col-sm-3" />
+                        <input type="hidden" asp-for="@Model.steps[x].title" class="form-control col-sm-3" />
+                        <input type="hidden" asp-for="@Model.steps[x].order" class="form-control col-sm-3" />
+                        <input type="hidden" asp-for="@Model.steps[x].orderClass" class="form-control col-sm-3" />
+
+                        <h2 class="@step.titleClass" @styleString>STEP: @step.id - @step.title </h2>
+
+
+
+
+                        if (step.elements != null)
+                        {
+                            var i = 0;
+                            var radioButtonParent = 0;
+                            var listFirstChild = 0;
+
+                            foreach (var element in step.elements)
+                            {
+                                <input type="hidden" asp-for="@Model.steps[x].elements[i].id" class="form-control col-sm-3" />
+                                <input type="hidden" asp-for="@Model.steps[x].elements[i].controlType" class="form-control col-sm-3" />
+                                <input type="hidden" asp-for="@Model.steps[x].elements[i].hint" class="form-control col-sm-3" />
+                                <input type="hidden" asp-for="@Model.steps[x].elements[i].textControlClass" class="form-control col-sm-3" />
+                                <input type="hidden" asp-for="@Model.steps[x].elements[i].textControlHtmlId" class="form-control col-sm-3" />
+                                <input type="hidden" asp-for="@Model.steps[x].elements[i].textControlHtmlName" class="form-control col-sm-3" />
+                                <input type="hidden" asp-for="@Model.steps[x].elements[i].validationError" class="form-control col-sm-3" />
+
+                                switch (element.controlType)
+                                {
+                                    case FormDisplayControlType.Label:
+                                        <div id="@element.textControlHtmlId" class="govuk-form-group" @styleString>
+                                            <fieldset class="govuk-fieldset">
+                                                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                                                    <h1 class="govuk-fieldset__heading">@element.text</h1>
+                                                    <input type="hidden" asp-for="@Model.steps[x].elements[i].text" class="form-control col-sm-3" />
+                                                    @*<input id="@choice.htmlId" class="form-control col-sm-3" />
+                                                        <span asp-validation-for="@choice.htmlId" class="text-danger col"></span>*@
+                                                </legend>
+                                            </fieldset>
+                                        </div>
+                                        break;
+
+                                    case FormDisplayControlType.Text:
+                                        <div class="row" @styleString>
+                                            <input type="text" asp-for="@Model.steps[x].elements[i].text" id="@element.textControlHtmlId" class="form-control col-sm-3" placeholder="@element.hint" />
+                                            @if (!string.IsNullOrEmpty(Model.steps[x].elements[i].validationError))
+                                            {
+                                                <span asp-validation-for="@element.textControlHtmlId" class="text-danger col">@Model.steps[x].elements[i].validationError</span>
+                                            }
+                                        </div>
+                                        break;
+
+                                    case FormDisplayControlType.CheckboxGroup:
+                                    case FormDisplayControlType.RadioGroup:
+                                        <div class="row" @styleString>
+                                            <label asp-for="@Model.steps[x].elements[i].text" class="control-label col-sm-3">@element.text</label>
+                                            <input type="hidden" asp-for="@Model.steps[x].elements[i].text" class="form-control col-sm-3" />
+                                            @if (!string.IsNullOrEmpty(Model.steps[x].elements[i].validationError))
+                                            {
+                                                <span asp-validation-for="@element.textControlHtmlId" class="text-danger col">@Model.steps[x].elements[i].validationError</span>
+                                            }
+                                        </div>
+                                        break;
+
+                                    case FormDisplayControlType.Radio:
+                                        @*
+                                            Radio buttons with single selection need to be bound to the question.
+                                            The question SHOULD always be the prior element to the first radio button and should have a type of RadioGroup.
+                                        *@
+                                        @if (i > 0)
+                                        {
+                                            if (Model.steps[x].elements[i - 1].controlType == FormDisplayControlType.RadioGroup)
+                                            {
+                                                radioButtonParent = i - 1;
+                                            }
+                                            <div class="row" @styleString>
+                                                <input type="radio" asp-for="steps[x].elements[radioButtonParent].value" value="@element.value" class="form-control col-sm-3" />
+                                                <label id="@(element.textControlHtmlId + "lbl")" class="control-label col-sm-3">@element.text</label>
+                                                <input type="hidden" asp-for="@Model.steps[x].elements[i].text" class="form-control col-sm-3" />
+                                                <input type="hidden" asp-for="@Model.steps[x].elements[i].value" class="form-control col-sm-3" />
+                                                @*<span asp-validation-for="@element.textControlHtmlId" class="text-danger col"></span>*@
+                                            </div>
+                                        }
+                                        break;
+
+                                    case FormDisplayControlType.Checkbox:
+                                        @if (i > 0)
+                                        {
+
+                                            <div class="row" @styleString>
+                                                <input type="checkbox" asp-for="@Model.steps[x].elements[i].value" class="form-control col-sm-3" />
+                                                <label id="@element.textControlHtmlId" class="control-label col-sm-3">@element.hint</label>
+                                                @*<span asp-validation-for="@element.textControlHtmlId" class="text-danger col"></span>*@
+                                            </div>
+                                        }
+                                        break;
+
+                                    case FormDisplayControlType.List:
+                                        <div class="row" @styleString>
+                                            <label asp-for="@Model.steps[x].elements[i].text" class="control-label col-sm-3">@element.text</label>
+                                            <input type="hidden" asp-for="@Model.steps[x].elements[i].text" class="form-control col-sm-3" />
+                                            <input type="hidden" asp-for="@Model.steps[x].elements[i].value" class="form-control col-sm-3" />
+                                            @if (!string.IsNullOrEmpty(Model.steps[x].elements[i].validationError))
+                                            {
+                                                <span asp-validation-for="@element.textControlHtmlId" class="text-danger col">@Model.steps[x].elements[i].validationError</span>
+                                            }
+                                            @if (i > 0 & i <= (Model.steps[x].elements.Count - 1)) //Ensure there is at least one option for the select. This has to be the next record
+                                            {
+                                                if (Model.steps[x].elements[i + 1].controlType == FormDisplayControlType.ListItem)
+                                                {
+                                                    listFirstChild = i + 1;
+                                                    <br />
+                                                    <select asp-for="@Model.steps[x].elements[i].selectedValue">
+                                                        <option value="">Select Region</option>
+                                                        @do
+                                                        {
+                                                            i++;
+                                                            if (i == (Model.steps[x].elements.Count))
+                                                            {
+                                                                i = listFirstChild - 1;
+                                                                break;
+                                                            }
+                                                            else
+                                                            {
+                                                                <option value="@Model.steps[x].elements[i].value" class="form-control col-sm-3">@Model.steps[x].elements[i].text</option>
+
+                                                            }
+                                                        }
+                                                        while (Model.steps[x].elements[i].controlType == FormDisplayControlType.ListItem);
+                                                    </select>
+                                                    @do
+                                                    {
+                                                        i++;
+                                                        if (i == (Model.steps[x].elements.Count))
+                                                        {
+                                                            break;
+                                                        }
+                                                        else
+                                                        {
+                                                            <input type="hidden" asp-for="@Model.steps[x].elements[i].text" class="form-control col-sm-3" />
+                                                            <input type="hidden" asp-for="@Model.steps[x].elements[i].value" class="form-control col-sm-3" />
+                                                            <input type="hidden" asp-for="@Model.steps[x].elements[i].controlType" class="form-control col-sm-3" />
+                                                            <input type="hidden" asp-for="@Model.steps[x].elements[i].hint" class="form-control col-sm-3" />
+                                                            <input type="hidden" asp-for="@Model.steps[x].elements[i].textControlHtmlName" class="form-control col-sm-3" />
+                                                            <input type="hidden" asp-for="@Model.steps[x].elements[i].textControlHtmlId" class="form-control col-sm-3" />
+                                                            <input type="hidden" asp-for="@Model.steps[x].elements[i].textControlClass" class="form-control col-sm-3" />
+
+                                                        }
+                                                    }
+                                                    while (Model.steps[x].elements[i].controlType == FormDisplayControlType.ListItem);
+                                                }
+
+                                            }
+                                        </div>
+                                        break;
+
+
+
+                                    default:
+                                        // Alert that new TextBlock component found
+                                        <div class="govuk-grid-row" @styleString>
+                                            <div class="beis-white govuk-grid-column-full">
+                                                <div class="govuk-width-container govuk-!-margin-top-6 govuk-!-margin-bottom-6">
+                                                    <h4 class="govuk-heading-s govuk-!-font-weight-regular">
+                                                        New Content Type @element.controlType found.
+                                                    </h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        break;
+                                }
+                                i++;
+                                if (i >= (Model.steps[x].elements.Count))
+                                {
+                                    break;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            <div class="govuk-grid-row" @styleString>
+                                <div class="beis-white govuk-grid-column-full">
+                                    <div class="govuk-width-container govuk-!-margin-top-6 govuk-!-margin-bottom-6">
+                                        <h4 class="govuk-heading-s govuk-!-font-weight-regular">
+                                            No questions for @step.title
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        @*}*@
+                        x++;
+                    }
+                    @*</div>
+                        </div>*@
+
+
+            <div class="govuk-grid-column-one-third">
+                <div class="beis-white govuk-grid-column-full">
+                    <div class="govuk-width-container govuk-!-margin-top-6 govuk-!-margin-bottom-6">
+                        @foreach (var step in Model.steps)
+                        {
+                            <h3 class="@step.titleClass">STEP: @step.id - @step.title </h3>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="beis-white govuk-grid-column-two-thirds">
+                <div class="govuk-width-container govuk-!-margin-top-6 govuk-!-margin-bottom-6">
+                    <button type="submit" asp-action="PrevStep" class="btn btn-primary">Back</button>
+
+                    @if (Model.CurrStep == Model.steps[Model.steps.Count - 1].id & Model.validationErrors.Count == 0 & (bool)ViewData["FormComplete"])
+                    {
+                        <button type="submit" asp-action="NextStep" class="btn btn-primary">Submit</button>
+
+                    }
+                    else
+                    {
+                        <button type="submit" asp-action="NextStep" class="btn btn-primary">Next</button>
+
+                    }
+                    <a asp-action="Start" class="btn btn-outline-secondary">Clear</a>
+                </div>
+            </div>
+
+
+        </div>
+
+
+    </form>
+
+
+}
+else
+{
+    <partial name="CMSPageViews/_PartialNoContent" model="@Model" />
+}
+

@@ -1,0 +1,100 @@
+﻿@using Beis.LearningPlatform.Web
+@using Beis.LearningPlatform.Web.Models.DiagnosticTool
+@model Beis.LearningPlatform.Web.Models.DiagnosticTool.DiagnosticToolForm
+@{
+    var elementInfo = Model.CurrentElement;
+    var currentStep = elementInfo.CurrentStep;
+    var currentElement = elementInfo.CurrentElement;
+    var radioButtonParent = elementInfo.RadioButtonParent;
+
+    var currentFormStep = elementInfo.CurrentFormStep;
+    var currentFormStepElement = elementInfo.CurrentFormStepElement;
+
+    Model.CurrentElement.ChildIndex = 0;
+    var additionalClass = Model.FormType == FormTypes.DiagnosticTool ? " " : " govuk-summary-list--no-border";
+    var partialViewPath = "";
+    switch (Model.FormType)
+    {
+        case FormTypes.DiagnosticTool:
+            partialViewPath = "DiagnosticToolFormViews/_PartialRenderDTChildSummary";
+            break;
+        case FormTypes.SkillsOne:
+            partialViewPath = "SkillsFormViews/_PartialRenderDTChildSummary";
+            break;
+        case FormTypes.SkillsTwo:
+            partialViewPath = "SkilledModule2Views/_PartialRenderDTChildSummary";
+            break;
+    }
+}
+
+@if (!string.IsNullOrWhiteSpace(currentFormStep.summaryTitle) && Model.FormType == FormTypes.SkillsOne)
+{
+    <div class="govuk-!-margin-bottom-0 govuk-!-margin-top-3 govuk-body">
+        <p class="govuk-body"><strong>@currentFormStep.summaryTitle</strong></p>
+    </div>
+}
+
+@{
+    switch (currentFormStepElement.controlType)
+    {
+        case FormDisplayControlType.Label:
+        case FormDisplayControlType.Textarea:
+            @if (currentFormStepElement.answerOptions != null)
+            {
+                <div class="govuk-summary-list govuk-!-margin-bottom-0 @additionalClass">
+                    <div class="govuk-summary-list__row">
+                        <partial name="@partialViewPath" model="@Model" />
+                    </div>
+                </div>
+            }
+            <input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].text" />
+            break;
+
+        case FormDisplayControlType.CheckboxGroup:
+            @if (currentFormStepElement.answerOptions != null)
+            {
+                <div class="govuk-summary-list govuk-!-margin-bottom-0 @additionalClass">
+                    <div class="govuk-summary-list__row">
+                        <partial name="@partialViewPath" model="@Model" />
+                    </div>
+                </div>
+            }
+            <input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].text" />
+            <input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].value" />
+
+            break;
+
+        case FormDisplayControlType.RadioGroup:
+            @if (currentFormStepElement.answerOptions != null)
+            {
+                <div class="govuk-summary-list govuk-!-margin-bottom-0 @additionalClass">
+                    <div class="govuk-summary-list__row">
+                        <partial name="@partialViewPath" model="@Model" />
+                    </div>
+                </div>
+            }
+            <input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].text" />
+            break;
+
+
+        case FormDisplayControlType.List:
+            @if (currentFormStepElement.answerOptions != null)
+            {
+                <div class="govuk-summary-list govuk-!-margin-bottom-0 @additionalClass">
+                    <div class="govuk-summary-list__row">
+                        <partial name="@partialViewPath" model="@Model" />
+                    </div>
+                </div>
+            }
+            <input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].text" />
+            <input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].selectedValue" />
+            break;
+
+
+        default:
+            <h4 class="govuk-heading-s govuk-!-font-weight-regular">
+                New Content Type @currentFormStepElement.controlType found.
+            </h4>
+            break;
+    }
+}

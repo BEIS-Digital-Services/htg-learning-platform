@@ -1,0 +1,17 @@
+﻿@model Beis.LearningPlatform.Web.Models.CmsAdaptiveImageViewModel
+@if (!Model.HasContent)
+{
+    return;
+}
+<div id="@Model.Component.id" class="govuk-width-container adaptive-image@(Model.CssClassTopSpace)@(Model.CssClassBottomSpace)">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full"><!-- govuk-grid-column-two-thirds -->
+            <div class="mobile">
+                <img src="@Model.MobileImageUrl" alt="@Model.Component.mobile_image.alternativeText" />
+            </div>
+            <div class="desktop">
+                <img src="@Model.DesktopImageUrl" alt="@Model.Component.desktop_image.alternativeText" />
+            </div>
+        </div>
+    </div>
+</div>

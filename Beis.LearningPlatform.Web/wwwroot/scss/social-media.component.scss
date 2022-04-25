@@ -1,0 +1,62 @@
+@import 'beis-variables.scss';
+@import 'beis-mixins.scss';
+
+%pseudo-block {
+    content: "";
+    width: 20px;
+    height: 20px;
+    background: $white;
+    border-bottom: 1px solid $beis-blue;
+    border-right: 1px solid $beis-blue;
+    display: block;
+    position: absolute;
+    left: 50px;
+    bottom: -11px;
+    transform: rotate3d(0, 0, 1, 45deg);
+}
+
+.social-media {
+    .icon {
+        display: inline-block;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-right: 10px;
+    }
+
+    .share {
+        position: relative;
+
+        .primary-big {
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+        }
+    }
+
+    .close-tool-tip {
+        border: 0;
+        background: transparent;
+        color: $beis-blue;
+        text-decoration: underline;
+        padding: 0 0 0 60px;
+    }
+
+    .tool-tip {
+        position: absolute;
+        border: 1px solid $beis-blue;
+        width: 270px;
+        height: 101px;
+        background: $white;
+        padding: 20px;
+        left: -43px;
+        top: -160px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+
+        &:before {
+            @extend %pseudo-block;
+        }
+    }
+}

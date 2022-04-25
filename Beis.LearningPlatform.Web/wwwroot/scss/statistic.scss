@@ -1,0 +1,49 @@
+﻿@import 'beis-variables.scss';
+@import 'beis-mixins.scss';
+
+.statistic {
+    .beis-columns-same-height {
+        display: flex;
+
+        @include respond(mobile) {
+            display: block;
+        }
+    }
+
+    .left-column {
+        justify-content: flex-end;
+    }
+
+    .right-column {
+        justify-content: flex-start;
+    }
+
+    .beis-navy-blue {
+        p {
+            color: $white;
+        }
+    }
+
+    .left-column,
+    .right-column {
+        display: flex;
+
+        .govuk-body {
+            padding: 0 0 60px 0;
+            margin: 0;
+        }
+
+        text-align: center;
+
+        h1 {
+            margin-bottom: 0;
+        }
+    }
+
+    .beis-columns {
+        text-align: center;
+        padding: 0 15px;
+        max-width: 465px;
+        box-sizing: border-box;
+    }
+}

@@ -1,0 +1,43 @@
+﻿@using Beis.LearningPlatform.Library.Enums
+@model Beis.LearningPlatform.Web.Models.DiagnosticTool.DiagnosticToolForm
+
+<div class="govuk-grid-column-two-thirds govuk-!-padding-bottom-9">
+    <fieldset>
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h2 class="govuk-fieldset__heading ">What do your answers mean ?</h2>
+        </legend>
+    </fieldset>
+</div>
+    
+    @switch (Model.SkilledModuleTwoResultType)
+    {
+        case SkilledModuleTwoResultType.DigitalNewComer:
+            <partial name="SkilledModule2Views/_PartialDigitalNewComer" model="@Model" />
+            break;
+        case SkilledModuleTwoResultType.DigitalMover:
+            <partial name="SkilledModule2Views/_PartialDigitalMover" model="@Model" />
+            break;
+        case SkilledModuleTwoResultType.DigitalPerfomer:
+            <partial name="SkilledModule2Views/_PartialDigitalPerformer" model="@Model" />
+            break;
+    }
+
+<div class="govuk-grid-column-two-thirds">
+    <p class="govuk-body"><strong>Here's what you said your business priorities are:</strong></p>
+    <div class="govuk-body summary-grey govuk-!-padding-1">
+        @if (Model.SelectedPriorities().Any())
+        {
+            <ul>
+                @foreach (var priority in Model.SelectedPriorities())
+                {
+                    <li>@priority</li>
+                }
+            </ul>
+        }
+        else
+        {
+            <p>You have not selected any business priorities</p>
+        }
+    </div>
+    <p class="govuk-body"><strong>Keep a note of the priorities you've identified, you'll need them in the next module.</strong></p>
+</div>

@@ -1,0 +1,75 @@
+﻿@using Beis.LearningPlatform.Web.Utils
+@model Beis.LearningPlatform.Web.Models.ComparisonToolProductCategoryViewModel
+@functions
+{
+    static IDictionary<string, string> AddRouteData(long productId)
+    {
+        var routeData = new Dictionary<string, string> { { "product_id", productId.ToString() } };
+        return routeData;
+    }
+}
+
+
+@if (Model.productsForCurrentCategoryToRender?.Any() ?? false)
+{
+    <div class="formDiv" id="formDiv-@Model.CurrentCategoryId">
+        @using (Html.BeginForm("CompareProducts", "ComparisonTool", FormMethod.Post, new { id = Model.CurrentCategoryId }))
+        {
+            <input type="hidden" name="selectedProductCategoryIds" />
+            <input type="hidden" name="selectedProductIds" />
+
+            <div class="govuk-grid-row govuk-!-margin-top-8">
+                <div class="govuk-grid-column-two-thirds">
+                    <h2 class="govuk-heading-l govuk-!-margin-0">@Model.subheader</h2>
+                </div>
+                <div class="govuk-grid-column-one-third compare-products">
+                    <input type="submit" name="compare products" class="compareButton govuk-button compare-btn primary govuk-button--disabled" disabled="disabled" value="Compare products" />
+                </div>
+            </div>
+
+            @foreach (var item in Model.productsForCurrentCategoryToRender)
+            {
+                <div class="govuk-grid-row">
+                    <div class="govuk-grid-column-full">
+                        <div class="top-line"></div>
+                    </div>
+                </div>
+                <div class="govuk-grid-row">
+                    <div class="govuk-grid-column-full">
+                        <div class="govuk-grid-row frame">
+                            <div class="product-image">
+                                <div class="image-mask">
+                                    <img src="@Model.VendorProdLogorUrl/@item.product_logo" alt="">
+                                </div>
+                                <a href="@item.website_url" class="govuk-link">@ComparisonToolFieldValidator.ParseStringField(item.product_name)</a>
+                            </div>
+                            <div class="product-details">
+                                <partial name="ComparisonToolViews/_PartialProductCategoryDetails" model="item" />
+                            </div>
+                            <div class="product-actions">
+                                <a type="button" aria-label="See features on @ComparisonToolFieldValidator.ParseStringField(item.product_name)"
+                                   asp-controller="comparisonTool" asp-action="ProductDetails" asp-all-route-data="@AddRouteData(@item.product_id)" class="govuk-button compare" data-module="govuk-button">
+                                    See features
+                                </a>
+                               <a aria-label="include @ComparisonToolFieldValidator.ParseStringField(item.product_name)" class="govuk-button button__input compare" data-module="govuk-button" 
+                                   id="@("prod-"+item.product_id)">
+                                    + Compare
+                                </a>
+                                <a type="button" aria-label="Select @ComparisonToolFieldValidator.ParseStringField(item.product_name)"
+                                    asp-controller="comparisonTool" asp-action="GetDiscount" asp-all-route-data="@AddRouteData(@item.product_id)" class="govuk-button discount" data-module="govuk-button">
+                                        Get discount
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <div class="govuk-grid-row govuk-!-margin-bottom-8">
+                <div class="govuk-grid-column-full compare-products">
+                    <input type="submit" name="compare products" class="compareButton govuk-button compare-btn primary govuk-button--disabled" disabled="disabled" value="Compare products" />
+                </div>
+            </div>
+        }
+    </div>
+}

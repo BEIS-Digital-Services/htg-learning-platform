@@ -1,0 +1,106 @@
+﻿@model Beis.LearningPlatform.Web.Models.CookieBannerViewModel
+
+@if (Model.UserCookiePreferences.IsCookieBannerClosed)
+{
+    return;
+}
+
+@if (!Model.UserCookiePreferencesSet)
+{
+    <div class="govuk-cookie-banner"
+            data-nosnippet role="region"
+            aria-label="Cookies on BEIS Help to Grow">
+        <div class="govuk-cookie-banner__message govuk-width-container">
+
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-two-thirds">
+                    <h2 class="govuk-cookie-banner__heading govuk-heading-m">Cookies on Help to Grow: Digital</h2>
+
+                    <div class="govuk-cookie-banner__content">
+                        <p class="govuk-body">We use some essential cookies that are necessary for the website’s functionality.</p>
+                        <p class="govuk-body">We also use non-essential cookies for analytics, marketing and to remember your settings. These cookies help us to improve the website based on user needs.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="govuk-button-group">
+                @{
+                    IDictionary<string, string> routeData = new Dictionary<string, string>();
+                    routeData.Add("controllerName", Model.ControllerName);
+                    routeData.Add("actionName", Model.ActionName);
+                    routeData.Add("cookieType", "GA");
+                    routeData.Add("isAccept", "true");
+
+                }
+                <a type="button" name="cookies"
+                    asp-controller="Cookies"
+                    asp-action="ProcessCookie"
+                    asp-all-route-data="@routeData"
+                    class="govuk-button primary" data-module="govuk-button">
+                    Accept cookies
+                </a>
+                @{
+                    IDictionary<string, string> routeData2 = new Dictionary<string, string>();
+                    routeData2.Add("controllerName", Model.ControllerName);
+                    routeData2.Add("actionName", Model.ActionName);
+                    routeData2.Add("cookieType", "GA");
+                    routeData2.Add("isAccept", "false");
+
+                }
+                <a type="button" name="cookies"
+                    asp-controller="Cookies"
+                    asp-action="ProcessCookie"
+                    asp-all-route-data="@routeData2"
+                    class="govuk-button primary" data-module="govuk-button">
+                    Reject cookies
+                </a>
+                <a class="govuk-link" href="/cookies">View all cookies</a>
+            </div>
+
+        </div>
+    </div>
+}
+    
+@if (Model.UserCookiePreferencesSet && !Model.UserCookiePreferences.IsGaAccepted.Value)
+{
+    <div class="govuk-cookie-banner"
+            data-nosnippet role="region"
+            aria-label="Cookies on BEIS Help to Grow">
+        <div class="govuk-cookie-banner__message govuk-width-container">
+
+            <div class="gem-c-cookie-banner__confirmation govuk-width-container">
+                <p class="gem-c-cookie-banner__confirmation-message" role="alert">
+                    You have rejected additional cookies. You can
+
+                    <a class="govuk-link"
+                        data-track-category="cookieBanner"
+                        data-track-action="Cookie banner settings clicked from confirmation"
+                        href="/cookies">
+                        change your cookie settings
+                    </a>
+                    at any time.
+                </p>
+                <div class="govuk-button-group">
+                    @{
+                        IDictionary<string, string> routeData3 = new Dictionary<string, string>();
+                        routeData3.Add("controllerName", Model.ControllerName);
+                        routeData3.Add("actionName", Model.ActionName);
+                        routeData3.Add("cookieType", "close");
+                        routeData3.Add("isAccept", "false");
+
+                    }
+                    <a class="gem-c-cookie-banner__hide-button govuk-button primary"
+                        asp-controller="Cookies"
+                        asp-action="ProcessCookie"
+                        asp-all-route-data="@routeData3"
+                        data-hide-cookie-banner="true"
+                        data-module="gem-track-click"
+                        data-track-category="cookieBanner"
+                        data-track-action="Hide cookie banner">
+                        Hide this message
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+}

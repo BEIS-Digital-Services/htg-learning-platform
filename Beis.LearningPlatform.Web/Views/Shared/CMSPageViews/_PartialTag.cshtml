@@ -1,0 +1,47 @@
+﻿@model List<Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageTag>
+@{
+    var strclass = string.Empty;
+}
+
+@if (Model != null)
+{
+<p class="govuk-button-group">
+
+    @foreach (var button in Model)
+    {
+        strclass = "govuk-button govuk-button--start " + (string.IsNullOrWhiteSpace(button.custom_class) ? "tag-link" : button.custom_class);
+        if (!string.IsNullOrWhiteSpace(button.url))
+        {
+            if (!string.IsNullOrWhiteSpace(button.label))
+            {
+                <a href="@button.url" role="button" draggable="false" class="@strclass" data-module="govuk-button">
+                    @button.label
+                    @if (button.icon != null)
+                    {
+                        if (button.icon.Count > 0)
+                        {
+                            <vc:cms-image options='new CmsImageViewModel { ImageUrl = button.icon[0].url, CssClass = "svgimg", Width = button.icon[0].width, Height = button.icon[0].height }' />
+                        }
+                    }
+                </a>
+            }
+            else
+            {
+                if (!string.IsNullOrWhiteSpace(button.displayName))
+                {
+                    IDictionary<string, string> routeData = new Dictionary<string, string>();
+                    routeData.Add("tagAction", "add");
+                    routeData.Add("tag", button.displayName);
+                    <a tyle="text-decoration: none" asp-controller="Home" asp-action="GuidanceAndToolsUpdateTags" asp-all-route-data="routeData"
+                       role="button" draggable="false" class="govuk-tag beis-tag" data-module="govuk-button">
+                        <strong class="">
+                            @button.displayName
+                        </strong>
+                    </a>
+                }
+            }
+
+        }
+    }
+</p>
+}

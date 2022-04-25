@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Configuration\IIntegrationServicesConfiguration.cs" />
+    <Compile Remove="Configuration\INotifyServiceConfiguration.cs" />
+    <Compile Remove="Configuration\IntegrationServicesConfiguration.cs" />
+    <Compile Remove="Configuration\NotifyServiceConfiguration.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Beis.LearningPlatform.DAL\Beis.LearningPlatform.DAL.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="GovukNotify" Version="4.0.1" />
+    <PackageReference Include="System.IO.Abstractions" Version="13.2.47" />
+  </ItemGroup>
+
+</Project>

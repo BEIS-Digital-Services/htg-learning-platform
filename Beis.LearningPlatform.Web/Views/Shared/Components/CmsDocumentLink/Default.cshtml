@@ -1,0 +1,32 @@
+﻿@model Beis.LearningPlatform.Web.Models.CmsDocumentLinkViewModel
+<div class="beis-text" id="@("anchor" + ViewData["intCurrComponentIndex"])">
+    @if (Model.Component.media != null && Model.Component.media.Count > 0)
+    {
+        <div class="govuk-width-container@(Model.CssClassTopSpace)@(Model.CssClassBottomSpace)">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-two-thirds">
+                    <section class="attachment embedded" id="attachment_@Model.Component.media[0].name">
+                        <div class="attachment-thumb">
+                            <a aria-hidden="true" class="thumbnail" tabindex="-1" href="@Model.TargetUrl">
+                                <img alt="" src="@Model.ImageUrl" />
+                            </a>
+                        </div>
+                        <div class="attachment-details">
+                            <h3 class="title govuk-!-font-size-27 govuk-!-font-weight-regular">
+                                <a class="govuk-link" href="@Model.TargetUrl">
+                                    @Model.Component.title
+                                </a>
+                            </h3>
+                            <p class="govuk-body">
+                                <span class="type">
+                                    <abbr title="@Model.Component.media[0].mime">@Model.Component.abbr</abbr>
+                                </span>,
+                                <span class="file-size">@Model.Component.media[0].size KB</span>
+                            </p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    }
+</div>

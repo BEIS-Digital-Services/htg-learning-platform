@@ -1,0 +1,382 @@
+@model Beis.LearningPlatform.Web.Models.DiagnosticTool.DiagnosticToolForm
+@{
+    bool isInstructionsPage = Model.CurrStep == 0 && Model.IsInstructionsPage;
+    var displaySummaryTable = false;
+    var showStepTitle = true;
+    var nextButtonText = " Next ";
+    var hideContent = false;
+}
+
+<main id="main-heading" role="main">
+    <div class="govuk-grid-column-full govuk-!-padding-bottom-6" style="min-height: 70vh;">
+        <div class="beis-white govuk-grid-column-full">
+            <div class="govuk-width-container govuk-!-margin-top-6 govuk-!-margin-bottom-6 ">
+
+                <form asp-action="Index" method="post" class="form-horizontal">
+                    @if (Model.CurrStep > 1 && Model.backLink == true)
+                    {
+                        <div class="p-left-20">
+                            <button type="submit" asp-action="PrevStep" class="govuk-back-link btn-as-link">Back</button>
+                        </div>
+                    }
+
+                    @if (Model.CurrStep == 1 && string.IsNullOrEmpty(Model.backURLfromQ1) == false)
+                    {
+                        <div class="p-left-20">
+                            <a href="@Model.backURLfromQ1" class="govuk-back-link">Back</a>
+                        </div>
+                    }
+
+                    @if (Model.validationErrors != null)
+                    {
+                        @if (Model.validationErrors.Count > 0)
+                        {
+                            <div aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="govuk-error-summary" class="govuk-error-summary">
+                                <h2 id="error-summary-title" class="govuk-error-summary__title">
+                                    @if (Model.validationErrors.Any(error => !string.IsNullOrWhiteSpace(error.errorHeading)))
+                                    {
+                                        @Model.validationErrors.First().errorHeading
+                                    }
+                                    else
+                                    {
+                                        <text>Please make a selection</text>
+                                    }
+
+                                </h2>
+                                <div class="govuk-error-summary__body">
+                                    <ul class="govuk-list govuk-error-summary__list">
+                                        @foreach (var validationError in Model.validationErrors)
+                                        {
+                                            <li class="@validationError.displayControlClass">
+                                                <a href="#@validationError.htmlId">@Html.Raw(validationError.errorMessage)</a>
+                                            </li>
+                                        }
+                                        <li>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        }
+                    }
+
+                    @if (Model.FormIsCompleted || isInstructionsPage)
+                    {
+                        <fieldset>
+                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                                @if (Model.FormIsCompleted)
+                                {
+                                    <div class="govuk-grid-column-two-thirds">
+                                        <h1 class="govuk-heading-xl govuk-!-padding-top-3">
+                                            @if (Model.FormType == FormTypes.DiagnosticTool)
+                                            {
+                                                <text>Here’s an overview of your answers</text>
+                                            }
+                                            else
+                                            {
+                                                @Model.summaryHeading
+                                            }
+
+                                        </h1>
+                                    </div>
+                                    @if (Model.FormType == FormTypes.SkillsOne)
+                                    {
+                                        <div class="govuk-grid-column-two-thirds">
+                                            <h3>Summary</h3>
+                                            <p class="govuk-body">
+                                                By thinking about how your business uses software, you can start to see where the next step
+                                                on your digital journey should be.
+                                            </p>
+                                            <p class="govuk-body">
+                                                Here’s summary of your answers:
+                                            </p>
+                                        </div>
+                                    }
+                                    else if (Model.FormType == FormTypes.SkillsTwo)
+                               {
+                                <partial name="SkilledModule2Views/_PartialDigitalMain" model="@Model" />
+                            }
+                            else
+                            {
+                                <div class="govuk-grid-column-two-thirds">
+                                    <p class="govuk-body">
+                                        You can change what you’ve told us, and get these results sent to you by email before seeing your results.
+                                    </p>
+                                </div>
+                            }
+                                    displaySummaryTable = true;
+                                }
+                                else if (isInstructionsPage)
+                                {
+                                    <div class="govuk-grid-column-two-thirds">
+                                        <h1 class="govuk-heading-xl govuk-!-padding-top-3">
+                                            @Html.Raw("Take 2 minutes to find your software solution")
+                                        </h1>
+                                    </div>
+                                }
+                            </legend>
+                        </fieldset>
+                    }
+
+
+
+
+                    @if (isInstructionsPage)
+                    {
+                        <div class="govuk-grid-column-two-thirds">
+                            <p class="govuk-body">Answer a few questions about how you work and what you want to achieve, and we’ll recommend a software solution and advice, for your business.</p>
+                            <p class="govuk-body">If your business is eligible, you’ll also be able to access a discount of up to 50% towards the costs of buying approved software, worth up to &pound;5,000.</p>
+                            <button type="submit" asp-action="StartForm" class="govuk-button govuk-button--start primary">
+                                Get started
+                                <svg xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false" class="govuk-button__start-icon">
+                                    <path fill="#FFB000" d="M0 0h13l20 20-20 20H0l20-20z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    }
+
+                    @if (Model.steps != null)
+                    {
+                        var x = 0;
+
+                        <input type="hidden" asp-for="CurrStep" value="@Model.CurrStep" />
+
+                        <input type="hidden" asp-for="id" id="modelId@(Model.id)" />
+                        <input type="hidden" asp-for="title" id="modelTitle@(Model.id)" />
+                        @if (Model.FormType != FormTypes.DiagnosticTool)
+                        {
+                            <input type="hidden" asp-for="summaryHeading" id="modelSummaryHeading@(Model.summaryHeading)" />
+                            <input type="hidden" asp-for="canChangeAnswers" id="modelCanChangeAnswers@(Model.canChangeAnswers)" />
+                        }
+                        <input type="hidden" asp-for="FormType" id="modelSummaryHeading@(Model.FormType)" />
+                        <input type="hidden" asp-for="htmlId" id="modelHtmlId@(Model.id)" />
+                        <input type="hidden" asp-for="created_at" id="modelCreatedAt@(Model.id)" />
+                        <input type="hidden" asp-for="published_at" id="modelPublishedAt@(Model.id)" />
+                        <input type="hidden" asp-for="backButton" id="modelTitle@(Model.id)" />
+                        <input type="hidden" asp-for="backLink" id="modelTitle@(Model.id)" />
+                        <input type="hidden" asp-for="backURLfromQ1" />
+
+
+
+
+                        @foreach (var step in Model.steps)
+                        {
+                            <input type="hidden" asp-for="@Model.steps[x].id" />
+                            <input type="hidden" asp-for="@Model.steps[x].title" />
+                            @if (Model.FormType != FormTypes.DiagnosticTool)
+                            {
+                                <input type="hidden" asp-for="@Model.steps[x].summaryTitle" />
+                            }
+                            <input type="hidden" asp-for="@Model.steps[x].order" />
+                            <input type="hidden" asp-for="@Model.steps[x].orderClass" />
+                            <input type="hidden" asp-for="@Model.steps[x].skippedByElementId" />
+                            <input type="hidden" asp-for="@Model.steps[x].skipStep" value="@Model.steps[x].skipStep" />
+                            <input type="hidden" asp-for="@Model.steps[x].skipConditionValue" />
+                            <input type="hidden" asp-for="@Model.steps[x].skippedByElementStepId" />
+                            <input type="hidden" asp-for="@Model.steps[x].showInSummary" />
+                            var skipStep = Model.steps[x].skipStep;
+                            var styleString = "style=";
+
+                            @if (Model.validationErrors.Count != 0 || !Model.FormIsCompleted)
+                            {
+                                if (step.id.ToString() != Model.CurrStep.ToString())
+                                {
+                                    styleString = "style=display:none";
+                                    hideContent = true;
+                                }
+                            }
+                            // Form Complete so hide the form elements and display the summary table
+                            if (displaySummaryTable)
+                            {
+                                styleString = "style=display:none";
+                                hideContent = true;
+                            }
+
+                            @if (!string.IsNullOrWhiteSpace(step.title) && showStepTitle)
+                            {
+                                <div class="govuk-form-group govuk-grid-column-two-thirds govuk-!-margin-bottom-0" @styleString>
+                                    <fieldset>
+                                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l govuk-!-margin-bottom-0">
+                                            <h1 class="govuk-heading-xl govuk-!-padding-top-3 govuk-!-padding-bottom-0">@step.title</h1>
+                                        </legend>
+                                    </fieldset>
+
+                                </div>
+                            }
+
+
+
+                            if (step.elements != null)
+                            {
+                                var i = 0;
+                                @*Display Summary Instead*@
+                                if (displaySummaryTable && (!string.IsNullOrWhiteSpace(step.title)) && !step.skipStep && step.showInSummary)
+                                {
+                                    @if (Model.FormType == FormTypes.DiagnosticTool)
+                                    {
+                                        <div class="govuk-form-group govuk-grid-column-two-thirds govuk-!-margin-bottom-0 govuk-!-margin-top-3">
+                                            <fieldset>
+                                                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                                                    <h2 class="govuk-fieldset__heading ">@(string.IsNullOrWhiteSpace(step.summaryTitle) ? step.title : step.summaryTitle)</h2>
+                                                </legend>
+                                            </fieldset>
+                                        </div>
+                                    }
+                                }
+
+                                foreach (var element in step.elements)
+                                {
+                                    <input type="hidden" asp-for="@Model.steps[x].elements[i].id" />
+                                    <input type="hidden" asp-for="@Model.steps[x].elements[i].controlType" />
+                                    <input type="hidden" asp-for="@Model.steps[x].elements[i].hint" />
+                                    @if (Model.FormType != FormTypes.DiagnosticTool)
+                                    {
+                                        <input type="hidden" asp-for="@Model.steps[x].elements[i].hint2" />
+                                        <input type="hidden" asp-for="@Model.steps[x].elements[i].showHintInBold" />
+                                        <input type="hidden" asp-for="@Model.steps[x].elements[i].showHint2InBold" />
+                                    }
+                                    <input type="hidden" asp-for="@Model.steps[x].elements[i].childHasErrors" />
+                                    <input type="hidden" asp-for="@Model.steps[x].elements[i].textControlClass" />
+                                    <input type="hidden" asp-for="@Model.steps[x].elements[i].textControlHtmlId" />
+                                    <input type="hidden" asp-for="@Model.steps[x].elements[i].textControlHtmlName" />
+                                    <input type="hidden" asp-for="@Model.steps[x].elements[i].validationError" />
+                                    <input type="hidden" asp-for="@Model.steps[x].elements[i].text" />
+                                    <input type="hidden" asp-for="@Model.steps[x].elements[i].text2" />
+                                    <input type="hidden" asp-for="@Model.steps[x].elements[i].subText" />
+                                    <input type="hidden" asp-for="@Model.steps[x].elements[i].nextButtonText" />@*<input type="hidden" asp-for="@Model.steps[x].elements[i].value" />*@@*<input type="hidden" asp-for="@Model.steps[x].elements[i].selectedValue" />*@
+
+                                    if (Model.CurrStep == Model.steps[x].id && string.IsNullOrEmpty(Model.steps[x].elements[i].nextButtonText) == false)
+                                    {
+                                        nextButtonText = Model.steps[x].elements[i].nextButtonText;
+                                    }
+
+                                    Model.CurrentElement = new ElementInfo
+                                    {
+                                        CurrentStep = x,
+                                        CurrentElement = i,
+                                        RadioButtonParent = i,
+                                        CurrentFormStep = Model.steps[x],
+                                        CurrentFormStepElement = Model.steps[x].elements[i],
+                                    };
+
+                                    var childHasErrors = (Model.steps[x].elements[i].childHasErrors) ? "govuk-form-group--error" : "";
+                                    <div class="govuk-form-group @childHasErrors govuk-grid-column-two-thirds govuk-!-padding-top-0" @styleString>
+                                        <fieldset class="govuk-fieldset">
+                                            <partial name="DiagnosticToolFormViews/_PartialRenderDTParentElement" model="@Model" />
+                                        </fieldset>
+                                    </div>
+
+
+                                    @*Display Summary Instead*@
+                                    @if (displaySummaryTable && !skipStep && Model.FormType != FormTypes.SkillsTwo)
+                                    {
+                                        <div class="govuk-form-group ">
+                                            <div class="govuk-form-group govuk-grid-column-two-thirds govuk-!-padding-bottom-0">
+                                                @if (Model.FormType == FormTypes.SkillsOne)
+                                                {
+                                                    <partial name="SkillsFormViews/_PartialRenderDTParentSummary" model="@Model" />
+                                                }
+                                                else
+                                                {
+                                                    <partial name="DiagnosticToolFormViews/_PartialRenderDTParentSummary" model="@Model" />
+                                                }
+
+                                            </div>
+                                        </div>
+                                    }
+
+                                    @if (element.answerOptions != null)
+                                    {
+                                        for (var z = 0; z < element.answerOptions.Count; z++)
+                                        {
+                                            <input type="hidden" asp-for="@Model.steps[x].elements[i].answerOptions[z].id" />
+                                            <input type="hidden" asp-for="@Model.steps[x].elements[i].answerOptions[z].controlType" />
+                                            <input type="hidden" asp-for="@Model.steps[x].elements[i].answerOptions[z].hint" />
+                                            <input type="hidden" asp-for="@Model.steps[x].elements[i].answerOptions[z].textControlHtmlName" />
+                                            <input type="hidden" asp-for="@Model.steps[x].elements[i].answerOptions[z].textControlHtmlId" />
+                                            <input type="hidden" asp-for="@Model.steps[x].elements[i].answerOptions[z].textControlClass" />
+                                            <input type="hidden" asp-for="@Model.steps[x].elements[i].answerOptions[z].additionalInfoRequired" />
+                                            <input type="hidden" asp-for="@Model.steps[x].elements[i].answerOptions[z].additionalInfoText" />
+                                            <input type="hidden" asp-for="@Model.steps[x].elements[i].answerOptions[z].selectedValue" />
+                                            <input type="hidden" asp-for="@Model.steps[x].elements[i].answerOptions[z].validationError" />
+                                            <input type="hidden" asp-for="@Model.steps[x].elements[i].answerOptions[z].parent" />
+                                            <input type="hidden" asp-for="@Model.steps[x].elements[i].answerOptions[z].ResultPageLabel" />
+                                            <input type="hidden" asp-for="@Model.steps[x].elements[i].answerOptions[z].topDownBorder" />
+                                            if (Model.steps[x].elements[i].answerOptions[z].searchTags != null)
+                                            {
+                                                for (var t = 0; t < Model.steps[x].elements[i].answerOptions[z].searchTags.Count; t++)
+                                                {
+                                                    <input type="hidden" asp-for="@Model.steps[x].elements[i].answerOptions[z].searchTags[t]" />
+                                                }
+                                            }
+                                        }
+                                    }
+                                    i++;
+
+                                }
+                            }
+                            else
+                            {
+                                <div class="govuk-grid-row govuk-grid-column-two-thirds" @styleString>
+                                    <div class="beis-white govuk-grid-column-full">
+                                        <div class="govuk-width-container govuk-!-margin-top-6 govuk-!-margin-bottom-6">
+                                            <h4 class="govuk-heading-s govuk-!-font-weight-regular">
+                                                No questions for @step.title
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            x++;
+                        }
+
+                        @if (Model.FormIsCompleted)
+                        {
+                            @await Html.PartialAsync("DiagnosticToolFormViews/_PartialRenderDiagnosticToolEmailAnswer",
+                                        Model.EmailAnswer,
+                                        new ViewDataDictionary(ViewData) { { "ControlNameBasePath", nameof(Model.EmailAnswer) },
+                                                                           { "FormType", Model.FormType } })
+                        }
+
+                        @if (Model.CurrStep > 0)
+                        {
+                            <div class="beis-white govuk-grid-column-two-thirds">
+                                <div class="govuk-width-container govuk-!-margin-top-6 govuk-!-margin-bottom-6">
+
+                                    @if (Model.FormIsCompleted)
+                                    {
+                                        @if (Model.FormType == FormTypes.DiagnosticTool)
+                                        {
+                                            <button type="submit" asp-action="Result" class="govuk-button govuk-button--start primary">
+                                                See results
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false" class="govuk-button__start-icon">
+                                                    <path fill="#FFB000" d="M0 0h13l20 20-20 20H0l20-20z"></path>
+                                                </svg>
+                                            </button>
+                                        }
+                                        else
+                                        {
+                                            <button type="submit" asp-action="Result" class="govuk-button primary"> Next </button>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (Model.CurrStep > 1 && Model.backButton == true)
+                                        {
+                                            <button type="submit" asp-action="PrevStep" class="govuk-button primary"> Back </button>
+                                        }
+                                        <button type="submit" asp-action="NextStep" class="govuk-button primary">@nextButtonText</button>
+
+                                    }
+                                </div>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <partial name="CMSPageViews/_PartialNoContent" model="@Model" />
+                    }
+                </form>
+            </div>
+        </div>
+    </div>
+</main>

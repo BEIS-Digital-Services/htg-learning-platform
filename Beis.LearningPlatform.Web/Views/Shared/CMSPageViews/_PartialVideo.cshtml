@@ -1,0 +1,59 @@
+﻿@using Beis.LearningPlatform.Web.Utils
+@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
+@{
+    var _pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build();
+    var strclass = string.Empty;
+    var topSpaceClass = Model.topSpace != "nospace" ? "govuk-!-padding-top-6" : string.Empty;
+    var bottomSpaceClass = Model.bottomSpace != "nospace" ? "govuk-!-padding-bottom-6" : string.Empty;
+    var strContainerClass = string.IsNullOrWhiteSpace(Model.background) ? "" : @CamelCaseConverter.Delimiter(Model.background, "-");
+}
+
+@if (!string.IsNullOrWhiteSpace(Model.url))
+{
+    <div id="@("anchor" + ViewData["intCurrComponentIndex"])" class="govuk-grid-row @strContainerClass">
+        <div class="video">
+            <div class="govuk-grid-row @strContainerClass">
+                <div class="govuk-width-container">
+                    <div class="govuk-grid-column-full">
+                        <div class="@topSpaceClass @bottomSpaceClass">
+                            @if (Model.textblock != null)
+                            {
+                                foreach (var item in Model.textblock)
+                                {
+                                    strclass = string.Empty;
+                                    if (!string.IsNullOrWhiteSpace(item.subheader))
+                                    {
+                                        strclass = CamelCaseConverter.Delimiter(item.subheaderColor, "-") + "-text";
+                                        <h2 class="govuk-heading-l @strclass">
+                                            @Html.Raw(item.subheader)
+                                        </h2>
+                                    }
+                                }
+                            }
+
+                            <div class="youtube-container">
+                                <iframe width="560" height="315" src="@Model.url.Replace("youtu.be","www.youtube.com/embed/")" title="YouTube video player" style="border:0px;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+
+                            @if (Model.textblock != null)
+                            {
+                                @if (Model.textblock.Count > 0)
+                                {
+                                    if (!string.IsNullOrWhiteSpace(Model.textblock[0].copy))
+                                    {
+                                        <div class="beis-text govuk-body govuk-!-padding-top-6 govuk-!-padding-bottom-6">
+                                            @foreach (var item in Model.textblock)
+                                            {
+                                                @Html.Raw(Markdown.ToHtml(item.copy).Replace("<p>", "<span class=\"govuk-body\">").Replace("</p>", "</span><br/>"))
+                                            }
+                                        </div>
+                                    }
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,31 @@
+﻿@import 'beis-mixins.scss';
+@import 'beis-variables.scss';
+.columns {
+    .right-column {
+        img {
+            margin: 30px 0;
+
+            @include respond(tablet) {
+                width: 100%;
+            }
+        }
+    }
+
+    .beis-columns-same-height {
+        display: flex;
+        align-items: center;
+
+        @include respond(mobile) {
+            display: block;
+        }
+    }
+
+    .beis-link-icon {
+        margin-left: 0px;
+        margin-right: 10px;
+        vertical-align: middle;
+        flex-shrink: 0;
+        align-self: center;
+    }
+}
+

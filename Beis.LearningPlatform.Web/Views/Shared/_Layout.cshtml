@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+@using Beis.LearningPlatform.Web.Utils
+@model Beis.LearningPlatform.Web.Interfaces.IPageViewModel
+<html lang="en">
+<head>
+    <vc:google-analytics-tag />
+    <vc:google-analytics-data-layer page-view-model="@Model" />
+    <title>@(Model.title ?? Model.pageTitle)</title>
+    @if(!string.IsNullOrEmpty(Model.description)) 
+    {
+        <meta name="description" content="@Model.description" />
+    }
+    @if(!string.IsNullOrEmpty(Model.meta)) 
+    {
+        <meta name="keywords" content="@Model.meta"/>
+    }    
+    <meta name="robots" content="@Model.GetRobotsMetaTag()">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/css/main.css" />
+    <link rel="icon" type="image/x-icon" href="~/assets/images/favicon.ico">
+
+    @await RenderSectionAsync("Header", required: false)
+</head>
+<body class="govuk-template__body nojs">
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WHNBFLG"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <script>
+        document.body.classList.remove('nojs');
+        document.body.classList.add('js');
+    </script>
+    <vc:cookie-banner />
+    @if (Model.ShowLayoutNavigation)
+    {
+        <partial name="CMSPageViews/_PartialNavigation" model="@Model.NavigationModel" />
+    }        
+
+    @RenderBody()
+
+    @if (Model.footers != null)
+    {        
+        <partial name="CMSPageViews/_PartialFooter" model="@Model.footers" />        
+    }
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+
+    <script>
+        var $mobileHeaderNav = $("#MobileNavigation");
+        var $menuBtn = $("#MobileNavigationToggle");
+        var isMenuActive = false;
+        toggleTopMenu(isMenuActive);
+        $menuBtn.on("click", function () {
+            this.isMenuActive = !this.isMenuActive;
+            toggleTopMenu(this.isMenuActive);
+        });
+        function toggleTopMenu(active) {
+            if (active === true) {
+                $menuBtn.addClass("govuk-header__menu-button--open");
+                $mobileHeaderNav.addClass("govuk-header__navigation--open");
+            } else {
+                $menuBtn.removeClass("govuk-header__menu-button--open");
+                $mobileHeaderNav.removeClass("govuk-header__navigation--open");
+            }
+            $menuBtn.attr('aria-expanded', active);
+        }
+    </script>
+    <script src="/js/site.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

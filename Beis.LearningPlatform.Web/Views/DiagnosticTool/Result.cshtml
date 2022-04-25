@@ -1,0 +1,307 @@
+﻿@using Beis.LearningPlatform.Web.StrapiApi.Models
+@using Beis.LearningPlatform.Web.Utils
+@using Beis.LearningPlatform.Web.Models.DiagnosticTool
+@using Beis.LearningPlatform.Web.Models
+@model Beis.LearningPlatform.Web.Models.DiagnosticTool.DiagnosticToolForm
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";    
+    bool hasRegisterYourInterestBlock = Model.RegisterYourInterestBlock != default;
+    CMSPageComponent divider = new() { color = "beisGrey", type = "divider" };
+
+    IList<CMSSearchTag> Tags = Model.ProductCategories?.Any() == true ? Model.ProductCategories : new List<CMSSearchTag>();
+
+    //Model.subheader = "Digital accounting software";
+    //Model.productsForCurrentCategoryToRender = Model.accountingProducts;
+    // Create ViewModel for Comparison instead of product model
+    var accountingProducts = Model.ComparisonToolProducts?.Where(item => item.product_type == (long)(Tags.Where(t => t.name == "accounting").FirstOrDefault().id)).ToList();
+    var crmProducts = Model.ComparisonToolProducts?.Where(item => item.product_type == (long)(Tags.Where(t => t.name == "crm").FirstOrDefault().id)).ToList();
+    var ecommerceProducts = Tags.Where(t => t.name == "ecommerce").FirstOrDefault() != null ?
+        Model.ComparisonToolProducts?.Where(item => item.product_type == (long)(Tags.Where(t => t.name == "ecommerce").FirstOrDefault().id)).ToList() : null;
+
+
+    // Reset the values on the Skipped Step
+    var skippedSteps = Model.steps.Where(step => step.skipStep);
+    foreach (var step in skippedSteps)
+    {
+        foreach (var element in step.elements)
+        {
+            foreach (var answer in element.answerOptions)
+            {
+                switch (answer.controlType)
+                {
+                    case FormDisplayControlType.Text:
+                        {
+                            answer.value = null;
+                            break;
+                        }
+                    case FormDisplayControlType.ListItem:
+                    case FormDisplayControlType.Radio:
+                        {
+                            element.selectedValue = null;
+                            element.value = null;
+                            answer.additionalInfo = null;
+                            break;
+                        }
+                    case FormDisplayControlType.Checkbox:
+                        {
+                            answer.value = false.ToString();
+                            answer.additionalInfo = null;
+                            break;
+                        }
+                }
+            }
+        }
+    }
+
+    // Collect distinct tags
+    var distinctTags = Model.selectedTags.Distinct().Select(g => g.ToString());
+    var objDistinctTags = Model.selectedTags.Distinct();
+
+    // **************************************************************************************************************************
+    // IMPORTANT
+    // Filter the articles based on the selected tags.
+    // TODO: This code can be moved to the controller.
+    // Having it in the View allows easy debugging without having to recompile
+    Predicate<CMSSearchTag> tagToMatch = tag => distinctTags.Contains(tag.name);
+    var relatedArticles = Model.Articles.Where(article => article.tags.Exists(tagToMatch)).OrderBy(x => x.order).ToList();
+
+    var distinctTagsWithCount = Model.selectedTags
+                .GroupBy(s => s)
+                .Select(g => new { name = g.Key, Count = g.Count() });
+
+    List<FormSearchTags> distinctTagsFromQuestion7 = Model.steps[7].elements[0].answerOptions.Where(answer => answer.value.Equals("true", StringComparison.OrdinalIgnoreCase) && answer.searchTags?.Count > 0)
+        .Select(g => g.searchTags.FirstOrDefault()).Distinct().ToList();
+
+    // **************************************************************************************************************************
+    // IMPORTANT
+    // It is essential to check that the questions and answers referenced using ordinals hasn't changed.
+    var answerToSector = Model.steps[1].elements[0].selectedValue;
+    var QuestionSector = Model.steps[1].elements[0].text;
+    var isQuestion2Correct = string.IsNullOrWhiteSpace(QuestionSector) ? false :
+        (QuestionSector.Equals("Which sector do you operate in?", StringComparison.OrdinalIgnoreCase) ? true : false);
+
+
+    var answerToDoYouKnowSoftwareNeeds = Model.steps[5].elements[0].value;
+    var QuestionDoYouKnowSoftwareNeeds = Model.steps[5].elements[0].text;
+    var isAnswerYes = answerToDoYouKnowSoftwareNeeds.Equals("yes", StringComparison.OrdinalIgnoreCase);
+    var isQuestion6Correct = string.IsNullOrWhiteSpace(QuestionDoYouKnowSoftwareNeeds) ? false :
+        (QuestionDoYouKnowSoftwareNeeds.Equals("Do you know which software you need?", StringComparison.OrdinalIgnoreCase) ? true : false);
+    List<string> strInterest = new List<string>();
+
+    // Collate user interest from Question 7 or 8, depending on answer to question 6
+    if (isQuestion6Correct)
+    {
+        if (isAnswerYes)
+        {
+            foreach (var answer in Model.steps[6].elements[0].answerOptions)
+            {
+                if (answer.value.Equals("true", StringComparison.OrdinalIgnoreCase))
+                {
+                    strInterest.Add(string.IsNullOrWhiteSpace(answer.additionalInfo) ? answer.ResultPageLabel : answer.additionalInfo);
+                }
+            }
+        }
+        else
+        {
+            foreach (var answer in Model.steps[7].elements[0].answerOptions)
+            {
+                if (answer.value.Equals("true", StringComparison.OrdinalIgnoreCase))
+                {
+                    strInterest.Add(string.IsNullOrWhiteSpace(answer.additionalInfo) ? answer.ResultPageLabel : answer.additionalInfo);
+                }
+            }
+        }
+
+    }
+
+    var questionHowDoYouTrade = Model.steps[0].elements[0].text;
+    var answerHowDoYouTrade = Model.steps[0].elements[0].value;
+    var isQuestion1Correct = string.IsNullOrWhiteSpace(questionHowDoYouTrade) ? false :
+        (questionHowDoYouTrade.Equals("Where do most of your sales take place?", StringComparison.OrdinalIgnoreCase) ? true : false);
+
+    var questionHowDoYouUseSoftware = Model.steps[2].elements[0].text;
+    var answerHowDoYouUseSoftware = Model.steps[2].elements[0].answerOptions.Where(answer => answer.value == Model.steps[2].elements[0].value).FirstOrDefault().ResultPageLabel;
+    var isQuestion3Correct = string.IsNullOrWhiteSpace(questionHowDoYouUseSoftware) ? false :
+        (questionHowDoYouUseSoftware.Equals("How does your business currently use software?", StringComparison.OrdinalIgnoreCase) ? true : false);
+
+    var _sumaryMessageInterests = string.Join("; ", strInterest);
+    var sumaryMessageInterests = ListJoinFormatter.ReplaceLastCharacterWith(string.Join("; ", strInterest), ";", "and");
+
+    var tagList = new List<string>();
+}
+
+<hr class="beis-grey divider" aria-hidden="true">
+
+
+@if (Model.side_navigations != null)
+{
+    <partial name="CMSPageViews/_PartialSideNavigation" model="@Model.side_navigations" />
+}
+
+<main id="main-heading" role="main">
+    <div class="govuk-width-container govuk-!-padding-top-6 govuk-!-padding-bottom-6">
+        <div class="govuk-grid-row govuk-!-margin-bottom-6">
+            <div class="govuk-grid-column-two-thirds">
+                <h1 class="govuk-heading-xl govuk-!-padding-top-3">
+                    Your results
+                </h1>
+
+                <div class="details">
+                    <div class="beis-white">
+                        <div>
+                            <p class="govuk-body"><strong>What you've told us...</strong></p>
+                            <p class="govuk-body">
+                                Your business is in the <strong class="">@(isQuestion2Correct? answerToSector : "<error: Question 2 changed>")</strong> sector and you mostly trade
+                                <strong class="">@(isQuestion1Correct? answerHowDoYouTrade : "<error: Question 1 changed>")</strong>.
+                                <br><br>
+                                You <strong class="">@answerHowDoYouUseSoftware</strong>.
+                                <br>
+                            </p>
+
+                            <div class="results-link">
+                                <span class="beis-link-icon">
+                                    <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M11.5 23C17.8513 23 23 17.8513 23 11.5C23 5.14873 17.8513 0 11.5 0C5.14873 0 0 5.14873 0 11.5C0 17.8513 5.14873 23 11.5 23Z" fill="black"></path>
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M15.503 11.4942L11 6.99122L12.293 5.69922L18.088 11.4942L12.293 17.2892L11 15.9972L15.503 11.4942Z" fill="white"></path>
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M4.62012 10.5801H16.1051V12.4081H4.62012V10.5801Z" fill="white"></path>
+                                    </svg>
+                                </span>
+                                <a class="govuk-link"
+                                   href="/diagnostic-tool/summary"
+                                   title="Change your answers">
+                                    Change your answers
+                                </a>
+                            </div>
+
+                        </div>
+                        @*</details>*@
+
+                    </div>
+                </div>
+
+                <p class="govuk-body govuk-!-padding-top-3">
+                    @if (isQuestion6Correct)
+                    {
+                        if (isAnswerYes)
+                        {
+                            @Html.Raw("You are interested in <strong class=\"\">" + sumaryMessageInterests + "</strong>.")
+                            <br>
+                            <br>
+                            @Html.Raw("Based on your answers, we recommend <strong class=\"\">" +
+                                 sumaryMessageInterests + "</strong> for your business.")
+                            <br>
+
+                        <h2 class="govuk-heading-l govuk-!-padding-top-8">
+                            What software discount and guidance can you get? 
+                        </h2>
+                        
+                        <p class="govuk-body">
+                            Help to Grow: Digital offers your business a discount of up to 50% towards the cost of buying approved software, worth up to &pound;5,000. 
+                        </p>                        
+
+                        <p class="govuk-body">
+                            To apply for your discount today, please compare and then select an approved software product below.  
+                        </p>
+
+                        <p class="govuk-body">
+                            Discounts are subject to business eligibility. Check if you are eligible <a href="https://www.learn-to-grow-your-business.service.gov.uk/eligibility">here</a>. 
+                        </p>
+
+
+                    }
+                    else
+                    {
+                        if (distinctTagsFromQuestion7 != null)
+                        {
+                            @Html.Raw("The tasks you want to streamline include: <strong class=\"\">" + sumaryMessageInterests + "</strong>.")
+                            <br>
+                            <br>
+                            @Html.Raw("Based on your answers, we recommend ")
+                            @foreach (var tag in distinctTagsFromQuestion7)
+                            {
+                                tagList.Add(CamelCaseConverter.Delimiter(await tag.DisplayName(tag.ToString()), " "));
+                            }
+                            <strong>
+                                @ListJoinFormatter.ReplaceLastCharacterWith(string.Join("; ", tagList), ";", "and")
+                            </strong>
+                            @Html.Raw(" for your business.")
+                        }
+                        else
+                        {
+                            @Html.Raw("Here are some articles and guides to help you take the next step on your digital journey.")
+                        }
+                        <br>
+                    }
+                }
+                else
+                {
+                    @Html.Raw("<error: Question 1 changed>")
+                }
+                    </p>
+                </div>
+        </div>
+        <partial name="CMSPageViews/_PartialDivider" model="@divider" />
+
+        @if (Model.ComparisonToolProducts?.Count > 0)
+        {
+            string subheader = string.Empty;
+            int currentCategoryId = 0;
+            <div class="govuk-width-container govuk-!-padding-top-8  govuk-!-padding-bottom-8 product">
+                @if (accountingProducts?.Count > 0)
+                {
+                    subheader = "Digital accounting software";
+                    currentCategoryId = Tags.Single(r => r.name.Equals("accounting", StringComparison.OrdinalIgnoreCase)).id;
+                    <div class="jsLink">
+                        <partial name="ComparisonToolViews/_PartialProductCategory" model="new ComparisonToolProductCategoryViewModel { CurrentCategoryId = currentCategoryId, productsForCurrentCategoryToRender = accountingProducts, subheader = @subheader, VendorProdLogorUrl = Model.VendorProdLogorUrl }" />
+                    </div>
+                    <div class="noJsLink">
+                        <partial name="ComparisonToolViews/_PartialProductCategoryNoJs" model="new ComparisonToolProductCategoryViewModel { CurrentCategoryId = currentCategoryId, productsForCurrentCategoryToRender = accountingProducts, subheader = @subheader, VendorProdLogorUrl = Model.VendorProdLogorUrl }" />
+                    </div>
+                }
+
+                @if (crmProducts?.Count > 0)
+                {
+                    subheader =  "Customer Relationship Management (CRM) Software";
+                    currentCategoryId = Tags.Single(r => r.name.Equals("crm", StringComparison.OrdinalIgnoreCase)).id;
+                    <div class="jsLink">
+                        <partial name="ComparisonToolViews/_PartialProductCategory" model="new ComparisonToolProductCategoryViewModel { CurrentCategoryId = currentCategoryId, productsForCurrentCategoryToRender = crmProducts, subheader = @subheader, VendorProdLogorUrl = Model.VendorProdLogorUrl }" />
+                    </div>
+                    <div class="noJsLink">
+                        <partial name="ComparisonToolViews/_PartialProductCategoryNoJs" model="new ComparisonToolProductCategoryViewModel { CurrentCategoryId = currentCategoryId, productsForCurrentCategoryToRender = crmProducts, subheader = @subheader, VendorProdLogorUrl = Model.VendorProdLogorUrl }" />
+                    </div>
+                }
+
+
+                @if (ecommerceProducts?.Count > 0)
+                {
+                    subheader = "eCommerce software";
+                    currentCategoryId = Tags.Single(r => r.name.Equals("ecommerce", StringComparison.OrdinalIgnoreCase)).id;
+                    <div class="jsLink">
+                        <partial name="ComparisonToolViews/_PartialProductCategory" model="new ComparisonToolProductCategoryViewModel { CurrentCategoryId = currentCategoryId, productsForCurrentCategoryToRender = ecommerceProducts, subheader = @subheader, VendorProdLogorUrl = Model.VendorProdLogorUrl }" />
+                    </div>
+                    <div class="noJsLink">
+                        <partial name="ComparisonToolViews/_PartialProductCategoryNoJs" model="new ComparisonToolProductCategoryViewModel { CurrentCategoryId = currentCategoryId, productsForCurrentCategoryToRender = ecommerceProducts, subheader = @subheader, VendorProdLogorUrl = Model.VendorProdLogorUrl }" />
+                    </div>
+                }
+            </div>
+
+            <script src="~/js/comparisontool.js"></script>
+        }
+
+        <div class="govuk-grid-row govuk-!-padding-bottom-0">
+            <div class="govuk-grid-column-full">
+                <h2 class="govuk-heading-l govuk-!-padding-top-8 ">
+                    Expert guidance matching your answers
+                </h2>
+            </div>
+        </div>
+        <partial name="DiagnosticToolFormViews/_PartialSearchArticles" model="@relatedArticles" />
+
+        @if (hasRegisterYourInterestBlock)
+        {
+            <partial name="CMSPageViews/_PartialDivider" model="@divider" />
+            <partial name="CMSPageViews/_Partial2Columns" model="@Model.RegisterYourInterestBlock" />
+        }
+    </div>
+</main>
