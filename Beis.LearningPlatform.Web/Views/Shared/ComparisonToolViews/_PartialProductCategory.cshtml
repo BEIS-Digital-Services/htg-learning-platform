@@ -51,7 +51,7 @@
                                    asp-controller="comparisonTool" asp-action="ProductDetails" asp-all-route-data="@AddRouteData(@item.product_id)" class="govuk-button compare" data-module="govuk-button">
                                     See features
                                 </a>
-                               <a id="link-comparisontoolviews-productcategory-compare-@(item.GetGaLinkId())" aria-label="include @ComparisonToolFieldValidator.ParseStringField(item.product_name)" class="govuk-button button__input compare" data-module="govuk-button" 
+                               <a ga-data-action-id="link-comparisontoolviews-productcategory-compare-@(item.GetGaLinkId())" aria-label="include @ComparisonToolFieldValidator.ParseStringField(item.product_name)" class="govuk-button button__input compare" data-module="govuk-button" 
                                    id="@("prod-"+item.product_id)">
                                     + Compare
                                 </a>

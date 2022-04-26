@@ -52,16 +52,16 @@
                                 <li class="govuk-header__navigation-item @if (Model.PageName.ToLower() == link.label.Trim().ToLower()) { @Html.Raw("govuk-header__navigation-item--active"); }">
                                 @if (linkAction.Contains("comparison-tool"))
                                 {
-                                    <a id="link-cmspageviews-navigation-@(link.GetGaLinkId())" id="@link.id" class="govuk-header__link jsLink" asp-controller="Home" asp-action="@linkAction.Replace("-", "_")">
+                                    <a ga-data-action-id="link-cmspageviews-navigation-@(link.GetGaLinkId())" id="@link.id" class="govuk-header__link jsLink" asp-controller="Home" asp-action="@linkAction.Replace("-", "_")">
                                         @Html.Raw(link.label)
                                     </a>
-                                    <a id="link-cmspageviews-navigation-@(link.GetGaLinkId())" id="@link.id" class="govuk-header__link noJsLink" asp-controller="Home" asp-action="@linkAction.Replace("-", "_")@("NoJs")">
+                                    <a ga-data-action-id="link-cmspageviews-navigation-@(link.GetGaLinkId())" id="@link.id" class="govuk-header__link noJsLink" asp-controller="Home" asp-action="@linkAction.Replace("-", "_")@("NoJs")">
                                         @Html.Raw(link.label)
                                     </a>
                                 }
                                 else
                                 {
-                                    <a id="link-cmspageviews-navigation-@(link.GetGaLinkId())" id="@link.id" class="govuk-header__link" asp-controller="Home" asp-action="@linkAction.Replace("-", "_")">
+                                    <a ga-data-action-id="link-cmspageviews-navigation-@(link.GetGaLinkId())" id="@link.id" class="govuk-header__link" asp-controller="Home" asp-action="@linkAction.Replace("-", "_")">
                                         @Html.Raw(link.label)
                                     </a>
                                 }
