@@ -308,7 +308,7 @@
                         </script>
 
                         <p class="govuk-button-group">
-                            <a id="link-cmspageviews-feedbackpromptjs-submit-6" role="button"
+                            <a id="link-cmspageviews-feedbackpromptjs-submit" role="button"
                                onclick="feedback(routeData6)"
                                class="govuk-button primary">
                                 @Model.ReportSubmitButton.label
@@ -391,7 +391,7 @@
                 "IsPageUseful": feedback,
             },
             success: function (response) {
-                $("#FeedbackYesNoMessage").html("Thank you for your feedback. If you’d like to tell us more about your experience today, <a id="link-cmspageviews-feedbackpromptjs-222f" title='Please visit our survey' target='_blank'  href='https://beis.fra1.qualtrics.com/jfe/form/SV_0GLt4cTG0Oi1Pmu' class='beis-white-text'>please visit our survey</a>.");
+                $("#FeedbackYesNoMessage").html("Thank you for your feedback. If you’d like to tell us more about your experience today, <a id='link-cmspageviews-feedbackpromptjs-useful-please-visit-survey' title='Please visit our survey' target='_blank'  href='https://beis.fra1.qualtrics.com/jfe/form/SV_0GLt4cTG0Oi1Pmu' class='beis-white-text'>please visit our survey</a>.");
                 $("#FeedbackYesNoDiv").removeClass("@showButtonClass");
                 $("#FeedbackYesNoPanel").hide();
                 $("#FeedbackReportProblemDiv").hide();
@@ -412,7 +412,7 @@
                 "whatWentWrong": wrong
             },
             success: function (response) {
-                $("#FeedbackYesNoMessage").html("Thank you for your feedback. If you’d like to tell us more about your experience today, <a id="link-cmspageviews-feedbackpromptjs-bae3" title='Please visit our survey' target='_blank'  href='https://beis.fra1.qualtrics.com/jfe/form/SV_0GLt4cTG0Oi1Pmu' class='beis-white-text'>please visit our survey</a>.");
+                $("#FeedbackYesNoMessage").html("Thank you for your feedback. If you’d like to tell us more about your experience today, <a id='link-cmspageviews-feedbackpromptjs-problem-please-visit-survey' title='Please visit our survey' target='_blank'  href='https://beis.fra1.qualtrics.com/jfe/form/SV_0GLt4cTG0Oi1Pmu' class='beis-white-text'>please visit our survey</a>.");
                 $("#FeedbackYesNoDiv").removeClass("@showButtonClass");
                 $("#FeedbackYesNoContainer").show();
                 $("#FeedbackReportProblemPanel").hide();
