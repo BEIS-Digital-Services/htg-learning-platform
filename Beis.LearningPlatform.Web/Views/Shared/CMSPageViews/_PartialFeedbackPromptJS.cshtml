@@ -154,7 +154,7 @@
                                             };
                                     </script>
 
-                                    <a id="link-cmspageviews-feedbackpromptjs-e2bc" role="button"
+                                    <a id="link-cmspageviews-feedbackpromptjs-report" role="button"
                                        onclick="feedback(routeData3)"
                                        class="govuk-button @setButtonType(Model.titleReport.type, "beisBlack", Model.titleReport.custom_class)"
                                        data-module="govuk-button">
@@ -188,7 +188,7 @@
                 </script>
 
 
-                <a id="link-cmspageviews-feedbackpromptjs-f1bb" class="govuk-button secondary"
+                <a id="link-cmspageviews-feedbackpromptjs-not-useful" class="govuk-button secondary"
                    onclick="feedback(routeData4)"
                    data-track-category="yesNoFeedbackForm"
                    data-track-action="FormClose"
@@ -220,14 +220,14 @@
                     @if (showButtons && Model.NoSubmitButton != null)
                     {
                         <p class="govuk-button-group">
-                            <a id="link-cmspageviews-feedbackpromptjs-b9f2" role="button"
+                            <a id="link-cmspageviews-feedbackpromptjs-no-submit-button" role="button"
                                class="govuk-button primary">
                                 @Model.NoSubmitButton.label
                             </a>
 
                             @if (Model.NoEmailAddressLink != null)
                             {
-                                <a id="link-cmspageviews-feedbackpromptjs-a38f" href="https://www.smartsurvey.co.uk/s/gov-uk-banner/?c=/service-manual/service-assessments/get-feedback-page&amp;amp;gcl=2049733727.1626700136"
+                                <a ga-data-action-id="link-cmspageviews-feedbackpromptjs-take-survey" href="https://www.smartsurvey.co.uk/s/gov-uk-banner/?c=/service-manual/service-assessments/get-feedback-page&amp;amp;gcl=2049733727.1626700136"
                                    class="govuk-link"
                                    id="take-survey"
                                    target="_blank"
@@ -259,7 +259,7 @@
                         };
                 </script>
 
-                <a id="link-cmspageviews-feedbackpromptjs-02f0" class="govuk-button secondary"
+                <a id="link-cmspageviews-feedbackpromptjs-page-is-not-useful" class="govuk-button secondary"
                    onclick="feedback(routeData5)"
                    data-track-category="yesNoFeedbackForm"
                    data-track-action="fFormClose"
@@ -308,7 +308,7 @@
                         </script>
 
                         <p class="govuk-button-group">
-                            <a id="link-cmspageviews-feedbackpromptjs-a89e" role="button"
+                            <a id="link-cmspageviews-feedbackpromptjs-submit-6" role="button"
                                onclick="feedback(routeData6)"
                                class="govuk-button primary">
                                 @Model.ReportSubmitButton.label
