@@ -1,9 +1,8 @@
 ﻿using Beis.LearningPlatform.Web.Utils;
-using System.Web;
 
 namespace Beis.LearningPlatform.Web.StrapiApi.Models
 {
-    public class CMSPageLink
+	public class CMSPageLink
     {
         public int id { get; set; }
         public string text { get; set; }

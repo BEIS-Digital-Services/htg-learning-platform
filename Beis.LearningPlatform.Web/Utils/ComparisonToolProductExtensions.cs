@@ -5,13 +5,12 @@ using System.Linq;
 
 namespace Beis.LearningPlatform.Web.Utils
 {
-    internal static class ComparisonToolProductExtensions
+    public static class ComparisonToolProductExtensions
     {
         internal static IOrderedEnumerable<ComparisonToolProduct> RandomOrder(this IList<ComparisonToolProduct> products)
         {
             return products.OrderBy(p => Guid.NewGuid());
         }
-
 
         public static string GetGaLinkId(this ComparisonToolProduct comparisonToolProduct)
         {

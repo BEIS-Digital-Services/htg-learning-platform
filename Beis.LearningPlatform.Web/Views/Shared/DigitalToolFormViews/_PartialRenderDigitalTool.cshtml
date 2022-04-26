@@ -50,7 +50,7 @@
                             <p class="govuk-body">Registering takes around 5 minutes</p>
 
 
-                            <button type="submit" asp-action="StartForm" class="btn btn-primary">Start</button>
+                            <button id="btn-digitaltoolformviews-renderdigitaltool-84c0" type="submit" asp-action="StartForm" class="btn btn-primary">Start</button>
 
                             <p class="govuk-error-summary__title">Before you start</p>
 
@@ -318,16 +318,16 @@
 
             <div class="beis-white govuk-grid-column-two-thirds">
                 <div class="govuk-width-container govuk-!-margin-top-6 govuk-!-margin-bottom-6">
-                    <button type="submit" asp-action="PrevStep" class="btn btn-primary">Back</button>
+                    <button id="btn-digitaltoolformviews-renderdigitaltool-b69b" type="submit" asp-action="PrevStep" class="btn btn-primary">Back</button>
 
                     @if (Model.CurrStep == Model.steps[Model.steps.Count - 1].id & Model.validationErrors.Count == 0 & (bool)ViewData["FormComplete"])
                     {
-                        <button type="submit" asp-action="NextStep" class="btn btn-primary">Submit</button>
+                        <button id="btn-digitaltoolformviews-renderdigitaltool-ccf5" type="submit" asp-action="NextStep" class="btn btn-primary">Submit</button>
 
                     }
                     else
                     {
-                        <button type="submit" asp-action="NextStep" class="btn btn-primary">Next</button>
+                        <button id="btn-digitaltoolformviews-renderdigitaltool-6720" type="submit" asp-action="NextStep" class="btn btn-primary">Next</button>
 
                     }
                     <a asp-action="Start" class="btn btn-outline-secondary">Clear</a>
