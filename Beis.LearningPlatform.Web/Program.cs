@@ -39,6 +39,7 @@ namespace Beis.LearningPlatform.Web
                    {
                        configuration.AddJsonFile("diagnosticForm.json", false, true);
                        var configurationRoot = configuration.Build();
+                       configuration.AddAzureAppConfiguration(configurationRoot.GetConnectionString("AppConfig"));
                        ApplicationForm options = new();
                        configurationRoot.GetSection(nameof(ApplicationForm)).Bind(options);
                    })
