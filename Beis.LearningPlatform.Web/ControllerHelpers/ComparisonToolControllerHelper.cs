@@ -85,26 +85,26 @@ namespace Beis.LearningPlatform.Web.ControllerHelpers
         }
 
         public async Task<ComparisonToolPageViewModel> InitViewModelForSelectedProduct(long productId)
-		{
-			var viewModel = new ComparisonToolPageViewModel
-			{
+        {
+            var viewModel = new ComparisonToolPageViewModel
+            {
                 Referrer = _httpContextAccessor.HttpContext?.Request.Headers["Referer"].ToString()
-			};
+            };
 
-			await _comparisonToolService.SetNavAndFooter(viewModel);
+            await _comparisonToolService.SetNavAndFooter(viewModel);
 
-			var currentProduct = await _comparisonToolService.GetApprovedProductFromApprovedVendor(productId);
-			viewModel.ContentKey = $"comparison-tool-product-details-{currentProduct?.product_name.UrlEncode(true)}";
-			viewModel.products = new List<ComparisonToolProduct> { currentProduct };
-			await _comparisonToolService.PopulateChildRelationships(viewModel.products);
-			this.SetViewModelUserJourneyData(viewModel, null, null, "/comparison-tool");
+            var currentProduct = await _comparisonToolService.GetApprovedProductFromApprovedVendor(productId);
+            viewModel.ContentKey = $"comparison-tool-product-details-{currentProduct?.product_name.UrlEncode(true)}";
+            viewModel.products = new List<ComparisonToolProduct> { currentProduct };
+            await _comparisonToolService.PopulateChildRelationships(viewModel.products);
+            this.SetViewModelUserJourneyData(viewModel, null, null, "/comparison-tool");
 
-			viewModel.currentProduct = currentProduct;
+            viewModel.currentProduct = currentProduct;
 
-			return viewModel;
-		}
+            return viewModel;
+        }
 
-		public void SetViewModelUserJourneyData(ComparisonToolPageViewModel viewModel, string productCategoryIds, string productIds, string referrerPath)
+        public void SetViewModelUserJourneyData(ComparisonToolPageViewModel viewModel, string productCategoryIds, string productIds, string referrerPath)
         {
             viewModel.VoucherUrl = _voucherAppOption.BaseUrl;
             viewModel.VendorProdLogorUrl = _vendorAppOption.ProdLogoUrl;
@@ -132,5 +132,5 @@ namespace Beis.LearningPlatform.Web.ControllerHelpers
             var selectedProduct = products.SingleOrDefault(x => x.product_id == productId);
             return $"{_voucherAppOption.BaseUrl}/?product_id={selectedProduct?.product_id}&product_type={selectedProduct?.product_type}";
         }
-            }
+    }
 }
