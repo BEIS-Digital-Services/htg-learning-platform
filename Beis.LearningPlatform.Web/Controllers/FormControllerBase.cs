@@ -15,11 +15,6 @@ namespace Beis.LearningPlatform.Web.Controllers
     {
         private readonly IDiagnosticToolControllerHelper _controllerHelper;
 
-        /// <summary>
-        /// Creates a new instance of the class with the specified parameters.
-        /// </summary>
-        /// <param name="logger">An ILogger that is the logger to use.</param>
-        /// <param name="cmsConfiguration">An ICmsConfiguration that is the CMS configuration to use.</param>
         public FormControllerBase(ILogger<ControllerBase> logger,
             IDiagnosticToolControllerHelper controllerHelper) : base(logger)
         {
@@ -169,7 +164,7 @@ namespace Beis.LearningPlatform.Web.Controllers
             return FormTypes.DiagnosticTool;
         }
 
-        #region Used by Cookie Acceptance Redirection
+        // Used by Cookie Acceptance Redirection
         //TODO: LP-967 Cookies Cannot Be Accepted or Rejected in DT
         // ******************************************************************************************************************************************
         // Currently, the Cookie acceptance uses an href to process the accepted cookie. As the Diagnostic Tool uses Form Post, the view model is not transferred
@@ -204,6 +199,6 @@ namespace Beis.LearningPlatform.Web.Controllers
             return await Start();
         }
 
-        #endregion
+        
     }
 }
