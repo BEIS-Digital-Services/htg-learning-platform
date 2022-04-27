@@ -51,7 +51,7 @@ namespace Beis.LearningPlatform.Web.Controllers
         }
 
         [Route("/guidance-and-tools/{tag?}")]
-        public async Task<IActionResult> Guidance_and_tools(string tag)
+        public async Task<IActionResult> Guidance_and_tools([FromRoute] string tag, [FromQuery] bool? previewSearchArticles)
         {
             if (!string.IsNullOrWhiteSpace(tag))
             { 
@@ -59,6 +59,8 @@ namespace Beis.LearningPlatform.Web.Controllers
             }
 
             var viewModel = await _homeControllerHelper.ProcessGetCustomPageResult("Custom-pages/guidance-and-tools");
+            viewModel.PreviewSearchArticles = previewSearchArticles;
+
             await _homeControllerHelper.SetReactiveTagComponents(viewModel);
             viewModel.SetPageNameForNavigation("Guidance and Tools");
             return View("Resources", viewModel);
