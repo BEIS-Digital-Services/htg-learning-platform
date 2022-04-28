@@ -40,20 +40,9 @@
                 <div class="govuk-!-margin-bottom-0 govuk-!-margin-top-3 govuk-body">
                     <p class="govuk-body">
                         <strong>@currentFormStep.summaryTitle</strong>
-                        @if (!informationStorageQuestion)
-                        {
-                            <partial name="SkillsFormViews/_PartialRenderDTChildSummary" model="@Model" />
-                        }
+                        <partial name="SkillsFormViews/_PartialRenderDTChildSummary" model="@Model" />
                     </p>
                 </div>
-                @if (informationStorageQuestion)
-                {
-                    <div class="govuk-summary-list govuk-!-margin-bottom-0 @additionalClass">
-                        <div class="govuk-summary-list__row">
-                            <partial name="SkillsFormViews/_PartialRenderDTChildSummary" model="@Model" />
-                        </div>
-                    </div>
-                }
 
             }
             <input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].text" />
