@@ -60,7 +60,7 @@ namespace Beis.LearningPlatform.Web.Controllers
             }
             else
             {
-                return BadRequest();
+                return GetViewResult(model);
             }
         }
 
