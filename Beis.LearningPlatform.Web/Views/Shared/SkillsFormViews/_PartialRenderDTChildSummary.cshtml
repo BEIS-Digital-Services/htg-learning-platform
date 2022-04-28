@@ -46,31 +46,19 @@
                 }
             }
 
-            @if (informationStorageQuestion)
+            @ListJoinFormatter.ReplaceLastCharacterWith(string.Join("; ", checkboxAnswers), ";", "and")
+            @for (z = 0; z < currentFormStepElement.answerOptions.Count; z++)
             {
-                <ul>
-                    @foreach (var answer in checkboxAnswers)
-                    {
-                        <li>@answer</li>
-                    }
-                </ul>
-            }
-            else
-            {
-                @ListJoinFormatter.ReplaceLastCharacterWith(string.Join("; ", checkboxAnswers), ";", "and")
-                @for (z = 0; z < currentFormStepElement.answerOptions.Count; z++)
+                if (currentFormStepElement.answerOptions[z].value.Equals("true", StringComparison.OrdinalIgnoreCase))
                 {
-                    if (currentFormStepElement.answerOptions[z].value.Equals("true", StringComparison.OrdinalIgnoreCase))
-                    {
 
-                        <input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].text" class="govuk-checkboxes__input" />
-                        <input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].hint" class="govuk-checkboxes__input" />
-                        <input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].value" class="govuk-checkboxes__input" />
-                    }
-
+                    <input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].text" class="govuk-checkboxes__input" />
+                    <input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].hint" class="govuk-checkboxes__input" />
+                    <input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].value" class="govuk-checkboxes__input" />
                 }
 
             }
+
 
             break;
 

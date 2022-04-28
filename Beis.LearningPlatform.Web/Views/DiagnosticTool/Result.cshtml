@@ -5,7 +5,7 @@
 @model Beis.LearningPlatform.Web.Models.DiagnosticTool.DiagnosticToolForm
 
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";    
+    Layout = "~/Views/Shared/_Layout.cshtml";
     bool hasRegisterYourInterestBlock = Model.RegisterYourInterestBlock != default;
     CMSPageComponent divider = new() { color = "beisGrey", type = "divider" };
 
@@ -192,13 +192,13 @@
                                  sumaryMessageInterests + "</strong> for your business.")
                             <br>
 
-                        <h2 class="govuk-heading-l govuk-!-padding-top-8">
-                            What software discount and guidance can you get? 
-                        </h2>
-                        
+                            <h2 class="govuk-heading-l govuk-!-padding-top-8">
+                                What software discount and guidance can you get? 
+                            </h2>
+
                         <p class="govuk-body">
                             Help to Grow: Digital offers your business a discount of up to 50% towards the cost of buying approved software, worth up to &pound;5,000. 
-                        </p>                        
+                        </p>
 
                         <p class="govuk-body">
                             To apply for your discount today, please compare and then select an approved software product below.  
@@ -217,15 +217,20 @@
                             @Html.Raw("The tasks you want to streamline include: <strong class=\"\">" + sumaryMessageInterests + "</strong>.")
                             <br>
                             <br>
-                            @Html.Raw("Based on your answers, we recommend ")
                             @foreach (var tag in distinctTagsFromQuestion7)
                             {
                                 tagList.Add(CamelCaseConverter.Delimiter(await tag.DisplayName(tag.ToString()), " "));
                             }
-                            <strong>
-                                @ListJoinFormatter.ReplaceLastCharacterWith(string.Join("; ", tagList), ";", "and")
-                            </strong>
-                            @Html.Raw(" for your business.")
+                            @if (tagList.Any())
+                            {
+                                @Html.Raw("Based on your answers, we recommend ")
+
+                                <strong>
+                                    @ListJoinFormatter.ReplaceLastCharacterWith(string.Join("; ", tagList), ";", "and")
+                                </strong>
+                                @Html.Raw(" for your business.")
+                            }
+
                         }
                         else
                         {
@@ -240,68 +245,68 @@
                 }
                     </p>
                 </div>
-        </div>
-        <partial name="CMSPageViews/_PartialDivider" model="@divider" />
-
-        @if (Model.ComparisonToolProducts?.Count > 0)
-        {
-            string subheader = string.Empty;
-            int currentCategoryId = 0;
-            <div class="govuk-width-container govuk-!-padding-top-8  govuk-!-padding-bottom-8 product">
-                @if (accountingProducts?.Count > 0)
-                {
-                    subheader = "Digital accounting software";
-                    currentCategoryId = Tags.Single(r => r.name.Equals("accounting", StringComparison.OrdinalIgnoreCase)).id;
-                    <div class="jsLink">
-                        <partial name="ComparisonToolViews/_PartialProductCategory" model="new ComparisonToolProductCategoryViewModel { CurrentCategoryId = currentCategoryId, productsForCurrentCategoryToRender = accountingProducts, subheader = @subheader, VendorProdLogorUrl = Model.VendorProdLogorUrl }" />
-                    </div>
-                    <div class="noJsLink">
-                        <partial name="ComparisonToolViews/_PartialProductCategoryNoJs" model="new ComparisonToolProductCategoryViewModel { CurrentCategoryId = currentCategoryId, productsForCurrentCategoryToRender = accountingProducts, subheader = @subheader, VendorProdLogorUrl = Model.VendorProdLogorUrl }" />
-                    </div>
-                }
-
-                @if (crmProducts?.Count > 0)
-                {
-                    subheader =  "Customer Relationship Management (CRM) Software";
-                    currentCategoryId = Tags.Single(r => r.name.Equals("crm", StringComparison.OrdinalIgnoreCase)).id;
-                    <div class="jsLink">
-                        <partial name="ComparisonToolViews/_PartialProductCategory" model="new ComparisonToolProductCategoryViewModel { CurrentCategoryId = currentCategoryId, productsForCurrentCategoryToRender = crmProducts, subheader = @subheader, VendorProdLogorUrl = Model.VendorProdLogorUrl }" />
-                    </div>
-                    <div class="noJsLink">
-                        <partial name="ComparisonToolViews/_PartialProductCategoryNoJs" model="new ComparisonToolProductCategoryViewModel { CurrentCategoryId = currentCategoryId, productsForCurrentCategoryToRender = crmProducts, subheader = @subheader, VendorProdLogorUrl = Model.VendorProdLogorUrl }" />
-                    </div>
-                }
-
-
-                @if (ecommerceProducts?.Count > 0)
-                {
-                    subheader = "eCommerce software";
-                    currentCategoryId = Tags.Single(r => r.name.Equals("ecommerce", StringComparison.OrdinalIgnoreCase)).id;
-                    <div class="jsLink">
-                        <partial name="ComparisonToolViews/_PartialProductCategory" model="new ComparisonToolProductCategoryViewModel { CurrentCategoryId = currentCategoryId, productsForCurrentCategoryToRender = ecommerceProducts, subheader = @subheader, VendorProdLogorUrl = Model.VendorProdLogorUrl }" />
-                    </div>
-                    <div class="noJsLink">
-                        <partial name="ComparisonToolViews/_PartialProductCategoryNoJs" model="new ComparisonToolProductCategoryViewModel { CurrentCategoryId = currentCategoryId, productsForCurrentCategoryToRender = ecommerceProducts, subheader = @subheader, VendorProdLogorUrl = Model.VendorProdLogorUrl }" />
-                    </div>
-                }
             </div>
-
-            <script src="~/js/comparisontool.js"></script>
-        }
-
-        <div class="govuk-grid-row govuk-!-padding-bottom-0">
-            <div class="govuk-grid-column-full">
-                <h2 class="govuk-heading-l govuk-!-padding-top-8 ">
-                    Expert guidance matching your answers
-                </h2>
-            </div>
-        </div>
-        <partial name="DiagnosticToolFormViews/_PartialSearchArticles" model="@relatedArticles" />
-
-        @if (hasRegisterYourInterestBlock)
-        {
             <partial name="CMSPageViews/_PartialDivider" model="@divider" />
-            <partial name="CMSPageViews/_Partial2Columns" model="@Model.RegisterYourInterestBlock" />
-        }
-    </div>
-</main>
+
+            @if (Model.ComparisonToolProducts?.Count > 0)
+            {
+                string subheader = string.Empty;
+                int currentCategoryId = 0;
+                <div class="govuk-width-container govuk-!-padding-top-8  govuk-!-padding-bottom-8 product">
+                    @if (accountingProducts?.Count > 0)
+                    {
+                        subheader = "Digital accounting software";
+                        currentCategoryId = Tags.Single(r => r.name.Equals("accounting", StringComparison.OrdinalIgnoreCase)).id;
+                        <div class="jsLink">
+                            <partial name="ComparisonToolViews/_PartialProductCategory" model="new ComparisonToolProductCategoryViewModel { CurrentCategoryId = currentCategoryId, productsForCurrentCategoryToRender = accountingProducts, subheader = @subheader, VendorProdLogorUrl = Model.VendorProdLogorUrl }" />
+                        </div>
+                        <div class="noJsLink">
+                            <partial name="ComparisonToolViews/_PartialProductCategoryNoJs" model="new ComparisonToolProductCategoryViewModel { CurrentCategoryId = currentCategoryId, productsForCurrentCategoryToRender = accountingProducts, subheader = @subheader, VendorProdLogorUrl = Model.VendorProdLogorUrl }" />
+                        </div>
+                    }
+
+                    @if (crmProducts?.Count > 0)
+                    {
+                        subheader = "Customer Relationship Management (CRM) Software";
+                        currentCategoryId = Tags.Single(r => r.name.Equals("crm", StringComparison.OrdinalIgnoreCase)).id;
+                        <div class="jsLink">
+                            <partial name="ComparisonToolViews/_PartialProductCategory" model="new ComparisonToolProductCategoryViewModel { CurrentCategoryId = currentCategoryId, productsForCurrentCategoryToRender = crmProducts, subheader = @subheader, VendorProdLogorUrl = Model.VendorProdLogorUrl }" />
+                        </div>
+                        <div class="noJsLink">
+                            <partial name="ComparisonToolViews/_PartialProductCategoryNoJs" model="new ComparisonToolProductCategoryViewModel { CurrentCategoryId = currentCategoryId, productsForCurrentCategoryToRender = crmProducts, subheader = @subheader, VendorProdLogorUrl = Model.VendorProdLogorUrl }" />
+                        </div>
+                    }
+
+
+                    @if (ecommerceProducts?.Count > 0)
+                    {
+                        subheader = "eCommerce software";
+                        currentCategoryId = Tags.Single(r => r.name.Equals("ecommerce", StringComparison.OrdinalIgnoreCase)).id;
+                        <div class="jsLink">
+                            <partial name="ComparisonToolViews/_PartialProductCategory" model="new ComparisonToolProductCategoryViewModel { CurrentCategoryId = currentCategoryId, productsForCurrentCategoryToRender = ecommerceProducts, subheader = @subheader, VendorProdLogorUrl = Model.VendorProdLogorUrl }" />
+                        </div>
+                        <div class="noJsLink">
+                            <partial name="ComparisonToolViews/_PartialProductCategoryNoJs" model="new ComparisonToolProductCategoryViewModel { CurrentCategoryId = currentCategoryId, productsForCurrentCategoryToRender = ecommerceProducts, subheader = @subheader, VendorProdLogorUrl = Model.VendorProdLogorUrl }" />
+                        </div>
+                    }
+                </div>
+
+                <script src="~/js/comparisontool.js"></script>
+            }
+
+            <div class="govuk-grid-row govuk-!-padding-bottom-0">
+                <div class="govuk-grid-column-full">
+                    <h2 class="govuk-heading-l govuk-!-padding-top-8 ">
+                        Expert guidance matching your answers
+                    </h2>
+                </div>
+            </div>
+            <partial name="DiagnosticToolFormViews/_PartialSearchArticles" model="@relatedArticles" />
+
+            @if (hasRegisterYourInterestBlock)
+            {
+                <partial name="CMSPageViews/_PartialDivider" model="@divider" />
+                <partial name="CMSPageViews/_Partial2Columns" model="@Model.RegisterYourInterestBlock" />
+            }
+        </div>
+    </main>
