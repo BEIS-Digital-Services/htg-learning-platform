@@ -189,9 +189,24 @@ namespace Beis.LearningPlatform.Web.Tests.ControllerTests
         {
             var controller = CreateController();
 
-            var result = await controller.Guidance_and_tools(tag);
+            var result = await controller.Guidance_and_tools(tag, null);
             Assert.IsNotNull(result);
             Assert.That((string.IsNullOrWhiteSpace(tag) && result is ViewResult) || result is IActionResult);
+        }
+
+        [Test]
+        [TestCase(null)]
+        [TestCase(true)]
+        [TestCase(false)]
+        public async Task Test_HomeController_Guidance_and_tools_Sets_PreviewSearchArticles(bool? previewSearchArticles)
+        {
+            var controller = CreateController();
+
+            var result = await controller.Guidance_and_tools(null, previewSearchArticles) as ViewResult;
+            Assert.IsNotNull(result);
+            var cmsPageViewModel = result.Model as CMSPageViewModel;
+            Assert.IsNotNull(cmsPageViewModel);
+            Assert.AreEqual(previewSearchArticles, cmsPageViewModel.PreviewSearchArticles);
         }
 
         [Test]

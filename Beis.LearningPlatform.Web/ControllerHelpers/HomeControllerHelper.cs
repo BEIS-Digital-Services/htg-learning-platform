@@ -26,8 +26,9 @@ namespace Beis.LearningPlatform.Web.ControllerHelpers
             var component = viewModel.components.Where(item => item.__component.Equals("page.reactive-tags", StringComparison.OrdinalIgnoreCase)).FirstOrDefault();
             if (component != null)
             {
-                component.search_articles = await ProcessGetSearchArticlesResult("search-articles");
-                component.search_articles.OrderBy(x => x.order);
+                var strapiAction = "search-articles" + (viewModel.PreviewSearchArticles == true ? "?_publicationState=preview" : String.Empty);
+                var searchArticles = await ProcessGetSearchArticlesResult(strapiAction);
+                component.search_articles = searchArticles.OrderBy(x => x.order).ToList();
             }
         }
 
