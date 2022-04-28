@@ -19,12 +19,9 @@
 
 <div class="govuk-form-group govuk-grid-column-two-thirds govuk-!-margin-bottom-0 govuk-!-margin-top-3 govuk-footer__heading @(Model.HasEmailError ? "govuk-form-group--error" : string.Empty)" id="email">
     <fieldset>
-        @if (formType == FormTypes.DiagnosticTool)
-        {
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                <h2 class="govuk-fieldset__heading ">Want to review your results later?</h2>
-            </legend>
-        }
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h2 class="govuk-fieldset__heading ">Want to review your results later?</h2>
+        </legend>
         <p class="govuk-body-m">Enter your email address and we'll send a copy of this page to your inbox.</p>
     </fieldset>
 
