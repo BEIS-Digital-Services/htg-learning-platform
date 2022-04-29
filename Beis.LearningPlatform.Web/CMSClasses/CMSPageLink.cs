@@ -1,8 +1,6 @@
-﻿using Beis.LearningPlatform.Web.Utils;
-
-namespace Beis.LearningPlatform.Web.StrapiApi.Models
+﻿namespace Beis.LearningPlatform.Web.StrapiApi.Models
 {
-	public class CMSPageLink
+	public class CMSPageLink : ICmsPageLink
     {
         public int id { get; set; }
         public string text { get; set; }
@@ -16,16 +14,5 @@ namespace Beis.LearningPlatform.Web.StrapiApi.Models
         public string aria { get; set; }
         public CMSPageIcon icon { get; set; }
         public bool? hide { get; set; }
-
-		public string GetGaLinkId()
-		{
-			if (string.IsNullOrWhiteSpace(label))
-			{
-				return $"{id}";
-			}
-
-			var labelId = label.Replace(" ", "-").UrlEncode(true);
-			return $"{labelId}-{id}";
-		}
 	}
 }
