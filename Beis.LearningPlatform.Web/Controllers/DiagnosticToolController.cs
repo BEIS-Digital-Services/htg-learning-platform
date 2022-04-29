@@ -18,12 +18,10 @@ namespace Beis.LearningPlatform.Web.Controllers
     /// <summary>
     /// A class that defines a controller for the Diagnostic Tool.
     /// </summary>
-    public class DiagnosticToolController : ControllerBase
+    public class DiagnosticToolController : FormControllerBase
     {
         private const int CacheDurationInSeconds = 120;
-        private const string cSESSION_EMAIL_ANSWER = "emailAnswer";
-        private const string cSESSION_DIAGNOSTIC_TOOL_FORM = "diagnosticToolForm";
-
+        
         private readonly IDiagnosticToolControllerHelper _controllerHelper;
         private readonly IComparisonToolService _comparisonToolService;
         private readonly List<CMSSearchTag> _productCategories;
@@ -36,7 +34,7 @@ namespace Beis.LearningPlatform.Web.Controllers
                                         IDiagnosticToolControllerHelper controllerHelper,
                                         IComparisonToolService comparisonToolService,
                                         IOptions<ComparisonToolDisplayOption> ctDisplayOption)
-            : base(logger)
+            : base(logger, controllerHelper)
         {
             _controllerHelper = controllerHelper;
             _comparisonToolService = comparisonToolService;
@@ -54,104 +52,25 @@ namespace Beis.LearningPlatform.Web.Controllers
             }
         }
 
-        private string[] GetModelErrors()
+        [HttpPost]
+        [Route("/diagnostic-tool/nextstep")]
+        public async override Task<IActionResult> NextStep(DiagnosticToolForm model)
         {
-            return ModelState.Values
-                             .Where(x => x.Errors?.Count > 0)
-                             .SelectMany(x => x.Errors)
-                             .Select(x => x.ErrorMessage)
-                             .ToArray();
-        }
-
-        private void ClearSessionEmail()
-        {
-            HttpContext.Session.ClearSessionData(cSESSION_EMAIL_ANSWER);
-        }
-
-        private void ClearSessionForm()
-        {
-            HttpContext.Session.ClearSessionData(cSESSION_DIAGNOSTIC_TOOL_FORM);
-        }
-
-        private ViewResult GetViewResult(DiagnosticToolForm model, bool showResults = false)
-        {
-            string viewName = showResults ? "Result" : "Start";
-            model.IsInstructionsPage = model.CurrStep == 0;
-            if (showResults)
-            {
-                model.pageTitle = "Help to Grow: Digital - Diagnostic Tool - Results";
-            }
-            return View(viewName, model);
-        }
-
-        private void SetSessionEmail(EmailAnswer emailAnswer)
-        {
-            HttpContext.Session.SetSessionData(cSESSION_EMAIL_ANSWER, emailAnswer);
-        }
-
-        private void SetSessionForm(DiagnosticToolForm diagnosticToolForm)
-        {
-            var answerData = diagnosticToolForm.Save();
-            HttpContext.Session.SetSessionData(cSESSION_DIAGNOSTIC_TOOL_FORM, answerData);
-        }
-
-        private bool TryGetSessionData(out EmailAnswer emailAnswer)
-        {
-            return HttpContext.Session.TryGetSessionData(cSESSION_EMAIL_ANSWER, out emailAnswer);
-        }
-
-        private async Task<DiagnosticToolForm> TryGetSessionForm()
-        {
-            DiagnosticToolForm returnValue = default;
-
-            if (HttpContext.Session.TryGetSessionData(cSESSION_DIAGNOSTIC_TOOL_FORM, out FormStepAnswer[] answers))
-            {
-                var createFormResponse = await _controllerHelper.CreateForm(FormTypes.DiagnosticTool);
-                if (createFormResponse.Result)
-                {
-                    returnValue = createFormResponse.Payload;
-                    returnValue.Load(answers);
-                }
-            }
-
-            return returnValue;
+            return await base.NextStep(model);
         }
 
         [HttpPost]
         [Route("/diagnostic-tool/gotostep")]
-        public async Task<IActionResult> GoToStep(DiagnosticToolForm model, [FromQuery] int step)
+        public async override Task<IActionResult> GoToStep(DiagnosticToolForm model, [FromQuery] int step)
         {
-            SetSessionEmail(model.EmailAnswer);
-            var response = await _controllerHelper.GotoStep(model, step);
-            if (response.Result)
-                return GetViewResult(response.Payload);
-            else
-                return BadRequest();
-        }
-
-        [HttpPost]
-        [Route("/diagnostic-tool/nextstep")]
-        public async Task<IActionResult> NextStep(DiagnosticToolForm model)
-        {
-            if (TryGetSessionData(out EmailAnswer emailAnswer))
-                model.EmailAnswer = emailAnswer;
-
-            var response = await _controllerHelper.NextStep(model, ModelState.IsValid, GetModelErrors());
-            if (response.Result)
-                return GetViewResult(response.Payload);
-            else
-                return BadRequest();
+            return await base.GoToStep(model, step);
         }
 
         [HttpPost]
         [Route("/diagnostic-tool/prevstep")]
-        public async Task<IActionResult> PrevStep(DiagnosticToolForm model)
+        public async override Task<IActionResult> PrevStep(DiagnosticToolForm model)
         {
-            var response = await _controllerHelper.PreviousStep(model);
-            if (response.Result)
-                return GetViewResult(response.Payload);
-            else
-                return BadRequest();
+            return await base.PrevStep(model);
         }
 
         [HttpPost]
@@ -202,7 +121,7 @@ namespace Beis.LearningPlatform.Web.Controllers
         [Route("/diagnostic-tool")]
         [Route("/diagnostic-tool/start")]
         [ResponseCache(Duration = CacheDurationInSeconds)]
-        public async Task<IActionResult> Start()
+        public async override Task<IActionResult> Start()
         {
             ClearSessionForm();
             ClearSessionEmail();
@@ -215,18 +134,13 @@ namespace Beis.LearningPlatform.Web.Controllers
 
         [HttpPost]
         [Route("/diagnostic-tool/startform")]
-        public async Task<IActionResult> StartForm(DiagnosticToolForm model)
+        public async override Task<IActionResult> StartForm(DiagnosticToolForm model)
         {
-            ClearSessionForm();
-            var response = await _controllerHelper.Start(model);
-            if (response.Result)
-                return GetViewResult(model);
-            else
-                return BadRequest();
+            return await base.StartForm(model);
         }
 
         [Route("/diagnostic-tool/summary")]
-        public async Task<IActionResult> ChangeAnswers()
+        public async override Task<IActionResult> ChangeAnswers()
         {
             var model = await TryGetSessionForm();
             if (model != default)
@@ -271,41 +185,10 @@ namespace Beis.LearningPlatform.Web.Controllers
 
         }
 
-        #region Used by Cookie Acceptance Redirection
-        //TODO: LP-967 Cookies Cannot Be Accepted or Rejected in DT
-        // ******************************************************************************************************************************************
-        // Currently, the Cookie acceptance uses an href to process the accepted cookie. As the Diagnostic Tool uses Form Post, the view model is not transferred
-        // after the cookie processing occurs. These actions below are used to redirect the Diagnostic Tool to the Start page
-        // ******************************************************************************************************************************************
-
-        // IMPORTANT User will have to return to the beginning of the diagnostic tool if a direct route to any step other than the beginning is used
-        // This is essential because the tool populates and maintains the data in the model between server calls
-        public async Task<IActionResult> NextStep()
-        {
-            return await Start();
-        }
-
-        // IMPORTANT User will have to return to the beginning of the diagnostic tool if a direct route to any step other than the beginning is used
-        // This is essential because the tool populates and maintains the data in the model between server calls
-        public async Task<IActionResult> PrevStep()
-        {
-            return await Start();
-        }
-
-        // IMPORTANT User will have to return to the beginning of the diagnostic tool if a direct route to any step other than the beginning is used
-        // This is essential because the tool populates and maintains the data in the model between server calls
-        public async Task<IActionResult> Result()
-        {
-            return await Start();
-        }
-
-        // IMPORTANT User will have to return to the beginning of the diagnostic tool if a direct route to any step other than the beginning is used
-        // This is essential because the tool populates and maintains the data in the model between server calls
         [Route("/diagnostic-tool/startform")]
-        public async Task<IActionResult> StartForm()
+        public async override Task<IActionResult> StartForm()
         {
             return await Start();
         }
-        #endregion
     }
 }

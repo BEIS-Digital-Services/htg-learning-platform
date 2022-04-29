@@ -6,7 +6,7 @@ namespace Beis.LearningPlatform.Web.StrapiApi.Models
     public class CMSSearchArticle : IComparable
     {
         public int id { get; set; }
-        public DateTime published_at { get; set; }
+        public DateTime? published_at { get; set; }
         public DateTime created_at { get; set; }
         public DateTime updated_at { get; set; }
         public string articleType { get; set; }
