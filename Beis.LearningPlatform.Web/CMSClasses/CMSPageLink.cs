@@ -1,6 +1,6 @@
 ﻿namespace Beis.LearningPlatform.Web.StrapiApi.Models
 {
-    public class CMSPageLink
+	public class CMSPageLink : ICmsPageLink
     {
         public int id { get; set; }
         public string text { get; set; }
@@ -14,5 +14,5 @@
         public string aria { get; set; }
         public CMSPageIcon icon { get; set; }
         public bool? hide { get; set; }
-    }
+	}
 }

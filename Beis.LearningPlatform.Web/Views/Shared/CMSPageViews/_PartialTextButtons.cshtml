@@ -110,7 +110,7 @@
                         strclass = @setButtonType(button.type, Model.background, button.custom_class);
 
 
-                        <a href="@button.url" style="display:@buttondisplaystyle" role="button" draggable="false" class="govuk-button govuk-button--start @strclass" data-module="govuk-button">
+                        <a id="link-cmspageviews-textbuttons-@(button.GetGaLinkId())" href="@button.url" style="display:@buttondisplaystyle" role="button" draggable="false" class="govuk-button govuk-button--start @strclass" data-module="govuk-button">
                             @button.label
                             @if (button.icon != null)
                             {

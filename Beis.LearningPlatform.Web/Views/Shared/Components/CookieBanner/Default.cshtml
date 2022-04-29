@@ -32,7 +32,7 @@
                     routeData.Add("isAccept", "true");
 
                 }
-                <a type="button" name="cookies"
+                <a id="link-cookiebanner-accept" type="button" name="cookies"
                     asp-controller="Cookies"
                     asp-action="ProcessCookie"
                     asp-all-route-data="@routeData"
@@ -47,14 +47,14 @@
                     routeData2.Add("isAccept", "false");
 
                 }
-                <a type="button" name="cookies"
+                <a id="link-cookiebanner-reject" type="button" name="cookies"
                     asp-controller="Cookies"
                     asp-action="ProcessCookie"
                     asp-all-route-data="@routeData2"
                     class="govuk-button primary" data-module="govuk-button">
                     Reject cookies
                 </a>
-                <a class="govuk-link" href="/cookies">View all cookies</a>
+                <a id="link-cookiebanner-view-all" class="govuk-link" href="/cookies">View all cookies</a>
             </div>
 
         </div>
@@ -72,7 +72,7 @@
                 <p class="gem-c-cookie-banner__confirmation-message" role="alert">
                     You have rejected additional cookies. You can
 
-                    <a class="govuk-link"
+                    <a id="link-cookiebanner-default-change-your-cookie-settings" class="govuk-link"
                         data-track-category="cookieBanner"
                         data-track-action="Cookie banner settings clicked from confirmation"
                         href="/cookies">
@@ -89,7 +89,7 @@
                         routeData3.Add("isAccept", "false");
 
                     }
-                    <a class="gem-c-cookie-banner__hide-button govuk-button primary"
+                    <a id="link-cookiebanner-default-hide-cookie-banner" class="gem-c-cookie-banner__hide-button govuk-button primary"
                         asp-controller="Cookies"
                         asp-action="ProcessCookie"
                         asp-all-route-data="@routeData3"

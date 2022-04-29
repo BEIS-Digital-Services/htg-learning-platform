@@ -17,11 +17,11 @@
         @if (countSelectedProducts > 1)
         {
             var routeData = new Dictionary<string, string> { { "selectedProductCategoryIds", Model.SelectedProductCategoryId }, { "selectedProductIds", Model.SelectedProductId } };
-            <a asp-controller="comparisonTool" asp-action="CompareProductsNoJs" asp-all-route-data="routeData" class="govuk-button govuk-!-margin-0 primary">Compare @countSelectedProducts products</a>
+            <a id="link-comparisontoolviews-productcategorynojs-compare-products" asp-controller="comparisonTool" asp-action="CompareProductsNoJs" asp-all-route-data="routeData" class="govuk-button govuk-!-margin-0 primary">Compare @countSelectedProducts products</a>
         }
         else
         {
-            <a role="button" class="govuk-button compare-btn primary govuk-button--disabled">Get your software discount</a>
+            <a id="link-comparisontoolviews-productcategorynojs-get-your-discount" role="button" class="govuk-button compare-btn primary govuk-button--disabled">Get your software discount</a>
         }
     </div>
 </div>
@@ -53,7 +53,7 @@
                                 includeProductUrl += "/include-product/" + string.Join(",", tmpproductsSelected);
                             }
 
-                            <a href="@(includeProductUrl + "#prod" + Model.productsForCurrentCategoryToRender[i].product_id)"
+                            <a id="link-comparisontoolviews-productcategorynojs-unselect-@(Model.productsForCurrentCategoryToRender[i]?.GetGaLinkId())" href="@(includeProductUrl + "#prod" + Model.productsForCurrentCategoryToRender[i].product_id)"
                                role="checkbox"
                                name="@("prod" + Model.productsForCurrentCategoryToRender[i].product_id)"
                                id="@("prod" + Model.productsForCurrentCategoryToRender[i].product_id)"
@@ -84,7 +84,7 @@
 
 
 
-                                <a href="@(includeProductUrl + "#prod" + Model.productsForCurrentCategoryToRender[i].product_id)"
+                                <a id="link-comparisontoolviews-productcategorynojs-select-@(Model.productsForCurrentCategoryToRender[i]?.GetGaLinkId())" href="@(includeProductUrl + "#prod" + Model.productsForCurrentCategoryToRender[i].product_id)"
                                    role="checkbox"
                                    id="@("prod" + Model.productsForCurrentCategoryToRender[i].product_id)"
                                    name="@("prod" + Model.productsForCurrentCategoryToRender[i].product_id)"
@@ -105,7 +105,7 @@
                     <div class="image-mask">
                         <img src="@Model.VendorProdLogorUrl/@Model.productsForCurrentCategoryToRender[i].product_logo" alt="">
                     </div>
-                    <a href="@Model.productsForCurrentCategoryToRender[i].website_url" class="govuk-link">@ComparisonToolFieldValidator.ParseStringField(Model.productsForCurrentCategoryToRender[i].product_name)</a>
+                    <a id="link-comparisontoolviews-productcategorynojs-website-@(Model.productsForCurrentCategoryToRender[i]?.GetGaLinkId())" href="@Model.productsForCurrentCategoryToRender[i].website_url" class="govuk-link">@ComparisonToolFieldValidator.ParseStringField(Model.productsForCurrentCategoryToRender[i].product_name)</a>
                 </div>
                 <div class="product-details">
                     <partial name="ComparisonToolViews/_PartialProductCategoryDetails" model="Model.productsForCurrentCategoryToRender[i]" />
@@ -115,14 +115,14 @@
                         IDictionary<string, string> routeDataFeatures = new Dictionary<string, string>();
                         routeDataFeatures.Add("product_id", Model.productsForCurrentCategoryToRender[i].product_id.ToString());
                     }
-                    <a role="button" aria-label="See features on @ComparisonToolFieldValidator.ParseStringField(Model.productsForCurrentCategoryToRender[i].product_name)" asp-controller="comparisonTool" asp-action="ProductDetailsNoJs" asp-all-route-data="routeDataFeatures" class="govuk-link button-link" data-module="govuk-button">
+                    <a id="link-comparisontoolviews-productcategorynojs-features-@(Model.productsForCurrentCategoryToRender[i]?.GetGaLinkId())" role="button" aria-label="See features on @ComparisonToolFieldValidator.ParseStringField(Model.productsForCurrentCategoryToRender[i].product_name)" asp-controller="comparisonTool" asp-action="ProductDetailsNoJs" asp-all-route-data="routeDataFeatures" class="govuk-link button-link" data-module="govuk-button">
                         See features
                     </a>
                     @{
                         IDictionary<string, string> routeDataSoftware = new Dictionary<string, string>();
                         routeDataSoftware.Add("product_id", Model.productsForCurrentCategoryToRender[i].product_id.ToString());
                     }
-                    <a role="button" aria-label="Select @ComparisonToolFieldValidator.ParseStringField(Model.productsForCurrentCategoryToRender[i].product_name)" asp-controller="comparisonTool" asp-action="GetDiscount" asp-all-route-data="routeDataSoftware" class="govuk-button secondary" data-module="govuk-button">
+                    <a id="link-comparisontoolviews-productcategorynojs-get-discount-link-@(Model.productsForCurrentCategoryToRender[i]?.GetGaLinkId())" role="button" aria-label="Select @ComparisonToolFieldValidator.ParseStringField(Model.productsForCurrentCategoryToRender[i].product_name)" asp-controller="comparisonTool" asp-action="GetDiscount" asp-all-route-data="routeDataSoftware" class="govuk-button secondary" data-module="govuk-button">
                         Get discount
                     </a>
                 </div>
@@ -137,11 +137,11 @@
         @if (countSelectedProducts > 1)
         {
             var routeData = new Dictionary<string, string> { { "selectedProductCategoryIds", Model.SelectedProductCategoryId }, { "selectedProductIds", Model.SelectedProductId } };
-            <a role="button" asp-controller="comparisonTool" asp-action="CompareProductsNoJs" asp-all-route-data="routeData" class="govuk-button compare-btn primary">Compare @countSelectedProducts products</a>
+            <a id="link-comparisontoolviews-productcategorynojs-compare-products-footer" role="button" asp-controller="comparisonTool" asp-action="CompareProductsNoJs" asp-all-route-data="routeData" class="govuk-button compare-btn primary">Compare @countSelectedProducts products</a>
         }
         else
         {
-            <a role="button" class="govuk-button compare-btn primary govuk-button--disabled">Get your software discount</a>
+            <a id="link-comparisontoolviews-productcategorynojs-get-your-discount-footer" role="button" class="govuk-button compare-btn primary govuk-button--disabled">Get your software discount</a>
         }
     </div>
 </div>
