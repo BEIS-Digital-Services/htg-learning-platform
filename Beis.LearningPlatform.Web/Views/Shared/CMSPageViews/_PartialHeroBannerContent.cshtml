@@ -41,7 +41,7 @@
 
                             @if (link.anchorlink != null)
                             {
-                                <a class="govuk-link @link.custom_class"
+                                <a id="link-cmspageviews-herobannercontent-@(link.GetGaLinkId())" class="govuk-link @link.custom_class"
                                    href="@link.anchorlink" aria-label="@(string.IsNullOrWhiteSpace(link.aria)? "Read the article on " + link.id : link.aria)">
                                     @Html.Raw(link.label)
                                 </a>
@@ -49,7 +49,7 @@
 
                             @if (link.url != null)
                             {
-                                <a class="govuk-link @link.custom_class"
+                                <a id="link-cmspageviews-herobannercontent-@(link.GetGaLinkId())" class="govuk-link @link.custom_class"
                                    href="@link.url" aria-label="@(string.IsNullOrWhiteSpace(link.aria)? "Read the article on " + link.id : link.aria)">
                                     @Html.Raw(link.label)
                                 </a>

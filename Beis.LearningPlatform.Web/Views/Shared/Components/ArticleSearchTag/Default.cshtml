@@ -10,7 +10,7 @@
                 { "tagAction", "add" },
                 { "yourTags", Model.YourTags }
             };
-            <a style="text-decoration: none" asp-controller="Home" asp-action="GuidanceAndToolsUpdateTags" asp-all-route-data="routeData">
+            <a id="link-articlesearchtag-default-@(tag?.name?.ToLowerInvariant())" style="text-decoration: none" asp-controller="Home" asp-action="GuidanceAndToolsUpdateTags" asp-all-route-data="routeData">
                 <strong class="govuk-tag beis-tag">
                     @tag.displayName.Replace("_", "-")
                 </strong>

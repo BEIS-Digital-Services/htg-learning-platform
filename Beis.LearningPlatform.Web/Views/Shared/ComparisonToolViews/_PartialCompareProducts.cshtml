@@ -6,7 +6,7 @@
     <div class="govuk-width-container">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-full">
-                <a href="@Model.Referrer" class="govuk-back-link">Back</a>
+                <a id="link-comparisontoolviews-compareproducts-back-link" href="@Model.Referrer" class="govuk-back-link">Back</a>
             </div>
         </div>
 
@@ -45,7 +45,7 @@
                                 <div class="image-mask">
                                     <img src="@Model.VendorProdLogorUrl/@Model.products[i].product_logo" width="90" alt="">
                                 </div>
-                                <a class="govuk-link" href="@Model.products[i].website_url">
+                                <a id="link-comparisontoolviews-compareproducts-@(Model.products[i].GetGaLinkId())" class="govuk-link" href="@Model.products[i].website_url">
                                     @ComparisonToolFieldValidator.ParseStringField(Model.products[i].product_name)
                                     <span class="govuk-visually-hidden">
                                         @ComparisonToolFieldValidator.ParseStringField(Model.products[i].product_name)
@@ -61,7 +61,7 @@
                 {
                     <div class="product@(i+1)">
                         <div class="web-link">
-                            <a class="govuk-link" href="@Model.products[i].website_url">
+                            <a id="link-comparisontoolviews-compareproducts-@(Model.products[i].GetGaLinkId())" class="govuk-link" href="@Model.products[i].website_url">
                                 Visit supplier website<span class="govuk-visually-hidden"> Visit supplier website</span>
                             </a>
                         </div>
@@ -261,7 +261,7 @@
                     @{
                         var actionName = Model.JavascriptEnabled ? ActionConstants.ProductDetails : ActionConstants.ProductDetailsNoJs;
                     }
-                    <a aria-label="See features of @ComparisonToolFieldValidator.ParseStringField(Model.products[i].product_name)" role="button" asp-controller="comparisonTool" asp-action="@actionName" asp-all-route-data="routeData" class="govuk-button primary-big" data-module="govuk-button">
+                    <a id="link-comparisontoolviews-compareproducts-see-features" aria-label="See features of @ComparisonToolFieldValidator.ParseStringField(Model.products[i].product_name)" role="button" asp-controller="comparisonTool" asp-action="@actionName" asp-all-route-data="routeData" class="govuk-button primary-big" data-module="govuk-button">
                         See features
                     </a>
                 </dd>
