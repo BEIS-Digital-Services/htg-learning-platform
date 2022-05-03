@@ -52,6 +52,8 @@ namespace Beis.LearningPlatform.Web.Models
         public bool? index { get { return _pageViewModel.index; } }
         public bool? follow { get { return _pageViewModel.follow; } }
 
-        #endregion
-    }
+		public int id { get { return _pageViewModel.id; } }
+
+		#endregion
+	}
 }

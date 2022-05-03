@@ -16,5 +16,7 @@ namespace Beis.LearningPlatform.Web.Interfaces
         public Task<CMSPageViewModel> FilterCustomPageResultByTags(IList<string> currentTagNames);
         
         public Task<IList<ComparisonToolPageViewModel>> GetComparisonToolPageResult(string strapiAction);
+
+        Task<IEnumerable<SiteNavigationModel>> GetSiteNavigation();
     }
 }
