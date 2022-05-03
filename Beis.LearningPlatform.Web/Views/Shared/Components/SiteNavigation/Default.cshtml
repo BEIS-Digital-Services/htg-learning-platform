@@ -1,0 +1,59 @@
+﻿@model Beis.LearningPlatform.Web.Models.SiteNavigationViewModel
+<nav>
+    <ul id="MobileNavigation"
+        class="govuk-header__navigation govuk-header__navigation--open"
+        aria-label="Navigation menu">
+        <li class="govuk-header__navigation-item ">
+            <a id="275" class="govuk-header__link" asp-action="home">
+                Home
+            </a>
+        </li>
+        <li class="govuk-header__navigation-item govuk-header__navigation-item--active">
+            <a id="10" class="govuk-header__link" asp-action="about">
+                About
+            </a>
+            <ul class="govuk-sub-pages-menu">
+                <li>
+                    <a class="" asp-action="aboutsub1">
+                        About the scheme
+                    </a>
+                </li>
+                <li class=" ">
+                    <a class="" asp-action="aboutsub2">
+                        Am I eligible
+                    </a>
+                </li>
+                <li class=" ">
+                    <a class="" asp-action="aboutsub3">
+                        How to apply for a discount
+                    </a>
+                </li>
+                <li class=" ">
+                    <a class="" asp-action="aboutsub4">
+                        Become a vendor
+                    </a>
+                </li>
+
+            </ul>
+        </li>
+        <li class="govuk-header__navigation-item ">
+            <a id="11" class="govuk-header__link">
+                Guidance and tools
+            </a>
+        </li>
+        <li class="govuk-header__navigation-item ">
+            <a id="152" class="govuk-header__link">
+                Find your software
+            </a>
+        </li>
+        <li class="govuk-header__navigation-item ">
+            <a id="340" class="govuk-header__link jsLink">
+                Get your software discount
+            </a>
+            <a id="340" class="govuk-header__link noJsLink">
+                Get your software discount
+            </a>
+        </li>
+
+    </ul>
+</nav>
