@@ -76,7 +76,7 @@ namespace Beis.LearningPlatform.Web.Controllers
 
             if (HttpContext.Session.TryGetSessionData(SessionDiagnosticToolForm, out FormStepAnswer[] answers))
             {
-                var createFormResponse = await _controllerHelper.CreateForm(FormTypes.DiagnosticTool);
+                var createFormResponse = await _controllerHelper.CreateForm(GetFormType());
                 if (createFormResponse.Result)
                 {
                     returnValue = createFormResponse.Payload;
