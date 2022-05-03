@@ -8,7 +8,7 @@
                 @foreach (var item in block.links)
                 {
                     <li>
-                        <a class="govuk-link" href="">@item.label</a>
+                        <a id="link-cmspageviews-sidenavigation-@(item.GetGaLinkId())" class="govuk-link" href="">@item.label</a>
                     </li>
                 }
 

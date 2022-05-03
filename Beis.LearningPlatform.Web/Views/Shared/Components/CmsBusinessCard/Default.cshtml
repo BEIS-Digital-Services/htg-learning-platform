@@ -25,7 +25,7 @@
                             }
                             @if (!string.IsNullOrWhiteSpace(Model.VisitUrl))
                             {
-                                <li class="govuk-body"><strong>Visit: </strong> <a class="button-link" href="@Model.VisitUrl"> @Model.Component.visit</a></li>
+                                <li class="govuk-body"><strong>Visit: </strong> <a id="link-cmsbusinesscard-visit" class="button-link" href="@Model.VisitUrl"> @Model.Component.visit</a></li>
                             }
                         </ul>
                     </div>
@@ -46,7 +46,7 @@
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-full">
                     <p class="govuk-body optional">Do you have a tech adoption success story you'd like to share? <br>
-                        Contact <a href="mailto:sme.helptogrow@beis.gov.uk" class="button-link">
+                        Contact <a id="link-cmsbusinesscard-contact" href="mailto:sme.helptogrow@beis.gov.uk" class="button-link">
                             sme.helptogrow@beis.gov.uk
                         </a>
                     </p>

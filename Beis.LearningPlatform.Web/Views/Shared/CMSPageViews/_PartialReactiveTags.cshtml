@@ -31,7 +31,7 @@
                             { "tagAction", "remove" },
                             { "yourTags", Model.SelectedTagsCsv }
                         };
-                        <a style="text-decoration: none" asp-controller="Home" asp-action="GuidanceAndToolsUpdateTags" asp-all-route-data="routeData" class="tag-button">
+                        <a id="link-cmspageviews-reactivetags-remove-@(tag?.ToLowerInvariant())" style="text-decoration: none" asp-controller="Home" asp-action="GuidanceAndToolsUpdateTags" asp-all-route-data="routeData" class="tag-button">
                             <strong class="govuk-tag beis-tag">
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <g clip-path="url(#@idstring)">
@@ -82,7 +82,7 @@
                                                 { "tagAction", "add" },
                                                 { "yourTags", Model.SelectedTagsCsv }
                                             };
-                                            <a style="text-decoration: none" asp-controller="Home" asp-action="GuidanceAndToolsUpdateTags" asp-all-route-data="routeData" class="tag-button">
+                                            <a id="link-cmspageviews-reactivetags-add-@(tag?.name?.ToLowerInvariant())" style="text-decoration: none" asp-controller="Home" asp-action="GuidanceAndToolsUpdateTags" asp-all-route-data="routeData" class="tag-button">
                                                 <strong class="govuk-tag beis-tag">
                                                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <g clip-path="url(#@idstring)">
