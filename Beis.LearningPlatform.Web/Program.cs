@@ -4,6 +4,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.ApplicationInsights;
 using System;
+using System.Linq;
 
 namespace Beis.LearningPlatform.Web
 {
@@ -39,6 +40,13 @@ namespace Beis.LearningPlatform.Web
                    {
                        configuration.AddJsonFile("diagnosticForm.json", false, true);
                        var configurationRoot = configuration.Build();
+
+                       var connectionString = configurationRoot.GetConnectionString("AppConfig");
+                       if (connectionString != null)
+                       {
+                           configuration.AddAzureAppConfiguration(connectionString);
+                       }
+
                        ApplicationForm options = new();
                        configurationRoot.GetSection(nameof(ApplicationForm)).Bind(options);
                    })
