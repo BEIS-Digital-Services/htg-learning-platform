@@ -220,6 +220,61 @@
 
             break;
 
+
+        case FormDisplayControlType.TextGroup:
+            <fieldset>
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                    <h1 class="govuk-fieldset__heading">
+                        <span>@currentFormStepElement.text</span>
+                        <span class="govuk-!-font-weight-regular">@currentFormStepElement.text2</span>
+                    </h1>
+                    @if (string.IsNullOrEmpty(currentFormStepElement.subText) == false)
+                    {
+                        <h3 class="govuk-fieldset__heading govuk-!-font-size-19 govuk-!-margin-top-7 govuk-!-margin-bottom-5">
+                            <span>@currentFormStepElement.subText</span>
+                        </h3>
+                    }
+                    @if (!string.IsNullOrWhiteSpace(currentFormStepElement.hint))
+                    {
+                        <span class="govuk-body @hintInBoldCss"><p>@currentFormStepElement.hint</p></span>
+                    }
+                    @if (!string.IsNullOrWhiteSpace(currentFormStepElement.hint2))
+                    {
+                        <span class="govuk-body @hint2InBoldCss"><p>@currentFormStepElement.hint2</p></span>
+                    }
+                    @if (!string.IsNullOrWhiteSpace(currentFormStepElement.validationError))
+                    {
+                        <span asp-validation-for="@Model.steps[currentStep].elements[currentElement].textControlHtmlId" class="govuk-error-message">
+                            @currentFormStepElement.validationError
+                        </span>
+                    }
+                </legend>
+            </fieldset>
+
+            @if (currentFormStepElement.answerOptions != null)
+            {
+                z = 0;
+                <div class="govuk-body">
+                    @foreach (var child in currentFormStepElement.answerOptions)
+                    {
+                        Model.CurrentElement = new ElementInfo
+                        {
+                            CurrentStep = currentStep,
+                            CurrentElement = currentElement,
+                            RadioButtonParent = currentElement,
+                            CurrentFormStep = currentFormStep,
+                            CurrentFormStepElement = currentFormStepElement,
+                            ChildIndex = z
+                        };
+                        <partial name="DiagnosticToolFormViews/_PartialRenderDTChildElement" model="@Model" />
+                        z++;
+                    }
+                </div>
+
+            }
+
+            break;
+
         default:
             <h4 class="govuk-heading-s govuk-!-font-weight-regular">
                 New Content Type @currentFormStepElement.controlType found.

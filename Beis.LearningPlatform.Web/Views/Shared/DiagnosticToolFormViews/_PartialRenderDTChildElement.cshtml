@@ -132,6 +132,27 @@
 
                 break;
 
+
+            case FormDisplayControlType.Textarea:
+
+                <label for="@(idPrefix + "__textareactrl")"
+                               id="@(idPrefix + "__textareactrl__label")">@Html.Raw(($"<strong>{currentFormStepElement.answerOptions[z].strongText}</strong>{currentFormStepElement.answerOptions[z].text}"))</label>
+                    <input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].strongText" />
+                    <input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].text" />
+                    @*<input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].value" />*@
+                    <span asp-validation-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].textControlHtmlId" class="govuk-error-message">
+                                @Model.steps[currentStep].elements[currentElement].answerOptions[z].validationError
+                    </span>
+                    <textarea asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].value"
+                                      id="@(idPrefix + "__textareactrl")"
+                                      rows="5" class="govuk-textarea">
+                        @currentFormStepElement.answerOptions[z].value
+                    </textarea>
+                
+
+                break;
+
+
             default:
                 <h4 class="govuk-heading-s govuk-!-font-weight-regular">
                     New Content Type @currentFormStepElement.answerOptions[z].controlType found.

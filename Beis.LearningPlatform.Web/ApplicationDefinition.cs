@@ -99,6 +99,8 @@ namespace Beis.LearningPlatform.Web
         public ApplicationFormType DiagnosticTool { get; set; }
         public ApplicationFormType SkillsOne { get; set; }
         public ApplicationFormType SkillsTwo { get; set; }
+        public ApplicationFormType SkillsThreeNewcomerPlanning { get; set; }
+        public ApplicationFormType SkillsThreeNewcomerCommunication { get; set; }
 
     }
     public class ApplicationFormType
@@ -114,12 +116,15 @@ namespace Beis.LearningPlatform.Web
         public bool BackLink { get; set; }
 
         public string BackURLfromQ1 { get; set; }
+        public string UserTypeActionPlanSection { get; set; }
     }
 
     public enum FormTypes
     {
         DiagnosticTool = 0,
         SkillsOne = 1,
-        SkillsTwo = 2
+        SkillsTwo = 2,
+        SkillsThreeNewcomerPlanning = 3,
+        SkillsThreeNewcomerCommunication = 4,
     }
 }

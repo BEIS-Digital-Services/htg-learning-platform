@@ -323,6 +323,8 @@ namespace Beis.LearningPlatform.Web.Services
             string value;
             if (option.ControlType == FormDisplayControlType.Checkbox)
                 value = "false";
+            else if (option.ControlType == FormDisplayControlType.Textarea)
+                value = "";
             else if (string.IsNullOrEmpty(option.Value) == false)
                 value = option.Value;
             else
@@ -390,17 +392,26 @@ namespace Beis.LearningPlatform.Web.Services
             if (_ctDisplayOption.LoadFormFromJson.HasValue && _ctDisplayOption.LoadFormFromJson.Value)
             {
                 ApplicationFormType appForm;
-                if (formType == FormTypes.DiagnosticTool)
+                switch (formType)
                 {
-                    appForm = _applicationForm.DiagnosticTool;
-                }
-                else if (formType == FormTypes.SkillsOne)
-                {
-                    appForm = _applicationForm.SkillsOne;
-                }
-                else
-                {
-                    appForm = _applicationForm.SkillsTwo;
+                    case FormTypes.DiagnosticTool:
+                        appForm = _applicationForm.DiagnosticTool;
+                        break;
+                    case FormTypes.SkillsOne:
+                        appForm = _applicationForm.SkillsOne;
+                        break;
+                    case FormTypes.SkillsTwo:
+                        appForm = _applicationForm.SkillsTwo;
+                        break;
+                    case FormTypes.SkillsThreeNewcomerPlanning:
+                        appForm = _applicationForm.SkillsThreeNewcomerPlanning;
+                        break;
+                    case FormTypes.SkillsThreeNewcomerCommunication:
+                        appForm = _applicationForm.SkillsThreeNewcomerCommunication;
+                        break;
+                    default:
+                        appForm = _applicationForm.DiagnosticTool;
+                        break;
                 }
 
                 returnValue.canChangeAnswers = appForm.CanChangeAnswers;
@@ -409,6 +420,7 @@ namespace Beis.LearningPlatform.Web.Services
                 returnValue.backButton = appForm.BackButton;
                 returnValue.backLink = appForm.BackLink;
                 returnValue.backURLfromQ1 = appForm.BackURLfromQ1;
+                returnValue.userTypeActionPlanSection = appForm.UserTypeActionPlanSection;
 
                 foreach (var step in appForm.Steps)
                 {

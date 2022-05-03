@@ -187,8 +187,10 @@ namespace Beis.LearningPlatform.Web.ControllerHelpers
                     {
                         form.FormIsCompleted = true;
 
-                        if (form.FormType == FormTypes.SkillsOne || form.FormType == FormTypes.SkillsTwo)
+                        //if (form.FormType == FormTypes.SkillsOne || form.FormType == FormTypes.SkillsTwo)
+                        if((int)form.FormType > 0)
                         {
+                            //all skills forms, skills1, skills2, and all skills3 forms
                             //add 1 more for last step (summary page), then back btn on summary page gets to the last step
                             form.CurrStep += 1;
                         }

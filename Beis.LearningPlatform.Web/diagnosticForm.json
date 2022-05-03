@@ -572,7 +572,7 @@
 
     "skillsOne": {
       "summaryHeading": "Your digital journey",
-      "canChangeAnswers" : false,
+      "canChangeAnswers": false,
       "backButton": false,
       "backLink": true,
       "backURLfromQ1": "/learning-module-one-questionnaire-intro",
@@ -1073,7 +1073,7 @@
                   "value": "Yes",
                   "textControlHtmlId": "Question5Option1",
                   "textControlHtmlName": "Question501",
-                  "score" : 3
+                  "score": 3
                 },
                 {
                   "controlType": "Radio",
@@ -1350,6 +1350,336 @@
           ]
         }
 
+
+
+
+
+
+      ]
+    },
+
+
+    "skillsThreeNewcomerPlanning": {
+      "summaryHeading": "Your digital newcomer action plan",
+      "canChangeAnswers": false,
+      "backButton": false,
+      "backLink": true,
+      "backURLfromQ1": "/",
+      "userTypeActionPlanSection": "newComer-planning",
+      "steps": [
+
+        {
+          "id": 1,
+          "order": 1,
+          "title": "Your digital newcomer action plan",
+          "summaryTitle": "",
+          "elements": [
+            {
+              "controlType": "TextGroup",
+              "hint": "It's really important to understand how you want software to make life easier. What is your end goal?",
+              "hint2": "Do you want to enhance your customer service, promote your goods/services, or would you like better oversight of your finances?",
+              "id": 110,
+              "text": "Planning",
+              "text2": "",
+              "subText": "1. Think about why you need software",
+              "textControlHtmlId": "lblTextGroup",
+              "textControlHtmlName": "Question1",
+              //"textGroupElements": [
+              "optionElements": [
+                {
+                  "controlType": "Textarea",
+                  "id": 111,
+                  "strongText": "Start... ",
+                  "text": "by making a list of what you want your new software to achieve.",
+                  "textControlHtmlId": "Question1Text1",
+                  "textControlHtmlName": "Question1Text1_",
+                  "ResultPageLabel": ""
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 112,
+                  "strongText": "Next... ",
+                  "text": "what are the must have features? This could include an easy to use dashboard for tracking sales, email automation or ability to share information between your team(s).",
+                  "textControlHtmlId": "Question1Text2",
+                  "textControlHtmlName": "Question1Text2_",
+                  "ResultPageLabel": ""
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 113,
+                  "strongText": "Finally... ",
+                  "text": "based on the types of software you ve researched, which type(s) do you think will help meet your goal(s)?",
+                  "textControlHtmlId": "Question1Text3",
+                  "textControlHtmlName": "Question1Text3_",
+                  "ResultPageLabel": ""
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "id": 2,
+          "order": 2,
+          "title": "Your digital newcomer action plan",
+          "summaryTitle": "",
+          "elements": [
+            {
+              "controlType": "TextGroup",
+              "hint": "Making sure your team can access new software is vital to success. This may mean buying new hardware, reviewing how information is stored and the speed of your internet connection.",
+              "hint2": "",
+              "id": 210,
+              "text": "Planning",
+              "text2": "",
+              "subText": "2. Consider how people will access the software",
+              "textControlHtmlId": "lblTextGroup",
+              "textControlHtmlName": "Question2",
+              "optionElements": [
+                {
+                  "controlType": "Textarea",
+                  "id": 211,
+                  "strongText": "Start... ",
+                  "text": "with a list who'll need access to the software.",
+                  "textControlHtmlId": "Question2Text1",
+                  "textControlHtmlName": "Question2Text1_",
+                  "ResultPageLabel": ""
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 112,
+                  "strongText": "Next... ",
+                  "text": "work out what hardware you need to order.",
+                  "textControlHtmlId": "Question2Text2",
+                  "textControlHtmlName": "Question2Text2_",
+                  "ResultPageLabel": ""
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 113,
+                  "strongText": "Finally... ",
+                  "text": "work out how much budget you need to set aside. Also list how long it ll take to get these assets in place.",
+                  "textControlHtmlId": "Question2Text3",
+                  "textControlHtmlName": "Question2Text3_",
+                  "ResultPageLabel": ""
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "id": 3,
+          "order": 3,
+          "title": "Your digital newcomer action plan",
+          "summaryTitle": "",
+          "elements": [
+            {
+              "controlType": "TextGroup",
+              "hint": "Understanding the potential risks you face in a rollout, and knowing what your plans A, B and C look like, can stop you having to abort the launch altogether.",
+              "hint2": "",
+              "id": 210,
+              "text": "Planning",
+              "text2": "",
+              "subText": "3. Think about potential risks",
+              "textControlHtmlId": "lblTextGroup",
+              "textControlHtmlName": "Question3",
+              "optionElements": [
+                {
+                  "controlType": "Textarea",
+                  "id": 211,
+                  "strongText": "Start... ",
+                  "text": "by writing down the risks you might encounter. This could include; technical hiccups on the day you go live or disruption to how you usually trade. Your list should include the worst-case scenario - having to stop the rollout. What would need to happen for this to be the only solution?",
+                  "textControlHtmlId": "Question3Text1",
+                  "textControlHtmlName": "Question3Text1_",
+                  "ResultPageLabel": ""
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 112,
+                  "strongText": "Next... ",
+                  "text": "decide how you could compensate for each risk. For example, would you be able to revert back to your old ways of working? Who will make the decisions in each case?",
+                  "textControlHtmlId": "Question2Text2",
+                  "textControlHtmlName": "Question2Text2_",
+                  "ResultPageLabel": ""
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 113,
+                  "strongText": "Finally... ",
+                  "text": "how much contingency time and budget would be needed in each of these scenarios?",
+                  "textControlHtmlId": "Question3Text3",
+                  "textControlHtmlName": "Question3Text3_",
+                  "ResultPageLabel": ""
+                }
+              ]
+            }
+          ]
+        }
+
+
+
+
+
+      ]
+    },
+
+
+    "skillsThreeNewcomerCommunication": {
+      "summaryHeading": "Your digital newcomer action plan",
+      "canChangeAnswers": false,
+      "backButton": false,
+      "backLink": true,
+      "backURLfromQ1": "/",
+      "userTypeActionPlanSection": "newComer-communication",
+      "steps": [
+
+        {
+          "id": 1,
+          "order": 1,
+          "title": "Your digital newcomer action plan",
+          "summaryTitle": "",
+          "elements": [
+            {
+              "controlType": "TextGroup",
+              "hint": "It's really important to understand how you want software to make life easier. What is your end goal?",
+              "hint2": "Do you want to enhance your customer service, promote your goods/services, or would you like better oversight of your finances?",
+              "id": 110,
+              "text": "Communication",
+              "text2": "",
+              "subText": "1. Think about why you need software",
+              "textControlHtmlId": "lblTextGroup",
+              "textControlHtmlName": "Question1",
+              //"textGroupElements": [
+              "optionElements": [
+                {
+                  "controlType": "Textarea",
+                  "id": 111,
+                  "strongText": "Start... ",
+                  "text": "by making a list of what you want your new software to achieve.",
+                  "textControlHtmlId": "Question1Text1",
+                  "textControlHtmlName": "Question1Text1_",
+                  "ResultPageLabel": ""
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 112,
+                  "strongText": "Next... ",
+                  "text": "what are the must have features? This could include an easy to use dashboard for tracking sales, email automation or ability to share information between your team(s).",
+                  "textControlHtmlId": "Question1Text2",
+                  "textControlHtmlName": "Question1Text2_",
+                  "ResultPageLabel": ""
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 113,
+                  "strongText": "Finally... ",
+                  "text": "based on the types of software you ve researched, which type(s) do you think will help meet your goal(s)?",
+                  "textControlHtmlId": "Question1Text3",
+                  "textControlHtmlName": "Question1Text3_",
+                  "ResultPageLabel": ""
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "id": 2,
+          "order": 2,
+          "title": "Your digital newcomer action plan",
+          "summaryTitle": "",
+          "elements": [
+            {
+              "controlType": "TextGroup",
+              "hint": "Making sure your team can access new software is vital to success. This may mean buying new hardware, reviewing how information is stored and the speed of your internet connection.",
+              "hint2": "",
+              "id": 210,
+              "text": "Communication",
+              "text2": "",
+              "subText": "2. Consider how people will access the software",
+              "textControlHtmlId": "lblTextGroup",
+              "textControlHtmlName": "Question2",
+              "optionElements": [
+                {
+                  "controlType": "Textarea",
+                  "id": 211,
+                  "strongText": "Start... ",
+                  "text": "with a list who'll need access to the software.",
+                  "textControlHtmlId": "Question2Text1",
+                  "textControlHtmlName": "Question2Text1_",
+                  "ResultPageLabel": ""
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 112,
+                  "strongText": "Next... ",
+                  "text": "work out what hardware you need to order.",
+                  "textControlHtmlId": "Question2Text2",
+                  "textControlHtmlName": "Question2Text2_",
+                  "ResultPageLabel": ""
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 113,
+                  "strongText": "Finally... ",
+                  "text": "work out how much budget you need to set aside. Also list how long it ll take to get these assets in place.",
+                  "textControlHtmlId": "Question2Text3",
+                  "textControlHtmlName": "Question2Text3_",
+                  "ResultPageLabel": ""
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "id": 3,
+          "order": 3,
+          "title": "Your digital newcomer action plan",
+          "summaryTitle": "",
+          "elements": [
+            {
+              "controlType": "TextGroup",
+              "hint": "Understanding the potential risks you face in a rollout, and knowing what your plans A, B and C look like, can stop you having to abort the launch altogether.",
+              "hint2": "",
+              "id": 210,
+              "text": "Communication",
+              "text2": "",
+              "subText": "3. Think about potential risks",
+              "textControlHtmlId": "lblTextGroup",
+              "textControlHtmlName": "Question3",
+              "optionElements": [
+                {
+                  "controlType": "Textarea",
+                  "id": 211,
+                  "strongText": "Start... ",
+                  "text": "by writing down the risks you might encounter. This could include; technical hiccups on the day you go live or disruption to how you usually trade. Your list should include the worst-case scenario - having to stop the rollout. What would need to happen for this to be the only solution?",
+                  "textControlHtmlId": "Question3Text1",
+                  "textControlHtmlName": "Question3Text1_",
+                  "ResultPageLabel": ""
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 112,
+                  "strongText": "Next... ",
+                  "text": "decide how you could compensate for each risk. For example, would you be able to revert back to your old ways of working? Who will make the decisions in each case?",
+                  "textControlHtmlId": "Question2Text2",
+                  "textControlHtmlName": "Question2Text2_",
+                  "ResultPageLabel": ""
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 113,
+                  "strongText": "Finally... ",
+                  "text": "how much contingency time and budget would be needed in each of these scenarios?",
+                  "textControlHtmlId": "Question3Text3",
+                  "textControlHtmlName": "Question3Text3_",
+                  "ResultPageLabel": ""
+                }
+              ]
+            }
+          ]
+        }
 
 
 
