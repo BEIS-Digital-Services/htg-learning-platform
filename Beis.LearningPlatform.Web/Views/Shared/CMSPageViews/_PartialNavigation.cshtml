@@ -1,4 +1,4 @@
-﻿@model Beis.LearningPlatform.Web.Interfaces.IPageViewModel
+﻿@model Beis.LearningPlatform.Web.Models.PartialNavigationModel
 <div role="banner">
     <header id="backToTop" class="govuk-header app-header" data-module="govuk-header">
         <div class="govuk-header__container govuk-width-container">
@@ -22,10 +22,10 @@
 
             </div>
             <div class="govuk-header__content">
-                <a id="link-cmspageviews-navigation-home" href="/" class="govuk-header__link govuk-header__link--service-name @if (Model.NavigationModel.PageName.ToLower() == "help to grow")
+                <a id="link-cmspageviews-navigation-home" href="/" class="govuk-header__link govuk-header__link--service-name @if (Model.PageName.ToLower() == "help to grow")
                                                                                        { @Html.Raw("govuk-header__navigation-item--active");
                                                                                        }">
-                    @if (Model.NavigationModel.Navigation.Count() > 0) { @Html.Raw(Model.NavigationModel.Navigation.First().title); }
+                    @if (Model.Navigation.Count() > 0) { @Html.Raw(Model.Navigation.First().title); }
                 </a>
                 <button ga-data-action-id="btn-cmspageviews-navigation-mobile-toggle" type="button"
                         id="MobileNavigationToggle"
@@ -39,7 +39,7 @@
                     <ul id="MobileNavigation"
                         class="govuk-header__navigation govuk-header__navigation--open"
                         aria-label="Navigation menu">
-                        @foreach (var navigation in Model.NavigationModel.Navigation)
+                        @foreach (var navigation in Model.Navigation)
                         {
                             foreach (var link in navigation.links)
                             {
@@ -49,7 +49,7 @@
                                     linkAction = "diagnostic-tool";
                                 }
 
-                                <li class="govuk-header__navigation-item @if (Model.NavigationModel.PageName.ToLower() == link.label.Trim().ToLower()) { @Html.Raw("govuk-header__navigation-item--active"); }">
+                                <li class="govuk-header__navigation-item @if (Model.PageName.ToLower() == link.label.Trim().ToLower()) { @Html.Raw("govuk-header__navigation-item--active"); }">
                                 @if (linkAction.Contains("comparison-tool"))
                                 {
                                     <a ga-data-action-id="link-cmspageviews-navigation-@(link.GetGaLinkId())" id="@link.id" class="govuk-header__link jsLink" asp-controller="Home" asp-action="@linkAction.Replace("-", "_")">
