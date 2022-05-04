@@ -1,9 +1,7 @@
 ﻿using Beis.LearningPlatform.Web.Interfaces;
 using Beis.LearningPlatform.Web.Models;
-using Beis.LearningPlatform.Web.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Threading.Tasks;
 
 namespace Beis.LearningPlatform.Web.ViewComponents
@@ -16,8 +14,8 @@ namespace Beis.LearningPlatform.Web.ViewComponents
 
 		public SiteNavigationViewComponent(ICmsService cmsService, IHttpContextAccessor httpContextAccessor)
         {
-            _cmsService = cmsService ?? throw new ArgumentNullException(nameof(cmsService));
-            _httpContextAccessor = httpContextAccessor ?? throw new ArgumentNullException(nameof(httpContextAccessor));
+            _cmsService = cmsService;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public async Task<IViewComponentResult> InvokeAsync(IPageViewModel pageViewModel)
