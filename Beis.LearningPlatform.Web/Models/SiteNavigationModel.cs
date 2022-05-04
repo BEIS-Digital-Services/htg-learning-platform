@@ -1,6 +1,7 @@
 ﻿using Beis.LearningPlatform.Web.Interfaces;
 using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Beis.LearningPlatform.Web.Models
 {
@@ -21,6 +22,15 @@ namespace Beis.LearningPlatform.Web.Models
 			}
 
 			this.NavigationItem.SetActiveNavigationModel(pageViewModel, path);
+		}
+
+		
+		public bool ShowSubMenu
+		{
+			get {
+				return (this.NavigationItem?.IsActive ?? false)
+					&& (this.SubNavigationItems?.Any() ?? false);
+			}
 		}
 	}
 }

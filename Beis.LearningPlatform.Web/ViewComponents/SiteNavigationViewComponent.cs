@@ -22,10 +22,12 @@ namespace Beis.LearningPlatform.Web.ViewComponents
 
         public async Task<IViewComponentResult> InvokeAsync(IPageViewModel pageViewModel)
         {
-            var viewModel = new SiteNavigationViewModel(pageViewModel);
-            viewModel.SiteNavigationModels = await _cmsService.GetSiteNavigation();
-            
-            viewModel.SetActiveNavigationModel(pageViewModel, _httpContextAccessor.HttpContext.Request.Path);
+			var viewModel = new SiteNavigationViewModel(pageViewModel, _httpContextAccessor.HttpContext?.Request?.Path)
+			{
+				SiteNavigationModels = await _cmsService.GetSiteNavigation()
+			};
+
+			viewModel.SetActiveNavigationModel();
 
             return View(viewModel);
         }
