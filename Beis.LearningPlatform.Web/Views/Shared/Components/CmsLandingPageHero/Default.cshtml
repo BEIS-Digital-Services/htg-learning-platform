@@ -41,7 +41,7 @@
                 <div class="left-column ">
                     @if (hero.Image != null)
                     {
-                        <vc:cms-image options='new CmsImageViewModel{ ImageUrl = hero.Image.url, CssClass = "hero-mobile-image" }' />
+                        <vc:cms-image options='new CmsImageViewModel{ ImageUrl = hero.Image.url, Title= hero.Image.alternativeText, CssClass = "hero-mobile-image" }' />
                     }
                 </div>
             </div>

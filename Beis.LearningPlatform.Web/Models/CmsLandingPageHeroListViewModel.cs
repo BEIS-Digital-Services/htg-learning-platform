@@ -11,7 +11,7 @@ namespace Beis.LearningPlatform.Web.Models
 
         public CmsLandingPageHeroListViewModel(CMSPageComponent cmsPageComponent)
         {
-            _cmsPageComponent = cmsPageComponent ?? throw new ArgumentNullException(nameof(cmsPageComponent));
+            _cmsPageComponent = cmsPageComponent;
         }
 
         public bool HasContent
