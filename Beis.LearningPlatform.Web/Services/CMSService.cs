@@ -94,5 +94,13 @@ namespace Beis.LearningPlatform.Web.Services
             var viewModel  = string.IsNullOrWhiteSpace(result) ? new List<ComparisonToolPageViewModel>() : JsonConvert.DeserializeObject<List<ComparisonToolPageViewModel>>(result);
             return viewModel;
         }
+
+        public async Task<IEnumerable<SiteNavigationModel>> GetSiteNavigation()
+        {
+            var result = await _apiCallService.GetApiResult(_cmsOption.ApiBaseUrl, "site-navigations");
+            var viewModel = string.IsNullOrWhiteSpace(result) ? new List<SiteNavigationModel>() : JsonConvert.DeserializeObject<List<SiteNavigationModel>>(result);
+            return viewModel;
+        }
+
     }
 }

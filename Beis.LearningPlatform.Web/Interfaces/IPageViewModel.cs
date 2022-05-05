@@ -6,6 +6,7 @@ namespace Beis.LearningPlatform.Web.Interfaces
 {
     public interface IPageViewModel
     {
+        public int id { get; }
         string pageTitle { get; set; }
         string pagename { get; set; }
         IList<CMSPageNavigation> navigations { get; }
