@@ -68,10 +68,25 @@ namespace Beis.LearningPlatform.Web.Controllers
         }
 
         [HttpGet]
-        //[Route("/skills-three")]
+        
         [Route("/skills-three-newcomer-planning")]
         [Route("/skills-three-newcomer-communication")]
-        //[Route("/skills-three-newcomer-planning/start")]
+        [Route("/skills-three-newcomer-support")]
+        [Route("/skills-three-newcomer-training")]
+        [Route("/skills-three-newcomer-testing")]
+
+        [Route("/skills-three-mover-planning")]
+        [Route("/skills-three-mover-communication")]
+        [Route("/skills-three-mover-support")]
+        [Route("/skills-three-mover-training")]
+        [Route("/skills-three-mover-testing")]
+
+        [Route("/skills-three-performer-planning")]
+        [Route("/skills-three-performer-communication")]
+        [Route("/skills-three-performer-support")]
+        [Route("/skills-three-performer-training")]
+        [Route("/skills-three-performer-testing")]
+
         public async override Task<IActionResult> Start()
         {
             //var route = Request.Path.Value;
@@ -104,6 +119,49 @@ namespace Beis.LearningPlatform.Web.Controllers
                 case "skills-three-newcomer-communication":
                     formType = FormTypes.SkillsThreeNewcomerCommunication;
                     break;
+                case "skills-three-newcomer-support":
+                    formType = FormTypes.SkillsThreeNewcomerSupport;
+                    break;
+                case "skills-three-newcomer-training":
+                    formType = FormTypes.SkillsThreeNewcomerTraining;
+                    break;
+                case "skills-three-newcomer-testing":
+                    formType = FormTypes.SkillsThreeNewcomerTesting;
+                    break;
+
+                case "skills-three-mover-planning":
+                    formType = FormTypes.SkillsThreeMoverPlanning;
+                    break;
+                case "skills-three-mover-communication":
+                    formType = FormTypes.SkillsThreeMoverCommunication;
+                    break;
+                case "skills-three-mover-support":
+                    formType = FormTypes.SkillsThreeMoverSupport;
+                    break;
+                case "skills-three-mover-training":
+                    formType = FormTypes.SkillsThreeMoverTraining;
+                    break;
+                case "skills-three-mover-testing":
+                    formType = FormTypes.SkillsThreeMoverTesting;
+                    break;
+
+
+                case "skills-three-performer-planning":
+                    formType = FormTypes.SkillsThreePerformerPlanning;
+                    break;
+                case "skills-three-performer-communication":
+                    formType = FormTypes.SkillsThreePerformerCommunication;
+                    break;
+                case "skills-three-performer-support":
+                    formType = FormTypes.SkillsThreePerformerSupport;
+                    break;
+                case "skills-three-performer-training":
+                    formType = FormTypes.SkillsThreePerformerTraining;
+                    break;
+                case "skills-three-performer-testing":
+                    formType = FormTypes.SkillsThreePerformerTesting;
+                    break;
+
             }
             return formType;
         }

@@ -409,6 +409,47 @@ namespace Beis.LearningPlatform.Web.Services
                     case FormTypes.SkillsThreeNewcomerCommunication:
                         appForm = _applicationForm.SkillsThreeNewcomerCommunication;
                         break;
+                    case FormTypes.SkillsThreeNewcomerSupport:
+                        appForm = _applicationForm.SkillsThreeNewcomerSupport;
+                        break;
+                    case FormTypes.SkillsThreeNewcomerTraining:
+                        appForm = _applicationForm.SkillsThreeNewcomerTraining;
+                        break;
+                    case FormTypes.SkillsThreeNewcomerTesting:
+                        appForm = _applicationForm.SkillsThreeNewcomerTesting;
+                        break;
+                    case FormTypes.SkillsThreeMoverPlanning:
+                        appForm = _applicationForm.SkillsThreeMoverPlanning;
+                        break;
+                    case FormTypes.SkillsThreeMoverCommunication:
+                        appForm = _applicationForm.SkillsThreeMoverCommunication;
+                        break;
+                    case FormTypes.SkillsThreeMoverSupport:
+                        appForm = _applicationForm.SkillsThreeMoverSupport;
+                        break;
+                    case FormTypes.SkillsThreeMoverTraining:
+                        appForm = _applicationForm.SkillsThreeMoverTraining;
+                        break;
+                    case FormTypes.SkillsThreeMoverTesting:
+                        appForm = _applicationForm.SkillsThreeMoverTesting;
+                        break;
+                    case FormTypes.SkillsThreePerformerPlanning:
+                        appForm = _applicationForm.SkillsThreePerformerPlanning;
+                        break;
+                    case FormTypes.SkillsThreePerformerCommunication:
+                        appForm = _applicationForm.SkillsThreePerformerCommunication;
+                        break;
+                    case FormTypes.SkillsThreePerformerSupport:
+                        appForm = _applicationForm.SkillsThreePerformerSupport;
+                        break;
+                    case FormTypes.SkillsThreePerformerTraining:
+                        appForm = _applicationForm.SkillsThreePerformerTraining;
+                        break;
+                    case FormTypes.SkillsThreePerformerTesting:
+                        appForm = _applicationForm.SkillsThreePerformerTesting;
+                        break;
+
+
                     default:
                         appForm = _applicationForm.DiagnosticTool;
                         break;

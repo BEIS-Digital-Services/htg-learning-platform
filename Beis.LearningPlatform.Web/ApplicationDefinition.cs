@@ -101,6 +101,22 @@ namespace Beis.LearningPlatform.Web
         public ApplicationFormType SkillsTwo { get; set; }
         public ApplicationFormType SkillsThreeNewcomerPlanning { get; set; }
         public ApplicationFormType SkillsThreeNewcomerCommunication { get; set; }
+        public ApplicationFormType SkillsThreeNewcomerSupport { get; set; }
+        public ApplicationFormType SkillsThreeNewcomerTraining { get; set; }
+        public ApplicationFormType SkillsThreeNewcomerTesting { get; set; }
+
+        public ApplicationFormType SkillsThreeMoverPlanning { get; set; }
+        public ApplicationFormType SkillsThreeMoverCommunication { get; set; }
+        public ApplicationFormType SkillsThreeMoverSupport { get; set; }
+        public ApplicationFormType SkillsThreeMoverTraining { get; set; }
+        public ApplicationFormType SkillsThreeMoverTesting { get; set; }
+
+        public ApplicationFormType SkillsThreePerformerPlanning { get; set; }
+        public ApplicationFormType SkillsThreePerformerCommunication { get; set; }
+        public ApplicationFormType SkillsThreePerformerSupport { get; set; }
+        public ApplicationFormType SkillsThreePerformerTraining { get; set; }
+        public ApplicationFormType SkillsThreePerformerTesting { get; set; }
+
 
     }
     public class ApplicationFormType
@@ -124,7 +140,23 @@ namespace Beis.LearningPlatform.Web
         DiagnosticTool = 0,
         SkillsOne = 1,
         SkillsTwo = 2,
+
         SkillsThreeNewcomerPlanning = 3,
         SkillsThreeNewcomerCommunication = 4,
+        SkillsThreeNewcomerSupport = 5,
+        SkillsThreeNewcomerTraining = 6, 
+        SkillsThreeNewcomerTesting = 7, 
+
+        SkillsThreeMoverPlanning = 8, 
+        SkillsThreeMoverCommunication = 9, 
+        SkillsThreeMoverSupport = 10, 
+        SkillsThreeMoverTraining = 11, 
+        SkillsThreeMoverTesting = 12, 
+
+        SkillsThreePerformerPlanning = 13, 
+        SkillsThreePerformerCommunication = 14, 
+        SkillsThreePerformerSupport = 15, 
+        SkillsThreePerformerTraining = 16, 
+        SkillsThreePerformerTesting = 17 
     }
 }
