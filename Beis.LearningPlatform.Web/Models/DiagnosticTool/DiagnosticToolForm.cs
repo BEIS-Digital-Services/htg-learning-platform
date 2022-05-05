@@ -108,7 +108,8 @@ namespace Beis.LearningPlatform.Web.Models.DiagnosticTool
         public int TotalScore { get; set; }
 
         public SkilledModuleTwoResultType SkilledModuleTwoResultType { get; set; }
-
+        public SkilledModuleSubTypes SkilledModuleSubTypes { get; set; }
+        
         public List<string> SelectedPriorities()
         {
             List<string> selectedPriorities = new();

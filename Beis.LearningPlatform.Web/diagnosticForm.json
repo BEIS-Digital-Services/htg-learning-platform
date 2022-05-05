@@ -1393,7 +1393,7 @@
                   "text": "by making a list of what you want your new software to achieve.",
                   "textControlHtmlId": "Question1Text1",
                   "textControlHtmlName": "Question1Text1_",
-                  "ResultPageLabel": ""
+                  "ResultPageLabel": "Here's what you want your software to achieve..."
                 },
                 {
                   "controlType": "Textarea",
@@ -1402,7 +1402,7 @@
                   "text": "what are the must have features? This could include an easy to use dashboard for tracking sales, email automation or ability to share information between your team(s).",
                   "textControlHtmlId": "Question1Text2",
                   "textControlHtmlName": "Question1Text2_",
-                  "ResultPageLabel": ""
+                  "ResultPageLabel": "This is your list of must-have features..."
                 },
                 {
                   "controlType": "Textarea",
@@ -1411,7 +1411,7 @@
                   "text": "based on the types of software you ve researched, which type(s) do you think will help meet your goal(s)?",
                   "textControlHtmlId": "Question1Text3",
                   "textControlHtmlName": "Question1Text3_",
-                  "ResultPageLabel": ""
+                  "ResultPageLabel": "Here's a list of software you feel will help you reach your goal..."
                 }
               ]
             }
@@ -1442,7 +1442,7 @@
                   "text": "with a list who'll need access to the software.",
                   "textControlHtmlId": "Question2Text1",
                   "textControlHtmlName": "Question2Text1_",
-                  "ResultPageLabel": ""
+                  "ResultPageLabel": "Here's a list of who will need to use software..."
                 },
                 {
                   "controlType": "Textarea",
@@ -1451,7 +1451,7 @@
                   "text": "work out what hardware you need to order.",
                   "textControlHtmlId": "Question2Text2",
                   "textControlHtmlName": "Question2Text2_",
-                  "ResultPageLabel": ""
+                  "ResultPageLabel": "This is the hardware you need to order..."
                 },
                 {
                   "controlType": "Textarea",
@@ -1460,7 +1460,7 @@
                   "text": "work out how much budget you need to set aside. Also list how long it ll take to get these assets in place.",
                   "textControlHtmlId": "Question2Text3",
                   "textControlHtmlName": "Question2Text3_",
-                  "ResultPageLabel": ""
+                  "ResultPageLabel": "You calculated how much budget, and time, you'd need to get these assets into place..."
                 }
               ]
             }
@@ -1491,7 +1491,7 @@
                   "text": "by writing down the risks you might encounter. This could include; technical hiccups on the day you go live or disruption to how you usually trade. Your list should include the worst-case scenario - having to stop the rollout. What would need to happen for this to be the only solution?",
                   "textControlHtmlId": "Question3Text1",
                   "textControlHtmlName": "Question3Text1_",
-                  "ResultPageLabel": ""
+                  "ResultPageLabel": "The risks you think you might encounter are..."
                 },
                 {
                   "controlType": "Textarea",
@@ -1500,7 +1500,7 @@
                   "text": "decide how you could compensate for each risk. For example, would you be able to revert back to your old ways of working? Who will make the decisions in each case?",
                   "textControlHtmlId": "Question2Text2",
                   "textControlHtmlName": "Question2Text2_",
-                  "ResultPageLabel": ""
+                  "ResultPageLabel": "Here's what you said about compensating for each risk..."
                 },
                 {
                   "controlType": "Textarea",
@@ -1509,7 +1509,7 @@
                   "text": "how much contingency time and budget would be needed in each of these scenarios?",
                   "textControlHtmlId": "Question3Text3",
                   "textControlHtmlName": "Question3Text3_",
-                  "ResultPageLabel": ""
+                  "ResultPageLabel": "This is the amount of contingency time and budget you estimated would be needed in each scenario..."
                 }
               ]
             }

@@ -224,6 +224,21 @@ namespace Beis.LearningPlatform.BL.Services
 
                 return personalisation;
             }
+            else if (dto is SkilledModuleThreeDto)
+            {
+                var emailData = (SkilledModuleThreeDto)dto;
+
+                templateId = GetTemplateID(emailData.SkilledModuleTwoResultType);
+                
+                personalisation = GeneratePersonalisation(EmailPersonalisationNames.SkillsModuleThree,
+                                                new[] { emailData.QuestionOneStart, emailData.QuestionOneNext, emailData.QuestionOneFinally,
+                                                        emailData.QuestionTwoStart, emailData.QuestionTwoNext, emailData.QuestionTwoFinally,
+                                                        emailData.QuestionThreeStart, emailData.QuestionThreeNext, emailData.QuestionThreeFinally,
+                                                        GetUnsubscribeLink(emailAddress) },
+                                                false);
+
+                return personalisation;
+            }
 
 
             return personalisation;

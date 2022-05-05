@@ -56,7 +56,7 @@ namespace Beis.LearningPlatform.Web.Controllers
         [Route("/skills-three-newcomer-communication/result")]
         public async Task<IActionResult> Result(DiagnosticToolForm model)
         {
-            var response = await _controllerHelper.ProcessResults(model, FormTypes.SkillsOne);
+            var response = await _controllerHelper.ProcessResults(model, GetFormType());
             if (response.Result && response.Payload)
             {
                 return Redirect("/learning-module-one-next-steps");
