@@ -189,8 +189,7 @@ namespace Beis.LearningPlatform.Web.ControllerHelpers
                     if (isValid)
                     {
                         form.FormIsCompleted = true;
-
-                        //if (form.FormType == FormTypes.SkillsOne || form.FormType == FormTypes.SkillsTwo)
+                        
                         if((int)form.FormType > 0)
                         {
                             //all skills forms, skills1, skills2, and all skills3 forms
@@ -333,8 +332,6 @@ namespace Beis.LearningPlatform.Web.ControllerHelpers
                 }
                 else if ((int)formType > 2)
                 {
-                    //skills 3
-                    //await _controllerHelperInterface.UpdateScore(form);
                     saveDataResult = await SaveSkillsThreeResponse(form);
                 }
                 if (saveDataResult?.Result == true && form.EmailAnswer.HasEmailAddress)
@@ -514,9 +511,6 @@ namespace Beis.LearningPlatform.Web.ControllerHelpers
                 skillsThreeResponse.RiskStart = form.steps[2].elements[0].answerOptions[0].value;
                 skillsThreeResponse.RiskNext = form.steps[2].elements[0].answerOptions[1].value;
                 skillsThreeResponse.RiskFinally = form.steps[2].elements[0].answerOptions[2].value;
-
-
-
 
                 var result = await _skillsThreeService.SaveSkillsThreeResponse(requestID, skillsThreeResponse);
 

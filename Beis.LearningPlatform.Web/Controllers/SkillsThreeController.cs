@@ -29,23 +29,13 @@ namespace Beis.LearningPlatform.Web.Controllers
         protected override string SessionDiagnosticToolForm => "skills3_Form";
 
         [HttpPost]
-        //Tas1[Route("/skills-three-newcomer-planning/nextstep")]
-        //Tas1[Route("/skills-three-newcomer-communication/nextstep")]
         public async override Task<IActionResult> NextStep(DiagnosticToolForm model)
         {
             return await base.NextStep(model);
         }
 
-        //[HttpPost]
-        //[Route("/skills-three-newcomer-planning/gotostep")]
-        //public async override Task<IActionResult> GoToStep(DiagnosticToolForm model, [FromQuery] int step)
-        //{
-        //    return await base.GoToStep(model, step);
-        //}
 
         [HttpPost]
-        //[Route("/skills-three-newcomer-planning/prevstep")]
-        //[Route("/skills-three-newcomer-communication/prevstep")]
         public async override Task<IActionResult> PrevStep(DiagnosticToolForm model)
         {
             return await base.PrevStep(model);
@@ -93,19 +83,6 @@ namespace Beis.LearningPlatform.Web.Controllers
             return await base.Start();
         }
 
-        //[HttpPost]
-        //[Route("/skills-three-newcomer-planning/startform")]
-        //public async override Task<IActionResult> StartForm(DiagnosticToolForm model)
-        //{
-        //    return await base.StartForm(model);
-        //}
-
-        //[Route("/skills-three-newcomer-planning/summary")]
-        //[Route("/skills-three-newcomer-communication/summary")]
-        //public async override Task<IActionResult> ChangeAnswers()
-        //{
-        //    return await base.ChangeAnswers();
-        //}
 
         protected override FormTypes GetFormType()
         {
@@ -165,12 +142,5 @@ namespace Beis.LearningPlatform.Web.Controllers
             }
             return formType;
         }
-
-
-        //[Route("/skills-three-newcomer-planning/startform")]
-        //public async override Task<IActionResult> StartForm()
-        //{
-        //    return await Start();
-        //}
     }
 }

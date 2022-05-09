@@ -228,7 +228,7 @@ namespace Beis.LearningPlatform.BL.Services
             {
                 var emailData = (SkilledModuleThreeDto)dto;
 
-                templateId = GetTemplateID(emailData.SkilledModuleTwoResultType);
+                templateId = GetSkillsModuleThreeTemplateID(emailData.UserTypeActionPlanSection);
                 
                 personalisation = GeneratePersonalisation(EmailPersonalisationNames.SkillsModuleThree,
                                                 new[] { emailData.QuestionOneStart, emailData.QuestionOneNext, emailData.QuestionOneFinally,
@@ -244,6 +244,51 @@ namespace Beis.LearningPlatform.BL.Services
             return personalisation;
         }
 
+        private string GetSkillsModuleThreeTemplateID(string userTypeActionPlanSection)
+        {
+            switch (userTypeActionPlanSection)
+            {
+                // Mover
+                case "MoverCommunication":
+                    return _notifyServiceOption.Templates.SkillsModuleThree.MoverCommunication;
+                case "MoverPlanning":
+                    return _notifyServiceOption.Templates.SkillsModuleThree.MoverPlanning;
+                case "MoverSupport":
+                    return _notifyServiceOption.Templates.SkillsModuleThree.MoverSupport;
+                case "MoverTesting":
+                    return _notifyServiceOption.Templates.SkillsModuleThree.MoverTesting;
+                case "MoverTraining":
+                    return _notifyServiceOption.Templates.SkillsModuleThree.MoverTraining;
+
+                // Newcomer
+                case "NewcomerCommunication":
+                    return _notifyServiceOption.Templates.SkillsModuleThree.NewcomerCommunication;
+                case "NewcomerPlanning":
+                    return _notifyServiceOption.Templates.SkillsModuleThree.NewcomerPlanning;
+                case "NewcomerSupport":
+                    return _notifyServiceOption.Templates.SkillsModuleThree.NewcomerSupport;
+                case "NewcomerTesting":
+                    return _notifyServiceOption.Templates.SkillsModuleThree.NewcomerTesting;
+                case "NewcomerTraining":
+                    return _notifyServiceOption.Templates.SkillsModuleThree.NewcomerTraining;
+
+                //Performer
+
+                case "PerformerCommunication":
+                    return _notifyServiceOption.Templates.SkillsModuleThree.PerformerCommunication;
+                case "PerformerPlanning":
+                    return _notifyServiceOption.Templates.SkillsModuleThree.PerformerPlanning;
+                case "PerformerSupport":
+                    return _notifyServiceOption.Templates.SkillsModuleThree.PerformerSupport;
+                case "PerformerTesting":
+                    return _notifyServiceOption.Templates.SkillsModuleThree.PerformerTesting;
+                case "PerformerTraining":
+                    return _notifyServiceOption.Templates.SkillsModuleThree.PerformerTraining;
+
+                default:
+                    throw new ArgumentException($"The type '{userTypeActionPlanSection}' is invalid", nameof(userTypeActionPlanSection));
+            }
+        }
         private string GetTemplateID(SkilledModuleTwoResultType skilledModuleTwoResultType)
         {
             switch (skilledModuleTwoResultType)

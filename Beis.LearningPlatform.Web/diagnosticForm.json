@@ -1,4 +1,4 @@
-{
+ï»¿{
   "applicationForm": {
     "diagnosticTool": {
       "summaryHeading": "Here's an overview of your answers",
@@ -2057,7 +2057,7 @@
                   "controlType": "Textarea",
                   "id": 113,
                   "strongText": "Finally... ",
-                  "text": "identify ‘testing champions' from each group. These will be the people you'll brief later and engage with to gather your feedback.",
+                  "text": "identify ï¿½testing champions' from each group. These will be the people you'll brief later and engage with to gather your feedback.",
                   "textControlHtmlId": "Question1Text3",
                   "textControlHtmlName": "Question1Text3_",
                   "ResultPageLabel": ""
@@ -2252,7 +2252,7 @@
                   "controlType": "Textarea",
                   "id": 211,
                   "strongText": "Start... ",
-                  "text": "by writing down the risks you might encounter, such as data loss or interruption to trading. Your list should include the worst-case scenario – having to stop the rollout. What would need to happen for this to be the only solution?",
+                  "text": "by writing down the risks you might encounter, such as data loss or interruption to trading. Your list should include the worst-case scenario ï¿½ having to stop the rollout. What would need to happen for this to be the only solution?",
                   "textControlHtmlId": "Question2Text1",
                   "textControlHtmlName": "Question2Text1_",
                   "ResultPageLabel": ""
@@ -2596,7 +2596,7 @@
                   "controlType": "Textarea",
                   "id": 113,
                   "strongText": "Finally... ",
-                  "text": "review if your chosen method of support – in-house or supplier support – match up where these elements are being met, and if there's anything you'd like to improve on.",
+                  "text": "review if your chosen method of support ï¿½ in-house or supplier support ï¿½ match up where these elements are being met, and if there's anything you'd like to improve on.",
                   "textControlHtmlId": "Question2Text3",
                   "textControlHtmlName": "Question2Text3_",
                   "ResultPageLabel": ""
@@ -2869,7 +2869,7 @@
                   "controlType": "Textarea",
                   "id": 113,
                   "strongText": "Finally... ",
-                  "text": "identify ‘testing champions' from each group. These will be the people you'll brief later and engage with to gather your feedback. ",
+                  "text": "identify ï¿½testing champions' from each group. These will be the people you'll brief later and engage with to gather your feedback. ",
                   "textControlHtmlId": "Question1Text3",
                   "textControlHtmlName": "Question1Text3_",
                   "ResultPageLabel": ""
@@ -3064,7 +3064,7 @@
                   "controlType": "Textarea",
                   "id": 211,
                   "strongText": "Start... ",
-                  "text": "by writing down the risks you might encounter, such as data loss or interruption to trading. Your list should include the worst-case scenario – having to stop the rollout. What would need to happen for this to be the only solution?",
+                  "text": "by writing down the risks you might encounter, such as data loss or interruption to trading. Your list should include the worst-case scenario ï¿½ having to stop the rollout. What would need to happen for this to be the only solution?",
                   "textControlHtmlId": "Question2Text1",
                   "textControlHtmlName": "Question2Text1_",
                   "ResultPageLabel": ""
@@ -3408,7 +3408,7 @@
                   "controlType": "Textarea",
                   "id": 113,
                   "strongText": "Finally... ",
-                  "text": "review if your chosen method of support – in-house or supplier support – match up where these elements are being met, and if there's anything you'd like to improve on.",
+                  "text": "review if your chosen method of support ï¿½ in-house or supplier support ï¿½ match up where these elements are being met, and if there's anything you'd like to improve on.",
                   "textControlHtmlId": "Question2Text3",
                   "textControlHtmlName": "Question2Text3_",
                   "ResultPageLabel": ""
@@ -3681,7 +3681,7 @@
                   "controlType": "Textarea",
                   "id": 113,
                   "strongText": "Finally... ",
-                  "text": "identify ‘testing champions' from each group. These will be the people you'll brief later and engage with to gather your feedback. ",
+                  "text": "identify ï¿½testing champions' from each group. These will be the people you'll brief later and engage with to gather your feedback. ",
                   "textControlHtmlId": "Question1Text3",
                   "textControlHtmlName": "Question1Text3_",
                   "ResultPageLabel": ""

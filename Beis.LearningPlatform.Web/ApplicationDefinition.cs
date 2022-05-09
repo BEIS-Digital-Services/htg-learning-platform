@@ -1,4 +1,5 @@
 ﻿using Beis.LearningPlatform.Web.Models.DiagnosticTool;
+using System;
 using System.Collections.Generic;
 
 namespace Beis.LearningPlatform.Web
@@ -136,28 +137,29 @@ namespace Beis.LearningPlatform.Web
         public string FormLogo { get; set; }
     }
 
+    [Flags]
     public enum FormTypes
     {
-        DiagnosticTool = 0,
-        SkillsOne = 1,
-        SkillsTwo = 2,
+        DiagnosticTool = 1 << 0,
+        SkillsOne = 1 << 1,
+        SkillsTwo = 1 << 2,
 
-        SkillsThreeNewcomerPlanning = 3,
-        SkillsThreeNewcomerCommunication = 4,
-        SkillsThreeNewcomerSupport = 5,
-        SkillsThreeNewcomerTraining = 6, 
-        SkillsThreeNewcomerTesting = 7, 
+        SkillsThreeNewcomerPlanning = 1 << 3,
+        SkillsThreeNewcomerCommunication = 1 << 4,
+        SkillsThreeNewcomerSupport = 1 << 5,
+        SkillsThreeNewcomerTraining = 1 << 6, 
+        SkillsThreeNewcomerTesting = 1 << 7,
 
-        SkillsThreeMoverPlanning = 8, 
-        SkillsThreeMoverCommunication = 9, 
-        SkillsThreeMoverSupport = 10, 
-        SkillsThreeMoverTraining = 11, 
-        SkillsThreeMoverTesting = 12, 
+        SkillsThreeMoverPlanning = 1 << 8, 
+        SkillsThreeMoverCommunication = 1 << 9, 
+        SkillsThreeMoverSupport = 1 << 10, 
+        SkillsThreeMoverTraining = 1 << 11, 
+        SkillsThreeMoverTesting = 1 << 12, 
 
-        SkillsThreePerformerPlanning = 13, 
-        SkillsThreePerformerCommunication = 14, 
-        SkillsThreePerformerSupport = 15, 
-        SkillsThreePerformerTraining = 16, 
-        SkillsThreePerformerTesting = 17 
+        SkillsThreePerformerPlanning = 1 << 13, 
+        SkillsThreePerformerCommunication = 1 << 14, 
+        SkillsThreePerformerSupport = 1 << 15, 
+        SkillsThreePerformerTraining = 1 << 16, 
+        SkillsThreePerformerTesting = 1 << 17
     }
 }
