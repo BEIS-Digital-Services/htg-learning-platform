@@ -34,9 +34,11 @@
     <vc:cookie-banner />
     @if (Model.ShowLayoutNavigation)
     {
-        <partial name="CMSPageViews/_PartialNavigation" model="@Model.NavigationModel" />
-    }        
-
+        <div role="banner">
+            <vc:site-navigation page-view-model="@Model" /> 
+            <partial name="SatisfactionSurveyViews/_SatisfactionSurveyHeaderBanner" />
+        </div>
+    }
     @RenderBody()
 
     @if (Model.footers != null)

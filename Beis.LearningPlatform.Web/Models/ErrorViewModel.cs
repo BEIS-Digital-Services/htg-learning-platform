@@ -34,7 +34,8 @@ namespace Beis.LearningPlatform.Web.Models
         public string meta { get; }
         public bool? index { get; } = false;
         public bool? follow { get; } = true;
+		public int id { get; }
 
-        #endregion
-    }
+		#endregion
+	}
 }
