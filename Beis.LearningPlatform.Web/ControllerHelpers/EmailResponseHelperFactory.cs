@@ -14,7 +14,13 @@ namespace Beis.LearningPlatform.Web.ControllerHelpers
         }
         public IEmailResponseHelper Get(FormTypes formType)
         {
-            return _emailResponseHelpers.Single(x => x.FormType == formType);
+            var helper = _emailResponseHelpers.SingleOrDefault(x => x.FormType == formType);
+            if(helper == null)
+            {
+                helper = _emailResponseHelpers.SingleOrDefault(x => x.FormType.HasFlag(formType));
+            }
+
+            return helper;
         }
     }
 }

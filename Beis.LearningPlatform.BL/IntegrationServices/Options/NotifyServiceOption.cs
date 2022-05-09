@@ -40,30 +40,23 @@ namespace Beis.LearningPlatform.BL.IntegrationServices.Options
 
     public class SkillsModuleThree
     {
-        public Mover Mover { get; set; }
-        public Newcomer Newcomer { get; set; }
-        public Performer Performer { get; set; }
-    }
+        public string MoverCommunication { get; set; }
+        public string MoverPlanning { get; set; }
+        public string MoverSupport { get; set; }
+        public string MoverTesting { get; set; }
+        public string MoverTraining { get; set; }
 
-    public class SkilledModuleThreeBase
-    {
-        public string Communication { get; set; }
-        public string Planning { get; set; }
-        public string Maintenance { get; set; }
-        public string Testing { get; set; }
-        public string Training { get; set; }
-    }
+        public string NewcomerCommunication { get; set; }
+        public string NewcomerPlanning { get; set; }
+        public string NewcomerSupport { get; set; }
+        public string NewcomerTesting { get; set; }
+        public string NewcomerTraining { get; set; }
 
-    public class Mover : SkilledModuleThreeBase
-    {
-    }
-
-    public class Newcomer : SkilledModuleThreeBase
-    {
-    }
-
-    public class Performer : SkilledModuleThreeBase
-    {
+        public string PerformerCommunication { get; set; }
+        public string PerformerPlanning { get; set; }
+        public string PerformerSupport { get; set; }
+        public string PerformerTesting { get; set; }
+        public string PerformerTraining { get; set; }
     }
 
 }

@@ -311,7 +311,7 @@ namespace Beis.LearningPlatform.Web.ControllerHelpers
             }
 
             if (isValid)
-                {
+            {
                 ControllerHelperOperationResponse<EmailAnswer> saveDataResult = null;
                 if (formType == FormTypes.DiagnosticTool)
                     {
@@ -319,8 +319,8 @@ namespace Beis.LearningPlatform.Web.ControllerHelpers
                     await LoadArticles(form);
                     saveDataResult = await SaveDiagnosticToolData(form);
                             }
-            else if (formType == FormTypes.SkillsOne)
-            {
+                else if (formType == FormTypes.SkillsOne)
+                {
                     saveDataResult = await SaveSkillsOneResponse(form);
                 }
                 else if (formType == FormTypes.SkillsTwo)
@@ -328,17 +328,24 @@ namespace Beis.LearningPlatform.Web.ControllerHelpers
                     await _controllerHelperInterface.UpdateScore(form);
                     saveDataResult = await SaveSkillsTwoResponse(form);
                 }
+                else
+                {
+                    // Module three
+
+                    //TODO : Remove this code once save result has been implemented
+                    saveDataResult = new ControllerHelperOperationResponse<EmailAnswer>(Guid.Empty, true);
+                }
                 if (saveDataResult?.Result == true && form.EmailAnswer.HasEmailAddress)
-            {
+                {
                     // Send the results email to the user
                     var sendEmailResult = await SendResultsEmail(form.EmailAnswer, form);
                     if (!sendEmailResult.Result)
-                {
+                    {
                         // Display the email sending error
                     isValid = false;
                         form.validationErrors.Add(new FormValidationError() { id = 1, errorHeading = "Error Sending Email", errorMessage = sendEmailResult.Message, htmlId = "email" });
+                    }
                 }
-            }
             }
 
             await _controllerHelperInterface.SetNavAndFooter(form);

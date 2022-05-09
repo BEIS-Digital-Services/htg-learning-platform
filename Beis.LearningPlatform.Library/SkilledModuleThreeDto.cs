@@ -20,7 +20,6 @@ namespace Beis.LearningPlatform.Library
         public string QuestionThreeNext { get; set; }
         public string QuestionThreeFinally { get; set; }
 
-        public SkilledModuleTwoResultType SkilledModuleTwoResultType { get; set; }
-        public SkilledModuleSubTypes SkilledModuleSubTypes { get; set; }
+        public string UserTypeActionPlanSection { get; set; }
     }
 }
