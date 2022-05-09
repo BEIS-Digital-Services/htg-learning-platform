@@ -7,6 +7,7 @@
     var radioButtonParent = elementInfo.RadioButtonParent;
     var currentFormStep = elementInfo.CurrentFormStep;
     var z = 0;
+    var formLogo = Model.formLogo;
 
     var currentFormStepElement = elementInfo.CurrentFormStepElement;
 
@@ -224,10 +225,21 @@
         case FormDisplayControlType.TextGroup:
             <fieldset>
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                    <h1 class="govuk-fieldset__heading">
-                        <span>@currentFormStepElement.text</span>
-                        <span class="govuk-!-font-weight-regular">@currentFormStepElement.text2</span>
-                    </h1>
+                    <div style="display:flex">
+                        @if (string.IsNullOrEmpty(formLogo) == false)
+                        {
+                            <div style="padding-right:10px;">
+                                <img src="~/assets/images/@formLogo" />
+                            </div>
+                        }
+                        <div style="align-self:center;">
+                            <h1 class="govuk-fieldset__heading">
+                                <span>@currentFormStepElement.text</span>
+                                <span class="govuk-!-font-weight-regular">@currentFormStepElement.text2</span>
+                            </h1>
+                        </div>
+
+                    </div>
                     @if (string.IsNullOrEmpty(currentFormStepElement.subText) == false)
                     {
                         <h3 class="govuk-fieldset__heading govuk-!-font-size-19 govuk-!-margin-top-7 govuk-!-margin-bottom-5">

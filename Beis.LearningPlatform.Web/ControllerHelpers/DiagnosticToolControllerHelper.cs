@@ -29,6 +29,7 @@ namespace Beis.LearningPlatform.Web.ControllerHelpers
         private readonly IEmailService _emailService;
         private readonly ISkillsOneService _skillsOneService;
         private readonly ISkillsTwoService _skillsTwoService;
+        private readonly ISkillsThreeService _skillsThreeService;
         private readonly IMapper _mapper;
         private readonly VendorAppOption _vendorAppOption;
         private readonly IEmailResponseHelperFactory _emailResponseHelperFactory;
@@ -53,6 +54,7 @@ namespace Beis.LearningPlatform.Web.ControllerHelpers
                                               IEmailService emailService,
                                               ISkillsOneService skillsOneService,
                                               ISkillsTwoService skillsTwoService,
+                                              ISkillsThreeService skillsThreeService,
                                               IOptions<VendorAppOption> vendorAppOption,
                                               IEmailResponseHelperFactory emailResponseHelperFactory,
                                               IHttpContextAccessor httpContextAccessor)
@@ -64,6 +66,7 @@ namespace Beis.LearningPlatform.Web.ControllerHelpers
             _emailService = emailService;
             _skillsOneService = skillsOneService;
             _skillsTwoService = skillsTwoService;
+            _skillsThreeService = skillsThreeService;
             _vendorAppOption = vendorAppOption.Value;
             _emailResponseHelperFactory = emailResponseHelperFactory ?? throw new ArgumentNullException(nameof(emailResponseHelperFactory));
             _httpContextAccessor = httpContextAccessor ?? throw new ArgumentNullException(nameof(httpContextAccessor));
@@ -311,16 +314,16 @@ namespace Beis.LearningPlatform.Web.ControllerHelpers
             }
 
             if (isValid)
-                {
+            {
                 ControllerHelperOperationResponse<EmailAnswer> saveDataResult = null;
                 if (formType == FormTypes.DiagnosticTool)
-                    {
+                {
                     // Get the result articles
                     await LoadArticles(form);
                     saveDataResult = await SaveDiagnosticToolData(form);
-                            }
-            else if (formType == FormTypes.SkillsOne)
-            {
+                }
+                else if (formType == FormTypes.SkillsOne)
+                {
                     saveDataResult = await SaveSkillsOneResponse(form);
                 }
                 else if (formType == FormTypes.SkillsTwo)
@@ -328,17 +331,23 @@ namespace Beis.LearningPlatform.Web.ControllerHelpers
                     await _controllerHelperInterface.UpdateScore(form);
                     saveDataResult = await SaveSkillsTwoResponse(form);
                 }
+                else if ((int)formType > 2)
+                {
+                    //skills 3
+                    //await _controllerHelperInterface.UpdateScore(form);
+                    saveDataResult = await SaveSkillsThreeResponse(form);
+                }
                 if (saveDataResult?.Result == true && form.EmailAnswer.HasEmailAddress)
-            {
+                {
                     // Send the results email to the user
                     var sendEmailResult = await SendResultsEmail(form.EmailAnswer, form);
                     if (!sendEmailResult.Result)
-                {
+                    {
                         // Display the email sending error
-                    isValid = false;
+                        isValid = false;
                         form.validationErrors.Add(new FormValidationError() { id = 1, errorHeading = "Error Sending Email", errorMessage = sendEmailResult.Message, htmlId = "email" });
+                    }
                 }
-            }
             }
 
             await _controllerHelperInterface.SetNavAndFooter(form);
@@ -469,6 +478,59 @@ namespace Beis.LearningPlatform.Web.ControllerHelpers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Unable to save skills two response");
+                message = "We were unable to save your data.  Please try again";
+            }
+
+            return new ControllerHelperOperationResponse<EmailAnswer>(requestID, isSuccessful, message, emailAnswer);
+        }
+
+        private async Task<ControllerHelperOperationResponse<EmailAnswer>> SaveSkillsThreeResponse(DiagnosticToolForm form)
+        {
+            bool isSuccessful = false;
+            string message = default;
+            Guid requestID = RecordRequest();
+            var emailAnswer = form.EmailAnswer;
+
+            // Reset errors
+            emailAnswer.EmailErrorText = default;
+            emailAnswer.HasEmailError = false;
+
+            try
+            {
+                var skillsThreeResponse = new SkillsThreeResponse();
+                skillsThreeResponse.Questionnaire = form.userTypeActionPlanSection;
+
+                //step 1
+                skillsThreeResponse.WhyNeedStart = form.steps[0].elements[0].answerOptions[0].value;
+                skillsThreeResponse.WhyNeedNext = form.steps[0].elements[0].answerOptions[1].value;
+                skillsThreeResponse.WhyNeedFinally = form.steps[0].elements[0].answerOptions[2].value;
+
+                //step2
+                skillsThreeResponse.HowAccessStart = form.steps[1].elements[0].answerOptions[0].value;
+                skillsThreeResponse.HowAccessNext = form.steps[1].elements[0].answerOptions[1].value;
+                skillsThreeResponse.HowAccessFinally = form.steps[1].elements[0].answerOptions[2].value;
+
+                //step3
+                skillsThreeResponse.RiskStart = form.steps[2].elements[0].answerOptions[0].value;
+                skillsThreeResponse.RiskNext = form.steps[2].elements[0].answerOptions[1].value;
+                skillsThreeResponse.RiskFinally = form.steps[2].elements[0].answerOptions[2].value;
+
+
+
+
+                var result = await _skillsThreeService.SaveSkillsThreeResponse(requestID, skillsThreeResponse);
+
+                if (result.IsValid)
+                    isSuccessful = true;
+                else
+                {
+                    _logger.LogError(result.Message ?? "Failed to save skills three response");
+                    message = result.Message ?? "Failed to save skills three response";
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Unable to save skills three response");
                 message = "We were unable to save your data.  Please try again";
             }
 

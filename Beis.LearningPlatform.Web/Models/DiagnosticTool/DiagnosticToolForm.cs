@@ -59,6 +59,7 @@ namespace Beis.LearningPlatform.Web.Models.DiagnosticTool
         public bool backLink { get; set; }
         public string backURLfromQ1 { get; set; }
         public string userTypeActionPlanSection { get; set; }
+        public string formLogo { get; set; }
 
         [Required]        
         public string title { get; set; } 

@@ -1366,6 +1366,7 @@
       "backLink": true,
       "backURLfromQ1": "/",
       "userTypeActionPlanSection": "newcomer-planning",
+      "formLogo": "skills-three-action-planning.png",
       "steps": [
 
         {
@@ -1530,6 +1531,7 @@
       "backLink": true,
       "backURLfromQ1": "/",
       "userTypeActionPlanSection": "newcomer-communication",
+      "formLogo": "skills-three-action-communication.png",
       "steps": [
 
         {
@@ -1591,7 +1593,7 @@
             {
               "controlType": "TextGroup",
               "hint": "If you're looking to adopt more digital ways of working, even a slight interruption to business as usual can really impact customer service. ",
-              "hint2": "With this in mind, think about how you’d want to tell your customers about the changes, and whether you need to. ",
+              "hint2": "With this in mind, think about how you'd want to tell your customers about the changes, and whether you need to. ",
               "id": 210,
               "text": "Communication",
               "text2": "",
@@ -1603,7 +1605,7 @@
                   "controlType": "Textarea",
                   "id": 211,
                   "strongText": "Start... ",
-                  "text": "by considering how your customers could be impacted by your changes. Is the new software you’re integrating likely to impact the service they receive? If so, make a list here of how that could happen.",
+                  "text": "by considering how your customers could be impacted by your changes. Is the new software you're integrating likely to impact the service they receive? If so, make a list here of how that could happen.",
                   "textControlHtmlId": "Question2Text1",
                   "textControlHtmlName": "Question2Text1_",
                   "ResultPageLabel": ""
@@ -1639,7 +1641,7 @@
           "elements": [
             {
               "controlType": "TextGroup",
-              "hint": "You’ll also need a list of key dates for communicating your roll out. This will help you meet specific milestones, and give your staff and customers clarity of what’s changing across your business. ",
+              "hint": "You'll also need a list of key dates for communicating your roll out. This will help you meet specific milestones, and give your staff and customers clarity of what's changing across your business. ",
               "hint2": "",
               "id": 210,
               "text": "Communication",
@@ -1652,7 +1654,7 @@
                   "controlType": "Textarea",
                   "id": 211,
                   "strongText": "Start... ",
-                  "text": "by reviewing the two lists you’ve made above and pick out the key events and dates you need to communicate to your team and customers. ",
+                  "text": "by reviewing the two lists you've made above and pick out the key events and dates you need to communicate to your team and customers. ",
                   "textControlHtmlId": "Question3Text1",
                   "textControlHtmlName": "Question3Text1_",
                   "ResultPageLabel": ""
@@ -1690,6 +1692,7 @@
       "backLink": true,
       "backURLfromQ1": "/",
       "userTypeActionPlanSection": "newcomer-support",
+      "formLogo": "skills-three-action-support.png",
       "steps": [
 
         {
@@ -1700,7 +1703,7 @@
           "elements": [
             {
               "controlType": "TextGroup",
-              "hint": "As this is your first software rollout, it’s important to receive as much help as you can.",
+              "hint": "As this is your first software rollout, it's important to receive as much help as you can.",
               "hint2": "",
               "id": 110,
               "text": "Support, bugs and maintenance",
@@ -1714,7 +1717,7 @@
                   "controlType": "Textarea",
                   "id": 111,
                   "strongText": "Start... ",
-                  "text": "by thinking about your technical strengths and weaknesses. Write down the areas you’d like help with.",
+                  "text": "by thinking about your technical strengths and weaknesses. Write down the areas you'd like help with.",
                   "textControlHtmlId": "Question1Text1",
                   "textControlHtmlName": "Question1Text1_",
                   "ResultPageLabel": ""
@@ -1732,7 +1735,7 @@
                   "controlType": "Textarea",
                   "id": 113,
                   "strongText": "Finally... ",
-                  "text": "add how much time and budget would be needed for the support you’re opting for.",
+                  "text": "add how much time and budget would be needed for the support you're opting for.",
                   "textControlHtmlId": "Question1Text3",
                   "textControlHtmlName": "Question1Text3_",
                   "ResultPageLabel": ""
@@ -1750,7 +1753,7 @@
           "elements": [
             {
               "controlType": "TextGroup",
-              "hint": "Things don’t always run smoothly first time. How will you plan for bug fixes when you first launch, or for any that crop up after afterwards?",
+              "hint": "Things don't always run smoothly first time. How will you plan for bug fixes when you first launch, or for any that crop up after afterwards?",
               "hint2": "",
               "id": 210,
               "text": "Support, bugs and maintenance",
@@ -1763,7 +1766,7 @@
                   "controlType": "Textarea",
                   "id": 211,
                   "strongText": "Start... ",
-                  "text": "by thinking about how you’ll deal with any bugs in the software you roll out. As with integration, will you have someone in-house or rely on your supplier?",
+                  "text": "by thinking about how you'll deal with any bugs in the software you roll out. As with integration, will you have someone in-house or rely on your supplier?",
                   "textControlHtmlId": "Question2Text1",
                   "textControlHtmlName": "Question2Text1_",
                   "ResultPageLabel": ""
@@ -1772,7 +1775,7 @@
                   "controlType": "Textarea",
                   "id": 112,
                   "strongText": "Next... ",
-                  "text": "consider the type of support you think you’ll need. This could be on-going, as and when is needed, or having someone in-house. ",
+                  "text": "consider the type of support you think you'll need. This could be on-going, as and when is needed, or having someone in-house. ",
                   "textControlHtmlId": "Question2Text2",
                   "textControlHtmlName": "Question2Text2_",
                   "ResultPageLabel": ""
@@ -1812,7 +1815,7 @@
                   "controlType": "Textarea",
                   "id": 211,
                   "strongText": "Start... ",
-                  "text": "by thinking about how much maintenance you’ll likely need for your new software. This could include updates, patches and how you tackle cyber security. Information provided by your supplier will help here.",
+                  "text": "by thinking about how much maintenance you'll likely need for your new software. This could include updates, patches and how you tackle cyber security. Information provided by your supplier will help here.",
                   "textControlHtmlId": "Question3Text1",
                   "textControlHtmlName": "Question3Text1_",
                   "ResultPageLabel": ""
@@ -1821,7 +1824,7 @@
                   "controlType": "Textarea",
                   "id": 112,
                   "strongText": "Next... ",
-                  "text": "review the list and see if anyone in your business could be responsible for certain parts. Does the software you’re buying include automatic updates for the areas mentioned above? ",
+                  "text": "review the list and see if anyone in your business could be responsible for certain parts. Does the software you're buying include automatic updates for the areas mentioned above? ",
                   "textControlHtmlId": "Question2Text2",
                   "textControlHtmlName": "Question2Text2_",
                   "ResultPageLabel": ""
@@ -1850,6 +1853,7 @@
       "backLink": true,
       "backURLfromQ1": "/",
       "userTypeActionPlanSection": "newcomer-training",
+      "formLogo": "skills-three-action-training.png",
       "steps": [
 
         {
@@ -1892,7 +1896,7 @@
                   "controlType": "Textarea",
                   "id": 113,
                   "strongText": "Finally... ",
-                  "text": "look for opportunities where people in-house can be trained to train others, then make a separate list of who you’ll need to arrange external training for. ",
+                  "text": "look for opportunities where people in-house can be trained to train others, then make a separate list of who you'll need to arrange external training for. ",
                   "textControlHtmlId": "Question1Text3",
                   "textControlHtmlName": "Question1Text3_",
                   "ResultPageLabel": ""
@@ -1932,7 +1936,7 @@
                   "controlType": "Textarea",
                   "id": 112,
                   "strongText": "Next... ",
-                  "text": "speak to your team(s) about which type of training works best for them. Make a list of their preferred methods, including what doesn’t work for them.",
+                  "text": "speak to your team(s) about which type of training works best for them. Make a list of their preferred methods, including what doesn't work for them.",
                   "textControlHtmlId": "Question2Text2",
                   "textControlHtmlName": "Question2Text2_",
                   "ResultPageLabel": ""
@@ -1941,7 +1945,7 @@
                   "controlType": "Textarea",
                   "id": 113,
                   "strongText": "Finally... ",
-                  "text": "see what training is available for your new software. Review this with the budget you’ve set aside for training to identify what’s realistic. ",
+                  "text": "see what training is available for your new software. Review this with the budget you've set aside for training to identify what's realistic. ",
                   "textControlHtmlId": "Question2Text3",
                   "textControlHtmlName": "Question2Text3_",
                   "ResultPageLabel": ""
@@ -2010,6 +2014,7 @@
       "backLink": true,
       "backURLfromQ1": "/",
       "userTypeActionPlanSection": "newcomer-testing",
+      "formLogo": "skills-three-action-testing.png",
       "steps": [
 
         {
@@ -2020,7 +2025,7 @@
           "elements": [
             {
               "controlType": "TextGroup",
-              "hint": "Testing for bugs and usability don’t always give the same results. Think about how you want to test and how much time you want to dedicate to the process.",
+              "hint": "Testing for bugs and usability don't always give the same results. Think about how you want to test and how much time you want to dedicate to the process.",
               "hint2": "",
               "id": 110,
               "text": "Testing pre-launch",
@@ -2052,7 +2057,7 @@
                   "controlType": "Textarea",
                   "id": 113,
                   "strongText": "Finally... ",
-                  "text": "identify ‘testing champions’ from each group. These will be the people you’ll brief later and engage with to gather your feedback.",
+                  "text": "identify ‘testing champions' from each group. These will be the people you'll brief later and engage with to gather your feedback.",
                   "textControlHtmlId": "Question1Text3",
                   "textControlHtmlName": "Question1Text3_",
                   "ResultPageLabel": ""
@@ -2101,7 +2106,7 @@
                   "controlType": "Textarea",
                   "id": 113,
                   "strongText": "Finally... ",
-                  "text": "working with your feedback champions, ask if there’s any preferred way they’d like to receive and store the feedback. Make a list here.",
+                  "text": "working with your feedback champions, ask if there's any preferred way they'd like to receive and store the feedback. Make a list here.",
                   "textControlHtmlId": "Question2Text3",
                   "textControlHtmlName": "Question2Text3_",
                   "ResultPageLabel": ""
@@ -2150,7 +2155,7 @@
                   "controlType": "Textarea",
                   "id": 113,
                   "strongText": "Finally... ",
-                  "text": "plot out how you would like your feedback champion(s) to review and discuss any issues with you. Does a weekly face-to-face meeting work? Or are there some issues you’d want flagging immediately? Make a list here. ",
+                  "text": "plot out how you would like your feedback champion(s) to review and discuss any issues with you. Does a weekly face-to-face meeting work? Or are there some issues you'd want flagging immediately? Make a list here. ",
                   "textControlHtmlId": "Question3Text3",
                   "textControlHtmlName": "Question3Text3_",
                   "ResultPageLabel": ""
@@ -2173,6 +2178,7 @@
       "backLink": true,
       "backURLfromQ1": "/",
       "userTypeActionPlanSection": "mover-planning",
+      "formLogo": "skills-three-action-planning.png",
       "steps": [
 
         {
@@ -2184,7 +2190,7 @@
             {
               "controlType": "TextGroup",
               "hint": "With digital ways of working already part of your business, chances are you have a lot of the infrastructure you need already in place. ",
-              "hint2": "This section is designed to help you identify who’ll be using the new software, and assess your hardware needs correctly.",
+              "hint2": "This section is designed to help you identify who'll be using the new software, and assess your hardware needs correctly.",
               "id": 110,
               "text": "Planning",
               "text2": "",
@@ -2337,6 +2343,7 @@
       "backLink": true,
       "backURLfromQ1": "/",
       "userTypeActionPlanSection": "mover-communication",
+      "formLogo": "skills-three-action-communication.png",
       "steps": [
 
         {
@@ -2347,7 +2354,7 @@
           "elements": [
             {
               "controlType": "TextGroup",
-              "hint": "Identifying who needs information early on, when they need it and how you’ll send it, provides you with a roadmap of when to reach out.",
+              "hint": "Identifying who needs information early on, when they need it and how you'll send it, provides you with a roadmap of when to reach out.",
               "hint2": "",
               "id": 110,
               "text": "Communication",
@@ -2397,7 +2404,7 @@
           "elements": [
             {
               "controlType": "TextGroup",
-              "hint": "As you’ll know from previous changes to your ways of working, a slight interruption to business as usual can really impact customer service. ",
+              "hint": "As you'll know from previous changes to your ways of working, a slight interruption to business as usual can really impact customer service. ",
               "hint2": "",
               "id": 210,
               "text": "Communication",
@@ -2410,7 +2417,7 @@
                   "controlType": "Textarea",
                   "id": 211,
                   "strongText": "Start... ",
-                  "text": "by considering how your customers could be impacted by your changes. Is the new software you’re integrating likely to impact the service they receive? If so, make a list here of how that could happen.",
+                  "text": "by considering how your customers could be impacted by your changes. Is the new software you're integrating likely to impact the service they receive? If so, make a list here of how that could happen.",
                   "textControlHtmlId": "Question2Text1",
                   "textControlHtmlName": "Question2Text1_",
                   "ResultPageLabel": ""
@@ -2446,7 +2453,7 @@
           "elements": [
             {
               "controlType": "TextGroup",
-              "hint": "You’ll also need a list of key dates for communicating your roll out. This will help you meet specific milestones, and give your staff and customers clarity of what’s changing across your business. ",
+              "hint": "You'll also need a list of key dates for communicating your roll out. This will help you meet specific milestones, and give your staff and customers clarity of what's changing across your business. ",
               "hint2": "",
               "id": 210,
               "text": "Communication",
@@ -2459,7 +2466,7 @@
                   "controlType": "Textarea",
                   "id": 211,
                   "strongText": "Start... ",
-                  "text": "by reviewing the two lists you’ve made above and pick out the key events and dates you need to communicate to your team and customers. ",
+                  "text": "by reviewing the two lists you've made above and pick out the key events and dates you need to communicate to your team and customers. ",
                   "textControlHtmlId": "Question3Text1",
                   "textControlHtmlName": "Question3Text1_",
                   "ResultPageLabel": ""
@@ -2497,6 +2504,7 @@
       "backLink": true,
       "backURLfromQ1": "/",
       "userTypeActionPlanSection": "mover-support",
+      "formLogo": "skills-three-action-support.png",
       "steps": [
 
         {
@@ -2507,7 +2515,7 @@
           "elements": [
             {
               "controlType": "TextGroup",
-              "hint": "When you last added new software, did you need extra support to get it working with your systems? Was there anything you didn’t consider last time around, that you’d do differently now? ",
+              "hint": "When you last added new software, did you need extra support to get it working with your systems? Was there anything you didn't consider last time around, that you'd do differently now? ",
               "hint2": "",
               "id": 110,
               "text": "Support, bugs and maintenance",
@@ -2557,7 +2565,7 @@
           "elements": [
             {
               "controlType": "TextGroup",
-              "hint": "As you’ll know, things don’t always run smoothly first time. Like support for integration, how will you plan for bug fixes when you first launch, or for any that crop up after launch?",
+              "hint": "As you'll know, things don't always run smoothly first time. Like support for integration, how will you plan for bug fixes when you first launch, or for any that crop up after launch?",
               "hint2": "",
               "id": 210,
               "text": "Support, bugs and maintenance",
@@ -2570,7 +2578,7 @@
                   "controlType": "Textarea",
                   "id": 211,
                   "strongText": "Start... ",
-                  "text": "by looking at how you deal with bugs in the software you use at the moment. If there are people in your business who provide support, make a list of them here. If you’ve got supplier support, write down what they offer and if you had to change the level of service they provided.",
+                  "text": "by looking at how you deal with bugs in the software you use at the moment. If there are people in your business who provide support, make a list of them here. If you've got supplier support, write down what they offer and if you had to change the level of service they provided.",
                   "textControlHtmlId": "Question2Text1",
                   "textControlHtmlName": "Question2Text1_",
                   "ResultPageLabel": ""
@@ -2579,7 +2587,7 @@
                   "controlType": "Textarea",
                   "id": 112,
                   "strongText": "Next... ",
-                  "text": "consider which elements of your existing set-up you want to keep and those you’d change. ",
+                  "text": "consider which elements of your existing set-up you want to keep and those you'd change. ",
                   "textControlHtmlId": "Question2Text2",
                   "textControlHtmlName": "Question2Text2_",
                   "ResultPageLabel": ""
@@ -2588,7 +2596,7 @@
                   "controlType": "Textarea",
                   "id": 113,
                   "strongText": "Finally... ",
-                  "text": "review if your chosen method of support – in-house or supplier support – match up where these elements are being met, and if there’s anything you’d like to improve on.",
+                  "text": "review if your chosen method of support – in-house or supplier support – match up where these elements are being met, and if there's anything you'd like to improve on.",
                   "textControlHtmlId": "Question2Text3",
                   "textControlHtmlName": "Question2Text3_",
                   "ResultPageLabel": ""
@@ -2628,7 +2636,7 @@
                   "controlType": "Textarea",
                   "id": 112,
                   "strongText": "Next... ",
-                  "text": "review the list and see if your new software could be included in this existing plan.  Does the software you’re buying include automatic updates for the areas mentioned above?",
+                  "text": "review the list and see if your new software could be included in this existing plan.  Does the software you're buying include automatic updates for the areas mentioned above?",
                   "textControlHtmlId": "Question2Text2",
                   "textControlHtmlName": "Question2Text2_",
                   "ResultPageLabel": ""
@@ -2657,6 +2665,7 @@
       "backLink": true,
       "backURLfromQ1": "/",
       "userTypeActionPlanSection": "mover-training",
+      "formLogo": "skills-three-action-training.png",
       "steps": [
 
         {
@@ -2699,7 +2708,7 @@
                   "controlType": "Textarea",
                   "id": 113,
                   "strongText": "Finally... ",
-                  "text": "look for areas where your people in-house can train others, then make a separate list of who you’ll need to arrange external training for.",
+                  "text": "look for areas where your people in-house can train others, then make a separate list of who you'll need to arrange external training for.",
                   "textControlHtmlId": "Question1Text3",
                   "textControlHtmlName": "Question1Text3_",
                   "ResultPageLabel": ""
@@ -2717,7 +2726,7 @@
           "elements": [
             {
               "controlType": "TextGroup",
-              "hint": "Reviewing how you’ve trained staff in the past and measuring its effectiveness, together with cost, can help steer you for your new rollout.",
+              "hint": "Reviewing how you've trained staff in the past and measuring its effectiveness, together with cost, can help steer you for your new rollout.",
               "hint2": "",
               "id": 210,
               "text": "Training",
@@ -2730,7 +2739,7 @@
                   "controlType": "Textarea",
                   "id": 211,
                   "strongText": "Start... ",
-                  "text": "by thinking about how you’ve trained for new software in the past. Write down a list of pros and cons for each format (i.e. virtual, on-site, off-site).",
+                  "text": "by thinking about how you've trained for new software in the past. Write down a list of pros and cons for each format (i.e. virtual, on-site, off-site).",
                   "textControlHtmlId": "Question2Text1",
                   "textControlHtmlName": "Question2Text1_",
                   "ResultPageLabel": ""
@@ -2739,7 +2748,7 @@
                   "controlType": "Textarea",
                   "id": 112,
                   "strongText": "Next... ",
-                  "text": "speak to your team(s) about which type of training works best for them. Make a list of their preferred methods, including what doesn’t work for them.",
+                  "text": "speak to your team(s) about which type of training works best for them. Make a list of their preferred methods, including what doesn't work for them.",
                   "textControlHtmlId": "Question2Text2",
                   "textControlHtmlName": "Question2Text2_",
                   "ResultPageLabel": ""
@@ -2748,7 +2757,7 @@
                   "controlType": "Textarea",
                   "id": 113,
                   "strongText": "Finally... ",
-                  "text": "see what training is available for your new software. Review this with the budget you’ve set aside for training to identify what’s realistic.",
+                  "text": "see what training is available for your new software. Review this with the budget you've set aside for training to identify what's realistic.",
                   "textControlHtmlId": "Question2Text3",
                   "textControlHtmlName": "Question2Text3_",
                   "ResultPageLabel": ""
@@ -2817,6 +2826,7 @@
       "backLink": true,
       "backURLfromQ1": "/",
       "userTypeActionPlanSection": "mover-testing",
+      "formLogo": "skills-three-action-testing.png",
       "steps": [
 
         {
@@ -2827,7 +2837,7 @@
           "elements": [
             {
               "controlType": "TextGroup",
-              "hint": "Testing for bugs and usability don’t yield the same results. Reflect on how you’ve tested in the past, how long it took and if there’s anything you’d do differently this time.",
+              "hint": "Testing for bugs and usability don't yield the same results. Reflect on how you've tested in the past, how long it took and if there's anything you'd do differently this time.",
               "hint2": "",
               "id": 110,
               "text": "Testing pre-launch",
@@ -2859,7 +2869,7 @@
                   "controlType": "Textarea",
                   "id": 113,
                   "strongText": "Finally... ",
-                  "text": "identify ‘testing champions’ from each group. These will be the people you’ll brief later and engage with to gather your feedback. ",
+                  "text": "identify ‘testing champions' from each group. These will be the people you'll brief later and engage with to gather your feedback. ",
                   "textControlHtmlId": "Question1Text3",
                   "textControlHtmlName": "Question1Text3_",
                   "ResultPageLabel": ""
@@ -2908,7 +2918,7 @@
                   "controlType": "Textarea",
                   "id": 113,
                   "strongText": "Finally... ",
-                  "text": "working with your feedback champions, ask if there’s any preferred way they’d like to receive and store the feedback. Make a list here.",
+                  "text": "working with your feedback champions, ask if there's any preferred way they'd like to receive and store the feedback. Make a list here.",
                   "textControlHtmlId": "Question2Text3",
                   "textControlHtmlName": "Question2Text3_",
                   "ResultPageLabel": ""
@@ -2939,7 +2949,7 @@
                   "controlType": "Textarea",
                   "id": 211,
                   "strongText": "Start... ",
-                  "text": "by listing what you consider to be the most important feedback for a successful rollout. Think about what’s happened in past software adoptions, particularly if caused disruption to trading.",
+                  "text": "by listing what you consider to be the most important feedback for a successful rollout. Think about what's happened in past software adoptions, particularly if caused disruption to trading.",
                   "textControlHtmlId": "Question3Text1",
                   "textControlHtmlName": "Question3Text1_",
                   "ResultPageLabel": ""
@@ -2957,7 +2967,7 @@
                   "controlType": "Textarea",
                   "id": 113,
                   "strongText": "Finally... ",
-                  "text": "plot out how you would like your feedback champion(s) to review and discuss any issues with you. Does a weekly face-to-face meeting work? Or are there some issues you’d want flagging immediately? Make a list here. ",
+                  "text": "plot out how you would like your feedback champion(s) to review and discuss any issues with you. Does a weekly face-to-face meeting work? Or are there some issues you'd want flagging immediately? Make a list here. ",
                   "textControlHtmlId": "Question3Text3",
                   "textControlHtmlName": "Question3Text3_",
                   "ResultPageLabel": ""
@@ -2980,6 +2990,7 @@
       "backLink": true,
       "backURLfromQ1": "/",
       "userTypeActionPlanSection": "performer-planning",
+      "formLogo": "skills-three-action-planning.png",
       "steps": [
 
         {
@@ -2990,7 +3001,7 @@
           "elements": [
             {
               "controlType": "TextGroup",
-              "hint": "This section is designed to help you identify who’ll be using the new software, and assess your hardware needs correctly. ",
+              "hint": "This section is designed to help you identify who'll be using the new software, and assess your hardware needs correctly. ",
               "hint2": "",
               "id": 110,
               "text": "Planning",
@@ -3144,6 +3155,7 @@
       "backLink": true,
       "backURLfromQ1": "/",
       "userTypeActionPlanSection": "performer-communication",
+      "formLogo": "skills-three-action-communication.png",
       "steps": [
 
         {
@@ -3204,7 +3216,7 @@
           "elements": [
             {
               "controlType": "TextGroup",
-              "hint": "As you’ll know from previous changes to your ways of working, a slight interruption to business as usual can really impact customer service. ",
+              "hint": "As you'll know from previous changes to your ways of working, a slight interruption to business as usual can really impact customer service. ",
               "hint2": "",
               "id": 210,
               "text": "Communication",
@@ -3217,7 +3229,7 @@
                   "controlType": "Textarea",
                   "id": 211,
                   "strongText": "Start... ",
-                  "text": "by considering how your customers could be impacted by your changes. Is the new software you’re integrating likely to impact the service they receive? If so, make a list here of how that could happen.",
+                  "text": "by considering how your customers could be impacted by your changes. Is the new software you're integrating likely to impact the service they receive? If so, make a list here of how that could happen.",
                   "textControlHtmlId": "Question2Text1",
                   "textControlHtmlName": "Question2Text1_",
                   "ResultPageLabel": ""
@@ -3253,7 +3265,7 @@
           "elements": [
             {
               "controlType": "TextGroup",
-              "hint": "You’ll also need a list of key dates for communicating your roll out. This will help you meet specific milestones, and give your staff and customers clarity of what’s changing across your business. ",
+              "hint": "You'll also need a list of key dates for communicating your roll out. This will help you meet specific milestones, and give your staff and customers clarity of what's changing across your business. ",
               "hint2": "",
               "id": 210,
               "text": "Communication",
@@ -3266,7 +3278,7 @@
                   "controlType": "Textarea",
                   "id": 211,
                   "strongText": "Start... ",
-                  "text": "by reviewing the two lists you’ve made above and pick out the key events and dates you need to communicate to your team and customers. ",
+                  "text": "by reviewing the two lists you've made above and pick out the key events and dates you need to communicate to your team and customers. ",
                   "textControlHtmlId": "Question3Text1",
                   "textControlHtmlName": "Question3Text1_",
                   "ResultPageLabel": ""
@@ -3304,6 +3316,7 @@
       "backLink": true,
       "backURLfromQ1": "/",
       "userTypeActionPlanSection": "performer-support",
+      "formLogo": "skills-three-action-support.png",
       "steps": [
 
         {
@@ -3314,7 +3327,7 @@
           "elements": [
             {
               "controlType": "TextGroup",
-              "hint": "When you last added new software, did you need extra support to get it working with your systems? Was there anything you didn’t consider last time around, that you’d do differently now? ",
+              "hint": "When you last added new software, did you need extra support to get it working with your systems? Was there anything you didn't consider last time around, that you'd do differently now? ",
               "hint2": "",
               "id": 110,
               "text": "Support, bugs and maintenance",
@@ -3328,7 +3341,7 @@
                   "controlType": "Textarea",
                   "id": 111,
                   "strongText": "Start... ",
-                  "text": "by making a list of what tech support will be provided by the software suppliers, and what you’ll have to provide for in-house.",
+                  "text": "by making a list of what tech support will be provided by the software suppliers, and what you'll have to provide for in-house.",
                   "textControlHtmlId": "Question1Text1",
                   "textControlHtmlName": "Question1Text1_",
                   "ResultPageLabel": ""
@@ -3364,7 +3377,7 @@
           "elements": [
             {
               "controlType": "TextGroup",
-              "hint": "As you’ll know, things don’t always run smoothly first time. Like support for integration, how will you plan for bug fixes when you first launch, or for any that crop up after launch?",
+              "hint": "As you'll know, things don't always run smoothly first time. Like support for integration, how will you plan for bug fixes when you first launch, or for any that crop up after launch?",
               "hint2": "",
               "id": 210,
               "text": "Support, bugs and maintenance",
@@ -3377,7 +3390,7 @@
                   "controlType": "Textarea",
                   "id": 211,
                   "strongText": "Start... ",
-                  "text": "by looking at how you deal with bugs in the software you use at the moment. If there are people in your business who provide support, make a list of them here. If you’ve got supplier support, write down what they offer and if you had to change the level of service they provided.",
+                  "text": "by looking at how you deal with bugs in the software you use at the moment. If there are people in your business who provide support, make a list of them here. If you've got supplier support, write down what they offer and if you had to change the level of service they provided.",
                   "textControlHtmlId": "Question2Text1",
                   "textControlHtmlName": "Question2Text1_",
                   "ResultPageLabel": ""
@@ -3386,7 +3399,7 @@
                   "controlType": "Textarea",
                   "id": 112,
                   "strongText": "Next... ",
-                  "text": "consider which elements of your existing set-up you want to keep and those you’d change. ",
+                  "text": "consider which elements of your existing set-up you want to keep and those you'd change. ",
                   "textControlHtmlId": "Question2Text2",
                   "textControlHtmlName": "Question2Text2_",
                   "ResultPageLabel": ""
@@ -3395,7 +3408,7 @@
                   "controlType": "Textarea",
                   "id": 113,
                   "strongText": "Finally... ",
-                  "text": "review if your chosen method of support – in-house or supplier support – match up where these elements are being met, and if there’s anything you’d like to improve on.",
+                  "text": "review if your chosen method of support – in-house or supplier support – match up where these elements are being met, and if there's anything you'd like to improve on.",
                   "textControlHtmlId": "Question2Text3",
                   "textControlHtmlName": "Question2Text3_",
                   "ResultPageLabel": ""
@@ -3435,7 +3448,7 @@
                   "controlType": "Textarea",
                   "id": 112,
                   "strongText": "Next... ",
-                  "text": "review the list and see if your new software could be included in this existing plan.  Does the software you’re buying include automatic updates for the areas mentioned above?",
+                  "text": "review the list and see if your new software could be included in this existing plan.  Does the software you're buying include automatic updates for the areas mentioned above?",
                   "textControlHtmlId": "Question2Text2",
                   "textControlHtmlName": "Question2Text2_",
                   "ResultPageLabel": ""
@@ -3464,6 +3477,7 @@
       "backLink": true,
       "backURLfromQ1": "/",
       "userTypeActionPlanSection": "performer-training",
+      "formLogo": "skills-three-action-training.png",
       "steps": [
 
         {
@@ -3488,7 +3502,7 @@
                   "controlType": "Textarea",
                   "id": 111,
                   "strongText": "Start... ",
-                  "text": "by listing the software functionality each team needs to be trained on and people/team’s individual needs.",
+                  "text": "by listing the software functionality each team needs to be trained on and people/team's individual needs.",
                   "textControlHtmlId": "Question1Text1",
                   "textControlHtmlName": "Question1Text1_",
                   "ResultPageLabel": ""
@@ -3497,7 +3511,7 @@
                   "controlType": "Textarea",
                   "id": 112,
                   "strongText": "Next... ",
-                  "text": "decide who will deliver the training and how much time and resource you’ll need.",
+                  "text": "decide who will deliver the training and how much time and resource you'll need.",
                   "textControlHtmlId": "Question1Text2",
                   "textControlHtmlName": "Question1Text2_",
                   "ResultPageLabel": ""
@@ -3506,7 +3520,7 @@
                   "controlType": "Textarea",
                   "id": 113,
                   "strongText": "Finally... ",
-                  "text": "roughly plan how much time you need to allow for each piece of training. Don’t forget to add extra time if you’ll be training one person to pass their knowledge on to other team members.",
+                  "text": "roughly plan how much time you need to allow for each piece of training. Don't forget to add extra time if you'll be training one person to pass their knowledge on to other team members.",
                   "textControlHtmlId": "Question1Text3",
                   "textControlHtmlName": "Question1Text3_",
                   "ResultPageLabel": ""
@@ -3524,7 +3538,7 @@
           "elements": [
             {
               "controlType": "TextGroup",
-              "hint": "Reviewing how you’ve trained staff in the past and measuring its effectiveness, together with cost, can help steer you for your new rollout.",
+              "hint": "Reviewing how you've trained staff in the past and measuring its effectiveness, together with cost, can help steer you for your new rollout.",
               "hint2": "",
               "id": 210,
               "text": "Training",
@@ -3537,7 +3551,7 @@
                   "controlType": "Textarea",
                   "id": 211,
                   "strongText": "Start... ",
-                  "text": "by thinking about how you’ve trained for new software in the past. Write down a list of pros and cons for each format (i.e. virtual, on-site, off-site).",
+                  "text": "by thinking about how you've trained for new software in the past. Write down a list of pros and cons for each format (i.e. virtual, on-site, off-site).",
                   "textControlHtmlId": "Question2Text1",
                   "textControlHtmlName": "Question2Text1_",
                   "ResultPageLabel": ""
@@ -3546,7 +3560,7 @@
                   "controlType": "Textarea",
                   "id": 112,
                   "strongText": "Next... ",
-                  "text": "speak to your team(s) about which type of training works best for them. Make a list of their preferred methods, including what doesn’t work for them.",
+                  "text": "speak to your team(s) about which type of training works best for them. Make a list of their preferred methods, including what doesn't work for them.",
                   "textControlHtmlId": "Question2Text2",
                   "textControlHtmlName": "Question2Text2_",
                   "ResultPageLabel": ""
@@ -3555,7 +3569,7 @@
                   "controlType": "Textarea",
                   "id": 113,
                   "strongText": "Finally... ",
-                  "text": "see what training is available for your new software. Review this with the budget you’ve set aside for training to identify what’s realistic.",
+                  "text": "see what training is available for your new software. Review this with the budget you've set aside for training to identify what's realistic.",
                   "textControlHtmlId": "Question2Text3",
                   "textControlHtmlName": "Question2Text3_",
                   "ResultPageLabel": ""
@@ -3624,6 +3638,7 @@
       "backLink": true,
       "backURLfromQ1": "/",
       "userTypeActionPlanSection": "performer-testing",
+      "formLogo": "skills-three-action-testing.png",
       "steps": [
 
         {
@@ -3634,7 +3649,7 @@
           "elements": [
             {
               "controlType": "TextGroup",
-              "hint": "Testing for bugs and usability don’t yield the same results. Reflect on how you’ve tested in the past, how long it took and if there’s anything you’d do differently this time.",
+              "hint": "Testing for bugs and usability don't yield the same results. Reflect on how you've tested in the past, how long it took and if there's anything you'd do differently this time.",
               "hint2": "",
               "id": 110,
               "text": "Testing pre-launch",
@@ -3666,7 +3681,7 @@
                   "controlType": "Textarea",
                   "id": 113,
                   "strongText": "Finally... ",
-                  "text": "identify ‘testing champions’ from each group. These will be the people you’ll brief later and engage with to gather your feedback. ",
+                  "text": "identify ‘testing champions' from each group. These will be the people you'll brief later and engage with to gather your feedback. ",
                   "textControlHtmlId": "Question1Text3",
                   "textControlHtmlName": "Question1Text3_",
                   "ResultPageLabel": ""
@@ -3715,7 +3730,7 @@
                   "controlType": "Textarea",
                   "id": 113,
                   "strongText": "Finally... ",
-                  "text": "working with your feedback champions, ask if there’s any preferred way they’d like to receive and store the feedback. Make a list here.",
+                  "text": "working with your feedback champions, ask if there's any preferred way they'd like to receive and store the feedback. Make a list here.",
                   "textControlHtmlId": "Question2Text3",
                   "textControlHtmlName": "Question2Text3_",
                   "ResultPageLabel": ""
@@ -3746,7 +3761,7 @@
                   "controlType": "Textarea",
                   "id": 211,
                   "strongText": "Start... ",
-                  "text": "list what you consider to be the most important feedback for a successful rollout. Think about what’s happened in past software adoptions, particularly if it caused disruption to trading.",
+                  "text": "list what you consider to be the most important feedback for a successful rollout. Think about what's happened in past software adoptions, particularly if it caused disruption to trading.",
                   "textControlHtmlId": "Question3Text1",
                   "textControlHtmlName": "Question3Text1_",
                   "ResultPageLabel": ""
@@ -3764,7 +3779,7 @@
                   "controlType": "Textarea",
                   "id": 113,
                   "strongText": "Finally... ",
-                  "text": "plot out how you would like your feedback champion(s) to review and discuss any issues with you. Does a weekly face-to-face meeting work? Or are there some issues you’d want flagging immediately? Make a list here. ",
+                  "text": "plot out how you would like your feedback champion(s) to review and discuss any issues with you. Does a weekly face-to-face meeting work? Or are there some issues you'd want flagging immediately? Make a list here. ",
                   "textControlHtmlId": "Question3Text3",
                   "textControlHtmlName": "Question3Text3_",
                   "ResultPageLabel": ""

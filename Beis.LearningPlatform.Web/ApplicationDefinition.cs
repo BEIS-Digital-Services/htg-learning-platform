@@ -133,6 +133,7 @@ namespace Beis.LearningPlatform.Web
 
         public string BackURLfromQ1 { get; set; }
         public string UserTypeActionPlanSection { get; set; }
+        public string FormLogo { get; set; }
     }
 
     public enum FormTypes

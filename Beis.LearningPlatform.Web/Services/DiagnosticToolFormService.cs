@@ -462,6 +462,7 @@ namespace Beis.LearningPlatform.Web.Services
                 returnValue.backLink = appForm.BackLink;
                 returnValue.backURLfromQ1 = appForm.BackURLfromQ1;
                 returnValue.userTypeActionPlanSection = appForm.UserTypeActionPlanSection;
+                returnValue.formLogo = appForm.FormLogo;
 
                 foreach (var step in appForm.Steps)
                 {
