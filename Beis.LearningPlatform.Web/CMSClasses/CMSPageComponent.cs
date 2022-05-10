@@ -1,4 +1,5 @@
 ﻿using Beis.LearningPlatform.Web.Enums;
+using Beis.LearningPlatform.Web.Models;
 using System.Collections.Generic;
 
 namespace Beis.LearningPlatform.Web.StrapiApi.Models
@@ -143,5 +144,8 @@ namespace Beis.LearningPlatform.Web.StrapiApi.Models
 
         // LinkListHero
         public IList<CMSSimpleLink> HeroLinks { get; set; }
+
+        // LandingPageHeroList
+        public List<CmsLandingPageHeroViewModel> Heroes { get; set; }
 	}
 }
