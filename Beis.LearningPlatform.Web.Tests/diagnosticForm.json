@@ -1,0 +1,1362 @@
+{
+  "applicationForm": {
+    "diagnosticTool": {
+      "summaryHeading": "Here's an overview of your answers",
+      "canChangeAnswers": true,
+      "backButton": true,
+      "backLink": false,
+      "steps": [
+        {
+          "id": 1,
+          "order": 1,
+          "title": "About your business",
+          "elements": [
+            {
+              "controlType": "RadioGroup",
+              //"hint": "Select ONE ONLY",
+              "id": 100,
+              "text": "Where do most of your sales take place?",
+              "textControlHtmlId": "lblMultipleChoiceQ1",
+              "textControlHtmlName": "Question1",
+              "optionElements": [
+                {
+                  "controlType": "Radio",
+                  "id": 101,
+                  "text": "Online",
+                  "textControlHtmlId": "Question1Option1",
+                  "textControlHtmlName": "Question1Option1_"
+                },
+                {
+                  "controlType": "Radio",
+                  "id": 102,
+                  "text": "In person",
+                  "textControlHtmlId": "Question1Option2",
+                  "textControlHtmlName": "Question1Option2_"
+                },
+                {
+                  "controlType": "Radio",
+                  "id": 103,
+                  "text": "Online and in person",
+                  "textControlHtmlId": "Question1Option3",
+                  "textControlHtmlName": "Question1Option3_"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "order": 2,
+          "title": "About your business",
+          "showInSummary": false,
+          "elements": [
+            {
+              "controlType": "List",
+              //"hint": "sector",
+              "id": 210,
+              "text": "Which sector do you operate in?",
+              "textControlHtmlId": "lstIndustryQ2",
+              "textControlHtmlName": "Question2",
+              "optionElements": [
+                {
+                  "controlType": "ListItem",
+                  "hint": "Sector",
+                  "id": 211,
+                  "text": "Agriculture, Forestry and Fishing",
+                  "textControlHtmlId": "Question2Option1",
+                  "textControlHtmlName": "Question2Option1_"
+                },
+                {
+                  "controlType": "ListItem",
+                  "hint": "Sector",
+                  "id": 212,
+                  "text": "Mining, Quarrying and Utilities.",
+                  "textControlHtmlId": "Question2Option2",
+                  "textControlHtmlName": "Question2Option2_"
+                },
+                {
+                  "controlType": "ListItem",
+                  "hint": "Sector",
+                  "id": 213,
+                  "text": "Manufacturing",
+                  "textControlHtmlId": "Question2Option3",
+                  "textControlHtmlName": "Question2Option3_"
+                },
+                {
+                  "controlType": "ListItem",
+                  "hint": "Sector",
+                  "id": 214,
+                  "text": "Construction",
+                  "textControlHtmlId": "Question2Option4",
+                  "textControlHtmlName": "Question2Option4_"
+                },
+                {
+                  "controlType": "ListItem",
+                  "hint": "Sector",
+                  "id": 215,
+                  "text": "Wholesale and Retail Trade",
+                  "textControlHtmlId": "Question2Option5",
+                  "textControlHtmlName": "Question2Option5_"
+                },
+                {
+                  "controlType": "ListItem",
+                  "hint": "Sector",
+                  "id": 216,
+                  "text": "Transportation and Storage",
+                  "textControlHtmlId": "Question2Option6",
+                  "textControlHtmlName": "Question2Option6_"
+                },
+                {
+                  "controlType": "ListItem",
+                  "hint": "Sector",
+                  "id": 217,
+                  "text": "Accommodation and Food Service",
+                  "textControlHtmlId": "Question2Option7",
+                  "textControlHtmlName": "Question2Option7_"
+                },
+                {
+                  "controlType": "ListItem",
+                  "hint": "Sector",
+                  "id": 218,
+                  "text": "Information and Communication",
+                  "textControlHtmlId": "Question2Option8",
+                  "textControlHtmlName": "Question2Option8_"
+                },
+                {
+                  "controlType": "ListItem",
+                  "hint": "Sector",
+                  "id": 219,
+                  "text": "Financial and Insurance",
+                  "textControlHtmlId": "Question2Option9",
+                  "textControlHtmlName": "Question2Option9_"
+                },
+                {
+                  "controlType": "ListItem",
+                  "hint": "Sector",
+                  "id": 220,
+                  "text": "Real Estate",
+                  "textControlHtmlId": "Question2Option10",
+                  "textControlHtmlName": "Question2Option10_"
+                },
+                {
+                  "controlType": "ListItem",
+                  "hint": "Sector",
+                  "id": 221,
+                  "text": "Professional, Scientific and Technical",
+                  "textControlHtmlId": "Question2Option11",
+                  "textControlHtmlName": "Question2Option11_"
+                },
+                {
+                  "controlType": "ListItem",
+                  "hint": "Sector",
+                  "id": 222,
+                  "text": "Administrative and Support Service",
+                  "textControlHtmlId": "Question2Option12",
+                  "textControlHtmlName": "Question2Option12_"
+                },
+                {
+                  "controlType": "ListItem",
+                  "hint": "Sector",
+                  "id": 223,
+                  "text": "Public Administration and Defence",
+                  "textControlHtmlId": "Question2Option13",
+                  "textControlHtmlName": "Question2Option13_"
+                },
+                {
+                  "controlType": "ListItem",
+                  "hint": "Sector",
+                  "id": 224,
+                  "text": "Education",
+                  "textControlHtmlId": "Question2Option14",
+                  "textControlHtmlName": "Question2Option14_"
+                },
+                {
+                  "controlType": "ListItem",
+                  "hint": "Sector",
+                  "id": 225,
+                  "text": "Health and Social Work",
+                  "textControlHtmlId": "Question2Option15",
+                  "textControlHtmlName": "Question2Option15_"
+                },
+                {
+                  "controlType": "ListItem",
+                  "hint": "Sector",
+                  "id": 226,
+                  "text": "Arts, Entertainment and Recreation",
+                  "textControlHtmlId": "Question2Option16",
+                  "textControlHtmlName": "Question2Option16_"
+                },
+                {
+                  "controlType": "ListItem",
+                  "hint": "Sector",
+                  "id": 227,
+                  "text": "Other services",
+                  "textControlHtmlId": "Question2Option17",
+                  "textControlHtmlName": "Question2Option17_"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "order": 3,
+          "title": "How you use software",
+          "elements": [
+            {
+              "controlType": "RadioGroup",
+              //"hint": "Select ONE ONLY",
+              "id": 300,
+              "text": "How does your business currently use software?",
+              "textControlHtmlId": "lblMultipleChoiceQ3",
+              "textControlHtmlName": "Question3",
+              "optionElements": [
+                {
+                  "controlType": "Radio",
+                  "hint": "VeryLittle|UseMore",
+                  "id": 301,
+                  "resultPageLabel": "want to start using software in your business",
+                  "searchTags": [ "beginner" ],
+                  "text": "We don't use software",
+                  "textControlHtmlId": "Question3Option1",
+                  "textControlHtmlName": "Question3Option1_"
+                },
+                {
+                  "controlType": "Radio",
+                  "hint": "MediumUse|UseMore",
+                  "id": 302,
+                  "resultPageLabel": "use some software and want more",
+                  "searchTags": [ "intermediate" ],
+                  "text": "We use some software and want more",
+                  "textControlHtmlId": "Question3Option2",
+                  "textControlHtmlName": "Question3Option2_"
+                },
+                {
+                  "controlType": "Radio",
+                  "hint": "AlwaysUse|Upgrades",
+                  "id": 303,
+                  "resultPageLabel": "already use digital ways of working and are looking for replacements",
+                  "searchTags": [ "beginner" ],
+                  "text": "All processes are digital. We're looking for replacements",
+                  "textControlHtmlId": "Question3Option3",
+                  "textControlHtmlName": "Question3Option3_"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "order": 4,
+          "title": "Your IT set up",
+          "elements": [
+            {
+              "controlType": "RadioGroup",
+              //"hint": "Select ONE ONLY",
+              "id": 400,
+              "text": "What kind of IT support do you have in place?",
+              "textControlHtmlId": "lblMultipleChoiceQ4",
+              "textControlHtmlName": "lblMultipleChoiceQ4_",
+              "optionElements": [
+                {
+                  "controlType": "Radio",
+                  "hint": "In house",
+                  "id": 401,
+                  "text": "We have someone / an in-house team",
+                  "textControlHtmlId": "Question4Option1",
+                  "textControlHtmlName": "Question4Option1_"
+                },
+                {
+                  "controlType": "Radio",
+                  "hint": "External Company",
+                  "id": 402,
+                  "text": "We have an external team who support us",
+                  "textControlHtmlId": "Question4Option2",
+                  "textControlHtmlName": "Question4Option2_"
+                },
+                {
+                  "controlType": "Radio",
+                  "hint": "Software Supplier",
+                  "id": 403,
+                  "text": "We rely on supplier support",
+                  "textControlHtmlId": "Question4Option3",
+                  "textControlHtmlName": "Question4Option3_"
+                },
+                {
+                  "controlType": "Radio",
+                  "hint": "Software Supplier",
+                  "id": 404,
+                  "text": "We don't have any support in place",
+                  "textControlHtmlId": "Question4Option4",
+                  "textControlHtmlName": "Question4Option4_"
+                },
+                {
+                  "controlType": "Radio",
+                  "hint": "Software Supplier",
+                  "id": 405,
+                  "text": "Friends / family help when we need it",
+                  "textControlHtmlId": "Question4Option5",
+                  "textControlHtmlName": "Question4Option5_"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "order": 5,
+          "title": "Your IT set up",
+          "elements": [
+            {
+              "controlType": "CheckboxGroup",
+              "hint": "Select all that apply",
+              "id": 510,
+              "text": "How do you currently store most of your business information?",
+              "textControlHtmlId": "lblMultipleChoiceQ5",
+              "textControlHtmlName": "Question5",
+              "optionElements": [
+                {
+                  "controlType": "Checkbox",
+                  "id": 511,
+                  "text": "On stickies and in notebooks",
+                  "hint": "On stickies and in notebooks",
+                  "textControlHtmlId": "Question5Option1",
+                  "textControlHtmlName": "Question5Option1_",
+                  "searchTags": [ "analoguePractices" ]
+                },
+                {
+                  "controlType": "Checkbox",
+                  "id": 512,
+                  "text": "On individual computer hard drives",
+                  "hint": "On individual computer hard drives",
+                  "textControlHtmlId": "Question5Option2",
+                  "textControlHtmlName": "Question5Option2_",
+                  "searchTags": [ "digitalPractices" ]
+                },
+                {
+                  "controlType": "Checkbox",
+                  "id": 513,
+                  "text": "On shared hard drives",
+                  "hint": "On shared hard drives",
+                  "textControlHtmlId": "Question5Option3",
+                  "textControlHtmlName": "Question5Option3_",
+                  "searchTags": [ "digitalPractices" ]
+                },
+                {
+                  "controlType": "Checkbox",
+                  "id": 514,
+                  "text": "On Cloud storage (e.g. iCloud)",
+                  "hint": "On Cloud storage (e.g. iCloud)",
+                  "textControlHtmlId": "Question5Option4",
+                  "textControlHtmlName": "Question5Option4_",
+                  "searchTags": [ "digitalPractices" ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "order": 6,
+          "title": "What you need & want to achieve",
+          "elements": [
+            {
+              "controlType": "RadioGroup",
+              //"hint": "Select ONE ONLY",
+              "id": 600,
+              "text": "Do you know which software you need?",
+              "textControlHtmlId": "lblMultipleChoiceQ6",
+              "textControlHtmlName": "Question6",
+              "optionElements": [
+                {
+                  "controlType": "Radio",
+                  "id": 601,
+                  "text": "Yes",
+                  "textControlHtmlId": "Question6Option1",
+                  "textControlHtmlName": "Question6Option1_"
+                },
+                {
+                  "controlType": "Radio",
+                  "id": 602,
+                  "text": "No",
+                  "textControlHtmlId": "Question6Option2",
+                  "textControlHtmlName": "Question6Option2_"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "order": 7,
+          "title": "What you need & want to achieve",
+          "showInSummary": false,
+          "skipConditionValue": "No",
+          "skippedByElementId": 600,
+          "skippedByElementStepId": 6,
+          "elements": [
+            {
+              "controlType": "CheckboxGroup",
+              "hint": "Select all that apply",
+              "id": 700,
+              "text": "What type of software are you looking for?",
+              "textControlHtmlId": "chkBoxGroupQ7",
+              "textControlHtmlName": "Question7",
+              "optionElements": [
+                {
+                  "controlType": "Checkbox",
+                  "id": 710,
+                  "text": "Customer relationship management (CRM)",
+                  "hint": "Customer relationship management (CRM)",
+                  "textControlHtmlId": "Question7Option1",
+                  "textControlHtmlName": "Question7Option1_",
+                  "searchTags": [ "crmSoftware" ],
+                  "ResultPageLabel": "CRM Software"
+                },
+                {
+                  "controlType": "Checkbox",
+                  "id": 711,
+                  "text": "eCommerce",
+                  "hint": "eCommerce",
+                  "textControlHtmlId": "Question7Option2",
+                  "textControlHtmlName": "Question7Option2_",
+                  "searchTags": [ "ecommerceSoftware" ],
+                  "ResultPageLabel": "eCommerce Software"
+                },
+                {
+                  "controlType": "Checkbox",
+                  "id": 712,
+                  "text": "Digital accounting",
+                  "hint": "Digital accounting",
+                  "textControlHtmlId": "Question7Option3",
+                  "textControlHtmlName": "Question7Option3_",
+                  "searchTags": [ "accountingSoftware" ],
+                  "ResultPageLabel": "Digital Accounting Software"
+                },
+                {
+                  "controlType": "Checkbox",
+                  "id": 713,
+                  "text": "Something else",
+                  "hint": "Something else",
+                  "textControlHtmlId": "Question7Option4",
+                  "textControlHtmlName": "Question7Option4_",
+                  "additionalInfoRequired": true,
+                  "additionalInfoText": "If your software type isn't listed here, please tell us the type of software you're interested in."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "order": 8,
+          "title": "What you need & want to achieve",
+          "showInSummary": false,
+          "skipConditionValue": "Yes",
+          "skippedByElementId": 600,
+          "skippedByElementStepId": 6,
+          "elements": [
+            {
+              "controlType": "CheckboxGroup",
+              "hint": "Select all that apply",
+              "id": 800,
+              "text": "Which tasks do you want to simplify?",
+              "textControlHtmlId": "chkBoxGroup1Q8",
+              "textControlHtmlName": "Question8",
+              "optionElements": [
+                {
+                  "controlType": "Checkbox",
+                  "id": 810,
+                  "text": "Taking payments and listing products for sale",
+                  "hint": "Taking payments and listing products for sale",
+                  "textControlHtmlId": "Question8Option1",
+                  "textControlHtmlName": "Question8Option1_",
+                  "searchTags": [ "ecommerceSoftware" ],
+                  "ResultPageLabel": "taking payments and listing products for sale"
+                },
+                {
+                  "controlType": "Checkbox",
+                  "id": 811,
+                  "text": "Selling through the business' website",
+                  "hint": "Selling through the business' website",
+                  "textControlHtmlId": "Question8Option2",
+                  "textControlHtmlName": "Question8Option2_",
+                  "searchTags": [ "ecommerceSoftware" ],
+                  "ResultPageLabel": "selling through the business' website"
+                },
+                {
+                  "controlType": "Checkbox",
+                  "id": 812,
+                  "text": "Creating personalised, online customer experiences",
+                  "hint": "Creating personalised, online customer experiences",
+                  "textControlHtmlId": "Question8Option3",
+                  "textControlHtmlName": "Question8Option3_",
+                  "searchTags": [ "accountingSoftware" ],
+                  "ResultPageLabel": "creating personal, online customer experiences"
+                },
+                {
+                  "controlType": "Checkbox",
+                  "id": 813,
+                  "text": "Digital tax and accounting",
+                  "hint": "Digital tax and accounting",
+                  "textControlHtmlId": "Question8Option4",
+                  "textControlHtmlName": "Question8Option4_",
+                  "searchTags": [ "accountingSoftware" ],
+                  "ResultPageLabel": "digital tax and accounting"
+                },
+                {
+                  "controlType": "Checkbox",
+                  "id": 814,
+                  "text": "Managing sales info, receipts and invoices",
+                  "hint": "Managing sales info, receipts and invoices",
+                  "textControlHtmlId": "Question8Option5",
+                  "textControlHtmlName": "Question8Option5_",
+                  "searchTags": [ "accountingSoftware" ],
+                  "ResultPageLabel": "managing sales info, receipts, and invoices"
+                },
+                {
+                  "controlType": "Checkbox",
+                  "id": 815,
+                  "text": "Tracking stock levels",
+                  "hint": "Tracking stock levels",
+                  "textControlHtmlId": "Question8Option6",
+                  "textControlHtmlName": "Question8Option6_",
+                  "searchTags": [ "accountingSoftware" ],
+                  "ResultPageLabel": "tracking stock levels"
+                },
+                {
+                  "controlType": "Checkbox",
+                  "id": 816,
+                  "text": "Monitoring sales and promotions",
+                  "hint": "Monitoring sales and promotions",
+                  "textControlHtmlId": "Question8Option7",
+                  "textControlHtmlName": "Question8Option7_",
+                  "searchTags": [ "crmSoftware" ],
+                  "ResultPageLabel": "monitoring sales and promotions"
+                },
+                {
+                  "controlType": "Checkbox",
+                  "id": 817,
+                  "text": "Understanding customer needs and trends",
+                  "hint": "Understanding customer needs and trends",
+                  "textControlHtmlId": "Question8Option8",
+                  "textControlHtmlName": "Question8Option8_",
+                  "ResultPageLabel": "understanding customer needs and trends"
+                },
+                {
+                  "controlType": "Checkbox",
+                  "id": 818,
+                  "text": "Tracking communication between the team and customers",
+                  "hint": "Tracking communication between the team and customers",
+                  "textControlHtmlId": "Question8Option9",
+                  "textControlHtmlName": "Question8Option9_",
+                  "searchTags": [ "crmSoftware" ],
+                  "ResultPageLabel": "tracking communication between the team and customers"
+                },
+                {
+                  "controlType": "Checkbox",
+                  "id": 819,
+                  "text": "None of these",
+                  "hint": "None of these",
+                  "textControlHtmlId": "Question8Option10",
+                  "textControlHtmlName": "Question8Option10_",
+                  "additionalInfoRequired": true,
+                  "additionalInfoText": "If your goal isn't listed here, please tell us what you're looking to achieve."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+
+    "skillsOne": {
+      "summaryHeading": "Your digital journey",
+      "canChangeAnswers" : false,
+      "backButton": false,
+      "backLink": true,
+      "backURLfromQ1": "/learning-module-one-questionnaire-intro",
+      "steps": [
+
+        {
+          "id": 1,
+          "order": 1,
+          "title": "Your digital journey",
+          "summaryTitle": "You are most interested in digital adoption that helps you to",
+          "elements": [
+            {
+              "controlType": "CheckboxGroup",
+              "hint": "Choose all options that you'd like to explore",
+              "showHintInBold": true,
+              "id": 110,
+              "text": "Question 1:",
+              "text2": "Which benefits(s) of digital working are you most interested in?",
+              "textControlHtmlId": "lblMultipleChoice",
+              "textControlHtmlName": "Question1",
+              "optionElements": [
+                {
+                  "controlType": "Checkbox",
+                  "id": 111,
+                  "text": "Finding new business opportunities",
+                  "hint": "Finding new business opportunities",
+                  "textControlHtmlId": "Question5Option1",
+                  "textControlHtmlName": "Question5",
+                  "ResultPageLabel": "find new business opportunities",
+                  "searchTags": [ "analoguePractices" ]
+                },
+                {
+                  "controlType": "Checkbox",
+                  "id": 112,
+                  "text": "Increasing sales",
+                  "hint": "Increasing sales",
+                  "textControlHtmlId": "Question5Option2",
+                  "textControlHtmlName": "Question5",
+                  "ResultPageLabel": "increase sales",
+                  "searchTags": [ "digitalPractices" ]
+                },
+                {
+                  "controlType": "Checkbox",
+                  "id": 113,
+                  "text": "Saving time by automating tasks",
+                  "hint": "Saving time by automating tasks",
+                  "textControlHtmlId": "Question5Option3",
+                  "textControlHtmlName": "Question5",
+                  "ResultPageLabel": "save time through automation",
+                  "searchTags": [ "digitalPractices" ]
+                },
+                {
+                  "controlType": "Checkbox",
+                  "id": 114,
+                  "text": "Viewing business data in real-time",
+                  "hint": "Viewing business data in real-time",
+                  "textControlHtmlId": "Question5Option4",
+                  "textControlHtmlName": "Question5",
+                  "ResultPageLabel": "view real-time business data",
+                  "searchTags": [ "digitalPractices" ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "order": 2,
+          "title": "Your digital journey",
+          "summaryTitle": "The most time-consuming task(s) or area of your business that you'd like to simplify are:",
+          "elements": [
+            {
+              "controlType": "Textarea",
+              "hint": "Think about how you/your team work at the moment. What are the most time consuming tasks or parts of the business that you'd like to make easier.",
+              "showHintInBold": true,
+              "id": 200,
+              "text": "Question 2:",
+              "text2": "Describe your business' biggest friction point that you'd like to fix.",
+              "textControlHtmlId": "lblQuestion2",
+              "textControlHtmlName": "Question2"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "order": 3,
+          "title": "Your digital journey",
+          "summaryTitle": "Thinking about how your business currently uses software, you said ",
+          "elements": [
+            {
+              "controlType": "RadioGroup",
+              "hint": "This could include using email, video calls, accounting software or taking online payments for your goods/services.",
+              "showHintInBold": true,
+              "id": 300,
+              "text": "Question 3:",
+              "text2": "To what extent does your business currently use software and digital ways of working?",
+              "textControlHtmlId": "lblMultipleChoice",
+              "textControlHtmlName": "Question5",
+              "optionElements": [
+                {
+                  "controlType": "Radio",
+                  "id": 301,
+                  "text": "We don't use any software at all",
+                  "textControlHtmlId": "Question5Option1",
+                  "textControlHtmlName": "Question5",
+                  "ResultPageLabel": "we don't use any software"
+                },
+                {
+                  "controlType": "Radio",
+                  "id": 302,
+                  "text": "We use some software, but would like to use more",
+                  "textControlHtmlId": "Question5Option2",
+                  "textControlHtmlName": "Question5",
+                  "ResultPageLabel": "we use some software and want more"
+                },
+                {
+                  "controlType": "Radio",
+                  "id": 303,
+                  "text": "We use lots of software packages, but are considering alternatives",
+                  "textControlHtmlId": "Question5Option3",
+                  "textControlHtmlName": "Question5",
+                  "ResultPageLabel": "we use lots of software. We're considering replacements"
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "id": 4,
+          "order": 4,
+          "title": "Your digital journey",
+          "summaryTitle": "You currently use the following methods to share or store information:",
+          //"showInSummary": false,
+          //"skippedByElementStepId": 6,
+          "elements": [
+            {
+              "controlType": "CheckboxGroup",
+              "hint": "Think about the job roles in your business and how you store and share your important information.",
+              "showHintInBold": true,
+              "hint2": "Select all the options you use.",
+              "showHint2InBold": true,
+              "id": 400,
+              "text": "Question 4:",
+              "text2": "How do you / your team currently store and share information?",
+              "textControlHtmlId": "chkBoxGroup1",
+              "textControlHtmlName": "chkBoxGroup1",
+              "optionElements": [
+                {
+                  "controlType": "Checkbox",
+                  "id": 410,
+                  "text": "In person, sticky notes and emails",
+                  "hint": "In person, sticky notes and emails",
+                  "textControlHtmlId": "Question12Option1",
+                  "textControlHtmlName": "Question12",
+                  "searchTags": [ "ecommerceSoftware" ],
+                  "ResultPageLabel": "in person, sticky notes and/or emails"
+                },
+                {
+                  "controlType": "Checkbox",
+                  "id": 411,
+                  "text": "Through a shared database (like a Customer Relationship Management tool)",
+                  "hint": "Through a shared database (like a Customer Relationship Management tool)",
+                  "textControlHtmlId": "Question12Option2",
+                  "textControlHtmlName": "Question12",
+                  "searchTags": [ "ecommerceSoftware" ],
+                  "ResultPageLabel": "using shared databases like a CRM tool"
+                },
+                {
+                  "controlType": "Checkbox",
+                  "id": 412,
+                  "text": "Through daily / weekly meetings",
+                  "hint": "Through daily / weekly meetings",
+                  "textControlHtmlId": "Question12Option3",
+                  "textControlHtmlName": "Question12",
+                  "searchTags": [ "accountingSoftware" ],
+                  "ResultPageLabel": "through daily/weekly meetings"
+                },
+                {
+                  "controlType": "Checkbox",
+                  "id": 413,
+                  "text": "Through Word or Excel documents",
+                  "hint": "Through Word or Excel documents",
+                  "textControlHtmlId": "Question12Option3",
+                  "textControlHtmlName": "Question12",
+                  "searchTags": [ "accountingSoftware" ],
+                  "ResultPageLabel": "using Word or Excel documents"
+                },
+
+                {
+                  "controlType": "Checkbox",
+                  "id": 414,
+                  "text": "Something else",
+                  "hint": "Something else",
+                  "textControlHtmlId": "Question12Option11",
+                  "textControlHtmlName": "Question12",
+                  "additionalInfoRequired": true,
+                  "additionalInfoText": "How else do you and your team store and share information?"
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "id": 5,
+          "order": 5,
+          "title": "Your digital journey",
+          "summaryTitle": "Finally, when asked what you considered the biggest benefit to your business would be from digital adoption, you said",
+          "elements": [
+            {
+              "controlType": "Textarea",
+              //"hint": "",
+              "id": 500,
+              "text": "Question 5:",
+              "text2": "Describe below the benefits you think digital adoption would bring for your business.",
+              "textControlHtmlId": "lblQuestion5",
+              "textControlHtmlName": "Question5"
+            }
+          ]
+        }
+
+
+      ]
+    },
+
+
+    "skillsTwo": {
+      "summaryHeading": "Your digital audit",
+      "canChangeAnswers": false,
+      "backButton": false,
+      "backLink": true,
+      "backURLfromQ1": "/learning-module-two-your-digital-audit",
+      "steps": [
+
+        {
+          "id": 1,
+          "order": 1,
+          "title": "Your digital audit",
+          "elements": [
+            {
+              "controlType": "RadioGroup",
+              "hint": "Technology could be software like CRM, and/or standard office tools like Excel, email or video calls. ",
+              "id": 110,
+              "text": "Communication, data storage and payments",
+              "text2": "",
+              "subText": "Question1: Do you currently use technology to communicate with customers, suppliers and your team?  ",
+              "nextButtonText": "Go to question 2",
+              "textControlHtmlId": "lblMultipleChoice1",
+              "textControlHtmlName": "Question1",
+              "optionElements": [
+                {
+                  "controlType": "Radio",
+                  "id": 101,
+                  "strongText": "Yes - ",
+                  "text": "we use technology to manage and track conversations between teams, and suppliers and customers",
+                  "value": "Yes",
+                  "textControlHtmlId": "Question1Option1",
+                  "textControlHtmlName": "Question101",
+                  "score": 3
+                },
+                {
+                  "controlType": "Radio",
+                  "id": 102,
+                  "strongText": "Sometimes - ",
+                  "text": "we use some standard software like email and spreadsheets.",
+                  "value": "Sometimes",
+                  "textControlHtmlId": "Question1Option2",
+                  "textControlHtmlName": "Question102",
+                  "score": 2
+                },
+                {
+                  "controlType": "Radio",
+                  "id": 103,
+                  "strongText": "No - ",
+                  "text": "we don't use any technology. Communication takes by phone or face-to-face. We record and store details of conversations on paper.",
+                  "value": "No",
+                  "textControlHtmlId": "Question1Option3",
+                  "textControlHtmlName": "Question103",
+                  "score": 1
+                },
+                {
+                  "controlType": "Checkbox",
+                  "id": 104,
+                  "topDownBorder": true,
+                  "text": "Finding new business opportunities",
+                  "hint": "Is improving how you communicate a business priority?",
+                  "ResultPageLabel": "Improving communication with customers and your team",
+                  "textControlHtmlId": "Question1Option4",
+                  "textControlHtmlName": "Question104"
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "id": 2,
+          "order": 2,
+          "title": "Your digital audit",
+          "elements": [
+            {
+              "controlType": "RadioGroup",
+              "hint": "A Server would include in-house or offsite hard drives that can be accessed by you and you team. Cloud relates to virtual storage available through your hardware.",
+              "id": 210,
+              "text": "Communication, data storage and payments",
+              "text2": "",
+              "subText": "Question 2: Do you use Servers or the Cloud to store your data? ",
+              "nextButtonText": "Go to question 3",
+              "textControlHtmlId": "lblMultipleChoice2",
+              "textControlHtmlName": "Question2",
+              "optionElements": [
+                {
+                  "controlType": "Radio",
+                  "id": 201,
+                  "strongText": "Yes - ",
+                  "text": "all our business data is stored in the Cloud or on Servers.",
+                  "value": "Yes",
+                  "textControlHtmlId": "Question2Option1",
+                  "textControlHtmlName": "Question201",
+                  "score": 3
+                },
+                {
+                  "controlType": "Radio",
+                  "id": 202,
+                  "strongText": "Sometimes - ",
+                  "text": "some data is stored in the Cloud or on Servers, but some is kept on individual devices.",
+                  "value": "Sometimes",
+                  "textControlHtmlId": "Question2Option2",
+                  "textControlHtmlName": "Question202",
+                  "score": 2
+                },
+                {
+                  "controlType": "Radio",
+                  "id": 203,
+                  "strongText": "No - ",
+                  "text": "we don't use the Cloud or Servers at all. ",
+                  "value": "No",
+                  "textControlHtmlId": "Question2Option3",
+                  "textControlHtmlName": "Question203",
+                  "score": 1
+                },
+                {
+                  "controlType": "Checkbox",
+                  "id": 204,
+                  "topDownBorder": true,
+                  "text": "Is improving data storage a business priority?",
+                  "hint": "Is improving data storage a business priority?",
+                  "ResultPageLabel": "Explore data storage options",
+                  "textControlHtmlId": "Question2Option4",
+                  "textControlHtmlName": "Question204"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "order": 3,
+          "title": "Your digital audit",
+          "elements": [
+            {
+              "controlType": "RadioGroup",
+              "hint": "This may include software that allows you to take payment through your website, or merchants like PayPal. It could also include accounting software that automatically raises invoices for your services. ",
+              "id": 310,
+              "text": "Communication, data storage and payments",
+              "text2": "",
+              "subText": "Question 3: Do you use software to take payments online, or raise and send invoices?",
+              "nextButtonText": "Go to question 4",
+              "textControlHtmlId": "lblMultipleChoice3",
+              "textControlHtmlName": "Question3",
+              "optionElements": [
+                {
+                  "controlType": "Radio",
+                  "id": 301,
+                  "strongText": "Yes - ",
+                  "text": "we use technology to take payments online and generate receipts/raise and send invoices.",
+                  "value": "Yes",
+                  "textControlHtmlId": "Question3Option1",
+                  "textControlHtmlName": "Question301",
+                  "score": 3
+                },
+                {
+                  "controlType": "Radio",
+                  "id": 302,
+                  "strongText": "Sometimes - ",
+                  "text": "we take some digital payments, but also accept cash. Receipts and invoices are created manually.",
+                  "value": "Sometimes",
+                  "textControlHtmlId": "Question3Option2",
+                  "textControlHtmlName": "Question302",
+                  "score": 2
+                },
+                {
+                  "controlType": "Radio",
+                  "id": 303,
+                  "strongText": "No - ",
+                  "text": "payments are either by cash or taken by card over the phone. Receipts/invoices are created manually.",
+                  "value": "No",
+                  "textControlHtmlId": "Question3Option3",
+                  "textControlHtmlName": "Question303",
+                  "score": 1
+                },
+                {
+                  "controlType": "Checkbox",
+                  "id": 304,
+                  "topDownBorder": true,
+                  "text": "Is improving how you take payments a business priority?",
+                  "hint": "Is improving how you take payments a business priority?",
+                  "ResultPageLabel": "Expand how you take payments",
+                  "textControlHtmlId": "Question3Option4",
+                  "textControlHtmlName": "Question304"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "order": 4,
+          "title": "Your digital audit",
+          "elements": [
+            {
+              "controlType": "RadioGroup",
+              "hint": "This could be social media, blogging, advertising on other industry websites and/or directory listings.",
+              "id": 410,
+              "text": "Marketing and advertising",
+              "text2": "",
+              "subText": "Question 4: Does your business advertise online?",
+              "nextButtonText": "Go to question 5",
+              "textControlHtmlId": "lblMultipleChoice4",
+              "textControlHtmlName": "Question4",
+              "optionElements": [
+                {
+                  "controlType": "Radio",
+                  "id": 401,
+                  "strongText": "Yes - ",
+                  "text": "we regularly use a range of online marketing tools. It's a big part of our advertising.",
+                  "value": "Yes",
+                  "textControlHtmlId": "Question4Option1",
+                  "textControlHtmlName": "Question401",
+                  "score": 3
+                },
+                {
+                  "controlType": "Radio",
+                  "id": 402,
+                  "strongText": "Sometimes - ",
+                  "text": "we have social media accounts and have advertised in the past, but don't do it regularly.",
+                  "value": "Sometimes",
+                  "textControlHtmlId": "Question4Option2",
+                  "textControlHtmlName": "Question402",
+                  "score": 2
+                },
+                {
+                  "controlType": "Radio",
+                  "id": 403,
+                  "strongText": "No - ",
+                  "text": "we don't use online marketing tools. ",
+                  "value": "No",
+                  "textControlHtmlId": "Question4Option3",
+                  "textControlHtmlName": "Question403",
+                  "score": 1
+                },
+                {
+                  "controlType": "Checkbox",
+                  "id": 404,
+                  "topDownBorder": true,
+                  "text": "Is improving your online marketing a business priority?",
+                  "hint": "Is improving your online marketing a business priority?",
+                  "ResultPageLabel": "Improving online marketing",
+                  "textControlHtmlId": "Question4Option4",
+                  "textControlHtmlName": "Question404"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "order": 5,
+          "title": "Your digital audit",
+          "elements": [
+            {
+              "controlType": "RadioGroup",
+              "hint": "This could be a single page that explains what your business does, or a website that hosts a full catalogue of your products services. Customers could find it through a URL unique to your business or through an online marketplace like Etsy.",
+              "id": 510,
+              "text": "Marketing and advertising",
+              "text2": "",
+              "subText": "Question 5: Do you have an online shop front or website that promotes your business?",
+              "nextButtonText": "Go to question 6",
+              "textControlHtmlId": "lblMultipleChoice5",
+              "textControlHtmlName": "Question5",
+              "optionElements": [
+                {
+                  "controlType": "Radio",
+                  "id": 501,
+                  "strongText": "Yes - ",
+                  "text": "we have an online presence we regularly update.",
+                  "value": "Yes",
+                  "textControlHtmlId": "Question5Option1",
+                  "textControlHtmlName": "Question501",
+                  "score" : 3
+                },
+                {
+                  "controlType": "Radio",
+                  "id": 502,
+                  "strongText": "Sometimes - ",
+                  "text": "we have an online presence, but the information on it is old and we don't update it.",
+                  "value": "Sometimes",
+                  "textControlHtmlId": "Question5Option2",
+                  "textControlHtmlName": "Question502",
+                  "score": 2
+                },
+                {
+                  "controlType": "Radio",
+                  "id": 503,
+                  "strongText": "No - ",
+                  "text": "we don't have an online presence of any sort.",
+                  "value": "No",
+                  "textControlHtmlId": "Question5Option3",
+                  "textControlHtmlName": "Question503",
+                  "score": 1
+                },
+                {
+                  "controlType": "Checkbox",
+                  "id": 504,
+                  "topDownBorder": true,
+                  "text": "Is creating an online presence a business priority?",
+                  "hint": "Is creating an online presence a business priority?",
+                  "ResultPageLabel": "Create/expand your online presence",
+                  "textControlHtmlId": "Question5Option4",
+                  "textControlHtmlName": "Question504"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "order": 6,
+          "title": "Your digital audit",
+          "elements": [
+            {
+              "controlType": "RadioGroup",
+              "hint": "For example, software that creates a newsletter or promotional email, and automatically fills in the customer's name for a personal touch.",
+              "id": 610,
+              "text": "Marketing and advertising",
+              "text2": "",
+              "subText": "Question 6: Does your business use software to personalise messages to your customers?",
+              "nextButtonText": "Go to question 7",
+              "textControlHtmlId": "lblMultipleChoice6",
+              "textControlHtmlName": "Question6",
+              "optionElements": [
+                {
+                  "controlType": "Radio",
+                  "id": 601,
+                  "strongText": "Yes - ",
+                  "text": "we use software to personalise all  digital marketing messages.",
+                  "value": "Yes",
+                  "textControlHtmlId": "Question6Option1",
+                  "textControlHtmlName": "Question601",
+                  "score": 3
+                },
+                {
+                  "controlType": "Radio",
+                  "id": 602,
+                  "strongText": "Sometimes - ",
+                  "text": "we use free, web-based tools to personalise some marketing messages, but don't have the software in-house.",
+                  "value": "Sometimes",
+                  "textControlHtmlId": "Question6Option2",
+                  "textControlHtmlName": "Question602",
+                  "score": 2
+                },
+                {
+                  "controlType": "Radio",
+                  "id": 603,
+                  "strongText": "No - ",
+                  "text": "we don't use software to personalise our marketing.",
+                  "value": "No",
+                  "textControlHtmlId": "Question6Option3",
+                  "textControlHtmlName": "Question603",
+                  "score": 1
+                },
+                {
+                  "controlType": "Checkbox",
+                  "id": 604,
+                  "topDownBorder": true,
+                  "text": "Is creating a personalised marketing experience a business priority?",
+                  "hint": "Is creating a personalised marketing experience a business priority?",
+                  "ResultPageLabel": "Create personalised experiences for your customers",
+                  "textControlHtmlId": "Question6Option4",
+                  "textControlHtmlName": "Question604"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "order": 7,
+          "title": "Your digital audit",
+          "elements": [
+            {
+              "controlType": "RadioGroup",
+              "hint": "These tasks could include: managing appointments; planning an event calendar; monitoring staff holidays; or recording how long it takes to complete a job.",
+              "id": 710,
+              "text": "Your team and planning",
+              "text2": "",
+              "subText": "Question 7: Does your business use software to carry out business and task planning?",
+              "nextButtonText": "Go to question 8",
+              "textControlHtmlId": "lblMultipleChoice7",
+              "textControlHtmlName": "Question7",
+              "optionElements": [
+                {
+                  "controlType": "Radio",
+                  "id": 701,
+                  "strongText": "Yes - ",
+                  "text": "we use software for all aspects of business planning and monitoring.",
+                  "value": "Yes",
+                  "textControlHtmlId": "Question7Option1",
+                  "textControlHtmlName": "Question701",
+                  "score": 3
+                },
+                {
+                  "controlType": "Radio",
+                  "id": 702,
+                  "strongText": "Sometimes - ",
+                  "text": "we use software for some areas of the business, but not all.",
+                  "value": "Sometimes",
+                  "textControlHtmlId": "Question7Option2",
+                  "textControlHtmlName": "Question702",
+                  "score": 2
+                },
+                {
+                  "controlType": "Radio",
+                  "id": 703,
+                  "strongText": "No - ",
+                  "text": "we don't use software. Planning takes place in meetings and is written down.",
+                  "value": "No",
+                  "textControlHtmlId": "Question7Option3",
+                  "textControlHtmlName": "Question703",
+                  "score": 1
+                },
+                {
+                  "controlType": "Checkbox",
+                  "id": 704,
+                  "topDownBorder": true,
+                  "text": "Is automating workload and task planning a business priority?",
+                  "hint": "Is automating workload and task planning a business priority?",
+                  "ResultPageLabel": "Automating workload and task planning",
+                  "textControlHtmlId": "Question7Option4",
+                  "textControlHtmlName": "Question704"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "order": 8,
+          "title": "Your digital audit",
+          "elements": [
+            {
+              "controlType": "RadioGroup",
+              "hint": "This might include training to use software for a day-to-day job, or specialist training such as fire safety or risk assessment.",
+              "id": 810,
+              "text": "Your team and planning",
+              "text2": "",
+              "subText": "Question 8: Do you/your team use digital training when they need to learn new skills?",
+              "nextButtonText": "Go to question 9",
+              "textControlHtmlId": "lblMultipleChoice8",
+              "textControlHtmlName": "Question8",
+              "optionElements": [
+                {
+                  "controlType": "Radio",
+                  "id": 801,
+                  "strongText": "Yes - ",
+                  "text": "there's support in place so everyone has access to online learning when they need it.",
+                  "value": "Yes",
+                  "textControlHtmlId": "Question8Option1",
+                  "textControlHtmlName": "Question801",
+                  "score": 3
+                },
+                {
+                  "controlType": "Radio",
+                  "id": 802,
+                  "strongText": "Sometimes - ",
+                  "text": "online training is offered as a cost-effective alternative to on-site training, but is not used as standard.",
+                  "value": "Sometimes",
+                  "textControlHtmlId": "Question8Option2",
+                  "textControlHtmlName": "Question802",
+                  "score": 2
+                },
+                {
+                  "controlType": "Radio",
+                  "id": 803,
+                  "strongText": "No - ",
+                  "text": "digital training is not offered.",
+                  "value": "No",
+                  "textControlHtmlId": "Question8Option3",
+                  "textControlHtmlName": "Question803",
+                  "score": 1
+                },
+                {
+                  "controlType": "Checkbox",
+                  "id": 804,
+                  "topDownBorder": true,
+                  "text": "Is digital training a business priority?",
+                  "hint": "Is digital training a business priority?",
+                  "ResultPageLabel": "Adopt / explore digital training",
+                  "textControlHtmlId": "Question8Option4",
+                  "textControlHtmlName": "Question804"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 9,
+          "order": 9,
+          "title": "Your digital audit",
+          "elements": [
+            {
+              "controlType": "RadioGroup",
+              "hint": "This includes any format of digital sharing, including spreadsheets, email, CRM or via shared documents. If you work alone, think about how you record data should you need to share it in the future.",
+              "id": 910,
+              "text": "Your team and planning",
+              "text2": "",
+              "subText": "Question 9: Do you use software to share information with other people in the business?",
+              "nextButtonText": "See your result",
+              "textControlHtmlId": "lblMultipleChoice9",
+              "textControlHtmlName": "Question9",
+              "optionElements": [
+                {
+                  "controlType": "Radio",
+                  "id": 901,
+                  "strongText": "Yes - ",
+                  "text": "there's software in place so information can be stored, shared, accessed and updated across all teams.",
+                  "value": "Yes",
+                  "textControlHtmlId": "Question9Option1",
+                  "textControlHtmlName": "Question901",
+                  "score": 3
+                },
+                {
+                  "controlType": "Radio",
+                  "id": 902,
+                  "strongText": "Sometimes - ",
+                  "text": "information is stored digitally, but sharing is limited and updates need to be recorded manually.",
+                  "value": "Sometimes",
+                  "textControlHtmlId": "Question9Option2",
+                  "textControlHtmlName": "Question902",
+                  "score": 2
+                },
+                {
+                  "controlType": "Radio",
+                  "id": 903,
+                  "text": "information is shared and stored in hard copy.",
+                  "strongText": "No - ",
+                  "value": "No",
+                  "textControlHtmlId": "Question9Option3",
+                  "textControlHtmlName": "Question903",
+                  "score": 1
+                },
+                {
+                  "controlType": "Checkbox",
+                  "id": 904,
+                  "topDownBorder": true,
+                  "text": "Is information sharing a business priority?",
+                  "hint": "Is information sharing a business priority?",
+                  "ResultPageLabel": "Improve how information is shared in your business",
+                  "textControlHtmlId": "Question9Option4",
+                  "textControlHtmlName": "Question904"
+                }
+              ]
+            }
+          ]
+        }
+
+
+
+
+
+
+      ]
+    }
+
+  }
+}
