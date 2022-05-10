@@ -878,3 +878,19 @@ a:focus {
 .link-icon-align {
     margin-bottom: -4px;
 }
+
+span.govuk-link-divider {
+    color: #1D70B8;
+}
+
+.link-list-hero {
+    h3 {
+        font-weight: lighter;
+        font-size: 1.4em;
+        margin: 0px 0px;
+    }
+
+    span.govuk-link-divider {
+        color: #1D70B8;
+    }
+}

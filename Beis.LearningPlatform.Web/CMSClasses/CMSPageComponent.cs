@@ -141,5 +141,7 @@ namespace Beis.LearningPlatform.Web.StrapiApi.Models
         public CMSColumnHero ColumnTwo { get; set; }
         public CMSColumnHero ColumnThree { get; set; }
 
+        // LinkListHero
+        public IList<CMSSimpleLink> HeroLinks { get; set; }
 	}
 }
