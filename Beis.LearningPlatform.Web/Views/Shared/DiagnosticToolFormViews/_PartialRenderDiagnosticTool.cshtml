@@ -95,12 +95,41 @@
                                     {
                                         <partial name="SkilledModule2Views/_PartialDigitalMain" model="@Model" />
                                     }
-                                    else
+                                    else if (Model.FormType == FormTypes.DiagnosticTool)
                                     {
                                         <div class="govuk-grid-column-two-thirds">
                                             <p class="govuk-body">
                                                 You can change what you’ve told us, and get these results sent to you by email before seeing your results.
                                             </p>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="govuk-grid-column-two-thirds">
+                                            <p class="govuk-body">
+                                                You’ve completed the communication section of your action plan.
+                                            </p>
+                                             <p class="govuk-body">
+                                                Here are your answers...
+                                            </p>
+
+
+                                            <div style="display:flex">
+                                                @if (string.IsNullOrEmpty(Model.formLogo) == false)
+                                                {
+                                                    <div style="padding-right:10px;">
+                                                        <img src="~/assets/images/@Model.formLogo" />
+                                                    </div>
+                                                }
+                                                <div style="align-self:center;">
+                                                    <h1 class="govuk-fieldset__heading">
+                                                        <span>@Model.steps[0].elements[0].text</span>
+                                                        <span class="govuk-!-font-weight-regular">@Model.steps[0].elements[0].text2</span>
+                                                    </h1>
+                                                </div>
+
+                                            </div>
+
                                         </div>
                                     }
                                     displaySummaryTable = true;

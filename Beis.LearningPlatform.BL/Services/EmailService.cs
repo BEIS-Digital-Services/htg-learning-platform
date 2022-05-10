@@ -249,40 +249,40 @@ namespace Beis.LearningPlatform.BL.Services
             switch (userTypeActionPlanSection)
             {
                 // Mover
-                case "MoverCommunication":
+                case "mover-communication":
                     return _notifyServiceOption.Templates.SkillsModuleThree.MoverCommunication;
-                case "MoverPlanning":
+                case "mover-planning":
                     return _notifyServiceOption.Templates.SkillsModuleThree.MoverPlanning;
-                case "MoverSupport":
+                case "mover-support":
                     return _notifyServiceOption.Templates.SkillsModuleThree.MoverSupport;
-                case "MoverTesting":
+                case "mover-testing":
                     return _notifyServiceOption.Templates.SkillsModuleThree.MoverTesting;
-                case "MoverTraining":
+                case "mover-training":
                     return _notifyServiceOption.Templates.SkillsModuleThree.MoverTraining;
 
                 // Newcomer
-                case "NewcomerCommunication":
+                case "newcomer-communication":
                     return _notifyServiceOption.Templates.SkillsModuleThree.NewcomerCommunication;
-                case "NewcomerPlanning":
+                case "newcomer-planning":
                     return _notifyServiceOption.Templates.SkillsModuleThree.NewcomerPlanning;
-                case "NewcomerSupport":
+                case "newcomer-support":
                     return _notifyServiceOption.Templates.SkillsModuleThree.NewcomerSupport;
-                case "NewcomerTesting":
+                case "newcomer-testing":
                     return _notifyServiceOption.Templates.SkillsModuleThree.NewcomerTesting;
-                case "NewcomerTraining":
+                case "newcomer-training":
                     return _notifyServiceOption.Templates.SkillsModuleThree.NewcomerTraining;
 
                 //Performer
 
-                case "PerformerCommunication":
+                case "performer-communication":
                     return _notifyServiceOption.Templates.SkillsModuleThree.PerformerCommunication;
-                case "PerformerPlanning":
+                case "performer-planning":
                     return _notifyServiceOption.Templates.SkillsModuleThree.PerformerPlanning;
-                case "PerformerSupport":
+                case "performer-support":
                     return _notifyServiceOption.Templates.SkillsModuleThree.PerformerSupport;
-                case "PerformerTesting":
+                case "performer-testing":
                     return _notifyServiceOption.Templates.SkillsModuleThree.PerformerTesting;
-                case "PerformerTraining":
+                case "performer-training":
                     return _notifyServiceOption.Templates.SkillsModuleThree.PerformerTraining;
 
                 default:
