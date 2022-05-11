@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "dart-sass": "^1.25.0",
-    "govuk-frontend": "^3.13.0",
+    "govuk-frontend": "^3.14.0",
     "node-sass": "^6.0.1",
     "sass": "^1.37.5",
     "save-dev": "0.0.1-security"
