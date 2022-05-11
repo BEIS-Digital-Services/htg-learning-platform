@@ -4,14 +4,14 @@ namespace Beis.LearningPlatform.Web.Utils
 {
 	public static class ExtCMSPageLink
 	{
-		public static string GetGaLinkId(this ICmsPageLink cMSPageLink)
+		public static string GetGaLinkId(this ICmsPageLink cMSPageLink, string prefix = null)
 		{
 			if (string.IsNullOrWhiteSpace(cMSPageLink?.label))
 			{
-				return $"{cMSPageLink?.id}";
+				return $"{prefix}{cMSPageLink?.id}";
 			}
 
-			var labelId = cMSPageLink?.label.Replace(" ", "-").UrlEncode(true);
+			var labelId = $"{prefix}{cMSPageLink?.label}".Trim().Replace(" ", "-").UrlEncode(true);
 			return $"{labelId}-{cMSPageLink?.id}";
 		}
 
