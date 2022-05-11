@@ -102,7 +102,7 @@
                                             };
                                         </script>
 
-                                        <a role="button"
+                                        <a id="link-cmspageviews-feedbackpromptjs-yes" role="button"
                                            onclick="feedback(routeData)"
                                            class="govuk-button @setButtonType(Model.titleYes.type, "beisBlack", Model.titleYes.custom_class)"
                                            data-module="govuk-button">
@@ -123,7 +123,7 @@
                                         </script>
 
 
-                                        <a role="button"
+                                        <a id="link-cmspageviews-feedbackpromptjs-no" role="button"
                                            onclick="feedback(routeData2)"
                                            class="govuk-button @setButtonType(Model.titleNo.type, "beisBlack", Model.titleNo.custom_class)"
                                            data-module="govuk-button">
@@ -154,7 +154,7 @@
                                             };
                                     </script>
 
-                                    <a role="button"
+                                    <a id="link-cmspageviews-feedbackpromptjs-report" role="button"
                                        onclick="feedback(routeData3)"
                                        class="govuk-button @setButtonType(Model.titleReport.type, "beisBlack", Model.titleReport.custom_class)"
                                        data-module="govuk-button">
@@ -188,7 +188,7 @@
                 </script>
 
 
-                <a class="govuk-button secondary"
+                <a id="link-cmspageviews-feedbackpromptjs-not-useful" class="govuk-button secondary"
                    onclick="feedback(routeData4)"
                    data-track-category="yesNoFeedbackForm"
                    data-track-action="FormClose"
@@ -220,14 +220,14 @@
                     @if (showButtons && Model.NoSubmitButton != null)
                     {
                         <p class="govuk-button-group">
-                            <a role="button"
+                            <a id="link-cmspageviews-feedbackpromptjs-no-submit-button" role="button"
                                class="govuk-button primary">
                                 @Model.NoSubmitButton.label
                             </a>
 
                             @if (Model.NoEmailAddressLink != null)
                             {
-                                <a href="https://www.smartsurvey.co.uk/s/gov-uk-banner/?c=/service-manual/service-assessments/get-feedback-page&amp;amp;gcl=2049733727.1626700136"
+                                <a ga-data-action-id="link-cmspageviews-feedbackpromptjs-take-survey" href="https://www.smartsurvey.co.uk/s/gov-uk-banner/?c=/service-manual/service-assessments/get-feedback-page&amp;amp;gcl=2049733727.1626700136"
                                    class="govuk-link"
                                    id="take-survey"
                                    target="_blank"
@@ -259,7 +259,7 @@
                         };
                 </script>
 
-                <a class="govuk-button secondary"
+                <a id="link-cmspageviews-feedbackpromptjs-page-is-not-useful" class="govuk-button secondary"
                    onclick="feedback(routeData5)"
                    data-track-category="yesNoFeedbackForm"
                    data-track-action="fFormClose"
@@ -308,7 +308,7 @@
                         </script>
 
                         <p class="govuk-button-group">
-                            <a role="button"
+                            <a id="link-cmspageviews-feedbackpromptjs-submit" role="button"
                                onclick="feedback(routeData6)"
                                class="govuk-button primary">
                                 @Model.ReportSubmitButton.label
@@ -391,7 +391,7 @@
                 "IsPageUseful": feedback,
             },
             success: function (response) {
-                $("#FeedbackYesNoMessage").html("Thank you for your feedback. If you’d like to tell us more about your experience today, <a title='Please visit our survey' target='_blank'  href='https://beis.fra1.qualtrics.com/jfe/form/SV_0GLt4cTG0Oi1Pmu' class='beis-white-text'>please visit our survey</a>.");
+                $("#FeedbackYesNoMessage").html("Thank you for your feedback. If you’d like to tell us more about your experience today, <a id='link-cmspageviews-feedbackpromptjs-useful-please-visit-survey' title='Please visit our survey' target='_blank'  href='https://beis.fra1.qualtrics.com/jfe/form/SV_0GLt4cTG0Oi1Pmu' class='beis-white-text'>please visit our survey</a>.");
                 $("#FeedbackYesNoDiv").removeClass("@showButtonClass");
                 $("#FeedbackYesNoPanel").hide();
                 $("#FeedbackReportProblemDiv").hide();
@@ -412,7 +412,7 @@
                 "whatWentWrong": wrong
             },
             success: function (response) {
-                $("#FeedbackYesNoMessage").html("Thank you for your feedback. If you’d like to tell us more about your experience today, <a title='Please visit our survey' target='_blank'  href='https://beis.fra1.qualtrics.com/jfe/form/SV_0GLt4cTG0Oi1Pmu' class='beis-white-text'>please visit our survey</a>.");
+                $("#FeedbackYesNoMessage").html("Thank you for your feedback. If you’d like to tell us more about your experience today, <a id='link-cmspageviews-feedbackpromptjs-problem-please-visit-survey' title='Please visit our survey' target='_blank'  href='https://beis.fra1.qualtrics.com/jfe/form/SV_0GLt4cTG0Oi1Pmu' class='beis-white-text'>please visit our survey</a>.");
                 $("#FeedbackYesNoDiv").removeClass("@showButtonClass");
                 $("#FeedbackYesNoContainer").show();
                 $("#FeedbackReportProblemPanel").hide();

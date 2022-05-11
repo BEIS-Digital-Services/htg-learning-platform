@@ -23,7 +23,7 @@
                     <h2 class="govuk-heading-l govuk-!-margin-0">@Model.subheader</h2>
                 </div>
                 <div class="govuk-grid-column-one-third compare-products">
-                    <input type="submit" name="compare products" class="compareButton govuk-button compare-btn primary govuk-button--disabled" disabled="disabled" value="Compare products" />
+                    <input type="submit" id="submit-comparisontoolviews-productcategory-compare-products" name="compare products" class="compareButton govuk-button compare-btn primary govuk-button--disabled" disabled="disabled" value="Compare products" />
                 </div>
             </div>
 
@@ -41,21 +41,21 @@
                                 <div class="image-mask">
                                     <img src="@Model.VendorProdLogorUrl/@item.product_logo" alt="">
                                 </div>
-                                <a href="@item.website_url" class="govuk-link">@ComparisonToolFieldValidator.ParseStringField(item.product_name)</a>
+                                <a id="link-comparisontoolviews-productcategory-website-@(item.GetGaLinkId())" href="@item.website_url" class="govuk-link">@ComparisonToolFieldValidator.ParseStringField(item.product_name)</a>
                             </div>
                             <div class="product-details">
                                 <partial name="ComparisonToolViews/_PartialProductCategoryDetails" model="item" />
                             </div>
                             <div class="product-actions">
-                                <a type="button" aria-label="See features on @ComparisonToolFieldValidator.ParseStringField(item.product_name)"
+                                <a id="link-comparisontoolviews-productcategory-features-@(item.GetGaLinkId())" type="button" aria-label="See features on @ComparisonToolFieldValidator.ParseStringField(item.product_name)"
                                    asp-controller="comparisonTool" asp-action="ProductDetails" asp-all-route-data="@AddRouteData(@item.product_id)" class="govuk-button compare" data-module="govuk-button">
                                     See features
                                 </a>
-                               <a aria-label="include @ComparisonToolFieldValidator.ParseStringField(item.product_name)" class="govuk-button button__input compare" data-module="govuk-button" 
+                               <a ga-data-action-id="link-comparisontoolviews-productcategory-compare-@(item.GetGaLinkId())" aria-label="include @ComparisonToolFieldValidator.ParseStringField(item.product_name)" class="govuk-button button__input compare" data-module="govuk-button" 
                                    id="@("prod-"+item.product_id)">
                                     + Compare
                                 </a>
-                                <a type="button" aria-label="Select @ComparisonToolFieldValidator.ParseStringField(item.product_name)"
+                                <a id="link-comparisontoolviews-productcategory-get-discount-@(item.GetGaLinkId())" type="button" aria-label="Select @ComparisonToolFieldValidator.ParseStringField(item.product_name)"
                                     asp-controller="comparisonTool" asp-action="GetDiscount" asp-all-route-data="@AddRouteData(@item.product_id)" class="govuk-button discount" data-module="govuk-button">
                                         Get discount
                                 </a>
@@ -67,7 +67,7 @@
 
             <div class="govuk-grid-row govuk-!-margin-bottom-8">
                 <div class="govuk-grid-column-full compare-products">
-                    <input type="submit" name="compare products" class="compareButton govuk-button compare-btn primary govuk-button--disabled" disabled="disabled" value="Compare products" />
+                    <input type="submit" id="submit-comparisontoolviews-productcategory-compare-products-footer" name="compare products" class="compareButton govuk-button compare-btn primary govuk-button--disabled" disabled="disabled" value="Compare products" />
                 </div>
             </div>
         }

@@ -8,6 +8,7 @@ using Beis.LearningPlatform.Web.Options;
 using Beis.LearningPlatform.Web.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Moq;
@@ -20,44 +21,12 @@ using ConfigOptions = Microsoft.Extensions.Options.Options;
 
 namespace Beis.LearningPlatform.Web.Tests.ControllerTests
 {
-    public class DiagnosticToolControllerTests
+    public class DiagnosticToolControllerTests : FormControllerBaseTest
     {
         private Mock<ILogger<DiagnosticToolController>> _logger;
-        private Mock<IDiagnosticToolControllerHelper> _diagnosticToolControllerHelper;
         private Mock<IComparisonToolService> _comparisonToolService;
-        private readonly IOptions<ComparisonToolDisplayOption> _ctDisplayOptions = ConfigOptions.Create(new ComparisonToolDisplayOption());
-        private readonly Mock<ILogger<DiagnosticToolFormService>> _loggerDiagnosticToolFormService = new();
-        private readonly IOptions<ApplicationForm> _applicationFormOptions = ConfigOptions.Create(new ApplicationForm());
         private DiagnosticToolController controller;
 
-        
-        private void Setup_ControllerHelperCreateForm()
-        {
-            _diagnosticToolControllerHelper.Setup(h => h.CreateForm(FormTypes.DiagnosticTool))
-                .ReturnsAsync(new ControllerHelperOperationResponse<DiagnosticToolForm>(It.IsAny<System.Guid>(), true, Get_DiagnosticToolForm(1)));
-        }
-        private DiagnosticToolForm Get_DiagnosticToolForm(int currentStep)
-        {
-            var diagnosticToolFormService = new DiagnosticToolFormService(_loggerDiagnosticToolFormService.Object, _ctDisplayOptions, _applicationFormOptions);
-            var diagnosticToolForm = diagnosticToolFormService.LoadNewForm(FormTypes.DiagnosticTool);
-            diagnosticToolForm.CurrStep = currentStep;
-            return diagnosticToolForm;
-        }
-
-        private void SetHttpContext(ControllerContext controllerContext)
-        {
-            var mockHttpContext = new Mock<HttpContext>();
-            var mockHttpRequest = new Mock<HttpRequest>();
-            mockHttpRequest.Setup(x => x.Scheme).Returns("http");
-            mockHttpRequest.Setup(x => x.Host).Returns(new HostString("localhost"));
-            mockHttpContext.Setup(r => r.Request).Returns(mockHttpRequest.Object);
-
-            var mockSession = new Mock<ISession>();
-            var val = Encoding.UTF8.GetBytes("1");
-            mockSession.Setup(r => r.TryGetValue("loggedinUserId", out val)).Returns(true);
-            mockHttpContext.Setup(r => r.Session).Returns(mockSession.Object);
-            controllerContext.HttpContext = mockHttpContext.Object;
-        }
 
         [SetUp]
         public void Setup()
@@ -65,7 +34,8 @@ namespace Beis.LearningPlatform.Web.Tests.ControllerTests
             _logger = new Mock<ILogger<DiagnosticToolController>>();
             _diagnosticToolControllerHelper = new();
             _comparisonToolService = new();
-
+            _ctDisplayOptions.Value.LoadFormFromJson = true;
+            
             controller = new DiagnosticToolController(_logger.Object, _diagnosticToolControllerHelper.Object, _comparisonToolService.Object, _ctDisplayOptions);
             SetHttpContext(controller.ControllerContext);
         }
@@ -73,6 +43,7 @@ namespace Beis.LearningPlatform.Web.Tests.ControllerTests
         [Test]
         public async Task Start_WhenCalled_ReturnsOK()
         {
+            
             //Arrange
             Setup_ControllerHelperCreateForm();
 

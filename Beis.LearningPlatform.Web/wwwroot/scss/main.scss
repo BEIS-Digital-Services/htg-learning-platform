@@ -38,6 +38,7 @@
 @import "card.component.scss";
 @import "adaptive-image.component.scss";
 @import "three-levels.component.scss";
+@import "menu-style2.scss";
 
 .hide-element {
     border: 0;
@@ -871,5 +872,24 @@ a:focus {
         @include respond(mobile) {
             display: none;
         }
+    }
+}
+
+.link-icon-align {
+    margin-bottom: -4px;
+}
+
+span.govuk-link-divider {
+    color: #1D70B8;
+}
+
+.link-list-hero {
+    h3 {
+        font-weight: lighter;
+        font-size: 1.4em;
+        margin: 0px 0px;
+    }
+    span.govuk-link-divider {
+        color: #1D70B8;
     }
 }
