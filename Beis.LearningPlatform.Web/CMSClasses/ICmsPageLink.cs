@@ -2,7 +2,7 @@
 {
 	public interface ICmsPageLink
 	{
-		int id { get; set; }
-		string label { get; set; }
+		int id { get; }
+		string label { get; }
 	}
 }
