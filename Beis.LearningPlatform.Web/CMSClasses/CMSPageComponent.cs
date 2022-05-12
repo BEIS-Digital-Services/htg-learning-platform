@@ -147,5 +147,9 @@ namespace Beis.LearningPlatform.Web.StrapiApi.Models
 
         // LandingPageHeroList
         public List<CmsLandingPageHeroViewModel> Heroes { get; set; }
+
+        // Navigation Breadcrumbs
+        public IList<CMSSimpleLink> AdditionalLinks { get; set; }
+        
 	}
 }
