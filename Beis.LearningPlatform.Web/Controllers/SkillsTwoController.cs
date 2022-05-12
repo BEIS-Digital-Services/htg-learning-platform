@@ -32,7 +32,22 @@ namespace Beis.LearningPlatform.Web.Controllers
         [Route("/skills-two/nextstep")]
         public async override Task<IActionResult> NextStep(DiagnosticToolForm model)
         {
-            return await base.NextStep(model);
+            if (TryGetSessionData(out EmailAnswer emailAnswer))
+                model.EmailAnswer = emailAnswer;
+
+            var response = await _controllerHelper.NextStep(model, ModelState.IsValid, GetModelErrors());
+            if (response.Result)
+            {
+                if (model.FormIsCompleted)
+                {
+                    //Get score
+                    await _controllerHelper.UpdateScore(model);
+                }
+
+                return GetViewResult(response.Payload);
+            }
+            else
+                return BadRequest();
         }
 
         [HttpPost]
