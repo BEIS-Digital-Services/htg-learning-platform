@@ -642,7 +642,7 @@
           "id": 2,
           "order": 2,
           "title": "Your digital journey",
-          "summaryTitle": "The most time-consuming task(s) or area of your business that you'd like to simplify are:",
+          "summaryTitle": "The most time-consuming task(s) or area of your business that you'd like to simplify are...",
           "elements": [
             {
               "controlType": "Textarea",
@@ -705,7 +705,7 @@
           "id": 4,
           "order": 4,
           "title": "Your digital journey",
-          "summaryTitle": "You currently use the following methods to share or store information:",
+          "summaryTitle": "You currently use the following methods to share or store information...",
           //"showInSummary": false,
           //"skippedByElementStepId": 6,
           "elements": [
@@ -781,7 +781,7 @@
           "id": 5,
           "order": 5,
           "title": "Your digital journey",
-          "summaryTitle": "Finally, when asked what you considered the biggest benefit to your business would be from digital adoption, you said",
+          "summaryTitle": "Finally, when asked what you considered the biggest benefit to your business would be from digital adoption, you said...",
           "elements": [
             {
               "controlType": "Textarea",
