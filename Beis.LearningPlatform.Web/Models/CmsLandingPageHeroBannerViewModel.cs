@@ -15,7 +15,7 @@ namespace Beis.LearningPlatform.Web.Models
         {
             get
             {
-                return _cmsPageComponent.image != null                    
+                return _cmsPageComponent.image != null
                     && !string.IsNullOrEmpty(_cmsPageComponent.header)
                     && !string.IsNullOrEmpty(_cmsPageComponent.intro);
             }
@@ -29,9 +29,26 @@ namespace Beis.LearningPlatform.Web.Models
             }
         }
 
+        public string Header
+        {
+            get
+            {
+                return _cmsPageComponent.header;
+            }
+        }
+
+        public string Intro
+        {
+            get
+            {
+                return _cmsPageComponent.intro;
+            }
+        }
+
         public string ImageUrl
         {
-            get {
+            get
+            {
                 return _cmsPageComponent.image.url;
             }
         }
