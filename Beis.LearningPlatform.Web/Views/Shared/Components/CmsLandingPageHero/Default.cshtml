@@ -1,4 +1,4 @@
-﻿@model CmsLandingPageHeroViewModel
+﻿        @model CmsLandingPageHeroViewModel
 @if (!Model.HasContent)
 {
     return;
@@ -59,10 +59,13 @@
                     <p class="govuk-body">
                         @hero.Intro
                     </p>
-                    <div>
-                        <img src="/assets/images/link-icon.png" class="link-icon-align" />
-                        <a id="link-landingpagehero-@hero.LinkAria" class="govuk-link" href="@hero.LinkUrl" aria-label="hero.LinkAria">@hero.LinkText</a>
-                    </div>
+                    @if(hero.HasLink)
+                    {
+                        <div>
+                            <img src="/assets/images/link-icon.png" class="link-icon-align" />
+                            <a id="link-landingpagehero-@hero.LinkAria" class="govuk-link" href="@hero.LinkUrl" aria-label="hero.LinkAria">@hero.LinkText</a>
+                        </div>
+                    }
                 </div>
             </div>
         </div>
