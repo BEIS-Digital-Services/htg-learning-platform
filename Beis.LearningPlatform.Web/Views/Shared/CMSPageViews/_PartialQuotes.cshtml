@@ -1,25 +1,24 @@
-﻿@using Beis.LearningPlatform.Web.Utils
-@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
+﻿@model (Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent component, int componentIndex)
 @{
     var _pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build();
     var strcopy = string.Empty;
-    var topSpaceClass = Model.topSpace != "nospace" ? "govuk-!-padding-top-6" : "";
-    var bottomSpaceClass = Model.bottomSpace != "nospace" ? "govuk-!-padding-bottom-6" : "";
-    var strComponentBg = (!string.IsNullOrWhiteSpace(Model.background)) ? CamelCaseConverter.Delimiter(Model.background, "-") : "";
+    var topSpaceClass = Model.component.topSpace != "nospace" ? "govuk-!-padding-top-6" : "";
+    var bottomSpaceClass = Model.component.bottomSpace != "nospace" ? "govuk-!-padding-bottom-6" : "";
+    var strComponentBg = (!string.IsNullOrWhiteSpace(Model.component.background)) ? CamelCaseConverter.Delimiter(Model.component.background, "-") : "";
 }
 
-@if (Model.textblocks != null)
+@if (Model.component.textblocks != null)
 {
-    if (Model.textblocks.Count > 0)
+    if (Model.component.textblocks.Count > 0)
     {
-        foreach (var textblock in Model.textblocks)
+        foreach (var textblock in Model.component.textblocks)
         {
             textblock.hide = textblock.hide.HasValue ? textblock.hide : false;
 
             if (textblock.hide == false)
             {
-                var strclass = CamelCaseConverter.Delimiter(Model.background, "-");
-                <div class="quotes" id="@("anchor" + ViewData["intCurrComponentIndex"])">
+                var strclass = CamelCaseConverter.Delimiter(Model.component.background, "-");
+                <div class="quotes" id="@("anchor" + Model.componentIndex)">
                     <div class="@strComponentBg">
                         <div class="govuk-width-container @topSpaceClass  @bottomSpaceClass">
                             <div class="govuk-grid-row">
@@ -44,7 +43,7 @@
                                             }
                                         </div>
                                     </div>
-                                    <partial name="CMSPageViews/_PartialTextLinks" model="@Model.links" />
+                                    <partial name="CMSPageViews/_PartialTextLinks" model="@Model.component.links" />
                                 </div>
                                     </div>
                                 </div>

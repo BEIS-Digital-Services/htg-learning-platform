@@ -8,6 +8,10 @@ namespace Beis.LearningPlatform.Web.StrapiApi.Models
 {
     public class CMSPageViewModel : IPageViewModel
     {
+        public int CurrentComponentIndex { get; set; }
+
+        public bool ShowBackButton { get; internal set; }
+
         public int id { get; set; }
         public DateTime? published_at { get; set; }
         public DateTime created_at { get; set; }

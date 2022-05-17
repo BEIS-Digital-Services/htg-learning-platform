@@ -1,35 +1,34 @@
-﻿@using Beis.LearningPlatform.Web.Utils
-@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
+﻿@model (Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent component, int componentIndex)
 @{
     var _pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build();
     var strcopy = "";
 
 }
 
-@if (Model.textblocks.Count >= 1)
+@if (Model.component.textblocks.Count >= 1)
 {
-    Model.hide = Model.hide.HasValue ? Model.hide : false;
+    Model.component.hide = Model.component.hide.HasValue ? Model.component.hide : false;
 
-    if (Model.hide == false)
+    if (Model.component.hide == false)
     {
-    <div class="columns" id="@("anchor" + ViewData["intCurrComponentIndex"])">
+    <div class="columns" id="@("anchor" +  Model.componentIndex)">
         <div class="govuk-width-container">
             <div class="govuk-grid-row beis-columns-same-height">
-                <div class="govuk-grid-column-one-half @CamelCaseConverter.Delimiter(Model.textblocks[0].subheaderColor, "-")-text">
+                <div class="govuk-grid-column-one-half @CamelCaseConverter.Delimiter(Model.component.textblocks[0].subheaderColor, "-")-text">
                     <div class="govuk-grid-row">
                         <div class="left-column">
-                            @if (!string.IsNullOrWhiteSpace(Model.textblocks[0].header))
+                            @if (!string.IsNullOrWhiteSpace(Model.component.textblocks[0].header))
                             {
-                                <h1 class="govuk-heading-xl govuk-!-padding-top-3 @*@Model.textblocks[0].subheaderColor*@"> @Model.textblocks[0].header</h1>
+                                <h1 class="govuk-heading-xl govuk-!-padding-top-3 @*@Model.component.textblocks[0].subheaderColor*@"> @Model.component.textblocks[0].header</h1>
                             }
-                            @if (!string.IsNullOrWhiteSpace(Model.textblocks[0].subheader))
+                            @if (!string.IsNullOrWhiteSpace(Model.component.textblocks[0].subheader))
                             {
-                                <h2 class="govuk-heading-l govuk-!-padding-top-8 @*@Model.textblocks[0].subheaderColor*@"> @Model.textblocks[0].subheader</h2>
+                                <h2 class="govuk-heading-l govuk-!-padding-top-8 @*@Model.component.textblocks[0].subheaderColor*@"> @Model.component.textblocks[0].subheader</h2>
                             }
-                            @{ strcopy = Markdown.ToHtml(Model.textblocks[0].copy, _pipeline); }
+                            @{ strcopy = Markdown.ToHtml(Model.component.textblocks[0].copy, _pipeline); }
                             @Html.Raw(strcopy.Replace("<p>", "<p class=\"govuk-body\" style=\"text-align:left;\">").Replace("</p>", "</p>"))
 
-                            @foreach (var link in Model.links)
+                            @foreach (var link in Model.component.links)
                             {
                                 @if (link.icon != null)
                                 {
@@ -59,7 +58,7 @@
                 <div class="govuk-grid-column-one-half">
                     <div class="govuk-grid-row">
                         <div class="right-column">
-                            <vc:cms-image options='new CmsImageViewModel{ ImageUrl = Model.image.url, CssClass = "hero-mobile-image" }' />
+                            <vc:cms-image options='new CmsImageViewModel{ ImageUrl = Model.component.image.url, CssClass = "hero-mobile-image" }' />
                         </div>
                     </div>
                 </div>

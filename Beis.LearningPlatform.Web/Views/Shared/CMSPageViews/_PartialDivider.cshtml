@@ -1,11 +1,10 @@
-﻿@using Beis.LearningPlatform.Web.Utils
-@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
-@if (Model.type == "dividerContentWidth")
+﻿@model (Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent component, int componentIndex)
+@if (Model.component.type == "dividerContentWidth")
 {
     <div class="govuk-width-container">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-full">
-                <div class="top-line @CamelCaseConverter.Delimiter(Model.color, "-") govuk-!-padding-bottom-1">
+                <div class="top-line @CamelCaseConverter.Delimiter(Model.component.color, "-") govuk-!-padding-bottom-1">
                 </div>
             </div>
         </div>
@@ -13,12 +12,12 @@
 }
 else
 {
-    if (string.IsNullOrWhiteSpace(Model.color))
+    if (string.IsNullOrWhiteSpace(Model.component.color))
     {
-        @Html.Raw("<hr aria-hidden=\"true\" id=\"anchor" + ViewData["intCurrComponentIndex"] + "\" class=\"beis-navy-blue\" />")
+        @Html.Raw("<hr aria-hidden=\"true\" id=\"anchor" + Model.componentIndex + "\" class=\"beis-navy-blue\" />")
     }
     else
     {
-        @Html.Raw("<hr aria-hidden=\"true\" id=\"anchor" + ViewData["intCurrComponentIndex"] + "\" class=\"" + @CamelCaseConverter.Delimiter(Model.color, "-") + " " + Model.type + "\">")
+        @Html.Raw("<hr aria-hidden=\"true\" id=\"anchor" + Model.componentIndex + "\" class=\"" + @CamelCaseConverter.Delimiter(Model.component.color, "-") + " " + Model.component.type + "\">")
     }    
 }

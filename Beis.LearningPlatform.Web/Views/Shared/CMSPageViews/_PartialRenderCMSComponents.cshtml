@@ -3,10 +3,10 @@
 {
     @if (Model.components.Count > 0)
     {
-        @foreach (var component in Model.components)
+        @for (var index = 0; index < Model.components.Count; index++)
         {
+            var component = Model.components[index];
             component.hide = component.hide.HasValue ? component.hide : false;
-
             if (component.hide == false)
             {
                 @switch (component.__component.ToLower())
@@ -18,7 +18,7 @@
                             {
                                 case "text":
                                 case "textwithbuttons":
-                                    <partial name="CMSPageViews/_PartialText" model="@component" />
+                                    <partial name="CMSPageViews/_PartialText" model="@(component, Model.ShowBackButton, index)" />
                                     break;
                                 case "textwithlinks":
                                     <partial name="CMSPageViews/_PartialTextWithLinks" model="@component" />
@@ -26,32 +26,31 @@
                                 case "articleinternal":
                                 case "articleexternal":
                                 case "article":
-                                    ViewData["model"] = Model;
-                                    <partial name="CMSPageViews/_PartialArticle" model="@component" />
+                                    <partial name="CMSPageViews/_PartialArticle" model="@(component, Model.components, index)" />
                                     break;
                                 case "columns":
-                                    <partial name="CMSPageViews/_Partial2Columns" model="@component" />
+                                    <partial name="CMSPageViews/_Partial2Columns" model="@(component, index)" />
                                     break;
                                 case "statistic":
-                                    <partial name="CMSPageViews/_PartialStatistics" model="@component" />
+                                    <partial name="CMSPageViews/_PartialStatistics" model="@(component, index)" />
                                     break;
                                 case "quotes":
-                                    <partial name="CMSPageViews/_PartialQuotes" model="@component" />
+                                    <partial name="CMSPageViews/_PartialQuotes" model="@(component, index)" />
                                     break;
                                 case "tags":
-                                    <partial name="CMSPageViews/_PartialTags" model="@component" />
+                                    <partial name="CMSPageViews/_PartialTags" model="@(component, index)" />
                                     break;
                                 case "details":
-                                    <partial name="CMSPageViews/_PartialDetails" model="@component" />
+                                    <partial name="CMSPageViews/_PartialDetails" model="@(component, index)" />
                                     break;
                                 case "imagecaption":
-                                    <partial name="CMSPageViews/_PartialImageCaption" model="@component" />
+                                    <partial name="CMSPageViews/_PartialImageCaption" model="@(component, index)" />
                                     break;
                                 case "callout":
-                                    <partial name="CMSPageViews/_PartialCallout" model="@component" />
+                                    <partial name="CMSPageViews/_PartialCallout" model="@(component, index)" />
                                     break;
                                 case "fact":
-                                    <partial name="CMSPageViews/_PartialFact" model="@component" />
+                                    <partial name="CMSPageViews/_PartialFact" model="@(component, index)" />
                                     break;
                                 case "phasebanner":
                                     <partial name="CMSPageViews/_PartialPhaseBanner" model="@component" />
@@ -72,32 +71,32 @@
                         }
                         break;
                     case "page.video":
-                        <partial name="CMSPageViews/_PartialVideo" model="@component" />
+                        <partial name="CMSPageViews/_PartialVideo" model="@(component, index)" />
                         break;
                     case "page.document":
-                        <vc:cms-document-link component="@component" />
+                        <vc:cms-document-link model="@(component, index)" />
                         break;
                     case "page.global":
-                        <partial name="CMSPageViews/_PartialGlobal" model="@component" />
+                        <partial name="CMSPageViews/_PartialGlobal" model="@(component, Model.ShowBackButton, index)" />
                         break;
                     case "page.devider":
                     case "page.divider":
-                        <partial name="CMSPageViews/_PartialDivider" model="@component" />
+                        <partial name="CMSPageViews/_PartialDivider" model="@(component, index)" />
                         break;
                     case "page.articles":
-                        <partial name="CMSPageViews/_PartialArticles" model="@component" />
+                        <partial name="CMSPageViews/_PartialArticles" model="@(component, index)" />
                         break;
                     case "page.table":
-                        <partial name="CMSPageViews/_PartialTable" model="@component" />
+                        <partial name="CMSPageViews/_PartialTable" model="@(component, index)" />
                         break;
                     case "page.resources":
-                        <partial name="CMSPageViews/_PartialResources" model="@component" />
+                        <partial name="CMSPageViews/_PartialResources" model="@(component, index)" />
                         break;
                     case "page.article-block":
-                        <partial name="DiagnosticToolFormViews/_PartialSearchArticles" model="@component.search_articles" />
+                        <partial name="DiagnosticToolFormViews/_PartialSearchArticles" model="@(component.search_articles, component.linksAlign)" />
                         break;
                     case "page.reactive-tags":
-                        <partial name="CMSPageViews/_PartialReactiveTags" model="@component" />
+                        <partial name="CMSPageViews/_PartialReactiveTags" model="@(component, index)" />
                         break;
                     case "page.feedback-prompt":
                         <vc:feedback-prompt cms-page-component="@component" />
@@ -161,10 +160,10 @@
                     </div>
                 </div>
                 break;
-        }
+                }
             }
 
-            ViewData["intCurrComponentIndex"] = ((int)ViewData["intCurrComponentIndex"]) + 1;
+            //ViewData["intCurrComponentIndex"] = ((int)ViewData["intCurrComponentIndex"]) + 1;
         }
     }
     else

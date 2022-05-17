@@ -1,18 +1,17 @@
-﻿@using Beis.LearningPlatform.Web.Utils
-@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
+﻿@model (Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent component, int componentIndex)
 @{
     var _pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build();
-    var strComponentBg = (!string.IsNullOrWhiteSpace(Model.background)) ? CamelCaseConverter.Delimiter(Model.background, "-") : "";
+    var strComponentBg = (!string.IsNullOrWhiteSpace(Model.component.background)) ? CamelCaseConverter.Delimiter(Model.component.background, "-") : "";
 }
 
-<div class="call-out" id="@("anchor" + ViewData["intCurrComponentIndex"])">
+<div class="call-out" id="@("anchor" + Model.componentIndex)">
     <div class="govuk-width-container govuk-!-padding-top-6 govuk-!-padding-bottom-6">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-full">
                 <div class="govuk-inset-text @strComponentBg">
-                    @if (Model.textblocks != null)
+                    @if (Model.component.textblocks != null)
                     {
-                        foreach (var textblock in Model.textblocks)
+                        foreach (var textblock in Model.component.textblocks)
                         {
                             textblock.hide = textblock.hide.HasValue ? textblock.hide : false;
 
@@ -23,7 +22,7 @@
                                     @Html.Raw("<div class=\"markdown\">" + Markdown.ToHtml(textblock.copy, _pipeline) + "</div>")
                                 }
 
-                                <partial name="CMSPageViews/_PartialTextLinks" model="@Model.links" />
+                                <partial name="CMSPageViews/_PartialTextLinks" model="@Model.component.links" />
                             }
                         }
                     }

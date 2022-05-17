@@ -1,19 +1,18 @@
-﻿@using Beis.LearningPlatform.Web.Utils
-@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
+﻿@model (Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent component, int componentIndex)
 @{
-    var strclass = CamelCaseConverter.Delimiter(Model.background, "-");
+    var strclass = CamelCaseConverter.Delimiter(Model.component.background, "-");
     var _pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build();
-    var topSpaceClass = Model.topSpace != "nospace" ? "govuk-!-padding-top-6" : "";
-    var bottomSpaceClass = Model.bottomSpace != "nospace" ? "govuk-!-padding-bottom-6" : "";
+    var topSpaceClass = Model.component.topSpace != "nospace" ? "govuk-!-padding-top-6" : "";
+    var bottomSpaceClass = Model.component.bottomSpace != "nospace" ? "govuk-!-padding-bottom-6" : "";
 }
-<div class="details" id="@("anchor" + ViewData["intCurrComponentIndex"])">
+<div class="details" id="@("anchor" + Model.componentIndex)">
     <div class="@strclass">
         <div class="govuk-width-container">
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-full @topSpaceClass  @bottomSpaceClass">
-                    @if (Model.textblocks != null)
+                    @if (Model.component.textblocks != null)
                     {
-                        foreach (var item in Model.textblocks)
+                        foreach (var item in Model.component.textblocks)
                         {
                             item.hide = item.hide.HasValue ? item.hide : false;
 
@@ -38,7 +37,7 @@
                             }
                         }
                     }
-                    <partial name="CMSPageViews/_PartialTextLinks" model="@Model.links" />
+                    <partial name="CMSPageViews/_PartialTextLinks" model="@(Model.component.links, Model.component.linksAlign)" />
                 </div>
             </div>
         </div>

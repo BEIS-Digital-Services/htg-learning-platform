@@ -1,18 +1,17 @@
-﻿@using Beis.LearningPlatform.Web.Utils
-@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
+﻿@model (Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent component, int componentIndex)
 @{
     var _pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build();
     var strcopy = "";
-    var item = Model;
+    var item = Model.component;
     var strTopLineBg = "";
 
 }
 
-<div class="articles" id="@("anchor" + ViewData["intCurrComponentIndex"])">
+<div class="articles" id="@("anchor" + Model.componentIndex)">
     <div class="govuk-width-container govuk-!-padding-bottom-8">
         <div class="govuk-grid-column-one-third">
             @{
-                strTopLineBg = (!string.IsNullOrWhiteSpace(Model.Column1.backgroundColor)) ? CamelCaseConverter.Delimiter(Model.Column1.backgroundColor, "-") : "";
+                strTopLineBg = (!string.IsNullOrWhiteSpace(Model.component.Column1.backgroundColor)) ? CamelCaseConverter.Delimiter(Model.component.Column1.backgroundColor, "-") : "";
             }
 
             <div class="top-line @strTopLineBg"></div>
@@ -29,18 +28,18 @@
                 strcopy = Markdown.ToHtml(item.Column1.copy, _pipeline).Replace("<p>", "<p class=\"govuk-body\"  style=\"text-align:left;\">");
             }
             @Html.Raw(strcopy)
-            <partial name="CMSPageViews/_PartialTextLinks" model="@Model.Links1" />
-            <partial name="CMSPageViews/_PartialTag" model="@Model.Tags1" />
+            <partial name="CMSPageViews/_PartialTextLinks" model="@Model.component.Links1" />
+            <partial name="CMSPageViews/_PartialTag" model="@Model.component.Tags1" />
         </div>
 
         @{
-            strTopLineBg = (!string.IsNullOrWhiteSpace(Model.Column2.backgroundColor)) ? CamelCaseConverter.Delimiter(Model.Column2.backgroundColor, "-") : "";
+            strTopLineBg = (!string.IsNullOrWhiteSpace(Model.component.Column2.backgroundColor)) ? CamelCaseConverter.Delimiter(Model.component.Column2.backgroundColor, "-") : "";
         }
         <div class="govuk-grid-column-one-third">
             <div class="top-line @strTopLineBg"></div>
             @if (item.Image2 != null)
             {
-                <vc:cms-image options='new CmsImageViewModel{ ImageUrl = Model.Image2.url, CssClass = "hero-mobile-image", Title = item.Image2.alternativeText }' />
+                <vc:cms-image options='new CmsImageViewModel{ ImageUrl = Model.component.Image2.url, CssClass = "hero-mobile-image", Title = item.Image2.alternativeText }' />
             }
 
             @if (!string.IsNullOrWhiteSpace(item.Column2.subheader))
@@ -51,18 +50,18 @@
                 strcopy = Markdown.ToHtml(item.Column2.copy, _pipeline).Replace("<p>", "<p class=\"govuk-body\" style=\"text-align:left;\">");
             }
             @Html.Raw(strcopy)
-            <partial name="CMSPageViews/_PartialTextLinks" model="@Model.Links2" />
-            <partial name="CMSPageViews/_PartialTag" model="@Model.Tags2" />
+            <partial name="CMSPageViews/_PartialTextLinks" model="@Model.component.Links2" />
+            <partial name="CMSPageViews/_PartialTag" model="@Model.component.Tags2" />
         </div>
 
         @{
-            strTopLineBg = (!string.IsNullOrWhiteSpace(Model.Column3.backgroundColor)) ? CamelCaseConverter.Delimiter(Model.Column3.backgroundColor, "-") : "";
+            strTopLineBg = (!string.IsNullOrWhiteSpace(Model.component.Column3.backgroundColor)) ? CamelCaseConverter.Delimiter(Model.component.Column3.backgroundColor, "-") : "";
         }
         <div class="govuk-grid-column-one-third">
             <div class="top-line @strTopLineBg"></div>
             @if (item.Image3 != null)
             {
-                <vc:cms-image options='new CmsImageViewModel{ ImageUrl = Model.Image3.url, CssClass = "hero-mobile-image", Title = item.Image3.alternativeText }' />
+                <vc:cms-image options='new CmsImageViewModel{ ImageUrl = Model.component.Image3.url, CssClass = "hero-mobile-image", Title = item.Image3.alternativeText }' />
             }
 
             @if (!string.IsNullOrWhiteSpace(item.Column3.subheader))
@@ -73,8 +72,8 @@
                 strcopy = Markdown.ToHtml(item.Column2.copy, _pipeline).Replace("<p>", "<p class=\"govuk-body\" style=\"text-align:left;\">");
             }
             @Html.Raw(strcopy)
-            <partial name="CMSPageViews/_PartialTextLinks" model="@Model.Links3" />
-            <partial name="CMSPageViews/_PartialTag" model="@Model.Tags3" />
+            <partial name="CMSPageViews/_PartialTextLinks" model="@Model.component.Links3" />
+            <partial name="CMSPageViews/_PartialTag" model="@Model.component.Tags3" />
         </div>
     </div>
 </div>

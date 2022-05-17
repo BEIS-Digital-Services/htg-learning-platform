@@ -1,20 +1,18 @@
-﻿@using Beis.LearningPlatform.Web.Utils
-@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
+﻿@model (Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent component, bool showBackButton, int componentIndex)
 @{
     var _pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build();
-    var strComponentBg = (!string.IsNullOrWhiteSpace(Model.background)) ? CamelCaseConverter.Delimiter(Model.background, "-") : "";
-    var topSpaceClass = Model.topSpace != "nospace" ? "govuk-!-padding-top-6" : "";
-    var bottomSpaceClass = Model.bottomSpace != "nospace" ? "govuk-!-padding-bottom-6" : "";
-    bool.TryParse(ViewData["showBackButton"]?.ToString(), out bool showBackButton);
+    var strComponentBg = (!string.IsNullOrWhiteSpace(Model.component.background)) ? CamelCaseConverter.Delimiter(Model.component.background, "-") : "";
+    var topSpaceClass = Model.component.topSpace != "nospace" ? "govuk-!-padding-top-6" : "";
+    var bottomSpaceClass = Model.component.bottomSpace != "nospace" ? "govuk-!-padding-bottom-6" : "";
 }
 
-<div class="beis-text" id="@("anchor" + ViewData["intCurrComponentIndex"])">
+<div class="beis-text" id="@("anchor" + Model.componentIndex)">
     <div class="@strComponentBg">
         <div class="govuk-width-container">
             <div class="govuk-grid-row">
-                @if (Model.textblocks.Count > 0)
+                @if (Model.component.textblocks.Count > 0)
                 {
-                    foreach (var txtBlock in Model.textblocks)
+                    foreach (var txtBlock in Model.component.textblocks)
                     {
                         txtBlock.hide = txtBlock.hide.HasValue ? txtBlock.hide : false;
 
@@ -23,7 +21,7 @@
                             <div class="govuk-grid-column-full @topSpaceClass  @bottomSpaceClass">
                                 @if (!string.IsNullOrWhiteSpace(txtBlock.header))
                                 {
-                                    @if (showBackButton == true)
+                                    @if (Model.showBackButton)
                                     {
                                         <a id="link-cmspageviews-text-back-link" class="govuk-back-link" style="cursor:pointer;" onclick="history.back()">Back</a>
                                     }
@@ -47,8 +45,8 @@
                         }
                     }
                 }
-                <partial name="CMSPageViews/_PartialTextButtons" model="@Model" />
-                <partial name="CMSPageViews/_PartialTextLinks" model="@Model.links" />
+                <partial name="CMSPageViews/_PartialTextButtons" model="@Model.component" />
+                <partial name="CMSPageViews/_PartialTextLinks" model="@(Model.component.links, Model.component.linksAlign)" />
             </div>
         </div>
     </div>

@@ -19,8 +19,9 @@ namespace Beis.LearningPlatform.Web.ViewComponents
         /// <remarks>
         /// We are passing in a CmsImageViewModel because aspnet mvc currently does not support optional parameters (or overloaded ctors) on ViewComponents.
         /// </remarks>
-        public IViewComponentResult Invoke(CMSPageComponent component)
+        public IViewComponentResult Invoke((CMSPageComponent, int) model)
         {
+            var (component, componentIndex) = model;
             var targetURL = GetTargetUrl(component);
             var imageUrl = GetImageUrl(component);
 
@@ -30,7 +31,7 @@ namespace Beis.LearningPlatform.Web.ViewComponents
                 ImageUrl = $"{_cmsBaseUrl}{imageUrl}",
                 Component = component
             };
-            return View(viewModel);
+            return View((viewModel, componentIndex));
         }
 
         /// <summary>

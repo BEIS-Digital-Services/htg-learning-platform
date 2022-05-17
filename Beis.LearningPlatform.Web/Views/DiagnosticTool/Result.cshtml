@@ -1,8 +1,4 @@
-﻿@using Beis.LearningPlatform.Web.StrapiApi.Models
-@using Beis.LearningPlatform.Web.Utils
-@using Beis.LearningPlatform.Web.Models.DiagnosticTool
-@using Beis.LearningPlatform.Web.Models
-@model Beis.LearningPlatform.Web.Models.DiagnosticTool.DiagnosticToolForm
+﻿@model Beis.LearningPlatform.Web.Models.DiagnosticTool.DiagnosticToolForm
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -246,7 +242,7 @@
                     </p>
                 </div>
             </div>
-            <partial name="CMSPageViews/_PartialDivider" model="@divider" />
+            <partial name="CMSPageViews/_PartialDivider" model="@(divider, 0)" />
 
             @if (Model.ComparisonToolProducts?.Count > 0)
             {
@@ -301,12 +297,12 @@
                     </h2>
                 </div>
             </div>
-            <partial name="DiagnosticToolFormViews/_PartialSearchArticles" model="@relatedArticles" />
+            <partial name="DiagnosticToolFormViews/_PartialSearchArticles" model="@(relatedArticles, string.Empty)" />
 
             @if (hasRegisterYourInterestBlock)
             {
-                <partial name="CMSPageViews/_PartialDivider" model="@divider" />
-                <partial name="CMSPageViews/_Partial2Columns" model="@Model.RegisterYourInterestBlock" />
+                <partial name="CMSPageViews/_PartialDivider" model="@(divider, 0)" />
+                <partial name="CMSPageViews/_Partial2Columns" model="@(Model.RegisterYourInterestBlock, 0)" />
             }
         </div>
     </main>

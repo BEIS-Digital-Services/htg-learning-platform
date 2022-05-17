@@ -1,27 +1,27 @@
-﻿@model Beis.LearningPlatform.Web.Models.CmsDocumentLinkViewModel
-<div class="beis-text" id="@("anchor" + ViewData["intCurrComponentIndex"])">
-    @if (Model.Component.media != null && Model.Component.media.Count > 0)
+﻿@model (Beis.LearningPlatform.Web.Models.CmsDocumentLinkViewModel cmsDocumentLinkView, int componentIndex)
+<div class="beis-text" id="@("anchor" + Model.componentIndex)">
+    @if (Model.cmsDocumentLinkView.Component.media != null && Model.cmsDocumentLinkView.Component.media.Count > 0)
     {
-        <div class="govuk-width-container@(Model.CssClassTopSpace)@(Model.CssClassBottomSpace)">
+        <div class="govuk-width-container@(Model.cmsDocumentLinkView.CssClassTopSpace)@(Model.cmsDocumentLinkView.CssClassBottomSpace)">
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-two-thirds">
-                    <section class="attachment embedded" id="attachment_@Model.Component.media[0].name">
+                    <section class="attachment embedded" id="attachment_@Model.cmsDocumentLinkView.Component.media[0].name">
                         <div class="attachment-thumb">
-                            <a id="link-cmsdocumentlink-attachment-@(Model.Component?.id)" aria-hidden="true" class="thumbnail" tabindex="-1" href="@Model.TargetUrl">
-                                <img alt="" src="@Model.ImageUrl" />
+                            <a id="link-cmsdocumentlink-attachment-@(Model.cmsDocumentLinkView.Component?.id)" aria-hidden="true" class="thumbnail" tabindex="-1" href="@Model.cmsDocumentLinkView.TargetUrl">
+                                <img alt="" src="@Model.cmsDocumentLinkView.ImageUrl" />
                             </a>
                         </div>
                         <div class="attachment-details">
                             <h3 class="title govuk-!-font-size-27 govuk-!-font-weight-regular">
-                                <a id="link-cmsdocumentlink-@(Model.Component?.id)" class="govuk-link" href="@Model.TargetUrl">
-                                    @Model.Component.title
+                                <a id="link-cmsdocumentlink-@(Model.cmsDocumentLinkView.Component?.id)" class="govuk-link" href="@Model.cmsDocumentLinkView.TargetUrl">
+                                    @Model.cmsDocumentLinkView.Component.title
                                 </a>
                             </h3>
                             <p class="govuk-body">
                                 <span class="type">
-                                    <abbr title="@Model.Component.media[0].mime">@Model.Component.abbr</abbr>
+                                    <abbr title="@Model.cmsDocumentLinkView.Component.media[0].mime">@Model.cmsDocumentLinkView.Component.abbr</abbr>
                                 </span>,
-                                <span class="file-size">@Model.Component.media[0].size KB</span>
+                                <span class="file-size">@Model.cmsDocumentLinkView.Component.media[0].size KB</span>
                             </p>
                         </div>
                     </section>

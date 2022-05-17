@@ -107,7 +107,7 @@ namespace Beis.LearningPlatform.Web.Controllers
         {
             var viewModel = await _homeControllerHelper.ProcessGetCustomPageResult("Custom-pages/privacy");
             viewModel.SetPageTitle("Help to Grow: Digital - Privacy");
-            _homeControllerHelper.SetBackButton(_thisController);
+            viewModel.ShowBackButton = true;
             return View("Privacy", viewModel);
         }
 
@@ -118,7 +118,7 @@ namespace Beis.LearningPlatform.Web.Controllers
         {
             var viewModel = await _homeControllerHelper.ProcessGetCustomPageResult("Custom-pages/accessibility-statement");
             viewModel.SetPageTitle("Help to Grow: Digital - Accessibility Statement");
-            _homeControllerHelper.SetBackButton(_thisController);
+            viewModel.ShowBackButton = true;
             return View("Privacy", viewModel);
         }
 
@@ -171,9 +171,9 @@ namespace Beis.LearningPlatform.Web.Controllers
 		{
 			if (strapiAction == "terms-and-conditions" || strapiAction == "get-in-touch" || strapiAction == "cookies")
 			{
-				_homeControllerHelper.SetBackButton(_thisController);
-			}
-			return View("Resources", viewModel);
+                viewModel.ShowBackButton = true;
+            }
+            return View("Resources", viewModel);
 		}
 
 		private IActionResult GetNotFoundPageResult()

@@ -1,29 +1,25 @@
-﻿@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
+﻿@model (Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent component, IList<Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent> components,  int componentIndex)
 @{
-    var _pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build();
-    var strTopLineBg = "";
-    var model = ViewData["model"] != null? (CMSPageViewModel)ViewData["model"] : new CMSPageViewModel();
+    var components = Model.components ?? Enumerable.Empty<CMSPageComponent>().ToList();
 }
 
-@if (Model.textblocks != null)
+@if (Model.component.textblocks != null)
 {
-    if (Model.textblocks.Count > 0)
+    if (Model.component.textblocks.Count > 0)
     {
-        foreach (var textblock in Model.textblocks)
+        foreach (var textblock in Model.component.textblocks)
         {
             textblock.hide = textblock.hide.HasValue ? textblock.hide : false;
 
             if (textblock.hide == false)
             {
-                strTopLineBg = (!string.IsNullOrWhiteSpace(Model.background)) ? CamelCaseConverter.Delimiter(Model.background, "-") : "";
-
-                <div class="govuk-width-container" id="@("anchor" + ViewData["intCurrComponentIndex"])">
+                <div class="govuk-width-container" id="@("anchor" + Model.componentIndex)">
                     <div class="govuk-grid-row">
-                        @foreach (var component in model.components.Where(item => item.search_articles != null))
+                        @foreach (var component in components.Where(item => item.search_articles != null))
                         {
                             var externalArticles = component.search_articles.Where(item => item.articleType == "external").ToList();
                             var internalArticles = component.search_articles.Where(item => item.articleType == "internal").ToList();
-                            if (Model.type.Equals("articleinternal", StringComparison.OrdinalIgnoreCase) && internalArticles.Count > 0)
+                            if (Model.component.type.Equals("articleinternal", StringComparison.OrdinalIgnoreCase) && internalArticles.Count > 0)
                             {
                                 <div class="govuk-grid-column-two-thirds">
                                     <div class="govuk-!-margin-top-6 govuk-!-margin-bottom-6">
@@ -33,9 +29,9 @@
                                         }
                                     </div>
                                 </div>
-                                <partial name="DiagnosticToolFormViews/_PartialSearchArticles" model="@internalArticles" />
+                                <partial name="DiagnosticToolFormViews/_PartialSearchArticles" model="@(internalArticles, Model.component.linksAlign)" />
                             }
-                            if (Model.type.Equals("articleexternal", StringComparison.OrdinalIgnoreCase) && externalArticles.Count > 0)
+                            if (Model.component.type.Equals("articleexternal", StringComparison.OrdinalIgnoreCase) && externalArticles.Count > 0)
                             {
                                 <div class="govuk-grid-column-two-thirds">
                                     <div class="govuk-!-margin-top-6 govuk-!-margin-bottom-6">
@@ -45,7 +41,7 @@
                                         }
                                     </div>
                                 </div>
-                                <partial name="DiagnosticToolFormViews/_PartialSearchArticles" model="@externalArticles" />
+                                <partial name="DiagnosticToolFormViews/_PartialSearchArticles" model="@(externalArticles, Model.component.linksAlign)" />
                             }
                         }
                     </div>
