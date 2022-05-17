@@ -896,3 +896,74 @@ span.govuk-link-divider {
     }
 }
 
+//image item component
+.image-item {
+    position: relative;
+}
+
+@media screen and (max-width: 40.0525em) {
+    .image-item {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 2rem;
+    }
+}
+
+@media screen and (min-width: 40.0625em) {
+    .image-item {
+        display: block;
+        padding-left: 160px;
+        margin-bottom: 1rem; //4rem;
+    }
+}
+
+.image-item .media-image {
+    width: 130px;
+    height: 130px;
+}
+
+@media screen and (max-width: 40.0525em) {
+    .image-item .media-image {
+        display: flex;
+        flex-basis: 130px;
+    }
+}
+
+@media screen and (min-width: 40.0625em) {
+    .image-item .media-image {
+        position: absolute;
+        top: 0;
+        right: auto;
+        bottom: auto;
+        left: 0;
+        display: block;
+        margin: auto;
+    }
+}
+
+@media screen and (max-width: 40.0525em) {
+    .image-item .media-title {
+        display: flex;
+        flex-basis: calc(100% - 145px);
+        align-items: center;
+        padding-left: 15px;
+    }
+}
+
+@media screen and (min-width: 40.0625em) {
+    .image-item .media-title {
+        display: block;
+        width: 100%;
+    }
+}
+
+.image-item .media-content {
+    display: block;
+}
+
+@media screen and (max-width: 40.0525em) {
+    .image-item .media-content {
+        flex-basis: 100%;
+        margin-top: 15px;
+    }
+}

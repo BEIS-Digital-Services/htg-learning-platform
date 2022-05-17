@@ -153,18 +153,21 @@
                     case "page.landing-page-hero-banner":
                         <vc:cms-landing-page-hero-banner cms-page-component="@component" />
                         break;
-                   default:
-                <div class="govuk-grid-row">
-                    <div class="beis-white govuk-grid-column-full">
-                        <div class="govuk-width-container govuk-!-margin-top-6 govuk-!-margin-bottom-6">
-                            <h1 class="govuk-heading-xl govuk-!-font-weight-regular">
-                                New __component <strong>@component.__component</strong> found.
-                            </h1>
+                    case "page.image-item":
+                        <vc:cms-image-item cms-page-component="@component" />
+                        break;
+                    default:
+                        <div class="govuk-grid-row">
+                            <div class="beis-white govuk-grid-column-full">
+                                <div class="govuk-width-container govuk-!-margin-top-6 govuk-!-margin-bottom-6">
+                                    <h1 class="govuk-heading-xl govuk-!-font-weight-regular">
+                                        New __component <strong>@component.__component</strong> found.
+                                    </h1>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                break;
-        }
+                        break;
+                }
             }
 
             ViewData["intCurrComponentIndex"] = ((int)ViewData["intCurrComponentIndex"]) + 1;

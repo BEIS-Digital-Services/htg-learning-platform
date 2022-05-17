@@ -151,6 +151,8 @@ namespace Beis.LearningPlatform.Web.StrapiApi.Models
 
         // Navigation Breadcrumbs
         public IList<CMSSimpleLink> AdditionalLinks { get; set; }
-        
-	}
+        public string Summary { get; set; }
+        public CMSPageLink Link { get; set; }
+
+    }
 }
