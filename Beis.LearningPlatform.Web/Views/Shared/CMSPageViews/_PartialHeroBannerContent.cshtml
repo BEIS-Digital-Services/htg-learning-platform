@@ -27,7 +27,7 @@
                         strcopy = Markdown.ToHtml(component.copy, _pipeline).Replace("<p>", "<p class=\"govuk-body beis-white-text\">");
                         if (!string.IsNullOrWhiteSpace(strSubheader))
                         {
-                            @Html.Raw("<h2 class=\"govuk-heading-l beis-white-text\">" + strSubheader + "</h2>"); 
+                            @Html.Raw("<h1 class=\"govuk-heading-l beis-white-text govuk-!-margin-bottom-6\">" + strSubheader + "</h1>"); 
                         }
                         @Html.Raw(strcopy);
                     }
