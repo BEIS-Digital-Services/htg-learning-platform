@@ -70,7 +70,7 @@ namespace Beis.LearningPlatform.Web.Tests.ViewComponentTests
         }
 
         [Test]
-        public void Should_Not_Have_Content_If_No_Link()
+        public void Should_Not_Have_Link_If_No_Link()
         {
             var component = CreateViewComponent();
             
@@ -86,7 +86,7 @@ namespace Beis.LearningPlatform.Web.Tests.ViewComponentTests
             var model = viewComponentData.Model;
             Assert.IsNotNull(model);
 
-            Assert.IsFalse(model.HasContent);
+            Assert.IsFalse(model.HasLink);
         }
 
         [Test]

@@ -19,8 +19,15 @@ namespace Beis.LearningPlatform.Web.Models
             {
 				return !string.IsNullOrEmpty(Image?.url)
 					&& !string.IsNullOrEmpty(Header)
-					&& !string.IsNullOrEmpty(Intro)
-					&& !string.IsNullOrEmpty(LinkUrl)
+					&& !string.IsNullOrEmpty(Intro);
+            }
+        }
+
+        public bool HasLink
+        {
+            get
+            {
+				return !string.IsNullOrEmpty(LinkUrl)
 					&& !string.IsNullOrEmpty(LinkText);
             }
         }
