@@ -150,14 +150,14 @@ namespace Beis.LearningPlatform.BL.Services
                 return new ServiceResponse(requestID, false, $"The email address \"{emailAddress}\" is unsubscribed");
             }
 
-            var personalisation = Map(dto, emailAddress, out string templateId);
-            if (personalisation == null)
-            {
-                return new ServiceResponse(requestID, false, "Failed to map the data");                    
-            }
-
             try
             {
+                var personalisation = Map(dto, emailAddress, out string templateId); // Null ref errors not handled here
+                if (personalisation == null)
+                {
+                    return new ServiceResponse(requestID, false, "Failed to map the data");                    
+                }
+
                 await _notifyIntegrationService.SendDiagnosticToolResult(emailAddress, templateId, personalisation);
                 return new ServiceResponse(requestID, true, string.Empty);
             }
