@@ -28,8 +28,7 @@
                                     routeData.Add("feedback", "yes");
 
                                     <a id="link-cmspageviews-feedbackpromptnojs-yes" role="button"
-                                       asp-controller="@controllerName"
-                                       asp-action="feedback"
+                                       asp-route="Feedback"
                                        asp-all-route-data="@routeData"
                                        class="govuk-button @SetButtonType(Model.titleYes.type, Model.titleYes.custom_class)"
                                        data-module="govuk-button">
@@ -43,8 +42,7 @@
                                     routeData2.Add("feedback", "no");
 
                                     <a id="link-cmspageviews-feedbackpromptnojs-no" role="button"
-                                       asp-controller="@controllerName"
-                                       asp-action="feedback"
+                                       asp-route="Feedback"
                                        asp-all-route-data="@routeData2"
                                        class="govuk-button @SetButtonType(Model.titleNo.type, Model.titleNo.custom_class)"
                                        data-module="govuk-button">
@@ -65,8 +63,7 @@
                                 routeData3.Add("feedback", "report");
 
                                 <a id="link-cmspageviews-feedbackpromptnojs-report" role="button"
-                                   asp-controller="@controllerName"
-                                   asp-action="feedback"
+                                   asp-route="Feedback"
                                    asp-all-route-data="@routeData3"
                                    class="govuk-button @SetButtonType(Model.titleReport.type, Model.titleReport.custom_class)"
                                    data-module="govuk-button">

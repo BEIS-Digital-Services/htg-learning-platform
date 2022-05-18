@@ -2,9 +2,6 @@
 @{
     var _pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build();
 
-    var actionName = ViewContext.RouteData.Values["action"]?.ToString();
-    var controllerName = ViewContext.RouteData.Values["controller"]?.ToString();
-
     string SetButtonType(string btnType, string customClass)
     {
         var className = $"beis-white-{btnType}";
@@ -22,23 +19,12 @@
                             {
                                 <h2 id="FeedbackYesNoMessage" class="message">@Model.message</h2>
                             }
-
                             
                             <p id="FeedbackYesNoPanel" class="govuk-button-group">
                                 @if (!string.IsNullOrWhiteSpace(Model.titleYes.url))
                                 {
-                                    <script type="text/javascript">
-                                        var routeData = {
-                                            actionName: "@actionName",
-                                            componentid: "@Model.id.ToString()",
-                                            feedback: "yes",
-                                            isNoFeedback: null,
-                                            isReportProblem: null
-                                        };
-                                    </script>
-
                                     <a id="link-cmspageviews-feedbackpromptjs-yes" role="button"
-                                       onclick="feedback(routeData)"
+                                       onclick="feedback('yes')"
                                        class="govuk-button @SetButtonType(Model.titleYes.type, Model.titleYes.custom_class)"
                                        data-module="govuk-button">
                                         @Model.titleYes.label
@@ -47,217 +33,152 @@
 
                                 @if (!string.IsNullOrWhiteSpace(Model.titleNo.url))
                                 {
-                                    <script type="text/javascript">
-                                        var routeData2 = {
-                                            actionName: "@actionName",
-                                            componentid: "@Model.id.ToString()",
-                                            feedback: "no",
-                                            isNoFeedback: null,
-                                            isReportProblem: null
-                                        };
-                                    </script>
-
-
                                     <a id="link-cmspageviews-feedbackpromptjs-no" role="button"
-                                       onclick="feedback(routeData2)"
+                                       onclick="feedback('no')"
                                        class="govuk-button @SetButtonType(Model.titleNo.type, Model.titleNo.custom_class)"
                                        data-module="govuk-button">
                                         @Model.titleNo.label
                                     </a>
                                 }
                             </p>
-
-
                         </div>
                     </div>
 
                     <div id="FeedbackReportProblemDiv" class="govuk-grid-column-one-half">
-
                             <div id="feedback-prompt-6" class="wrapper-right">
                                 @if (!string.IsNullOrWhiteSpace(Model.titleReport.url))
                                 {
-                                    <script type="text/javascript">
-                                            var routeData3 = {
-                                                actionName: "@actionName",
-                                                componentid: "@Model.id.ToString()",
-                                                feedback: "report",
-                                                isNoFeedback: null,
-                                                isReportProblem: null
-                                            };
-                                    </script>
-
                                     <a id="link-cmspageviews-feedbackpromptjs-report" role="button"
-                                       onclick="feedback(routeData3)"
+                                       onclick="feedback('report')"
                                        class="govuk-button @SetButtonType(Model.titleReport.type, Model.titleReport.custom_class)"
                                        data-module="govuk-button">
                                         @Model.titleReport.label
                                     </a>
                                 }
-
                             </div>
-
                     </div>
             </div>
         </div>
 
         <div id="FeedbackHelpUsImproveDiv" class="feedback-no-container beis-white" style="display:none">
             <div class="govuk-width-container">
-            @if (Model.NoCancelButton != null)
-            {
-                <script type="text/javascript">
-                        var routeData4 = {
-                            actionName: "@actionName",
-                            componentid: "@Model.id.ToString()",
-                            feedback: "close",
-                            isNoFeedback: null,
-                            isReportProblem: null
-                        };
-                </script>
+                @if (Model.NoCancelButton != null)
+                {
+                    <a id="link-cmspageviews-feedbackpromptjs-not-useful" class="govuk-button secondary"
+                       onclick="feedback('close')"
+                       data-track-category="yesNoFeedbackForm"
+                       data-track-action="FormClose"
+                       aria-controls="page-is-not-useful"
+                       aria-expanded="False">
+                        @Model.NoCancelButton.label
+                    </a>
+                }
 
-
-                <a id="link-cmspageviews-feedbackpromptjs-not-useful" class="govuk-button secondary"
-                   onclick="feedback(routeData4)"
-                   data-track-category="yesNoFeedbackForm"
-                   data-track-action="FormClose"
-                   aria-controls="page-is-not-useful"
-                   aria-expanded="False">
-                    @Model.NoCancelButton.label
-                </a>
-            }
-
-
-            <div class="govuk-grid-row">
-                <div class="govuk-grid-column-two-thirds" id="survey-wrapper">
-                    @if (!string.IsNullOrWhiteSpace(@Model.NoHeader))
-                    {
-                        <h3>@Model.NoHeader</h3>
-                    }
-                    <p id="survey_explanation" class="govuk-body">
-                        @if (!string.IsNullOrWhiteSpace(Model.NoCopy))
+                <div class="govuk-grid-row">
+                    <div class="govuk-grid-column-two-thirds" id="survey-wrapper">
+                        @if (!string.IsNullOrWhiteSpace(@Model.NoHeader))
                         {
-                            var strcopy = Markdown.ToHtml(Model.NoCopy, _pipeline).Replace("<p>", "<p class=\"govuk-body\">");
-                            @Html.Raw(strcopy);
+                            <h3>@Model.NoHeader</h3>
                         }
-                    </p>
-                    <div class="govuk-form-group">
-                        <label for="email" class="govuk-label">@Model.NoLabel1</label>
-                        <input name="email_survey_signup" class="govuk-input" id="email" type="email" autocomplete="email" aria-describedby="survey_explanation">
-                    </div>
-
-                    @if (Model.NoSubmitButton != null)
-                    {
-                        <p class="govuk-button-group">
-                            <a id="link-cmspageviews-feedbackpromptjs-no-submit-button" role="button"
-                               class="govuk-button primary">
-                                @Model.NoSubmitButton.label
-                            </a>
-
-                            @if (Model.NoEmailAddressLink != null)
+                        <p id="survey_explanation" class="govuk-body">
+                            @if (!string.IsNullOrWhiteSpace(Model.NoCopy))
                             {
-                                <a ga-data-action-id="link-cmspageviews-feedbackpromptjs-take-survey" href="https://www.smartsurvey.co.uk/s/gov-uk-banner/?c=/service-manual/service-assessments/get-feedback-page&amp;amp;gcl=2049733727.1626700136"
-                                   class="govuk-link"
-                                   id="take-survey"
-                                   target="_blank"
-                                   rel="noopener noreferrer">
-                                    @Model.NoEmailAddressLink.label
-                                </a>
+                                var strcopy = Markdown.ToHtml(Model.NoCopy, _pipeline).Replace("<p>", "<p class=\"govuk-body\">");
+                                @Html.Raw(strcopy);
                             }
-
                         </p>
-                    }
+                        <div class="govuk-form-group">
+                            <label for="email" class="govuk-label">@Model.NoLabel1</label>
+                            <input name="email_survey_signup" class="govuk-input" id="email" type="email" autocomplete="email" aria-describedby="survey_explanation">
+                        </div>
 
-                </div>
-            </div>
-            </div>
-        </div>
-
-    <div id="FeedbackReportProblemPanel" class="report-poroblem-container beis-white" style="display:none">
-        <div class="govuk-width-container">
-             @if (Model.ReportCancelButton != null) { <script type="text/javascript">
-                        var routeData5 = {
-                            actionName: "@actionName",
-                            componentid: "@Model.id.ToString()",
-                            feedback: "close",
-                            isNoFeedback: null,
-                            isReportProblem: null
-                        };
-                </script>
-
-                <a id="link-cmspageviews-feedbackpromptjs-page-is-not-useful" class="govuk-button secondary"
-                   onclick="feedback(routeData5)"
-                   data-track-category="yesNoFeedbackForm"
-                   data-track-action="fFormClose"
-                   aria-controls="page-is-not-useful"
-                   aria-expanded="False">
-                    @Model.ReportCancelButton.label
-                </a>
-            }
-
-
-            <div class="govuk-grid-row">
-                <div class="govuk-grid-column-two-thirds">
-                    @if (!string.IsNullOrWhiteSpace(@Model.ReportHeader))
+                        @if (Model.NoSubmitButton != null)
                         {
-                                <h3>@Model.ReportHeader</h3>
+                            <p class="govuk-button-group">
+                                <a id="link-cmspageviews-feedbackpromptjs-no-submit-button" role="button"
+                                   class="govuk-button primary">
+                                    @Model.NoSubmitButton.label
+                                </a>
+
+                                @if (Model.NoEmailAddressLink != null)
+                                {
+                                    <a ga-data-action-id="link-cmspageviews-feedbackpromptjs-take-survey" href="https://www.smartsurvey.co.uk/s/gov-uk-banner/?c=/service-manual/service-assessments/get-feedback-page&amp;amp;gcl=2049733727.1626700136"
+                                       class="govuk-link"
+                                       id="take-survey"
+                                       target="_blank"
+                                       rel="noopener noreferrer">
+                                        @Model.NoEmailAddressLink.label
+                                    </a>
+                                }
+                            </p>
                         }
-
-                    <p id="feedback_explanation" class="govuk-body">
-                        @if (!string.IsNullOrWhiteSpace(Model.ReportCopy))
-                        {
-                            var strreportcopy = Markdown.ToHtml(Model.ReportCopy, _pipeline).Replace("<p>", "<p class=\"govuk-body\">");
-                            @Html.Raw(strreportcopy);
-                        }
-                    </p>
-
-                    <div class="govuk-form-group">
-                        <label for="doing" class="govuk-label">@Model.ReportLabel1</label>
-                        <input name="what_doing" class="govuk-input" id="doing" type="text" aria-describedby="feedback_explanation">
                     </div>
-
-                    <div class="govuk-form-group">
-                        <label for="wrong" class="govuk-label">@Model.ReportLabel2</label>
-                        <input name="what_wrong" class="govuk-input" id="wrong" type="text">
-                    </div>
-
-                    @if (Model.ReportSubmitButton != null)
-                    {
-                        <script type="text/javascript">
-                                var routeData6 = {
-                                    actionName: "@actionName",
-                                    componentid: "@Model.id.ToString()",
-                                    feedback: "submit",
-                                    isNoFeedback: null,
-                                    isReportProblem: null
-                                };
-                        </script>
-
-                        <p class="govuk-button-group">
-                            <a id="link-cmspageviews-feedbackpromptjs-submit" role="button"
-                               onclick="feedback(routeData6)"
-                               class="govuk-button primary">
-                                @Model.ReportSubmitButton.label
-                            </a>
-                        </p>
-                    }
-
                 </div>
             </div>
         </div>
+
+        <div id="FeedbackReportProblemPanel" class="report-poroblem-container beis-white" style="display:none">
+            <div class="govuk-width-container">
+                 @if (Model.ReportCancelButton != null) {
+                    <a id="link-cmspageviews-feedbackpromptjs-page-is-not-useful" class="govuk-button secondary"
+                       onclick="feedback('close')"
+                       data-track-category="yesNoFeedbackForm"
+                       data-track-action="fFormClose"
+                       aria-controls="page-is-not-useful"
+                       aria-expanded="False">
+                        @Model.ReportCancelButton.label
+                    </a>
+                }
+
+                <div class="govuk-grid-row">
+                    <div class="govuk-grid-column-two-thirds">
+                        @if (!string.IsNullOrWhiteSpace(@Model.ReportHeader))
+                        {
+                            <h3>@Model.ReportHeader</h3>
+                        }
+
+                        <p id="feedback_explanation" class="govuk-body">
+                            @if (!string.IsNullOrWhiteSpace(Model.ReportCopy))
+                            {
+                                var reportCopy = Markdown.ToHtml(Model.ReportCopy, _pipeline).Replace("<p>", "<p class=\"govuk-body\">");
+                                @Html.Raw(reportCopy);
+                            }
+                        </p>
+
+                        <div class="govuk-form-group">
+                            <label for="doing" class="govuk-label">@Model.ReportLabel1</label>
+                            <input name="what_doing" class="govuk-input" id="doing" type="text" aria-describedby="feedback_explanation">
+                        </div>
+
+                        <div class="govuk-form-group">
+                            <label for="wrong" class="govuk-label">@Model.ReportLabel2</label>
+                            <input name="what_wrong" class="govuk-input" id="wrong" type="text">
+                        </div>
+
+                        @if (Model.ReportSubmitButton != null)
+                        {
+                            <p class="govuk-button-group">
+                                <a id="link-cmspageviews-feedbackpromptjs-submit" role="button"
+                                   onclick="feedback('submit')"
+                                   class="govuk-button primary">
+                                    @Model.ReportSubmitButton.label
+                                </a>
+                            </p>
+                        }
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
 <script type="text/javascript">
-    var feedback = function (dictRouteData) {
-        
-        var actionName = "@actionName";
-        var controllerName = "@controllerName";
-
-        switch (dictRouteData.feedback) {
+    var feedback = function (feedback) {
+        switch (feedback) {
             case "no":
             case "yes":
                 {
-                    processFeedback(dictRouteData.feedback);
+                    processFeedback(feedback);
                     break;
                 }
             case "report":
@@ -304,16 +225,14 @@
     }
 
     var processFeedback = function (feedback) {
-
-
     $.ajax({
             type: "GET",
             url: "/feedback/useful",
             data: {
                 "url": location.href,
-                "IsPageUseful": feedback,
+                "IsPageUseful": feedback
             },
-            success: function (response) {
+            success: function () {
                 $("#FeedbackYesNoMessage").html("Thank you for your feedback. If you’d like to tell us more about your experience today, <a id='link-cmspageviews-feedbackpromptjs-useful-please-visit-survey' title='Please visit our survey' target='_blank'  href='https://beis.fra1.qualtrics.com/jfe/form/SV_0GLt4cTG0Oi1Pmu' class='beis-white-text'>please visit our survey</a>.");
                 $("#FeedbackYesNoDiv").removeClass("wrapper-left");
                 $("#FeedbackYesNoPanel").hide();
@@ -334,7 +253,7 @@
                 "whatIWasDoing": doing,
                 "whatWentWrong": wrong
             },
-            success: function (response) {
+            success: function () {
                 $("#FeedbackYesNoMessage").html("Thank you for your feedback. If you’d like to tell us more about your experience today, <a id='link-cmspageviews-feedbackpromptjs-problem-please-visit-survey' title='Please visit our survey' target='_blank'  href='https://beis.fra1.qualtrics.com/jfe/form/SV_0GLt4cTG0Oi1Pmu' class='beis-white-text'>please visit our survey</a>.");
                 $("#FeedbackYesNoDiv").removeClass("wrapper-left");
                 $("#FeedbackYesNoContainer").show();
