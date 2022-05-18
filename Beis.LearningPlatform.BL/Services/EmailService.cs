@@ -224,11 +224,71 @@ namespace Beis.LearningPlatform.BL.Services
 
                 return personalisation;
             }
+            else if (dto is SkilledModuleThreeDto)
+            {
+                var emailData = (SkilledModuleThreeDto)dto;
+
+                templateId = GetSkillsModuleThreeTemplateID(emailData.UserTypeActionPlanSection);
+                
+                personalisation = GeneratePersonalisation(EmailPersonalisationNames.SkillsModuleThree,
+                                                new[] { emailData.QuestionOneStart, emailData.QuestionOneNext, emailData.QuestionOneFinally,
+                                                        emailData.QuestionTwoStart, emailData.QuestionTwoNext, emailData.QuestionTwoFinally,
+                                                        emailData.QuestionThreeStart, emailData.QuestionThreeNext, emailData.QuestionThreeFinally,
+                                                        GetUnsubscribeLink(emailAddress) },
+                                                false);
+
+                return personalisation;
+            }
 
 
             return personalisation;
         }
 
+        private string GetSkillsModuleThreeTemplateID(string userTypeActionPlanSection)
+        {
+            switch (userTypeActionPlanSection)
+            {
+                // Mover
+                case "mover-communication":
+                    return _notifyServiceOption.Templates.SkillsModuleThree.MoverCommunication;
+                case "mover-planning":
+                    return _notifyServiceOption.Templates.SkillsModuleThree.MoverPlanning;
+                case "mover-support":
+                    return _notifyServiceOption.Templates.SkillsModuleThree.MoverSupport;
+                case "mover-testing":
+                    return _notifyServiceOption.Templates.SkillsModuleThree.MoverTesting;
+                case "mover-training":
+                    return _notifyServiceOption.Templates.SkillsModuleThree.MoverTraining;
+
+                // Newcomer
+                case "newcomer-communication":
+                    return _notifyServiceOption.Templates.SkillsModuleThree.NewcomerCommunication;
+                case "newcomer-planning":
+                    return _notifyServiceOption.Templates.SkillsModuleThree.NewcomerPlanning;
+                case "newcomer-support":
+                    return _notifyServiceOption.Templates.SkillsModuleThree.NewcomerSupport;
+                case "newcomer-testing":
+                    return _notifyServiceOption.Templates.SkillsModuleThree.NewcomerTesting;
+                case "newcomer-training":
+                    return _notifyServiceOption.Templates.SkillsModuleThree.NewcomerTraining;
+
+                //Performer
+
+                case "performer-communication":
+                    return _notifyServiceOption.Templates.SkillsModuleThree.PerformerCommunication;
+                case "performer-planning":
+                    return _notifyServiceOption.Templates.SkillsModuleThree.PerformerPlanning;
+                case "performer-support":
+                    return _notifyServiceOption.Templates.SkillsModuleThree.PerformerSupport;
+                case "performer-testing":
+                    return _notifyServiceOption.Templates.SkillsModuleThree.PerformerTesting;
+                case "performer-training":
+                    return _notifyServiceOption.Templates.SkillsModuleThree.PerformerTraining;
+
+                default:
+                    throw new ArgumentException($"The type '{userTypeActionPlanSection}' is invalid", nameof(userTypeActionPlanSection));
+            }
+        }
         private string GetTemplateID(SkilledModuleTwoResultType skilledModuleTwoResultType)
         {
             switch (skilledModuleTwoResultType)
