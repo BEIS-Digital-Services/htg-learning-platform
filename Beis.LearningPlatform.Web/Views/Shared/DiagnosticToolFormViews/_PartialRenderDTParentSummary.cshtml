@@ -24,6 +24,10 @@
         case FormTypes.SkillsTwo:
             partialViewPath = "SkilledModule2Views/_PartialRenderDTChildSummary";
             break;
+        default:
+            //Skilled three
+            partialViewPath = "SkillsModuleThreeViews/_PartialRenderDTChildSummary";
+            break;
     }
 }
 
@@ -90,6 +94,17 @@
             <input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].selectedValue" />
             break;
 
+        case FormDisplayControlType.TextGroup:
+            @if (currentFormStepElement.answerOptions != null)
+            {
+                <div class="govuk-summary-list govuk-!-margin-bottom-0 @additionalClass">
+                    <div class="govuk-summary-list__row">
+                        <partial name="@partialViewPath" model="@Model" />
+                    </div>
+                </div>
+            }
+            <input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].text" />
+            break;
 
         default:
             <h4 class="govuk-heading-s govuk-!-font-weight-regular">
