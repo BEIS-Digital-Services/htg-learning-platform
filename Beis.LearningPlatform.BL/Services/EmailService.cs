@@ -143,24 +143,24 @@ namespace Beis.LearningPlatform.BL.Services
                     var isUnsubscribedResult = await _thisInterface.IsUnsubscribed(requestID, emailAddress);
                     if (isUnsubscribedResult.IsValid && isUnsubscribedResult.Payload == false)
                     {
-                        string templateId;
-                        var personalisation = Map(dto, emailAddress, out templateId);
-                        if (personalisation != null)
+                        try
                         {
-                            try
+                            string templateId;
+                            var personalisation = Map(dto, emailAddress, out templateId);
+                            if (personalisation != null)
                             {
                                 await _notifyIntegrationService.SendDiagnosticToolResult(emailAddress, templateId, personalisation);
                                 isSuccessful = true;
                             }
-                            catch (Exception ex)
+                            else
                             {
-                                _logger.LogError(ex, "Unable to send result email");
-                                message = "An error occurred sending the result email";
+                                message = $"Failed to map the data";
                             }
                         }
-                        else
+                        catch (Exception ex)
                         {
-                            message = $"Failed to map the data";
+                            _logger.LogError(ex, "Unable to send result email");
+                            message = "An error occurred sending the result email";
                         }
                     }
                     else
