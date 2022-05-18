@@ -153,6 +153,7 @@ namespace Beis.LearningPlatform.Web.StrapiApi.Models
         public IList<CMSSimpleLink> AdditionalLinks { get; set; }
         public string Summary { get; set; }
         public CMSPageLink Link { get; set; }
+        public List<CmsAccordionItemViewModel> AccordionItems { get; set; }
 
     }
 }
