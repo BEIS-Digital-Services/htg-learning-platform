@@ -131,48 +131,41 @@ namespace Beis.LearningPlatform.BL.Services
 
         async Task<IServiceResponse> IEmailService.SendResultsRemail(Guid requestID, string emailAddress, IEmailDto dto)
         {
-            var isSuccessful = false;
-            string message = default;
-            
-            if (dto != null)
-            {
-                // Validate email
-                if (_thisInterface.IsValidEmailAddress(requestID, emailAddress).IsValid)
-                {
-                    // Check that email is not unsubscribed
-                    var isUnsubscribedResult = await _thisInterface.IsUnsubscribed(requestID, emailAddress);
-                    if (isUnsubscribedResult.IsValid && isUnsubscribedResult.Payload == false)
-                    {
-                        try
-                        {
-                            string templateId;
-                            var personalisation = Map(dto, emailAddress, out templateId);
-                            if (personalisation != null)
-                            {
-                                await _notifyIntegrationService.SendDiagnosticToolResult(emailAddress, templateId, personalisation);
-                                isSuccessful = true;
-                            }
-                            else
-                            {
-                                message = $"Failed to map the data";
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            _logger.LogError(ex, "Unable to send result email");
-                            message = "An error occurred sending the result email";
-                        }
-                    }
-                    else
-                        message = $"The email address \"{emailAddress}\" is unsubscribed";
-                }
-                else
-                    message = $"The email address \"{emailAddress}\" is invalid";
-            }
-            else
-                throw new ArgumentNullException(nameof(IEmailDto));
 
-            return new ServiceResponse(requestID, isSuccessful, message);
+            if (dto == null)
+            {
+                throw new ArgumentNullException(nameof(IEmailDto));
+            }
+
+            // Validate email
+            if (!_thisInterface.IsValidEmailAddress(requestID, emailAddress).IsValid)
+            {
+                return new ServiceResponse(requestID, false, $"The email address \"{emailAddress}\" is invalid");
+            }
+
+            // Check that email is not unsubscribed
+            var isUnsubscribedResult = await _thisInterface.IsUnsubscribed(requestID, emailAddress);
+            if (isUnsubscribedResult.Payload)
+            {
+                return new ServiceResponse(requestID, false, $"The email address \"{emailAddress}\" is unsubscribed");
+            }
+
+            var personalisation = Map(dto, emailAddress, out string templateId);
+            if (personalisation == null)
+            {
+                return new ServiceResponse(requestID, false, "Failed to map the data");                    
+            }
+
+            try
+            {
+                await _notifyIntegrationService.SendDiagnosticToolResult(emailAddress, templateId, personalisation);
+                return new ServiceResponse(requestID, true, string.Empty);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Unable to send result email");
+                return new ServiceResponse(requestID, false, "An error occurred sending the result email");
+            }                                                            
         }
 
         private Dictionary<string, dynamic> Map(IEmailDto dto, string emailAddress, out string templateId)
