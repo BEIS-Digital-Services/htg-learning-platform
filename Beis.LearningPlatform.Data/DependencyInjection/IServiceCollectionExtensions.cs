@@ -26,6 +26,7 @@ namespace Beis.LearningPlatform.Data.DependencyInjection
             serviceCollection.AddTransient<IDiagnosticToolEmailAnswerRepository, DiagnosticToolEmailAnswerRepository>();
             serviceCollection.AddTransient<ISkillsOneResponseRepository, SkillsOneResponseRepository>();
             serviceCollection.AddTransient<ISkillsTwoResponseRepository, SkillsTwoResponseRepository>();
+            serviceCollection.AddTransient<ISkillsThreeResponseRepository, SkillsThreeResponseRepository>();
             serviceCollection.AddTransient<ISatisfactionSurveyRepository, SatisfactionSurveyRepository>();
 			          
             serviceCollection.AddTransient<IDataRepository, DataRepository>();

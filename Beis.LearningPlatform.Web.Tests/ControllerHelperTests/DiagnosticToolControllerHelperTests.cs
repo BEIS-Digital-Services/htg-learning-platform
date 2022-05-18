@@ -30,6 +30,7 @@ namespace Beis.LearningPlatform.Web.Tests.ControllerHelperTests
         private Mock<IEmailService> _emailService;
         private Mock<ISkillsOneService> _skillsOneService;
         private Mock<ISkillsTwoService> _skillsTwoService;
+        private Mock<ISkillsThreeService> _skillsThreeService;
         private IOptions<VendorAppOption> _vendorAppOptions;
         private IOptions<ComparisonToolDisplayOption> _ctDisplayOptions;
         private IOptions<ApplicationForm> _applicationFormOptions;
@@ -55,7 +56,8 @@ namespace Beis.LearningPlatform.Web.Tests.ControllerHelperTests
             _emailService = new Mock<IEmailService>();
             _skillsOneService = new Mock<ISkillsOneService>();
             _skillsTwoService = new Mock<ISkillsTwoService>();
-            
+            _skillsThreeService = new Mock<ISkillsThreeService>();
+
             _emailResponseHelperFactory = new Mock<IEmailResponseHelperFactory>();
             _emailResponseHelper = new Mock<IEmailResponseHelper>();
             _emailDto =  new Mock<IEmailDto>();
@@ -75,6 +77,7 @@ namespace Beis.LearningPlatform.Web.Tests.ControllerHelperTests
                                                                                     _emailService.Object,
                                                                                     _skillsOneService.Object,
                                                                                     _skillsTwoService.Object,
+                                                                                    _skillsThreeService.Object,
                                                                                     _vendorAppOptions,
                                                                                     _emailResponseHelperFactory.Object,
                                                                                     _httpContextAccessor.Object);
