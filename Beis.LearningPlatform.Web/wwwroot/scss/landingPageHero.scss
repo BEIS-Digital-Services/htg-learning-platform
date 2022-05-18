@@ -1,0 +1,21 @@
+﻿@import 'beis-mixins.scss';
+@import 'beis-variables.scss';
+
+.landing-page-hero {
+    &.columns {
+        .left-column {
+            padding: 20px;
+        }
+
+        .right-column {
+            img {
+                width: 300px;
+                margin: 0px 0px -4px 0px;
+
+                @include respond(mobile) {
+                    display: none;
+                }
+            }
+        }
+    }
+}

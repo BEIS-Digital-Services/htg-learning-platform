@@ -1,0 +1,23 @@
+@import 'beis-variables.scss';
+@import 'beis-mixins.scss';
+
+.navigation-breadcrumb {
+    .govuk-width-container {
+        margin-top: 15px;
+
+        .govuk-grid-column-full {
+            a {
+                color: $black;
+                font-weight:700;
+            }
+
+            span {
+                color: $black;
+            }
+
+            .next-pointer{
+                margin-top:2px;
+            }
+        }
+    }
+}

@@ -24,6 +24,7 @@ namespace Beis.LearningPlatform.Web.StrapiApi.Models
         public string header { get; set; }
         public string subheader { get; set; }
         public string copy { get; set; }
+        public string intro { get; set; }
         public string color { get; set; }
         public string linksAlign { get; set; }
         public string buttonsAlign { get; set; }
@@ -147,5 +148,9 @@ namespace Beis.LearningPlatform.Web.StrapiApi.Models
 
         // LandingPageHeroList
         public List<CmsLandingPageHeroViewModel> Heroes { get; set; }
+
+        // Navigation Breadcrumbs
+        public IList<CMSSimpleLink> AdditionalLinks { get; set; }
+        
 	}
 }
