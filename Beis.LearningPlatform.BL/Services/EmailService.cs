@@ -54,14 +54,12 @@ namespace Beis.LearningPlatform.BL.Services
 
         async Task<IServiceResponse<bool>> IEmailService.IsUnsubscribed(Guid requestID, string emailAddress)
         {
-            var isSuccessful = false;
             string message = default;
             var returnValue = false;
 
             var results = await _emailDataService.GetByEmail(emailAddress);
             if (results.Length > 0)
             {
-                isSuccessful = true;
 
                 if (results.Where(x => x.IsUnsubscribed ?? false).Count() == results.Length)
                     returnValue = true;
@@ -69,7 +67,7 @@ namespace Beis.LearningPlatform.BL.Services
             else
                 message = "The specified email address does not exist";
 
-            return new ServiceResponse<bool>(requestID, isSuccessful, message, returnValue);
+            return new ServiceResponse<bool>(requestID, true, message, returnValue);
         }
 
         IServiceResponse IEmailService.IsValidEmailAddress(Guid requestID, string emailAddress)
