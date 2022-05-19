@@ -1,34 +1,33 @@
-﻿@model (Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent component, int componentIndex)
-@if (!Model.component.hide == false)
+﻿@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
+@if (!Model.hide == false)
 {
-    <div id="@("anchor" + Model.componentIndex)" class="govuk-width-container govuk-!-padding-bottom-8 resources">
+    <div id="@("anchor" + Model.Index)" class="govuk-width-container govuk-!-padding-bottom-8 resources">
         <div class="govuk-grid-column-two-thirds">
-            @if (!string.IsNullOrWhiteSpace(Model.component.header))
+            @if (!string.IsNullOrWhiteSpace(Model.header))
             {
-                <h1 class="govuk-heading-xl govuk-!-padding-top-3">@Model.component.header</h1>
+                <h1 class="govuk-heading-xl govuk-!-padding-top-3">@Model.header</h1>
             }
 
-            @if (!string.IsNullOrWhiteSpace(Model.component.subheader))
+            @if (!string.IsNullOrWhiteSpace(Model.subheader))
             {
-                <h2 class="govuk-heading-l govuk-!-padding-top-3">@Model.component.subheader</h2>
+                <h2 class="govuk-heading-l govuk-!-padding-top-3">@Model.subheader</h2>
             }
 
-
-            @if (Model.component.SelectedTags?.Count() > 0)
+            @if (Model.SelectedTags?.Count() > 0)
             {
                 var icount = 1;
-                var idstring = "clip" + icount.ToString();
+                var idstring = "clip" + icount;
 
                 <div class="govuk-!-padding-bottom-3">
 
-                    @foreach (var tag in Model.component.SelectedTags)
+                    @foreach (var tag in Model.SelectedTags)
                     {
-                        idstring = "clip" + icount.ToString();
+                        idstring = "clip" + icount;
                         var routeData = new Dictionary<string, string>
                         {
                             { "tag", tag },
                             { "tagAction", "remove" },
-                            { "yourTags", Model.component.SelectedTagsCsv }
+                            { "yourTags", Model.SelectedTagsCsv }
                         };
                         <a id="link-cmspageviews-reactivetags-remove-@(tag?.ToLowerInvariant())" style="text-decoration: none" asp-controller="Home" asp-action="GuidanceAndToolsUpdateTags" asp-all-route-data="routeData" class="tag-button">
                             <strong class="govuk-tag beis-tag">
@@ -52,12 +51,12 @@
                 </div>
             }
 
-            @if (Model.component.tags != null)
+            @if (Model.tags != null)
             {
                 var icount = 1;
-                var idstring = "lowerclip" + icount.ToString();
+                var idstring = "lowerclip" + icount;
 
-                if (Model.component.tags.Count > 0)
+                if (Model.tags.Count > 0)
                 {
                     <div class="details">
                         <div class="beis-white">
@@ -69,17 +68,17 @@
                                 </summary>
                                 <div class="govuk-details__text">
 
-                                    @foreach (var tag in Model.component.tags)
+                                    @foreach (var tag in Model.tags)
                                     {
                                         idstring = "lowerclip" + icount.ToString();
                                         // Check to ensure it hasn't been selected for filtering
-                                        if (Model.component.SelectedTags == null || !Model.component.SelectedTags.Contains(tag.displayName))
+                                        if (Model.SelectedTags == null || !Model.SelectedTags.Contains(tag.displayName))
                                         {
                                             var routeData = new Dictionary<string, string>
                                             {
                                                 { "tag", tag.displayName },
                                                 { "tagAction", "add" },
-                                                { "yourTags", Model.component.SelectedTagsCsv }
+                                                { "yourTags", Model.SelectedTagsCsv }
                                             };
                                             <a id="link-cmspageviews-reactivetags-add-@(tag?.name?.ToLowerInvariant())" style="text-decoration: none" asp-controller="Home" asp-action="GuidanceAndToolsUpdateTags" asp-all-route-data="routeData" class="tag-button">
                                                 <strong class="govuk-tag beis-tag">
@@ -107,7 +106,6 @@
                     </div>
                 }
             }
-
         </div>
     </div>
 }

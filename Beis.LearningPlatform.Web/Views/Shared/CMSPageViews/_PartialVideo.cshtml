@@ -1,22 +1,22 @@
-﻿@model (Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent component, int componentIndex)
+﻿@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
 @{
     var strclass = string.Empty;
-    var topSpaceClass = Model.component.topSpace != "nospace" ? "govuk-!-padding-top-6" : string.Empty;
-    var bottomSpaceClass = Model.component.bottomSpace != "nospace" ? "govuk-!-padding-bottom-6" : string.Empty;
-    var strContainerClass = string.IsNullOrWhiteSpace(Model.component.background) ? "" : @CamelCaseConverter.Delimiter(Model.component.background, "-");
+    var topSpaceClass = Model.topSpace != "nospace" ? "govuk-!-padding-top-6" : string.Empty;
+    var bottomSpaceClass = Model.bottomSpace != "nospace" ? "govuk-!-padding-bottom-6" : string.Empty;
+    var strContainerClass = string.IsNullOrWhiteSpace(Model.background) ? "" : @CamelCaseConverter.Delimiter(Model.background, "-");
 }
 
-@if (!string.IsNullOrWhiteSpace(Model.component.url))
+@if (!string.IsNullOrWhiteSpace(Model.url))
 {
-    <div id="@("anchor" + Model.componentIndex)" class="govuk-grid-row @strContainerClass">
+    <div id="@("anchor" + Model.Index)" class="govuk-grid-row @strContainerClass">
         <div class="video">
             <div class="govuk-grid-row @strContainerClass">
                 <div class="govuk-width-container">
                     <div class="govuk-grid-column-full">
                         <div class="@topSpaceClass @bottomSpaceClass">
-                            @if (Model.component.textblock != null)
+                            @if (Model.textblock != null)
                             {
-                                foreach (var item in Model.component.textblock)
+                                foreach (var item in Model.textblock)
                                 {
                                     strclass = string.Empty;
                                     if (!string.IsNullOrWhiteSpace(item.subheader))
@@ -30,17 +30,17 @@
                             }
 
                             <div class="youtube-container">
-                                <iframe width="560" height="315" src="@Model.component.url.Replace("youtu.be","www.youtube.com/embed/")" title="YouTube video player" style="border:0px;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                <iframe width="560" height="315" src="@Model.url.Replace("youtu.be","www.youtube.com/embed/")" title="YouTube video player" style="border:0px;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                             </div>
 
-                            @if (Model.component.textblock != null)
+                            @if (Model.textblock != null)
                             {
-                                @if (Model.component.textblock.Count > 0)
+                                @if (Model.textblock.Count > 0)
                                 {
-                                    if (!string.IsNullOrWhiteSpace(Model.component.textblock[0].copy))
+                                    if (!string.IsNullOrWhiteSpace(Model.textblock[0].copy))
                                     {
                                         <div class="beis-text govuk-body govuk-!-padding-top-6 govuk-!-padding-bottom-6">
-                                            @foreach (var item in Model.component.textblock)
+                                            @foreach (var item in Model.textblock)
                                             {
                                                 @Html.Raw(Markdown.ToHtml(item.copy).Replace("<p>", "<span class=\"govuk-body\">").Replace("</p>", "</span><br/>"))
                                             }

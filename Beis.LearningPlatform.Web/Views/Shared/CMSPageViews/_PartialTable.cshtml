@@ -1,80 +1,77 @@
-﻿@model (Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent component, int componentIndex)
+﻿@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
 @{
     var _pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build();
+    Model.hide = Model.hide.HasValue ? Model.hide : false;
 }
 
-@{             
-    Model.component.hide = Model.component.hide.HasValue ? Model.component.hide : false;
-
-    if (Model.component.hide == false)
-    {
-        <div class="beis-table" id="@("anchor" + Model.componentIndex)">
-            <div class="govuk-width-container">
-                <div class="govuk-grid-row">
-                    <div class="govuk-grid-column-full">
-                        <table class="govuk-table">
-                            <thead class="govuk-table__head">
+@if (Model.hide == false)
+{
+    <div class="beis-table" id="@("anchor" + Model.Index)">
+        <div class="govuk-width-container">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-full">
+                    <table class="govuk-table">
+                        <thead class="govuk-table__head">
                             <tr class="govuk-table__row">
-                                @if (!string.IsNullOrWhiteSpace(Model.component.one))
+                                @if (!string.IsNullOrWhiteSpace(Model.one))
                                 {
-                                    <th scope="col" class="govuk-table__header">@Model.component.one</th>
+                                    <th scope="col" class="govuk-table__header">@Model.one</th>
                                 }
-                                @if (!string.IsNullOrWhiteSpace(Model.component.two))
+                                @if (!string.IsNullOrWhiteSpace(Model.two))
                                 {
-                                    <th scope="col" class="govuk-table__header">@Model.component.two</th>
+                                    <th scope="col" class="govuk-table__header">@Model.two</th>
                                 }
-                                @if (!string.IsNullOrWhiteSpace(Model.component.three))
+                                @if (!string.IsNullOrWhiteSpace(Model.three))
                                 {
-                                    <th scope="col" class="govuk-table__header">@Model.component.three</th>
+                                    <th scope="col" class="govuk-table__header">@Model.three</th>
                                 }
-                                @if (!string.IsNullOrWhiteSpace(Model.component.four))
+                                @if (!string.IsNullOrWhiteSpace(Model.four))
                                 {
-                                    <th scope="col" class="govuk-table__header">@Model.component.four</th>
+                                    <th scope="col" class="govuk-table__header">@Model.four</th>
                                 }
                             </tr>
-                            </thead>
-                            <tbody class="govuk-table__body">
-                            @if (Model.component.rows?.Count > 0)
+                        </thead>
+                        <tbody class="govuk-table__body">
+                            @if (Model.rows?.Count > 0)
                             {
-                                for (var i = 0; i < Model.component.rows.Count; i++)
+                                for (var i = 0; i < Model.rows.Count; i++)
                                 {
                                     <tr class="govuk-table__row">
-                                        @if (!string.IsNullOrWhiteSpace(Model.component.one))
+                                        @if (!string.IsNullOrWhiteSpace(Model.one))
                                         {
                                             <td class="govuk-table__cell">
-                                                <p>@Html.Raw(Markdown.ToHtml(Model.component.rows[i].one, _pipeline).Replace("<p>", "").Replace("</p>", ""))</p>
+                                                <p>@Html.Raw(Markdown.ToHtml(Model.rows[i].one, _pipeline).Replace("<p>", "").Replace("</p>", string.Empty))</p>
                                             </td>
                                         }
-                                        @if (!string.IsNullOrWhiteSpace(Model.component.two))
+                                        @if (!string.IsNullOrWhiteSpace(Model.two))
                                         {
                                             <td class="govuk-table__cell">
-                                                <p>@Html.Raw(Markdown.ToHtml(Model.component.rows[i].two, _pipeline).Replace("<p>", "").Replace("</p>", ""))</p>
-                                            </td>                                        
+                                                <p>@Html.Raw(Markdown.ToHtml(Model.rows[i].two, _pipeline).Replace("<p>", "").Replace("</p>", string.Empty))</p>
+                                            </td>
                                         }
-                                        @if (!string.IsNullOrWhiteSpace(Model.component.three))
+                                        @if (!string.IsNullOrWhiteSpace(Model.three))
                                         {
                                             <td class="govuk-table__cell">
-                                                <p>@Html.Raw(Markdown.ToHtml(Model.component.rows[i].three, _pipeline).Replace("<p>", "").Replace("</p>", ""))</p>
-                                            </td>                                        
+                                                <p>@Html.Raw(Markdown.ToHtml(Model.rows[i].three, _pipeline).Replace("<p>", "").Replace("</p>", string.Empty))</p>
+                                            </td>
                                         }
-                                        @if (!string.IsNullOrWhiteSpace(Model.component.four))
+                                        @if (!string.IsNullOrWhiteSpace(Model.four))
                                         {
                                             <td class="govuk-table__cell">
-                                                <p>@Html.Raw(Markdown.ToHtml(Model.component.rows[i].four, _pipeline).Replace("<p>", "").Replace("</p>", ""))</p>
+                                                <p>@Html.Raw(Markdown.ToHtml(Model.rows[i].four, _pipeline).Replace("<p>", "").Replace("</p>", string.Empty))</p>
                                             </td>
                                         }
                                     </tr>
                                 }
 
                             }
-                            </tbody>
-                        </table>
-                        <partial name="CMSPageViews/_PartialTextButtons" model="@Model.component" />
-                        <partial name="CMSPageViews/_PartialTextLinks" model="@Model.component.links" />
+                        </tbody>
+                    </table>
+                    <partial name="CMSPageViews/_PartialTextButtons" model="@Model" />
+                    <partial name="CMSPageViews/_PartialTextLinks" model="@Model.links" />
 
-                    </div>
                 </div>
             </div>
         </div>
-    }
+    </div>
 }

@@ -1,18 +1,18 @@
-﻿@model (Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent component, int componentIndex)
+﻿@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
 @{
-    var strclass = CamelCaseConverter.Delimiter(Model.component.background, "-");
+    var strclass = CamelCaseConverter.Delimiter(Model.background, "-");
     var _pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build();
-    var topSpaceClass = Model.component.topSpace != "nospace" ? "govuk-!-padding-top-6" : "";
-    var bottomSpaceClass = Model.component.bottomSpace != "nospace" ? "govuk-!-padding-bottom-6" : "";
+    var topSpaceClass = Model.topSpace != "nospace" ? "govuk-!-padding-top-6" : string.Empty;
+    var bottomSpaceClass = Model.bottomSpace != "nospace" ? "govuk-!-padding-bottom-6" : string.Empty;
 }
-<div class="details" id="@("anchor" + Model.componentIndex)">
+<div class="details" id="@("anchor" + Model.Index)">
     <div class="@strclass">
         <div class="govuk-width-container">
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-full @topSpaceClass  @bottomSpaceClass">
-                    @if (Model.component.textblocks != null)
+                    @if (Model.textblocks != null)
                     {
-                        foreach (var item in Model.component.textblocks)
+                        foreach (var item in Model.textblocks)
                         {
                             item.hide = item.hide.HasValue ? item.hide : false;
 
@@ -23,7 +23,7 @@
                                         @if (!string.IsNullOrWhiteSpace(item.subheader))
                                         {
                                             strclass = CamelCaseConverter.Delimiter(item.subheaderColor, "-");
-                                            @Html.Raw(Markdown.ToHtml(item.subheader, _pipeline).Replace("<p>", "").Replace("</p>", ""))
+                                            @Html.Raw(Markdown.ToHtml(item.subheader, _pipeline).Replace("<p>", string.Empty).Replace("</p>", string.Empty))
                                         }
                                     </summary>
 
@@ -37,7 +37,7 @@
                             }
                         }
                     }
-                    <partial name="CMSPageViews/_PartialTextLinks" model="@(Model.component.links, Model.component.linksAlign)" />
+                    <partial name="CMSPageViews/_PartialTextLinks" model="@(Model.links, Model.linksAlign)" />
                 </div>
             </div>
         </div>

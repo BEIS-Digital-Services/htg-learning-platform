@@ -242,7 +242,7 @@
                     </p>
                 </div>
             </div>
-            <partial name="CMSPageViews/_PartialDivider" model="@(divider, 0)" />
+            <partial name="CMSPageViews/_PartialDivider" model="@divider" />
 
             @if (Model.ComparisonToolProducts?.Count > 0)
             {
@@ -297,12 +297,12 @@
                     </h2>
                 </div>
             </div>
-            <partial name="DiagnosticToolFormViews/_PartialSearchArticles" model="@(relatedArticles, string.Empty)" />
+            <partial name="DiagnosticToolFormViews/_PartialSearchArticles" model="@(relatedArticles as IList<CMSSearchArticle>, string.Empty)" />
 
             @if (hasRegisterYourInterestBlock)
             {
-                <partial name="CMSPageViews/_PartialDivider" model="@(divider, 0)" />
-                <partial name="CMSPageViews/_Partial2Columns" model="@(Model.RegisterYourInterestBlock, 0)" />
+                <partial name="CMSPageViews/_PartialDivider" model="@divider" />
+                <partial name="CMSPageViews/_Partial2Columns" model="@Model.RegisterYourInterestBlock" />
             }
         </div>
     </main>

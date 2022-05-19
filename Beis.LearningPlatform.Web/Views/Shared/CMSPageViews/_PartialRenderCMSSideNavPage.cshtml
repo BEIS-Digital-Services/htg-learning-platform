@@ -1,7 +1,7 @@
 ﻿@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageViewModel
 
 <main id="main-heading" role="main">
-    <partial name="CMSPageViews/_PartialDivider" model="@(new CMSPageComponent() { color = "beisGrey" }, 0)" />
+    <partial name="CMSPageViews/_PartialDivider" model="@(new CMSPageComponent { color = "beisGrey" })" />
 
     @if (Model.hero_banners != null)
     {

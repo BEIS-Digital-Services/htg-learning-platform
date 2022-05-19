@@ -1,4 +1,4 @@
-﻿@model (Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent component, IList<Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent> components,  int componentIndex)
+﻿@model (Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent component, IList<Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent> components)
 @{
     var components = Model.components ?? Enumerable.Empty<CMSPageComponent>().ToList();
 }
@@ -13,7 +13,7 @@
 
             if (textblock.hide == false)
             {
-                <div class="govuk-width-container" id="@("anchor" + Model.componentIndex)">
+                <div class="govuk-width-container" id="@("anchor" + Model.component.Index)">
                     <div class="govuk-grid-row">
                         @foreach (var component in components.Where(item => item.search_articles != null))
                         {
@@ -29,7 +29,7 @@
                                         }
                                     </div>
                                 </div>
-                                <partial name="DiagnosticToolFormViews/_PartialSearchArticles" model="@(internalArticles, Model.component.linksAlign)" />
+                                <partial name="DiagnosticToolFormViews/_PartialSearchArticles" model="@((IList<CMSSearchArticle>)internalArticles, Model.component.linksAlign)" />
                             }
                             if (Model.component.type.Equals("articleexternal", StringComparison.OrdinalIgnoreCase) && externalArticles.Count > 0)
                             {

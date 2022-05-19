@@ -1,69 +1,57 @@
-﻿@model (Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent component, int componentIndex)
+﻿@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
 @{
     var _pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build();
-    var strcopy = string.Empty;
-    var strclass = string.Empty;
-
-    strcopy = string.IsNullOrWhiteSpace(Model.component.copy) ? "" : Markdown.ToHtml(Model.component.copy, _pipeline);
-    strclass = CamelCaseConverter.Delimiter(Model.component.background, "-");
-
-    var classToAppend = "";
-    if(Model.component.bottomSpace?.Equals("nospace") == false)
+    var classToAppend = string.Empty;
+    if (Model.bottomSpace?.Equals("nospace") == false)
     {
         classToAppend = " govuk-!-margin-bottom-8";
     }
 
-    if (Model.component.topSpace?.Equals("nospace") == false)
+    if (Model.topSpace?.Equals("nospace") == false)
     {
         classToAppend = " govuk-!-margin-top-6";
     }
 }
 
-    <div id="@("anchor" + Model.componentIndex)" class="govuk-width-container resources @classToAppend">
-        <div class="govuk-grid-column-two-thirds">
-            @if (!string.IsNullOrWhiteSpace(Model.component.header))
+<div id="@("anchor" + Model.Index)" class="govuk-width-container resources @classToAppend">
+    <div class="govuk-grid-column-two-thirds">
+        @if (!string.IsNullOrWhiteSpace(Model.header))
+        {
+            <h1 class="govuk-heading-xl govuk-!-padding-top-3">@Model.header</h1>
+        }
+
+        @if (!string.IsNullOrWhiteSpace(Model.subheader))
+        {
+            <h2 class="govuk-heading-l govuk-!-padding-top-3">@Model.subheader</h2>
+        }
+
+        @if (Model.tags != null)
+        {
+            <br>
+            <partial name="CMSPageViews/_PartialTag" model="@Model.tags" />
+        }
+
+        <ul class="author">
+            @if (Model.author != null)
             {
-                <h1 class="govuk-heading-xl govuk-!-padding-top-3">@Model.component.header</h1>
-            }
-
-            @if (!string.IsNullOrWhiteSpace(Model.component.subheader))
-            {
-                <h2 class="govuk-heading-l govuk-!-padding-top-3">@Model.component.subheader</h2>
-            }
-
-
-            @if (Model.component.tags != null)
-            {
-                <br>
-                <partial name="CMSPageViews/_PartialTag" model="@Model.component.tags" />
-            }
-
-            <ul class="author">
-                @if (Model.component.author != null)
+                foreach (var author in Model.author)
                 {
-                    foreach (var author in Model.component.author)
-                    {
-                        <li class="govuk-body">
-                            @Html.Raw(author.author)
-                        </li>
-                    }
+                    <li class="govuk-body">
+                        @Html.Raw(author.author)
+                    </li>
                 }
-            </ul>
-
-            <div class="govuk-body resources-intro-text">
-                @{
-                    strcopy = Markdown.ToHtml(Model.component.copy, _pipeline).Replace("<p>", "").Replace("</p>", "");
-                }
-                @Html.Raw(strcopy)
-            </div>
-
-            @if (Model.component.buttons != null)
-            {
-                <div class="stick-to-bottom">
-                    <partial name="CMSPageViews/_PartialTextButtons" model="@Model.component" />
-                </div>
             }
+        </ul>
 
-
+        <div class="govuk-body resources-intro-text">
+            @Html.Raw(Markdown.ToHtml(Model.copy, _pipeline).Replace("<p>", string.Empty).Replace("</p>", string.Empty))
         </div>
+
+        @if (Model.buttons != null)
+        {
+            <div class="stick-to-bottom">
+                <partial name="CMSPageViews/_PartialTextButtons" model="@Model" />
+            </div>
+        }
     </div>
+</div>

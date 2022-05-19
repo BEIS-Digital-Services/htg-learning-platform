@@ -1,4 +1,4 @@
-﻿@model (Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent component, bool showBackButton, int componentIndex)
+﻿@model (Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent component, bool showBackButton)
 @{
     var _pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build();
     var strComponentBg = (!string.IsNullOrWhiteSpace(Model.component.background)) ? CamelCaseConverter.Delimiter(Model.component.background, "-") : "";
@@ -6,7 +6,7 @@
     var bottomSpaceClass = Model.component.bottomSpace != "nospace" ? "govuk-!-padding-bottom-6" : "";
 }
 
-<div class="beis-text" id="@("anchor" + Model.componentIndex)">
+<div class="beis-text" id="@("anchor" + Model.component.Index)">
     <div class="@strComponentBg">
         <div class="govuk-width-container">
             <div class="govuk-grid-row">

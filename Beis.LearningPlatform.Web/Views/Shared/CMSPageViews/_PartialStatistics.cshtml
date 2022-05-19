@@ -1,29 +1,29 @@
-﻿@model (Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent component, int componentIndex)
+﻿@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
 @{
     var _pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build();
     var strcopy = string.Empty;
 }
 
-@if (Model.component.textblocks != null)
+@if (Model.textblocks != null)
 {
-    @if (Model.component.textblocks.Count > 1)
+    @if (Model.textblocks.Count > 1)
     {
-        Model.component.textblocks[0].hide = Model.component.textblocks[0].hide.HasValue ? Model.component.textblocks[0].hide : false;
+        Model.textblocks[0].hide = Model.textblocks[0].hide.HasValue ? Model.textblocks[0].hide : false;
 
-        if (Model.component.textblocks[0].hide == false)
+        if (Model.textblocks[0].hide == false)
         {
-        <div class="statistic" id="@("anchor" + Model.componentIndex)">
+        <div class="statistic" id="@("anchor" + Model.Index)">
             <div class="govuk-grid-row beis-columns-same-height">
                 @* Add background to class if set*@
                 <div class="govuk-grid-column-one-half beis-navy-blue">
                     <div class="govuk-grid-row">
                         <div class="left-column">
                             <div class="beis-columns">
-                                @if (!string.IsNullOrWhiteSpace(Model.component.textblocks[0].subheader))
+                                @if (!string.IsNullOrWhiteSpace(Model.textblocks[0].subheader))
                                 {
-                                    <h1 class="govuk-heading-xl govuk-!-padding-top-8 @(CamelCaseConverter.Delimiter(Model.component.textblocks[0].subheaderColor, "-"))-text"> @Model.component.textblocks[0].subheader</h1>
+                                    <h1 class="govuk-heading-xl govuk-!-padding-top-8 @(CamelCaseConverter.Delimiter(Model.textblocks[0].subheaderColor, "-"))-text"> @Model.textblocks[0].subheader</h1>
                                 }
-                                @{ strcopy = Markdown.ToHtml(Model.component.textblocks[0].copy, _pipeline); }
+                                @{ strcopy = Markdown.ToHtml(Model.textblocks[0].copy, _pipeline); }
                                 @Html.Raw(strcopy.Replace("<p>", "<p class=\"govuk-body\">").Replace("</p>", "</p>"))
                             </div>
                         </div>
@@ -33,11 +33,11 @@
                     <div class="govuk-grid-row">
                         <div class="right-column">
                             <div class="beis-columns">
-                                @if (!string.IsNullOrWhiteSpace(Model.component.textblocks[1].subheader))
+                                @if (!string.IsNullOrWhiteSpace(Model.textblocks[1].subheader))
                                 {
-                                    <h1 class="govuk-heading-xl govuk-!-padding-top-8 @(CamelCaseConverter.Delimiter(Model.component.textblocks[1].subheaderColor, "-"))-text"> @Model.component.textblocks[1].subheader</h1>
+                                    <h1 class="govuk-heading-xl govuk-!-padding-top-8 @(CamelCaseConverter.Delimiter(Model.textblocks[1].subheaderColor, "-"))-text"> @Model.textblocks[1].subheader</h1>
                                 }                               
-                                @{ strcopy = Markdown.ToHtml(Model.component.textblocks[1].copy, _pipeline); }
+                                @{ strcopy = Markdown.ToHtml(Model.textblocks[1].copy, _pipeline); }
                                 @Html.Raw(strcopy.Replace("<p>", "<p class=\"govuk-body\">").Replace("</p>", "</p>"))
                             </div>
                         </div>
@@ -54,7 +54,7 @@
             <div class="govuk-grid-column-full">
                 <div class="govuk-!-padding-top-6 govuk-!-padding-bottom-6">
 
-                    @foreach (var link in Model.component.links)
+                    @foreach (var link in Model.links)
                     {
                     <div style="text-align:left;">
                         @{ 
