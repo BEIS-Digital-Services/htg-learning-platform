@@ -1,5 +1,4 @@
 ﻿using Beis.LearningPlatform.Web.ControllerHelpers.Interfaces;
-using Beis.LearningPlatform.Web.Interfaces;
 using Beis.LearningPlatform.Web.Models;
 using Beis.LearningPlatform.Web.StrapiApi.Models;
 using Beis.LearningPlatform.Web.Utils;
@@ -14,16 +13,12 @@ namespace Beis.LearningPlatform.Web.Controllers
     public class HomeController : CmsControllerBase
     {
         private readonly IHomeControllerHelper _homeControllerHelper;
-        private readonly IController _thisController;
 
 
         public HomeController(ILogger<HomeController> logger, IHomeControllerHelper homeControllerHelper) : base(logger)
         {
             _homeControllerHelper = homeControllerHelper;
-            _thisController = this;
         }
-
-        #region EXPLICIT ROUTES
 
         public async Task<IActionResult> Index()
         {
@@ -138,9 +133,6 @@ namespace Beis.LearningPlatform.Web.Controllers
             viewModel.SetPageNameForNavigation("About");
             return View("Sidenav", viewModel);
         }
-
-        #endregion
-
 
         /// <summary>
         /// WARNING: For Custom-Pages only
