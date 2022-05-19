@@ -110,6 +110,171 @@ namespace Beis.LearningPlatform.Web.Models.DiagnosticTool
 
         public SkilledModuleTwoResultType SkilledModuleTwoResultType { get; set; }
         
+        public IList<CMSSearchTag> Tags => ProductCategories?.Any() == true ? ProductCategories : new List<CMSSearchTag>();
+
+        public IList<ComparisonToolProduct> AccountingProducts
+        {
+            get
+            {
+                return ComparisonToolProducts?.Where(item => item.product_type == Tags.FirstOrDefault(t => t.name == "accounting")!.id).ToList();
+            }
+        }
+
+        public IList<ComparisonToolProduct> CrmProducts
+        {
+            get
+            {
+                return ComparisonToolProducts?.Where(item => item.product_type == Tags.FirstOrDefault(t => t.name == "crm")!.id).ToList();
+            }
+        }
+
+        public IList<ComparisonToolProduct> ECommerceProducts
+        {
+            get
+            {
+                var productType = Tags.FirstOrDefault(t => t.name == "ecommerce")?.id;
+                return ComparisonToolProducts?.Where(item => item.product_type == productType).ToList();
+            }
+        }
+
+        public IList<CMSSearchArticle> RelatedArticles
+        {
+            get
+            {
+                // Collect distinct tags
+                var distinctTags = selectedTags.Distinct().Select(g => g.ToString()).ToList();
+                if (!distinctTags.Any()) return default;
+
+                bool TagToMatch(CMSSearchTag tag) => distinctTags.Contains(tag.name);
+                return Articles?.Where(article => article.tags.Exists(TagToMatch)).OrderBy(x => x.order).ToList();
+            }
+        }
+
+        public IList<FormSearchTags> DistinctTagsFromQuestion7
+        {
+            get
+            {
+                return steps[7].elements[0].answerOptions.Where(answer => answer.value.Equals("true", StringComparison.OrdinalIgnoreCase) && answer.searchTags?.Count > 0)
+                    .Select(g => g.searchTags.FirstOrDefault()).Distinct().ToList();
+            }
+        }
+
+        public bool IsQuestion1Correct
+        {
+            get
+            {
+                var questionHowDoYouTrade = steps[0].elements[0].text;
+                return !string.IsNullOrWhiteSpace(questionHowDoYouTrade) && questionHowDoYouTrade.Equals("Where do most of your sales take place?", StringComparison.OrdinalIgnoreCase);
+            }
+        }
+
+        public bool IsQuestion2Correct
+        {
+            get
+            {
+                var questionSector = steps[1].elements[0].text;
+                return !string.IsNullOrWhiteSpace(questionSector) && questionSector.Equals("Which sector do you operate in?", StringComparison.OrdinalIgnoreCase);
+            }
+        }
+
+        public bool IsQuestion6Correct
+        {
+            get
+            {
+                var questionDoYouKnowSoftwareNeeds = steps[5].elements[0].text;
+                return !string.IsNullOrWhiteSpace(questionDoYouKnowSoftwareNeeds) && questionDoYouKnowSoftwareNeeds.Equals("Do you know which software you need?", StringComparison.OrdinalIgnoreCase);
+            }
+        }
+
+        public bool IsAnswerYes
+        {
+            get
+            {
+                var answerToDoYouKnowSoftwareNeeds = steps[5].elements[0].value;
+                return answerToDoYouKnowSoftwareNeeds?.Equals("yes", StringComparison.OrdinalIgnoreCase) ?? false;
+            }
+        }
+
+        public string InterestsSummary
+        {
+            get
+            {
+                var interests = new List<string>();
+                // Collate user interest from Question 7 or 8, depending on answer to question 6
+                if (IsQuestion6Correct)
+                {
+                    if (IsAnswerYes)
+                    {
+                        foreach (var answer in steps[6].elements[0].answerOptions)
+                        {
+                            if (answer.value.Equals("true", StringComparison.OrdinalIgnoreCase))
+                            {
+                                interests.Add(string.IsNullOrWhiteSpace(answer.additionalInfo) ? answer.ResultPageLabel : answer.additionalInfo);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        foreach (var answer in steps[7].elements[0].answerOptions)
+                        {
+                            if (answer.value.Equals("true", StringComparison.OrdinalIgnoreCase))
+                            {
+                                interests.Add(string.IsNullOrWhiteSpace(answer.additionalInfo) ? answer.ResultPageLabel : answer.additionalInfo);
+                            }
+                        }
+                    }
+
+                }
+
+                return ListJoinFormatter.ReplaceLastCharacterWith(string.Join("; ", interests), ";", "and");
+            }
+        }
+
+        public string AnswerHowDoYouUseSoftware
+        {
+            get
+            {
+                return steps[2].elements[0].answerOptions.FirstOrDefault(answer => answer.value == steps[2].elements[0].value)?.ResultPageLabel;
+            }
+        }
+
+        public void ResetSteps()
+        {
+            // Reset the values on the Skipped Step
+            var skippedSteps = steps.Where(step => step.skipStep);
+            foreach (var step in skippedSteps)
+            {
+                foreach (var element in step.elements)
+                {
+                    foreach (var answer in element.answerOptions)
+                    {
+                        switch (answer.controlType)
+                        {
+                            case FormDisplayControlType.Text:
+                            {
+                                answer.value = null;
+                                break;
+                            }
+                            case FormDisplayControlType.ListItem:
+                            case FormDisplayControlType.Radio:
+                            {
+                                element.selectedValue = null;
+                                element.value = null;
+                                answer.additionalInfo = null;
+                                break;
+                            }
+                            case FormDisplayControlType.Checkbox:
+                            {
+                                answer.value = false.ToString();
+                                answer.additionalInfo = null;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         public List<string> SelectedPriorities()
         {
             List<string> selectedPriorities = new();
