@@ -1,0 +1,75 @@
+﻿@using Beis.LearningPlatform.Web.Models.DiagnosticTool
+@model Beis.LearningPlatform.Web.Models.DiagnosticTool.DiagnosticToolForm
+@{
+    var elementInfo = Model.CurrentElement;
+    var currentStep = elementInfo.CurrentStep;
+    var currentElement = elementInfo.CurrentElement;
+    var radioButtonParent = elementInfo.RadioButtonParent;
+
+    var currentFormStep = elementInfo.CurrentFormStep;
+    var currentFormStepElement = elementInfo.CurrentFormStepElement;
+
+    Model.CurrentElement.ChildIndex = 0;
+    var additionalClass = " govuk-summary-list--no-border";
+
+    var informationStorageQuestion = currentStep == 3;
+}
+
+@{
+    switch (currentFormStepElement.controlType)
+    {
+        case FormDisplayControlType.Label:
+        case FormDisplayControlType.Textarea:
+            @if (currentFormStepElement.answerOptions != null)
+            {
+                <div class="govuk-!-margin-bottom-0 govuk-!-margin-top-3 govuk-body">
+                    <p class="govuk-body"><strong>@currentFormStep.summaryTitle</strong></p>
+                </div>
+                <div class="govuk-summary-list govuk-!-margin-bottom-0 @additionalClass">
+                    <div class="govuk-summary-list__row">
+                        <partial name="SkillsFormViews/_PartialRenderDTChildSummary" model="@Model" />
+                    </div>
+                </div>
+            }
+            <input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].text" />
+            break;
+
+        case FormDisplayControlType.CheckboxGroup:
+            @if (currentFormStepElement.answerOptions != null)
+            {
+                <div class="govuk-!-margin-bottom-0 govuk-!-margin-top-3 govuk-body">
+                    <p class="govuk-body">
+                        <strong>@currentFormStep.summaryTitle</strong>
+                        <partial name="SkillsFormViews/_PartialRenderDTChildSummary" model="@Model" />
+                    </p>
+                </div>
+
+            }
+            <input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].text" />
+            <input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].value" />
+
+            break;
+
+        case FormDisplayControlType.RadioGroup:
+            @if (currentFormStepElement.answerOptions != null)
+            {
+                <div class="govuk-!-margin-bottom-0 govuk-!-margin-top-3 govuk-body">
+                    <p class="govuk-body">
+                        <strong>@currentFormStep.summaryTitle</strong>
+                        <partial name="SkillsFormViews/_PartialRenderDTChildSummary" model="@Model" />
+                    </p>
+
+                </div>
+
+            }
+            <input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].text" />
+
+            break;
+
+        default:
+            <h4 class="govuk-heading-s govuk-!-font-weight-regular">
+                New Content Type @currentFormStepElement.controlType found.
+            </h4>
+            break;
+    }
+}

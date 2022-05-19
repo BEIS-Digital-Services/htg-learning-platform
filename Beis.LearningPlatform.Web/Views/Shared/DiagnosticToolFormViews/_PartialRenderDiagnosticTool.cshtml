@@ -92,17 +92,46 @@
                                         </div>
                                     }
                                     else if (Model.FormType == FormTypes.SkillsTwo)
-                               {
-                                <partial name="SkilledModule2Views/_PartialDigitalMain" model="@Model" />
-                            }
-                            else
-                            {
-                                <div class="govuk-grid-column-two-thirds">
-                                    <p class="govuk-body">
-                                        You can change what you’ve told us, and get these results sent to you by email before seeing your results.
-                                    </p>
-                                </div>
-                            }
+                                    {
+                                        <partial name="SkilledModule2Views/_PartialDigitalMain" model="@Model" />
+                                    }
+                                    else if (Model.FormType == FormTypes.DiagnosticTool)
+                                    {
+                                        <div class="govuk-grid-column-two-thirds">
+                                            <p class="govuk-body">
+                                                You can change what you’ve told us, and get these results sent to you by email before seeing your results.
+                                            </p>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="govuk-grid-column-two-thirds">
+                                            <p class="govuk-body">
+                                                You’ve completed the @Model.steps[0].elements[0].text.ToLower() section of your action plan.
+                                            </p>
+                                             <p class="govuk-body">
+                                                Here are your answers...
+                                            </p>
+
+
+                                            <div style="display:flex">
+                                                @if (string.IsNullOrEmpty(Model.formLogo) == false)
+                                                {
+                                                    <div style="padding-right:10px;">
+                                                        <img src="~/assets/images/@Model.formLogo" />
+                                                    </div>
+                                                }
+                                                <div style="align-self:center;">
+                                                    <h1 class="govuk-fieldset__heading">
+                                                        <span>@Model.steps[0].elements[0].text</span>
+                                                        <span class="govuk-!-font-weight-regular">@Model.steps[0].elements[0].text2</span>
+                                                    </h1>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    }
                                     displaySummaryTable = true;
                                 }
                                 else if (isInstructionsPage)
@@ -154,6 +183,13 @@
                         <input type="hidden" asp-for="backButton" id="modelTitle@(Model.id)" />
                         <input type="hidden" asp-for="backLink" id="modelTitle@(Model.id)" />
                         <input type="hidden" asp-for="backURLfromQ1" />
+
+                        @if (((int)Model.FormType) > 2)
+                        {
+                            //skills3 forms
+                            <input type="hidden" asp-for="userTypeActionPlanSection" />
+                            <input type="hidden" asp-for="formLogo" />
+                        }
 
 
 

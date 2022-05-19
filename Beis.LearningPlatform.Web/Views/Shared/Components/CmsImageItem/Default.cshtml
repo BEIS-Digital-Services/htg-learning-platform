@@ -1,0 +1,33 @@
+﻿@model CmsImageItemViewModel
+@if (Model.HasContent == false)
+{
+    return;
+}
+@{
+    var _pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build();
+    var strSummary = "";
+    strSummary = Markdown.ToHtml(Model.Summary, _pipeline).Replace("<p>", "<p class=\"govuk-body\" style=\"text-align:left;\">");
+
+}
+
+<div class="govuk-width-container govuk-!-padding-top-4 govuk-!-padding-bottom-2">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <div class="image-item">
+                <div class="media-image"><vc:cms-image options='new CmsImageViewModel{ ImageUrl = Model.Image.url, Title= Model.Image.alternativeText }' /></div>
+                <div class="media-title"><h2 class="govuk-heading-l govuk-!-padding-top-3 govuk-!-margin-bottom-1">@Model.Header</h2></div>
+                <div class="media-content">
+                    @Html.Raw(strSummary)
+                    <div class="  ">
+                        <div>
+                            <span class="beis-link-icon">
+                                <vc:cms-image options='new CmsImageViewModel{ ImageUrl = Model.Link.icon.url, CssClass="svgimg" }' />
+                            </span>
+                            <a class="govuk-link" href="@Model.Link.url">@Model.Link.label</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -30,6 +30,7 @@ namespace Beis.LearningPlatform.BL.DependencyInjection
             serviceCollection.AddTransient<IEmailService, EmailService>();
             serviceCollection.AddTransient<ISkillsOneService, SkillsOneService>();
             serviceCollection.AddTransient<ISkillsTwoService, SkillsTwoService>();
+            serviceCollection.AddTransient<ISkillsThreeService, SkillsThreeService>();
             serviceCollection.AddTransient<ISatisfactionSurveyService, SatisfactionSurveyService>();
             serviceCollection.AddTransient<IFeedbackService, DBFeedbackService>();
 

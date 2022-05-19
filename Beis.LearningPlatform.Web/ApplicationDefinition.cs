@@ -1,4 +1,5 @@
 ﻿using Beis.LearningPlatform.Web.Models.DiagnosticTool;
+using System;
 using System.Collections.Generic;
 
 namespace Beis.LearningPlatform.Web
@@ -99,6 +100,24 @@ namespace Beis.LearningPlatform.Web
         public ApplicationFormType DiagnosticTool { get; set; }
         public ApplicationFormType SkillsOne { get; set; }
         public ApplicationFormType SkillsTwo { get; set; }
+        public ApplicationFormType SkillsThreeNewcomerPlanning { get; set; }
+        public ApplicationFormType SkillsThreeNewcomerCommunication { get; set; }
+        public ApplicationFormType SkillsThreeNewcomerSupport { get; set; }
+        public ApplicationFormType SkillsThreeNewcomerTraining { get; set; }
+        public ApplicationFormType SkillsThreeNewcomerTesting { get; set; }
+
+        public ApplicationFormType SkillsThreeMoverPlanning { get; set; }
+        public ApplicationFormType SkillsThreeMoverCommunication { get; set; }
+        public ApplicationFormType SkillsThreeMoverSupport { get; set; }
+        public ApplicationFormType SkillsThreeMoverTraining { get; set; }
+        public ApplicationFormType SkillsThreeMoverTesting { get; set; }
+
+        public ApplicationFormType SkillsThreePerformerPlanning { get; set; }
+        public ApplicationFormType SkillsThreePerformerCommunication { get; set; }
+        public ApplicationFormType SkillsThreePerformerSupport { get; set; }
+        public ApplicationFormType SkillsThreePerformerTraining { get; set; }
+        public ApplicationFormType SkillsThreePerformerTesting { get; set; }
+
 
     }
     public class ApplicationFormType
@@ -114,12 +133,33 @@ namespace Beis.LearningPlatform.Web
         public bool BackLink { get; set; }
 
         public string BackURLfromQ1 { get; set; }
+        public string UserTypeActionPlanSection { get; set; }
+        public string FormLogo { get; set; }
     }
 
+    [Flags]
     public enum FormTypes
     {
-        DiagnosticTool = 0,
-        SkillsOne = 1,
-        SkillsTwo = 2
+        DiagnosticTool = 1 << 0,
+        SkillsOne = 1 << 1,
+        SkillsTwo = 1 << 2,
+
+        SkillsThreeNewcomerPlanning = 1 << 3,
+        SkillsThreeNewcomerCommunication = 1 << 4,
+        SkillsThreeNewcomerSupport = 1 << 5,
+        SkillsThreeNewcomerTraining = 1 << 6, 
+        SkillsThreeNewcomerTesting = 1 << 7,
+
+        SkillsThreeMoverPlanning = 1 << 8, 
+        SkillsThreeMoverCommunication = 1 << 9, 
+        SkillsThreeMoverSupport = 1 << 10, 
+        SkillsThreeMoverTraining = 1 << 11, 
+        SkillsThreeMoverTesting = 1 << 12, 
+
+        SkillsThreePerformerPlanning = 1 << 13, 
+        SkillsThreePerformerCommunication = 1 << 14, 
+        SkillsThreePerformerSupport = 1 << 15, 
+        SkillsThreePerformerTraining = 1 << 16, 
+        SkillsThreePerformerTesting = 1 << 17
     }
 }
