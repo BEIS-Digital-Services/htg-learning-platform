@@ -1,29 +1,25 @@
-﻿@using Beis.LearningPlatform.Web.Utils
-@model List<Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageLink>
+﻿@model (IList<Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageLink> cmsPageLinks, string linksAlign)
 @{
-    var _pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build();
     var strclass = string.Empty;
     var strComponentBg = string.Empty;
     var linkAction = string.Empty;
-    var linksAlign = ViewData["linksAlign"] != null ? (string)ViewData["linksAlign"] : string.Empty;
+    var linksAlign = Model.linksAlign ?? string.Empty;
 }
 
-@if (Model != null)
+@if (Model.cmsPageLinks is {Count: > 0 })
 {
-    @if (Model.Count > 0)
+    @foreach (var link in Model.cmsPageLinks)
     {
-        @foreach (var link in Model)
-        {
-            link.hide = link.hide.HasValue ? link.hide : false;
+        link.hide = link.hide.HasValue ? link.hide : false;
 
-            if (link.hide == false)
+        if (link.hide == false)
+        {
+            if (!string.IsNullOrWhiteSpace(link.url))
             {
-                if (!string.IsNullOrWhiteSpace(link.url))
+                if (link.url.StartsWith("http") || link.url.StartsWith("/"))
                 {
-                    if (link.url.StartsWith("http") || link.url.StartsWith("/"))
-                    {
-                        linkAction = string.IsNullOrWhiteSpace(link.url) ? "" : (link.url.StartsWith("http")) ? link.url : (link.url.StartsWith("/") ? link.url.ToString().Substring(1) : link.url.ToString().Substring(0, (link.url.ToString().IndexOf("/") - 1)));
-                        strclass = CamelCaseConverter.Delimiter(link.custom_class, "-");
+                    linkAction = string.IsNullOrWhiteSpace(link.url) ? "" : (link.url.StartsWith("http")) ? link.url : (link.url.StartsWith("/") ? link.url.ToString().Substring(1) : link.url.ToString().Substring(0, (link.url.ToString().IndexOf("/") - 1)));
+                    strclass = CamelCaseConverter.Delimiter(link.custom_class, "-");
 
                     <div class="@link.custom_class @strComponentBg @linksAlign">
                         <div>
@@ -39,14 +35,12 @@
                             }
                             else
                             {
-                                <a id="link-cmspageviews-textlinks-@(link.GetGaLinkId())" class="govuk-link @strclass" href="/@linkAction" 
-                                   aria-label="@(string.IsNullOrWhiteSpace(link.aria) ? "Read the article on " + link.id : link.aria)"> @link.label </a>
+                                <a id="link-cmspageviews-textlinks-@(link.GetGaLinkId())" class="govuk-link @strclass" href="/@linkAction"
+                                aria-label="@(string.IsNullOrWhiteSpace(link.aria) ? "Read the article on " + link.id : link.aria)"> @link.label </a>
                             }
                         </div>
-
                     </div>
-                        }
-                    }
+                }
             }
         }
     }

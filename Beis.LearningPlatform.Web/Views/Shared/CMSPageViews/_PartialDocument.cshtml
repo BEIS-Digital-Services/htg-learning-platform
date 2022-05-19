@@ -1,20 +1,18 @@
-﻿@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
+﻿@model (Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent component, int componentIndex) 
 @{
-    var pagename = ViewData["pagename"].ToString();
-    var strTopSpaceClass = Model.topSpace != "nospace" ? "govuk-!-margin-top-6" : "";
-    var strBottomSpaceClass = Model.bottomSpace != "nospace" ? "govuk-!-margin-bottom-6" : "";
+    var strTopSpaceClass = Model.component.topSpace != "nospace" ? "govuk-!-margin-top-6" : "";
+    var strBottomSpaceClass = Model.component.bottomSpace != "nospace" ? "govuk-!-margin-bottom-6" : "";
 
-    var targetURL = Model.url;
-    if (string.IsNullOrEmpty(targetURL) && Model.media?.Count > 0)
+    var targetURL = Model.component.url;
+    if (string.IsNullOrEmpty(targetURL) && Model.component.media?.Count > 0)
     {
-        targetURL = Model.media[0].url;
+        targetURL = Model.component.media[0].url;
     }
-    targetURL = ViewData["strapiApiUrl"].ToString() + targetURL;
 
     var imageURL = default(string);
-    if (!string.IsNullOrEmpty(Model.abbr))
+    if (!string.IsNullOrEmpty(Model.component.abbr))
     {
-        var loweredAbbr = Model.abbr.ToLower();
+        var loweredAbbr = Model.component.abbr.ToLower();
         switch (loweredAbbr)
         {
             case "pdf":
@@ -42,13 +40,13 @@
     }
 }
 
-<div class="beis-text" id="@("anchor" + ViewData["intCurrComponentIndex"])">
-    @if (Model.media != null && Model.media.Count > 0)
+<div class="beis-text" id="@("anchor" + Model.componentIndex)">
+    @if (Model.component.media != null && Model.component.media.Count > 0)
     {
         <div class="govuk-width-container @strTopSpaceClass @strBottomSpaceClass">
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-two-thirds">
-                    <section class="attachment embedded" id="attachment_@Model.media[0].name">
+                    <section class="attachment embedded" id="attachment_@Model.component.media[0].name">
                         <div class="attachment-thumb">
                             <a id="link-cmspageviews-document-attachment-thumb" aria-hidden="true" class="thumbnail" tabindex="-1" href="@targetURL">
                                 <img alt="" src="@imageURL">
@@ -57,14 +55,14 @@
                         <div class="attachment-details">
                             <h3 class="title govuk-!-font-size-27 govuk-!-font-weight-regular">
                                 <a id="link-cmspageviews-document-attachment-details" class="govuk-link" href="@targetURL">
-                                    @Model.title
+                                    @Model.component.title
                                 </a>
                             </h3>
                             <p class="govuk-body">
                                 <span class="type">
-                                    <abbr title="@Model.media[0].mime">@Model.abbr</abbr>
+                                    <abbr title="@Model.component.media[0].mime">@Model.component.abbr</abbr>
                                 </span>,
-                                <span class="file-size">@Model.media[0].size KB</span>
+                                <span class="file-size">@Model.component.media[0].size KB</span>
                             </p>
                         </div>
                     </section>

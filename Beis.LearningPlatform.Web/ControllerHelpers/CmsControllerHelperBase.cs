@@ -58,10 +58,5 @@ namespace Beis.LearningPlatform.Web.ControllerHelpers
             viewModel.CmsBaseUrl = _cmsOption.ApiBaseUrl;
             return viewModel;
         }
-
-        public void SetBackButton(IController controller)
-        {
-            controller.ViewData["showBackButton"] = true;
-        }
     }
 }
