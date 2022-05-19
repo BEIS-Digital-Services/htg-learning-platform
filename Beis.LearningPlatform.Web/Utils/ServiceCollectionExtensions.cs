@@ -67,6 +67,7 @@ namespace Beis.LearningPlatform.Web.Utils
             services.AddTransient<IEmailResponseHelper, DiagnosticToolEmailResponseHelper>();
             services.AddTransient<IEmailResponseHelper, SkillsEmailResponseHelper>();
             services.AddTransient<IEmailResponseHelper, SkillsModuleTwoResponseHelper>();
+            services.AddTransient<IEmailResponseHelper, SkillsModuleThreeResponseHelper>();
             services.AddTransient<IEmailResponseHelperFactory, EmailResponseHelperFactory>();
         }
     }

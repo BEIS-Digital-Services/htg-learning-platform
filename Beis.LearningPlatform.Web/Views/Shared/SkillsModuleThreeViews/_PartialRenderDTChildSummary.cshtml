@@ -1,0 +1,31 @@
+﻿@using Beis.LearningPlatform.Web.Models.DiagnosticTool
+@using Beis.LearningPlatform.Web.Utils
+@model Beis.LearningPlatform.Web.Models.DiagnosticTool.DiagnosticToolForm
+@{
+    var elementInfo = Model.CurrentElement;
+    var currentStep = elementInfo.CurrentStep;
+    var currentElement = elementInfo.CurrentElement;
+    var radioButtonParent = elementInfo.RadioButtonParent;
+    var z = elementInfo.ChildIndex;
+
+    var currentFormStepElement = elementInfo.CurrentFormStepElement;
+    var controlType = currentFormStepElement.answerOptions?.Any() == true ? currentFormStepElement.answerOptions[z].controlType : currentFormStepElement.controlType;
+    var greyClass = controlType == FormDisplayControlType.Textarea ? " summary-grey" : "";
+
+
+}
+
+<div class="govuk-body summary-grey govuk-!-padding-3">
+    <p><strong>@currentFormStepElement.subText</strong></p>
+
+    <p>@Model.steps[currentStep].elements[currentElement].answerOptions[0].ResultPageLabel</p>
+
+    <p>@Model.steps[currentStep].elements[currentElement].answerOptions[0].value</p>
+
+    <p>@Model.steps[currentStep].elements[currentElement].answerOptions[1].ResultPageLabel</p>
+    <p>@Model.steps[currentStep].elements[currentElement].answerOptions[1].value</p>
+    <p>@Model.steps[currentStep].elements[currentElement].answerOptions[2].ResultPageLabel</p>
+    <p>@Model.steps[currentStep].elements[currentElement].answerOptions[2].value</p>
+
+</div>
+

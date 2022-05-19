@@ -65,6 +65,7 @@ namespace Beis.LearningPlatform.Data
         public DbSet<DiagnosticToolEmailAnswer> DiagnosticToolEmailAnswer { get; set; }
         public DbSet<SkillsOneResponse> SkillsOneResponse { get; set; }
         public DbSet<SkillsTwoResponse> SkillsTwoResponse { get; set; }
+        public DbSet<SkillsThreeResponse> SkillsThreeResponse { get; set; }
         public DbSet<SatisfactionSurveyEntry> SatisfactionSurveyEntry { get; set; }
 
         private void AddTimestamps()
