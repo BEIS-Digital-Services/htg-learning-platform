@@ -14,17 +14,12 @@ namespace Beis.LearningPlatform.BL.Tests.Services
     {
         private ISkillsThreeService _skills3Service;
         private Mock<ISkillsThreeDataService> _skills3DataServiceMock;
-        private Mock<ILogger<EmailService>> _loggerMock;
-        private Mock<INotifyIntegrationService> _notifyIntegrationService;
 
         [SetUp]
         public void Setup()
         {
             _skills3DataServiceMock = new();
-            _loggerMock = new();
-            _notifyIntegrationService = new();
-
-            _skills3Service = new SkillsThreeService(_loggerMock.Object, _notifyIntegrationService.Object, _skills3DataServiceMock.Object);
+            _skills3Service = new SkillsThreeService(_skills3DataServiceMock.Object);
         }
 
         [Test]
