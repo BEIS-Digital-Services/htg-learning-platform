@@ -176,5 +176,10 @@ namespace Beis.LearningPlatform.Web.Models.DiagnosticTool
             productTypesListed = ProductCategories.Where(x => distinctProductTypes.Contains((long)x.id)).Select(x => x.name);
             return (bool)productTypesListed?.Any();
         }
+
+        public string GetFormUrlName(string delimiter = "-")
+        {
+            return CamelCaseConverter.Delimiter(this.FormType.ToString(), delimiter).ToLower();
+        }
 	}
 }
