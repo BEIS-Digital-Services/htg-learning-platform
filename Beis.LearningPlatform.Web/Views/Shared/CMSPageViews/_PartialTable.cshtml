@@ -1,19 +1,12 @@
 ﻿@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
 @{
     var _pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build();
-    var heading = string.Empty;
-    heading = string.IsNullOrWhiteSpace(Model.header) ? (Model.subheader != null ? Model.subheader.ToString() : "") : Model.header;
-    var strcopy = string.IsNullOrWhiteSpace(Model.copy) ? "" : Markdown.ToHtml(Model.copy, _pipeline).Replace("<p>", "<p class=\"govuk-body\">");
-    var topSpaceClass = Model.topSpace != "nospace" ? "govuk-!-padding-top-6" : "";
-    var bottomSpaceClass = Model.bottomSpace != "nospace" ? "govuk-!-padding-bottom-6" : "";
+    Model.hide = Model.hide.HasValue ? Model.hide : false;
 }
 
-@{             
-    Model.hide = Model.hide.HasValue ? Model.hide : false;
-
-    if (Model.hide == false)
-    {
-    <div class="beis-table" id="@("anchor" + ViewData["intCurrComponentIndex"])">
+@if (Model.hide == false)
+{
+    <div class="beis-table" id="@("anchor" + Model.Index)">
         <div class="govuk-width-container">
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-full">
@@ -47,25 +40,25 @@
                                         @if (!string.IsNullOrWhiteSpace(Model.one))
                                         {
                                             <td class="govuk-table__cell">
-                                                <p>@Html.Raw(Markdown.ToHtml(Model.rows[i].one, _pipeline).Replace("<p>", "").Replace("</p>", ""))</p>
+                                                <p>@Html.Raw(Markdown.ToHtml(Model.rows[i].one, _pipeline).Replace("<p>", "").Replace("</p>", string.Empty))</p>
                                             </td>
                                         }
                                         @if (!string.IsNullOrWhiteSpace(Model.two))
                                         {
                                             <td class="govuk-table__cell">
-                                                <p>@Html.Raw(Markdown.ToHtml(Model.rows[i].two, _pipeline).Replace("<p>", "").Replace("</p>", ""))</p>
-                                            </td>                                        
+                                                <p>@Html.Raw(Markdown.ToHtml(Model.rows[i].two, _pipeline).Replace("<p>", "").Replace("</p>", string.Empty))</p>
+                                            </td>
                                         }
                                         @if (!string.IsNullOrWhiteSpace(Model.three))
                                         {
                                             <td class="govuk-table__cell">
-                                                <p>@Html.Raw(Markdown.ToHtml(Model.rows[i].three, _pipeline).Replace("<p>", "").Replace("</p>", ""))</p>
-                                            </td>                                        
+                                                <p>@Html.Raw(Markdown.ToHtml(Model.rows[i].three, _pipeline).Replace("<p>", "").Replace("</p>", string.Empty))</p>
+                                            </td>
                                         }
                                         @if (!string.IsNullOrWhiteSpace(Model.four))
                                         {
                                             <td class="govuk-table__cell">
-                                                <p>@Html.Raw(Markdown.ToHtml(Model.rows[i].four, _pipeline).Replace("<p>", "").Replace("</p>", ""))</p>
+                                                <p>@Html.Raw(Markdown.ToHtml(Model.rows[i].four, _pipeline).Replace("<p>", "").Replace("</p>", string.Empty))</p>
                                             </td>
                                         }
                                     </tr>
@@ -73,7 +66,7 @@
 
                             }
                         </tbody>
-                        </table>
+                    </table>
                     <partial name="CMSPageViews/_PartialTextButtons" model="@Model" />
                     <partial name="CMSPageViews/_PartialTextLinks" model="@Model.links" />
 
@@ -81,5 +74,4 @@
             </div>
         </div>
     </div>
-    }
 }

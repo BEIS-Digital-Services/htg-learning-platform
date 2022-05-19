@@ -1,5 +1,4 @@
-﻿@using Beis.LearningPlatform.Web.Utils
-@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
+﻿@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
 @{
     var _pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build();
     var strcopy = string.Empty;
@@ -13,7 +12,7 @@
 
         if (Model.textblocks[0].hide == false)
         {
-        <div class="statistic" id="@("anchor" + ViewData["intCurrComponentIndex"])">
+        <div class="statistic" id="@("anchor" + Model.Index)">
             <div class="govuk-grid-row beis-columns-same-height">
                 @* Add background to class if set*@
                 <div class="govuk-grid-column-one-half beis-navy-blue">

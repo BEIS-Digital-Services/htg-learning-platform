@@ -27,6 +27,7 @@ namespace Beis.LearningPlatform.DAL.DependencyInjection
             serviceCollection.AddTransient<IEmailDataService, EmailDataService>();
             serviceCollection.AddTransient<ISkillsOneDataService, SkillsOneDataService>();
             serviceCollection.AddTransient<ISkillsTwoDataService, SkillsTwoDataService>();
+            serviceCollection.AddTransient<ISkillsThreeDataService, SkillsThreeDataService>();
             serviceCollection.AddTransient<ISatisfactionSurveyDataService, SatisfactionSurveyDataService>();
             serviceCollection.AddTransient<IFeedbackUsefulDataService, FeedbackUsefulDataService>();
             serviceCollection.AddTransient<IFeedbackProblemReportDataService, FeedbackProblemReportDataService>();

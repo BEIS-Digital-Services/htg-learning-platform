@@ -1,6 +1,4 @@
-﻿@using Beis.LearningPlatform.Web.Utils
-@using Beis.LearningPlatform.Web.StrapiApi.Models
-@model Beis.LearningPlatform.Web.Models.ComparisonToolPageViewModel
+﻿@model Beis.LearningPlatform.Web.Models.ComparisonToolPageViewModel
 @if (Model.currentProduct != null)
 {
     <div class="govuk-width-container comparison-tool-details">
@@ -198,8 +196,6 @@
     </div>
     </div>
 
-    @*<partial name="CMSPageViews/_PartialDivider" model="@(new CMSPageComponent() { color = "beisGrey" })"/>*@
-
     @if (Model.currentProduct.HasAdditionalDiscounts())
     {
         <div class="govuk-grid-row">
@@ -290,7 +286,7 @@
                             </dl>
                         }
 
-                        <partial name="CMSPageViews/_PartialDivider" model="@(new CMSPageComponent() { color = "beisGrey" })" />
+                        <partial name="CMSPageViews/_PartialDivider" model="@(new CMSPageComponent { color = "beisGrey" })" />
                     </div>
                 </details>
             </div>

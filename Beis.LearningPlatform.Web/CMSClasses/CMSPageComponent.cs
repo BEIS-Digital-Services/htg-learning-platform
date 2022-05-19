@@ -6,6 +6,7 @@ namespace Beis.LearningPlatform.Web.StrapiApi.Models
 {
     public class CMSPageComponent
     {
+        public int Index { get; set; }
         public string __component { get; set; }
         public int id { get; set; }
         public string name { get; set; }
@@ -151,6 +152,9 @@ namespace Beis.LearningPlatform.Web.StrapiApi.Models
 
         // Navigation Breadcrumbs
         public IList<CMSSimpleLink> AdditionalLinks { get; set; }
-        
-	}
+        public string Summary { get; set; }
+        public CMSPageLink Link { get; set; }
+        public List<CmsAccordionItemViewModel> AccordionItems { get; set; }
+
+    }
 }
