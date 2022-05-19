@@ -21,8 +21,3 @@ CREATE TABLE IF NOT EXISTS public."SkillsThreeResponse"
     "RiskFinally" text COLLATE pg_catalog."default",
     CONSTRAINT "SkillsThreeResponse_pkey" PRIMARY KEY ("Id")
 )
-
-TABLESPACE pg_default;
-
-ALTER TABLE IF EXISTS public."SkillsThreeResponse"
-    OWNER to admin_dev;

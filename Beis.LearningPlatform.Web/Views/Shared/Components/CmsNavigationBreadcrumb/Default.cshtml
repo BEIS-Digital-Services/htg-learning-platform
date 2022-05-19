@@ -1,0 +1,21 @@
+﻿@model NavigationBreadcrumbViewModel
+<div class="navigation-breadcrumb" id="@Model.Component.id">
+    <div class="govuk-width-container">
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full govuk-body">
+                <a href="/" id=""breadcrumb-link-home">Home</a><span class="next-pointer"> &gt; </span>
+                @foreach (var link in Model.Breadcrumbs)
+                {
+                    if (Model.Breadcrumbs.IndexOf(link) == Model.Breadcrumbs.Count - 1)
+                    {
+                        <span>@link.LinkText</span>
+                    }
+                    else
+                    {
+                        <a href="@link.LinkUrl" id="@link.GetGaLinkId("breadcrumb-link-")">@link.LinkText</a><span class="next-pointer"> &gt; </span>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>

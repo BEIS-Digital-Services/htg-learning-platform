@@ -39,6 +39,8 @@
 @import "adaptive-image.component.scss";
 @import "three-levels.component.scss";
 @import "menu-style2.scss";
+@import "navigation-breadcrumb.scss";
+@import "landingPageHero.scss";
 
 .hide-element {
     border: 0;
@@ -892,4 +894,140 @@ span.govuk-link-divider {
     span.govuk-link-divider {
         color: #1D70B8;
     }
+}
+
+//image item component
+.image-item {
+    position: relative;
+}
+
+@media screen and (max-width: 40.0525em) {
+    .image-item {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 2rem;
+    }
+}
+
+@media screen and (min-width: 40.0625em) {
+    .image-item {
+        display: block;
+        padding-left: 160px;
+        margin-bottom: 1rem; //4rem;
+    }
+}
+
+.image-item .media-image {
+    width: 130px;
+    height: 130px;
+}
+
+@media screen and (max-width: 40.0525em) {
+    .image-item .media-image {
+        display: flex;
+        flex-basis: 130px;
+    }
+}
+
+@media screen and (min-width: 40.0625em) {
+    .image-item .media-image {
+        position: absolute;
+        top: 0;
+        right: auto;
+        bottom: auto;
+        left: 0;
+        display: block;
+        margin: auto;
+    }
+}
+
+@media screen and (max-width: 40.0525em) {
+    .image-item .media-title {
+        display: flex;
+        flex-basis: calc(100% - 145px);
+        align-items: center;
+        padding-left: 15px;
+    }
+}
+
+@media screen and (min-width: 40.0625em) {
+    .image-item .media-title {
+        display: block;
+        width: 100%;
+    }
+}
+
+.image-item .media-content {
+    display: block;
+}
+
+@media screen and (max-width: 40.0525em) {
+    .image-item .media-content {
+        flex-basis: 100%;
+        margin-top: 15px;
+    }
+}
+
+
+//AccordionList component
+.accordion-wrapper .accordion-item {
+    margin-bottom: 10px;
+}
+
+.accordion-wrapper .accordion-item .accordion {
+    display: block;
+    width: 100%;
+    padding: 20px 20px !important;
+    background-color: #1e1a32 !important;
+    color: #ffb001 !important;
+    cursor: pointer;
+    padding-right: 60px !important;
+    position: relative;
+    text-align: left;
+    outline: none;
+    border: none;
+    transition: 0.4s;
+    font-size: 1.5rem;
+    line-height: 1.25;
+    font-weight: bold;
+}
+
+.accordion-wrapper .accordion-item .accordion:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 20px;
+    bottom: 0;
+    left: auto;
+    display: block;
+    margin: auto;
+    width: 32px;
+    height: 40px;
+    background: url("/assets/images/accordion-arrow.svg") no-repeat center center;
+    transform: rotate(180deg);
+    transition: 0.4s;
+}
+
+.accordion-wrapper .accordion-item .accordion.active:after {
+    transform: none;
+}
+
+.accordion-wrapper .accordion-item .panel {
+    padding: 0 0 !important;
+    display: none;
+    background-color: white;
+}
+
+.accordion-wrapper .accordion-item .panel ul {
+    padding-left: 15px !important;
+}
+
+.accordion-wrapper .accordion-item .panel .graybgpnl {
+    margin: 0 !important;
+    background-color: #efefef !important;
+    padding: 1px 15px 1px 20px;
+}
+
+.accordion-wrapper .accordion-item .panel ul li {
+    margin-bottom: 20px;
 }
