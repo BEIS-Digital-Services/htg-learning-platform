@@ -155,5 +155,8 @@ namespace Beis.LearningPlatform.Web.StrapiApi.Models
         public CMSPageLink Link { get; set; }
         public List<CmsAccordionItemViewModel> AccordionItems { get; set; }
 
+        // Search article listings (Strapi workaround here, the direct relation has a confirmed unfixed bug with ordering).
+        // Workaround in place that uses a list of single content pickers (hence CMSSearchArticlePicker) to create an orderable list of searchArticles.
+        public List<CMSSearchArticlePicker> SearchArticles { get; set; }
     }
 }

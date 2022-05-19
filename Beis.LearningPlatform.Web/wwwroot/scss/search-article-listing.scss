@@ -1,0 +1,21 @@
+﻿@import 'beis-variables.scss';
+@import 'beis-mixins.scss';
+
+.search-article-listing {
+    h3 {
+        &.govuk-heading-l {
+            font-size: 1.5em;
+        }
+    }
+
+    .left-column {
+        img {
+            width: 200px;
+            max-height: 200px;
+        }
+    }
+
+    .thin-line {
+        padding-top: 1px;
+    }
+}

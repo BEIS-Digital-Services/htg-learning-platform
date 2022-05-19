@@ -1,0 +1,66 @@
+﻿@model CmsSearchArticleListingViewModel
+<div class="landingpage-hero-list" id="@Model.Component.id">
+    <div class="govuk-width-container govuk-!-margin-bottom-6 govuk-!-margin-top-6 search-article-listing">
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full">
+                <div class="govuk-grid-row beis-columns-same-height">
+                    <div class="govuk-grid-column-full">
+                        <h2 class="govuk-heading-l govuk-!-padding-top-3 govuk-!-margin-bottom-2">@Model.Header</h2>
+                        <div class="top-line beis-yellow govuk-!-padding-top-2 govuk-!-margin-bottom-2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full">
+                @foreach (var article in Model.FullSearchArticles)
+                {
+                    <div class="govuk-grid-row beis-columns-same-height">
+                        <div class="govuk-grid-column-full">
+                            <h3 class="govuk-heading-l govuk-!-padding-top-3">
+                                <a id="link-landingpagehero-@article.FirstLink.aria" class="govuk-link" href="@article.FirstLink.url" aria-label="hero.LinkAria">@article.Article?.subheader</a>
+                            </h3>
+                        </div>
+                    </div>
+
+                    <div class="govuk-grid-row beis-columns-same-height">
+                        <div class="govuk-grid-column-one-quarter">
+                            <div class="govuk-grid-row">
+                                <div class="left-column">
+                                    @if (article.image != null)
+                                    {
+                                        <vc:cms-image options='new CmsImageViewModel{ ImageUrl = article.image.url, Title= article.image.alternativeText, CssClass = "hero-mobile-image" }' />
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="govuk-grid-column-three-quarters beis-stretch-content">
+                            <div class="govuk-grid-row">
+                                <div class="right-column">
+                                    @if (!string.IsNullOrEmpty(article.ReadingTime))
+                                    {
+                                        <p class="govuk-body govuk-!-margin-bottom-2">
+                                            <strong>Reading time:</strong> @article.ReadingTime
+                                        </p>
+                                    }
+                                    <p class="govuk-body">
+                                        @article.Article?.copy
+                                    </p>
+                                    <div>
+                                        <img src="/assets/images/link-icon.png" class="link-icon-align" />
+                                        <a id="link-landingpagehero-@article.FirstLink.aria" class="govuk-link" href="@article.FirstLink.url" aria-label="hero.LinkAria">@article.FirstLink.label</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="govuk-grid-row beis-columns-same-height">
+                        <div class="govuk-grid-column-full">
+                            <div class="top-line beis-grey thin-line govuk-!-margin-top-4 govuk-!-margin-bottom-4"></div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
