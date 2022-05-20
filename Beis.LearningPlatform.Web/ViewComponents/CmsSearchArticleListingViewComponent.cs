@@ -39,7 +39,11 @@ namespace Beis.LearningPlatform.Web.ViewComponents
             // Then filter the full article list by tags (API)
             if (viewModel.SelectedTagIds?.Any() == true)
             {
-                fullSearchArticles = fullSearchArticles
+                // TODO: Check if we can use the strapi v3 filter API to perform this, might be possible. 
+                // https://docs-v3.strapi.io/developer-docs/latest/developer-resources/content-api/content-api.html#api-parameters
+                // Example filter request by Id: http://localhost:1337/search-articles?id_in=3&id_in=6&id_in=8 
+                // Possibly it's possible to filter by the tags - but as it's a relation property might not be possible - in which case let's just keep the "intersect".
+                fullSearchArticles = fullSearchArticles 
                     .Where(x => viewModel.SelectedTagIds.Intersect(x.tags.Select(x => x.id)).Any())
                     .ToList();
             }   
@@ -55,8 +59,8 @@ namespace Beis.LearningPlatform.Web.ViewComponents
 
         private IEnumerable<int> GetSelectedTagIds()
         {
-            var query = _httpContextAccessor.HttpContext.Request.Query;
-            if (!query.ContainsKey("tag-ids"))
+            var query = _httpContextAccessor.HttpContext?.Request?.Query;
+            if (query == null || !query.ContainsKey("tag-ids"))
             {
                 return Enumerable.Empty<int>();
             }
