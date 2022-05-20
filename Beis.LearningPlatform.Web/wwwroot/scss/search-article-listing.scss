@@ -5,13 +5,24 @@
     h3 {
         &.govuk-heading-l {
             font-size: 1.5em;
+            height: 40px;
+        }
+    }
+
+    .filter-header {
+        h3 {
+            &.govuk-heading-l {
+                font-size: 1.5rem;
+                height: 40px;
+            }
         }
     }
 
     .left-column {
         img {
-            width: 200px;
-            max-height: 200px;
+            width: 160px;
+            max-height: 160px;
+            overflow-y: hidden;
         }
     }
 

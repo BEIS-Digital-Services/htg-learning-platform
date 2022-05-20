@@ -56,8 +56,19 @@ namespace Beis.LearningPlatform.Web.Models
 
         /// <summary>
         /// The strapi cms relation type gives us a reduced set of properties in the "_cmsPageComponent.SearchArticles" property.
-        /// Using Id's the full search article properties can be assigned here.
+        /// Using Id's the full search article properties is assigned here.
         /// </summary>
         public IEnumerable<CMSSearchArticle> FullSearchArticles { get; set; }
+        
+        /// <summary>
+        /// Distinct tags - assigned from the FullSearchArticles tags property
+        /// </summary>
+        public IEnumerable<CMSSearchTag> DistinctTags { get; set; }
+        public List<int> SelectedTagIds { get; set; }
+
+        public bool IsTagSelected(CMSSearchTag tag)
+        {
+            return SelectedTagIds?.Contains(tag.id) == true;
+        }
     }
 }
