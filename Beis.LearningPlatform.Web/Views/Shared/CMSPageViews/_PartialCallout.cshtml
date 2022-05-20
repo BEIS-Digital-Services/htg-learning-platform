@@ -1,11 +1,10 @@
-﻿@using Beis.LearningPlatform.Web.Utils
-@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
+﻿@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
 @{
     var _pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build();
-    var strComponentBg = (!string.IsNullOrWhiteSpace(Model.background)) ? CamelCaseConverter.Delimiter(Model.background, "-") : "";
+    var strComponentBg = (!string.IsNullOrWhiteSpace(Model.background)) ? CamelCaseConverter.Delimiter(Model.background, "-") : string.Empty;
 }
 
-<div class="call-out" id="@("anchor" + ViewData["intCurrComponentIndex"])">
+<div class="call-out" id="@("anchor" + Model.Index)">
     <div class="govuk-width-container govuk-!-padding-top-6 govuk-!-padding-bottom-6">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-full">

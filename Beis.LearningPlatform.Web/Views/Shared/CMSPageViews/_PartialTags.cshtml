@@ -1,5 +1,4 @@
-﻿@using Beis.LearningPlatform.Web.Utils
-@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
+﻿@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
 @{
     var _pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build();
     var strcopy = string.Empty;
@@ -20,7 +19,7 @@
             {
                 strcopy = Markdown.ToHtml(textblock.copy, _pipeline);
                 strclass = CamelCaseConverter.Delimiter(Model.background, "-");
-                <div class="tags" id="@("anchor" + ViewData["intCurrComponentIndex"])">
+                <div class="tags" id="@("anchor" + Model.Index)">
                     <div class="govuk-grid-row @strclass">
                         <div class="govuk-width-container">
                             <div class="govuk-grid-column-two-thirds">
@@ -28,7 +27,7 @@
                                     <div class="govuk-body govuk-!-font-size-36">
                                         @Html.Raw(strcopy)
                                     </div>
-                                    <partial name="CMSPageViews/_PartialTextLinks" model="@Model.links" />
+                                    <partial name="CMSPageViews/_PartialTextLinks" model="@(Model.links, Model.linksAlign)" />
                                 </div>
                             </div>
                         </div>

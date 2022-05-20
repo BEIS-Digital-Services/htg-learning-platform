@@ -368,9 +368,7 @@
                         @if (Model.FormIsCompleted)
                         {
                             @await Html.PartialAsync("DiagnosticToolFormViews/_PartialRenderDiagnosticToolEmailAnswer",
-                                        Model.EmailAnswer,
-                                        new ViewDataDictionary(ViewData) { { "ControlNameBasePath", nameof(Model.EmailAnswer) },
-                                                                           { "FormType", Model.FormType } })
+                                        (Model.EmailAnswer, nameof(Model.EmailAnswer)))
                         }
 
                         @if (Model.CurrStep > 0)

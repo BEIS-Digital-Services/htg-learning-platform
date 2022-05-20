@@ -6,6 +6,7 @@ namespace Beis.LearningPlatform.Web.StrapiApi.Models
 {
     public class CMSPageComponent
     {
+        public int Index { get; set; }
         public string __component { get; set; }
         public int id { get; set; }
         public string name { get; set; }

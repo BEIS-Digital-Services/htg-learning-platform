@@ -3,10 +3,11 @@
 {
     @if (Model.components.Count > 0)
     {
-        @foreach (var component in Model.components)
+        @for (var index = 0; index < Model.components.Count; index++)
         {
+            var component = Model.components[index];
+            component.Index = index;
             component.hide = component.hide.HasValue ? component.hide : false;
-
             if (component.hide == false)
             {
                 @switch (component.__component.ToLower())
@@ -18,7 +19,7 @@
                             {
                                 case "text":
                                 case "textwithbuttons":
-                                    <partial name="CMSPageViews/_PartialText" model="@component" />
+                                    <partial name="CMSPageViews/_PartialText" model="@(component, Model.ShowBackButton)" />
                                     break;
                                 case "textwithlinks":
                                     <partial name="CMSPageViews/_PartialTextWithLinks" model="@component" />
@@ -26,8 +27,7 @@
                                 case "articleinternal":
                                 case "articleexternal":
                                 case "article":
-                                    ViewData["model"] = Model;
-                                    <partial name="CMSPageViews/_PartialArticle" model="@component" />
+                                    <partial name="CMSPageViews/_PartialArticle" model="@(component, Model.components)" />
                                     break;
                                 case "columns":
                                     <partial name="CMSPageViews/_Partial2Columns" model="@component" />
@@ -75,10 +75,10 @@
                         <partial name="CMSPageViews/_PartialVideo" model="@component" />
                         break;
                     case "page.document":
-                        <vc:cms-document-link component="@component" />
+                        <vc:cms-document-link model="@component" />
                         break;
                     case "page.global":
-                        <partial name="CMSPageViews/_PartialGlobal" model="@component" />
+                        <partial name="CMSPageViews/_PartialGlobal" model="@(component, Model.ShowBackButton)" />
                         break;
                     case "page.devider":
                     case "page.divider":
@@ -94,7 +94,7 @@
                         <partial name="CMSPageViews/_PartialResources" model="@component" />
                         break;
                     case "page.article-block":
-                        <partial name="DiagnosticToolFormViews/_PartialSearchArticles" model="@component.search_articles" />
+                        <partial name="DiagnosticToolFormViews/_PartialSearchArticles" model="@(component.search_articles, component.linksAlign)" />
                         break;
                     case "page.reactive-tags":
                         <partial name="CMSPageViews/_PartialReactiveTags" model="@component" />
@@ -175,8 +175,6 @@
                         break;
                 }
             }
-
-            ViewData["intCurrComponentIndex"] = ((int)ViewData["intCurrComponentIndex"]) + 1;
         }
     }
     else

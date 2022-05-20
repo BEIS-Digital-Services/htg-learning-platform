@@ -1,12 +1,11 @@
-﻿@using Beis.LearningPlatform.Web.Utils
-@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
+﻿@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
 @{
     var _pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build();
-    var topSpaceClass = Model.topSpace != "nospace" ? "govuk-!-padding-top-6" : "";
-    var bottomSpaceClass = Model.bottomSpace != "nospace" ? "govuk-!-padding-bottom-6" : "";
+    var topSpaceClass = Model.topSpace != "nospace" ? "govuk-!-padding-top-6" : string.Empty;
+    var bottomSpaceClass = Model.bottomSpace != "nospace" ? "govuk-!-padding-bottom-6" : string.Empty;
 }
 
-<div class="beis-image-caption" id="@("anchor" + ViewData["intCurrComponentIndex"])">
+<div class="beis-image-caption" id="@("anchor" + Model.Index)">
     <div class="govuk-width-container @topSpaceClass @bottomSpaceClass">
         <div class="img-wrapper govuk-!-padding-bottom-6 @CamelCaseConverter.Delimiter(Model.background, "-")">
             @if (Model.image != null)
@@ -19,7 +18,7 @@
         {
             if (Model.textblocks[0].copy?.Length > 0)
             {
-                <p class="govuk-body beis-image-caption">@Markdown.ToHtml(Model.textblocks[0].copy, _pipeline).Replace("<p>", "").Replace("</p>", "")</p>
+                <p class="govuk-body beis-image-caption">@Markdown.ToHtml(Model.textblocks[0].copy, _pipeline).Replace("<p>", string.Empty).Replace("</p>", string.Empty)</p>
             }
         }
     </div>
