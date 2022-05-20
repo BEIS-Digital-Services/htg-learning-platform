@@ -1,12 +1,10 @@
-﻿@using Beis.LearningPlatform.Web.Utils
-@model Beis.LearningPlatform.Web.Models.ComparisonToolProductCategoryViewModel
+﻿@model Beis.LearningPlatform.Web.Models.ComparisonToolProductCategoryViewModel
 @{
     if (!Model.productsForCurrentCategoryToRender?.Any() ?? false)
     {
         return;
     }
     var countSelectedProducts = Model.productsSelected?.Count ?? 0;
-
 }
 
 <div class="govuk-grid-row govuk-!-margin-top-8">
@@ -130,7 +128,6 @@
         </div>
     </div>
 }
-
 
 <div class="govuk-grid-row govuk-!-margin-bottom-8">
     <div class="govuk-grid-column-full compare-products">
