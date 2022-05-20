@@ -43,7 +43,7 @@
                         {
                             foreach (var link in navigation.links)
                             {
-                                var linkAction = link.url.ToString().StartsWith("/") ? link.url.ToString().Substring(1) : link.url.ToString().Substring(0, (link.url.ToString().IndexOf("/") - 1));
+                                var linkAction = link.AlteredUrl;
                                 if (linkAction.Contains("diagnostic-tool"))
                                 {
                                     linkAction = "diagnostic-tool";

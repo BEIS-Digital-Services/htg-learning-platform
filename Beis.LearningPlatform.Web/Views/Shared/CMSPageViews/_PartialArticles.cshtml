@@ -1,18 +1,12 @@
 ﻿@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
 @{
     var _pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build();
-    var strcopy = string.Empty;
-    var strTopLineBg = string.Empty;
 }
 
 <div class="articles" id="@("anchor" + Model.Index)">
     <div class="govuk-width-container govuk-!-padding-bottom-8">
         <div class="govuk-grid-column-one-third">
-            @{
-                strTopLineBg = (!string.IsNullOrWhiteSpace(Model.Column1.backgroundColor)) ? CamelCaseConverter.Delimiter(Model.Column1.backgroundColor, "-") : "";
-            }
-
-            <div class="top-line @strTopLineBg"></div>
+            <div class="top-line @Model.Column1.AlteredBackgroundColor"></div>
             @if (Model.Image1 != null)
             {
                 <vc:cms-image options='new CmsImageViewModel{ ImageUrl = Model.Image1.url, CssClass = "hero-mobile-image", Title = Model.Image1.alternativeText }' />
@@ -22,19 +16,14 @@
             {
                 <h2 class="govuk-heading-l govuk-!-padding-top-3">@Model.Column1.subheader</h2>
             }
-            @{
-                strcopy = Markdown.ToHtml(Model.Column1.copy, _pipeline).Replace("<p>", "<p class=\"govuk-body\"  style=\"text-align:left;\">");
-            }
-            @Html.Raw(strcopy)
+
+            @Html.Raw(Markdown.ToHtml(Model.Column1.copy, _pipeline).Replace("<p>", "<p class=\"govuk-body\"  style=\"text-align:left;\">"))
             <partial name="CMSPageViews/_PartialTextLinks" model="@Model.Links1" />
             <partial name="CMSPageViews/_PartialTag" model="@Model.Tags1" />
         </div>
 
-        @{
-            strTopLineBg = (!string.IsNullOrWhiteSpace(Model.Column2.backgroundColor)) ? CamelCaseConverter.Delimiter(Model.Column2.backgroundColor, "-") : "";
-        }
         <div class="govuk-grid-column-one-third">
-            <div class="top-line @strTopLineBg"></div>
+            <div class="top-line @Model.Column2.AlteredBackgroundColor"></div>
             @if (Model.Image2 != null)
             {
                 <vc:cms-image options='new CmsImageViewModel{ ImageUrl = Model.Image2.url, CssClass = "hero-mobile-image", Title = Model.Image2.alternativeText }' />
@@ -44,19 +33,13 @@
             {
                 <h2 class="govuk-heading-l govuk-!-padding-top-3">@Model.Column2.subheader</h2>
             }
-            @{
-                strcopy = Markdown.ToHtml(Model.Column2.copy, _pipeline).Replace("<p>", "<p class=\"govuk-body\" style=\"text-align:left;\">");
-            }
-            @Html.Raw(strcopy)
+
+            @Html.Raw(Markdown.ToHtml(Model.Column2.copy, _pipeline).Replace("<p>", "<p class=\"govuk-body\" style=\"text-align:left;\">"))
             <partial name="CMSPageViews/_PartialTextLinks" model="@Model.Links2" />
             <partial name="CMSPageViews/_PartialTag" model="@Model.Tags2" />
         </div>
-
-        @{
-            strTopLineBg = (!string.IsNullOrWhiteSpace(Model.Column3.backgroundColor)) ? CamelCaseConverter.Delimiter(Model.Column3.backgroundColor, "-") : "";
-        }
         <div class="govuk-grid-column-one-third">
-            <div class="top-line @strTopLineBg"></div>
+            <div class="top-line @Model.Column3.AlteredBackgroundColor"></div>
             @if (Model.Image3 != null)
             {
                 <vc:cms-image options='new CmsImageViewModel{ ImageUrl = Model.Image3.url, CssClass = "hero-mobile-image", Title = Model.Image3.alternativeText }' />
@@ -66,10 +49,8 @@
             {
                 <h2 class="govuk-heading-l govuk-!-padding-top-3">@Model.Column3.subheader</h2>
             }
-            @{
-                strcopy = Markdown.ToHtml(Model.Column2.copy, _pipeline).Replace("<p>", "<p class=\"govuk-body\" style=\"text-align:left;\">");
-            }
-            @Html.Raw(strcopy)
+
+            @Html.Raw(Markdown.ToHtml(Model.Column2.copy, _pipeline).Replace("<p>", "<p class=\"govuk-body\" style=\"text-align:left;\">"))
             <partial name="CMSPageViews/_PartialTextLinks" model="@Model.Links3" />
             <partial name="CMSPageViews/_PartialTag" model="@Model.Tags3" />
         </div>
