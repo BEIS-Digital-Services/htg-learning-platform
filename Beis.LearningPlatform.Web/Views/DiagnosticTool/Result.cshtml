@@ -77,12 +77,13 @@
                         }
                         else
                         {
-                            if (Model.DistinctTagsFromQuestion7 != null)
+                            var distinctTagsFromQuestion7 = Model.GetDistinctTagsFromQuestion7();
+                            if (distinctTagsFromQuestion7 != null)
                             {
                                 @Html.Raw("The tasks you want to streamline include: <strong class=\"\">" + Model.InterestsSummary + "</strong>.")
                                 <br />
                                 <br />
-                                @foreach (var tag in Model.DistinctTagsFromQuestion7)
+                                @foreach (var tag in distinctTagsFromQuestion7)
                                 {
                                     tagList.Add(CamelCaseConverter.Delimiter(await tag.DisplayName(tag.ToString()), " "));
                                 }
@@ -119,10 +120,10 @@
                     @subHeader = "Digital accounting software";
                     currentCategoryId = Model.Tags.Single(r => r.name.Equals("accounting", StringComparison.OrdinalIgnoreCase)).id;
                     <div class="jsLink">
-                        <partial name="ComparisonToolViews/_PartialProductCategory" model="new ComparisonToolProductCategoryViewModel { CurrentCategoryId = currentCategoryId, productsForCurrentCategoryToRender = Model.AccountingProducts, subheader = @subHeader, VendorProdLogorUrl = Model.VendorProdLogorUrl }" />
+                        <partial name="ComparisonToolViews/_PartialProductCategory" model="new ComparisonToolProductCategoryViewModel { CurrentCategoryId = currentCategoryId, productsForCurrentCategoryToRender = Model.GetAccountingProducts(), subheader = @subHeader, VendorProdLogorUrl = Model.VendorProdLogorUrl }" />
                     </div>
                     <div class="noJsLink">
-                        <partial name="ComparisonToolViews/_PartialProductCategoryNoJs" model="new ComparisonToolProductCategoryViewModel { CurrentCategoryId = currentCategoryId, productsForCurrentCategoryToRender = Model.AccountingProducts, subheader = @subHeader, VendorProdLogorUrl = Model.VendorProdLogorUrl }" />
+                        <partial name="ComparisonToolViews/_PartialProductCategoryNoJs" model="new ComparisonToolProductCategoryViewModel { CurrentCategoryId = currentCategoryId, productsForCurrentCategoryToRender = Model.GetAccountingProducts(), subheader = @subHeader, VendorProdLogorUrl = Model.VendorProdLogorUrl }" />
                     </div>
                 }
 
@@ -131,10 +132,10 @@
                     @subHeader = "Customer Relationship Management (CRM) Software";
                     currentCategoryId = Model.Tags.Single(r => r.name.Equals("crm", StringComparison.OrdinalIgnoreCase)).id;
                     <div class="jsLink">
-                        <partial name="ComparisonToolViews/_PartialProductCategory" model="new ComparisonToolProductCategoryViewModel { CurrentCategoryId = currentCategoryId, productsForCurrentCategoryToRender = Model.CrmProducts, subheader = @subHeader, VendorProdLogorUrl = Model.VendorProdLogorUrl }" />
+                        <partial name="ComparisonToolViews/_PartialProductCategory" model="new ComparisonToolProductCategoryViewModel { CurrentCategoryId = currentCategoryId, productsForCurrentCategoryToRender = Model.GetCrmProducts(), subheader = @subHeader, VendorProdLogorUrl = Model.VendorProdLogorUrl }" />
                     </div>
                     <div class="noJsLink">
-                        <partial name="ComparisonToolViews/_PartialProductCategoryNoJs" model="new ComparisonToolProductCategoryViewModel { CurrentCategoryId = currentCategoryId, productsForCurrentCategoryToRender = Model.CrmProducts, subheader = @subHeader, VendorProdLogorUrl = Model.VendorProdLogorUrl }" />
+                        <partial name="ComparisonToolViews/_PartialProductCategoryNoJs" model="new ComparisonToolProductCategoryViewModel { CurrentCategoryId = currentCategoryId, productsForCurrentCategoryToRender = Model.GetCrmProducts(), subheader = @subHeader, VendorProdLogorUrl = Model.VendorProdLogorUrl }" />
                     </div>
                 }
 
@@ -143,10 +144,10 @@
                     @subHeader = "eCommerce software";
                     currentCategoryId = Model.Tags.Single(r => r.name.Equals("ecommerce", StringComparison.OrdinalIgnoreCase)).id;
                     <div class="jsLink">
-                        <partial name="ComparisonToolViews/_PartialProductCategory" model="new ComparisonToolProductCategoryViewModel { CurrentCategoryId = currentCategoryId, productsForCurrentCategoryToRender = Model.ECommerceProducts, subheader = @subHeader, VendorProdLogorUrl = Model.VendorProdLogorUrl }" />
+                        <partial name="ComparisonToolViews/_PartialProductCategory" model="new ComparisonToolProductCategoryViewModel { CurrentCategoryId = currentCategoryId, productsForCurrentCategoryToRender = Model.GetECommerceProducts(), subheader = @subHeader, VendorProdLogorUrl = Model.VendorProdLogorUrl }" />
                     </div>
                     <div class="noJsLink">
-                        <partial name="ComparisonToolViews/_PartialProductCategoryNoJs" model="new ComparisonToolProductCategoryViewModel { CurrentCategoryId = currentCategoryId, productsForCurrentCategoryToRender = Model.ECommerceProducts, subheader = @subHeader, VendorProdLogorUrl = Model.VendorProdLogorUrl }" />
+                        <partial name="ComparisonToolViews/_PartialProductCategoryNoJs" model="new ComparisonToolProductCategoryViewModel { CurrentCategoryId = currentCategoryId, productsForCurrentCategoryToRender = Model.GetECommerceProducts(), subheader = @subHeader, VendorProdLogorUrl = Model.VendorProdLogorUrl }" />
                     </div>
                 }
             </div>
@@ -161,7 +162,7 @@
                 </h2>
             </div>
         </div>
-        <partial name="DiagnosticToolFormViews/_PartialSearchArticles" model="@(Model.RelatedArticles, string.Empty)" />
+        <partial name="DiagnosticToolFormViews/_PartialSearchArticles" model="@(Model.GetRelatedArticles(), string.Empty)" />
 
         @if (Model.RegisterYourInterestBlock != default)
         {

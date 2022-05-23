@@ -112,51 +112,36 @@ namespace Beis.LearningPlatform.Web.Models.DiagnosticTool
         
         public IList<CMSSearchTag> Tags => ProductCategories?.Any() == true ? ProductCategories : new List<CMSSearchTag>();
 
-        public IList<ComparisonToolProduct> AccountingProducts
+        public IList<ComparisonToolProduct> GetAccountingProducts()
         {
-            get
-            {
-                return ComparisonToolProducts?.Where(item => item.product_type == Tags.FirstOrDefault(t => t.name == "accounting")!.id).ToList();
-            }
+            return ComparisonToolProducts?.Where(item => item.product_type == Tags.FirstOrDefault(t => t.name == "accounting")!.id).ToList();
         }
 
-        public IList<ComparisonToolProduct> CrmProducts
+        public IList<ComparisonToolProduct> GetCrmProducts()
         {
-            get
-            {
-                return ComparisonToolProducts?.Where(item => item.product_type == Tags.FirstOrDefault(t => t.name == "crm")!.id).ToList();
-            }
+            return ComparisonToolProducts?.Where(item => item.product_type == Tags.FirstOrDefault(t => t.name == "crm")!.id).ToList();
         }
 
-        public IList<ComparisonToolProduct> ECommerceProducts
+        public IList<ComparisonToolProduct> GetECommerceProducts()
         {
-            get
-            {
-                var productType = Tags.FirstOrDefault(t => t.name == "ecommerce")?.id;
-                return ComparisonToolProducts?.Where(item => item.product_type == productType).ToList();
-            }
+            var productType = Tags.FirstOrDefault(t => t.name == "ecommerce")?.id;
+            return ComparisonToolProducts?.Where(item => item.product_type == productType).ToList();
         }
 
-        public IList<CMSSearchArticle> RelatedArticles
+        public IList<CMSSearchArticle> GetRelatedArticles()
         {
-            get
-            {
-                // Collect distinct tags
-                var distinctTags = selectedTags.Distinct().Select(g => g.ToString()).ToList();
-                if (!distinctTags.Any()) return default;
+            // Collect distinct tags
+            var distinctTags = selectedTags.Distinct().Select(g => g.ToString()).ToList();
+            if (!distinctTags.Any()) return default;
 
-                bool TagToMatch(CMSSearchTag tag) => distinctTags.Contains(tag.name);
-                return Articles?.Where(article => article.tags.Exists(TagToMatch)).OrderBy(x => x.order).ToList();
-            }
+            bool TagToMatch(CMSSearchTag tag) => distinctTags.Contains(tag.name);
+            return Articles?.Where(article => article.tags.Exists(TagToMatch)).OrderBy(x => x.order).ToList();
         }
 
-        public IList<FormSearchTags> DistinctTagsFromQuestion7
+        public IList<FormSearchTags> GetDistinctTagsFromQuestion7()
         {
-            get
-            {
-                return steps[7].elements[0].answerOptions.Where(answer => answer.value.Equals("true", StringComparison.OrdinalIgnoreCase) && answer.searchTags?.Count > 0)
-                    .Select(g => g.searchTags.FirstOrDefault()).Distinct().ToList();
-            }
+            return steps[7].elements[0].answerOptions.Where(answer => answer.value.Equals("true", StringComparison.OrdinalIgnoreCase) && answer.searchTags?.Count > 0)
+                .Select(g => g.searchTags.FirstOrDefault()).Distinct().ToList();
         }
 
         public bool IsQuestion1Correct
@@ -205,23 +190,11 @@ namespace Beis.LearningPlatform.Web.Models.DiagnosticTool
                 {
                     if (IsAnswerYes)
                     {
-                        foreach (var answer in steps[6].elements[0].answerOptions)
-                        {
-                            if (answer.value.Equals("true", StringComparison.OrdinalIgnoreCase))
-                            {
-                                interests.Add(string.IsNullOrWhiteSpace(answer.additionalInfo) ? answer.ResultPageLabel : answer.additionalInfo);
-                            }
-                        }
+                        interests.AddRange(from answer in steps[6].elements[0].answerOptions where answer.value.Equals("true", StringComparison.OrdinalIgnoreCase) select string.IsNullOrWhiteSpace(answer.additionalInfo) ? answer.ResultPageLabel : answer.additionalInfo);
                     }
                     else
                     {
-                        foreach (var answer in steps[7].elements[0].answerOptions)
-                        {
-                            if (answer.value.Equals("true", StringComparison.OrdinalIgnoreCase))
-                            {
-                                interests.Add(string.IsNullOrWhiteSpace(answer.additionalInfo) ? answer.ResultPageLabel : answer.additionalInfo);
-                            }
-                        }
+                        interests.AddRange(from answer in steps[7].elements[0].answerOptions where answer.value.Equals("true", StringComparison.OrdinalIgnoreCase) select string.IsNullOrWhiteSpace(answer.additionalInfo) ? answer.ResultPageLabel : answer.additionalInfo);
                     }
 
                 }
