@@ -3,15 +3,12 @@
     var elementInfo = Model.CurrentElement;
     var currentStep = elementInfo.CurrentStep;
     var currentElement = elementInfo.CurrentElement;
-    var radioButtonParent = elementInfo.RadioButtonParent;
-    var z = elementInfo.ChildIndex;
     var currentFormStepElement = elementInfo.CurrentFormStepElement;
 }
 @{
 
     <div class="govuk-summary-list__value">
-
-        @for (z = 0; z < currentFormStepElement.answerOptions.Count; z++)
+        @for (var z = 0; z < currentFormStepElement.answerOptions.Count; z++)
         {
             @if (currentFormStepElement.answerOptions[z].value.Equals("true", StringComparison.OrdinalIgnoreCase))
             {
