@@ -1,5 +1,4 @@
-﻿@using Beis.LearningPlatform.Web.Utils
-@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
+﻿@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
 @if (Model.type == "dividerContentWidth")
 {
     <div class="govuk-width-container">
@@ -15,10 +14,10 @@ else
 {
     if (string.IsNullOrWhiteSpace(Model.color))
     {
-        @Html.Raw("<hr aria-hidden=\"true\" id=\"anchor" + ViewData["intCurrComponentIndex"] + "\" class=\"beis-navy-blue\" />")
+        @Html.Raw("<hr aria-hidden=\"true\" id=\"anchor" + Model.Index + "\" class=\"beis-navy-blue\" />")
     }
     else
     {
-        @Html.Raw("<hr aria-hidden=\"true\" id=\"anchor" + ViewData["intCurrComponentIndex"] + "\" class=\"" + @CamelCaseConverter.Delimiter(Model.color, "-") + " " + Model.type + "\">")
+        @Html.Raw("<hr aria-hidden=\"true\" id=\"anchor" + Model.Index + "\" class=\"" + @CamelCaseConverter.Delimiter(Model.color, "-") + " " + Model.type + "\">")
     }    
 }

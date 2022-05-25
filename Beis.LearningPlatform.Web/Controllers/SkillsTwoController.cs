@@ -1,4 +1,5 @@
-﻿using Beis.LearningPlatform.Web.ControllerHelpers.Interfaces;
+﻿using Beis.LearningPlatform.Library.Enums;
+using Beis.LearningPlatform.Web.ControllerHelpers.Interfaces;
 using Beis.LearningPlatform.Web.Models.DiagnosticTool;
 using Beis.LearningPlatform.Web.Utils;
 using Microsoft.AspNetCore.Mvc;
@@ -71,7 +72,8 @@ namespace Beis.LearningPlatform.Web.Controllers
             var response = await _controllerHelper.ProcessResults(model, FormTypes.SkillsTwo);
             if (response.Result && response.Payload)
             {
-                return Redirect("/learning-module-two-next-steps");
+                var isNewcomer = model.SkilledModuleTwoResultType == SkilledModuleTwoResultType.DigitalNewComer;
+                return Redirect(isNewcomer ? "/learning-module-one-next-steps" : "/learning-module-two-next-steps");
             }
             else
             {

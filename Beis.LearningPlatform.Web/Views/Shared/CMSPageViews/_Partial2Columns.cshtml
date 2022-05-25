@@ -1,9 +1,7 @@
-﻿@using Beis.LearningPlatform.Web.Utils
-@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
+﻿@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
 @{
     var _pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build();
-    var strcopy = "";
-
+    var strcopy = string.Empty;
 }
 
 @if (Model.textblocks.Count >= 1)
@@ -12,7 +10,7 @@
 
     if (Model.hide == false)
     {
-    <div class="columns" id="@("anchor" + ViewData["intCurrComponentIndex"])">
+    <div class="columns" id="@("anchor" +  Model.Index)">
         <div class="govuk-width-container">
             <div class="govuk-grid-row beis-columns-same-height">
                 <div class="govuk-grid-column-one-half @CamelCaseConverter.Delimiter(Model.textblocks[0].subheaderColor, "-")-text">

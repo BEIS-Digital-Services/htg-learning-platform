@@ -49,7 +49,7 @@ namespace Beis.LearningPlatform.Web.Controllers
             var response = await _controllerHelper.ProcessResults(model, GetFormType());
             if (response.Result && response.Payload)
             {
-                return Redirect("/learning-module-one-next-steps");
+                return Redirect($"/learning-completed-{model.GetFormUrlName()}");
             }
             else
             {

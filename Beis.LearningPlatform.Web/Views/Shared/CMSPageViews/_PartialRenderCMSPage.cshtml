@@ -1,12 +1,7 @@
 ﻿@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageViewModel
-@{    
-    ViewData["intCurrComponentIndex"] = 0;
-}
 <main id="main-heading" role="main">
-
     @if (Model.hero_banners != null)
     {
-        ViewData["intCurrComponentIndex"] = 0;
         <partial name="CMSPageViews/_PartialHeroBanner" model="@Model" />
     }
 
