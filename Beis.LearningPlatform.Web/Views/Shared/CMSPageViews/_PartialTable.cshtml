@@ -68,7 +68,7 @@
                         </tbody>
                     </table>
                     <partial name="CMSPageViews/_PartialTextButtons" model="@Model" />
-                    <partial name="CMSPageViews/_PartialTextLinks" model="@Model.links" />
+                    <partial name="CMSPageViews/_PartialTextLinks" model="@(Model.links, Model.linksAlign)" />
 
                 </div>
             </div>
