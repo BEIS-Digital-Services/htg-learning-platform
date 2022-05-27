@@ -21,7 +21,7 @@
                                     @Html.Raw("<div class=\"markdown\">" + Markdown.ToHtml(textblock.copy, _pipeline) + "</div>")
                                 }
 
-                                <partial name="CMSPageViews/_PartialTextLinks" model="@Model.links" />
+                                <partial name="CMSPageViews/_PartialTextLinks" model="@(Model.links, Model.linksAlign)" />
                             }
                         }
                     }

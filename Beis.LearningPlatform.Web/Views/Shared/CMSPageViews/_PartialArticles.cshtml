@@ -17,9 +17,9 @@
                 <h2 class="govuk-heading-l govuk-!-padding-top-3">@Model.Column1.subheader</h2>
             }
 
-            @Html.Raw(Markdown.ToHtml(Model.Column1.copy, _pipeline).Replace("<p>", "<p class=\"govuk-body\"  style=\"text-align:left;\">"))
-            <partial name="CMSPageViews/_PartialTextLinks" model="@Model.Links1" />
-            <partial name="CMSPageViews/_PartialTag" model="@Model.Tags1" />
+          @Html.Raw(Markdown.ToHtml(Model.Column1.copy, _pipeline).Replace("<p>", "<p class=\"govuk-body\"  style=\"text-align:left;\">"))
+          <partial name="CMSPageViews/_PartialTextLinks" model="@(Model.Links1, Model.linksAlign)" />
+          <partial name="CMSPageViews/_PartialTag" model="@Model.Tags1" />
         </div>
 
         <div class="govuk-grid-column-one-third">
@@ -35,7 +35,7 @@
             }
 
             @Html.Raw(Markdown.ToHtml(Model.Column2.copy, _pipeline).Replace("<p>", "<p class=\"govuk-body\" style=\"text-align:left;\">"))
-            <partial name="CMSPageViews/_PartialTextLinks" model="@Model.Links2" />
+            <partial name="CMSPageViews/_PartialTextLinks" model="@(Model.Links2, Model.linksAlign)" />
             <partial name="CMSPageViews/_PartialTag" model="@Model.Tags2" />
         </div>
         <div class="govuk-grid-column-one-third">
@@ -51,7 +51,7 @@
             }
 
             @Html.Raw(Markdown.ToHtml(Model.Column2.copy, _pipeline).Replace("<p>", "<p class=\"govuk-body\" style=\"text-align:left;\">"))
-            <partial name="CMSPageViews/_PartialTextLinks" model="@Model.Links3" />
+            <partial name="CMSPageViews/_PartialTextLinks" model="@(Model.Links3, Model.linksAlign)" />
             <partial name="CMSPageViews/_PartialTag" model="@Model.Tags3" />
         </div>
     </div>

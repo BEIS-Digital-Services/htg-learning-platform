@@ -1,6 +1,7 @@
 ﻿using Beis.LearningPlatform.Web.ControllerHelpers.Interfaces;
 using Beis.LearningPlatform.Web.Models.DiagnosticTool;
 using Beis.LearningPlatform.Web.Utils;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Linq;
@@ -14,15 +15,18 @@ namespace Beis.LearningPlatform.Web.Controllers
     public class SkillsThreeController : FormControllerBase
     {
         private readonly IDiagnosticToolControllerHelper _controllerHelper;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
         /// <summary>
         /// Creates a new instance of the class with the specified parameters.
         /// </summary>
         public SkillsThreeController(ILogger<DiagnosticToolController> logger,
-                                        IDiagnosticToolControllerHelper controllerHelper)
+                                        IDiagnosticToolControllerHelper controllerHelper,
+                                        IHttpContextAccessor httpContextAccessor)
             : base(logger, controllerHelper)
         {
             _controllerHelper = controllerHelper;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         protected override string SessionEmailAnswer => "skills3_emailAnswer";
@@ -86,7 +90,7 @@ namespace Beis.LearningPlatform.Web.Controllers
 
         protected override FormTypes GetFormType()
         {
-            var route = Request.Path.Value.ToLower().Replace("/", "").Trim();
+            var route = _httpContextAccessor.HttpContext.Request.Path.Value.ToLower().Replace("/", "").Trim();
             var formType = FormTypes.SkillsThreeNewcomerPlanning;
             switch (route)
             {
