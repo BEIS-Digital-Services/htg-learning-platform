@@ -1,5 +1,4 @@
 ﻿using Beis.LearningPlatform.Web.Utils;
-using System;
 
 namespace Beis.LearningPlatform.Web.StrapiApi.Models
 {
@@ -9,7 +8,7 @@ namespace Beis.LearningPlatform.Web.StrapiApi.Models
         public string text { get; set; }
         public string url { get; set; }
 
-        public string AlteredUrl => url.StartsWith("/") ? url.Substring(1) : url.Substring(0, url.IndexOf("/", StringComparison.Ordinal) - 1);
+        public string AlteredUrl => this.GetCmsLinkUrl();
 
         public string anchor { get; set; }
         public string alt { get; set; }
@@ -17,7 +16,7 @@ namespace Beis.LearningPlatform.Web.StrapiApi.Models
         public string anchorlink { get; set; }
         public string custom_class { get; set; }
 
-        public string AlteredCustomClass => CamelCaseConverter.Delimiter(custom_class, "-");
+        public string AlteredCustomClass => this.GetCustomClass();
 
         public string aria { get; set; }
         public CMSPageIcon icon { get; set; }
