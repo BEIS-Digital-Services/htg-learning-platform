@@ -27,7 +27,7 @@
                                             <div class="statistic-link">
                                                 @if(!string.IsNullOrEmpty(Model.Component.statisticLink[0].url))
                                                 {
-                                                    <partial name="CMSPageViews/_PartialTextLinks" model="@Model.Component.statisticLink" />
+                                                    <partial name="CMSPageViews/_PartialTextLinks" model="@(Model.Component.statisticLink, Model.Component.linksAlign)" />
                                                 }
                                                 else
                                                 {
@@ -77,7 +77,7 @@
                                             <div class="statistic-link">
                                                 @if(!string.IsNullOrEmpty(Model.Component.statisticLink[0].url))
                                                 {
-                                                    <partial name="CMSPageViews/_PartialTextLinks" model="@Model.Component.statisticLink" />
+                                                    <partial name="CMSPageViews/_PartialTextLinks" model="@(Model.Component.statisticLink, Model.Component.linksAlign)" />
                                                 }
                                                 else
                                                 {
