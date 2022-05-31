@@ -18,13 +18,13 @@ namespace Beis.LearningPlatform.Web.Models
         {
             get
             {
-                return !string.IsNullOrEmpty(_cmsPageComponent.Radio1Text)
-                    && !string.IsNullOrEmpty(_cmsPageComponent.Radio2Text)
-                    && !string.IsNullOrEmpty(_cmsPageComponent.Radio3Text)
-                    && !string.IsNullOrEmpty(_cmsPageComponent.Radio1Url)
-                    && !string.IsNullOrEmpty(_cmsPageComponent.Radio2Url)
-                    && !string.IsNullOrEmpty(_cmsPageComponent.Radio3Url)
-                    && !string.IsNullOrEmpty(_cmsPageComponent.ButtonText);
+                return !string.IsNullOrWhiteSpace(_cmsPageComponent.Radio1Text)
+                    && !string.IsNullOrWhiteSpace(_cmsPageComponent.Radio2Text)
+                    && !string.IsNullOrWhiteSpace(_cmsPageComponent.Radio3Text)
+                    && !string.IsNullOrWhiteSpace(_cmsPageComponent.Radio1Url)
+                    && !string.IsNullOrWhiteSpace(_cmsPageComponent.Radio2Url)
+                    && !string.IsNullOrWhiteSpace(_cmsPageComponent.Radio3Url)
+                    && !string.IsNullOrWhiteSpace(_cmsPageComponent.ButtonText);
             }
         }
 
