@@ -52,14 +52,15 @@
                 </div>
 
                 <p class="govuk-body govuk-!-padding-top-3">
-                    @if (Model.IsQuestion6Correct)
+                    @if (Model.IsQuestion6Correct())
                     {
-                        if (Model.IsAnswerYes)
+                        var interesetsSummary = Model.InterestsSummary();
+                        if (Model.IsAnswerYes())
                         {
-                            @Html.Raw("You are interested in <strong class=\"\">" + Model.InterestsSummary + "</strong>.")
+                            @Html.Raw("You are interested in <strong class=\"\">" + @interesetsSummary + "</strong>.")
                             <br />
                             <br />
-                            @Html.Raw("Based on your answers, we recommend <strong class=\"\">" + Model.InterestsSummary + "</strong> for your business.")
+                            @Html.Raw("Based on your answers, we recommend <strong class=\"\">" + @interesetsSummary + "</strong> for your business.")
                             <br />
                             <h2 class="govuk-heading-l govuk-!-padding-top-8">What software discount and guidance can you get?</h2>
 
@@ -80,7 +81,7 @@
                             var distinctTagsFromQuestion7 = Model.GetDistinctTagsFromQuestion7();
                             if (distinctTagsFromQuestion7 != null)
                             {
-                                @Html.Raw("The tasks you want to streamline include: <strong class=\"\">" + Model.InterestsSummary + "</strong>.")
+                                @Html.Raw("The tasks you want to streamline include: <strong class=\"\">" + @interesetsSummary + "</strong>.")
                                 <br />
                                 <br />
                                 @foreach (var tag in distinctTagsFromQuestion7)

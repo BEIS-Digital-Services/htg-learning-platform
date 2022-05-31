@@ -162,53 +162,45 @@ namespace Beis.LearningPlatform.Web.Models.DiagnosticTool
             }
         }
 
-        public bool IsQuestion6Correct
-        {
-            get
-            {
-                var questionDoYouKnowSoftwareNeeds = steps[5].elements[0].text;
-                return !string.IsNullOrWhiteSpace(questionDoYouKnowSoftwareNeeds) && questionDoYouKnowSoftwareNeeds.Equals("Do you know which software you need?", StringComparison.OrdinalIgnoreCase);
-            }
-        }
-
-        public bool IsAnswerYes
-        {
-            get
-            {
-                var answerToDoYouKnowSoftwareNeeds = steps[5].elements[0].value;
-                return answerToDoYouKnowSoftwareNeeds?.Equals("yes", StringComparison.OrdinalIgnoreCase) ?? false;
-            }
-        }
-
-        public string InterestsSummary
-        {
-            get
-            {
-                var interests = new List<string>();
-                // Collate user interest from Question 7 or 8, depending on answer to question 6
-                if (IsQuestion6Correct)
-                {
-                    if (IsAnswerYes)
-                    {
-                        interests.AddRange(from answer in steps[6].elements[0].answerOptions where answer.value.Equals("true", StringComparison.OrdinalIgnoreCase) select string.IsNullOrWhiteSpace(answer.additionalInfo) ? answer.ResultPageLabel : answer.additionalInfo);
-                    }
-                    else
-                    {
-                        interests.AddRange(from answer in steps[7].elements[0].answerOptions where answer.value.Equals("true", StringComparison.OrdinalIgnoreCase) select string.IsNullOrWhiteSpace(answer.additionalInfo) ? answer.ResultPageLabel : answer.additionalInfo);
-                    }
-
-                }
-
-                return ListJoinFormatter.ReplaceLastCharacterWith(string.Join("; ", interests), ";", "and");
-            }
-        }
-
         public string AnswerHowDoYouUseSoftware
         {
             get
             {
                 return steps[2].elements[0].answerOptions.FirstOrDefault(answer => answer.value == steps[2].elements[0].value)?.ResultPageLabel;
             }
+        }
+
+        public bool IsAnswerYes()
+        {
+            var answerToDoYouKnowSoftwareNeeds = steps[5].elements[0].value;
+            return answerToDoYouKnowSoftwareNeeds?.Equals("yes", StringComparison.OrdinalIgnoreCase) ?? false;
+        }
+
+        public bool IsQuestion6Correct()
+        {
+            var questionDoYouKnowSoftwareNeeds = steps[5].elements[0].text;
+            return !string.IsNullOrWhiteSpace(questionDoYouKnowSoftwareNeeds) && questionDoYouKnowSoftwareNeeds.Equals("Do you know which software you need?", StringComparison.OrdinalIgnoreCase);
+        }
+
+        public string InterestsSummary()
+        {
+
+            var interests = new List<string>();
+            // Collate user interest from Question 7 or 8, depending on answer to question 6
+            if (IsQuestion6Correct())
+            {
+                if (IsAnswerYes())
+                {
+                    interests.AddRange(from answer in steps[6].elements[0].answerOptions where answer.value.Equals("true", StringComparison.OrdinalIgnoreCase) select string.IsNullOrWhiteSpace(answer.additionalInfo) ? answer.ResultPageLabel : answer.additionalInfo);
+                }
+                else
+                {
+                    interests.AddRange(from answer in steps[7].elements[0].answerOptions where answer.value.Equals("true", StringComparison.OrdinalIgnoreCase) select string.IsNullOrWhiteSpace(answer.additionalInfo) ? answer.ResultPageLabel : answer.additionalInfo);
+                }
+
+            }
+
+            return ListJoinFormatter.ReplaceLastCharacterWith(string.Join("; ", interests), ";", "and");
         }
 
         public void ResetSteps()
