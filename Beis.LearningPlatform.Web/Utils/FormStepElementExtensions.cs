@@ -11,7 +11,7 @@ namespace Beis.LearningPlatform.Web.Utils
     public static class FormStepElementExtensions
     {
         private const string ERROR_MESSAGE = "Answer the question below to continue";
-        private const string ERROR_HEADING_TEXTCONTROL = "Please enter text";
+        private const string ERROR_HEADING_TEXTCONTROL = "Form incomplete";
         private static void LoadCheckboxGroup(this FormStepElement element, FormStepElementAnswer answer)
         {
             if (element.controlType == FormDisplayControlType.CheckboxGroup)
@@ -285,12 +285,23 @@ namespace Beis.LearningPlatform.Web.Utils
                 List<FormValidationError> validationErrorsList = new();
 
                 // Validate suitable child elements
-                foreach (var answer in element.answerOptions.Where(x => x.controlType == FormDisplayControlType.Text))
+                foreach (var answer in element.answerOptions.Where(x => x.controlType == FormDisplayControlType.Text || x.controlType == FormDisplayControlType.Textarea))
                 {
-                    if (!answer.ValidateTextControl(out string errorMessage))
+                    if (answer.controlType == FormDisplayControlType.Textarea)
                     {
-                        element.childHasErrors = true;
-                        validationErrorsList.Add(new FormValidationError() { errorMessage = errorMessage });
+                        if (!answer.ValidateTextareaControl(out string errorMessage))
+                        {
+                            element.childHasErrors = true;
+                            validationErrorsList.Add(new FormValidationError() { errorMessage = errorMessage, errorHeading = ERROR_HEADING_TEXTCONTROL });
+                        }
+                    }
+                    else
+                    {
+                        if (!answer.ValidateTextControl(out string errorMessage))
+                        {
+                            element.childHasErrors = true;
+                            validationErrorsList.Add(new FormValidationError() { errorMessage = errorMessage });
+                        }
                     }
                 }
 
