@@ -1,55 +1,13 @@
 ﻿@model Beis.LearningPlatform.Web.Models.ComparisonToolPageViewModel
 <div class="govuk-width-container govuk-!-padding-top-6 govuk-!-padding-bottom-6">
     <partial name="ComparisonToolViews/_PartialProductCommon" />
-
-    <div class="govuk-!-padding-bottom-3" id="selectedProductCategoryDiv">
-        <strong class="govuk-tag beis-tag" id="dummySelectedProductCategory" style="cursor: pointer">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g>
-                    <path d="M3.75717 10.8284L5.17139 12.2426L12.2425 5.17155L10.8282 3.75733L3.75717 10.8284Z" fill="#0B0C0C" />
-                    <path d="M5.17154 3.75736L3.75732 5.17157L10.8284 12.2426L12.2426 10.8284L5.17154 3.75736Z" fill="#0B0C0C" />
-                    <circle cx="8" cy="8" r="7.5" stroke="black" />
-                </g>
-                <defs>
-                    <clipPath>
-                        <rect width="16" height="16" fill="white" transform="translate(16) rotate(90)" />
-                    </clipPath>
-                </defs>
-            </svg>
-        </strong>
-    </div>
-
-    <div class="details">
-        <div class="beis-white">
-            <details class="govuk-details" data-module="govuk-details" open>
-                <summary class="govuk-details__summary">
-                    <span class="govuk-details__summary-text">
-                        Add tags
-                    </span>
-                </summary>
-                <div class="govuk-details__text">
-                    @foreach (var tag in Model.ProductCategoryList)
-                    {
-                        <strong class="govuk-tag beis-tag productCategoryFilter" id="categoryId-@tag.id" data-id="@tag.id" style="cursor: pointer">
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <g>
-                                    <path d="M7 13L9 13L9 3L7 3L7 13Z" fill="#0B0C0C" />
-                                    <path d="M3 7L3 9L13 9L13 7L3 7Z" fill="#0B0C0C" />
-                                    <circle cx="8" cy="8" r="7.5" stroke="black" />
-                                </g>
-                                <defs>
-                                    <clipPath>
-                                        <rect width="16" height="16" fill="white" transform="translate(16) rotate(90)" />
-                                    </clipPath>
-                                </defs>
-                            </svg>
-                            @tag.displayName
-                        </strong>
-                    }
-                </div>
-            </details>
+    @foreach (var tag in Model.ProductCategoryList)
+    {
+        <div>
+            <input class="productCategory" style="cursor: pointer" type="checkbox" name="categoryId-@tag.id" id="categoryId-@tag.id" data-id="@tag.id" />
+            @tag.displayName
         </div>
-    </div>
+    }
 </div>
 
 @if (Model.products?.Count > 0)
