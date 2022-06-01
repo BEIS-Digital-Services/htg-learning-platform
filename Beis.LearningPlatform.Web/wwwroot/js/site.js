@@ -97,27 +97,32 @@ for (i = 0; i < acc.length; i++) {
 }
 
 //cms_component_NextPageRadioButton
-$(document).ready(function () {
-    $("#cms_component_NextPageRadioButton_divjsenabled").attr("style", "");
-});
-$('input[type=radio][name=cms_component_NextPageRadioButton_rdon]').change(function () {
-    var rdoValue = this.value;
-    console.log('rdo value', rdoValue);
-    if (rdoValue == "1") {
-        $("#cms_component_NextPageRadioButton_btn1").attr("style", "");
-        $("#cms_component_NextPageRadioButton_btn2").attr("style", "display:none");
-        $("#cms_component_NextPageRadioButton_btn3").attr("style", "display:none;");
-    }
-    else if (rdoValue == "2") {
-        $("#cms_component_NextPageRadioButton_btn2").attr("style", "");
-        $("#cms_component_NextPageRadioButton_btn1").attr("style", "display:none");
-        $("#cms_component_NextPageRadioButton_btn3").attr("style", "display:none;");
-    }
-    else {
-        $("#cms_component_NextPageRadioButton_btn3").attr("style", "");
-        $("#cms_component_NextPageRadioButton_btn1").attr("style", "display:none");
-        $("#cms_component_NextPageRadioButton_btn2").attr("style", "display:none;");
 
-    }
+document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("cms_component_NextPageRadioButton_divjsenabled").setAttribute("style", "");
 
+    document.querySelectorAll("input[type=radio][name=cms_component_NextPageRadioButton_rdon]").forEach((input) => {
+        input.addEventListener('change', function () {
+            var rdoValue = this.value;
+
+            if (rdoValue == "1") {
+                document.getElementById("cms_component_NextPageRadioButton_btn1").setAttribute("style", "");
+                document.getElementById("cms_component_NextPageRadioButton_btn2").setAttribute("style", "display:none;");
+                document.getElementById("cms_component_NextPageRadioButton_btn3").setAttribute("style", "display:none;");
+            }
+            else if (rdoValue == "2") {
+                document.getElementById("cms_component_NextPageRadioButton_btn1").setAttribute("style", "display:none;");
+                document.getElementById("cms_component_NextPageRadioButton_btn2").setAttribute("style", "");
+                document.getElementById("cms_component_NextPageRadioButton_btn3").setAttribute("style", "display:none;");
+            }
+            else {
+                document.getElementById("cms_component_NextPageRadioButton_btn1").setAttribute("style", "display:none;");
+                document.getElementById("cms_component_NextPageRadioButton_btn2").setAttribute("style", "display:none;");
+                document.getElementById("cms_component_NextPageRadioButton_btn3").setAttribute("style", "");
+            }
+        });
+    });
 });
+
+
+
