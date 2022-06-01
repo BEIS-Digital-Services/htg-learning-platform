@@ -45,11 +45,20 @@
                                 </h2>
                                 <div class="govuk-error-summary__body">
                                     <ul class="govuk-list govuk-error-summary__list">
-                                        @foreach (var validationError in Model.validationErrors)
+                                        @if (((int)Model.FormType) > 2)
                                         {
-                                            <li class="@validationError.displayControlClass">
-                                                <a id="link-diagnostictoolformviews-renderdiagnostictool-validation-error-@(validationError.htmlId)" href="#@validationError.htmlId">@Html.Raw(validationError.errorMessage)</a>
+                                            <li>
+                                                <a href="#">Answer all of the questions below to continue</a>
                                             </li>
+                                        }
+                                        else
+                                        {
+                                            foreach (var validationError in Model.validationErrors)
+                                            {
+                                                <li class="@validationError.displayControlClass">
+                                                    <a id="link-diagnostictoolformviews-renderdiagnostictool-validation-error-@(validationError.htmlId)" href="#@validationError.htmlId">@Html.Raw(validationError.errorMessage)</a>
+                                                </li>
+                                            }
                                         }
                                         <li>
                                         </li>
@@ -83,11 +92,10 @@
                                         <div class="govuk-grid-column-two-thirds">
                                             <h3>Summary</h3>
                                             <p class="govuk-body">
-                                                By thinking about how your business uses software, you can start to see where the next step
-                                                on your digital journey should be.
+                                                By thinking about how your business currently uses software, you can start to see where the next step on your digital journey should be.
                                             </p>
                                             <p class="govuk-body">
-                                                Here’s summary of your answers:
+                                                Here’s a summary of your answers:
                                             </p>
                                         </div>
                                     }
