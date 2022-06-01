@@ -26,7 +26,7 @@
                 strcopy = Markdown.ToHtml(Model.Column1.copy, _pipeline).Replace("<p>", "<p class=\"govuk-body\"  style=\"text-align:left;\">");
             }
             @Html.Raw(strcopy)
-            <partial name="CMSPageViews/_PartialTextLinks" model="@Model.Links1" />
+            <partial name="CMSPageViews/_PartialTextLinks" model="@(Model.Links1, Model.linksAlign)" />
             <partial name="CMSPageViews/_PartialTag" model="@Model.Tags1" />
         </div>
 
@@ -48,7 +48,7 @@
                 strcopy = Markdown.ToHtml(Model.Column2.copy, _pipeline).Replace("<p>", "<p class=\"govuk-body\" style=\"text-align:left;\">");
             }
             @Html.Raw(strcopy)
-            <partial name="CMSPageViews/_PartialTextLinks" model="@Model.Links2" />
+            <partial name="CMSPageViews/_PartialTextLinks" model="@(Model.Links2, Model.linksAlign)" />
             <partial name="CMSPageViews/_PartialTag" model="@Model.Tags2" />
         </div>
 
@@ -70,7 +70,7 @@
                 strcopy = Markdown.ToHtml(Model.Column2.copy, _pipeline).Replace("<p>", "<p class=\"govuk-body\" style=\"text-align:left;\">");
             }
             @Html.Raw(strcopy)
-            <partial name="CMSPageViews/_PartialTextLinks" model="@Model.Links3" />
+            <partial name="CMSPageViews/_PartialTextLinks" model="@(Model.Links3, Model.linksAlign)" />
             <partial name="CMSPageViews/_PartialTag" model="@Model.Tags3" />
         </div>
     </div>
