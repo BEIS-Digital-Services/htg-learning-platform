@@ -136,7 +136,7 @@
                     <input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].strongText" />
                     <input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].text" />
                     @*<input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].value" />*@
-                    <span asp-validation-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].textControlHtmlId" class="govuk-error-message">
+                    <span asp-validation-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].validationError" class="govuk-error-message"> 
                                 @Model.steps[currentStep].elements[currentElement].answerOptions[z].validationError
                     </span>
                     <textarea asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].value"
