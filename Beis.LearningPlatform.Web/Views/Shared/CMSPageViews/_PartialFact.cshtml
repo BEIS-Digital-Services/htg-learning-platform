@@ -1,14 +1,12 @@
 ﻿@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
 @{
     var _pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build();
-    var topSpaceClass = Model.topSpace != "nospace" ? "govuk-!-padding-top-6" : string.Empty;
-    var bottomSpaceClass = Model.bottomSpace != "nospace" ? "govuk-!-padding-bottom-6" : string.Empty;
     Model.hide = Model.hide.HasValue ? Model.hide : false;
 }
 
 @if (Model.hide == false)
 {
-    <div id="@("anchor" + Model.Index)" class="fact @topSpaceClass  @bottomSpaceClass @CamelCaseConverter.Delimiter(@Model.background, "-")">
+    <div id="@("anchor" + Model.Index)" class="fact @Model.AlteredPaddingTopSpace  @Model.AlteredPaddingBottomSpace @CamelCaseConverter.Delimiter(@Model.background, "-")">
         <div class="govuk-width-container">
             <div class="govuk-grid-column-full">
                 <div class="beis-columns-same-height">
