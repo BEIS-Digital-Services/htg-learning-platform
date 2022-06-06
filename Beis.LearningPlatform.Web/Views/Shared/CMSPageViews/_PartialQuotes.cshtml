@@ -1,11 +1,10 @@
-﻿@using Beis.LearningPlatform.Web.Utils
-@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
+﻿@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
 @{
     var _pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build();
     var strcopy = string.Empty;
-    var topSpaceClass = Model.topSpace != "nospace" ? "govuk-!-padding-top-6" : "";
-    var bottomSpaceClass = Model.bottomSpace != "nospace" ? "govuk-!-padding-bottom-6" : "";
-    var strComponentBg = (!string.IsNullOrWhiteSpace(Model.background)) ? CamelCaseConverter.Delimiter(Model.background, "-") : "";
+    var topSpaceClass = Model.topSpace != "nospace" ? "govuk-!-padding-top-6" : string.Empty;
+    var bottomSpaceClass = Model.bottomSpace != "nospace" ? "govuk-!-padding-bottom-6" : string.Empty;
+    var strComponentBg = (!string.IsNullOrWhiteSpace(Model.background)) ? CamelCaseConverter.Delimiter(Model.background, "-") : string.Empty;
 }
 
 @if (Model.textblocks != null)
@@ -19,12 +18,11 @@
             if (textblock.hide == false)
             {
                 var strclass = CamelCaseConverter.Delimiter(Model.background, "-");
-                <div class="quotes" id="@("anchor" + ViewData["intCurrComponentIndex"])">
+                <div class="quotes" id="@("anchor" + Model.Index)">
                     <div class="@strComponentBg">
                         <div class="govuk-width-container @topSpaceClass  @bottomSpaceClass">
                             <div class="govuk-grid-row">
                                 <div class="govuk-grid-column-full @strclass">
-
                                     @if (!string.IsNullOrWhiteSpace(textblock.subheader))
                                     {
                                         <h2 class="govuk-heading-l govuk-!-font-size-24">
@@ -39,18 +37,19 @@
                                             </svg>
                                         </div>
                                         <div class="govuk-body govuk-!-font-size-36">
-                                            @{ strcopy = Markdown.ToHtml(textblock.copy, _pipeline);
+                                            @{
+                                                strcopy = Markdown.ToHtml(textblock.copy, _pipeline);
                                                 @Html.Raw(strcopy);
                                             }
                                         </div>
                                     </div>
-                                    <partial name="CMSPageViews/_PartialTextLinks" model="@Model.links" />
-                                </div>
-                                    </div>
+                                    <partial name="CMSPageViews/_PartialTextLinks" model="@(Model.links, Model.linksAlign)" />
                                 </div>
                             </div>
                         </div>
-                    }
-                }
+                    </div>
+                </div>
             }
         }
+    }
+}

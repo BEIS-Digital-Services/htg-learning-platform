@@ -420,7 +420,6 @@ namespace Beis.LearningPlatform.Web.Tests.ControllerTests
         //controller.ControllerContext.RouteData.Values["controller"] = "diagnostic-tool";
         //    controller.ControllerContext.RouteData.Values["action"] = "start";
         //    ViewResult view = await controller.Start() as ViewResult;
-        //    //view.ViewData["title"] = "About Help to Grow";
 
         //    Assert.NotNull(view);
         //}

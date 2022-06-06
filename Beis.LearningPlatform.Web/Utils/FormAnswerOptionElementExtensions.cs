@@ -224,5 +224,27 @@ namespace Beis.LearningPlatform.Web.Utils
 
             return returnValue;
         }
+
+        public static bool ValidateTextareaControl(this FormAnswerOptionElement element, out string errorMessage)
+        {
+            bool returnValue = true;
+
+            // Defaults
+            errorMessage = default;
+
+            if (element.controlType == FormDisplayControlType.Textarea)
+            {
+                if (string.IsNullOrEmpty(element.value))
+                {
+                    returnValue = false;
+                    errorMessage = "Answer the question below to continue";
+                    element.validationError = errorMessage;
+                }
+            }
+            else
+                throw new ArgumentException("The specified element is not a Textarea-type", nameof(element));
+
+            return returnValue;
+        }
     }
 }

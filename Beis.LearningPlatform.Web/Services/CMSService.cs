@@ -102,5 +102,22 @@ namespace Beis.LearningPlatform.Web.Services
             return viewModel;
         }
 
+        public async Task<IEnumerable<CMSSearchArticle>> GetSearchArticles(IEnumerable<int> searchArticleIds, bool orderByIds = false)
+        {
+            if (searchArticleIds?.Any() != true) 
+            {
+                return Enumerable.Empty<CMSSearchArticle>();
+            }
+
+            var filterParams = string.Join("&id_in=", searchArticleIds).TrimStart('&');
+            var result = await _apiCallService.GetApiResult(_cmsOption.ApiBaseUrl, $"search-articles?id_in={filterParams}");
+            var viewModel = string.IsNullOrWhiteSpace(result) ? Enumerable.Empty<CMSSearchArticle>() : JsonConvert.DeserializeObject<List<CMSSearchArticle>>(result);
+            if (orderByIds)
+            {
+                var idList = searchArticleIds.ToList();
+                return viewModel.OrderBy(x => idList.IndexOf(x.id));
+            }
+            return viewModel;
+        }
     }
 }

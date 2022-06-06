@@ -1,8 +1,4 @@
-﻿@using Beis.LearningPlatform.Web.StrapiApi.Models
-@using Beis.LearningPlatform.Web.Utils
-@using Beis.LearningPlatform.Web.Models.DiagnosticTool
-@using Beis.LearningPlatform.Web.Models
-@model Beis.LearningPlatform.Web.Models.DiagnosticTool.DiagnosticToolForm
+﻿@model Beis.LearningPlatform.Web.Models.DiagnosticTool.DiagnosticToolForm
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -301,7 +297,7 @@
                     </h2>
                 </div>
             </div>
-            <partial name="DiagnosticToolFormViews/_PartialSearchArticles" model="@relatedArticles" />
+            <partial name="DiagnosticToolFormViews/_PartialSearchArticles" model="@(relatedArticles as IList<CMSSearchArticle>, string.Empty)" />
 
             @if (hasRegisterYourInterestBlock)
             {

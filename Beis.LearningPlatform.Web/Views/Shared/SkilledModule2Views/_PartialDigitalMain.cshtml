@@ -2,11 +2,7 @@
 @model Beis.LearningPlatform.Web.Models.DiagnosticTool.DiagnosticToolForm
 
 <div class="govuk-grid-column-two-thirds govuk-!-padding-bottom-9">
-    <fieldset>
-        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-            <h2 class="govuk-fieldset__heading ">What do your answers mean ?</h2>
-        </legend>
-    </fieldset>
+    <p class="govuk-body govuk-!-font-size-24">What do your answers mean?</p>
 </div>
     
     @switch (Model.SkilledModuleTwoResultType)
@@ -39,5 +35,6 @@
             <p>You have not selected any business priorities</p>
         }
     </div>
-    <p class="govuk-body"><strong>Keep a note of the priorities you've identified, you'll need them in the next module.</strong></p>
+    <p class="govuk-body"><strong>Keep a note of this information, you'll need it in Getting ready for digital change.</strong></p>
+                                  
 </div>
