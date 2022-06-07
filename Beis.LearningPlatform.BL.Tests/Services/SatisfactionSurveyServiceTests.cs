@@ -1,12 +1,4 @@
-﻿using AutoMapper;
-using Beis.LearningPlatform.BL.Services;
-using Beis.LearningPlatform.DAL;
-using Microsoft.Extensions.Logging;
-using Moq;
-using NUnit.Framework;
-using System;
-
-namespace Beis.LearningPlatform.BL.Tests.Services
+﻿namespace Beis.LearningPlatform.BL.Tests.Services
 {
     public class SatisfactionSurveyServiceTests
     {
