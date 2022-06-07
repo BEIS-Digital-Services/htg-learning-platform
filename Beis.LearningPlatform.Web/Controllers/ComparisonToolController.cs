@@ -11,10 +11,14 @@ namespace Beis.LearningPlatform.Web.Controllers
     public class ComparisonToolController : ControllerBase
     {
         private readonly IComparisonToolControllerHelper _comparisonToolHelper;
-        
-        public ComparisonToolController(ILogger<ComparisonToolController> logger, IComparisonToolControllerHelper comparisonToolHelper) : base(logger)
+        private readonly IHomeControllerHelper _homeControllerHelper;
+
+        public ComparisonToolController(ILogger<ComparisonToolController> logger, 
+            IComparisonToolControllerHelper comparisonToolHelper,
+            IHomeControllerHelper homeControllerHelper) : base(logger)
         {
             _comparisonToolHelper = comparisonToolHelper;
+            _homeControllerHelper = homeControllerHelper;
         }
 
         [Route("/comparison-tool")]
@@ -97,7 +101,11 @@ namespace Beis.LearningPlatform.Web.Controllers
 
         private async Task<ViewResult> GetStartPage(bool jsEnabled)
         {
+            var cmsPageViewModel = await _homeControllerHelper.ProcessGetCustomPageResult("Custom-pages/comparison-tool");
+
             var viewModel = await _comparisonToolHelper.InitViewModel("start", populateRelationalData: false);
+            viewModel.CMSPageViewModel = cmsPageViewModel;
+
             _comparisonToolHelper.SetViewModelUserJourneyData(viewModel, null, null, "/");
             viewModel.JavascriptEnabled = jsEnabled;
             return View("Start", viewModel);
