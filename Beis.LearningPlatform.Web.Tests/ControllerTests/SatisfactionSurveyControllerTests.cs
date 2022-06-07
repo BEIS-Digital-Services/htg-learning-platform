@@ -1,19 +1,4 @@
-﻿using Beis.LearningPlatform.Web.ControllerHelpers;
-using Beis.LearningPlatform.Web.ControllerHelpers.Interfaces;
-using Beis.LearningPlatform.Web.Controllers;
-using Beis.LearningPlatform.Web.Models;
-using Beis.LearningPlatform.Web.Services;
-using Beis.LearningPlatform.Web.StrapiApi.Models;
-using FluentAssertions;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Moq;
-using NUnit.Framework;
-using System;
-using System.Net;
-using System.Threading.Tasks;
-
-namespace Beis.LearningPlatform.Web.Tests.ControllerTests
+﻿namespace Beis.LearningPlatform.Web.Tests.ControllerTests
 {
     public class SatisfactionSurveyControllerTests
     {

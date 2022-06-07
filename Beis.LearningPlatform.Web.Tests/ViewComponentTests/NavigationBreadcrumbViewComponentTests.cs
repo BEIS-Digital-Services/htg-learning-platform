@@ -1,18 +1,6 @@
-﻿using Beis.LearningPlatform.Web.Interfaces;
-using Beis.LearningPlatform.Web.Models;
-using Beis.LearningPlatform.Web.StrapiApi.Models;
-using Beis.LearningPlatform.Web.ViewComponents;
-using Microsoft.AspNetCore.Http;
-using Moq;
-using Newtonsoft.Json;
-using NUnit.Framework;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Beis.LearningPlatform.Web.Tests.ViewComponentTests
+﻿namespace Beis.LearningPlatform.Web.Tests.ViewComponentTests
 {
-	public class CmsNavigationBreadcrumbViewComponentTests : BaseViewComponentTest
+    public class CmsNavigationBreadcrumbViewComponentTests : BaseViewComponentTest
     {        
         private readonly Mock<ICmsService> _cmsService = new();
         private readonly Mock<IPageViewModel> _pageViewModel = new();
