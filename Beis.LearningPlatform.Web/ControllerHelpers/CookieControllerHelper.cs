@@ -50,7 +50,7 @@
             var urlKind = urlReferer.StartsWith("http") ? UriKind.Absolute : UriKind.Relative;
             if (!Uri.TryCreate(urlReferer, urlKind, out Uri redirectUri))
             {
-                _logger.LogWarning($"{nameof(CookieControllerHelper)}: !Uri.TryCreate({urlReferer})");
+                _logger.LogWarning("{CookieControllerHelper}: !Uri.TryCreate({urlReferer})", nameof(CookieControllerHelper), urlReferer);
                 return false;
             }
 

@@ -16,7 +16,7 @@ namespace Beis.LearningPlatform.Web.ControllerHelpers
             _logger = logger;
 
             _controllerHelperType = GetType().Name;
-            _logger.LogInformation($"ControllerHelper \"{_controllerHelperType}\" created");
+            _logger.LogInformation("ControllerHelper \"{_controllerHelperType}\" created", _controllerHelperType);
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace Beis.LearningPlatform.Web.ControllerHelpers
         protected Guid RecordRequest([CallerMemberName] string requestMethodName = null)
         {
             var returnValue = Guid.NewGuid();
-            _logger.LogInformation($"Request {returnValue} for {_controllerHelperType}.{requestMethodName} received");
+            _logger.LogInformation("Request {returnValue} for {_controllerHelperType}.{requestMethodName} received", returnValue, _controllerHelperType, requestMethodName);
             return returnValue;
         }
     }

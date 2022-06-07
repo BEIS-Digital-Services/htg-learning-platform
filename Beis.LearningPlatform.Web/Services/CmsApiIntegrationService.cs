@@ -62,11 +62,11 @@
                 if (result.IsSuccessStatusCode)
                     returnValue = await result.Content.ReadAsStringAsync();
                 else
-                    _logger.LogWarning($"CMS returned response {result.StatusCode} from call to {url}");
+                    _logger.LogWarning("CMS returned response {result.StatusCode} from call to {url}", result.StatusCode, url);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"Error whilst GET to {url}");
+                _logger.LogError(ex, "Error whilst GET to {url}", url);
                 throw new InvalidOperationException("Unable to GET result from CMS API", ex);
             }
 

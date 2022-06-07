@@ -59,7 +59,7 @@
             var tagsNotInCms = currentTagNames.Except(allTagNames, StringComparer.OrdinalIgnoreCase).ToList();
             if (tagsNotInCms.Any())
             {
-                _logger.LogWarning($"Tags not recognised {string.Join(",", tagsNotInCms)}");
+                _logger.LogWarning("Tags not recognised {tagsNotInCms}", string.Join(",", tagsNotInCms));
                 return viewModel;
             }
 

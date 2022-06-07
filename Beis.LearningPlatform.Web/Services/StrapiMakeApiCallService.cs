@@ -20,7 +20,7 @@
 
             if (!result.IsSuccessStatusCode)
             {
-                _logger.LogWarning($"Request {strapiAction} returned {result.StatusCode}");
+                _logger.LogWarning("Request {strapiAction} returned {result.StatusCode}", strapiAction, result.StatusCode);
                 return string.Empty;
             }
             return await result.Content.ReadAsStringAsync();

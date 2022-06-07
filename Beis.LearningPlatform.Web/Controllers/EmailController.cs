@@ -21,13 +21,13 @@
         [Route("/email/unsubscribe")]
         public async Task<IActionResult> Unsubscribe([FromQuery] string emailAddress)
         {
-            _logger.LogTrace($"Unsubscribe email: {emailAddress}");
+            _logger.LogTrace("Unsubscribe email: {emailAddress}", emailAddress);
 
             var result = await _controllerHelper.Unsubscribe(emailAddress);
             
             if (!result.Result)
             {
-                _logger.LogWarning($"Unsubscried email failed with message: {result.Message}");
+                _logger.LogWarning("Unsubscried email failed with message: {result.Message}", result.Message);
                 return ReturnErrorPage(result.RequestID, result.Message);
             }
 

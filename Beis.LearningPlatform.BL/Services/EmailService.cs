@@ -323,7 +323,7 @@ namespace Beis.LearningPlatform.BL.Services
                     }
                     else
                     {
-                        _logger.LogWarning($"Inconsistent length of names and values supplied to personalisation - {names.Length} vs {values.Length}");
+                        _logger.LogWarning("Inconsistent length of names and values supplied to personalisation - {names.Length} vs {values.Length}", names.Length, values.Length);
                         throw new ArgumentException("The personalisation names and values must be equal length", nameof(names));
                     }
                 }

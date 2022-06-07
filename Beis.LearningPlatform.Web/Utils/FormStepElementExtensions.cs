@@ -96,7 +96,7 @@
             hasAdditionalInfo = false;
             id = 0;
 
-            if (answerData.Contains("|"))
+            if (answerData.Contains('|'))
             {
                 string[] parts = answerData.Split('|');
                 if (parts?.Length == 3 && int.TryParse(parts[0], out id))

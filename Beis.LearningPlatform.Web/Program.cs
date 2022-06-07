@@ -21,11 +21,11 @@ builder.Host.ConfigureAppConfiguration(configuration =>
    logging.AddFilter<ApplicationInsightsLoggerProvider>("Microsoft", LogLevel.Warning);
 });
 
-bool.TryParse(builder.Configuration["HttpListenerConfig:UseSSL"], out var useSsl);
+var hasParsed = bool.TryParse(builder.Configuration["HttpListenerConfig:UseSSL"], out var useSsl);
 
 // Add services to the container.
 builder.Services.AddMvcCore(r => r.EnableEndpointRouting = false);
-builder.Services.RegisterAllServices(builder.Configuration, useSsl);
+builder.Services.RegisterAllServices(builder.Configuration, hasParsed && useSsl);
 
 // Configure the HTTP request pipeline.
 var app = builder.Build();
@@ -50,7 +50,7 @@ app.Use(async (context, next) =>
 });
 
 
-if (useSsl)
+if (hasParsed && useSsl)
 {
     app.UseHttpsRedirection();
 }

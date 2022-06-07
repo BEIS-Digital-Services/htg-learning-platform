@@ -24,7 +24,7 @@
             var feedbackInput = feedback.IsPageUseful?.ToLower().Trim();
             if (!new string[] { "yes", "no" }.Contains(feedbackInput))
             {
-                _logger.LogWarning($"{nameof(SaveFeedBackPageUseful)}: invalid input {feedback.IsPageUseful}");
+                _logger.LogWarning("{SaveFeedBackPageUseful}: invalid input {feedback.IsPageUseful}", nameof(SaveFeedBackPageUseful), feedback.IsPageUseful);
                 return false;
             }
 

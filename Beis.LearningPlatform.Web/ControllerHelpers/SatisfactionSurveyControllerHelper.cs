@@ -16,8 +16,7 @@
         public async Task<ControllerHelperOperationResponse> SaveSatisfactionSurvey(SatisfactionSurveyViewModel surveyForm)
         {
             var requestId = RecordRequest();
-            var traceMsg = $"{nameof(SaveSatisfactionSurvey)} ({requestId})";
-            _logger.LogTrace(traceMsg);
+            _logger.LogTrace("{SaveSatisfactionSurvey} ({requestId})", nameof(SaveSatisfactionSurvey), requestId);
 
             try
             {
@@ -25,14 +24,14 @@
                 var result = await _satisfactionSurveyService.SaveSatisfactionSurvey(requestId, satisfactionSurveyDto);
                 if (!result.IsValid)
                 {
-                    throw new ApplicationException(result.Message ?? traceMsg);
+                    throw new ApplicationException(result.Message ?? $"{nameof(SaveSatisfactionSurvey)} ({requestId})");
                 }
 
                 return new ControllerHelperOperationResponse(requestId, true);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, traceMsg);
+                _logger.LogError(ex, "{SaveSatisfactionSurvey} ({requestId})", nameof(SaveSatisfactionSurvey), requestId);
                 return new ControllerHelperOperationResponse(requestId, false, "Failed to save survey");
             }
 

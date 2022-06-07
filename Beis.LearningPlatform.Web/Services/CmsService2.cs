@@ -23,7 +23,7 @@
             string result;
             bool returnValue = false;
 
-            _logger.LogInformation($"CMS Service Get Page \"{pageReference}\"");
+            _logger.LogInformation("CMS Service Get Page \"{pageReference}\"", pageReference);
 
             result = await _cmsApiIntegrationService.Get(pageReference);
             if (!string.IsNullOrWhiteSpace(result))

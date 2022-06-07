@@ -34,7 +34,7 @@
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"Error whilst sending Diagnostic Tool Result email to '{emailAddress}'");
+                _logger.LogError(ex, "Error whilst sending Diagnostic Tool Result email to '{emailAddress}'", emailAddress);
                 throw new InvalidOperationException("Unable to send the Diagnostic Tool Result email", ex);
             }
         }

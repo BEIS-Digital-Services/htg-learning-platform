@@ -163,8 +163,7 @@
             }
             catch (Exception ex)
             {
-                var routeUrl = HttpContext.Request.Headers["Referer"].ToString();
-                _logger.LogError(ex, routeUrl + "Error in ProcessGetProductList: " + ex.Message);
+                _logger.LogError(ex, "{routeUrl} Error in ProcessGetProductList: {message}", HttpContext.Request.Headers["Referer"].ToString(), ex.Message);
                 return new List<ComparisonToolProduct>();
             }
 
