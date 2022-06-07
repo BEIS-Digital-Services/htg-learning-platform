@@ -1,71 +1,65 @@
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using Beis.LearningPlatform.Web;
 using Microsoft.Extensions.Logging.ApplicationInsights;
-using System;
-using System.Linq;
 
-namespace Beis.LearningPlatform.Web
+var builder = WebApplication.CreateBuilder(args);
+builder.Host.ConfigureAppConfiguration(configuration =>
 {
-    public class Program
+    configuration.AddJsonFile("diagnosticForm.json", false, true);
+    var configurationRoot = configuration.Build();
+
+    var connectionString = configurationRoot.GetConnectionString("AppConfig");
+    if (connectionString != null)
     {
-        private static ILogger _logger;
-
-        public static void Main(string[] args)
-        {
-            try
-            {
-                CreateLogger();
-
-                CreateHostBuilder(args)
-                    .Build()
-                    .Run();
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "A critical error occurred");
-                throw;
-            }
-        }
-
-        private static IHostBuilder CreateHostBuilder(string[] args)
-        {
-            return Host.CreateDefaultBuilder(args)
-                   .ConfigureWebHostDefaults(webBuilder =>
-                   {
-                       webBuilder.UseStartup<Startup>();
-                   })
-                   .ConfigureAppConfiguration(configuration =>
-                   {
-                       configuration.AddJsonFile("diagnosticForm.json", false, true);
-                       var configurationRoot = configuration.Build();
-
-                       var connectionString = configurationRoot.GetConnectionString("AppConfig");
-                       if (connectionString != null)
-                       {
-                           configuration.AddAzureAppConfiguration(connectionString);
-                       }
-
-                       ApplicationForm options = new();
-                       configurationRoot.GetSection(nameof(ApplicationForm)).Bind(options);
-                   })
-                   .ConfigureLogging(logging =>
-                   {
-                       logging.AddFilter<ApplicationInsightsLoggerProvider>("", LogLevel.Debug);
-                       logging.AddFilter<ApplicationInsightsLoggerProvider>("Microsoft", LogLevel.Warning);
-                   });
-        }
-
-        private static void CreateLogger()
-        {
-            var loggerFactory = LoggerFactory.Create(builder =>
-            {
-                builder.AddConsole();
-                builder.AddDebug();
-                builder.SetMinimumLevel(LogLevel.Debug);
-            });
-            _logger = loggerFactory.CreateLogger<Program>();
-        }
+        configuration.AddAzureAppConfiguration(connectionString);
     }
+
+    ApplicationForm options = new();
+    configurationRoot.GetSection(nameof(ApplicationForm)).Bind(options);
+}).ConfigureLogging(logging =>
+{
+   logging.AddFilter<ApplicationInsightsLoggerProvider>(string.Empty, LogLevel.Debug);
+   logging.AddFilter<ApplicationInsightsLoggerProvider>("Microsoft", LogLevel.Warning);
+});
+
+bool.TryParse(builder.Configuration["HttpListenerConfig:UseSSL"], out var useSsl);
+
+// Add services to the container.
+builder.Services.AddMvcCore(r => r.EnableEndpointRouting = false);
+builder.Services.RegisterAllServices(builder.Configuration, useSsl);
+
+// Configure the HTTP request pipeline.
+var app = builder.Build();
+if (app.Environment.IsDevelopment())
+{
+    app.UseDeveloperExceptionPage();
 }
+else
+{
+    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+    app.UseHsts();
+    app.UseExceptionHandler("/Home/Error");
+}
+app.Use(async (context, next) =>
+{
+    await next();
+    if (context.Response.StatusCode == 404)
+    {
+        context.Request.Path = "/Home/Error";
+        await next();
+    }
+});
+
+
+if (useSsl)
+{
+    app.UseHttpsRedirection();
+}
+
+app.UseStaticFiles();
+
+app.UseRouting();
+
+app.UseAuthorization();
+app.UseSession();
+app.UseMvc(r => r.MapRoute("default", "{controller=Home}/{action=Index}"));
+app.Run();

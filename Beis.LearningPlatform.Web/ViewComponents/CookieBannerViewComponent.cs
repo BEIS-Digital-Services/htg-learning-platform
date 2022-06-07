@@ -1,8 +1,4 @@
-﻿using Beis.LearningPlatform.Web.Interfaces;
-using Beis.LearningPlatform.Web.Models;
-using Microsoft.AspNetCore.Mvc;
-
-namespace Beis.LearningPlatform.Web.ViewComponents
+﻿namespace Beis.LearningPlatform.Web.ViewComponents
 {
     public class CookieBannerViewComponent : ViewComponent
     {

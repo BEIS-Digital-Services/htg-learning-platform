@@ -1,13 +1,4 @@
-﻿using AutoMapper;
-using Beis.LearningPlatform.BL.Services;
-using Beis.LearningPlatform.Library;
-using Beis.LearningPlatform.Web.ControllerHelpers.Interfaces;
-using Beis.LearningPlatform.Web.Models;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Threading.Tasks;
-
-namespace Beis.LearningPlatform.Web.ControllerHelpers
+﻿namespace Beis.LearningPlatform.Web.ControllerHelpers
 {
     public class SatisfactionSurveyControllerHelper : ControllerHelperBase, ISatisfactionSurveyControllerHelper
     {

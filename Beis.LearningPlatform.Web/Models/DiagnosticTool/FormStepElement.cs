@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Beis.LearningPlatform.Web.Models.DiagnosticTool
+﻿namespace Beis.LearningPlatform.Web.Models.DiagnosticTool
 {
     /// <summary>
     /// A class that defines a step element for a Diagnostic Tool Form.

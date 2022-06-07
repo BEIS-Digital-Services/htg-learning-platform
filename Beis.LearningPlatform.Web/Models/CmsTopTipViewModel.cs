@@ -1,7 +1,4 @@
-﻿using Beis.LearningPlatform.Web.StrapiApi.Models;
-using System;
-
-namespace Beis.LearningPlatform.Web.Models
+﻿namespace Beis.LearningPlatform.Web.Models
 {
     public class CmsTopTipViewModel
     {

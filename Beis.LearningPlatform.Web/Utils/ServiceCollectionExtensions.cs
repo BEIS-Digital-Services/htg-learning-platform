@@ -1,21 +1,78 @@
-﻿using Beis.LearningPlatform.BL.IntegrationServices.Options;
+﻿using Beis.Htg.VendorSme.Database;
+using Beis.LearningPlatform.BL.DependencyInjection;
+using Beis.LearningPlatform.BL.IntegrationServices.Options;
 using Beis.LearningPlatform.DAL.Repositories.ProductRepositories;
-using Beis.LearningPlatform.DAL.Repositories.ProductRepositories.Interface;
-using Beis.LearningPlatform.DAL.Repositories.ProductRepositories.Pricing;
-using Beis.LearningPlatform.Web.Configuration;
+using Beis.LearningPlatform.Data;
 using Beis.LearningPlatform.Web.ControllerHelpers;
-using Beis.LearningPlatform.Web.ControllerHelpers.Interfaces;
-using Beis.LearningPlatform.Web.Interfaces;
-using Beis.LearningPlatform.Web.Options;
-using Beis.LearningPlatform.Web.Services;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.DataProtection;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using System.IO.Abstractions;
 
 namespace Beis.LearningPlatform.Web.Utils
 {
     internal static class ServiceCollectionExtensions
     {
+        internal static void RegisterAllServices(this IServiceCollection services, IConfiguration configuration, bool useSsl)
+        {
+            services.AddLogging(options => { options.AddConsole(); });
+            if (!string.IsNullOrWhiteSpace(configuration["ApplicationInsightsConfig:Key"]))
+                services.AddApplicationInsightsTelemetry(configuration["ApplicationInsightsConfig:Key"]);
+
+            services.AddControllersWithViews().AddSessionStateTempDataProvider();
+
+            services.AddSession(opts =>
+            {
+                opts.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+                opts.Cookie.SameSite = SameSiteMode.Strict;
+                opts.Cookie.HttpOnly = true;
+                opts.Cookie.IsEssential = true;
+            });
+
+            // Markdown pipeline for cms content (currently instantiated in razor views, the below allows refactoring to inject into view components):
+            services.AddSingleton(new MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build());
+
+            services.AddOptions();
+            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            if (useSsl)
+            {
+                services.AddHttpsRedirection(options =>
+                {
+                    options.RedirectStatusCode = (int)HttpStatusCode.PermanentRedirect;
+                    options.HttpsPort = int.Parse(configuration["HttpListenerConfig:SSLPort"]);
+                });
+            }
+
+            services.AddDbContext<DataContext>(options => options.UseNpgsql(configuration["DatabaseConfig:LearningPlatformDbConnectionString"]));
+            services.AddDbContext<HtgVendorSmeDbContext>(options => options.UseNpgsql(configuration["DatabaseConfig:HelpToGrowDbConnectionString"]));
+            services.AddDataProtection().PersistKeysToDbContext<DataContext>();
+
+            services.AddStackExchangeRedisCache(options =>
+            {
+                options.Configuration = configuration["DatabaseConfig:RedisConnectionString"];
+                options.InstanceName = configuration["DatabaseConfig:RedisInstanceName"];
+            });
+
+            services.AddAutoMapper(config =>
+            {
+                config.AddMaps(Assembly.GetExecutingAssembly());
+            });
+
+
+            // Add app services
+            services.AddBLServices();
+            services.AddAppServices();
+            services.RegisterAppOptions(configuration);
+
+            services.AddHsts(options =>
+            {
+                options.Preload = true;
+                options.IncludeSubDomains = true;
+                options.MaxAge = TimeSpan.FromDays(365);
+            });
+        }
+
         internal static void AddAppServices(this IServiceCollection services)
         {
             // Controller helpers

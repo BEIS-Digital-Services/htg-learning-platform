@@ -1,13 +1,6 @@
-﻿using Beis.LearningPlatform.Web.Interfaces;
-using Beis.LearningPlatform.Web.Models;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
-
-namespace Beis.LearningPlatform.Web.ViewComponents
+﻿namespace Beis.LearningPlatform.Web.ViewComponents
 {
-
-	public class SiteNavigationViewComponent : ViewComponent
+    public class SiteNavigationViewComponent : ViewComponent
     {
 		private readonly ICmsService _cmsService;
 		private readonly IHttpContextAccessor _httpContextAccessor;

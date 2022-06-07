@@ -1,20 +1,4 @@
-﻿using AutoMapper;
-using Beis.LearningPlatform.BL.Services;
-using Beis.LearningPlatform.Data.Entities.Skills;
-using Beis.LearningPlatform.Library;
-using Beis.LearningPlatform.Web.ControllerHelpers.Interfaces;
-using Beis.LearningPlatform.Web.Models.DiagnosticTool;
-using Beis.LearningPlatform.Web.Options;
-using Beis.LearningPlatform.Web.Services;
-using Beis.LearningPlatform.Web.StrapiApi.Models;
-using Beis.LearningPlatform.Web.Utils;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Beis.LearningPlatform.Data.Entities.Skills;
 
 namespace Beis.LearningPlatform.Web.ControllerHelpers
 {
