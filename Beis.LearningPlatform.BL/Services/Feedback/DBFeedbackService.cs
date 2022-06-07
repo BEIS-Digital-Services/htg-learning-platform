@@ -1,13 +1,4 @@
-﻿using AutoMapper;
-using Beis.LearningPlatform.BL.Models;
-using Beis.LearningPlatform.DAL;
-using Beis.LearningPlatform.Library.DTO;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Beis.LearningPlatform.BL.Services
+﻿namespace Beis.LearningPlatform.BL.Services
 {
     public class DBFeedbackService : IFeedbackService
     {

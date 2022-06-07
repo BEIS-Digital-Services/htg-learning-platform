@@ -1,20 +1,7 @@
-﻿using AutoMapper;
-using Beis.LearningPlatform.BL.Configuration;
-using Beis.LearningPlatform.BL.Domain;
-using Beis.LearningPlatform.BL.IntegrationServices;
-using Beis.LearningPlatform.BL.IntegrationServices.Options;
-using Beis.LearningPlatform.BL.Models;
-using Beis.LearningPlatform.DAL;
-using Beis.LearningPlatform.Library;
+﻿using Beis.LearningPlatform.BL.Configuration;
 using Beis.LearningPlatform.Library.Enums;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Mail;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Beis.LearningPlatform.BL.Services
 {

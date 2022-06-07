@@ -1,8 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
-using Notify.Client;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using Notify.Client;
 
 namespace Beis.LearningPlatform.BL.IntegrationServices.GovUkNotify
 {

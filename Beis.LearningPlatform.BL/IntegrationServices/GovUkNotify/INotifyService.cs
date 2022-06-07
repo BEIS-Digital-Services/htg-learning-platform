@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace Beis.LearningPlatform.BL.IntegrationServices.GovUkNotify
+﻿namespace Beis.LearningPlatform.BL.IntegrationServices.GovUkNotify
 {
     /// <summary>
     /// An interface that defines the behaviour of a Notify service.
