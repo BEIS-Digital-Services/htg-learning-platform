@@ -1,9 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
 	<PropertyGroup>
-		<TargetFramework>net5.0</TargetFramework>
-		<UserSecretsId>0c6dfcd0-c710-4c43-8a05-766f861a2e29</UserSecretsId>
 		<TargetFramework>net6.0</TargetFramework>
+		<UserSecretsId>0c6dfcd0-c710-4c43-8a05-766f861a2e29</UserSecretsId>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>disable</Nullable>
 	</PropertyGroup>
