@@ -1,11 +1,4 @@
-﻿using AutoMapper;
-using Beis.LearningPlatform.Data.Entities.SatisfactionSurvey;
-using Beis.LearningPlatform.Data.Repositories;
-using Beis.LearningPlatform.Data.Repositories.SatisfactionSurvey;
-using Beis.LearningPlatform.Library;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Threading.Tasks;
+﻿using Beis.LearningPlatform.Data.Repositories.SatisfactionSurvey;
 
 namespace Beis.LearningPlatform.DAL
 {

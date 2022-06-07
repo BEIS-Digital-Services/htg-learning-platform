@@ -1,12 +1,4 @@
-﻿using AutoMapper;
-using Beis.LearningPlatform.Data.Entities.DiagnosticTool;
-using Beis.LearningPlatform.Data.Repositories;
-using Beis.LearningPlatform.Data.Repositories.DiagnosticTool;
-using Beis.LearningPlatform.Library;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Beis.LearningPlatform.Data.Repositories.DiagnosticTool;
 
 namespace Beis.LearningPlatform.DAL
 {
