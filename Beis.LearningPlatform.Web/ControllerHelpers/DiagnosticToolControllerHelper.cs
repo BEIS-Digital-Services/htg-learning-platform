@@ -381,7 +381,7 @@ namespace Beis.LearningPlatform.Web.ControllerHelpers
                     isSuccessful = true;
                 else
                 {
-                    _logger.LogError(result.Message ?? "Failed to save skills one response");
+                    _logger.LogError("{message}", result.Message ?? "Failed to save skills one response");
                     message = result.Message ?? "Failed to save skills one response";
                 }
             }
@@ -452,7 +452,7 @@ namespace Beis.LearningPlatform.Web.ControllerHelpers
                     isSuccessful = true;
                 else
                 {
-                    _logger.LogError(result.Message ?? "Failed to save skills two response");
+                    _logger.LogError("{message}", result.Message ?? "Failed to save skills two response");
                     message = result.Message ?? "Failed to save skills two response";
                 }
             }
@@ -502,7 +502,7 @@ namespace Beis.LearningPlatform.Web.ControllerHelpers
                     isSuccessful = true;
                 else
                 {
-                    _logger.LogError(result.Message ?? "Failed to save skills three response");
+                    _logger.LogError("{message}", result.Message ?? "Failed to save skills three response");
                     message = result.Message ?? "Failed to save skills three response";
                 }
             }
