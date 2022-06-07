@@ -1,7 +1,4 @@
-﻿using Beis.LearningPlatform.Data.Entities.DiagnosticTool;
-using Beis.LearningPlatform.Data.Repositories.Base;
-
-namespace Beis.LearningPlatform.Data.Repositories.DiagnosticTool
+﻿namespace Beis.LearningPlatform.Data.Repositories.DiagnosticTool
 {
     /// <summary>
     /// A class that defines an implementation of a Diagnostic Tool Email Answer repository.

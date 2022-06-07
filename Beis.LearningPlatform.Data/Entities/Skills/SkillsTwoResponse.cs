@@ -1,6 +1,4 @@
-﻿using Beis.LearningPlatform.Data.Entities.Base;
-
-namespace Beis.LearningPlatform.Data.Entities.Skills
+﻿namespace Beis.LearningPlatform.Data.Entities.Skills
 {
     public class SkillsTwoResponse : FeedbackEntity
     {

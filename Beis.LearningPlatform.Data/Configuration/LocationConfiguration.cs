@@ -1,6 +1,4 @@
-﻿using Beis.LearningPlatform.Data.Entities.Locations;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Beis.LearningPlatform.Data.Configuration
 {

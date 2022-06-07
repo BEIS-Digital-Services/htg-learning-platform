@@ -1,0 +1,15 @@
+﻿global using Beis.LearningPlatform.Data.Entities.Locations;
+global using Microsoft.EntityFrameworkCore;
+global using Beis.LearningPlatform.Data.Repositories.DiagnosticTool;
+global using Beis.LearningPlatform.Data.Repositories.Feedback;
+global using Beis.LearningPlatform.Data.Repositories.Locations;
+global using Microsoft.Extensions.DependencyInjection;
+global using Beis.LearningPlatform.Data.Entities.Base;
+global using Microsoft.AspNetCore.Identity;
+global using System.Linq.Expressions;
+global using Beis.LearningPlatform.Data.Entities.DiagnosticTool;
+global using Beis.LearningPlatform.Data.Repositories.Base;
+global using Beis.LearningPlatform.Data.Entities.Feedback;
+global using Beis.LearningPlatform.Data.Entities.SatisfactionSurvey;
+global using Beis.LearningPlatform.Data.Entities.Skills;
+global using Beis.LearningPlatform.Data.Entities.Users;
