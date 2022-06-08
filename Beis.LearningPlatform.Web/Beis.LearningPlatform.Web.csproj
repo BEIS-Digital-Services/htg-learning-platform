@@ -54,8 +54,8 @@
 		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
 		<PackageReference Include="Markdig" Version="0.30.2" />
 		<PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.19.0" />
-		<PackageReference Include="Microsoft.AspNetCore.DataProtection.EntityFrameworkCore" Version="6.0.5" />
-		<PackageReference Include="Microsoft.AspNetCore.DataProtection.Extensions" Version="6.0.5" />
+		<PackageReference Include="Microsoft.AspNetCore.DataProtection.EntityFrameworkCore" Version="5.0.12" />
+		<PackageReference Include="Microsoft.AspNetCore.DataProtection.Extensions" Version="5.0.12" />
 		<PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.5" />
 		<PackageReference Include="Microsoft.Azure.AppConfiguration.AspNetCore" Version="5.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="6.0.0" />
@@ -63,13 +63,13 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.5">
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.12">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.4" />
+		<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.10" />
 		<PackageReference Include="OpenCover" Version="4.7.1221" />
-		<PackageReference Include="System.IO.Abstractions" Version="17.0.15" />
+		<PackageReference Include="System.IO.Abstractions" Version="13.2.47" />
 	</ItemGroup>
 
 	<ItemGroup>
