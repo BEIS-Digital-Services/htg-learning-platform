@@ -1,60 +1,20 @@
 ﻿@model (Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent component, int componentIndex) 
-@{
-    var strTopSpaceClass = Model.component.topSpace != "nospace" ? "govuk-!-margin-top-6" : "";
-    var strBottomSpaceClass = Model.component.bottomSpace != "nospace" ? "govuk-!-margin-bottom-6" : "";
-
-    var targetURL = Model.component.url;
-    if (string.IsNullOrEmpty(targetURL) && Model.component.media?.Count > 0)
-    {
-        targetURL = Model.component.media[0].url;
-    }
-
-    var imageURL = default(string);
-    if (!string.IsNullOrEmpty(Model.component.abbr))
-    {
-        var loweredAbbr = Model.component.abbr.ToLower();
-        switch (loweredAbbr)
-        {
-            case "pdf":
-                imageURL = "/assets/images/pdf.svg";
-                break;
-            case "text":
-                imageURL = "/assets/images/txt.svg";
-                break;
-            case "csv":
-                imageURL = "/assets/images/csv.svg";
-                break;
-            case "word":
-                imageURL = "/assets/images/doc.svg";
-                break;
-            case "pp":
-                imageURL = "/assets/images/ppt.svg";
-                break;
-            case "excel":
-                imageURL = "/assets/images/xls.svg";
-                break;
-            default:
-                imageURL = "/assets/images/txt.svg";
-                break;
-        }
-    }
-}
 
 <div class="beis-text" id="@("anchor" + Model.componentIndex)">
     @if (Model.component.media != null && Model.component.media.Count > 0)
     {
-        <div class="govuk-width-container @strTopSpaceClass @strBottomSpaceClass">
+        <div class="govuk-width-container @Model.component.AlteredMarginTopSpace  @Model.component.AlteredMarginBottomSpace">
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-two-thirds">
                     <section class="attachment embedded" id="attachment_@Model.component.media[0].name">
                         <div class="attachment-thumb">
-                            <a id="link-cmspageviews-document-attachment-thumb" aria-hidden="true" class="thumbnail" tabindex="-1" href="@targetURL">
-                                <img alt="" src="@imageURL">
+                            <a id="link-cmspageviews-document-attachment-thumb" aria-hidden="true" class="thumbnail" tabindex="-1" href="@Model.component.AlteredUrl">
+                                <img alt="" src="@Model.component.ImageUrl">
                             </a>
                         </div>
                         <div class="attachment-details">
                             <h3 class="title govuk-!-font-size-27 govuk-!-font-weight-regular">
-                                <a id="link-cmspageviews-document-attachment-details" class="govuk-link" href="@targetURL">
+                                <a id="link-cmspageviews-document-attachment-details" class="govuk-link" href="@Model.component.AlteredUrl">
                                     @Model.component.title
                                 </a>
                             </h3>
@@ -70,5 +30,4 @@
             </div>
         </div>
     }
-
 </div>

@@ -1,8 +1,5 @@
 ﻿@model (IList<Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageLink> cmsPageLinks, string linksAlign)
 @{
-    var strclass = string.Empty;
-    var strComponentBg = string.Empty;
-    var linkAction = string.Empty;
     var linksAlign = Model.linksAlign ?? string.Empty;
 }
 
@@ -18,10 +15,9 @@
             {
                 if (link.url.StartsWith("http") || link.url.StartsWith("/"))
                 {
-                    linkAction = string.IsNullOrWhiteSpace(link.url) ? "" : (link.url.StartsWith("http")) ? link.url : (link.url.StartsWith("/") ? link.url.ToString().Substring(1) : link.url.ToString().Substring(0, (link.url.ToString().IndexOf("/") - 1)));
-                    strclass = CamelCaseConverter.Delimiter(link.custom_class, "-");
+                    var linkAction = string.IsNullOrWhiteSpace(link.url) ? string.Empty : link.url.StartsWith("http") ? link.url : link.AlteredUrl;
 
-                    <div class="@link.custom_class @strComponentBg @linksAlign">
+                    <div class="@link.custom_class @linksAlign">
                         <div>
                             <span class="beis-link-icon">
                                 @if (link.icon != null)
@@ -31,11 +27,11 @@
                             </span>
                             @if (link.url.StartsWith("http"))
                             {
-                                <a id="link-cmspageviews-textlinks-@(link.GetGaLinkId())" class="govuk-link @strclass" href="@linkAction" target="" aria-label="@(string.IsNullOrWhiteSpace(link.aria) ? "Read the article on " + link.id : link.aria)"> @link.label </a>
+                                <a id="link-cmspageviews-textlinks-@(link.GetGaLinkId())" class="govuk-link @link.AlteredCustomClass" href="@linkAction" target="" aria-label="@(string.IsNullOrWhiteSpace(link.aria) ? "Read the article on " + link.id : link.aria)"> @link.label </a>
                             }
                             else
                             {
-                                <a id="link-cmspageviews-textlinks-@(link.GetGaLinkId())" class="govuk-link @strclass" href="/@linkAction"
+                                <a id="link-cmspageviews-textlinks-@(link.GetGaLinkId())" class="govuk-link @link.AlteredCustomClass" href="/@linkAction"
                                 aria-label="@(string.IsNullOrWhiteSpace(link.aria) ? "Read the article on " + link.id : link.aria)"> @link.label </a>
                             }
                         </div>

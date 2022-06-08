@@ -1,7 +1,6 @@
 ﻿@model Beis.LearningPlatform.Web.Models.ComparisonToolPageViewModel
 @{
-    var icount = 0;
-    var idstring = string.Empty;
+    var productsCategorySelectedCount = 0;
 }
 
 <partial name="CMSPageViews/_PartialRenderCMSComponents" model="@Model.CMSPageViewModel" />
@@ -14,8 +13,7 @@
 
     @if (Model.productsCategorySelected.Count > 0)
     {
-        icount = 1;
-        idstring = "clip" + icount.ToString();
+        productsCategorySelectedCount = 1;
 
         <div class="govuk-!-padding-bottom-3">
 
@@ -24,7 +22,7 @@
                 var displayTag = Model.ProductCategoryList.Where(x => x.name == tag).FirstOrDefault();
                 if (displayTag != null)
                 {
-                    idstring = "clip" + (icount++).ToString();
+                    var clipId = "clip" + productsCategorySelectedCount++;
                     var tmpproductsCategorySelected = Model.SelectedProductCategoryId.Split(",").ToList();
 
                     var routeData = new Dictionary<string, string>();
@@ -34,13 +32,13 @@
                     <a id="link-comparisontoolviews-productnojs-tag-unselect-@(tag?.ToLowerInvariant())" style="text-decoration: none" asp-controller="comparisonTool" asp-action="FilterBy" asp-all-route-data="routeData">
                         <strong class="govuk-tag beis-tag">
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <g clip-path="url(#@idstring)">
+                                <g clip-path="url(#@clipId)">
                                     <path d="M3.75717 10.8284L5.17139 12.2426L12.2425 5.17155L10.8282 3.75733L3.75717 10.8284Z" fill="#0B0C0C" />
                                     <path d="M5.17154 3.75736L3.75732 5.17157L10.8284 12.2426L12.2426 10.8284L5.17154 3.75736Z" fill="#0B0C0C" />
                                     <circle cx="8" cy="8" r="7.5" stroke="black" />
                                 </g>
                                 <defs>
-                                    <clipPath id="@idstring">
+                                    <clipPath id="@clipId">
                                         <rect width="16" height="16" fill="white" transform="translate(16) rotate(90)" />
                                     </clipPath>
                                 </defs>
@@ -64,8 +62,8 @@
                 <div class="govuk-details__text">
                     @foreach (var tag in Model.ProductCategoryList)
                     {
-                        icount++;
-                        idstring = "lowerclip" + icount.ToString();
+                        productsCategorySelectedCount++;
+                        var clipId = "lowerclip" + productsCategorySelectedCount;
 
                         // Check to ensure it hasn't been selected for filtering
                         if (!Model.productsCategorySelected.Contains(tag.name))
@@ -84,13 +82,13 @@
                             <a id="link-comparisontoolviews-productnojs--tag-select-@(tag?.name?.ToLowerInvariant())" style="text-decoration: none" asp-controller="comparisonTool" asp-action="FilterBy" asp-all-route-data="routeData">
                                 <strong class="govuk-tag beis-tag">
                                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <g clip-path="url(#@idstring)">
+                                        <g clip-path="url(#@clipId)">
                                             <path d="M7 13L9 13L9 3L7 3L7 13Z" fill="#0B0C0C" />
                                             <path d="M3 7L3 9L13 9L13 7L3 7Z" fill="#0B0C0C" />
                                             <circle cx="8" cy="8" r="7.5" stroke="black" />
                                         </g>
                                         <defs>
-                                            <clipPath id="@idstring">
+                                            <clipPath id="@clipId">
                                                 <rect width="16" height="16" fill="white" transform="translate(16) rotate(90)" />
                                             </clipPath>
                                         </defs>
