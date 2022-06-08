@@ -45,10 +45,11 @@ namespace Beis.LearningPlatform.Web.Tests.ViewComponentTests
         {
             return new CMSPageComponent
             {
+                header = "Header",
                 SearchArticles = new List<CMSSearchArticlePicker> {
-                     new CMSSearchArticlePicker{ id = 1 },
-                     new CMSSearchArticlePicker{ id = 2 },
-                     new CMSSearchArticlePicker{ id = 3 }
+                     new CMSSearchArticlePicker{ id = 1, SearchArticle = new CMSSearchArticle{ articleType = "search_article", Article = new CMSSearchArticleDoc{ header = "article 1 header" } } },
+                     new CMSSearchArticlePicker{ id = 2, SearchArticle = new CMSSearchArticle{ articleType = "search_article", Article = new CMSSearchArticleDoc{ header = "article 2 header" } } },
+                     new CMSSearchArticlePicker{ id = 3, SearchArticle = new CMSSearchArticle{ articleType = "search_article", Article = new CMSSearchArticleDoc{ header = "article 3 header" } } },
                 }
             };
         }
@@ -105,10 +106,10 @@ namespace Beis.LearningPlatform.Web.Tests.ViewComponentTests
         }
 
 
-        private static ViewDataDictionary<CmsLinkListHeroViewModel> GetViewComponentData(IViewComponentResult view)
+        private static ViewDataDictionary<CmsSearchArticleListingViewModel> GetViewComponentData(IViewComponentResult view)
         {
             var viewComponentResult = view as ViewViewComponentResult;
-            var viewComponentData = viewComponentResult.ViewData as ViewDataDictionary<CmsLinkListHeroViewModel>;
+            var viewComponentData = viewComponentResult.ViewData as ViewDataDictionary<CmsSearchArticleListingViewModel>;
             return viewComponentData;
         }
 
