@@ -41,6 +41,7 @@
 @import "menu-style2.scss";
 @import "navigation-breadcrumb.scss";
 @import "landingPageHero.scss";
+@import "search-article-listing.scss";
 
 .hide-element {
     border: 0;
@@ -1030,10 +1031,6 @@ span.govuk-link-divider {
 
 .accordion-wrapper .accordion-item .panel ul li {
     margin-bottom: 20px;
-}
-
-.govuk-heading-xl-filter{
-
 }
 
 .govuk-header-yellow-line {

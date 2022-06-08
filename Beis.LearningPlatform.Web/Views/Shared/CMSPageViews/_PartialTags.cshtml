@@ -1,31 +1,25 @@
 ﻿@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
 @{
     var _pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build();
-    var strcopy = string.Empty;
-    var strclass = string.Empty;
-    var topSpaceClass = Model.topSpace != "nospace" ? "govuk-!-padding-top-6" : "";
-    var bottomSpaceClass = Model.bottomSpace != "nospace" ? "govuk-!-padding-bottom-6" : "";
 }
 
 @if (Model.textblocks != null)
 {
     if (Model.textblocks.Count > 0)
     {
-        foreach (var textblock in Model.textblocks)
+        foreach (var textBlock in Model.textblocks)
         {
-            textblock.hide = textblock.hide.HasValue ? textblock.hide : false;
+            textBlock.hide = textBlock.hide.HasValue ? textBlock.hide : false;
 
-            if (textblock.hide == false)
+            if (textBlock.hide == false)
             {
-                strcopy = Markdown.ToHtml(textblock.copy, _pipeline);
-                strclass = CamelCaseConverter.Delimiter(Model.background, "-");
                 <div class="tags" id="@("anchor" + Model.Index)">
-                    <div class="govuk-grid-row @strclass">
+                    <div class="govuk-grid-row @CamelCaseConverter.Delimiter(Model.background, "-")">
                         <div class="govuk-width-container">
                             <div class="govuk-grid-column-two-thirds">
-                                <div class="@topSpaceClass  @bottomSpaceClass">
+                                <div class="@Model.AlteredPaddingTopSpace  @Model.AlteredPaddingBottomSpace">
                                     <div class="govuk-body govuk-!-font-size-36">
-                                        @Html.Raw(strcopy)
+                                        @Html.Raw(Markdown.ToHtml(textBlock.copy, _pipeline))
                                     </div>
                                     <partial name="CMSPageViews/_PartialTextLinks" model="@(Model.links, Model.linksAlign)" />
                                 </div>

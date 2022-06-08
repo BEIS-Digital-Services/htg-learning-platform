@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
         c.disabled = false;
     });
 
-    var productCategoryFilters = document.querySelectorAll(".productCategory");
+    const productCategoryFilters = document.querySelectorAll(".productCategory");
     productCategoryFilters.forEach(pcf => pcf.addEventListener("change", toggleProductsBasedOnCategory));
 
     var previouslySelectedIds = document.querySelector("#selectedProductIds");
@@ -136,9 +136,9 @@ function toggleProductsBasedOnCategory() {
     toggleIndividualAndGroupCompareButtons();
     var formDivs = document.querySelectorAll(".formDiv");
 
-    var allCategoriesCheckBoxes = document.querySelectorAll(".productCategory");
+    const allCategoriesCheckBoxes = document.querySelectorAll(".productCategory");
 
-    var checkedCategoryIds = [];
+    const checkedCategoryIds = [];
     allCategoriesCheckBoxes.forEach(r => {
         if (r.checked) {
             checkedCategoryIds.push(r.getAttribute("data-id"));

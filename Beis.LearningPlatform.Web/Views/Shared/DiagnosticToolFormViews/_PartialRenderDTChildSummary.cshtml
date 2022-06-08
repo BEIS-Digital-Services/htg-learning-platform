@@ -1,13 +1,11 @@
-﻿@using Beis.LearningPlatform.Web.Models.DiagnosticTool
-@model Beis.LearningPlatform.Web.Models.DiagnosticTool.DiagnosticToolForm
+﻿@model Beis.LearningPlatform.Web.Models.DiagnosticTool.DiagnosticToolForm
 @{
     var elementInfo = Model.CurrentElement;
     var currentStep = elementInfo.CurrentStep;
     var currentElement = elementInfo.CurrentElement;
-    var radioButtonParent = elementInfo.RadioButtonParent;
-    var z = elementInfo.ChildIndex;
-
     var currentFormStepElement = elementInfo.CurrentFormStepElement;
+    
+    var z = elementInfo.ChildIndex;
 }
 @{
     switch (currentFormStepElement.answerOptions[z].controlType)
@@ -68,7 +66,6 @@
                         <input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].text" class="govuk-checkboxes__input" />
                         <input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].hint" class="govuk-checkboxes__input" />
                         <input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].value" class="govuk-checkboxes__input" />
-                        @*<input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].additionalInfo" class="govuk-checkboxes__input" />*@
 
                         @if (currentFormStepElement.answerOptions[z].additionalInfoRequired && currentFormStepElement.answerOptions[z].value.Equals("true", StringComparison.OrdinalIgnoreCase))
                         {

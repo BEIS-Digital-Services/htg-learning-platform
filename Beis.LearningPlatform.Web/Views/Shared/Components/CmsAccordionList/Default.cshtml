@@ -1,10 +1,10 @@
 ﻿@model Beis.LearningPlatform.Web.Models.CmsAccordionListViewModel
-@if (Model.HasContent == false)
-{
-    return;
-}
-
 @{
+    if (!Model.HasContent)
+    {
+        return;
+    }
+
     var _pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build();
 }
 
@@ -16,29 +16,20 @@
                 {
                     if (accordionItem.HasContent == false) continue;
 
-                    var strCopy1 = "";
-                    var strCopy2 = "";
-                    strCopy1 = Markdown.ToHtml(accordionItem.copy1, _pipeline);
-                    strCopy2 = Markdown.ToHtml(accordionItem.copy2, _pipeline);
-
                     <div class="accordion-item">
                         <button class="accordion">@accordionItem.Header</button>
                         <div class="panel">
                             <div class="govuk-body">
                                 <div>
-                                    @Html.Raw(strCopy1)
+                                    @Html.Raw(Markdown.ToHtml(accordionItem.copy1, _pipeline))
                                 </div>
                                 <div class="graybgpnl">
-                                    @Html.Raw(strCopy2)
+                                    @Html.Raw(Markdown.ToHtml(accordionItem.copy2, _pipeline))
                                 </div>
-
                             </div>
-
                         </div>
-
                     </div>
                 }
-
             </div>
         </div>
     </div>

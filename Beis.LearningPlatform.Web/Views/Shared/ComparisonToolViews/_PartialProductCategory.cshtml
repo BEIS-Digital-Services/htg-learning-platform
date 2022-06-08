@@ -1,5 +1,4 @@
-﻿@using Beis.LearningPlatform.Web.Utils
-@model Beis.LearningPlatform.Web.Models.ComparisonToolProductCategoryViewModel
+﻿@model Beis.LearningPlatform.Web.Models.ComparisonToolProductCategoryViewModel
 @functions
 {
     static IDictionary<string, string> AddRouteData(long productId)
@@ -8,7 +7,6 @@
         return routeData;
     }
 }
-
 
 @if (Model.productsForCurrentCategoryToRender?.Any() ?? false)
 {

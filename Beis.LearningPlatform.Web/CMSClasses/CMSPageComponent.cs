@@ -1,6 +1,7 @@
 ﻿using Beis.LearningPlatform.Web.Enums;
 using Beis.LearningPlatform.Web.Models;
 using System.Collections.Generic;
+using Beis.LearningPlatform.Web.Utils;
 
 namespace Beis.LearningPlatform.Web.StrapiApi.Models
 {
@@ -11,6 +12,9 @@ namespace Beis.LearningPlatform.Web.StrapiApi.Models
         public int id { get; set; }
         public string name { get; set; }
         public string background { get; set; }
+
+        public string AlteredBackground => !string.IsNullOrWhiteSpace(background) ? CamelCaseConverter.Delimiter(background, "-") : string.Empty;
+
         public string type { get; set; }
         public IList<CMSPageTextblock> textblocks { get; set; }
         public IList<CMSPageButton> buttons { get; set; }
@@ -22,6 +26,31 @@ namespace Beis.LearningPlatform.Web.StrapiApi.Models
         public IList<CMSPageTextblock> textblock { get; set; }
 
         public string url { get; set; }
+
+        public string AlteredUrl => string.IsNullOrWhiteSpace(url) && media?.Count > 0 ? media[0].url : url;
+
+        public string ImageUrl
+        {
+            get
+            {
+                var imageUrl = default(string);
+                if (!string.IsNullOrWhiteSpace(abbr))
+                {
+                    imageUrl = abbr.ToLower() switch
+                    {
+                        "pdf" => "/assets/images/pdf.svg",
+                        "text" => "/assets/images/txt.svg",
+                        "csv" => "/assets/images/csv.svg",
+                        "word" => "/assets/images/doc.svg",
+                        "pp" => "/assets/images/ppt.svg",
+                        "excel" => "/assets/images/xls.svg",
+                        _ => "/assets/images/txt.svg"
+                    };
+                }
+                return imageUrl;
+            }
+        }
+
         public string header { get; set; }
         public string subheader { get; set; }
         public string copy { get; set; }
@@ -45,7 +74,17 @@ namespace Beis.LearningPlatform.Web.StrapiApi.Models
         public IList<CMSPageTag> tags { get; set; }
         public IList<CMSPageAuthor> author { get; set; }
         public string topSpace { get; set; }
+
+        public string AlteredPaddingTopSpace => topSpace != "nospace" ? "govuk-!-padding-top-6" : string.Empty;
+
+        public string AlteredMarginTopSpace => topSpace != "nospace" ? "govuk-!-margin-top-6" : string.Empty;
+
         public string bottomSpace { get; set; }
+
+        public string AlteredPaddingBottomSpace => bottomSpace != "nospace" ? "govuk-!-padding-bottom-6" : string.Empty;
+
+        public string AlteredMarginBottomSpace => bottomSpace != "nospace" ? "govuk-!-margin-bottom-6" : string.Empty;
+
         public string message { get; set; }
         public string NoHeader { get; set; }
         public string NoCopy { get; set; }
@@ -155,6 +194,20 @@ namespace Beis.LearningPlatform.Web.StrapiApi.Models
         public string Summary { get; set; }
         public CMSPageLink Link { get; set; }
         public List<CmsAccordionItemViewModel> AccordionItems { get; set; }
+
+
+        // radio button with continue
+        public string Radio1Text { get; set; }
+        public string Radio2Text { get; set; }
+        public string Radio3Text { get; set; }
+        public string Radio1Url { get; set; }
+        public string Radio2Url { get; set; }
+        public string Radio3Url { get; set; }
+        public string ButtonText { get; set; }
+      
+        // Search article listings (Strapi workaround here, the direct relation has a confirmed unfixed bug with ordering).
+        // Workaround in place that uses a list of single content pickers (hence CMSSearchArticlePicker) to create an orderable list of searchArticles.
+        public List<CMSSearchArticlePicker> SearchArticles { get; set; }
 
     }
 }
