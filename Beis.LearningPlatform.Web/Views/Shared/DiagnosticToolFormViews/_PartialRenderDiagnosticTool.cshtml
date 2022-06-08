@@ -1,10 +1,7 @@
 ﻿@model Beis.LearningPlatform.Web.Models.DiagnosticTool.DiagnosticToolForm
 @{
-    bool isInstructionsPage = Model.CurrStep == 0 && Model.IsInstructionsPage;
-    var displaySummaryTable = false;
-    var showStepTitle = true;
+    var isInstructionsPage = Model.CurrStep == 0 && Model.IsInstructionsPage;
     var nextButtonText = " Next ";
-    var hideContent = false;
 }
 
 <main id="main-heading" role="main">
@@ -13,7 +10,7 @@
             <div class="govuk-width-container govuk-!-margin-top-6 govuk-!-margin-bottom-6 ">
 
                 <form asp-action="Index" method="post" class="form-horizontal">
-                    @if (Model.CurrStep > 1 && Model.backLink == true)
+                    @if (Model.CurrStep > 1 && Model.backLink)
                     {
                         <div class="p-left-20">
                             <button id="btn-diagnostictoolformviews-renderdiagnostictool-prevstep" type="submit" asp-action="PrevStep" class="govuk-back-link btn-as-link">Back</button>
@@ -140,7 +137,6 @@
 
                                         </div>
                                     }
-                                    displaySummaryTable = true;
                                 }
                                 else if (isInstructionsPage)
                                 {
@@ -199,9 +195,6 @@
                             <input type="hidden" asp-for="formLogo" />
                         }
 
-
-
-
                         @foreach (var step in Model.steps)
                         {
                             <input type="hidden" asp-for="@Model.steps[x].id" />
@@ -225,17 +218,15 @@
                                 if (step.id.ToString() != Model.CurrStep.ToString())
                                 {
                                     styleString = "style=display:none";
-                                    hideContent = true;
                                 }
                             }
                             // Form Complete so hide the form elements and display the summary table
-                            if (displaySummaryTable)
+                            if (Model.FormIsCompleted)
                             {
                                 styleString = "style=display:none";
-                                hideContent = true;
                             }
 
-                            @if (!string.IsNullOrWhiteSpace(step.title) && showStepTitle)
+                            @if (!string.IsNullOrWhiteSpace(step.title))
                             {
                                 <div class="govuk-form-group govuk-grid-column-two-thirds govuk-!-margin-bottom-0" @styleString>
                                     <fieldset>
@@ -253,7 +244,7 @@
                             {
                                 var i = 0;
                                 @*Display Summary Instead*@
-                                if (displaySummaryTable && (!string.IsNullOrWhiteSpace(step.title)) && !step.skipStep && step.showInSummary)
+                                if (Model.FormIsCompleted && (!string.IsNullOrWhiteSpace(step.title)) && !step.skipStep && step.showInSummary)
                                 {
                                     @if (Model.FormType == FormTypes.DiagnosticTool)
                                     {
@@ -286,7 +277,7 @@
                                     <input type="hidden" asp-for="@Model.steps[x].elements[i].text" />
                                     <input type="hidden" asp-for="@Model.steps[x].elements[i].text2" />
                                     <input type="hidden" asp-for="@Model.steps[x].elements[i].subText" />
-                                    <input type="hidden" asp-for="@Model.steps[x].elements[i].nextButtonText" />@*<input type="hidden" asp-for="@Model.steps[x].elements[i].value" />*@@*<input type="hidden" asp-for="@Model.steps[x].elements[i].selectedValue" />*@
+                                    <input type="hidden" asp-for="@Model.steps[x].elements[i].nextButtonText" />
 
                                     if (Model.CurrStep == Model.steps[x].id && string.IsNullOrEmpty(Model.steps[x].elements[i].nextButtonText) == false)
                                     {
@@ -302,16 +293,15 @@
                                         CurrentFormStepElement = Model.steps[x].elements[i],
                                     };
 
-                                    var childHasErrors = (Model.steps[x].elements[i].childHasErrors) ? "govuk-form-group--error" : "";
+                                    var childHasErrors = Model.steps[x].elements[i].childHasErrors ? "govuk-form-group--error" : string.Empty;
                                     <div class="govuk-form-group @childHasErrors govuk-grid-column-two-thirds govuk-!-padding-top-0" @styleString>
                                         <fieldset class="govuk-fieldset">
                                             <partial name="DiagnosticToolFormViews/_PartialRenderDTParentElement" model="@Model" />
                                         </fieldset>
                                     </div>
 
-
                                     @*Display Summary Instead*@
-                                    @if (displaySummaryTable && !skipStep && Model.FormType != FormTypes.SkillsTwo)
+                                    @if (Model.FormIsCompleted && !skipStep && Model.FormType != FormTypes.SkillsTwo)
                                     {
                                         <div class="govuk-form-group ">
                                             <div class="govuk-form-group govuk-grid-column-two-thirds govuk-!-padding-bottom-0">

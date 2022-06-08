@@ -1,18 +1,11 @@
-﻿@using Beis.LearningPlatform.Web.Models.DiagnosticTool
-@model Beis.LearningPlatform.Web.Models.DiagnosticTool.DiagnosticToolForm
+﻿@model Beis.LearningPlatform.Web.Models.DiagnosticTool.DiagnosticToolForm
 @{
     var elementInfo = Model.CurrentElement;
     var currentStep = elementInfo.CurrentStep;
     var currentElement = elementInfo.CurrentElement;
-    var radioButtonParent = elementInfo.RadioButtonParent;
-
     var currentFormStep = elementInfo.CurrentFormStep;
     var currentFormStepElement = elementInfo.CurrentFormStepElement;
-
     Model.CurrentElement.ChildIndex = 0;
-    var additionalClass = " govuk-summary-list--no-border";
-
-    var informationStorageQuestion = currentStep == 3;
 }
 
 @{
@@ -25,7 +18,7 @@
                 <div class="govuk-!-margin-bottom-0 govuk-!-margin-top-3 govuk-body">
                     <p class="govuk-body"><strong>@currentFormStep.summaryTitle</strong></p>
                 </div>
-                <div class="govuk-summary-list govuk-!-margin-bottom-0 @additionalClass">
+                <div class="govuk-summary-list govuk-!-margin-bottom-0 @(" govuk-summary-list--no-border")">
                     <div class="govuk-summary-list__row">
                         <partial name="SkillsFormViews/_PartialRenderDTChildSummary" model="@Model" />
                     </div>
