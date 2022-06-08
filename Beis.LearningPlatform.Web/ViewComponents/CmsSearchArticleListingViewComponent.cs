@@ -48,7 +48,8 @@ namespace Beis.LearningPlatform.Web.ViewComponents
             viewModel.FullSearchArticles = fullSearchArticles;
             viewModel.DistinctTags = fullSearchArticles
                 .SelectMany(x => x.tags)
-                .GroupBy(x => x.id).Select(x => x.First()); // All tags present in the selected articles, distinct by id            
+                .GroupBy(x => x.id).Select(x => x.First()) // All tags present in the selected articles, distinct by id
+                .OrderBy(x => x.displayName);
 
             return View(viewModel);
         }
