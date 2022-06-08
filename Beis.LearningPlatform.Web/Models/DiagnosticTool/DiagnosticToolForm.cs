@@ -1,14 +1,4 @@
-﻿using Beis.LearningPlatform.Library.Enums;
-using Beis.LearningPlatform.Web.ComparisonTool.Models;
-using Beis.LearningPlatform.Web.Interfaces;
-using Beis.LearningPlatform.Web.StrapiApi.Models;
-using Beis.LearningPlatform.Web.Utils;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-
-namespace Beis.LearningPlatform.Web.Models.DiagnosticTool
+﻿namespace Beis.LearningPlatform.Web.Models.DiagnosticTool
 {
     /// <summary>
     /// A class that defines a Diagnostic Tool Form.

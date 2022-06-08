@@ -1,12 +1,4 @@
-﻿using AutoMapper;
-using Beis.LearningPlatform.Data.Entities.Skills;
-using Beis.LearningPlatform.Data.Repositories;
-using Beis.LearningPlatform.Data.Repositories.Skills;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Threading.Tasks;
-
-namespace Beis.LearningPlatform.DAL
+﻿namespace Beis.LearningPlatform.DAL
 {
     /// <summary>
     /// A class that defines an implementation of an Skills Three data service.

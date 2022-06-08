@@ -1,10 +1,4 @@
-﻿using Beis.Htg.VendorSme.Database.Models;
-using Beis.LearningPlatform.Web.Utils;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-
-namespace Beis.LearningPlatform.Web.ComparisonTool.Models
+﻿namespace Beis.LearningPlatform.Web.ComparisonTool.Models
 {
     public class ComparisonToolProduct : product
     {

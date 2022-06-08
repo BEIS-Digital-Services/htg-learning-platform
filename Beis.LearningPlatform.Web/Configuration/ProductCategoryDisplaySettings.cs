@@ -1,9 +1,4 @@
-﻿using Beis.LearningPlatform.Web.Options;
-using Beis.LearningPlatform.Web.StrapiApi.Models;
-using Microsoft.Extensions.Options;
-using System.Collections.Generic;
-
-namespace Beis.LearningPlatform.Web.Configuration
+﻿namespace Beis.LearningPlatform.Web.Configuration
 {
     public class ProductCategoryDisplaySettings : IProductCategoryDisplaySettings
     {

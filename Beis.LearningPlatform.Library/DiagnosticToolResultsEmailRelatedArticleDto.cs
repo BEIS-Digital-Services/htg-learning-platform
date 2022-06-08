@@ -1,6 +1,4 @@
-﻿using Beis.LearningPlatform.Library.DTO.Base;
-
-namespace Beis.LearningPlatform.Library
+﻿namespace Beis.LearningPlatform.Library
 {
     /// <summary>
     /// A class that defines a DTO for a Diagnostic Tool results email related article.

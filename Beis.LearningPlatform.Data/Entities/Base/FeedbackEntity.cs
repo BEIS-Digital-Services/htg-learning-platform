@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Beis.LearningPlatform.Data.Entities.Base
+﻿namespace Beis.LearningPlatform.Data.Entities.Base
 {
     public class FeedbackEntity
     {

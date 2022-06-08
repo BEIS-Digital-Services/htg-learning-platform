@@ -1,6 +1,4 @@
-﻿using Beis.LearningPlatform.BL.IntegrationServices;
-using Beis.LearningPlatform.BL.IntegrationServices.GovUkNotify;
-using Beis.LearningPlatform.BL.Services;
+﻿using Beis.LearningPlatform.BL.Services;
 using Beis.LearningPlatform.DAL.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;

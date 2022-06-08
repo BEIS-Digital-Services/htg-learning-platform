@@ -1,17 +1,4 @@
 using AutoFixture;
-using Beis.LearningPlatform.BL.Services;
-using Beis.LearningPlatform.Web.Controllers;
-using Beis.LearningPlatform.Web.Interfaces;
-using Beis.LearningPlatform.Web.Options;
-using Beis.LearningPlatform.Web.Services;
-using Beis.LearningPlatform.Web.Tests.MockClasses;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using Moq;
-using NUnit.Framework;
 using System.IO.Abstractions;
 using ConfigOptions = Microsoft.Extensions.Options.Options;
 

@@ -1,7 +1,4 @@
-﻿using AutoMapper;
-using Microsoft.Extensions.Logging;
-
-namespace Beis.LearningPlatform.DAL.Tests
+﻿namespace Beis.LearningPlatform.DAL.Tests
 {
     /// <summary>
     /// A class that defines a mock-up of a Data Service Base for testing purposes.

@@ -1,12 +1,4 @@
-﻿using Beis.LearningPlatform.Web.ControllerHelpers.Interfaces;
-using Beis.LearningPlatform.Web.Models;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Diagnostics;
-using System.Threading.Tasks;
-
-namespace Beis.LearningPlatform.Web.Controllers
+﻿namespace Beis.LearningPlatform.Web.Controllers
 {
     public class ComparisonToolController : ControllerBase
     {
@@ -85,7 +77,7 @@ namespace Beis.LearningPlatform.Web.Controllers
         public async Task<IActionResult> GetDiscount(string product_id)
         {
             var voucherJourneyRedirectUrl = await _comparisonToolHelper.GetVoucherJourneyRedirectUrl(Convert.ToInt64(product_id));
-            _logger.LogInformation($"ComparisonTool confirmed selection: {voucherJourneyRedirectUrl}");
+            _logger.LogInformation("ComparisonTool confirmed selection: {voucherJourneyRedirectUrl}", voucherJourneyRedirectUrl);
             return Redirect(voucherJourneyRedirectUrl);
         }
 

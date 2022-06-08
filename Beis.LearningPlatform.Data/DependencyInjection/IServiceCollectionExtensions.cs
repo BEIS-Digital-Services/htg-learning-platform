@@ -1,10 +1,6 @@
 ﻿using Beis.LearningPlatform.Data.Repositories;
-using Beis.LearningPlatform.Data.Repositories.DiagnosticTool;
-using Beis.LearningPlatform.Data.Repositories.Feedback;
-using Beis.LearningPlatform.Data.Repositories.Locations;
 using Beis.LearningPlatform.Data.Repositories.SatisfactionSurvey;
 using Beis.LearningPlatform.Data.Repositories.Skills;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace Beis.LearningPlatform.Data.DependencyInjection
 {

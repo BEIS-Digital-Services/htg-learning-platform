@@ -1,10 +1,4 @@
-﻿using Beis.LearningPlatform.Web.Models.DiagnosticTool;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Beis.LearningPlatform.Web.Utils
+﻿namespace Beis.LearningPlatform.Web.Utils
 {
     /// <summary>
     /// A class that defines extension methods to a Form Answer Option Element.

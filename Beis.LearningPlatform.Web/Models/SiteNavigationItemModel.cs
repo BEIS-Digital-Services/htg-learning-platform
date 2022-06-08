@@ -1,14 +1,6 @@
-﻿using Beis.LearningPlatform.Web.Interfaces;
-using Beis.LearningPlatform.Web.StrapiApi.Models;
-using Beis.LearningPlatform.Web.Utils;
-using Microsoft.AspNetCore.Http;
-using Newtonsoft.Json;
-using System;
-using System.Text.RegularExpressions;
-
-namespace Beis.LearningPlatform.Web.Models
+﻿namespace Beis.LearningPlatform.Web.Models
 {
-	public class SiteNavigationItemModel
+    public class SiteNavigationItemModel
 	{
 		/// <summary>
 		/// Id from the CMS item

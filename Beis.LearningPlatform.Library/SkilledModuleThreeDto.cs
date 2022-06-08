@@ -1,7 +1,4 @@
-﻿using Beis.LearningPlatform.Library.DTO.Base;
-using Beis.LearningPlatform.Library.Enums;
-
-namespace Beis.LearningPlatform.Library
+﻿namespace Beis.LearningPlatform.Library
 {
     /// <summary>
     /// A class that defines a DTO for a Skills modeul three results email data.

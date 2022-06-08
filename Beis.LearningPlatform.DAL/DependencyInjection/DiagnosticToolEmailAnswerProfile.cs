@@ -1,9 +1,4 @@
-﻿using AutoMapper;
-using Beis.LearningPlatform.Data.Entities.DiagnosticTool;
-using Beis.LearningPlatform.Library;
-using System.Diagnostics.CodeAnalysis;
-
-namespace Beis.LearningPlatform.DAL.DependencyInjection
+﻿namespace Beis.LearningPlatform.DAL.DependencyInjection
 {
     /// <summary>
     /// A class that defines a profile for a Diagnostic Tool Email Answer.

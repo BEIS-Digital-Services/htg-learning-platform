@@ -1,6 +1,3 @@
-using Beis.LearningPlatform.Web.Utils;
-using NUnit.Framework;
-
 namespace Beis.LearningPlatform.Web.Tests.ServicesTests
 {
     public class StrapiMakeApiCallServiceTests
