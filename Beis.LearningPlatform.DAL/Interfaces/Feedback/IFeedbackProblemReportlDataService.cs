@@ -1,7 +1,4 @@
-﻿using Beis.LearningPlatform.Library.DTO;
-using System.Threading.Tasks;
-
-namespace Beis.LearningPlatform.DAL
+﻿namespace Beis.LearningPlatform.DAL
 {
     /// <summary>
     /// An interface that defines the functionality of an Email data service.

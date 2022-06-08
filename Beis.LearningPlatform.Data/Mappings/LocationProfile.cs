@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Beis.LearningPlatform.Data.Entities.Locations;
 using Beis.LearningPlatform.Data.Models;
 
 namespace Beis.LearningPlatform.Data.Mappings

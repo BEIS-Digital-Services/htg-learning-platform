@@ -1,21 +1,7 @@
-﻿using Beis.LearningPlatform.Web.ControllerHelpers;
-using Beis.LearningPlatform.Web.Controllers;
-using Beis.LearningPlatform.Web.Models.DiagnosticTool;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using Moq;
-using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Beis.LearningPlatform.Web.Tests.ControllerTests
+﻿namespace Beis.LearningPlatform.Web.Tests.ControllerTests
 {
     public class SkillsTwoControllerTests : FormControllerBaseTest
     {
-
         protected override FormTypes GetFormType()
         {
             return FormTypes.SkillsTwo;

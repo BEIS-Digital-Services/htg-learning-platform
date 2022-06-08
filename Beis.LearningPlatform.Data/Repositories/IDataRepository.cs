@@ -1,9 +1,4 @@
-﻿using Beis.LearningPlatform.Data.Repositories.Feedback;
-using Beis.LearningPlatform.Data.Repositories.Locations;
-using System;
-using System.Threading.Tasks;
-
-namespace Beis.LearningPlatform.Data.Repositories
+﻿namespace Beis.LearningPlatform.Data.Repositories
 {
     /// <summary>
     /// Data Repository (Unit Of Work)

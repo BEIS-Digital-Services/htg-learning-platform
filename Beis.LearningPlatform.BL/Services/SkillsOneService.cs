@@ -1,13 +1,4 @@
-﻿using AutoMapper;
-using Beis.LearningPlatform.BL.Domain;
-using Beis.LearningPlatform.BL.IntegrationServices;
-using Beis.LearningPlatform.DAL;
-using Beis.LearningPlatform.Library;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Threading.Tasks;
-
-namespace Beis.LearningPlatform.BL.Services
+﻿namespace Beis.LearningPlatform.BL.Services
 {
     /// <summary>
     /// A class that defines an implementation of an SkillsOneService.

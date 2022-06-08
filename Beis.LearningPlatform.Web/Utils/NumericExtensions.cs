@@ -1,6 +1,4 @@
-﻿using System.Globalization;
-
-namespace Beis.LearningPlatform.Web.Utils
+﻿namespace Beis.LearningPlatform.Web.Utils
 {
     public static class NumericExtensions
     {

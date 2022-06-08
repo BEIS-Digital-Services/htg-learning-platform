@@ -1,6 +1,4 @@
-﻿using Beis.LearningPlatform.Web.Models;
-
-namespace Beis.LearningPlatform.Web.ControllerHelpers.Interfaces
+﻿namespace Beis.LearningPlatform.Web.ControllerHelpers.Interfaces
 {
     public interface ICookieControllerHelper : ICmsControllerHelperBase
     {

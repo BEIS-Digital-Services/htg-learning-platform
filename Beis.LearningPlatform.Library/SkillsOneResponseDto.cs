@@ -1,6 +1,4 @@
-﻿using Beis.LearningPlatform.Library.DTO.Base;
-
-namespace Beis.LearningPlatform.Library
+﻿namespace Beis.LearningPlatform.Library
 {
     public class SkillsOneResponseDto : DtoBase
     {

@@ -1,13 +1,3 @@
-using Beis.LearningPlatform.Web.ControllerHelpers;
-using Beis.LearningPlatform.Web.Controllers;
-using Beis.LearningPlatform.Web.Interfaces;
-using Beis.LearningPlatform.Web.Options;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using Moq;
-using NUnit.Framework;
 using ConfigOptions = Microsoft.Extensions.Options.Options;
 
 namespace Beis.LearningPlatform.Web.Tests.ServicesTests

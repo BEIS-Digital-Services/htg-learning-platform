@@ -1,21 +1,9 @@
-﻿using Beis.LearningPlatform.Data.Entities.Base;
-using Beis.LearningPlatform.Data.Entities.DiagnosticTool;
-using Beis.LearningPlatform.Data.Entities.Feedback;
-using Beis.LearningPlatform.Data.Entities.SatisfactionSurvey;
-using Beis.LearningPlatform.Data.Entities.Skills;
-using Beis.LearningPlatform.Data.Entities.Users;
-using Microsoft.AspNetCore.DataProtection.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.DataProtection.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Debug;
-using System;
-using System.Linq;
 using System.Security.Claims;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Beis.LearningPlatform.Data
 {

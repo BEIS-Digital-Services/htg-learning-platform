@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Beis.LearningPlatform.BL.IntegrationServices.Options
+﻿namespace Beis.LearningPlatform.BL.IntegrationServices.Options
 {
     public class NotifyServiceOption
     {

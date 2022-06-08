@@ -1,8 +1,4 @@
-﻿using Beis.LearningPlatform.BL.Models;
-using System.Net;
-using System.Threading.Tasks;
-
-namespace Beis.LearningPlatform.Web.Interfaces
+﻿namespace Beis.LearningPlatform.Web.Interfaces
 {
     public interface ICmsFeedbackService
     {

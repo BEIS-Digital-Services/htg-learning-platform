@@ -1,12 +1,4 @@
-﻿using Beis.LearningPlatform.BL.IntegrationServices;
-using Beis.LearningPlatform.BL.Services;
-using Beis.LearningPlatform.DAL;
-using Beis.LearningPlatform.Data.Entities.Skills;
-using Microsoft.Extensions.Logging;
-using Moq;
-using NUnit.Framework;
-using System;
-
+﻿using Beis.LearningPlatform.Data.Entities.Skills;
 
 namespace Beis.LearningPlatform.BL.Tests.Services
 {

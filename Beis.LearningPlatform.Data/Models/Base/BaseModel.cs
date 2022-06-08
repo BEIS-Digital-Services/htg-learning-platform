@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Beis.LearningPlatform.Data.Models.Base
+﻿namespace Beis.LearningPlatform.Data.Models.Base
 {
     public class BaseModel : Model
     {

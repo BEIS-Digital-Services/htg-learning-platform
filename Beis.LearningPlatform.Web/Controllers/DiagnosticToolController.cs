@@ -1,19 +1,4 @@
-﻿using Beis.LearningPlatform.Web.ComparisonTool.Models;
-using Beis.LearningPlatform.Web.ControllerHelpers.Interfaces;
-using Beis.LearningPlatform.Web.Interfaces;
-using Beis.LearningPlatform.Web.Models.DiagnosticTool;
-using Beis.LearningPlatform.Web.Options;
-using Beis.LearningPlatform.Web.StrapiApi.Models;
-using Beis.LearningPlatform.Web.Utils;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Beis.LearningPlatform.Web.Controllers
+﻿namespace Beis.LearningPlatform.Web.Controllers
 {
     /// <summary>
     /// A class that defines a controller for the Diagnostic Tool.
@@ -178,8 +163,7 @@ namespace Beis.LearningPlatform.Web.Controllers
             }
             catch (Exception ex)
             {
-                var routeUrl = HttpContext.Request.Headers["Referer"].ToString();
-                _logger.LogError(ex, routeUrl + "Error in ProcessGetProductList: " + ex.Message);
+                _logger.LogError(ex, "{routeUrl} Error in ProcessGetProductList: {message}", HttpContext.Request.Headers["Referer"].ToString(), ex.Message);
                 return new List<ComparisonToolProduct>();
             }
 

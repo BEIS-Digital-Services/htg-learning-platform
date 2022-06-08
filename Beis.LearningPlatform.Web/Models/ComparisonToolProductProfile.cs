@@ -1,9 +1,4 @@
-﻿using AutoMapper;
-using Beis.Htg.VendorSme.Database.Models;
-using Beis.LearningPlatform.Web.ComparisonTool.Models;
-using System.Collections.Generic;
-
-namespace Beis.LearningPlatform.Web.ComparisonTool.DependencyInjection
+﻿namespace Beis.LearningPlatform.Web.ComparisonTool.DependencyInjection
 {
     /// <summary>
     /// A class that defines a profile for a Diagnostic Tool Email Answer.
