@@ -1,7 +1,4 @@
-﻿using Beis.LearningPlatform.Data.Entities.Skills;
-using Beis.LearningPlatform.Data.Repositories.Base;
-
-namespace Beis.LearningPlatform.Data.Repositories.Skills
+﻿namespace Beis.LearningPlatform.Data.Repositories.Skills
 {
     /// <summary>
     /// A class that defines an implementation of a Skills Three Response repository.

@@ -1,9 +1,4 @@
-﻿using Beis.LearningPlatform.Web.StrapiApi.Models;
-using Beis.LearningPlatform.Web.Utils;
-using FluentAssertions;
-using NUnit.Framework;
-
-namespace Beis.LearningPlatform.Web.Tests.Utils
+﻿namespace Beis.LearningPlatform.Web.Tests.Utils
 {
 
     [TestFixture]

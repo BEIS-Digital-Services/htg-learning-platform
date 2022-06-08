@@ -1,9 +1,4 @@
-﻿using Beis.LearningPlatform.Web.Models.DiagnosticTool;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace Beis.LearningPlatform.Web.Utils
+﻿namespace Beis.LearningPlatform.Web.Utils
 {
     /// <summary>
     /// A class that defines extension methods for a Form Step Element.
@@ -101,7 +96,7 @@ namespace Beis.LearningPlatform.Web.Utils
             hasAdditionalInfo = false;
             id = 0;
 
-            if (answerData.Contains("|"))
+            if (answerData.Contains('|'))
             {
                 string[] parts = answerData.Split('|');
                 if (parts?.Length == 3 && int.TryParse(parts[0], out id))

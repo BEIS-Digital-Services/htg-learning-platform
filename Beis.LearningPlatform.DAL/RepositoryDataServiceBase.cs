@@ -1,8 +1,4 @@
-﻿using AutoMapper;
-using Beis.LearningPlatform.Data.Repositories;
-using Beis.LearningPlatform.Data.Repositories.Base;
-using Microsoft.Extensions.Logging;
-using System.Threading.Tasks;
+﻿using Beis.LearningPlatform.Data.Repositories.Base;
 
 namespace Beis.LearningPlatform.DAL
 {

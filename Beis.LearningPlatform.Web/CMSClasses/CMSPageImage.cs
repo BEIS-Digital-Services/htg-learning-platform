@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Beis.LearningPlatform.Web.StrapiApi.Models
+﻿namespace Beis.LearningPlatform.Web.StrapiApi.Models
 {
     public class CMSPageImage
     {

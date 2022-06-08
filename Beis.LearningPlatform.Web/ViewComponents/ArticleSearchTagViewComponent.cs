@@ -1,8 +1,4 @@
-﻿using Beis.LearningPlatform.Web.Models;
-using Beis.LearningPlatform.Web.StrapiApi.Models;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
+﻿using Microsoft.Extensions.Primitives;
 
 namespace Beis.LearningPlatform.Web.ViewComponents
 {
@@ -17,7 +13,8 @@ namespace Beis.LearningPlatform.Web.ViewComponents
 
         public IViewComponentResult Invoke(IList<CMSSearchTag> searchTags)
         {
-            _httpContextAccessor.HttpContext?.Request.Query.TryGetValue("yourTags", out var yourTags);
+            var yourTags = StringValues.Empty;
+            _httpContextAccessor.HttpContext?.Request.Query.TryGetValue("yourTags", out yourTags);
             return View(new ArticleSearchTagViewModel
             {
                 Tags = searchTags,

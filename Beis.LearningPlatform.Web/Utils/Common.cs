@@ -1,6 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.Text.RegularExpressions;
+﻿using ValidationContext = System.ComponentModel.DataAnnotations.ValidationContext;
 
 namespace Beis.LearningPlatform.Web.Utils
 {

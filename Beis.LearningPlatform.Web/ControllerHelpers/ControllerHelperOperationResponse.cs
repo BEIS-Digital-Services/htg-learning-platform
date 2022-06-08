@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Beis.LearningPlatform.Web.ControllerHelpers
+﻿namespace Beis.LearningPlatform.Web.ControllerHelpers
 {
     /// <summary>
     /// A class that defines a response from a controller helper operation.

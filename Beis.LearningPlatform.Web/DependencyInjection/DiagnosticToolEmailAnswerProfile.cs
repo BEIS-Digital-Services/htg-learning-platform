@@ -1,8 +1,4 @@
-﻿using AutoMapper;
-using Beis.LearningPlatform.Library;
-using Beis.LearningPlatform.Web.Models.DiagnosticTool;
-
-namespace Beis.LearningPlatform.Web.DependencyInjection
+﻿namespace Beis.LearningPlatform.Web.DependencyInjection
 {
     /// <summary>
     /// A class that defines a profile for an Email Answer.

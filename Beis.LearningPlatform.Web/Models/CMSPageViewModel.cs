@@ -1,10 +1,4 @@
-﻿using Beis.LearningPlatform.Web.Interfaces;
-using Beis.LearningPlatform.Web.Models;
-using Beis.LearningPlatform.Web.Utils;
-using System;
-using System.Collections.Generic;
-
-namespace Beis.LearningPlatform.Web.StrapiApi.Models
+﻿namespace Beis.LearningPlatform.Web.StrapiApi.Models
 {
     public class CMSPageViewModel : IPageViewModel
     {

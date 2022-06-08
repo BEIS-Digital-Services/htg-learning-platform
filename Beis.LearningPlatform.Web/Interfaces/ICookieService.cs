@@ -1,6 +1,4 @@
-﻿using Beis.LearningPlatform.Web.Models;
-
-namespace Beis.LearningPlatform.Web.Interfaces
+﻿namespace Beis.LearningPlatform.Web.Interfaces
 {
     /// <summary>
     /// Serialise all settings into one json cookie?

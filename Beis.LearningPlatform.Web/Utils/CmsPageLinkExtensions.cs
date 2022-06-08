@@ -1,9 +1,6 @@
-﻿using System;
-using Beis.LearningPlatform.Web.StrapiApi.Models;
-
-namespace Beis.LearningPlatform.Web.Utils
+﻿namespace Beis.LearningPlatform.Web.Utils
 {
-	public static class CmsPageLinkExtensions
+    public static class CmsPageLinkExtensions
 	{
 		public static string GetGaLinkId(this ICmsPageLink cMSPageLink, string prefix = null)
 		{

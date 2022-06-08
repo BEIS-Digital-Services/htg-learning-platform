@@ -1,7 +1,3 @@
-using Beis.LearningPlatform.Web.StrapiApi.Models;
-using Beis.LearningPlatform.Web.Tests.MockClasses;
-using NUnit.Framework;
-
 namespace Beis.LearningPlatform.Web.Tests.ClassTests
 {
     public class CMSClassesTests

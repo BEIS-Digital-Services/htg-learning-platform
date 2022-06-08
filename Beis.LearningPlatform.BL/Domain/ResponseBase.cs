@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Beis.LearningPlatform.BL.Domain
+﻿namespace Beis.LearningPlatform.BL.Domain
 {
     /// <summary>
     /// A class that defines the base functionality of a response.

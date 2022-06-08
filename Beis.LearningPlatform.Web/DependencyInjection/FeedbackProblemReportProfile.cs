@@ -1,9 +1,4 @@
-﻿using AutoMapper;
-using Beis.LearningPlatform.BL.Models;
-using Beis.LearningPlatform.Library.DTO;
-using Beis.LearningPlatform.Web.StrapiApi.Models;
-
-namespace Beis.LearningPlatform.Web.DependencyInjection
+﻿namespace Beis.LearningPlatform.Web.DependencyInjection
 {
     public class FeedbackProblemReportProfile : Profile
     {

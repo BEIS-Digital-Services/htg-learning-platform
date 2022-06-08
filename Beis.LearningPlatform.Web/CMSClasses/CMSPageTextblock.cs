@@ -1,6 +1,4 @@
-﻿using Beis.LearningPlatform.Web.Utils;
-
-namespace Beis.LearningPlatform.Web.StrapiApi.Models
+﻿namespace Beis.LearningPlatform.Web.StrapiApi.Models
 {
     public class CMSPageTextblock
     {

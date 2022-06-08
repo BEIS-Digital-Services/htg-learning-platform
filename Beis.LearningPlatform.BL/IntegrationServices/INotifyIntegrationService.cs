@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace Beis.LearningPlatform.BL.IntegrationServices
+﻿namespace Beis.LearningPlatform.BL.IntegrationServices
 {
     /// <summary>
     /// An interface that defines the behaviour of an integration service for Notify.

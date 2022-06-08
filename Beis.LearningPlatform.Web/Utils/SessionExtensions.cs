@@ -1,8 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using System;
-using System.Text.Json;
-
-namespace Beis.LearningPlatform.Web.Utils
+﻿namespace Beis.LearningPlatform.Web.Utils
 {
     public static class SessionExtensions
     {
@@ -22,14 +18,14 @@ namespace Beis.LearningPlatform.Web.Utils
 
             var json = session.GetString(key);
             if (json != null)
-                returnValue = JsonSerializer.Deserialize<T>(json);
+                returnValue = System.Text.Json.JsonSerializer.Deserialize<T>(json);
 
             return returnValue;
         }
 
         public static void SetObject(this ISession session, string key, object value)
         {
-            string json = JsonSerializer.Serialize(value);
+            string json = System.Text.Json.JsonSerializer.Serialize(value);
             session.SetString(key, json);
         }
 
