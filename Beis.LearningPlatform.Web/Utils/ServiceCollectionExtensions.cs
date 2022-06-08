@@ -15,6 +15,8 @@ namespace Beis.LearningPlatform.Web.Utils
     {
         internal static void RegisterAllServices(this IServiceCollection services, IConfiguration configuration, bool useSsl)
         {
+            FormSearchTagsExtensions.StrapiApiUrl = configuration["CmsConfig:ApiBaseUrl"];
+
             services.AddLogging(options => { options.AddConsole(); });
             if (!string.IsNullOrWhiteSpace(configuration["ApplicationInsightsConfig:Key"]))
                 services.AddApplicationInsightsTelemetry(configuration["ApplicationInsightsConfig:Key"]);
