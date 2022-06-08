@@ -318,7 +318,14 @@ namespace Beis.LearningPlatform.Web.ControllerHelpers
                 {
                     saveDataResult = await SaveSkillsThreeResponse(form);
                 }
-                if (saveDataResult?.Result == true && form.EmailAnswer.HasEmailAddress)
+
+                if (saveDataResult?.Result != true)
+                { 
+                    // Display save data error
+                    isValid = false;
+                    form.validationErrors.Add(new FormValidationError() { id = 1, errorHeading = "Error Saving Data", errorMessage = saveDataResult.Message });                    
+                }
+                else if (form.EmailAnswer.HasEmailAddress)
                 {
                     // Send the results email to the user
                     var sendEmailResult = await SendResultsEmail(form.EmailAnswer, form);
@@ -605,10 +612,10 @@ namespace Beis.LearningPlatform.Web.ControllerHelpers
             var payload =  await helper.ConvertToResultsEmail(form);
 
             var result = await _emailService.SendResultsRemail(requestID, emailAnswer.UserEmailAddress, payload);
-                if (result.IsValid)
-                    isSuccessful = true;
-                else
-                    message = result.Message;
+            if (result.IsValid)
+                isSuccessful = true;
+            else
+                message = result.Message;
 
             return new ControllerHelperOperationResponse(requestID, isSuccessful, message);
         }
