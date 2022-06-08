@@ -1,13 +1,4 @@
-﻿using AutoMapper;
-using Beis.LearningPlatform.Data.Entities.Feedback;
-using Beis.LearningPlatform.Data.Repositories;
-using Beis.LearningPlatform.Data.Repositories.Feedback;
-using Beis.LearningPlatform.Library.DTO;
-using Microsoft.Extensions.Logging;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Beis.LearningPlatform.DAL
+﻿namespace Beis.LearningPlatform.DAL
 {
     /// <summary>
     /// A class that defines an implementation of an Email data service.

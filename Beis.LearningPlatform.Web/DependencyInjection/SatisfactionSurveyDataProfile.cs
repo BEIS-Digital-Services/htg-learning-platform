@@ -1,7 +1,4 @@
-﻿using AutoMapper;
-using Beis.LearningPlatform.Library;
-using Beis.LearningPlatform.Web.Models;
-using System.Text.Encodings.Web;
+﻿using System.Text.Encodings.Web;
 
 namespace Beis.LearningPlatform.Web.DependencyInjection
 {

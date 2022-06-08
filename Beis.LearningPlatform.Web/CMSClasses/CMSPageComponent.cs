@@ -1,7 +1,4 @@
 ﻿using Beis.LearningPlatform.Web.Enums;
-using Beis.LearningPlatform.Web.Models;
-using System.Collections.Generic;
-using Beis.LearningPlatform.Web.Utils;
 
 namespace Beis.LearningPlatform.Web.StrapiApi.Models
 {

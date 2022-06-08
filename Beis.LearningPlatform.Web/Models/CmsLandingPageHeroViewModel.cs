@@ -1,8 +1,6 @@
-﻿using Beis.LearningPlatform.Web.StrapiApi.Models;
-
-namespace Beis.LearningPlatform.Web.Models
+﻿namespace Beis.LearningPlatform.Web.Models
 {
-	public class CmsLandingPageHeroViewModel
+    public class CmsLandingPageHeroViewModel
 	{
 		public string Header { get; set; }
 		public string Intro { get; set; }

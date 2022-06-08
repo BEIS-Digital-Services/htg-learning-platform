@@ -1,12 +1,4 @@
-﻿using Beis.LearningPlatform.Web.ControllerHelpers.Interfaces;
-using Beis.LearningPlatform.Web.Models;
-using Beis.LearningPlatform.Web.Services;
-using Beis.LearningPlatform.Web.Utils;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
-
-namespace Beis.LearningPlatform.Web.Controllers
+﻿namespace Beis.LearningPlatform.Web.Controllers
 {
     public class SatisfactionSurveyController : Controller
     {

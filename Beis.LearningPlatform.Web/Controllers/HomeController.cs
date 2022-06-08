@@ -1,14 +1,4 @@
-﻿using Beis.LearningPlatform.Web.ControllerHelpers.Interfaces;
-using Beis.LearningPlatform.Web.Models;
-using Beis.LearningPlatform.Web.StrapiApi.Models;
-using Beis.LearningPlatform.Web.Utils;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Beis.LearningPlatform.Web.Controllers
+﻿namespace Beis.LearningPlatform.Web.Controllers
 {
     public class HomeController : CmsControllerBase
     {

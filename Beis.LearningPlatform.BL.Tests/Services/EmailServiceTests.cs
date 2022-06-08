@@ -1,17 +1,7 @@
-﻿using AutoMapper;
-using Beis.LearningPlatform.BL.IntegrationServices;
+﻿using Beis.LearningPlatform.BL.IntegrationServices;
 using Beis.LearningPlatform.BL.IntegrationServices.Options;
 using Beis.LearningPlatform.BL.Models;
-using Beis.LearningPlatform.BL.Services;
-using Beis.LearningPlatform.DAL;
-using Beis.LearningPlatform.Library;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Moq;
-using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace Beis.LearningPlatform.BL.Tests.Services
 {

@@ -1,6 +1,4 @@
-﻿using AutoMapper;
-using Beis.LearningPlatform.BL.DependencyInjection;
-using NUnit.Framework;
+﻿using Beis.LearningPlatform.BL.DependencyInjection;
 
 namespace Beis.LearningPlatform.BL.Tests
 {

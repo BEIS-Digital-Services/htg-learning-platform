@@ -1,11 +1,4 @@
-﻿using Beis.LearningPlatform.Web.Interfaces;
-using Beis.LearningPlatform.Web.Models;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Net;
-
-namespace Beis.LearningPlatform.Web.Controllers
+﻿namespace Beis.LearningPlatform.Web.Controllers
 {
     /// <summary>
     /// A class that defines the base functionality of a controller.

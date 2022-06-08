@@ -1,6 +1,4 @@
-﻿using System.Threading.Tasks;
-
-namespace Beis.LearningPlatform.Web.ControllerHelpers.Interfaces
+﻿namespace Beis.LearningPlatform.Web.ControllerHelpers.Interfaces
 {
     /// <summary>
     /// An interface that defines the behaviour of a helper for the Email controller.

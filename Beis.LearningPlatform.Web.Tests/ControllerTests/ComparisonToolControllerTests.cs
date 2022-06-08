@@ -1,5 +1,4 @@
-﻿using Beis.LearningPlatform.Web.ComparisonTool.Models;
-using Beis.LearningPlatform.Web.Configuration;
+﻿using Beis.LearningPlatform.Web.Configuration;
 using Beis.LearningPlatform.Web.ControllerHelpers;
 using Beis.LearningPlatform.Web.ControllerHelpers.Interfaces;
 using Beis.LearningPlatform.Web.Controllers;

@@ -1,17 +1,4 @@
-﻿using AutoMapper;
-using Beis.LearningPlatform.BL.Models;
-using Beis.LearningPlatform.Web.ControllerHelpers.Interfaces;
-using Beis.LearningPlatform.Web.Interfaces;
-using Beis.LearningPlatform.Web.Options;
-using Beis.LearningPlatform.Web.StrapiApi.Models;
-using Beis.LearningPlatform.Web.Utils;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using System.Net;
-using System.Threading.Tasks;
-
-namespace Beis.LearningPlatform.Web.ControllerHelpers
+﻿namespace Beis.LearningPlatform.Web.ControllerHelpers
 {
 
     public class FeedbackControllerHelper : CmsControllerHelperBase, IFeedbackControllerHelper

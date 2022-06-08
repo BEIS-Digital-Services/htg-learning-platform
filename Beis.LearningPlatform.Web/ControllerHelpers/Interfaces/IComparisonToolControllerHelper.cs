@@ -1,9 +1,4 @@
-﻿using Beis.LearningPlatform.Web.ComparisonTool.Models;
-using Beis.LearningPlatform.Web.Models;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace Beis.LearningPlatform.Web.ControllerHelpers.Interfaces
+﻿namespace Beis.LearningPlatform.Web.ControllerHelpers.Interfaces
 {
     public interface IComparisonToolControllerHelper
     {

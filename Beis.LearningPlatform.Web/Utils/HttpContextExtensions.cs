@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using System;
-
-namespace Beis.LearningPlatform.Web.Utils
+﻿namespace Beis.LearningPlatform.Web.Utils
 {
     public static class HttpContextExtensions
 	{

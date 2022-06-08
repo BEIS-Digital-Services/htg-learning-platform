@@ -1,10 +1,4 @@
-﻿using Beis.LearningPlatform.BL.Services;
-using Beis.LearningPlatform.Web.ControllerHelpers.Interfaces;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Threading.Tasks;
-
-namespace Beis.LearningPlatform.Web.ControllerHelpers
+﻿namespace Beis.LearningPlatform.Web.ControllerHelpers
 {
     /// <summary>
     /// A class that defines an implementation of a helper for the Email controller.

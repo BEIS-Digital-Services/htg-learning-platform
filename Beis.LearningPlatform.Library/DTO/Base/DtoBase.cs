@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Beis.LearningPlatform.Library.DTO.Base
+﻿namespace Beis.LearningPlatform.Library.DTO.Base
 {
     /// <summary>
     /// A class that defines the base properties of a DTO.

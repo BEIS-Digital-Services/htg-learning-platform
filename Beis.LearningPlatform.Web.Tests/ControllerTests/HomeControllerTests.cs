@@ -1,18 +1,3 @@
-using Beis.LearningPlatform.Web.ControllerHelpers;
-using Beis.LearningPlatform.Web.Controllers;
-using Beis.LearningPlatform.Web.Interfaces;
-using Beis.LearningPlatform.Web.Models;
-using Beis.LearningPlatform.Web.Options;
-using Beis.LearningPlatform.Web.StrapiApi.Models;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using Moq;
-using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using ConfigOptions = Microsoft.Extensions.Options.Options;
 
 namespace Beis.LearningPlatform.Web.Tests.ControllerTests

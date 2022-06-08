@@ -1,7 +1,4 @@
-﻿using Beis.LearningPlatform.Web.Services;
-using NUnit.Framework;
-
-namespace Beis.LearningPlatform.Web.Tests.ServicesTests
+﻿namespace Beis.LearningPlatform.Web.Tests.ServicesTests
 {
     public class HtmlTextServiceTests
     {

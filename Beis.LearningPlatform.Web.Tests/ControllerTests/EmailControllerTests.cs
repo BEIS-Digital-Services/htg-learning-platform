@@ -1,18 +1,4 @@
-﻿using Beis.LearningPlatform.BL.Domain;
-using Beis.LearningPlatform.BL.Services;
-using Beis.LearningPlatform.Web.ControllerHelpers;
-using Beis.LearningPlatform.Web.ControllerHelpers.Interfaces;
-using Beis.LearningPlatform.Web.Controllers;
-using Beis.LearningPlatform.Web.Models;
-using FluentAssertions;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using Moq;
-using NUnit.Framework;
-using System;
-using System.Threading.Tasks;
-
-namespace Beis.LearningPlatform.Web.Tests.ControllerTests
+﻿namespace Beis.LearningPlatform.Web.Tests.ControllerTests
 {
     public class EmailControllerTests
     {

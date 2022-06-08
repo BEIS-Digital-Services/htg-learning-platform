@@ -1,13 +1,4 @@
-﻿using AutoMapper;
-using Beis.LearningPlatform.BL.Services;
-using Beis.LearningPlatform.Library;
-using Beis.LearningPlatform.Web.ControllerHelpers.Interfaces;
-using Beis.LearningPlatform.Web.Models;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Threading.Tasks;
-
-namespace Beis.LearningPlatform.Web.ControllerHelpers
+﻿namespace Beis.LearningPlatform.Web.ControllerHelpers
 {
     public class SatisfactionSurveyControllerHelper : ControllerHelperBase, ISatisfactionSurveyControllerHelper
     {
@@ -25,8 +16,7 @@ namespace Beis.LearningPlatform.Web.ControllerHelpers
         public async Task<ControllerHelperOperationResponse> SaveSatisfactionSurvey(SatisfactionSurveyViewModel surveyForm)
         {
             var requestId = RecordRequest();
-            var traceMsg = $"{nameof(SaveSatisfactionSurvey)} ({requestId})";
-            _logger.LogTrace(traceMsg);
+            _logger.LogTrace("{SaveSatisfactionSurvey} ({requestId})", nameof(SaveSatisfactionSurvey), requestId);
 
             try
             {
@@ -34,14 +24,14 @@ namespace Beis.LearningPlatform.Web.ControllerHelpers
                 var result = await _satisfactionSurveyService.SaveSatisfactionSurvey(requestId, satisfactionSurveyDto);
                 if (!result.IsValid)
                 {
-                    throw new ApplicationException(result.Message ?? traceMsg);
+                    throw new ApplicationException(result.Message ?? $"{nameof(SaveSatisfactionSurvey)} ({requestId})");
                 }
 
                 return new ControllerHelperOperationResponse(requestId, true);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, traceMsg);
+                _logger.LogError(ex, "{SaveSatisfactionSurvey} ({requestId})", nameof(SaveSatisfactionSurvey), requestId);
                 return new ControllerHelperOperationResponse(requestId, false, "Failed to save survey");
             }
 

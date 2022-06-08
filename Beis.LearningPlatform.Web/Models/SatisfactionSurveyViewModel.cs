@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-
-namespace Beis.LearningPlatform.Web.Models
+﻿namespace Beis.LearningPlatform.Web.Models
 {
     public class SatisfactionSurveyViewModel
     {
