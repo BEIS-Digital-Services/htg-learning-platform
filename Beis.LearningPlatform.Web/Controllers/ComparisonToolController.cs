@@ -49,9 +49,7 @@
         [Route("/comparison-tool/filter-by/{productCategoryIds}/include-product")]
         public async Task<IActionResult> IncludeProduct(string productIds, string productCategoryIds)
         {
-            //var cmsPageViewModel = await _homeControllerHelper.ProcessGetCustomPageResult("Custom-pages/comparison-tool");
             var viewModel = await _comparisonToolHelper.InitViewModel("include-product", productCategoryIds);
-            //viewModel.CMSPageViewModel = cmsPageViewModel;
             await UpdateCmsPageViewModel(viewModel);
             _comparisonToolHelper.SetViewModelUserJourneyData(viewModel, productCategoryIds, productIds, "/");
             return View("Start", viewModel);
@@ -97,10 +95,7 @@
 
         private async Task<ViewResult> GetStartPage(bool jsEnabled)
         {
-            //var cmsPageViewModel = await _homeControllerHelper.ProcessGetCustomPageResult("Custom-pages/comparison-tool");
-
             var viewModel = await _comparisonToolHelper.InitViewModel("start", populateRelationalData: false);
-            //viewModel.CMSPageViewModel = cmsPageViewModel;
             await UpdateCmsPageViewModel(viewModel);
 
             _comparisonToolHelper.SetViewModelUserJourneyData(viewModel, null, null, "/");
@@ -110,11 +105,8 @@
 
         private async Task<ViewResult> GetCompareDetails(string selectedProductCategoryIds, string selectedProductIds, bool jsEnabled)
         {
-            //var cmsPageViewModel = await _homeControllerHelper.ProcessGetCustomPageResult("Custom-pages/comparison-tool");
-
             var viewModel = await _comparisonToolHelper.InitViewModel("compare-products", selectedProductCategoryIds, selectedProductIds);
             await UpdateCmsPageViewModel(viewModel);
-            //viewModel.CMSPageViewModel = cmsPageViewModel;
             _comparisonToolHelper.SetViewModelUserJourneyData(viewModel, selectedProductCategoryIds, selectedProductIds, "/comparison-tool");
 
             UpdateViewModel(jsEnabled, viewModel);
@@ -128,10 +120,7 @@
 
         private async Task<ViewResult> GetProductDetails(string productId, bool jsEnabled)
         {
-            //var cmsPageViewModel = await _homeControllerHelper.ProcessGetCustomPageResult("Custom-pages/comparison-tool-product");
-
             var viewModel = await _comparisonToolHelper.InitViewModelForSelectedProduct(Convert.ToInt64(productId));
-            //viewModel.CMSPageViewModel = cmsPageViewModel;
             await UpdateCmsPageViewModel(viewModel, "comparison-tool-product");
 
             UpdateViewModel(jsEnabled, viewModel);
