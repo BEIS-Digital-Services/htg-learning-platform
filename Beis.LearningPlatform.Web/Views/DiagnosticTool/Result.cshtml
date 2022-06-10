@@ -6,6 +6,9 @@
 
     Model.ResetSteps();
     var tagList = new List<string>();
+    var accountingProducts = Model.GetAccountingProducts();
+    var crmProducts = Model.GetCrmProducts();
+    var eCommerceProducts = Model.GetECommerceProducts();
 }
 
 <hr class="beis-grey divider" aria-hidden="true">
@@ -114,41 +117,41 @@
         @if (Model.ComparisonToolProducts?.Count > 0)
         {
             var subHeader = string.Empty;
-            int currentCategoryId = 0;
+            var currentCategoryId = 0;
             <div class="govuk-width-container govuk-!-padding-top-8  govuk-!-padding-bottom-8 product">
-                if (Model.AccountingProducts?.Count > 0)
+                @if (accountingProducts?.Count > 0)
                 {
-                    @subHeader = "Digital accounting software";
+                    subHeader = "Digital accounting software";
                     currentCategoryId = Model.Tags.Single(r => r.name.Equals("accounting", StringComparison.OrdinalIgnoreCase)).id;
                     <div class="jsLink">
-                        <partial name="ComparisonToolViews/_PartialProductCategory" model="new ComparisonToolProductCategoryViewModel { CurrentCategoryId = currentCategoryId, productsForCurrentCategoryToRender = Model.GetAccountingProducts(), subheader = @subHeader, VendorProdLogorUrl = Model.VendorProdLogorUrl }" />
+                        <partial name="ComparisonToolViews/_PartialProductCategory" model="new ComparisonToolProductCategoryViewModel { CurrentCategoryId = currentCategoryId, productsForCurrentCategoryToRender = accountingProducts, subheader = subHeader, VendorProdLogorUrl = Model.VendorProdLogorUrl }"/>
                     </div>
                     <div class="noJsLink">
-                        <partial name="ComparisonToolViews/_PartialProductCategoryNoJs" model="new ComparisonToolProductCategoryViewModel { CurrentCategoryId = currentCategoryId, productsForCurrentCategoryToRender = Model.GetAccountingProducts(), subheader = @subHeader, VendorProdLogorUrl = Model.VendorProdLogorUrl }" />
+                        <partial name="ComparisonToolViews/_PartialProductCategoryNoJs" model="new ComparisonToolProductCategoryViewModel { CurrentCategoryId = currentCategoryId, productsForCurrentCategoryToRender = accountingProducts, subheader = subHeader, VendorProdLogorUrl = Model.VendorProdLogorUrl }"/>
                     </div>
                 }
 
-                if (Model.CrmProducts?.Count > 0)
+                @if (crmProducts?.Count > 0)
                 {
-                    @subHeader = "Customer Relationship Management (CRM) Software";
+                    subHeader = "Customer Relationship Management (CRM) Software";
                     currentCategoryId = Model.Tags.Single(r => r.name.Equals("crm", StringComparison.OrdinalIgnoreCase)).id;
                     <div class="jsLink">
-                        <partial name="ComparisonToolViews/_PartialProductCategory" model="new ComparisonToolProductCategoryViewModel { CurrentCategoryId = currentCategoryId, productsForCurrentCategoryToRender = Model.GetCrmProducts(), subheader = @subHeader, VendorProdLogorUrl = Model.VendorProdLogorUrl }" />
+                        <partial name="ComparisonToolViews/_PartialProductCategory" model="new ComparisonToolProductCategoryViewModel { CurrentCategoryId = currentCategoryId, productsForCurrentCategoryToRender = crmProducts, subheader = subHeader, VendorProdLogorUrl = Model.VendorProdLogorUrl }"/>
                     </div>
                     <div class="noJsLink">
-                        <partial name="ComparisonToolViews/_PartialProductCategoryNoJs" model="new ComparisonToolProductCategoryViewModel { CurrentCategoryId = currentCategoryId, productsForCurrentCategoryToRender = Model.GetCrmProducts(), subheader = @subHeader, VendorProdLogorUrl = Model.VendorProdLogorUrl }" />
+                        <partial name="ComparisonToolViews/_PartialProductCategoryNoJs" model="new ComparisonToolProductCategoryViewModel { CurrentCategoryId = currentCategoryId, productsForCurrentCategoryToRender = crmProducts, subheader = subHeader, VendorProdLogorUrl = Model.VendorProdLogorUrl }"/>
                     </div>
                 }
 
-                if (Model.ECommerceProducts?.Count > 0)
+                @if (eCommerceProducts?.Count > 0)
                 {
-                    @subHeader = "eCommerce software";
+                    subHeader = "eCommerce software";
                     currentCategoryId = Model.Tags.Single(r => r.name.Equals("ecommerce", StringComparison.OrdinalIgnoreCase)).id;
                     <div class="jsLink">
-                        <partial name="ComparisonToolViews/_PartialProductCategory" model="new ComparisonToolProductCategoryViewModel { CurrentCategoryId = currentCategoryId, productsForCurrentCategoryToRender = Model.GetECommerceProducts(), subheader = @subHeader, VendorProdLogorUrl = Model.VendorProdLogorUrl }" />
+                        <partial name="ComparisonToolViews/_PartialProductCategory" model="new ComparisonToolProductCategoryViewModel { CurrentCategoryId = currentCategoryId, productsForCurrentCategoryToRender = eCommerceProducts, subheader = subHeader, VendorProdLogorUrl = Model.VendorProdLogorUrl }"/>
                     </div>
                     <div class="noJsLink">
-                        <partial name="ComparisonToolViews/_PartialProductCategoryNoJs" model="new ComparisonToolProductCategoryViewModel { CurrentCategoryId = currentCategoryId, productsForCurrentCategoryToRender = Model.GetECommerceProducts(), subheader = @subHeader, VendorProdLogorUrl = Model.VendorProdLogorUrl }" />
+                        <partial name="ComparisonToolViews/_PartialProductCategoryNoJs" model="new ComparisonToolProductCategoryViewModel { CurrentCategoryId = currentCategoryId, productsForCurrentCategoryToRender = eCommerceProducts, subheader = subHeader, VendorProdLogorUrl = Model.VendorProdLogorUrl }"/>
                     </div>
                 }
             </div>
