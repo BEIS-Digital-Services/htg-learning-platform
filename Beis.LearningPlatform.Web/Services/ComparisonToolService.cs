@@ -1,15 +1,4 @@
-﻿using AutoMapper;
-using Beis.Htg.VendorSme.Database.Models;
-using Beis.LearningPlatform.DAL.Repositories.ProductRepositories.Interface;
-using Beis.LearningPlatform.DAL.Repositories.ProductRepositories.Pricing;
-using Beis.LearningPlatform.Web.ComparisonTool.Models;
-using Beis.LearningPlatform.Web.Interfaces;
-using Beis.LearningPlatform.Web.Models;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Beis.LearningPlatform.Web.Services
+﻿namespace Beis.LearningPlatform.Web.Services
 {
     public class ComparisonToolService : IComparisonToolService
     {

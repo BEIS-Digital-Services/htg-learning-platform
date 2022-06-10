@@ -1,8 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
-using Notify.Client;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using Notify.Client;
 
 namespace Beis.LearningPlatform.BL.IntegrationServices.GovUkNotify
 {
@@ -58,7 +54,7 @@ namespace Beis.LearningPlatform.BL.IntegrationServices.GovUkNotify
                 var client = new NotificationClient(_baseURL, _apiKey);
                 foreach (var emailAddress in emailAddresses)
                 {
-                    _logger.LogInformation($"Sending email template '{templateId}' to '{emailAddress}'");
+                    _logger.LogInformation("Sending email template '{templateId}' to '{emailAddress}'", templateId, emailAddress);
 
                     var sendEmailResult = await client.SendEmailAsync(emailAddress, templateId, personalisation);
                 }

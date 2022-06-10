@@ -1,8 +1,4 @@
-﻿using Beis.LearningPlatform.Web.ControllerHelpers.Interfaces;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace Beis.LearningPlatform.Web.ControllerHelpers
+﻿namespace Beis.LearningPlatform.Web.ControllerHelpers
 {
     public class EmailResponseHelperFactory : IEmailResponseHelperFactory
     {

@@ -1,12 +1,4 @@
-﻿using Beis.LearningPlatform.Data.Entities.Base;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Threading.Tasks;
-
-namespace Beis.LearningPlatform.Data.Repositories.Base
+﻿namespace Beis.LearningPlatform.Data.Repositories.Base
 {
     /// <summary>
     /// Generic Repository

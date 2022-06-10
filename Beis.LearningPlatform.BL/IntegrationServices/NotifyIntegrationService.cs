@@ -1,12 +1,4 @@
-﻿using Beis.LearningPlatform.BL.IntegrationServices.GovUkNotify;
-using Beis.LearningPlatform.BL.IntegrationServices.Options;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace Beis.LearningPlatform.BL.IntegrationServices
+﻿namespace Beis.LearningPlatform.BL.IntegrationServices
 {
     /// <summary>
     /// A class that defines an implementation of an integration service for Notify.
@@ -42,7 +34,7 @@ namespace Beis.LearningPlatform.BL.IntegrationServices
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"Error whilst sending Diagnostic Tool Result email to '{emailAddress}'");
+                _logger.LogError(ex, "Error whilst sending Diagnostic Tool Result email to '{emailAddress}'", emailAddress);
                 throw new InvalidOperationException("Unable to send the Diagnostic Tool Result email", ex);
             }
         }

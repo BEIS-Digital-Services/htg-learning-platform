@@ -1,6 +1,4 @@
-﻿using Beis.LearningPlatform.Web.Utils;
-
-namespace Beis.LearningPlatform.Web.StrapiApi.Models
+﻿namespace Beis.LearningPlatform.Web.StrapiApi.Models
 {
     public class CMSPageTextblock
     {
@@ -19,5 +17,7 @@ namespace Beis.LearningPlatform.Web.StrapiApi.Models
         public string subHeaderAlign { get; set; }
         public string contentAlign { get; set; }
         public string copyAlign { get; set; }
+        public CMSPageImage HeaderImage { get; set; }
+
     }
 }

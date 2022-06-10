@@ -1,5 +1,4 @@
-﻿using Beis.LearningPlatform.Library.DTO.Base;
-using Beis.LearningPlatform.Library.Enums;
+﻿using Beis.LearningPlatform.Library.Enums;
 
 namespace Beis.LearningPlatform.Library
 {

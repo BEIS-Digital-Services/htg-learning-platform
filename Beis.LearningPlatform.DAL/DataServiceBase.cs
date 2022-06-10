@@ -1,7 +1,4 @@
-﻿using AutoMapper;
-using Microsoft.Extensions.Logging;
-
-namespace Beis.LearningPlatform.DAL
+﻿namespace Beis.LearningPlatform.DAL
 {
     /// <summary>
     /// A class that defines the base functionality of a data service.

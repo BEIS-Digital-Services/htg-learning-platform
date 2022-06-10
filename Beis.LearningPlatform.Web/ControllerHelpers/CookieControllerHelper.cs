@@ -1,13 +1,4 @@
-﻿using Beis.LearningPlatform.Web.ControllerHelpers.Interfaces;
-using Beis.LearningPlatform.Web.Interfaces;
-using Beis.LearningPlatform.Web.Models;
-using Beis.LearningPlatform.Web.Options;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using System;
-
-namespace Beis.LearningPlatform.Web.ControllerHelpers
+﻿namespace Beis.LearningPlatform.Web.ControllerHelpers
 {
     public class CookieControllerHelper : CmsControllerHelperBase, ICookieControllerHelper
     {
@@ -59,7 +50,7 @@ namespace Beis.LearningPlatform.Web.ControllerHelpers
             var urlKind = urlReferer.StartsWith("http") ? UriKind.Absolute : UriKind.Relative;
             if (!Uri.TryCreate(urlReferer, urlKind, out Uri redirectUri))
             {
-                _logger.LogWarning($"{nameof(CookieControllerHelper)}: !Uri.TryCreate({urlReferer})");
+                _logger.LogWarning("{CookieControllerHelper}: !Uri.TryCreate({urlReferer})", nameof(CookieControllerHelper), urlReferer);
                 return false;
             }
 

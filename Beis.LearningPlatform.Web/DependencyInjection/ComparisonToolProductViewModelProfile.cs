@@ -1,8 +1,4 @@
-﻿using AutoMapper;
-using Beis.Htg.VendorSme.Database.Models;
-using Beis.LearningPlatform.Web.ComparisonTool.Models;
-
-namespace Beis.LearningPlatform.Web.DependencyInjection
+﻿namespace Beis.LearningPlatform.Web.DependencyInjection
 {
     /// <summary>
     /// A class that defines a profile for an Comparison Tool Product View Model.

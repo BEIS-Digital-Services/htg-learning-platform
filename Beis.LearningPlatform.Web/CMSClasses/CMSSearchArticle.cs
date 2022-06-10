@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace Beis.LearningPlatform.Web.StrapiApi.Models
+﻿namespace Beis.LearningPlatform.Web.StrapiApi.Models
 {
     public class CMSSearchArticle : IComparable
     {

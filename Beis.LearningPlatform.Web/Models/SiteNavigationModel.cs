@@ -1,11 +1,6 @@
-﻿using Beis.LearningPlatform.Web.Interfaces;
-using Microsoft.AspNetCore.Http;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace Beis.LearningPlatform.Web.Models
+﻿namespace Beis.LearningPlatform.Web.Models
 {
-	public class SiteNavigationModel
+    public class SiteNavigationModel
 	{
         public SiteNavigationItemModel NavigationItem { get; set; }
         public IEnumerable<SiteNavigationItemModel> SubNavigationItems { get; set; }

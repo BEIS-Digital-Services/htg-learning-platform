@@ -1,6 +1,4 @@
-﻿using Beis.LearningPlatform.Data.Entities.Base;
-using System;
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
 
 namespace Beis.LearningPlatform.Data.Entities.DiagnosticTool
 {

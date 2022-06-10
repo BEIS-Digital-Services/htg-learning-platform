@@ -1,9 +1,4 @@
-﻿using Beis.LearningPlatform.Web.Models;
-using Beis.LearningPlatform.Web.StrapiApi.Models;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace Beis.LearningPlatform.Web.Interfaces
+﻿namespace Beis.LearningPlatform.Web.Interfaces
 {
     public interface ICmsService
     {

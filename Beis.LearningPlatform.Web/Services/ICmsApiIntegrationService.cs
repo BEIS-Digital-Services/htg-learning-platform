@@ -1,6 +1,4 @@
-﻿using System.Threading.Tasks;
-
-namespace Beis.LearningPlatform.Web.Services
+﻿namespace Beis.LearningPlatform.Web.Services
 {
     /// <summary>
     /// An interface that defines the behaviour of a service that integrates with a CMS's API.

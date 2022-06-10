@@ -1,11 +1,5 @@
-﻿using Beis.LearningPlatform.Web.Models;
-using Beis.LearningPlatform.Web.StrapiApi.Models;
-using Markdig;
-using Microsoft.AspNetCore.Mvc;
-
-namespace Beis.LearningPlatform.Web.ViewComponents
+﻿namespace Beis.LearningPlatform.Web.ViewComponents
 {
-
     public class CmsQuoteTwoThirdsColumnViewComponent : ViewComponent
     {
         private readonly MarkdownPipeline _markdownPipeline;

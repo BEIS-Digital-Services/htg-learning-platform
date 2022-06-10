@@ -1,12 +1,4 @@
-using AutoMapper;
-using Beis.LearningPlatform.Data.Entities.DiagnosticTool;
-using Beis.LearningPlatform.Data.Repositories;
 using Beis.LearningPlatform.Data.Repositories.DiagnosticTool;
-using Beis.LearningPlatform.Library;
-using Microsoft.Extensions.Logging;
-using Moq;
-using NUnit.Framework;
-using System.Threading.Tasks;
 
 namespace Beis.LearningPlatform.DAL.Tests
 {

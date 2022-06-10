@@ -1,8 +1,4 @@
-﻿using Beis.LearningPlatform.Web.StrapiApi.Models;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace Beis.LearningPlatform.Web.Services
+﻿namespace Beis.LearningPlatform.Web.Services
 {
     /// <summary>
     /// An interface that defines CMS services for the Web application.

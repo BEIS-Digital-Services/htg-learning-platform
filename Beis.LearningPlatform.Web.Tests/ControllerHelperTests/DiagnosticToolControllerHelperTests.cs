@@ -1,21 +1,4 @@
-﻿using AutoMapper;
-using Beis.LearningPlatform.BL.Domain;
-using Beis.LearningPlatform.BL.Services;
-using Beis.LearningPlatform.Library;
-using Beis.LearningPlatform.Web.ControllerHelpers;
-using Beis.LearningPlatform.Web.ControllerHelpers.Interfaces;
-using Beis.LearningPlatform.Web.Models.DiagnosticTool;
-using Beis.LearningPlatform.Web.Options;
-using Beis.LearningPlatform.Web.Services;
-using Beis.LearningPlatform.Web.Utils;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using Moq;
-using NUnit.Framework;
-using System;
-using System.Threading.Tasks;
-using ConfigOptions = Microsoft.Extensions.Options.Options;
+﻿using ConfigOptions = Microsoft.Extensions.Options.Options;
 
 namespace Beis.LearningPlatform.Web.Tests.ControllerHelperTests
 {
