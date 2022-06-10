@@ -99,14 +99,14 @@ for (i = 0; i < acc.length; i++) {
 //cms_component_NextPageRadioButton
 
 document.addEventListener("DOMContentLoaded", function () {
-    var cms_component_NextPageRadioButton_divjsenabled = document.getElementById("cms_component_NextPageRadioButton_divjsenabled");
+    const cms_component_NextPageRadioButton_divjsenabled = document.getElementById("cms_component_NextPageRadioButton_divjsenabled");
     if (cms_component_NextPageRadioButton_divjsenabled) {
 
         document.getElementById("cms_component_NextPageRadioButton_divjsenabled").setAttribute("style", "");
 
         document.querySelectorAll("input[type=radio][name=cms_component_NextPageRadioButton_rdon]").forEach((input) => {
             input.addEventListener('change', function () {
-                var rdoValue = this.value;
+                const rdoValue = this.value;
 
                 if (rdoValue == "1") {
                     document.getElementById("cms_component_NextPageRadioButton_btn1").setAttribute("style", "");
