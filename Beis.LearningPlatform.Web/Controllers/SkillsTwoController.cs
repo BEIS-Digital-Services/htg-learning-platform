@@ -64,7 +64,7 @@
             if (response.Result && response.Payload)
             {
                 var isNewcomer = model.SkilledModuleTwoResultType == SkilledModuleTwoResultType.DigitalNewComer;
-                return Redirect(isNewcomer ? "/learning-module-one-next-steps" : "/learning-module-two-next-steps");
+                return Redirect(isNewcomer ? "/learning-module-one-newcomer-next-steps" : "/learning-module-two-next-steps");
             }
             else
             {

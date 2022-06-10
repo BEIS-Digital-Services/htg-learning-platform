@@ -152,5 +152,23 @@
             Assert.NotNull(result);
             Assert.That(result, Is.TypeOf<ViewResult>());
         }
+
+
+        [Test]
+        public async Task Result_Get_Form_WhenCalled_ReturnsOK()
+        {
+            //Arrange
+            Setup_ControllerHelperCreateForm();
+            _diagnosticToolControllerHelper.Setup(h => h.ProcessResults(It.IsAny<DiagnosticToolForm>(), FormTypes.SkillsTwo))
+                .ReturnsAsync(new ControllerHelperOperationResponse<bool>(Guid.Empty, true));
+            var form = Get_DiagnosticToolForm(1);
+
+            //Act
+            var result = await controller.Result(form);
+
+            //Assert
+            Assert.NotNull(result);
+            Assert.That(result, Is.TypeOf<ViewResult>());
+        }
     }
 }
