@@ -18,14 +18,14 @@
                 {
                     _productCategories = new List<CMSSearchTag>
                     {
-                        new () { id = 2, name = "crm", displayName = "CUSTOMER RELATIONSHIP MANAGEMENT (CRM) SOFTWARE" },
-                        new () { id = 1, name = "accounting", displayName = "DIGITAL ACCOUNTING SOFTWARE" }
+                        new () { id = 2, name = "crm", displayName = "CUSTOMER RELATIONSHIP MANAGEMENT (CRM) SOFTWARE", friendlyDisplayName = "Customer Relationship Management" },
+                        new () { id = 1, name = "accounting", displayName = "DIGITAL ACCOUNTING SOFTWARE", friendlyDisplayName = "Accounting" }
                     };
 
                     // AS Per LP-869: the Ecom products and the ecom tag must only be displayed in the DEV environment AND not be displayed in UAT or Prod environment
                     if (_ctDisplayOption.ShowECommerce ?? false)
                     {
-                        _productCategories.Add(new CMSSearchTag() { id = 3, name = "ecommerce", displayName = "ECOMMERCE" });
+                        _productCategories.Add(new CMSSearchTag() { id = 3, name = "ecommerce", displayName = "ECOMMERCE", friendlyDisplayName= "eCommerce" });
                     }
                 }
 
