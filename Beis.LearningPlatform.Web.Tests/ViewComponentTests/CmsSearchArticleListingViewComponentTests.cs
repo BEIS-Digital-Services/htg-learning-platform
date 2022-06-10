@@ -1,17 +1,4 @@
-﻿using Beis.LearningPlatform.Web.Interfaces;
-using Beis.LearningPlatform.Web.Models;
-using Beis.LearningPlatform.Web.StrapiApi.Models;
-using Beis.LearningPlatform.Web.ViewComponents;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ViewComponents;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using Moq;
-using NUnit.Framework;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace Beis.LearningPlatform.Web.Tests.ViewComponentTests
+﻿namespace Beis.LearningPlatform.Web.Tests.ViewComponentTests
 {
     public class CmsSearchArticleListingViewComponentTests : BaseViewComponentTest
     {
@@ -24,7 +11,7 @@ namespace Beis.LearningPlatform.Web.Tests.ViewComponentTests
         private readonly Mock<ICmsService> _cmsService = new();
 
         [SetUp]
-        public async Task Setup()
+        public void Setup()
         {
             _httpRequest.SetupGet(x => x.Path)
                 .Returns(Path);
