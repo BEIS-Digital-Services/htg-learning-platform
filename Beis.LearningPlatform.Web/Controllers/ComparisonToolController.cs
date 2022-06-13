@@ -37,6 +37,7 @@
             }
 
             var viewModel = await _comparisonToolHelper.InitViewModel("filter-by", productCategoryIds);
+            await UpdateCmsPageViewModel(viewModel);
             _comparisonToolHelper.SetViewModelUserJourneyData(viewModel, productCategoryIds, null, "/");
             return View("Start", viewModel);
         }
@@ -49,6 +50,7 @@
         public async Task<IActionResult> IncludeProduct(string productIds, string productCategoryIds)
         {
             var viewModel = await _comparisonToolHelper.InitViewModel("include-product", productCategoryIds);
+            await UpdateCmsPageViewModel(viewModel);
             _comparisonToolHelper.SetViewModelUserJourneyData(viewModel, productCategoryIds, productIds, "/");
             return View("Start", viewModel);
         }
@@ -93,10 +95,8 @@
 
         private async Task<ViewResult> GetStartPage(bool jsEnabled)
         {
-            var cmsPageViewModel = await _homeControllerHelper.ProcessGetCustomPageResult("Custom-pages/comparison-tool");
-
             var viewModel = await _comparisonToolHelper.InitViewModel("start", populateRelationalData: false);
-            viewModel.CMSPageViewModel = cmsPageViewModel;
+            await UpdateCmsPageViewModel(viewModel);
 
             _comparisonToolHelper.SetViewModelUserJourneyData(viewModel, null, null, "/");
             viewModel.JavascriptEnabled = jsEnabled;
@@ -106,6 +106,7 @@
         private async Task<ViewResult> GetCompareDetails(string selectedProductCategoryIds, string selectedProductIds, bool jsEnabled)
         {
             var viewModel = await _comparisonToolHelper.InitViewModel("compare-products", selectedProductCategoryIds, selectedProductIds);
+            await UpdateCmsPageViewModel(viewModel);
             _comparisonToolHelper.SetViewModelUserJourneyData(viewModel, selectedProductCategoryIds, selectedProductIds, "/comparison-tool");
 
             UpdateViewModel(jsEnabled, viewModel);
@@ -120,6 +121,8 @@
         private async Task<ViewResult> GetProductDetails(string productId, bool jsEnabled)
         {
             var viewModel = await _comparisonToolHelper.InitViewModelForSelectedProduct(Convert.ToInt64(productId));
+            await UpdateCmsPageViewModel(viewModel, "comparison-tool-product");
+
             UpdateViewModel(jsEnabled, viewModel);
             viewModel.pageTitle = "Help to Grow: Digital - More about this software";
             return View("ProductDetails", viewModel);
@@ -129,6 +132,12 @@
         {
             model.JavascriptEnabled = jsEnabled;
             model.Referrer = jsEnabled ? model.Referrer : $"{model.Referrer}NoJs";
+        }
+
+        private async Task UpdateCmsPageViewModel(ComparisonToolPageViewModel model, string customPage = "comparison-tool")
+        {
+            var cmsPageViewModel = await _homeControllerHelper.ProcessGetCustomPageResult($"Custom-pages/{customPage}");
+            model.CMSPageViewModel = cmsPageViewModel;
         }
     }
 }
