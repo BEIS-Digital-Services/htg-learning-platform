@@ -308,5 +308,46 @@
             Assert.NotNull(result);
             Assert.That(result, Is.TypeOf<ViewResult>());
         }
+
+        [TestCase("skills-three-newcomer-planning", "/learning-module-three-your-action-plan-newcomer")]
+        [TestCase("skills-three-newcomer-communication", "/learning-module-three-your-action-plan-newcomer")]
+        [TestCase("skills-three-newcomer-support", "/learning-module-three-your-action-plan-newcomer")]
+        [TestCase("skills-three-newcomer-training", "/learning-module-three-your-action-plan-newcomer")]
+        [TestCase("skills-three-newcomer-testing", "/learning-module-three-your-action-plan-newcomer")]
+
+        [TestCase("skills-three-mover-planning", "/learning-module-three-your-action-plan-digital-mover")]
+        [TestCase("skills-three-mover-communication", "/learning-module-three-your-action-plan-digital-mover")]
+        [TestCase("skills-three-mover-support", "/learning-module-three-your-action-plan-digital-mover")]
+        [TestCase("skills-three-mover-training", "/learning-module-three-your-action-plan-digital-mover")]
+        [TestCase("skills-three-mover-testing", "/learning-module-three-your-action-plan-digital-mover")]
+
+        [TestCase("skills-three-performer-planning", "/learning-module-three-your-action-plan-digital-performer")]
+        [TestCase("skills-three-performer-communication", "/learning-module-three-your-action-plan-digital-performer")]
+        [TestCase("skills-three-performer-support", "/learning-module-three-your-action-plan-digital-performer")]
+        [TestCase("skills-three-performer-training", "/learning-module-three-your-action-plan-digital-performer")]
+        [TestCase("skills-three-performer-testing", "/learning-module-three-your-action-plan-digital-performer")]
+        public async Task Result_backURLfromQ1_Correctly_Configured(string path, string expectedBackURLfromQ1)
+        {
+            //Arrange
+            _currentPath = path;
+            _httpRequest.SetupGet(x => x.Path).Returns("/" + path);
+            Setup_ControllerHelperCreateForm();
+
+            //Act
+            var result = await controller.Result();
+
+            //Assert
+            Assert.NotNull(result);
+
+            var viewResult = result as ViewResult;
+            Assert.IsNotNull(viewResult);
+
+            var diagnosticToolForm = viewResult.Model as DiagnosticToolForm;
+            Assert.IsNotNull(diagnosticToolForm);
+
+            Assert.IsNotNull(diagnosticToolForm.backURLfromQ1);
+            Assert.AreEqual(expectedBackURLfromQ1, diagnosticToolForm.backURLfromQ1);
+            
+        }
     }
 }
