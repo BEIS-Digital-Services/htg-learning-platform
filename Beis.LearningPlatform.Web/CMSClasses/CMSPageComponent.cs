@@ -197,6 +197,10 @@ namespace Beis.LearningPlatform.Web.StrapiApi.Models
         public string Radio1Text { get; set; }
         public string Radio2Text { get; set; }
         public string Radio3Text { get; set; }
+        public string Radio1BoldLeadText { get; set; }
+        public string Radio2BoldLeadText { get; set; }
+        public string Radio3BoldLeadText { get; set; }
+
         public string Radio1Url { get; set; }
         public string Radio2Url { get; set; }
         public string Radio3Url { get; set; }
@@ -205,6 +209,8 @@ namespace Beis.LearningPlatform.Web.StrapiApi.Models
         // Search article listings (Strapi workaround here, the direct relation has a confirmed unfixed bug with ordering).
         // Workaround in place that uses a list of single content pickers (hence CMSSearchArticlePicker) to create an orderable list of searchArticles.
         public List<CMSSearchArticlePicker> SearchArticles { get; set; }
+
+
 
     }
 }

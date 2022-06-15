@@ -188,5 +188,6 @@ namespace Beis.LearningPlatform.Web.Models
         public string meta { get; } = "going digital, planning, budget";
         public bool? index { get; } = true;
         public bool? follow { get; } = true;
-	}
+        public CMSPageViewModel CMSPageViewModel { get; set; }
+    }
 }
