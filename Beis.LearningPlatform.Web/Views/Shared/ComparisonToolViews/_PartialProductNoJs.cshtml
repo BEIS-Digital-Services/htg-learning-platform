@@ -3,8 +3,13 @@
     var productsCategorySelectedCount = 0;
 }
 
+<partial name="CMSPageViews/_PartialRenderCMSComponents" model="@Model.CMSPageViewModel" />
+@if (Model.CMSPageViewModel.hero_banners != null)
+{
+    <partial name="CMSPageViews/_PartialHeroBanner" model="@Model.CMSPageViewModel" />
+}
+
 <div class="govuk-width-container govuk-!-padding-top-6 govuk-!-padding-bottom-6">
-    <partial name="ComparisonToolViews/_PartialProductCommon" />
 
     @if (Model.productsCategorySelected.Count > 0)
     {
