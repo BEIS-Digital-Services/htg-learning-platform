@@ -31,8 +31,7 @@
                             {
                                 <h2 class="govuk-heading-l govuk-!-padding-top-8 @*@Model.textblocks[0].subheaderColor*@"> @Model.textblocks[0].subheader</h2>
                             }
-                            @Html.Raw(Markdown.ToHtml(Model.textblocks[0].copy, _pipeline).Replace("<p>", "<p class=\"govuk-body\" style=\"text-align:left;\">").Replace("</p>", "</p>"))
-
+                            @Html.Raw(Markdown.ToHtml(Model.textblocks[0].copy, _pipeline).Replace("<p>", "<p class=\"govuk-body\" style=\"text-align:left;\">").Replace("</p>", "</p>").Replace("<li>", "<li style='color: #1D70B8; padding-bottom: 10px;'>") )
                             @foreach (var link in Model.links)
                             {
                                 @if (link.icon != null)
