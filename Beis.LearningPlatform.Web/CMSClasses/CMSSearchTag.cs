@@ -10,6 +10,7 @@
         public DateTime created_at { get; set; }
         public DateTime updated_at { get; set; }
         public string displayName { get; set; }
+        public string friendlyDisplayName { get; set; }
         public IList<CMSPageIcon> icon { get; set; }
         public bool? hide { get; set; }
     }

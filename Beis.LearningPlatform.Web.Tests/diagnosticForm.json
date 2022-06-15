@@ -642,7 +642,7 @@
           "id": 2,
           "order": 2,
           "title": "Your digital journey",
-          "summaryTitle": "The most time-consuming task(s) or area of your business that you'd like to simplify are:",
+          "summaryTitle": "The most time-consuming task(s) or area of your business that you'd like to simplify are...",
           "elements": [
             {
               "controlType": "Textarea",
@@ -705,7 +705,7 @@
           "id": 4,
           "order": 4,
           "title": "Your digital journey",
-          "summaryTitle": "You currently use the following methods to share or store information:",
+          "summaryTitle": "You currently use the following methods to share or store information...",
           //"showInSummary": false,
           //"skippedByElementStepId": 6,
           "elements": [
@@ -781,7 +781,7 @@
           "id": 5,
           "order": 5,
           "title": "Your digital journey",
-          "summaryTitle": "Finally, when asked what you considered the biggest benefit to your business would be from digital adoption, you said",
+          "summaryTitle": "Finally, when asked what you considered the biggest benefit to your business would be from digital adoption, you said...",
           "elements": [
             {
               "controlType": "Textarea",
@@ -1364,7 +1364,7 @@
       "canChangeAnswers": false,
       "backButton": false,
       "backLink": true,
-      "backURLfromQ1": "/",
+      "backURLfromQ1": "/learning-module-three-your-action-plan-newcomer",
       "userTypeActionPlanSection": "newcomer-planning",
       "formLogo": "skills-three-action-planning.png",
       "steps": [
@@ -1409,7 +1409,7 @@
                   "controlType": "Textarea",
                   "id": 113,
                   "strongText": "Finally... ",
-                  "text": "based on the types of software you ve researched, which type(s) do you think will help meet your goal(s)?",
+                  "text": "based on the types of software you've researched, which type(s) do you think will help meet your goal(s)?",
                   "textControlHtmlId": "Question1Text3",
                   "textControlHtmlName": "Question1Text3_",
                   "ResultPageLabel": "Here's a list of software you feel will help you reach your goal..."
@@ -1449,7 +1449,7 @@
                   "controlType": "Textarea",
                   "id": 112,
                   "strongText": "Next... ",
-                  "text": "work out what hardware you need to order.",
+                  "text": "work out what hardware you need to order. For example, will you need new laptops or tablets?",
                   "textControlHtmlId": "Question2Text2",
                   "textControlHtmlName": "Question2Text2_",
                   "ResultPageLabel": "This is the hardware you need to order..."
@@ -1458,7 +1458,7 @@
                   "controlType": "Textarea",
                   "id": 113,
                   "strongText": "Finally... ",
-                  "text": "work out how much budget you need to set aside. Also list how long it ll take to get these assets in place.",
+                  "text": "work out how much budget you need to set aside. Also, list how long it'll take to get these assets in place.",
                   "textControlHtmlId": "Question2Text3",
                   "textControlHtmlName": "Question2Text3_",
                   "ResultPageLabel": "You calculated how much budget, and time, you'd need to get these assets into place..."
@@ -1476,13 +1476,14 @@
           "elements": [
             {
               "controlType": "TextGroup",
-              "hint": "Understanding the potential risks you face in a rollout, and knowing what your plans A, B and C look like, can stop you having to abort the launch altogether.",
+              "hint": "Understanding the potential risks you face and knowing how to compensate for them can be the difference between launching as planned, or putting things on hold.",
               "hint2": "",
               "id": 210,
               "text": "Planning",
               "text2": "",
               "subText": "3. Think about potential risks",
               "textControlHtmlId": "lblTextGroup",
+              "nextButtonText": "View summary",
               "textControlHtmlName": "Question3",
               "optionElements": [
                 {
@@ -1529,7 +1530,7 @@
       "canChangeAnswers": false,
       "backButton": false,
       "backLink": true,
-      "backURLfromQ1": "/",
+      "backURLfromQ1": "/learning-module-three-your-action-plan-newcomer",
       "userTypeActionPlanSection": "newcomer-communication",
       "formLogo": "skills-three-action-communication.png",
       "steps": [
@@ -1648,6 +1649,7 @@
               "text2": "",
               "subText": "3. Draw up a communications timeline",
               "textControlHtmlId": "lblTextGroup",
+              "nextButtonText": "View summary",
               "textControlHtmlName": "Question3",
               "optionElements": [
                 {
@@ -1690,7 +1692,7 @@
       "canChangeAnswers": false,
       "backButton": false,
       "backLink": true,
-      "backURLfromQ1": "/",
+      "backURLfromQ1": "/learning-module-three-your-action-plan-newcomer",
       "userTypeActionPlanSection": "newcomer-support",
       "formLogo": "skills-three-action-support.png",
       "steps": [
@@ -1809,6 +1811,7 @@
               "text2": "",
               "subText": "3. Maintenance",
               "textControlHtmlId": "lblTextGroup",
+              "nextButtonText": "View summary",
               "textControlHtmlName": "Question3",
               "optionElements": [
                 {
@@ -1851,7 +1854,7 @@
       "canChangeAnswers": false,
       "backButton": false,
       "backLink": true,
-      "backURLfromQ1": "/",
+      "backURLfromQ1": "/learning-module-three-your-action-plan-newcomer",
       "userTypeActionPlanSection": "newcomer-training",
       "formLogo": "skills-three-action-training.png",
       "steps": [
@@ -1914,7 +1917,7 @@
           "elements": [
             {
               "controlType": "TextGroup",
-              "hint": "Thinking about how best to offer training, together with cost, can help steer you for your new roll out. ",
+              "hint": "There are lots of different types of training available. Choosing the right one will help ensure your teams are well equipped to use your new software or hardware.  ",
               "hint2": "",
               "id": 210,
               "text": "Training",
@@ -1970,6 +1973,7 @@
               "text2": "",
               "subText": "3. Training for new starters ",
               "textControlHtmlId": "lblTextGroup",
+              "nextButtonText": "View summary",
               "textControlHtmlName": "Question3",
               "optionElements": [
                 {
@@ -2012,7 +2016,7 @@
       "canChangeAnswers": false,
       "backButton": false,
       "backLink": true,
-      "backURLfromQ1": "/",
+      "backURLfromQ1": "/learning-module-three-your-action-plan-newcomer",
       "userTypeActionPlanSection": "newcomer-testing",
       "formLogo": "skills-three-action-testing.png",
       "steps": [
@@ -2057,7 +2061,7 @@
                   "controlType": "Textarea",
                   "id": 113,
                   "strongText": "Finally... ",
-                  "text": "identify �testing champions' from each group. These will be the people you'll brief later and engage with to gather your feedback.",
+                  "text": "identify 'testing champions' from each group. These will be the people you'll brief later and engage with to gather your feedback.",
                   "textControlHtmlId": "Question1Text3",
                   "textControlHtmlName": "Question1Text3_",
                   "ResultPageLabel": "Here’s who you’ve chosen as ‘testing champion(s)’... "
@@ -2131,6 +2135,7 @@
               "text2": "",
               "subText": "3. Using your feedback ",
               "textControlHtmlId": "lblTextGroup",
+              "nextButtonText": "View summary",
               "textControlHtmlName": "Question3",
               "optionElements": [
                 {
@@ -2176,7 +2181,7 @@
       "canChangeAnswers": false,
       "backButton": false,
       "backLink": true,
-      "backURLfromQ1": "/",
+      "backURLfromQ1": "/learning-module-three-your-action-plan-digital-mover",
       "userTypeActionPlanSection": "mover-planning",
       "formLogo": "skills-three-action-planning.png",
       "steps": [
@@ -2234,12 +2239,12 @@
         {
           "id": 2,
           "order": 2,
-          "title": "Your digital newcomer action plan",
+          "title": "Your digital mover action plan",
           "summaryTitle": "",
           "elements": [
             {
               "controlType": "TextGroup",
-              "hint": "Understanding the potential risks you face in a roll out, and knowing what your plans A, B and C look like, can stop you having to abort the launch altogether.",
+              "hint": "Understanding the potential risks you face and knowing how to compensate for them can be the difference between launching as planned, or putting things on hold.",
               "hint2": "",
               "id": 210,
               "text": "Planning",
@@ -2252,7 +2257,7 @@
                   "controlType": "Textarea",
                   "id": 211,
                   "strongText": "Start... ",
-                  "text": "by writing down the risks you might encounter, such as data loss or interruption to trading. Your list should include the worst-case scenario � having to stop the rollout. What would need to happen for this to be the only solution?",
+                  "text": "by writing down the risks you might encounter, such as data loss or interruption to trading. Your list should include the worst-case scenario - having to stop the rollout. What would need to happen for this to be the only solution?",
                   "textControlHtmlId": "Question2Text1",
                   "textControlHtmlName": "Question2Text1_",
                   "ResultPageLabel": "These are the risks you said you might encounter..."
@@ -2283,7 +2288,7 @@
         {
           "id": 3,
           "order": 3,
-          "title": "Your digital newcomer action plan",
+          "title": "Your digital mover action plan",
           "summaryTitle": "",
           "elements": [
             {
@@ -2295,6 +2300,7 @@
               "text2": "",
               "subText": "3. Look for indirect impacts",
               "textControlHtmlId": "lblTextGroup",
+              "nextButtonText": "View summary",
               "textControlHtmlName": "Question3",
               "optionElements": [
                 {
@@ -2341,7 +2347,7 @@
       "canChangeAnswers": false,
       "backButton": false,
       "backLink": true,
-      "backURLfromQ1": "/",
+      "backURLfromQ1": "/learning-module-three-your-action-plan-digital-mover",
       "userTypeActionPlanSection": "mover-communication",
       "formLogo": "skills-three-action-communication.png",
       "steps": [
@@ -2399,7 +2405,7 @@
         {
           "id": 2,
           "order": 2,
-          "title": "Your digital newcomer action plan",
+          "title": "Your digital mover action plan",
           "summaryTitle": "",
           "elements": [
             {
@@ -2448,7 +2454,7 @@
         {
           "id": 3,
           "order": 3,
-          "title": "Your digital newcomer action plan",
+          "title": "Your digital mover action plan",
           "summaryTitle": "",
           "elements": [
             {
@@ -2460,6 +2466,7 @@
               "text2": "",
               "subText": "3. Draw up a communications timeline",
               "textControlHtmlId": "lblTextGroup",
+              "nextButtonText": "View summary",
               "textControlHtmlName": "Question3",
               "optionElements": [
                 {
@@ -2502,7 +2509,7 @@
       "canChangeAnswers": false,
       "backButton": false,
       "backLink": true,
-      "backURLfromQ1": "/",
+      "backURLfromQ1": "/learning-module-three-your-action-plan-digital-mover",
       "userTypeActionPlanSection": "mover-support",
       "formLogo": "skills-three-action-support.png",
       "steps": [
@@ -2560,7 +2567,7 @@
         {
           "id": 2,
           "order": 2,
-          "title": "Your digital newcomer action plan",
+          "title": "Your digital mover action plan",
           "summaryTitle": "",
           "elements": [
             {
@@ -2596,7 +2603,7 @@
                   "controlType": "Textarea",
                   "id": 113,
                   "strongText": "Finally... ",
-                  "text": "review if your chosen method of support � in-house or supplier support � match up where these elements are being met, and if there's anything you'd like to improve on.",
+                  "text": "review if your chosen method of support - in-house or supplier support - match up where these elements are being met, and if there's anything you'd like to improve on.",
                   "textControlHtmlId": "Question2Text3",
                   "textControlHtmlName": "Question2Text3_",
                   "ResultPageLabel": "You reviewed whether your chosen method of support matched up where these elements are being met, and mentioned whether there’s anything you’d improve..."
@@ -2609,7 +2616,7 @@
         {
           "id": 3,
           "order": 3,
-          "title": "Your digital newcomer action plan",
+          "title": "Your digital mover action plan",
           "summaryTitle": "",
           "elements": [
             {
@@ -2621,6 +2628,7 @@
               "text2": "",
               "subText": "3. Maintenance",
               "textControlHtmlId": "lblTextGroup",
+              "nextButtonText": "View summary",
               "textControlHtmlName": "Question3",
               "optionElements": [
                 {
@@ -2663,7 +2671,7 @@
       "canChangeAnswers": false,
       "backButton": false,
       "backLink": true,
-      "backURLfromQ1": "/",
+      "backURLfromQ1": "/learning-module-three-your-action-plan-digital-mover",
       "userTypeActionPlanSection": "mover-training",
       "formLogo": "skills-three-action-training.png",
       "steps": [
@@ -2721,7 +2729,7 @@
         {
           "id": 2,
           "order": 2,
-          "title": "Your digital newcomer action plan",
+          "title": "Your digital mover action plan",
           "summaryTitle": "",
           "elements": [
             {
@@ -2770,7 +2778,7 @@
         {
           "id": 3,
           "order": 3,
-          "title": "Your digital newcomer action plan",
+          "title": "Your digital mover action plan",
           "summaryTitle": "",
           "elements": [
             {
@@ -2782,6 +2790,7 @@
               "text2": "",
               "subText": "3. Training for new starters ",
               "textControlHtmlId": "lblTextGroup",
+              "nextButtonText": "View summary",
               "textControlHtmlName": "Question3",
               "optionElements": [
                 {
@@ -2824,7 +2833,7 @@
       "canChangeAnswers": false,
       "backButton": false,
       "backLink": true,
-      "backURLfromQ1": "/",
+      "backURLfromQ1": "/learning-module-three-your-action-plan-digital-mover",
       "userTypeActionPlanSection": "mover-testing",
       "formLogo": "skills-three-action-testing.png",
       "steps": [
@@ -2869,7 +2878,7 @@
                   "controlType": "Textarea",
                   "id": 113,
                   "strongText": "Finally... ",
-                  "text": "identify �testing champions' from each group. These will be the people you'll brief later and engage with to gather your feedback. ",
+                  "text": "identify 'testing champions' from each group. These will be the people you'll brief later and engage with to gather your feedback. ",
                   "textControlHtmlId": "Question1Text3",
                   "textControlHtmlName": "Question1Text3_",
                   "ResultPageLabel": "You’ve identified these people as ‘test champions’ from each group..."
@@ -2882,7 +2891,7 @@
         {
           "id": 2,
           "order": 2,
-          "title": "Your digital newcomer action plan",
+          "title": "Your digital mover action plan",
           "summaryTitle": "",
           "elements": [
             {
@@ -2931,7 +2940,7 @@
         {
           "id": 3,
           "order": 3,
-          "title": "Your digital newcomer action plan",
+          "title": "Your digital mover action plan",
           "summaryTitle": "",
           "elements": [
             {
@@ -2943,6 +2952,7 @@
               "text2": "",
               "subText": "3. Using your feedback ",
               "textControlHtmlId": "lblTextGroup",
+              "nextButtonText": "View summary",
               "textControlHtmlName": "Question3",
               "optionElements": [
                 {
@@ -2988,7 +2998,7 @@
       "canChangeAnswers": false,
       "backButton": false,
       "backLink": true,
-      "backURLfromQ1": "/",
+      "backURLfromQ1": "/learning-module-three-your-action-plan-digital-performer",
       "userTypeActionPlanSection": "performer-planning",
       "formLogo": "skills-three-action-planning.png",
       "steps": [
@@ -3064,7 +3074,7 @@
                   "controlType": "Textarea",
                   "id": 211,
                   "strongText": "Start... ",
-                  "text": "by writing down the risks you might encounter, such as data loss or interruption to trading. Your list should include the worst-case scenario � having to stop the rollout. What would need to happen for this to be the only solution?",
+                  "text": "by writing down the risks you might encounter, such as data loss or interruption to trading. Your list should include the worst-case scenario - having to stop the rollout. What would need to happen for this to be the only solution?",
                   "textControlHtmlId": "Question2Text1",
                   "textControlHtmlName": "Question2Text1_",
                   "ResultPageLabel": "These are the risks you said you might encounter..."
@@ -3107,6 +3117,7 @@
               "text2": "",
               "subText": "3. Look for indirect impacts",
               "textControlHtmlId": "lblTextGroup",
+              "nextButtonText": "View summary",
               "textControlHtmlName": "Question3",
               "optionElements": [
                 {
@@ -3153,7 +3164,7 @@
       "canChangeAnswers": false,
       "backButton": false,
       "backLink": true,
-      "backURLfromQ1": "/",
+      "backURLfromQ1": "/learning-module-three-your-action-plan-digital-performer",
       "userTypeActionPlanSection": "performer-communication",
       "formLogo": "skills-three-action-communication.png",
       "steps": [
@@ -3272,6 +3283,7 @@
               "text2": "",
               "subText": "3. Draw up a communications timeline",
               "textControlHtmlId": "lblTextGroup",
+              "nextButtonText": "View summary",
               "textControlHtmlName": "Question3",
               "optionElements": [
                 {
@@ -3314,7 +3326,7 @@
       "canChangeAnswers": false,
       "backButton": false,
       "backLink": true,
-      "backURLfromQ1": "/",
+      "backURLfromQ1": "/learning-module-three-your-action-plan-digital-performer",
       "userTypeActionPlanSection": "performer-support",
       "formLogo": "skills-three-action-support.png",
       "steps": [
@@ -3408,7 +3420,7 @@
                   "controlType": "Textarea",
                   "id": 113,
                   "strongText": "Finally... ",
-                  "text": "review if your chosen method of support � in-house or supplier support � match up where these elements are being met, and if there's anything you'd like to improve on.",
+                  "text": "review if your chosen method of support - in-house or supplier support - match up where these elements are being met, and if there's anything you'd like to improve on.",
                   "textControlHtmlId": "Question2Text3",
                   "textControlHtmlName": "Question2Text3_",
                   "ResultPageLabel": "You reviewed whether your chosen method of support matched up where these elements are being met, and mentioned whether there’s anything you’d improve..."
@@ -3433,6 +3445,7 @@
               "text2": "",
               "subText": "3. Maintenance",
               "textControlHtmlId": "lblTextGroup",
+              "nextButtonText": "View summary",
               "textControlHtmlName": "Question3",
               "optionElements": [
                 {
@@ -3475,7 +3488,7 @@
       "canChangeAnswers": false,
       "backButton": false,
       "backLink": true,
-      "backURLfromQ1": "/",
+      "backURLfromQ1": "/learning-module-three-your-action-plan-digital-performer",
       "userTypeActionPlanSection": "performer-training",
       "formLogo": "skills-three-action-training.png",
       "steps": [
@@ -3594,6 +3607,7 @@
               "text2": "",
               "subText": "3. Training for new starters ",
               "textControlHtmlId": "lblTextGroup",
+              "nextButtonText": "View summary",
               "textControlHtmlName": "Question3",
               "optionElements": [
                 {
@@ -3636,7 +3650,7 @@
       "canChangeAnswers": false,
       "backButton": false,
       "backLink": true,
-      "backURLfromQ1": "/",
+      "backURLfromQ1": "/learning-module-three-your-action-plan-digital-performer",
       "userTypeActionPlanSection": "performer-testing",
       "formLogo": "skills-three-action-testing.png",
       "steps": [
@@ -3681,7 +3695,7 @@
                   "controlType": "Textarea",
                   "id": 113,
                   "strongText": "Finally... ",
-                  "text": "identify �testing champions' from each group. These will be the people you'll brief later and engage with to gather your feedback. ",
+                  "text": "identify 'testing champions' from each group. These will be the people you'll brief later and engage with to gather your feedback. ",
                   "textControlHtmlId": "Question1Text3",
                   "textControlHtmlName": "Question1Text3_",
                   "ResultPageLabel": "You’ve identified these people as ‘test champions’ from each group.."
@@ -3755,6 +3769,7 @@
               "text2": "",
               "subText": "3. Using your feedback ",
               "textControlHtmlId": "lblTextGroup",
+              "nextButtonText": "View summary",
               "textControlHtmlName": "Question3",
               "optionElements": [
                 {
