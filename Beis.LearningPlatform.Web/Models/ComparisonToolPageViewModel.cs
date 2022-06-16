@@ -189,5 +189,6 @@ namespace Beis.LearningPlatform.Web.Models
         public bool? index { get; } = true;
         public bool? follow { get; } = true;
         public CMSPageViewModel CMSPageViewModel { get; set; }
+        public string[] ProductCategoryIds { get; set; }
     }
 }
