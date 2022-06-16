@@ -647,11 +647,11 @@
           "elements": [
             {
               "controlType": "Textarea",
-              "hint": "Think about how you/your team work at the moment. What are the most time consuming tasks or parts of the business that you'd like to make easier.",
+              "hint": "Think about how you / your team work at the moment. What are the most time-consuming tasks or parts of the business that you'd like to make easier.",
               "showHintInBold": true,
               "id": 200,
               "text": "Question 2:",
-              "text2": "Describe your business' biggest friction point that you'd like to fix.",
+              "text2": "Describe your business' biggest challange that you'd like to fix.",
               "textControlHtmlId": "lblQuestion2",
               "nextButtonText": "Go to question 3",
               "textControlHtmlName": "Question2"
