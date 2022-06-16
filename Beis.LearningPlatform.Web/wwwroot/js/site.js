@@ -131,3 +131,37 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+
+//dt, skills wizard additional info 
+document.addEventListener("DOMContentLoaded", function () {
+
+    const dt_checkbox_addinfo = document.getElementsByClassName("dt_checkbox_addinfo");
+    if (dt_checkbox_addinfo && dt_checkbox_addinfo.length > 0) {
+        const div_dt_ckh_additionalInfo = document.getElementById("div_dt_ckh_additionalInfo");
+
+        if (dt_checkbox_addinfo[0].checked == true) {
+            div_dt_ckh_additionalInfo.style.display = "block";
+        }
+        else {
+            div_dt_ckh_additionalInfo.style.display = "none";
+        }
+
+        dt_checkbox_addinfo[0].addEventListener('change', (event) => {
+
+            const dt_addinfo_txtarea = document.getElementsByClassName("dt_addinfo_txtarea")[0];
+
+            if (event.currentTarget.checked) {
+                div_dt_ckh_additionalInfo.style.display = "block";
+
+            } else {
+                div_dt_ckh_additionalInfo.style.display = "none";
+                dt_addinfo_txtarea.value = "";
+            }
+        });
+
+    }
+
+
+});
+
+

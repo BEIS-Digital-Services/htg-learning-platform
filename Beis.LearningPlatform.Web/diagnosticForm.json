@@ -586,7 +586,7 @@
           "elements": [
             {
               "controlType": "CheckboxGroup",
-              "hint": "Choose all options that you'd like to explore",
+              "hint": "Choose all the options that you'd like to explore",
               "showHintInBold": true,
               "id": 110,
               "text": "Question 1:",
@@ -815,7 +815,7 @@
           "elements": [
             {
               "controlType": "RadioGroup",
-              "hint": "Technology could be software like CRM, and/or standard office tools like Excel, email or video calls. ",
+              "hint": "Technology could be software like Customer Relationship Management (CRM), and/or standard office tools like Excel, email or video calls.",
               "id": 110,
               "text": "Communication, data storage and payments",
               "text2": "",
@@ -848,7 +848,7 @@
                   "controlType": "Radio",
                   "id": 103,
                   "strongText": "No - ",
-                  "text": "we don't use any technology. Communication takes by phone or face-to-face. We record and store details of conversations on paper.",
+                  "text": "we don't use any technology. Communication takes place by phone or face to face. We record and store details of conversations on paper.",
                   "value": "No",
                   "textControlHtmlId": "Question1Option3",
                   "textControlHtmlName": "Question103",

@@ -348,7 +348,8 @@
                 {
                     element.childHasErrors = true;
                     element.validationError = ERROR_MESSAGE;
-                    validationErrorsList.Add(new FormValidationError() { errorMessage = element.validationError });
+                    if (validationErrorsList.Count == 0)
+                        validationErrorsList.Add(new FormValidationError() { errorMessage = element.validationError });
                 }
             }
             else
