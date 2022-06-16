@@ -319,12 +319,11 @@
         public static bool ValidateElementCheckBoxGroup(this FormStepElement element, out FormValidationError[] validationErrors)
         {
             bool returnValue = true;
-            List<FormValidationError> validationErrorsList = new();
-
+            
             // Defaults
             validationErrors = default;
 
-            element.ValidateElementCheckBoxGroupProc(out validationErrorsList);
+            element.ValidateElementCheckBoxGroupProc(out List<FormValidationError> validationErrorsList);
 
             // Output any errors
             if (validationErrorsList.Count > 0)
