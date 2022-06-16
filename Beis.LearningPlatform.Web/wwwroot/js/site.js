@@ -139,7 +139,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (dt_checkbox_addinfo && dt_checkbox_addinfo.length > 0) {
         const div_dt_ckh_additionalInfo = document.getElementById("div_dt_ckh_additionalInfo");
 
-        if (dt_checkbox_addinfo[0].checked == true) {
+        if (dt_checkbox_addinfo[0].checked) {
             div_dt_ckh_additionalInfo.style.display = "block";
         }
         else {

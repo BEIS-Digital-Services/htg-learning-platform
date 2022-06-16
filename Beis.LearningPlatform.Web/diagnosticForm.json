@@ -593,6 +593,7 @@
               "text2": "Which benefits(s) of digital working are you most interested in?",
               "textControlHtmlId": "lblMultipleChoice",
               "textControlHtmlName": "Question1",
+              "nextButtonText": "Go to question 2",
               "optionElements": [
                 {
                   "controlType": "Checkbox",
@@ -652,6 +653,7 @@
               "text": "Question 2:",
               "text2": "Describe your business' biggest friction point that you'd like to fix.",
               "textControlHtmlId": "lblQuestion2",
+              "nextButtonText": "Go to question 3",
               "textControlHtmlName": "Question2"
             }
           ]
@@ -671,6 +673,7 @@
               "text2": "To what extent does your business currently use software and digital ways of working?",
               "textControlHtmlId": "lblMultipleChoice",
               "textControlHtmlName": "Question5",
+              "nextButtonText": "Go to question 4",
               "optionElements": [
                 {
                   "controlType": "Radio",
@@ -720,6 +723,7 @@
               "text2": "How do you / your team currently store and share information?",
               "textControlHtmlId": "chkBoxGroup1",
               "textControlHtmlName": "chkBoxGroup1",
+              "nextButtonText": "Go to question 5",
               "optionElements": [
                 {
                   "controlType": "Checkbox",
@@ -790,6 +794,7 @@
               "text": "Question 5:",
               "text2": "Describe below the benefits you think digital adoption would bring for your business.",
               "textControlHtmlId": "lblQuestion5",
+              "nextButtonText": "View Summary",
               "textControlHtmlName": "Question5"
             }
           ]
