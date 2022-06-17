@@ -318,13 +318,28 @@
         /// <returns>A bool indicating whether the element was valid.</returns>
         public static bool ValidateElementCheckBoxGroup(this FormStepElement element, out FormValidationError[] validationErrors)
         {
-            var childIsSelected = false;
-            string errorMessage = default;
             bool returnValue = true;
-            List<FormValidationError> validationErrorsList = new();
-
+            
             // Defaults
             validationErrors = default;
+
+            element.ValidateElementCheckBoxGroupProc(out List<FormValidationError> validationErrorsList);
+
+            // Output any errors
+            if (validationErrorsList.Count > 0)
+            {
+                returnValue = false;
+                validationErrors = validationErrorsList.ToArray();
+            }
+
+            return returnValue;
+        }
+
+        private static void ValidateElementCheckBoxGroupProc(this FormStepElement element, out List<FormValidationError> validationErrorsList)
+        {
+            var childIsSelected = false;
+            string errorMessage = default;
+            validationErrorsList = new();
 
             if (element.controlType == FormDisplayControlType.CheckboxGroup)
             {
@@ -348,20 +363,13 @@
                 {
                     element.childHasErrors = true;
                     element.validationError = ERROR_MESSAGE;
-                    validationErrorsList.Add(new FormValidationError() { errorMessage = element.validationError });
+                    if (validationErrorsList.Count == 0)
+                        validationErrorsList.Add(new FormValidationError() { errorMessage = element.validationError });
                 }
             }
             else
                 throw new ArgumentException("The specified element is not a CheckboxGroup-type", nameof(element));
 
-            // Output any errors
-            if (validationErrorsList.Count > 0)
-            {
-                returnValue = false;
-                validationErrors = validationErrorsList.ToArray();
-            }
-
-            return returnValue;
         }
 
         /// <summary>

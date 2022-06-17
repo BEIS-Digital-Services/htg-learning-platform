@@ -106,6 +106,13 @@
 
             if (element.controlType == FormDisplayControlType.Checkbox)
             {
+                if (element.additionalInfoRequired && !string.IsNullOrWhiteSpace(element.additionalInfo) && !element.value.Equals("true", StringComparison.OrdinalIgnoreCase))
+                {
+                    errorMessage = "Answer the question below to continue";
+                    element.validationError = $"Ensure {element.hint} is checked before entering text here.";
+                    return false;
+                }
+
                 // If the answer is selected, process the values, if not, reset the additional info values
                 if (element.value.Equals("true", StringComparison.OrdinalIgnoreCase))
                 {
