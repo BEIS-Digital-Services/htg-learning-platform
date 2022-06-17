@@ -13,9 +13,9 @@
             _homeControllerHelper = homeControllerHelper;
         }
 
-        [Route("/comparison-tool")]
+        
         [Route("/comparison-tool/{productCategoryIds}")]
-        public async Task<IActionResult> Start(string productCategoryIds)
+        public async Task<IActionResult> Start(string productCategoryIds = null)
         {
             return await GetStartPage(true, productCategoryIds);
         }
