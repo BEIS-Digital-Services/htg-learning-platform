@@ -586,13 +586,14 @@
           "elements": [
             {
               "controlType": "CheckboxGroup",
-              "hint": "Choose all options that you'd like to explore",
+              "hint": "Choose all the options that you'd like to explore",
               "showHintInBold": true,
               "id": 110,
               "text": "Question 1:",
               "text2": "Which benefits(s) of digital working are you most interested in?",
               "textControlHtmlId": "lblMultipleChoice",
               "textControlHtmlName": "Question1",
+              "nextButtonText": "Go to question 2",
               "optionElements": [
                 {
                   "controlType": "Checkbox",
@@ -646,12 +647,13 @@
           "elements": [
             {
               "controlType": "Textarea",
-              "hint": "Think about how you/your team work at the moment. What are the most time consuming tasks or parts of the business that you'd like to make easier.",
+              "hint": "Think about how you / your team work at the moment. What are the most time-consuming tasks or parts of the business that you'd like to make easier.",
               "showHintInBold": true,
               "id": 200,
               "text": "Question 2:",
-              "text2": "Describe your business' biggest friction point that you'd like to fix.",
+              "text2": "Describe your business' biggest challange that you'd like to fix.",
               "textControlHtmlId": "lblQuestion2",
+              "nextButtonText": "Go to question 3",
               "textControlHtmlName": "Question2"
             }
           ]
@@ -671,6 +673,7 @@
               "text2": "To what extent does your business currently use software and digital ways of working?",
               "textControlHtmlId": "lblMultipleChoice",
               "textControlHtmlName": "Question5",
+              "nextButtonText": "Go to question 4",
               "optionElements": [
                 {
                   "controlType": "Radio",
@@ -720,6 +723,7 @@
               "text2": "How do you / your team currently store and share information?",
               "textControlHtmlId": "chkBoxGroup1",
               "textControlHtmlName": "chkBoxGroup1",
+              "nextButtonText": "Go to question 5",
               "optionElements": [
                 {
                   "controlType": "Checkbox",
@@ -790,6 +794,7 @@
               "text": "Question 5:",
               "text2": "Describe below the benefits you think digital adoption would bring for your business.",
               "textControlHtmlId": "lblQuestion5",
+              "nextButtonText": "View Summary",
               "textControlHtmlName": "Question5"
             }
           ]
@@ -815,7 +820,7 @@
           "elements": [
             {
               "controlType": "RadioGroup",
-              "hint": "Technology could be software like CRM, and/or standard office tools like Excel, email or video calls. ",
+              "hint": "Technology could be software like Customer Relationship Management (CRM), and/or standard office tools like Excel, email or video calls.",
               "id": 110,
               "text": "Communication, data storage and payments",
               "text2": "",
@@ -848,7 +853,7 @@
                   "controlType": "Radio",
                   "id": 103,
                   "strongText": "No - ",
-                  "text": "we don't use any technology. Communication takes by phone or face-to-face. We record and store details of conversations on paper.",
+                  "text": "we don't use any technology. Communication takes place by phone or face to face. We record and store details of conversations on paper.",
                   "value": "No",
                   "textControlHtmlId": "Question1Option3",
                   "textControlHtmlName": "Question103",
