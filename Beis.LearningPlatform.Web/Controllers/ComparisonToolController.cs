@@ -13,7 +13,8 @@
             _homeControllerHelper = homeControllerHelper;
         }
 
-        
+
+        [Route("/comparison-tool")]
         [Route("/comparison-tool/{productCategoryIds}")]
         public async Task<IActionResult> Start(string productCategoryIds = null)
         {
