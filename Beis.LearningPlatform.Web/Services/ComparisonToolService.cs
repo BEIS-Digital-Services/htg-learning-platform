@@ -100,8 +100,20 @@
                     .OrderBy(x => x.min_licenses).ToList();
                 product.productPriceSecondaryMetrics =
                     await _pricingRepository.GetAllProductSecondaryMetricPricesByProductPriceId(productPriceId.Value);
-                product.productPriceAddCosts =
-                    await _pricingRepository.GetAdditionalCostsByProductPriceId(productPriceId.Value);
+
+                var productPriceAdditionalCosts = await _pricingRepository.GetAdditionalCostsByProductPriceId(productPriceId.Value);
+                if (productPriceAdditionalCosts.Any())
+                {
+                    product.productPriceAddCosts = productPriceAdditionalCosts
+                        .Where(x => x.additional_cost_type_id == (int)EnumAdditionalCostType.General)
+                        .Select(x => new ComparisonToolAdditionalCost(x)).ToList();
+                    product.productPriceThirdPartyFees = productPriceAdditionalCosts
+                        .Where(x => x.additional_cost_type_id == (int)EnumAdditionalCostType.ThirdPartyFee)
+                         .Select(x => new ComparisonToolAdditionalCost(x)).ToList();
+                    product.productPriceTransactionFees = productPriceAdditionalCosts
+                        .Where(x => x.additional_cost_type_id == (int)EnumAdditionalCostType.TransactionFee)
+                        .Select(x => new ComparisonToolAdditionalCost(x)).ToList();
+                }
             }
         }
         

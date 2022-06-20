@@ -11,6 +11,7 @@ global using Beis.LearningPlatform.Library.Enums;
 global using Beis.LearningPlatform.Web.ComparisonTool.Models;
 global using Beis.LearningPlatform.Web.Configuration;
 global using Beis.LearningPlatform.Web.ControllerHelpers.Interfaces;
+global using Beis.LearningPlatform.Web.Enums;
 global using Beis.LearningPlatform.Web.Interfaces;
 global using Beis.LearningPlatform.Web.Models;
 global using Beis.LearningPlatform.Web.Models.DiagnosticTool;

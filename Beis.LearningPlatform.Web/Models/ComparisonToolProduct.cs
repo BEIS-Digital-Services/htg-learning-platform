@@ -93,7 +93,9 @@
         /// <summary>
         /// Gets or Sets the list of additional_cost from the Help_To_Grow database (Vendor Team)
         /// </summary>
-        public IList<additional_cost> productPriceAddCosts { get; set; }
+        public IList<ComparisonToolAdditionalCost> productPriceAddCosts { get; set; }
+        public IList<ComparisonToolAdditionalCost> productPriceTransactionFees { get; set; }
+        public IList<ComparisonToolAdditionalCost> productPriceThirdPartyFees { get; set; }        
 
 
         #endregion
