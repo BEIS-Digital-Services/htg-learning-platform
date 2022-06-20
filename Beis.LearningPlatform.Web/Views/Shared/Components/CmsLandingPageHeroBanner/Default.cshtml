@@ -12,9 +12,9 @@
                         <h1 class="govuk-heading-l beis-white-text govuk-!-margin-bottom-3 govuk-!-margin-top-6">
                             @Model.Header
                         </h1>
-                        <p class="govuk-body beis-white-text govuk-!-padding-right-8">
-                            @Model.Intro
-                        </p>
+                        <div class="govuk-body beis-white-text govuk-!-padding-right-8">
+                            @Html.Raw(@Model.IntroHtml)
+                        </div>
                     </div>
                 </div>
             </div>
