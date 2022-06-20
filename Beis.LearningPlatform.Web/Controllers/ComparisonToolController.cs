@@ -13,10 +13,12 @@
             _homeControllerHelper = homeControllerHelper;
         }
 
+
         [Route("/comparison-tool")]
-        public async Task<IActionResult> Start()
+        [Route("/comparison-tool/{productCategoryIds}")]
+        public async Task<IActionResult> Start(string productCategoryIds = null)
         {
-            return await GetStartPage(true);
+            return await GetStartPage(true, productCategoryIds);
         }
 
         [Route("/comparison-toolNoJs")]
@@ -93,13 +95,17 @@
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext?.TraceIdentifier });
         }
 
-        private async Task<ViewResult> GetStartPage(bool jsEnabled)
+        private async Task<ViewResult> GetStartPage(bool jsEnabled, string productCategoryIds = null)
         {
             var viewModel = await _comparisonToolHelper.InitViewModel("start", populateRelationalData: false);
             await UpdateCmsPageViewModel(viewModel);
 
             _comparisonToolHelper.SetViewModelUserJourneyData(viewModel, null, null, "/");
             viewModel.JavascriptEnabled = jsEnabled;
+            if(!string.IsNullOrWhiteSpace(productCategoryIds))
+            {
+                viewModel.ProductCategoryIds = productCategoryIds.Split(',').ToArray();
+            }
             return View("Start", viewModel);
         }
 
