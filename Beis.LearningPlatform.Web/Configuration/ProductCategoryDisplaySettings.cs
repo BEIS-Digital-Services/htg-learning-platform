@@ -19,7 +19,7 @@
                     _productCategories = new List<CMSSearchTag>
                     {
                         new () { id = 2, name = "crm", displayName = "CUSTOMER RELATIONSHIP MANAGEMENT (CRM) SOFTWARE", friendlyDisplayName = "Customer Relationship Management" },
-                        new () { id = 1, name = "accounting", displayName = "DIGITAL ACCOUNTING SOFTWARE", friendlyDisplayName = "Accounting" },
+                        new () { id = 1, name = "accounting", displayName = "DIGITAL ACCOUNTING SOFTWARE", friendlyDisplayName = "Digital Accounting" },
                         new () { id = 4, name = "cyberSecurity", displayName = "CYBER SECURITY", friendlyDisplayName = "Cyber Security" }
                     };
 
