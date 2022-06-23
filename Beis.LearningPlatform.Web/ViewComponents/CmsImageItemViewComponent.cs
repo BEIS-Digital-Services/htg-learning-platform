@@ -15,7 +15,7 @@ public class CmsImageItemViewComponent : ViewComponent
         if (!string.IsNullOrWhiteSpace(completedLinkSessionKey))
         {
             var completedLinkSessionValue = _httpContextAccessor.HttpContext.Session.GetString(completedLinkSessionKey);
-            applyCompletedLink = completedLinkSessionValue == "true" ? true : false;
+            applyCompletedLink = completedLinkSessionValue == "true";
         }
 
         var viewModel = new CmsImageItemViewModel(cmsPageComponent, applyCompletedLink);
