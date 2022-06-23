@@ -3,6 +3,7 @@ var compareButtonsEnabled = false;
 
 document.addEventListener("DOMContentLoaded", function () {
     var checkBoxes = null;
+    
 
     document.querySelectorAll("form").forEach(f => f.addEventListener("submit", validateCompareButton));
 
@@ -16,6 +17,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const productCategoryFilters = document.querySelectorAll(".productCategory");
     productCategoryFilters.forEach(pcf => pcf.addEventListener("change", toggleProductsBasedOnCategory));
+
+    toggleProductsBasedOnCategory();
 
     var previouslySelectedIds = document.querySelector("#selectedProductIds");
     if (previouslySelectedIds && previouslySelectedIds.value !== "") {
