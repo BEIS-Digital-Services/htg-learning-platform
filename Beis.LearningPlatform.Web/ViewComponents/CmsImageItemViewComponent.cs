@@ -1,15 +1,24 @@
-﻿namespace Beis.LearningPlatform.Web.ViewComponents
+﻿namespace Beis.LearningPlatform.Web.ViewComponents;
+
+public class CmsImageItemViewComponent : ViewComponent
 {
-    public class CmsImageItemViewComponent : ViewComponent
+    private readonly IHttpContextAccessor _httpContextAccessor;
+    public CmsImageItemViewComponent(IHttpContextAccessor httpContextAccessor)
     {
-        public CmsImageItemViewComponent()
+        _httpContextAccessor = httpContextAccessor;
+    }
+
+    public IViewComponentResult Invoke(CMSPageComponent cmsPageComponent)
+    {
+        bool applyCompletedLink = false;
+        string completedLinkSessionKey = $"{cmsPageComponent.UniqueActionName}__CompletedLink";
+        if (!string.IsNullOrWhiteSpace(completedLinkSessionKey))
         {
+            var completedLinkSessionValue = _httpContextAccessor.HttpContext.Session.GetString(completedLinkSessionKey);
+            applyCompletedLink = completedLinkSessionValue == "true" ? true : false;
         }
 
-        public IViewComponentResult Invoke(CMSPageComponent cmsPageComponent)
-        {
-            var viewModel = new CmsImageItemViewModel(cmsPageComponent);
-            return View(viewModel);
-        }
+        var viewModel = new CmsImageItemViewModel(cmsPageComponent, applyCompletedLink);
+        return View(viewModel);
     }
 }

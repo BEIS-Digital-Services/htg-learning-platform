@@ -179,7 +179,22 @@
             Assert.That(result, Is.TypeOf<ViewResult>());
         }
 
-        
+        [Test]
+        public async Task Result_Post_WhenCalled_ReturnsOK()
+        {
+            //Arrange
+            _diagnosticToolControllerHelper.Setup(h => h.ProcessResults(It.IsAny<DiagnosticToolForm>(), It.IsAny<FormTypes>()))
+                .ReturnsAsync(new ControllerHelperOperationResponse<bool>(It.IsAny<Guid>(), true, true));
+
+
+            //Act
+            var result = await controller.Result(Get_DiagnosticToolForm(1));
+
+            //Assert
+            Assert.NotNull(result);
+        }
+
+
         [TestCase("skills-three-newcomer-planning")]
         [TestCase("skills-three-newcomer-communication")]
         [TestCase("skills-three-newcomer-support")]

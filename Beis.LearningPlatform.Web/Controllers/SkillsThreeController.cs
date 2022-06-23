@@ -44,6 +44,8 @@
             var response = await _controllerHelper.ProcessResults(model, GetFormType());
             if (response.Result && response.Payload)
             {
+                string completedSessionKey = $"{model.userTypeActionPlanSection}__CompletedLink";
+                HttpContext.Session.SetString(completedSessionKey, "true");
                 return Redirect($"/learning-completed-{model.GetFormUrlName()}");
             }
             else
@@ -81,7 +83,7 @@
 
         protected override FormTypes GetFormType()
         {
-            var route = _httpContextAccessor.HttpContext.Request.Path.Value.ToLower().Replace("/", "").Trim();
+            var route = _httpContextAccessor.HttpContext.Request.Path.Value?.ToLower().Replace("/", "").Trim();
             var formType = FormTypes.SkillsThreeNewcomerPlanning;
             switch (route)
             {

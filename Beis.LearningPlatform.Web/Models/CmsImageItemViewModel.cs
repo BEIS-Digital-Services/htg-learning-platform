@@ -1,63 +1,67 @@
-﻿namespace Beis.LearningPlatform.Web.Models
+﻿namespace Beis.LearningPlatform.Web.Models;
+
+public class CmsImageItemViewModel
 {
-    public class CmsImageItemViewModel
+    private readonly CMSPageComponent _cmsPageComponent;
+    private readonly bool _applyCompletedLink;
+
+    public CmsImageItemViewModel(CMSPageComponent cmsPageComponent, bool applyCompletedLink)
     {
-        private readonly CMSPageComponent _cmsPageComponent;
+        _cmsPageComponent = cmsPageComponent;
+        _applyCompletedLink = applyCompletedLink;
+    }
 
-        public CmsImageItemViewModel(CMSPageComponent cmsPageComponent)
+    public bool HasContent
+    {
+        get
         {
-            _cmsPageComponent = cmsPageComponent;
+            return !string.IsNullOrEmpty(_cmsPageComponent.header)
+                && !string.IsNullOrEmpty(_cmsPageComponent.Summary)
+                && _cmsPageComponent.image != null
+                && _cmsPageComponent.Link != null;
         }
+    }
 
-        public bool HasContent
+    public string Header
+    {
+        get
         {
-            get
-            {
-                return !string.IsNullOrEmpty(_cmsPageComponent.header)
-                    && !string.IsNullOrEmpty(_cmsPageComponent.Summary)
-                    && _cmsPageComponent.image != null
-                    && _cmsPageComponent.Link != null;
-            }
+            return _cmsPageComponent.header;
         }
+    }
 
-        public string Header
+    public string Summary
+    {
+        get
         {
-            get
-            {
-                return _cmsPageComponent.header;
-            }
+            return _cmsPageComponent.Summary;
         }
+    }
 
-        public string Summary
+    public CMSPageImage Image
+    {
+        get
         {
-            get
-            {
-                return _cmsPageComponent.Summary;
-            }
+            return _cmsPageComponent.image;
         }
+    }
 
-        public CMSPageImage Image
+    public CMSPageLink Link
+    {
+        get
         {
-            get
-            {
-                return _cmsPageComponent.image;
-            }
-        }
-
-        public CMSPageLink Link
-        {
-            get
-            {
+            if (_applyCompletedLink && _cmsPageComponent.CompletedLink != null)
+                return _cmsPageComponent.CompletedLink;
+            else
                 return _cmsPageComponent.Link;
-            }
         }
+    }
 
-        public CMSPageComponent Component
+    public CMSPageComponent Component
+    {
+        get
         {
-            get
-            {
-                return _cmsPageComponent;
-            }
+            return _cmsPageComponent;
         }
     }
 }
