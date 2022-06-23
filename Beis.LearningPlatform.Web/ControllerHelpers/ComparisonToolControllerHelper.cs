@@ -95,6 +95,19 @@
             viewModel.VoucherUrl = _voucherAppOption.BaseUrl;
             viewModel.VendorProdLogorUrl = _vendorAppOption.ProdLogoUrl;
             viewModel.ProductCategoryList = _productCategoryDisplaySettings.DisplaySettings;
+
+            if (string.IsNullOrWhiteSpace(productCategoryIds))
+            {
+                foreach (var item in viewModel.ProductCategoryList.ToList())
+                {
+                    // If there are no products exist for any of the tags, then remove it from filter option.
+                    if (!viewModel.products.Any(p => p.product_type == item.id))
+                    {
+                        viewModel.ProductCategoryList.Remove(item);
+                    }
+                }
+            }
+
             viewModel.Referrer = referrerPath;
 
             // If there are one or more category selected, apply the filter and set the ViewModel attribute
