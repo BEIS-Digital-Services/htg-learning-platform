@@ -180,6 +180,46 @@ namespace Beis.LearningPlatform.Web.Models
             };
         }
 
+        public bool AnyProductHasTransactionFees
+        {
+            get 
+            {
+                return products?.Any(x => x.productPriceTransactionFees?.Any() ?? false) ?? false;  
+            }
+        }
+        
+        public IEnumerable<string> ComparisonTransactionFeeDescriptions
+        {
+            get 
+            {
+                return products
+                    .Where(x => x.productPriceTransactionFees?.Any() ?? false)
+                    .SelectMany(x => x.productPriceTransactionFees)
+                    .Select(x => x.CostDescription)
+                    .Distinct();  
+            }
+        }
+
+        public bool AnyProductHasThirdPartyFees
+        {
+            get 
+            {
+                return products?.Any(x => x.productPriceThirdPartyFees?.Any() ?? false) ?? false;  
+            }
+        } 
+
+        public IEnumerable<string> ComparisonThirdPartyFeeDescriptions
+        {
+            get 
+            {
+                return products
+                    .Where(x => x.productPriceThirdPartyFees?.Any() ?? false)
+                    .SelectMany(x => x.productPriceThirdPartyFees)?
+                    .Select(x => x.CostDescription)
+                    .Distinct();  
+            }
+        }
+
 		public string ContentKey { get; set; }
 
         // SEO properties:

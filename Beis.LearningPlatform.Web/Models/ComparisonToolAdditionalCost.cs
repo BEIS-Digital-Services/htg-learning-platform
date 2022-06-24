@@ -2,6 +2,7 @@
 {
     public class ComparisonToolAdditionalCost
     {
+        public ComparisonToolAdditionalCost() { }
         public ComparisonToolAdditionalCost(additional_cost x)
         {
             CostDescription = x.additional_cost_desc?.additional_costDesc;

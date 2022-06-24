@@ -27,7 +27,9 @@
                 .ForMember(dest => dest.productPriceSecondaryDescriptions, opt => opt.Ignore())
                 .ForMember(dest => dest.productPriceSecondaryMetrics, opt => opt.Ignore())
                 .ForMember(dest => dest.productPriceAddCostDescriptions, opt => opt.Ignore())
-                .ForMember(dest => dest.productPriceAddCosts, opt => opt.Ignore());
+                .ForMember(dest => dest.productPriceAddCosts, opt => opt.Ignore())
+                .ForMember(dest => dest.productPriceTransactionFees, opt => opt.Ignore())
+                .ForMember(dest => dest.productPriceThirdPartyFees, opt => opt.Ignore());
         }
     }
 }

@@ -95,8 +95,17 @@
         /// </summary>
         public IList<ComparisonToolAdditionalCost> productPriceAddCosts { get; set; }
         public IList<ComparisonToolAdditionalCost> productPriceTransactionFees { get; set; }
-        public IList<ComparisonToolAdditionalCost> productPriceThirdPartyFees { get; set; }        
+        public IList<ComparisonToolAdditionalCost> productPriceThirdPartyFees { get; set; }
 
+        public string GetTransactionFeeCost(string description)
+        {
+            return this.productPriceTransactionFees?.FirstOrDefault(x => x.CostDescription == description)?.CostAndFrequency;
+        }
+
+        public string GetThirdPartyFeeCost(string description)
+        {
+            return this.productPriceThirdPartyFees?.FirstOrDefault(x => x.CostDescription == description)?.CostAndFrequency;
+        }
 
         #endregion
 
