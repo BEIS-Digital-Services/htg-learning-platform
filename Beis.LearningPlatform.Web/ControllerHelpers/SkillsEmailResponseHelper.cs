@@ -1,10 +1,4 @@
-﻿using Beis.LearningPlatform.Library;
-using Beis.LearningPlatform.Web.ControllerHelpers.Interfaces;
-using Beis.LearningPlatform.Web.Models.DiagnosticTool;
-using Beis.LearningPlatform.Web.Utils;
-using System.Threading.Tasks;
-
-namespace Beis.LearningPlatform.Web.ControllerHelpers
+﻿namespace Beis.LearningPlatform.Web.ControllerHelpers
 {
     public class SkillsEmailResponseHelper : IEmailResponseHelper
     {

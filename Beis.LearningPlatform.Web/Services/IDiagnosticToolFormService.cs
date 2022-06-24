@@ -1,6 +1,4 @@
-﻿using Beis.LearningPlatform.Web.Models.DiagnosticTool;
-
-namespace Beis.LearningPlatform.Web.Services
+﻿namespace Beis.LearningPlatform.Web.Services
 {
     /// <summary>
     /// An interface that defines the behaviour of a Diagnostic Tool Form service.

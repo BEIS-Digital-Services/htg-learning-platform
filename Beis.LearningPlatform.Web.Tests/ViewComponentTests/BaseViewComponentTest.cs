@@ -1,6 +1,4 @@
-﻿using Markdig;
-
-namespace Beis.LearningPlatform.Web.Tests.ViewComponentTests
+﻿namespace Beis.LearningPlatform.Web.Tests.ViewComponentTests
 {
     public class BaseViewComponentTest
     {

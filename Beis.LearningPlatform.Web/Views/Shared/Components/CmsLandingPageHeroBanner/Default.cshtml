@@ -1,0 +1,30 @@
+﻿@model CmsLandingPageHeroBannerViewModel
+@if (!Model.HasContent)
+{
+    return;
+}
+<div class="landing-page-hero columns beis-navy-blue">
+    <div class="govuk-width-container">
+        <div class="govuk-grid-row beis-columns-same-height">
+            <div class="govuk-grid-column-one-half-text landing-page-hero-left">
+                <div class="govuk-grid-row">
+                    <div class="left-column beis-white-text">
+                        <h1 class="govuk-heading-l beis-white-text govuk-!-margin-bottom-3 govuk-!-margin-top-6">
+                            @Model.Header
+                        </h1>
+                        <p class="govuk-body beis-white-text govuk-!-padding-right-8">
+                            @Model.Intro
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="govuk-grid-column-one-half landing-page-hero-right">
+                <div class="govuk-grid-row">
+                    <div class="right-column govuk-!-padding-right-3 landing-page-hero-img">
+                        <vc:cms-image options='new CmsImageViewModel{ ImageUrl = Model.Component.image.url, CssClass = "hero-mobile-image" }' />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

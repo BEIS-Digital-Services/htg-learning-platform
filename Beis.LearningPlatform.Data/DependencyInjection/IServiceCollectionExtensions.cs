@@ -1,10 +1,6 @@
 ﻿using Beis.LearningPlatform.Data.Repositories;
-using Beis.LearningPlatform.Data.Repositories.DiagnosticTool;
-using Beis.LearningPlatform.Data.Repositories.Feedback;
-using Beis.LearningPlatform.Data.Repositories.Locations;
 using Beis.LearningPlatform.Data.Repositories.SatisfactionSurvey;
 using Beis.LearningPlatform.Data.Repositories.Skills;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace Beis.LearningPlatform.Data.DependencyInjection
 {
@@ -26,6 +22,7 @@ namespace Beis.LearningPlatform.Data.DependencyInjection
             serviceCollection.AddTransient<IDiagnosticToolEmailAnswerRepository, DiagnosticToolEmailAnswerRepository>();
             serviceCollection.AddTransient<ISkillsOneResponseRepository, SkillsOneResponseRepository>();
             serviceCollection.AddTransient<ISkillsTwoResponseRepository, SkillsTwoResponseRepository>();
+            serviceCollection.AddTransient<ISkillsThreeResponseRepository, SkillsThreeResponseRepository>();
             serviceCollection.AddTransient<ISatisfactionSurveyRepository, SatisfactionSurveyRepository>();
 			          
             serviceCollection.AddTransient<IDataRepository, DataRepository>();

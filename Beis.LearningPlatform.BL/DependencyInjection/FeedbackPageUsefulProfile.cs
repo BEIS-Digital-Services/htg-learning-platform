@@ -1,8 +1,4 @@
-﻿using AutoMapper;
-using Beis.LearningPlatform.BL.Models;
-using Beis.LearningPlatform.Library.DTO;
-
-namespace Beis.LearningPlatform.BL.DependencyInjection
+﻿namespace Beis.LearningPlatform.BL.DependencyInjection
 {
     public class FeedbackPageUsefulProfile : Profile
     {

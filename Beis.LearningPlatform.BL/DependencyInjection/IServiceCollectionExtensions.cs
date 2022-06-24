@@ -1,6 +1,4 @@
-﻿using Beis.LearningPlatform.BL.IntegrationServices;
-using Beis.LearningPlatform.BL.IntegrationServices.GovUkNotify;
-using Beis.LearningPlatform.BL.Services;
+﻿using Beis.LearningPlatform.BL.Services;
 using Beis.LearningPlatform.DAL.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
@@ -30,6 +28,7 @@ namespace Beis.LearningPlatform.BL.DependencyInjection
             serviceCollection.AddTransient<IEmailService, EmailService>();
             serviceCollection.AddTransient<ISkillsOneService, SkillsOneService>();
             serviceCollection.AddTransient<ISkillsTwoService, SkillsTwoService>();
+            serviceCollection.AddTransient<ISkillsThreeService, SkillsThreeService>();
             serviceCollection.AddTransient<ISatisfactionSurveyService, SatisfactionSurveyService>();
             serviceCollection.AddTransient<IFeedbackService, DBFeedbackService>();
 

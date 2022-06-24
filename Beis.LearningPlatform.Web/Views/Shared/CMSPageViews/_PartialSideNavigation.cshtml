@@ -1,18 +1,18 @@
 ﻿@model List<Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageSideNavigation>
 <div class="side-navigation govuk-!-padding-top-6">
-    @foreach (var sidenav in Model)
+    @{
+        var cmsPageSides = Model.SelectMany(sideNav => sideNav.Side);
+    }
+    @foreach (var cmsPageSide in cmsPageSides)
     {
-        foreach (var block in sidenav.Side)
-        {
-            <ul>
-                @foreach (var item in block.links)
-                {
-                    <li>
-                        <a id="link-cmspageviews-sidenavigation-@(item.GetGaLinkId())" class="govuk-link" href="">@item.label</a>
-                    </li>
-                }
+        <ul>
+            @foreach (var item in cmsPageSide.links)
+            {
+                <li>
+                    <a id="link-cmspageviews-sidenavigation-@item.GetGaLinkId()" class="govuk-link" href="">@item.label</a>
+                </li>
+            }
 
-            </ul>
-        }
+        </ul>
     }
 </div>

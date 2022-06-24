@@ -1,13 +1,4 @@
-﻿using Beis.LearningPlatform.Library;
-using Beis.LearningPlatform.Web.ControllerHelpers.Interfaces;
-using Beis.LearningPlatform.Web.Models.DiagnosticTool;
-using Beis.LearningPlatform.Web.Options;
-using Beis.LearningPlatform.Web.Utils;
-using Microsoft.Extensions.Options;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace Beis.LearningPlatform.Web.ControllerHelpers
+﻿namespace Beis.LearningPlatform.Web.ControllerHelpers
 {
     public class DiagnosticToolEmailResponseHelper : IEmailResponseHelper
     {

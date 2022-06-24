@@ -1,12 +1,4 @@
-﻿using Beis.LearningPlatform.Web.ControllerHelpers.Interfaces;
-using Beis.LearningPlatform.Web.Models.DiagnosticTool;
-using Beis.LearningPlatform.Web.Utils;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Beis.LearningPlatform.Web.Controllers
+﻿namespace Beis.LearningPlatform.Web.Controllers
 {
     /// <summary>
     /// A class that defines a controller for the Diagnostic Tool.
@@ -32,7 +24,22 @@ namespace Beis.LearningPlatform.Web.Controllers
         [Route("/skills-two/nextstep")]
         public async override Task<IActionResult> NextStep(DiagnosticToolForm model)
         {
-            return await base.NextStep(model);
+            if (TryGetSessionData(out EmailAnswer emailAnswer))
+                model.EmailAnswer = emailAnswer;
+
+            var response = await _controllerHelper.NextStep(model, ModelState.IsValid, GetModelErrors());
+            if (response.Result)
+            {
+                if (model.FormIsCompleted)
+                {
+                    //Get score
+                    await _controllerHelper.UpdateScore(model);
+                }
+
+                return GetViewResult(response.Payload);
+            }
+            else
+                return BadRequest();
         }
 
         [HttpPost]
@@ -56,7 +63,8 @@ namespace Beis.LearningPlatform.Web.Controllers
             var response = await _controllerHelper.ProcessResults(model, FormTypes.SkillsTwo);
             if (response.Result && response.Payload)
             {
-                return Redirect("/learning-module-two-next-steps");
+                var isNewcomer = model.SkilledModuleTwoResultType == SkilledModuleTwoResultType.DigitalNewComer;
+                return Redirect(isNewcomer ? "/learning-module-one-newcomer-next-steps" : "/learning-module-two-next-steps");
             }
             else
             {

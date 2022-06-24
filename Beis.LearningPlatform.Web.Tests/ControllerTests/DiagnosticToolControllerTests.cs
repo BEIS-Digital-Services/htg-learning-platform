@@ -1,24 +1,3 @@
-using Beis.LearningPlatform.Web.ComparisonTool.Models;
-using Beis.LearningPlatform.Web.ControllerHelpers;
-using Beis.LearningPlatform.Web.ControllerHelpers.Interfaces;
-using Beis.LearningPlatform.Web.Controllers;
-using Beis.LearningPlatform.Web.Interfaces;
-using Beis.LearningPlatform.Web.Models.DiagnosticTool;
-using Beis.LearningPlatform.Web.Options;
-using Beis.LearningPlatform.Web.Services;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using Moq;
-using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using ConfigOptions = Microsoft.Extensions.Options.Options;
-
 namespace Beis.LearningPlatform.Web.Tests.ControllerTests
 {
     public class DiagnosticToolControllerTests : FormControllerBaseTest
@@ -420,7 +399,6 @@ namespace Beis.LearningPlatform.Web.Tests.ControllerTests
         //controller.ControllerContext.RouteData.Values["controller"] = "diagnostic-tool";
         //    controller.ControllerContext.RouteData.Values["action"] = "start";
         //    ViewResult view = await controller.Start() as ViewResult;
-        //    //view.ViewData["title"] = "About Help to Grow";
 
         //    Assert.NotNull(view);
         //}

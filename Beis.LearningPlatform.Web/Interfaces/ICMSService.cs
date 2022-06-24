@@ -1,9 +1,4 @@
-﻿using Beis.LearningPlatform.Web.Models;
-using Beis.LearningPlatform.Web.StrapiApi.Models;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace Beis.LearningPlatform.Web.Interfaces
+﻿namespace Beis.LearningPlatform.Web.Interfaces
 {
     public interface ICmsService
     {
@@ -18,5 +13,8 @@ namespace Beis.LearningPlatform.Web.Interfaces
         public Task<IList<ComparisonToolPageViewModel>> GetComparisonToolPageResult(string strapiAction);
 
         Task<IEnumerable<SiteNavigationModel>> GetSiteNavigation();
+
+        /// <param name="orderByIds">Return in same order as Id params</param>
+        Task<IEnumerable<CMSSearchArticle>> GetSearchArticles(IEnumerable<int> searchArticleIds, bool orderByIds = false);
     }
 }

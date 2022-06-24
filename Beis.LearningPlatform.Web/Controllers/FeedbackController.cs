@@ -1,10 +1,4 @@
-﻿using Beis.LearningPlatform.Web.ControllerHelpers.Interfaces;
-using Beis.LearningPlatform.Web.StrapiApi.Models;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System.Threading.Tasks;
-
-namespace Beis.LearningPlatform.Web.Controllers
+﻿namespace Beis.LearningPlatform.Web.Controllers
 {
     public class FeedbackController : ControllerBase
     {
@@ -15,7 +9,7 @@ namespace Beis.LearningPlatform.Web.Controllers
             _feedbackControllerHelper = feedbackControllerHelper;
         }
 
-        [Route("/feedback/report-problem")]
+        [Route("/feedback/report-problem", Name = "Feedback_ReportProblem")]
         public async Task<JsonResult> ProcessReport(CMSFeedbackProblem model)
         {
             if (!ModelState.IsValid)
@@ -27,7 +21,7 @@ namespace Beis.LearningPlatform.Web.Controllers
             return Json(statusCode);
         }
 
-        [Route("/feedback/useful")]
+        [Route("/feedback/useful", Name = "Feedback_Useful")]
         public async Task<JsonResult> ProcessFeedbackUse(CMSFeedbackPageUseful model)
         {
             if (!ModelState.IsValid)
@@ -40,7 +34,7 @@ namespace Beis.LearningPlatform.Web.Controllers
         }
 
 
-        [Route("/feedback/{feedback}")]
+        [Route("/feedback/{feedback}", Name = "Feedback")]
         public async Task<IActionResult> Feedback(string feedback)
         {
             if (string.IsNullOrWhiteSpace(feedback))

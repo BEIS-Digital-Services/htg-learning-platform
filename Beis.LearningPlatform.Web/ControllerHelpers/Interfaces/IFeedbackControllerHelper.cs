@@ -1,8 +1,4 @@
-﻿using Beis.LearningPlatform.Web.StrapiApi.Models;
-using System.Net;
-using System.Threading.Tasks;
-
-namespace Beis.LearningPlatform.Web.ControllerHelpers.Interfaces
+﻿namespace Beis.LearningPlatform.Web.ControllerHelpers.Interfaces
 {
     public interface IFeedbackControllerHelper : IControllerHelperBase
     {

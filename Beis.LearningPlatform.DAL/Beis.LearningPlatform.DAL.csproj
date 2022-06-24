@@ -1,23 +1,25 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>disable</Nullable>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="10.1.1" />
-    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="AutoMapper" Version="10.1.1" />
+		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Beis.LearningPlatform.Data\Beis.LearningPlatform.Data.csproj" />
-    <ProjectReference Include="..\Beis.LearningPlatform.Library\Beis.LearningPlatform.Library.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Beis.LearningPlatform.Data\Beis.LearningPlatform.Data.csproj" />
+		<ProjectReference Include="..\Beis.LearningPlatform.Library\Beis.LearningPlatform.Library.csproj" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="Beis.Htg.VendorSme.Database">
-      <HintPath>..\Library\Beis.Htg.VendorSme.Database.dll</HintPath>
-    </Reference>
-  </ItemGroup>
+	<ItemGroup>
+		<Reference Include="Beis.Htg.VendorSme.Database">
+			<HintPath>..\Library\Beis.Htg.VendorSme.Database.dll</HintPath>
+		</Reference>
+	</ItemGroup>
 
 </Project>

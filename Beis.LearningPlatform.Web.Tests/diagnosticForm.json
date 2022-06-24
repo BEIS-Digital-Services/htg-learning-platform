@@ -1,4 +1,4 @@
-{
+﻿{
   "applicationForm": {
     "diagnosticTool": {
       "summaryHeading": "Here's an overview of your answers",
@@ -572,7 +572,7 @@
 
     "skillsOne": {
       "summaryHeading": "Your digital journey",
-      "canChangeAnswers" : false,
+      "canChangeAnswers": false,
       "backButton": false,
       "backLink": true,
       "backURLfromQ1": "/learning-module-one-questionnaire-intro",
@@ -642,7 +642,7 @@
           "id": 2,
           "order": 2,
           "title": "Your digital journey",
-          "summaryTitle": "The most time-consuming task(s) or area of your business that you'd like to simplify are:",
+          "summaryTitle": "The most time-consuming task(s) or area of your business that you'd like to simplify are...",
           "elements": [
             {
               "controlType": "Textarea",
@@ -705,7 +705,7 @@
           "id": 4,
           "order": 4,
           "title": "Your digital journey",
-          "summaryTitle": "You currently use the following methods to share or store information:",
+          "summaryTitle": "You currently use the following methods to share or store information...",
           //"showInSummary": false,
           //"skippedByElementStepId": 6,
           "elements": [
@@ -781,7 +781,7 @@
           "id": 5,
           "order": 5,
           "title": "Your digital journey",
-          "summaryTitle": "Finally, when asked what you considered the biggest benefit to your business would be from digital adoption, you said",
+          "summaryTitle": "Finally, when asked what you considered the biggest benefit to your business would be from digital adoption, you said...",
           "elements": [
             {
               "controlType": "Textarea",
@@ -1073,7 +1073,7 @@
                   "value": "Yes",
                   "textControlHtmlId": "Question5Option1",
                   "textControlHtmlName": "Question501",
-                  "score" : 3
+                  "score": 3
                 },
                 {
                   "controlType": "Radio",
@@ -1356,7 +1356,2459 @@
 
 
       ]
+    },
+
+
+    "skillsThreeNewcomerPlanning": {
+      "summaryHeading": "Your digital newcomer action plan",
+      "canChangeAnswers": false,
+      "backButton": false,
+      "backLink": true,
+      "backURLfromQ1": "/learning-module-three-your-action-plan-newcomer",
+      "userTypeActionPlanSection": "newcomer-planning",
+      "formLogo": "skills-three-action-planning.png",
+      "steps": [
+
+        {
+          "id": 1,
+          "order": 1,
+          "title": "Your digital newcomer action plan",
+          "summaryTitle": "",
+          "elements": [
+            {
+              "controlType": "TextGroup",
+              "hint": "It's really important to understand how you want software to make life easier. What is your end goal?",
+              "hint2": "Do you want to enhance your customer service, promote your goods/services, or would you like better oversight of your finances?",
+              "id": 110,
+              "text": "Planning",
+              "text2": "",
+              "subText": "1. Think about why you need software",
+              "textControlHtmlId": "lblTextGroup",
+              "textControlHtmlName": "Question1",
+              //"textGroupElements": [
+              "optionElements": [
+                {
+                  "controlType": "Textarea",
+                  "id": 111,
+                  "strongText": "Start... ",
+                  "text": "by making a list of what you want your new software to achieve.",
+                  "textControlHtmlId": "Question1Text1",
+                  "textControlHtmlName": "Question1Text1_",
+                  "ResultPageLabel": "Here's what you want your software to achieve..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 112,
+                  "strongText": "Next... ",
+                  "text": "what are the must have features? This could include an easy to use dashboard for tracking sales, email automation or ability to share information between your team(s).",
+                  "textControlHtmlId": "Question1Text2",
+                  "textControlHtmlName": "Question1Text2_",
+                  "ResultPageLabel": "This is your list of must-have features..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 113,
+                  "strongText": "Finally... ",
+                  "text": "based on the types of software you've researched, which type(s) do you think will help meet your goal(s)?",
+                  "textControlHtmlId": "Question1Text3",
+                  "textControlHtmlName": "Question1Text3_",
+                  "ResultPageLabel": "Here's a list of software you feel will help you reach your goal..."
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "id": 2,
+          "order": 2,
+          "title": "Your digital newcomer action plan",
+          "summaryTitle": "",
+          "elements": [
+            {
+              "controlType": "TextGroup",
+              "hint": "Making sure your team can access new software is vital to success. This may mean buying new hardware, reviewing how information is stored and the speed of your internet connection.",
+              "hint2": "",
+              "id": 210,
+              "text": "Planning",
+              "text2": "",
+              "subText": "2. Consider how people will access the software",
+              "textControlHtmlId": "lblTextGroup",
+              "textControlHtmlName": "Question2",
+              "optionElements": [
+                {
+                  "controlType": "Textarea",
+                  "id": 211,
+                  "strongText": "Start... ",
+                  "text": "with a list who'll need access to the software.",
+                  "textControlHtmlId": "Question2Text1",
+                  "textControlHtmlName": "Question2Text1_",
+                  "ResultPageLabel": "Here's a list of who will need to use software..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 112,
+                  "strongText": "Next... ",
+                  "text": "work out what hardware you need to order. For example, will you need new laptops or tablets?",
+                  "textControlHtmlId": "Question2Text2",
+                  "textControlHtmlName": "Question2Text2_",
+                  "ResultPageLabel": "This is the hardware you need to order..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 113,
+                  "strongText": "Finally... ",
+                  "text": "work out how much budget you need to set aside. Also, list how long it'll take to get these assets in place.",
+                  "textControlHtmlId": "Question2Text3",
+                  "textControlHtmlName": "Question2Text3_",
+                  "ResultPageLabel": "You calculated how much budget, and time, you'd need to get these assets into place..."
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "id": 3,
+          "order": 3,
+          "title": "Your digital newcomer action plan",
+          "summaryTitle": "",
+          "elements": [
+            {
+              "controlType": "TextGroup",
+              "hint": "Understanding the potential risks you face and knowing how to compensate for them can be the difference between launching as planned, or putting things on hold.",
+              "hint2": "",
+              "id": 210,
+              "text": "Planning",
+              "text2": "",
+              "subText": "3. Think about potential risks",
+              "textControlHtmlId": "lblTextGroup",
+              "nextButtonText": "View summary",
+              "textControlHtmlName": "Question3",
+              "optionElements": [
+                {
+                  "controlType": "Textarea",
+                  "id": 211,
+                  "strongText": "Start... ",
+                  "text": "by writing down the risks you might encounter. This could include; technical hiccups on the day you go live or disruption to how you usually trade. Your list should include the worst-case scenario - having to stop the rollout. What would need to happen for this to be the only solution?",
+                  "textControlHtmlId": "Question3Text1",
+                  "textControlHtmlName": "Question3Text1_",
+                  "ResultPageLabel": "The risks you think you might encounter are..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 112,
+                  "strongText": "Next... ",
+                  "text": "decide how you could compensate for each risk. For example, would you be able to revert back to your old ways of working? Who will make the decisions in each case?",
+                  "textControlHtmlId": "Question2Text2",
+                  "textControlHtmlName": "Question2Text2_",
+                  "ResultPageLabel": "Here's what you said about compensating for each risk..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 113,
+                  "strongText": "Finally... ",
+                  "text": "how much contingency time and budget would be needed in each of these scenarios?",
+                  "textControlHtmlId": "Question3Text3",
+                  "textControlHtmlName": "Question3Text3_",
+                  "ResultPageLabel": "This is the amount of contingency time and budget you estimated would be needed in each scenario..."
+                }
+              ]
+            }
+          ]
+        }
+
+
+
+
+
+      ]
+    },
+
+    "skillsThreeNewcomerCommunication": {
+      "summaryHeading": "Your digital newcomer action plan",
+      "canChangeAnswers": false,
+      "backButton": false,
+      "backLink": true,
+      "backURLfromQ1": "/learning-module-three-your-action-plan-newcomer",
+      "userTypeActionPlanSection": "newcomer-communication",
+      "formLogo": "skills-three-action-communication.png",
+      "steps": [
+
+        {
+          "id": 1,
+          "order": 1,
+          "title": "Your digital newcomer action plan",
+          "summaryTitle": "",
+          "elements": [
+            {
+              "controlType": "TextGroup",
+              "hint": "Identifying early on who needs information, when they need it and how you'll send it is vital, particularly if they're not used to digital ways of working. ",
+              "hint2": "",
+              "id": 110,
+              "text": "Communication",
+              "text2": "",
+              "subText": "1. Keep your team(s) in the loop",
+              "textControlHtmlId": "lblTextGroup",
+              "textControlHtmlName": "Question1",
+              //"textGroupElements": [
+              "optionElements": [
+                {
+                  "controlType": "Textarea",
+                  "id": 111,
+                  "strongText": "Start... ",
+                  "text": "by identifying who's affected and how, including teams who might not be adopting your software, but could be affected by it.",
+                  "textControlHtmlId": "Question1Text1",
+                  "textControlHtmlName": "Question1Text1_",
+                  "ResultPageLabel": "These are the people and teams who may be affected by the new software..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 112,
+                  "strongText": "Next... ",
+                  "text": "plan when you'll communicate the change. List each milestone that you'll communicate to the business.",
+                  "textControlHtmlId": "Question1Text2",
+                  "textControlHtmlName": "Question1Text2_",
+                  "ResultPageLabel": "Here's a list of milestones and when you’ll communicate them to the business..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 113,
+                  "strongText": "Finally... ",
+                  "text": "decide when you need to communicate. You might have different dates for different teams.",
+                  "textControlHtmlId": "Question1Text3",
+                  "textControlHtmlName": "Question1Text3_",
+                  "ResultPageLabel": "This is how you’ll communicate each milestone ..."
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "id": 2,
+          "order": 2,
+          "title": "Your digital newcomer action plan",
+          "summaryTitle": "",
+          "elements": [
+            {
+              "controlType": "TextGroup",
+              "hint": "If you're looking to adopt more digital ways of working, even a slight interruption to business as usual can really impact customer service. ",
+              "hint2": "With this in mind, think about how you'd want to tell your customers about the changes, and whether you need to. ",
+              "id": 210,
+              "text": "Communication",
+              "text2": "",
+              "subText": "2. Keep your customers informed",
+              "textControlHtmlId": "lblTextGroup",
+              "textControlHtmlName": "Question2",
+              "optionElements": [
+                {
+                  "controlType": "Textarea",
+                  "id": 211,
+                  "strongText": "Start... ",
+                  "text": "by considering how your customers could be impacted by your changes. Is the new software you're integrating likely to impact the service they receive? If so, make a list here of how that could happen.",
+                  "textControlHtmlId": "Question2Text1",
+                  "textControlHtmlName": "Question2Text1_",
+                  "ResultPageLabel": "This is how your customers could be impacted by the new software..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 112,
+                  "strongText": "Next... ",
+                  "text": "write a list of what you think they'll need to know about the changes. For example, is a department they usually deal with likely to be less available for while? Will the new software change how they contact or pay your business?",
+                  "textControlHtmlId": "Question2Text2",
+                  "textControlHtmlName": "Question2Text2_",
+                  "ResultPageLabel": "Here’s the list of what your customers will need to know about the changes..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 113,
+                  "strongText": "Finally... ",
+                  "text": "decide when you need to communicate the changes to your customers. You might have different dates for different customers.",
+                  "textControlHtmlId": "Question2Text3",
+                  "textControlHtmlName": "Question2Text3_",
+                  "ResultPageLabel": "This is when you need to communicate with your customers and how..."
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "id": 3,
+          "order": 3,
+          "title": "Your digital newcomer action plan",
+          "summaryTitle": "",
+          "elements": [
+            {
+              "controlType": "TextGroup",
+              "hint": "You'll also need a list of key dates for communicating your roll out. This will help you meet specific milestones, and give your staff and customers clarity of what's changing across your business. ",
+              "hint2": "",
+              "id": 210,
+              "text": "Communication",
+              "text2": "",
+              "subText": "3. Draw up a communications timeline",
+              "textControlHtmlId": "lblTextGroup",
+              "nextButtonText": "View summary",
+              "textControlHtmlName": "Question3",
+              "optionElements": [
+                {
+                  "controlType": "Textarea",
+                  "id": 211,
+                  "strongText": "Start... ",
+                  "text": "by reviewing the two lists you've made above and pick out the key events and dates you need to communicate to your team and customers. ",
+                  "textControlHtmlId": "Question3Text1",
+                  "textControlHtmlName": "Question3Text1_",
+                  "ResultPageLabel": "Here are the key communication dates you identified..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 112,
+                  "strongText": "Next... ",
+                  "text": "decide how you will communicate. You might choose different methods for different messages.",
+                  "textControlHtmlId": "Question2Text2",
+                  "textControlHtmlName": "Question2Text2_",
+                  "ResultPageLabel": "This is how you are planning to communicate..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 113,
+                  "strongText": "Finally... ",
+                  "text": "choose who will take responsibility for these communications including how they will deal with queries. ",
+                  "textControlHtmlId": "Question3Text3",
+                  "textControlHtmlName": "Question3Text3_",
+                  "ResultPageLabel": "You've chosen the following person/people to be responsible for communicating the changes and dealing with queries..."
+                }
+              ]
+            }
+          ]
+        }
+
+      ]
+    },
+
+    "skillsThreeNewcomerSupport": {
+      "summaryHeading": "Your digital newcomer action plan",
+      "canChangeAnswers": false,
+      "backButton": false,
+      "backLink": true,
+      "backURLfromQ1": "/learning-module-three-your-action-plan-newcomer",
+      "userTypeActionPlanSection": "newcomer-support",
+      "formLogo": "skills-three-action-support.png",
+      "steps": [
+
+        {
+          "id": 1,
+          "order": 1,
+          "title": "Your digital newcomer action plan",
+          "summaryTitle": "",
+          "elements": [
+            {
+              "controlType": "TextGroup",
+              "hint": "As this is your first software rollout, it's important to receive as much help as you can.",
+              "hint2": "",
+              "id": 110,
+              "text": "Support, bugs and maintenance",
+              "text2": "",
+              "subText": "1. Tech support for integration",
+              "textControlHtmlId": "lblTextGroup",
+              "textControlHtmlName": "Question1",
+              //"textGroupElements": [
+              "optionElements": [
+                {
+                  "controlType": "Textarea",
+                  "id": 111,
+                  "strongText": "Start... ",
+                  "text": "by thinking about your technical strengths and weaknesses. Write down the areas you'd like help with.",
+                  "textControlHtmlId": "Question1Text1",
+                  "textControlHtmlName": "Question1Text1_",
+                  "ResultPageLabel": "Here’s a list of things you think you’ll need help with..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 112,
+                  "strongText": "Next... ",
+                  "text": "make a list of who could provide support. Is there someone on your team who can help? Or will you rely on your supplier?",
+                  "textControlHtmlId": "Question1Text2",
+                  "textControlHtmlName": "Question1Text2_",
+                  "ResultPageLabel": "This is who could provide you with support for your new software integration, both internally and externally..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 113,
+                  "strongText": "Finally... ",
+                  "text": "add how much time and budget would be needed for the support you're opting for.",
+                  "textControlHtmlId": "Question1Text3",
+                  "textControlHtmlName": "Question1Text3_",
+                  "ResultPageLabel": "You calculated the time and cost needed for the integration support you need..."
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "id": 2,
+          "order": 2,
+          "title": "Your digital newcomer action plan",
+          "summaryTitle": "",
+          "elements": [
+            {
+              "controlType": "TextGroup",
+              "hint": "Things don't always run smoothly first time. How will you plan for bug fixes when you first launch, or for any that crop up after afterwards?",
+              "hint2": "",
+              "id": 210,
+              "text": "Support, bugs and maintenance",
+              "text2": "",
+              "subText": "2. Bug fixing",
+              "textControlHtmlId": "lblTextGroup",
+              "textControlHtmlName": "Question2",
+              "optionElements": [
+                {
+                  "controlType": "Textarea",
+                  "id": 211,
+                  "strongText": "Start... ",
+                  "text": "by thinking about how you'll deal with any bugs in the software you roll out. As with integration, will you have someone in-house or rely on your supplier?",
+                  "textControlHtmlId": "Question2Text1",
+                  "textControlHtmlName": "Question2Text1_",
+                  "ResultPageLabel": "Here’s a list of people in your business who could provide support for bug fixing..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 112,
+                  "strongText": "Next... ",
+                  "text": "consider the type of support you think you'll need. This could be on-going, as and when is needed, or having someone in-house. ",
+                  "textControlHtmlId": "Question2Text2",
+                  "textControlHtmlName": "Question2Text2_",
+                  "ResultPageLabel": "You said the type of support you’ll need will be..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 113,
+                  "strongText": "Finally... ",
+                  "text": "think about how bugs will be reported. Who will be responsible for this within your business? ",
+                  "textControlHtmlId": "Question2Text3",
+                  "textControlHtmlName": "Question2Text3_",
+                  "ResultPageLabel": "You’ve identified the following person/people will be responsible for reporting bugs and this is how they’ll be recorded..."
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "id": 3,
+          "order": 3,
+          "title": "Your digital newcomer action plan",
+          "summaryTitle": "",
+          "elements": [
+            {
+              "controlType": "TextGroup",
+              "hint": "Unlike bug fixes, maintenance should be less of a surprise. ",
+              "hint2": "",
+              "id": 210,
+              "text": "Support, bugs and maintenance",
+              "text2": "",
+              "subText": "3. Maintenance",
+              "textControlHtmlId": "lblTextGroup",
+              "nextButtonText": "View summary",
+              "textControlHtmlName": "Question3",
+              "optionElements": [
+                {
+                  "controlType": "Textarea",
+                  "id": 211,
+                  "strongText": "Start... ",
+                  "text": "by thinking about how much maintenance you'll likely need for your new software. This could include updates, patches and how you tackle cyber security. Information provided by your supplier will help here.",
+                  "textControlHtmlId": "Question3Text1",
+                  "textControlHtmlName": "Question3Text1_",
+                  "ResultPageLabel": "Here’s the areas of maintenance you’ve identified..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 112,
+                  "strongText": "Next... ",
+                  "text": "review the list and see if anyone in your business could be responsible for certain parts. Does the software you're buying include automatic updates for the areas mentioned above? ",
+                  "textControlHtmlId": "Question2Text2",
+                  "textControlHtmlName": "Question2Text2_",
+                  "ResultPageLabel": "These are the people in your business who could take responsibility for maintenance..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 113,
+                  "strongText": "Finally... ",
+                  "text": "draw out the maintenance issues for your new software that you're likely to face and list how these needs could be met, either in-house or by your supplier. ",
+                  "textControlHtmlId": "Question3Text3",
+                  "textControlHtmlName": "Question3Text3_",
+                  "ResultPageLabel": "Here’s the list of issues you might encounter with your new software and how these needs could be met..."
+                }
+              ]
+            }
+          ]
+        }
+
+      ]
+    },
+
+    "skillsThreeNewcomerTraining": {
+      "summaryHeading": "Your digital newcomer action plan",
+      "canChangeAnswers": false,
+      "backButton": false,
+      "backLink": true,
+      "backURLfromQ1": "/learning-module-three-your-action-plan-newcomer",
+      "userTypeActionPlanSection": "newcomer-training",
+      "formLogo": "skills-three-action-training.png",
+      "steps": [
+
+        {
+          "id": 1,
+          "order": 1,
+          "title": "Your digital newcomer action plan",
+          "summaryTitle": "",
+          "elements": [
+            {
+              "controlType": "TextGroup",
+              "hint": "Understanding who could help with training your team(s) on new software and hardware - either internally or externally - can make all the difference to achieving a successful rollout. ",
+              "hint2": "",
+              "id": 110,
+              "text": "Training",
+              "text2": "",
+              "subText": "1. Identify your training needs ",
+              "textControlHtmlId": "lblTextGroup",
+              "textControlHtmlName": "Question1",
+              //"textGroupElements": [
+              "optionElements": [
+                {
+                  "controlType": "Textarea",
+                  "id": 111,
+                  "strongText": "Start... ",
+                  "text": "by looking at the team(s) you already have in place. Can you utilise anyone in your business? Or is it best to enlist external support? ",
+                  "textControlHtmlId": "Question1Text1",
+                  "textControlHtmlName": "Question1Text1_",
+                  "ResultPageLabel": "This is what you said about utilising anyone in your business when it comes to training, or whether you’ll need external support..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 112,
+                  "strongText": "Next... ",
+                  "text": "make a list of who needs training and whether it will be for software, as well as new hardware.",
+                  "textControlHtmlId": "Question1Text2",
+                  "textControlHtmlName": "Question1Text2_",
+                  "ResultPageLabel": "Here's a list of the people who need training and whether it will be for either software, hardware, or both..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 113,
+                  "strongText": "Finally... ",
+                  "text": "look for opportunities where people in-house can be trained to train others, then make a separate list of who you'll need to arrange external training for. ",
+                  "textControlHtmlId": "Question1Text3",
+                  "textControlHtmlName": "Question1Text3_",
+                  "ResultPageLabel": "Here are your two lists, one for who you have in-house to train others, and who will need external training.."
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "id": 2,
+          "order": 2,
+          "title": "Your digital newcomer action plan",
+          "summaryTitle": "",
+          "elements": [
+            {
+              "controlType": "TextGroup",
+              "hint": "There are lots of different types of training available. Choosing the right one will help ensure your teams are well equipped to use your new software or hardware.  ",
+              "hint2": "",
+              "id": 210,
+              "text": "Training",
+              "text2": "",
+              "subText": "2. Training types ",
+              "textControlHtmlId": "lblTextGroup",
+              "textControlHtmlName": "Question2",
+              "optionElements": [
+                {
+                  "controlType": "Textarea",
+                  "id": 211,
+                  "strongText": "Start... ",
+                  "text": "by thinking about how you want to train your team. Write down a list of pros and cons for each format (i.e. virtual, on-site, off-site).",
+                  "textControlHtmlId": "Question2Text1",
+                  "textControlHtmlName": "Question2Text1_",
+                  "ResultPageLabel": "Here’s your list of pros and cons for each type of training..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 112,
+                  "strongText": "Next... ",
+                  "text": "speak to your team(s) about which type of training works best for them. Make a list of their preferred methods, including what doesn't work for them.",
+                  "textControlHtmlId": "Question2Text2",
+                  "textControlHtmlName": "Question2Text2_",
+                  "ResultPageLabel": "This is the type of training which works best for your team(s) and why.."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 113,
+                  "strongText": "Finally... ",
+                  "text": "see what training is available for your new software. Review this with the budget you've set aside for training to identify what's realistic. ",
+                  "textControlHtmlId": "Question2Text3",
+                  "textControlHtmlName": "Question2Text3_",
+                  "ResultPageLabel": "You looked at the type of training your team(s) prefer, whether it’s available, and calculated you'll need this much budget..."
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "id": 3,
+          "order": 3,
+          "title": "Your digital newcomer action plan",
+          "summaryTitle": "",
+          "elements": [
+            {
+              "controlType": "TextGroup",
+              "hint": "As with your current staff, planning in advance how to train new starters in your business on software keeps things running smoothly.",
+              "hint2": "",
+              "id": 210,
+              "text": "Training",
+              "text2": "",
+              "subText": "3. Training for new starters ",
+              "textControlHtmlId": "lblTextGroup",
+              "nextButtonText": "View summary",
+              "textControlHtmlName": "Question3",
+              "optionElements": [
+                {
+                  "controlType": "Textarea",
+                  "id": 211,
+                  "strongText": "Start... ",
+                  "text": "by making a list of which job roles would use the software. This will help you flag up who needs training after recruitment.",
+                  "textControlHtmlId": "Question3Text1",
+                  "textControlHtmlName": "Question3Text1_",
+                  "ResultPageLabel": "Here’s the list of which job roles would use the software..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 112,
+                  "strongText": "Next... ",
+                  "text": "as with your current team, think about the best time for training to take place and how long it will take to get a new starter up to speed. ",
+                  "textControlHtmlId": "Question2Text2",
+                  "textControlHtmlName": "Question2Text2_",
+                  "ResultPageLabel": "You identified that new starters would need the following training, including how long it could take..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 113,
+                  "strongText": "Finally... ",
+                  "text": "make a list of the experience an ideal new starter would have, or how many hours training you want to include in an induction period. ",
+                  "textControlHtmlId": "Question3Text3",
+                  "textControlHtmlName": "Question3Text3_",
+                  "ResultPageLabel": "Here’s the list of the experience a new starter would have, and how many hours training would be included during their induction..."
+                }
+              ]
+            }
+          ]
+        }
+
+      ]
+    },
+
+    "skillsThreeNewcomerTesting": {
+      "summaryHeading": "Your digital newcomer action plan",
+      "canChangeAnswers": false,
+      "backButton": false,
+      "backLink": true,
+      "backURLfromQ1": "/learning-module-three-your-action-plan-newcomer",
+      "userTypeActionPlanSection": "newcomer-testing",
+      "formLogo": "skills-three-action-testing.png",
+      "steps": [
+
+        {
+          "id": 1,
+          "order": 1,
+          "title": "Your digital newcomer action plan",
+          "summaryTitle": "",
+          "elements": [
+            {
+              "controlType": "TextGroup",
+              "hint": "Testing for bugs and usability don't always give the same results. Think about how you want to test and how much time you want to dedicate to the process.",
+              "hint2": "",
+              "id": 110,
+              "text": "Testing pre-launch",
+              "text2": "",
+              "subText": "1. Find your testers",
+              "textControlHtmlId": "lblTextGroup",
+              "textControlHtmlName": "Question1",
+              //"textGroupElements": [
+              "optionElements": [
+                {
+                  "controlType": "Textarea",
+                  "id": 111,
+                  "strongText": "Start... ",
+                  "text": "by making two lists of testers. The first are people who can look for bugs in the software. The second are users who may not be as tech-savvy, but will be using the software every day.",
+                  "textControlHtmlId": "Question1Text1",
+                  "textControlHtmlName": "Question1Text1_",
+                  "ResultPageLabel": "Here are your two lists of testers – for those who can find bugs in your new software, and those who might not be as tech-savvy, but will use the software every day..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 112,
+                  "strongText": "Next... ",
+                  "text": "list how much time you would like to give each group to identify any problems in how the system works, or blockers in their confidence to use it.",
+                  "textControlHtmlId": "Question1Text2",
+                  "textControlHtmlName": "Question1Text2_",
+                  "ResultPageLabel": "This is how much time you’d like to give each group to identify any problems... "
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 113,
+                  "strongText": "Finally... ",
+                  "text": "identify 'testing champions' from each group. These will be the people you'll brief later and engage with to gather your feedback.",
+                  "textControlHtmlId": "Question1Text3",
+                  "textControlHtmlName": "Question1Text3_",
+                  "ResultPageLabel": "Here’s who you’ve chosen as ‘testing champion(s)’... "
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "id": 2,
+          "order": 2,
+          "title": "Your digital newcomer action plan",
+          "summaryTitle": "",
+          "elements": [
+            {
+              "controlType": "TextGroup",
+              "hint": "Understanding how your team(s) feel about the rollout and software, before and during the process can drive a better, smoother outcome. ",
+              "hint2": "",
+              "id": 210,
+              "text": "Testing pre-launch",
+              "text2": "",
+              "subText": "2. Gathering feedback",
+              "textControlHtmlId": "lblTextGroup",
+              "textControlHtmlName": "Question2",
+              "optionElements": [
+                {
+                  "controlType": "Textarea",
+                  "id": 211,
+                  "strongText": "Start... ",
+                  "text": "by choosing feedback champions to collect all feedback, who can take responsibility for grouping topics together and prioritising their importance.",
+                  "textControlHtmlId": "Question2Text1",
+                  "textControlHtmlName": "Question2Text1_",
+                  "ResultPageLabel": "Here’s who you chose as ‘feedback champion(s)’, who’ll be responsible for collecting all feedback..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 112,
+                  "strongText": "Next... ",
+                  "text": "speak to your feedback champions and ask how much time they would need for this task. Do they need cover on their day job? If so, who could provide that support for them?",
+                  "textControlHtmlId": "Question2Text2",
+                  "textControlHtmlName": "Question2Text2_",
+                  "ResultPageLabel": "This is how much time your ‘feedback champion(s)’ will need for this task, and whether they need cover for their day job..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 113,
+                  "strongText": "Finally... ",
+                  "text": "working with your feedback champions, ask if there's any preferred way they'd like to receive and store the feedback. Make a list here.",
+                  "textControlHtmlId": "Question2Text3",
+                  "textControlHtmlName": "Question2Text3_",
+                  "ResultPageLabel": "Here’s a list of what your ‘feedback champion(s)’ told you about the preferred way they’d like to receive feedback and how they’ll store it..."
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "id": 3,
+          "order": 3,
+          "title": "Your digital newcomer action plan",
+          "summaryTitle": "",
+          "elements": [
+            {
+              "controlType": "TextGroup",
+              "hint": "Prioritise and schedule how you want to implement feedback. What needs to happen before launch, and what can wait until after? ",
+              "hint2": "",
+              "id": 210,
+              "text": "Testing pre-launch",
+              "text2": "",
+              "subText": "3. Using your feedback ",
+              "textControlHtmlId": "lblTextGroup",
+              "nextButtonText": "View summary",
+              "textControlHtmlName": "Question3",
+              "optionElements": [
+                {
+                  "controlType": "Textarea",
+                  "id": 211,
+                  "strongText": "Start... ",
+                  "text": "by making a list of what the most useful type of feedback for a successful rollout would look like. ",
+                  "textControlHtmlId": "Question3Text1",
+                  "textControlHtmlName": "Question3Text1_",
+                  "ResultPageLabel": "This is what you consider to be the most important feedback for a successful rollout..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 112,
+                  "strongText": "Next... ",
+                  "text": "prioritise this list. It will help you decide which feedback needs addressing before launch, and what can wait until after. It also supports your feedback champion(s) to organise their workload.",
+                  "textControlHtmlId": "Question2Text2",
+                  "textControlHtmlName": "Question2Text2_",
+                  "ResultPageLabel": "You sorted the above list in order of importance..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 113,
+                  "strongText": "Finally... ",
+                  "text": "plot out how you would like your feedback champion(s) to review and discuss any issues with you. Does a weekly face-to-face meeting work? Or are there some issues you'd want flagging immediately? Make a list here. ",
+                  "textControlHtmlId": "Question3Text3",
+                  "textControlHtmlName": "Question3Text3_",
+                  "ResultPageLabel": "This is how you'd like your ‘feedback champion(s)’ to review and discuss any issues with you..."
+                }
+              ]
+            }
+          ]
+        }
+
+      ]
+    },
+
+
+
+
+    "skillsThreeMoverPlanning": {
+      "summaryHeading": "Your digital mover action plan",
+      "canChangeAnswers": false,
+      "backButton": false,
+      "backLink": true,
+      "backURLfromQ1": "/learning-module-three-your-action-plan-digital-mover",
+      "userTypeActionPlanSection": "mover-planning",
+      "formLogo": "skills-three-action-planning.png",
+      "steps": [
+
+        {
+          "id": 1,
+          "order": 1,
+          "title": "Your digital mover action plan",
+          "summaryTitle": "",
+          "elements": [
+            {
+              "controlType": "TextGroup",
+              "hint": "With digital ways of working already part of your business, chances are you have a lot of the infrastructure you need already in place. ",
+              "hint2": "This section is designed to help you identify who'll be using the new software, and assess your hardware needs correctly.",
+              "id": 110,
+              "text": "Planning",
+              "text2": "",
+              "subText": "1. Consider how people will access the software",
+              "textControlHtmlId": "lblTextGroup",
+              "textControlHtmlName": "Question1",
+              //"textGroupElements": [
+              "optionElements": [
+                {
+                  "controlType": "Textarea",
+                  "id": 111,
+                  "strongText": "Start... ",
+                  "text": "with a list who'll need access to the software. ",
+                  "textControlHtmlId": "Question1Text1",
+                  "textControlHtmlName": "Question1Text1_",
+                  "ResultPageLabel": "These are the people who will need access to the software..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 112,
+                  "strongText": "Next... ",
+                  "text": "find out what hardware you need to order so that each person can access the software. Add it to the list.",
+                  "textControlHtmlId": "Question1Text2",
+                  "textControlHtmlName": "Question1Text2_",
+                  "ResultPageLabel": "This is the hardware you need to order..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 113,
+                  "strongText": "Finally... ",
+                  "text": "work out how much budget you need to assign for this and time to get these assets in place.",
+                  "textControlHtmlId": "Question1Text3",
+                  "textControlHtmlName": "Question1Text3_",
+                  "ResultPageLabel": "You calculated you’ll need this much budget and time for your new assets..."
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "id": 2,
+          "order": 2,
+          "title": "Your digital mover action plan",
+          "summaryTitle": "",
+          "elements": [
+            {
+              "controlType": "TextGroup",
+              "hint": "Understanding the potential risks you face and knowing how to compensate for them can be the difference between launching as planned, or putting things on hold.",
+              "hint2": "",
+              "id": 210,
+              "text": "Planning",
+              "text2": "",
+              "subText": "2. Look for potential risks",
+              "textControlHtmlId": "lblTextGroup",
+              "textControlHtmlName": "Question2",
+              "optionElements": [
+                {
+                  "controlType": "Textarea",
+                  "id": 211,
+                  "strongText": "Start... ",
+                  "text": "by writing down the risks you might encounter, such as data loss or interruption to trading. Your list should include the worst-case scenario - having to stop the rollout. What would need to happen for this to be the only solution?",
+                  "textControlHtmlId": "Question2Text1",
+                  "textControlHtmlName": "Question2Text1_",
+                  "ResultPageLabel": "These are the risks you said you might encounter..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 112,
+                  "strongText": "Next... ",
+                  "text": "decide how you could mitigate each risk. What resources will you need and who will make the decisions in each case?",
+                  "textControlHtmlId": "Question2Text2",
+                  "textControlHtmlName": "Question2Text2_",
+                  "ResultPageLabel": "Here’s the list of your decision makers and possible solutions to these risks..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 113,
+                  "strongText": "Finally... ",
+                  "text": "How much contingency time and budget would be needed in each of these scenarios?",
+                  "textControlHtmlId": "Question2Text3",
+                  "textControlHtmlName": "Question2Text3_",
+                  "ResultPageLabel": "You calculated you may need this much contingency time and budget to mitigate these risks..."
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "id": 3,
+          "order": 3,
+          "title": "Your digital mover action plan",
+          "summaryTitle": "",
+          "elements": [
+            {
+              "controlType": "TextGroup",
+              "hint": "As with identifying potential risks, understanding the ways your new software can indirectly impact your business will help smooth the transition to a new way of working.",
+              "hint2": "",
+              "id": 210,
+              "text": "Planning",
+              "text2": "",
+              "subText": "3. Look for indirect impacts",
+              "textControlHtmlId": "lblTextGroup",
+              "nextButtonText": "View summary",
+              "textControlHtmlName": "Question3",
+              "optionElements": [
+                {
+                  "controlType": "Textarea",
+                  "id": 211,
+                  "strongText": "Start... ",
+                  "text": "by thinking how the rollout could have a knock-on effect on each team and your business operations.",
+                  "textControlHtmlId": "Question3Text1",
+                  "textControlHtmlName": "Question3Text1_",
+                  "ResultPageLabel": "You identified these indirect impacts from your new rollout..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 112,
+                  "strongText": "Next... ",
+                  "text": "decide how you could protect against these negative effects.",
+                  "textControlHtmlId": "Question2Text2",
+                  "textControlHtmlName": "Question2Text2_",
+                  "ResultPageLabel": "Here’s how you could protect against these negative effects..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 113,
+                  "strongText": "Finally... ",
+                  "text": "add a rough estimate of time, effort and budget to compensate for these impacts.",
+                  "textControlHtmlId": "Question3Text3",
+                  "textControlHtmlName": "Question3Text3_",
+                  "ResultPageLabel": "This is the time, effort and budget you estimated to compensate for these impacts..."
+                }
+              ]
+            }
+          ]
+        }
+
+
+
+
+
+      ]
+    },
+
+    "skillsThreeMoverCommunication": {
+      "summaryHeading": "Your digital mover action plan",
+      "canChangeAnswers": false,
+      "backButton": false,
+      "backLink": true,
+      "backURLfromQ1": "/learning-module-three-your-action-plan-digital-mover",
+      "userTypeActionPlanSection": "mover-communication",
+      "formLogo": "skills-three-action-communication.png",
+      "steps": [
+
+        {
+          "id": 1,
+          "order": 1,
+          "title": "Your digital mover action plan",
+          "summaryTitle": "",
+          "elements": [
+            {
+              "controlType": "TextGroup",
+              "hint": "Identifying who needs information early on, when they need it and how you'll send it, provides you with a roadmap of when to reach out.",
+              "hint2": "",
+              "id": 110,
+              "text": "Communication",
+              "text2": "",
+              "subText": "1. Keep your team(s) in the loop",
+              "textControlHtmlId": "lblTextGroup",
+              "textControlHtmlName": "Question1",
+              //"textGroupElements": [
+              "optionElements": [
+                {
+                  "controlType": "Textarea",
+                  "id": 111,
+                  "strongText": "Start... ",
+                  "text": "by making a list of who needs to be told about the new software. This will include individuals and teams who may be impacted by using the software every day, or occasionally.",
+                  "textControlHtmlId": "Question1Text1",
+                  "textControlHtmlName": "Question1Text1_",
+                  "ResultPageLabel": "These are the people who need to be told about the new software..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 112,
+                  "strongText": "Next... ",
+                  "text": "think about when you need to tell each group about the change. Look back at your last rollout, are there any lessons learned you can include here?",
+                  "textControlHtmlId": "Question1Text2",
+                  "textControlHtmlName": "Question1Text2_",
+                  "ResultPageLabel": "This is when you need to tell each group about the change..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 113,
+                  "strongText": "Finally... ",
+                  "text": "decide how you want to communicate to each group. This could be a combination of face-to-face and email. ",
+                  "textControlHtmlId": "Question1Text3",
+                  "textControlHtmlName": "Question1Text3_",
+                  "ResultPageLabel": "This is how you’ll communicate incoming changes to each group..."
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "id": 2,
+          "order": 2,
+          "title": "Your digital mover action plan",
+          "summaryTitle": "",
+          "elements": [
+            {
+              "controlType": "TextGroup",
+              "hint": "As you'll know from previous changes to your ways of working, a slight interruption to business as usual can really impact customer service. ",
+              "hint2": "",
+              "id": 210,
+              "text": "Communication",
+              "text2": "",
+              "subText": "2. Keep your customers informed",
+              "textControlHtmlId": "lblTextGroup",
+              "textControlHtmlName": "Question2",
+              "optionElements": [
+                {
+                  "controlType": "Textarea",
+                  "id": 211,
+                  "strongText": "Start... ",
+                  "text": "by considering how your customers could be impacted by your changes. Is the new software you're integrating likely to impact the service they receive? If so, make a list here of how that could happen.",
+                  "textControlHtmlId": "Question2Text1",
+                  "textControlHtmlName": "Question2Text1_",
+                  "ResultPageLabel": "This is how you think customers could be impacted by your new software..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 112,
+                  "strongText": "Next... ",
+                  "text": "write a list of what you think they'll need to know about the changes. For example, is a department they usually deal with likely to be less available for while? Will the new software change how they contact or pay your business?",
+                  "textControlHtmlId": "Question2Text2",
+                  "textControlHtmlName": "Question2Text2_",
+                  "ResultPageLabel": "Here’s the list of what you think your customers will need to know about the changes..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 113,
+                  "strongText": "Finally... ",
+                  "text": "decide when you need to communicate with them and how. You might have different dates and methods for different customers.",
+                  "textControlHtmlId": "Question2Text3",
+                  "textControlHtmlName": "Question2Text3_",
+                  "ResultPageLabel": "This is when you need to communicate with your customers and how..."
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "id": 3,
+          "order": 3,
+          "title": "Your digital mover action plan",
+          "summaryTitle": "",
+          "elements": [
+            {
+              "controlType": "TextGroup",
+              "hint": "You'll also need a list of key dates for communicating your roll out. This will help you meet specific milestones, and give your staff and customers clarity of what's changing across your business. ",
+              "hint2": "",
+              "id": 210,
+              "text": "Communication",
+              "text2": "",
+              "subText": "3. Draw up a communications timeline",
+              "textControlHtmlId": "lblTextGroup",
+              "nextButtonText": "View summary",
+              "textControlHtmlName": "Question3",
+              "optionElements": [
+                {
+                  "controlType": "Textarea",
+                  "id": 211,
+                  "strongText": "Start... ",
+                  "text": "by reviewing the two lists you've made above and pick out the key events and dates you need to communicate to your team and customers. ",
+                  "textControlHtmlId": "Question3Text1",
+                  "textControlHtmlName": "Question3Text1_",
+                  "ResultPageLabel": "These are the key events you want to communicate to your team and customers..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 112,
+                  "strongText": "Next... ",
+                  "text": "decide how you will communicate. You might choose different methods for different messages.",
+                  "textControlHtmlId": "Question2Text2",
+                  "textControlHtmlName": "Question2Text2_",
+                  "ResultPageLabel": "This is how you’ll communicate your key events..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 113,
+                  "strongText": "Finally... ",
+                  "text": "choose who will take responsibility for these communications including how they will deal with queries. ",
+                  "textControlHtmlId": "Question3Text3",
+                  "textControlHtmlName": "Question3Text3_",
+                  "ResultPageLabel": "This is who will take responsibility for communication including dealing with enquiries..."
+                }
+              ]
+            }
+          ]
+        }
+
+      ]
+    },
+
+    "skillsThreeMoverSupport": {
+      "summaryHeading": "Your digital mover action plan",
+      "canChangeAnswers": false,
+      "backButton": false,
+      "backLink": true,
+      "backURLfromQ1": "/learning-module-three-your-action-plan-digital-mover",
+      "userTypeActionPlanSection": "mover-support",
+      "formLogo": "skills-three-action-support.png",
+      "steps": [
+
+        {
+          "id": 1,
+          "order": 1,
+          "title": "Your digital mover action plan",
+          "summaryTitle": "",
+          "elements": [
+            {
+              "controlType": "TextGroup",
+              "hint": "When you last added new software, did you need extra support to get it working with your systems? Was there anything you didn't consider last time around, that you'd do differently now? ",
+              "hint2": "",
+              "id": 110,
+              "text": "Support, bugs and maintenance",
+              "text2": "",
+              "subText": "1. Tech support for integration",
+              "textControlHtmlId": "lblTextGroup",
+              "textControlHtmlName": "Question1",
+              //"textGroupElements": [
+              "optionElements": [
+                {
+                  "controlType": "Textarea",
+                  "id": 111,
+                  "strongText": "Start... ",
+                  "text": "by reviewing how you integrated software last time. Write down the things that worked well and any pitfalls you can correct this time.",
+                  "textControlHtmlId": "Question1Text1",
+                  "textControlHtmlName": "Question1Text1_",
+                  "ResultPageLabel": "Here’s a list of things that worked well, and not so well, last time..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 112,
+                  "strongText": "Next... ",
+                  "text": "make a list of who could provide this support. Is there someone on your team who can help? Or would it be easier to talk to your supplier about supporting integration?",
+                  "textControlHtmlId": "Question1Text2",
+                  "textControlHtmlName": "Question1Text2_",
+                  "ResultPageLabel": "This is who could provide you with support for your new software integration..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 113,
+                  "strongText": "Finally... ",
+                  "text": "add how much time and cost would be needed for the integration support you opt for.",
+                  "textControlHtmlId": "Question1Text3",
+                  "textControlHtmlName": "Question1Text3_",
+                  "ResultPageLabel": "You calculated the time and cost needed for the integration support you need..."
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "id": 2,
+          "order": 2,
+          "title": "Your digital mover action plan",
+          "summaryTitle": "",
+          "elements": [
+            {
+              "controlType": "TextGroup",
+              "hint": "As you'll know, things don't always run smoothly first time. Like support for integration, how will you plan for bug fixes when you first launch, or for any that crop up after launch?",
+              "hint2": "",
+              "id": 210,
+              "text": "Support, bugs and maintenance",
+              "text2": "",
+              "subText": "2. Bug fixing",
+              "textControlHtmlId": "lblTextGroup",
+              "textControlHtmlName": "Question2",
+              "optionElements": [
+                {
+                  "controlType": "Textarea",
+                  "id": 211,
+                  "strongText": "Start... ",
+                  "text": "by looking at how you deal with bugs in the software you use at the moment. If there are people in your business who provide support, make a list of them here. If you've got supplier support, write down what they offer and if you had to change the level of service they provided.",
+                  "textControlHtmlId": "Question2Text1",
+                  "textControlHtmlName": "Question2Text1_",
+                  "ResultPageLabel": "This is how you currently deal with bug fixing, and a list of people - inside and outside your business - who will provide support..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 112,
+                  "strongText": "Next... ",
+                  "text": "consider which elements of your existing set-up you want to keep and those you'd change. ",
+                  "textControlHtmlId": "Question2Text2",
+                  "textControlHtmlName": "Question2Text2_",
+                  "ResultPageLabel": "You said the elements of your existing set-up you want to keep and those you’d change are..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 113,
+                  "strongText": "Finally... ",
+                  "text": "review if your chosen method of support - in-house or supplier support - match up where these elements are being met, and if there's anything you'd like to improve on.",
+                  "textControlHtmlId": "Question2Text3",
+                  "textControlHtmlName": "Question2Text3_",
+                  "ResultPageLabel": "You reviewed whether your chosen method of support matched up where these elements are being met, and mentioned whether there’s anything you’d improve..."
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "id": 3,
+          "order": 3,
+          "title": "Your digital mover action plan",
+          "summaryTitle": "",
+          "elements": [
+            {
+              "controlType": "TextGroup",
+              "hint": "You may have ongoing support from your last integration, in which case you can use this as a baseline for your new software.",
+              "hint2": "",
+              "id": 210,
+              "text": "Support, bugs and maintenance",
+              "text2": "",
+              "subText": "3. Maintenance",
+              "textControlHtmlId": "lblTextGroup",
+              "nextButtonText": "View summary",
+              "textControlHtmlName": "Question3",
+              "optionElements": [
+                {
+                  "controlType": "Textarea",
+                  "id": 211,
+                  "strongText": "Start... ",
+                  "text": "by making a list of how you currently maintain all the software and hardware in your business. This should include software updates, patches and how you tackle cyber security.",
+                  "textControlHtmlId": "Question3Text1",
+                  "textControlHtmlName": "Question3Text1_",
+                  "ResultPageLabel": "Here’s the list of how you currently maintain all software and hardware in your business..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 112,
+                  "strongText": "Next... ",
+                  "text": "review the list and see if your new software could be included in this existing plan.  Does the software you're buying include automatic updates for the areas mentioned above?",
+                  "textControlHtmlId": "Question2Text2",
+                  "textControlHtmlName": "Question2Text2_",
+                  "ResultPageLabel": "This is what you what you said about whether your new software could be included in your current maintenance plan..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 113,
+                  "strongText": "Finally... ",
+                  "text": "draw out the maintenance issues for your new software that are unlikely to be covered and list how these needs could be met, either in-house or by your supplier.",
+                  "textControlHtmlId": "Question3Text3",
+                  "textControlHtmlName": "Question3Text3_",
+                  "ResultPageLabel": "Here’s the list of issues you might encounter with your new software that are unlikely to be covered in your existing maintenance plan..."
+                }
+              ]
+            }
+          ]
+        }
+
+      ]
+    },
+
+    "skillsThreeMoverTraining": {
+      "summaryHeading": "Your digital mover action plan",
+      "canChangeAnswers": false,
+      "backButton": false,
+      "backLink": true,
+      "backURLfromQ1": "/learning-module-three-your-action-plan-digital-mover",
+      "userTypeActionPlanSection": "mover-training",
+      "formLogo": "skills-three-action-training.png",
+      "steps": [
+
+        {
+          "id": 1,
+          "order": 1,
+          "title": "Your digital mover action plan",
+          "summaryTitle": "",
+          "elements": [
+            {
+              "controlType": "TextGroup",
+              "hint": "Understand if your existing training approach can support your new software. Then look for the gaps you need to fill.",
+              "hint2": "",
+              "id": 110,
+              "text": "Training",
+              "text2": "",
+              "subText": "1. Identify your training needs ",
+              "textControlHtmlId": "lblTextGroup",
+              "textControlHtmlName": "Question1",
+              //"textGroupElements": [
+              "optionElements": [
+                {
+                  "controlType": "Textarea",
+                  "id": 111,
+                  "strongText": "Start... ",
+                  "text": "by looking at the talent you already have in place. Make a note of the person/people who are already supporting other members of the team.",
+                  "textControlHtmlId": "Question1Text1",
+                  "textControlHtmlName": "Question1Text1_",
+                  "ResultPageLabel": "Here’s the list of people who are already supporting other members of the team..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 112,
+                  "strongText": "Next... ",
+                  "text": "think about who needs training and whether it will be for software and new hardware.",
+                  "textControlHtmlId": "Question1Text2",
+                  "textControlHtmlName": "Question1Text2_",
+                  "ResultPageLabel": "These are the people who need training and whether it will be for either software, hardware, or both..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 113,
+                  "strongText": "Finally... ",
+                  "text": "look for areas where your people in-house can train others, then make a separate list of who you'll need to arrange external training for.",
+                  "textControlHtmlId": "Question1Text3",
+                  "textControlHtmlName": "Question1Text3_",
+                  "ResultPageLabel": "The areas you said people can train others in-house and who you’ll need to arrange external training for are..."
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "id": 2,
+          "order": 2,
+          "title": "Your digital mover action plan",
+          "summaryTitle": "",
+          "elements": [
+            {
+              "controlType": "TextGroup",
+              "hint": "Reviewing how you've trained staff in the past and measuring its effectiveness, together with cost, can help steer you for your new rollout.",
+              "hint2": "",
+              "id": 210,
+              "text": "Training",
+              "text2": "",
+              "subText": "2. Training types ",
+              "textControlHtmlId": "lblTextGroup",
+              "textControlHtmlName": "Question2",
+              "optionElements": [
+                {
+                  "controlType": "Textarea",
+                  "id": 211,
+                  "strongText": "Start... ",
+                  "text": "by thinking about how you've trained for new software in the past. Write down a list of pros and cons for each format (i.e. virtual, on-site, off-site).",
+                  "textControlHtmlId": "Question2Text1",
+                  "textControlHtmlName": "Question2Text1_",
+                  "ResultPageLabel": "Here’s a list of pros and cons of the training you’ve offered for new software in the past..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 112,
+                  "strongText": "Next... ",
+                  "text": "speak to your team(s) about which type of training works best for them. Make a list of their preferred methods, including what doesn't work for them.",
+                  "textControlHtmlId": "Question2Text2",
+                  "textControlHtmlName": "Question2Text2_",
+                  "ResultPageLabel": "This is the type of training which works best for your team(s) and why..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 113,
+                  "strongText": "Finally... ",
+                  "text": "see what training is available for your new software. Review this with the budget you've set aside for training to identify what's realistic.",
+                  "textControlHtmlId": "Question2Text3",
+                  "textControlHtmlName": "Question2Text3_",
+                  "ResultPageLabel": "You looked at the type of training your team(s) prefer, whether it’s available, and calculated you'll need this much budget..."
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "id": 3,
+          "order": 3,
+          "title": "Your digital mover action plan",
+          "summaryTitle": "",
+          "elements": [
+            {
+              "controlType": "TextGroup",
+              "hint": "As with your previous software integrations, having a plan to train new starters keeps things running smoothly.",
+              "hint2": "",
+              "id": 210,
+              "text": "Training",
+              "text2": "",
+              "subText": "3. Training for new starters ",
+              "textControlHtmlId": "lblTextGroup",
+              "nextButtonText": "View summary",
+              "textControlHtmlName": "Question3",
+              "optionElements": [
+                {
+                  "controlType": "Textarea",
+                  "id": 211,
+                  "strongText": "Start... ",
+                  "text": "by making a list of which job roles would use the software. This will help you flag up who needs training after recruitment.",
+                  "textControlHtmlId": "Question3Text1",
+                  "textControlHtmlName": "Question3Text1_",
+                  "ResultPageLabel": "Here’s the list of which job roles would use the software..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 112,
+                  "strongText": "Next... ",
+                  "text": "speak to the team members who have supported training in the past. Ask how long it would realistically take to get a new starter up to speed. ",
+                  "textControlHtmlId": "Question2Text2",
+                  "textControlHtmlName": "Question2Text2_",
+                  "ResultPageLabel": "You identified the best type of training to take place, and that it would take this much time..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 113,
+                  "strongText": "Finally... ",
+                  "text": "make a list of the experience an ideal new starter would have, or how many hours training you want to include in an induction period.",
+                  "textControlHtmlId": "Question3Text3",
+                  "textControlHtmlName": "Question3Text3_",
+                  "ResultPageLabel": "Here’s the list of the experience a new starter would have and how many hours training would be included during their induction..."
+                }
+              ]
+            }
+          ]
+        }
+
+      ]
+    },
+
+    "skillsThreeMoverTesting": {
+      "summaryHeading": "Your digital mover action plan",
+      "canChangeAnswers": false,
+      "backButton": false,
+      "backLink": true,
+      "backURLfromQ1": "/learning-module-three-your-action-plan-digital-mover",
+      "userTypeActionPlanSection": "mover-testing",
+      "formLogo": "skills-three-action-testing.png",
+      "steps": [
+
+        {
+          "id": 1,
+          "order": 1,
+          "title": "Your digital mover action plan",
+          "summaryTitle": "",
+          "elements": [
+            {
+              "controlType": "TextGroup",
+              "hint": "Testing for bugs and usability don't yield the same results. Reflect on how you've tested in the past, how long it took and if there's anything you'd do differently this time.",
+              "hint2": "",
+              "id": 110,
+              "text": "Testing pre-launch",
+              "text2": "",
+              "subText": "1. Find your testers",
+              "textControlHtmlId": "lblTextGroup",
+              "textControlHtmlName": "Question1",
+              //"textGroupElements": [
+              "optionElements": [
+                {
+                  "controlType": "Textarea",
+                  "id": 111,
+                  "strongText": "Start... ",
+                  "text": "by making two lists of testers. The first are people who can look for bugs in the software. The second are users who may not be as tech-savvy, but will be using the software every day.",
+                  "textControlHtmlId": "Question1Text1",
+                  "textControlHtmlName": "Question1Text1_",
+                  "ResultPageLabel": "Here are your two lists of testers – for those who can find bugs in your new software, and those who might not be as tech-savvy, but will use the software every day..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 112,
+                  "strongText": "Next... ",
+                  "text": "list how much time you would like to give each group to identify any problems in how the system works, or blockers in their confidence to use it.",
+                  "textControlHtmlId": "Question1Text2",
+                  "textControlHtmlName": "Question1Text2_",
+                  "ResultPageLabel": "This is how much time you’d like to give each group to identify any problems..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 113,
+                  "strongText": "Finally... ",
+                  "text": "identify 'testing champions' from each group. These will be the people you'll brief later and engage with to gather your feedback. ",
+                  "textControlHtmlId": "Question1Text3",
+                  "textControlHtmlName": "Question1Text3_",
+                  "ResultPageLabel": "You’ve identified these people as ‘test champions’ from each group..."
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "id": 2,
+          "order": 2,
+          "title": "Your digital mover action plan",
+          "summaryTitle": "",
+          "elements": [
+            {
+              "controlType": "TextGroup",
+              "hint": "Utilise the power of your feedback by gathering it in a way that makes it easy to anaylse.",
+              "hint2": "",
+              "id": 210,
+              "text": "Testing pre-launch",
+              "text2": "",
+              "subText": "2. Gathering feedback",
+              "textControlHtmlId": "lblTextGroup",
+              "textControlHtmlName": "Question2",
+              "optionElements": [
+                {
+                  "controlType": "Textarea",
+                  "id": 211,
+                  "strongText": "Start... ",
+                  "text": "by choosing feedback champions to collect all feedback, who can take responsibility for grouping topics together and prioritising their importance.",
+                  "textControlHtmlId": "Question2Text1",
+                  "textControlHtmlName": "Question2Text1_",
+                  "ResultPageLabel": "Here’s who you chose as ‘champion(s)’, who’ll be responsible for collecting all feedback..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 112,
+                  "strongText": "Next... ",
+                  "text": "speak to your feedback champions and ask how much time they would need for this task. Do they need cover on their day job? If so, who could provide that support for them?",
+                  "textControlHtmlId": "Question2Text2",
+                  "textControlHtmlName": "Question2Text2_",
+                  "ResultPageLabel": "This is how much time your ‘champion(s)’ will need for this task, and whether they need cover for their day job..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 113,
+                  "strongText": "Finally... ",
+                  "text": "working with your feedback champions, ask if there's any preferred way they'd like to receive and store the feedback. Make a list here.",
+                  "textControlHtmlId": "Question2Text3",
+                  "textControlHtmlName": "Question2Text3_",
+                  "ResultPageLabel": "Here’s a list of what your ‘champion(s)’ told you about the preferred way they’d like to receive feedback and how they’ll store it..."
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "id": 3,
+          "order": 3,
+          "title": "Your digital mover action plan",
+          "summaryTitle": "",
+          "elements": [
+            {
+              "controlType": "TextGroup",
+              "hint": "Prioritise and schedule how you want to implement feedback. What needs to happen before launch, and what can wait until after? ",
+              "hint2": "",
+              "id": 210,
+              "text": "Testing pre-launch",
+              "text2": "",
+              "subText": "3. Using your feedback ",
+              "textControlHtmlId": "lblTextGroup",
+              "nextButtonText": "View summary",
+              "textControlHtmlName": "Question3",
+              "optionElements": [
+                {
+                  "controlType": "Textarea",
+                  "id": 211,
+                  "strongText": "Start... ",
+                  "text": "by listing what you consider to be the most important feedback for a successful rollout. Think about what's happened in past software adoptions, particularly if caused disruption to trading.",
+                  "textControlHtmlId": "Question3Text1",
+                  "textControlHtmlName": "Question3Text1_",
+                  "ResultPageLabel": "This is what you consider to be the most important feedback for a successful rollout..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 112,
+                  "strongText": "Next... ",
+                  "text": "prioritise this list. It will help you decide which feedback needs addressing before launch, and what can wait until after. It also supports your feedback champion(s) to organise their workload. ",
+                  "textControlHtmlId": "Question2Text2",
+                  "textControlHtmlName": "Question2Text2_",
+                  "ResultPageLabel": "You sorted the above list in order of importance..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 113,
+                  "strongText": "Finally... ",
+                  "text": "plot out how you would like your feedback champion(s) to review and discuss any issues with you. Does a weekly face-to-face meeting work? Or are there some issues you'd want flagging immediately? Make a list here. ",
+                  "textControlHtmlId": "Question3Text3",
+                  "textControlHtmlName": "Question3Text3_",
+                  "ResultPageLabel": "This is how you'd like your ‘feedback champion’ to review and discuss any issues with you..."
+                }
+              ]
+            }
+          ]
+        }
+
+      ]
+    },
+
+
+
+
+    "skillsThreePerformerPlanning": {
+      "summaryHeading": "Your digital performer action plan",
+      "canChangeAnswers": false,
+      "backButton": false,
+      "backLink": true,
+      "backURLfromQ1": "/learning-module-three-your-action-plan-digital-performer",
+      "userTypeActionPlanSection": "performer-planning",
+      "formLogo": "skills-three-action-planning.png",
+      "steps": [
+
+        {
+          "id": 1,
+          "order": 1,
+          "title": "Your digital performer action plan",
+          "summaryTitle": "",
+          "elements": [
+            {
+              "controlType": "TextGroup",
+              "hint": "This section is designed to help you identify who'll be using the new software, and assess your hardware needs correctly. ",
+              "hint2": "",
+              "id": 110,
+              "text": "Planning",
+              "text2": "",
+              "subText": "1. Consider how people will access the software",
+              "textControlHtmlId": "lblTextGroup",
+              "textControlHtmlName": "Question1",
+              //"textGroupElements": [
+              "optionElements": [
+                {
+                  "controlType": "Textarea",
+                  "id": 111,
+                  "strongText": "Start... ",
+                  "text": "with a list who'll need access to the software. ",
+                  "textControlHtmlId": "Question1Text1",
+                  "textControlHtmlName": "Question1Text1_",
+                  "ResultPageLabel": "These are the people who will need access to the software..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 112,
+                  "strongText": "Next... ",
+                  "text": "find out what hardware you need to order so that each person can access the software. Add it to the list.",
+                  "textControlHtmlId": "Question1Text2",
+                  "textControlHtmlName": "Question1Text2_",
+                  "ResultPageLabel": "This is the hardware you need to order..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 113,
+                  "strongText": "Finally... ",
+                  "text": "work out how much budget you need to assign for this and time to get these assets in place.",
+                  "textControlHtmlId": "Question1Text3",
+                  "textControlHtmlName": "Question1Text3_",
+                  "ResultPageLabel": "You calculated you’ll need this much budget and time for your new assets..."
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "id": 2,
+          "order": 2,
+          "title": "Your digital performer action plan",
+          "summaryTitle": "",
+          "elements": [
+            {
+              "controlType": "TextGroup",
+              "hint": "Understanding the potential risks you face in a roll out, and knowing what your plans A, B and C look like, can stop you having to abort the launch altogether.",
+              "hint2": "",
+              "id": 210,
+              "text": "Planning",
+              "text2": "",
+              "subText": "2. Look for potential risks",
+              "textControlHtmlId": "lblTextGroup",
+              "textControlHtmlName": "Question2",
+              "optionElements": [
+                {
+                  "controlType": "Textarea",
+                  "id": 211,
+                  "strongText": "Start... ",
+                  "text": "by writing down the risks you might encounter, such as data loss or interruption to trading. Your list should include the worst-case scenario - having to stop the rollout. What would need to happen for this to be the only solution?",
+                  "textControlHtmlId": "Question2Text1",
+                  "textControlHtmlName": "Question2Text1_",
+                  "ResultPageLabel": "These are the risks you said you might encounter..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 112,
+                  "strongText": "Next... ",
+                  "text": "decide how you could mitigate each risk. What resources will you need and who will make the decisions in each case?",
+                  "textControlHtmlId": "Question2Text2",
+                  "textControlHtmlName": "Question2Text2_",
+                  "ResultPageLabel": "Here’s the list of your decision makers and possible solutions to these risks..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 113,
+                  "strongText": "Finally... ",
+                  "text": "How much contingency time and budget would be needed in each of these scenarios?",
+                  "textControlHtmlId": "Question2Text3",
+                  "textControlHtmlName": "Question2Text3_",
+                  "ResultPageLabel": "You calculated you may need this much contingency time and budget to mitigate these risks..."
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "id": 3,
+          "order": 3,
+          "title": "Your digital performer action plan",
+          "summaryTitle": "",
+          "elements": [
+            {
+              "controlType": "TextGroup",
+              "hint": "These impacts may include extra burden on other teams when you have staff in training.",
+              "hint2": "",
+              "id": 210,
+              "text": "Planning",
+              "text2": "",
+              "subText": "3. Look for indirect impacts",
+              "textControlHtmlId": "lblTextGroup",
+              "nextButtonText": "View summary",
+              "textControlHtmlName": "Question3",
+              "optionElements": [
+                {
+                  "controlType": "Textarea",
+                  "id": 211,
+                  "strongText": "Start... ",
+                  "text": "by thinking how the rollout could have a knock-on effect on each team and your business operations.",
+                  "textControlHtmlId": "Question3Text1",
+                  "textControlHtmlName": "Question3Text1_",
+                  "ResultPageLabel": "You identified these indirect impacts from your new rollout..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 112,
+                  "strongText": "Next... ",
+                  "text": "decide how you could protect against these negative effects.",
+                  "textControlHtmlId": "Question2Text2",
+                  "textControlHtmlName": "Question2Text2_",
+                  "ResultPageLabel": "Here’s how you could protect against these negative effects..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 113,
+                  "strongText": "Finally... ",
+                  "text": "add a rough estimate of time, effort and budget to compensate for these impacts.",
+                  "textControlHtmlId": "Question3Text3",
+                  "textControlHtmlName": "Question3Text3_",
+                  "ResultPageLabel": "This is the time, effort and budget you estimated to compensate for these impacts..."
+                }
+              ]
+            }
+          ]
+        }
+
+
+
+
+
+      ]
+    },
+
+    "skillsThreePerformerCommunication": {
+      "summaryHeading": "Your digital performer action plan",
+      "canChangeAnswers": false,
+      "backButton": false,
+      "backLink": true,
+      "backURLfromQ1": "/learning-module-three-your-action-plan-digital-performer",
+      "userTypeActionPlanSection": "performer-communication",
+      "formLogo": "skills-three-action-communication.png",
+      "steps": [
+
+        {
+          "id": 1,
+          "order": 1,
+          "title": "Your digital performer action plan",
+          "summaryTitle": "",
+          "elements": [
+            {
+              "controlType": "TextGroup",
+              "hint": "When you last rolled out new software, were there any parts of your business that felt unprepared? How can you improve communication for this rollout? ",
+              "hint2": "",
+              "id": 110,
+              "text": "Communication",
+              "text2": "",
+              "subText": "1. Keep your team(s) in the loop",
+              "textControlHtmlId": "lblTextGroup",
+              "textControlHtmlName": "Question1",
+              //"textGroupElements": [
+              "optionElements": [
+                {
+                  "controlType": "Textarea",
+                  "id": 111,
+                  "strongText": "Start... ",
+                  "text": "by making a list of who needs to be told about the new software. This will include individuals and teams who may be impacted by using the software every day, or occasionally.",
+                  "textControlHtmlId": "Question1Text1",
+                  "textControlHtmlName": "Question1Text1_",
+                  "ResultPageLabel": "These are the people who need to be told about the new software..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 112,
+                  "strongText": "Next... ",
+                  "text": "think about when you need to tell each group about the change. Look back at your last rollout, are there any lessons learned you can include here?",
+                  "textControlHtmlId": "Question1Text2",
+                  "textControlHtmlName": "Question1Text2_",
+                  "ResultPageLabel": "This is when you need to tell each group about the change..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 113,
+                  "strongText": "Finally... ",
+                  "text": "decide how you want to communicate to each group. This could be a combination of face-to-face and email. ",
+                  "textControlHtmlId": "Question1Text3",
+                  "textControlHtmlName": "Question1Text3_",
+                  "ResultPageLabel": "This is how you’ll communicate incoming changes to each group..."
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "id": 2,
+          "order": 2,
+          "title": "Your digital performer action plan",
+          "summaryTitle": "",
+          "elements": [
+            {
+              "controlType": "TextGroup",
+              "hint": "As you'll know from previous changes to your ways of working, a slight interruption to business as usual can really impact customer service. ",
+              "hint2": "",
+              "id": 210,
+              "text": "Communication",
+              "text2": "",
+              "subText": "2. Keep your customers informed",
+              "textControlHtmlId": "lblTextGroup",
+              "textControlHtmlName": "Question2",
+              "optionElements": [
+                {
+                  "controlType": "Textarea",
+                  "id": 211,
+                  "strongText": "Start... ",
+                  "text": "by considering how your customers could be impacted by your changes. Is the new software you're integrating likely to impact the service they receive? If so, make a list here of how that could happen.",
+                  "textControlHtmlId": "Question2Text1",
+                  "textControlHtmlName": "Question2Text1_",
+                  "ResultPageLabel": "This is how your customers could be impacted by the change..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 112,
+                  "strongText": "Next... ",
+                  "text": "write a list of what you think they'll need to know about the changes. For example, is a department they usually deal with likely to be less available for while? Will the new software change how they contact or pay your business?",
+                  "textControlHtmlId": "Question2Text2",
+                  "textControlHtmlName": "Question2Text2_",
+                  "ResultPageLabel": "Here’s the list of what you think your customers will need to know about the changes..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 113,
+                  "strongText": "Finally... ",
+                  "text": "decide when you need to communicate with them and how. You might have different dates and methods for different customers.",
+                  "textControlHtmlId": "Question2Text3",
+                  "textControlHtmlName": "Question2Text3_",
+                  "ResultPageLabel": "This is when you need to communicate with your customers and how..."
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "id": 3,
+          "order": 3,
+          "title": "Your digital performer action plan",
+          "summaryTitle": "",
+          "elements": [
+            {
+              "controlType": "TextGroup",
+              "hint": "You'll also need a list of key dates for communicating your roll out. This will help you meet specific milestones, and give your staff and customers clarity of what's changing across your business. ",
+              "hint2": "",
+              "id": 210,
+              "text": "Communication",
+              "text2": "",
+              "subText": "3. Draw up a communications timeline",
+              "textControlHtmlId": "lblTextGroup",
+              "nextButtonText": "View summary",
+              "textControlHtmlName": "Question3",
+              "optionElements": [
+                {
+                  "controlType": "Textarea",
+                  "id": 211,
+                  "strongText": "Start... ",
+                  "text": "by reviewing the two lists you've made above and pick out the key events and dates you need to communicate to your team and customers. ",
+                  "textControlHtmlId": "Question3Text1",
+                  "textControlHtmlName": "Question3Text1_",
+                  "ResultPageLabel": "These are the key events you want to communicate to your team and customers..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 112,
+                  "strongText": "Next... ",
+                  "text": "decide how you will communicate. You might choose different methods for different messages.",
+                  "textControlHtmlId": "Question2Text2",
+                  "textControlHtmlName": "Question2Text2_",
+                  "ResultPageLabel": "This is how you’ll communicate your key events..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 113,
+                  "strongText": "Finally... ",
+                  "text": "choose who will take responsibility for these communications including how they will deal with queries. ",
+                  "textControlHtmlId": "Question3Text3",
+                  "textControlHtmlName": "Question3Text3_",
+                  "ResultPageLabel": "This is who will take responsibility for communication including dealing with enquiries..."
+                }
+              ]
+            }
+          ]
+        }
+
+      ]
+    },
+
+    "skillsThreePerformerSupport": {
+      "summaryHeading": "Your digital performer action plan",
+      "canChangeAnswers": false,
+      "backButton": false,
+      "backLink": true,
+      "backURLfromQ1": "/learning-module-three-your-action-plan-digital-performer",
+      "userTypeActionPlanSection": "performer-support",
+      "formLogo": "skills-three-action-support.png",
+      "steps": [
+
+        {
+          "id": 1,
+          "order": 1,
+          "title": "Your digital performer action plan",
+          "summaryTitle": "",
+          "elements": [
+            {
+              "controlType": "TextGroup",
+              "hint": "When you last added new software, did you need extra support to get it working with your systems? Was there anything you didn't consider last time around, that you'd do differently now? ",
+              "hint2": "",
+              "id": 110,
+              "text": "Support, bugs and maintenance",
+              "text2": "",
+              "subText": "1. Tech support for integration",
+              "textControlHtmlId": "lblTextGroup",
+              "textControlHtmlName": "Question1",
+              //"textGroupElements": [
+              "optionElements": [
+                {
+                  "controlType": "Textarea",
+                  "id": 111,
+                  "strongText": "Start... ",
+                  "text": "by making a list of what tech support will be provided by the software suppliers, and what you'll have to provide for in-house.",
+                  "textControlHtmlId": "Question1Text1",
+                  "textControlHtmlName": "Question1Text1_",
+                  "ResultPageLabel": "Here’s a list of things that worked well, and not so well, last time..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 112,
+                  "strongText": "Next... ",
+                  "text": "consider who is the best person / people to be responsible for which tasks. Make sure they have the correct expertise or training.",
+                  "textControlHtmlId": "Question1Text2",
+                  "textControlHtmlName": "Question1Text2_",
+                  "ResultPageLabel": "This is who could provide you with support for your new software integration..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 113,
+                  "strongText": "Finally... ",
+                  "text": "assign the tasks and ensure that the workload is realistic for your team. ",
+                  "textControlHtmlId": "Question1Text3",
+                  "textControlHtmlName": "Question1Text3_",
+                  "ResultPageLabel": "You calculated the time and cost needed for the integration support you need..."
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "id": 2,
+          "order": 2,
+          "title": "Your digital performer action plan",
+          "summaryTitle": "",
+          "elements": [
+            {
+              "controlType": "TextGroup",
+              "hint": "As you'll know, things don't always run smoothly first time. Like support for integration, how will you plan for bug fixes when you first launch, or for any that crop up after launch?",
+              "hint2": "",
+              "id": 210,
+              "text": "Support, bugs and maintenance",
+              "text2": "",
+              "subText": "2. Bug fixing",
+              "textControlHtmlId": "lblTextGroup",
+              "textControlHtmlName": "Question2",
+              "optionElements": [
+                {
+                  "controlType": "Textarea",
+                  "id": 211,
+                  "strongText": "Start... ",
+                  "text": "by looking at how you deal with bugs in the software you use at the moment. If there are people in your business who provide support, make a list of them here. If you've got supplier support, write down what they offer and if you had to change the level of service they provided.",
+                  "textControlHtmlId": "Question2Text1",
+                  "textControlHtmlName": "Question2Text1_",
+                  "ResultPageLabel": "This is how you currently deal with bug fixing, and a list of people, inside and outside your business who will provide support..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 112,
+                  "strongText": "Next... ",
+                  "text": "consider which elements of your existing set-up you want to keep and those you'd change. ",
+                  "textControlHtmlId": "Question2Text2",
+                  "textControlHtmlName": "Question2Text2_",
+                  "ResultPageLabel": "You said the elements of your existing set-up you want to keep and those you’d change are..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 113,
+                  "strongText": "Finally... ",
+                  "text": "review if your chosen method of support - in-house or supplier support - match up where these elements are being met, and if there's anything you'd like to improve on.",
+                  "textControlHtmlId": "Question2Text3",
+                  "textControlHtmlName": "Question2Text3_",
+                  "ResultPageLabel": "You reviewed whether your chosen method of support matched up where these elements are being met, and mentioned whether there’s anything you’d improve..."
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "id": 3,
+          "order": 3,
+          "title": "Your digital performer action plan",
+          "summaryTitle": "",
+          "elements": [
+            {
+              "controlType": "TextGroup",
+              "hint": "You may have ongoing support from your last integration, in which case you can use this as a baseline for your new software.",
+              "hint2": "",
+              "id": 210,
+              "text": "Support, bugs and maintenance",
+              "text2": "",
+              "subText": "3. Maintenance",
+              "textControlHtmlId": "lblTextGroup",
+              "nextButtonText": "View summary",
+              "textControlHtmlName": "Question3",
+              "optionElements": [
+                {
+                  "controlType": "Textarea",
+                  "id": 211,
+                  "strongText": "Start... ",
+                  "text": "by making a list of how you currently maintain all the software and hardware in your business. This should include software updates, patches and how you tackle cyber security.",
+                  "textControlHtmlId": "Question3Text1",
+                  "textControlHtmlName": "Question3Text1_",
+                  "ResultPageLabel": "Here’s the list of how you currently maintain all software and hardware in your business..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 112,
+                  "strongText": "Next... ",
+                  "text": "review the list and see if your new software could be included in this existing plan.  Does the software you're buying include automatic updates for the areas mentioned above?",
+                  "textControlHtmlId": "Question2Text2",
+                  "textControlHtmlName": "Question2Text2_",
+                  "ResultPageLabel": "This is what you what you said about whether your new software could be included in your current maintenance plan..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 113,
+                  "strongText": "Finally... ",
+                  "text": "draw out the maintenance issues for your new software that are unlikely to be covered and list how these needs could be met, either in-house or by your supplier.",
+                  "textControlHtmlId": "Question3Text3",
+                  "textControlHtmlName": "Question3Text3_",
+                  "ResultPageLabel": "Here’s the list of issues you might encounter with your new software that are unlikely to be covered in your existing maintenance plan..."
+                }
+              ]
+            }
+          ]
+        }
+
+      ]
+    },
+
+    "skillsThreePerformerTraining": {
+      "summaryHeading": "Your digital performer action plan",
+      "canChangeAnswers": false,
+      "backButton": false,
+      "backLink": true,
+      "backURLfromQ1": "/learning-module-three-your-action-plan-digital-performer",
+      "userTypeActionPlanSection": "performer-training",
+      "formLogo": "skills-three-action-training.png",
+      "steps": [
+
+        {
+          "id": 1,
+          "order": 1,
+          "title": "Your digital performer action plan",
+          "summaryTitle": "",
+          "elements": [
+            {
+              "controlType": "TextGroup",
+              "hint": "Understand if your existing training approach can support your new software. Then look for the gaps you need to fill.",
+              "hint2": "",
+              "id": 110,
+              "text": "Training",
+              "text2": "",
+              "subText": "1. Target your training",
+              "textControlHtmlId": "lblTextGroup",
+              "textControlHtmlName": "Question1",
+              //"textGroupElements": [
+              "optionElements": [
+                {
+                  "controlType": "Textarea",
+                  "id": 111,
+                  "strongText": "Start... ",
+                  "text": "by listing the software functionality each team needs to be trained on and people/team's individual needs.",
+                  "textControlHtmlId": "Question1Text1",
+                  "textControlHtmlName": "Question1Text1_",
+                  "ResultPageLabel": "Here’s the list of people who are already supporting other members of the team..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 112,
+                  "strongText": "Next... ",
+                  "text": "decide who will deliver the training and how much time and resource you'll need.",
+                  "textControlHtmlId": "Question1Text2",
+                  "textControlHtmlName": "Question1Text2_",
+                  "ResultPageLabel": "These are the people who need training and whether it will be for either software, hardware, or both..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 113,
+                  "strongText": "Finally... ",
+                  "text": "roughly plan how much time you need to allow for each piece of training. Don't forget to add extra time if you'll be training one person to pass their knowledge on to other team members.",
+                  "textControlHtmlId": "Question1Text3",
+                  "textControlHtmlName": "Question1Text3_",
+                  "ResultPageLabel": "The areas you said people can train others in-house and who you’ll need to arrange external training for are..."
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "id": 2,
+          "order": 2,
+          "title": "Your digital performer action plan",
+          "summaryTitle": "",
+          "elements": [
+            {
+              "controlType": "TextGroup",
+              "hint": "Reviewing how you've trained staff in the past and measuring its effectiveness, together with cost, can help steer you for your new rollout.",
+              "hint2": "",
+              "id": 210,
+              "text": "Training",
+              "text2": "",
+              "subText": "2. Training types ",
+              "textControlHtmlId": "lblTextGroup",
+              "textControlHtmlName": "Question2",
+              "optionElements": [
+                {
+                  "controlType": "Textarea",
+                  "id": 211,
+                  "strongText": "Start... ",
+                  "text": "by thinking about how you've trained for new software in the past. Write down a list of pros and cons for each format (i.e. virtual, on-site, off-site).",
+                  "textControlHtmlId": "Question2Text1",
+                  "textControlHtmlName": "Question2Text1_",
+                  "ResultPageLabel": "Here’s a list of pros and cons of the training you’ve offered for new software in the past..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 112,
+                  "strongText": "Next... ",
+                  "text": "speak to your team(s) about which type of training works best for them. Make a list of their preferred methods, including what doesn't work for them.",
+                  "textControlHtmlId": "Question2Text2",
+                  "textControlHtmlName": "Question2Text2_",
+                  "ResultPageLabel": "This is the type of training which works best for your team(s) and why..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 113,
+                  "strongText": "Finally... ",
+                  "text": "see what training is available for your new software. Review this with the budget you've set aside for training to identify what's realistic.",
+                  "textControlHtmlId": "Question2Text3",
+                  "textControlHtmlName": "Question2Text3_",
+                  "ResultPageLabel": "You looked at the type of training your team(s) prefer, whether it’s available, and calculated you'll need this much budget..."
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "id": 3,
+          "order": 3,
+          "title": "Your digital performer action plan",
+          "summaryTitle": "",
+          "elements": [
+            {
+              "controlType": "TextGroup",
+              "hint": "As with your previous software integrations, having a plan to train new starters keeps things running smoothly.",
+              "hint2": "",
+              "id": 210,
+              "text": "Training",
+              "text2": "",
+              "subText": "3. Training for new starters ",
+              "textControlHtmlId": "lblTextGroup",
+              "nextButtonText": "View summary",
+              "textControlHtmlName": "Question3",
+              "optionElements": [
+                {
+                  "controlType": "Textarea",
+                  "id": 211,
+                  "strongText": "Start... ",
+                  "text": "by making a list of which job roles would use the software. This will help you flag up who needs training after recruitment.",
+                  "textControlHtmlId": "Question3Text1",
+                  "textControlHtmlName": "Question3Text1_",
+                  "ResultPageLabel": "Here’s the list of which job roles would use the software..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 112,
+                  "strongText": "Next... ",
+                  "text": "speak to the team members who have supported training in the past. Ask how long it would realistically take to get a new starter up to speed. ",
+                  "textControlHtmlId": "Question2Text2",
+                  "textControlHtmlName": "Question2Text2_",
+                  "ResultPageLabel": "You identified the best type of training to take place, and that it would take this much time..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 113,
+                  "strongText": "Finally... ",
+                  "text": "make a list of the experience an ideal new starter would have, or how many hours training you want to include in an induction period.",
+                  "textControlHtmlId": "Question3Text3",
+                  "textControlHtmlName": "Question3Text3_",
+                  "ResultPageLabel": "Here’s the list of the experience a new starter would have and how many hours training would be included during their induction..."
+                }
+              ]
+            }
+          ]
+        }
+
+      ]
+    },
+
+    "skillsThreePerformerTesting": {
+      "summaryHeading": "Your digital performer action plan",
+      "canChangeAnswers": false,
+      "backButton": false,
+      "backLink": true,
+      "backURLfromQ1": "/learning-module-three-your-action-plan-digital-performer",
+      "userTypeActionPlanSection": "performer-testing",
+      "formLogo": "skills-three-action-testing.png",
+      "steps": [
+
+        {
+          "id": 1,
+          "order": 1,
+          "title": "Your digital performer action plan",
+          "summaryTitle": "",
+          "elements": [
+            {
+              "controlType": "TextGroup",
+              "hint": "Testing for bugs and usability don't yield the same results. Reflect on how you've tested in the past, how long it took and if there's anything you'd do differently this time.",
+              "hint2": "",
+              "id": 110,
+              "text": "Testing pre-launch",
+              "text2": "",
+              "subText": "1. Find your testers",
+              "textControlHtmlId": "lblTextGroup",
+              "textControlHtmlName": "Question1",
+              //"textGroupElements": [
+              "optionElements": [
+                {
+                  "controlType": "Textarea",
+                  "id": 111,
+                  "strongText": "Start... ",
+                  "text": "by making two lists of testers. The first are people who can look for bugs in the software. The second are users who may not be as tech-savvy, but will be using the software every day.",
+                  "textControlHtmlId": "Question1Text1",
+                  "textControlHtmlName": "Question1Text1_",
+                  "ResultPageLabel": "Here are your two lists of testers – for those who can find bugs in your new software, and those who might not be as tech-savvy, but will use the software every day..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 112,
+                  "strongText": "Next... ",
+                  "text": "list how much time you would like to give each group to identify any problems in how the system works, or blockers in their confidence to use it.",
+                  "textControlHtmlId": "Question1Text2",
+                  "textControlHtmlName": "Question1Text2_",
+                  "ResultPageLabel": "This is how much time you’d like to give each group to identify any problems..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 113,
+                  "strongText": "Finally... ",
+                  "text": "identify 'testing champions' from each group. These will be the people you'll brief later and engage with to gather your feedback. ",
+                  "textControlHtmlId": "Question1Text3",
+                  "textControlHtmlName": "Question1Text3_",
+                  "ResultPageLabel": "You’ve identified these people as ‘test champions’ from each group.."
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "id": 2,
+          "order": 2,
+          "title": "Your digital performer action plan",
+          "summaryTitle": "",
+          "elements": [
+            {
+              "controlType": "TextGroup",
+              "hint": "Utilise the power of your feedback by gathering it in a way that makes it easy to anaylse.",
+              "hint2": "",
+              "id": 210,
+              "text": "Testing pre-launch",
+              "text2": "",
+              "subText": "2. Gathering feedback",
+              "textControlHtmlId": "lblTextGroup",
+              "textControlHtmlName": "Question2",
+              "optionElements": [
+                {
+                  "controlType": "Textarea",
+                  "id": 211,
+                  "strongText": "Start... ",
+                  "text": "by choosing feedback champions to collect all feedback, who can take responsibility for grouping topics together and prioritising their importance.",
+                  "textControlHtmlId": "Question2Text1",
+                  "textControlHtmlName": "Question2Text1_",
+                  "ResultPageLabel": "Here’s who you chose as ‘champion(s)’, who’ll be responsible for collecting all feedback..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 112,
+                  "strongText": "Next... ",
+                  "text": "speak to your feedback champion(s) and ask how much time they would need for this task. Do they need cover on their day job? If so, who could provide that support for them?",
+                  "textControlHtmlId": "Question2Text2",
+                  "textControlHtmlName": "Question2Text2_",
+                  "ResultPageLabel": "This is how much time your ‘champion(s)’ will need for this task, and whether they need cover for their day job..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 113,
+                  "strongText": "Finally... ",
+                  "text": "working with your feedback champions, ask if there's any preferred way they'd like to receive and store the feedback. Make a list here.",
+                  "textControlHtmlId": "Question2Text3",
+                  "textControlHtmlName": "Question2Text3_",
+                  "ResultPageLabel": "Here’s a list of what your ‘champion(s)’ told you about the preferred way they’d like to receive feedback and how they’ll store it..."
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "id": 3,
+          "order": 3,
+          "title": "Your digital performer action plan",
+          "summaryTitle": "",
+          "elements": [
+            {
+              "controlType": "TextGroup",
+              "hint": "Prioritise and schedule how you want to implement feedback. What needs to happen before launch, and what can wait until after? ",
+              "hint2": "",
+              "id": 210,
+              "text": "Testing pre-launch",
+              "text2": "",
+              "subText": "3. Using your feedback ",
+              "textControlHtmlId": "lblTextGroup",
+              "nextButtonText": "View summary",
+              "textControlHtmlName": "Question3",
+              "optionElements": [
+                {
+                  "controlType": "Textarea",
+                  "id": 211,
+                  "strongText": "Start... ",
+                  "text": "list what you consider to be the most important feedback for a successful rollout. Think about what's happened in past software adoptions, particularly if it caused disruption to trading.",
+                  "textControlHtmlId": "Question3Text1",
+                  "textControlHtmlName": "Question3Text1_",
+                  "ResultPageLabel": "This is what you consider to be the most important feedback for a successful rollout..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 112,
+                  "strongText": "Next... ",
+                  "text": "prioritise this list. It will help you decide which feedback needs addressing before launch, and what can wait until after. It also supports your feedback champion(s) to organise their workload. ",
+                  "textControlHtmlId": "Question2Text2",
+                  "textControlHtmlName": "Question2Text2_",
+                  "ResultPageLabel": "You sorted the above list in order of importance..."
+                },
+                {
+                  "controlType": "Textarea",
+                  "id": 113,
+                  "strongText": "Finally... ",
+                  "text": "plot out how you would like your feedback champion(s) to review and discuss any issues with you. Does a weekly face-to-face meeting work? Or are there some issues you'd want flagging immediately? Make a list here. ",
+                  "textControlHtmlId": "Question3Text3",
+                  "textControlHtmlName": "Question3Text3_",
+                  "ResultPageLabel": "This is how you'd like your ‘feedback champion’ to review and discuss any issues with you..."
+                }
+              ]
+            }
+          ]
+        }
+
+      ]
     }
+
+
+
 
   }
 }

@@ -1,30 +1,20 @@
-﻿@using Beis.LearningPlatform.Web.Utils
-@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
-@{
-    var _pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build();
-    var strclass = string.Empty;
-    var topSpaceClass = Model.topSpace != "nospace" ? "govuk-!-padding-top-6" : string.Empty;
-    var bottomSpaceClass = Model.bottomSpace != "nospace" ? "govuk-!-padding-bottom-6" : string.Empty;
-    var strContainerClass = string.IsNullOrWhiteSpace(Model.background) ? "" : @CamelCaseConverter.Delimiter(Model.background, "-");
-}
+﻿@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
 
 @if (!string.IsNullOrWhiteSpace(Model.url))
 {
-    <div id="@("anchor" + ViewData["intCurrComponentIndex"])" class="govuk-grid-row @strContainerClass">
+    <div id="@("anchor" + Model.Index)" class="govuk-grid-row @Model.AlteredBackground">
         <div class="video">
-            <div class="govuk-grid-row @strContainerClass">
+            <div class="govuk-grid-row @Model.AlteredBackground">
                 <div class="govuk-width-container">
                     <div class="govuk-grid-column-full">
-                        <div class="@topSpaceClass @bottomSpaceClass">
+                        <div class="@Model.AlteredPaddingTopSpace @Model.AlteredPaddingBottomSpace">
                             @if (Model.textblock != null)
                             {
                                 foreach (var item in Model.textblock)
                                 {
-                                    strclass = string.Empty;
                                     if (!string.IsNullOrWhiteSpace(item.subheader))
                                     {
-                                        strclass = CamelCaseConverter.Delimiter(item.subheaderColor, "-") + "-text";
-                                        <h2 class="govuk-heading-l @strclass">
+                                        <h2 class="govuk-heading-l @(CamelCaseConverter.Delimiter(item.subheaderColor, "-") + "-text")">
                                             @Html.Raw(item.subheader)
                                         </h2>
                                     }

@@ -1,10 +1,4 @@
-﻿using Beis.LearningPlatform.Web.Models.DiagnosticTool;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Beis.LearningPlatform.Web.Utils
+﻿namespace Beis.LearningPlatform.Web.Utils
 {
     /// <summary>
     /// A class that defines extension methods to a Form Answer Option Element.
@@ -112,6 +106,13 @@ namespace Beis.LearningPlatform.Web.Utils
 
             if (element.controlType == FormDisplayControlType.Checkbox)
             {
+                if (element.additionalInfoRequired && !string.IsNullOrWhiteSpace(element.additionalInfo) && !element.value.Equals("true", StringComparison.OrdinalIgnoreCase))
+                {
+                    errorMessage = "Answer the question below to continue";
+                    element.validationError = $"Ensure {element.hint} is checked before entering text here.";
+                    return false;
+                }
+
                 // If the answer is selected, process the values, if not, reset the additional info values
                 if (element.value.Equals("true", StringComparison.OrdinalIgnoreCase))
                 {
@@ -221,6 +222,28 @@ namespace Beis.LearningPlatform.Web.Utils
             }
             else
                 throw new ArgumentException("The specified element is not a Text-type", nameof(element));
+
+            return returnValue;
+        }
+
+        public static bool ValidateTextareaControl(this FormAnswerOptionElement element, out string errorMessage)
+        {
+            bool returnValue = true;
+
+            // Defaults
+            errorMessage = default;
+
+            if (element.controlType == FormDisplayControlType.Textarea)
+            {
+                if (string.IsNullOrEmpty(element.value))
+                {
+                    returnValue = false;
+                    errorMessage = "Answer the question below to continue";
+                    element.validationError = errorMessage;
+                }
+            }
+            else
+                throw new ArgumentException("The specified element is not a Textarea-type", nameof(element));
 
             return returnValue;
         }

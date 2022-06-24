@@ -1,34 +1,28 @@
-﻿@using Beis.LearningPlatform.Web.Utils
-@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
+﻿@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
 @{
     var _pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build();
-    var strcopy = string.Empty;
-    var topSpaceClass = Model.topSpace != "nospace" ? "govuk-!-padding-top-6" : "";
-    var bottomSpaceClass = Model.bottomSpace != "nospace" ? "govuk-!-padding-bottom-6" : "";
-    var strComponentBg = (!string.IsNullOrWhiteSpace(Model.background)) ? CamelCaseConverter.Delimiter(Model.background, "-") : "";
 }
 
 @if (Model.textblocks != null)
 {
     if (Model.textblocks.Count > 0)
     {
-        foreach (var textblock in Model.textblocks)
+        foreach (var textBlock in Model.textblocks)
         {
-            textblock.hide = textblock.hide.HasValue ? textblock.hide : false;
+            textBlock.hide = textBlock.hide.HasValue ? textBlock.hide : false;
 
-            if (textblock.hide == false)
+            if (textBlock.hide == false)
             {
                 var strclass = CamelCaseConverter.Delimiter(Model.background, "-");
-                <div class="quotes" id="@("anchor" + ViewData["intCurrComponentIndex"])">
-                    <div class="@strComponentBg">
-                        <div class="govuk-width-container @topSpaceClass  @bottomSpaceClass">
+                <div class="quotes" id="@("anchor" + Model.Index)">
+                    <div class="@Model.AlteredBackground">
+                        <div class="govuk-width-container @Model.AlteredPaddingTopSpace @Model.AlteredPaddingBottomSpace">
                             <div class="govuk-grid-row">
                                 <div class="govuk-grid-column-full @strclass">
-
-                                    @if (!string.IsNullOrWhiteSpace(textblock.subheader))
+                                    @if (!string.IsNullOrWhiteSpace(textBlock.subheader))
                                     {
                                         <h2 class="govuk-heading-l govuk-!-font-size-24">
-                                            @Html.Raw(Markdown.ToHtml(textblock.subheader, _pipeline))
+                                            @Html.Raw(Markdown.ToHtml(textBlock.subheader, _pipeline))
                                         </h2>
                                     }
 
@@ -39,18 +33,18 @@
                                             </svg>
                                         </div>
                                         <div class="govuk-body govuk-!-font-size-36">
-                                            @{ strcopy = Markdown.ToHtml(textblock.copy, _pipeline);
-                                                @Html.Raw(strcopy);
+                                            @{
+                                                @Html.Raw(Markdown.ToHtml(textBlock.copy, _pipeline));
                                             }
                                         </div>
                                     </div>
-                                    <partial name="CMSPageViews/_PartialTextLinks" model="@Model.links" />
-                                </div>
-                                    </div>
+                                    <partial name="CMSPageViews/_PartialTextLinks" model="@(Model.links, Model.linksAlign)" />
                                 </div>
                             </div>
                         </div>
-                    }
-                }
+                    </div>
+                </div>
             }
         }
+    }
+}

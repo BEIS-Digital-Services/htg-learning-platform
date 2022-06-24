@@ -1,21 +1,4 @@
-﻿using AutoMapper;
-using Beis.LearningPlatform.BL.Domain;
-using Beis.LearningPlatform.BL.Services;
-using Beis.LearningPlatform.Library;
-using Beis.LearningPlatform.Web.ControllerHelpers;
-using Beis.LearningPlatform.Web.ControllerHelpers.Interfaces;
-using Beis.LearningPlatform.Web.Models.DiagnosticTool;
-using Beis.LearningPlatform.Web.Options;
-using Beis.LearningPlatform.Web.Services;
-using Beis.LearningPlatform.Web.Utils;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using Moq;
-using NUnit.Framework;
-using System;
-using System.Threading.Tasks;
-using ConfigOptions = Microsoft.Extensions.Options.Options;
+﻿using ConfigOptions = Microsoft.Extensions.Options.Options;
 
 namespace Beis.LearningPlatform.Web.Tests.ControllerHelperTests
 {
@@ -30,6 +13,7 @@ namespace Beis.LearningPlatform.Web.Tests.ControllerHelperTests
         private Mock<IEmailService> _emailService;
         private Mock<ISkillsOneService> _skillsOneService;
         private Mock<ISkillsTwoService> _skillsTwoService;
+        private Mock<ISkillsThreeService> _skillsThreeService;
         private IOptions<VendorAppOption> _vendorAppOptions;
         private IOptions<ComparisonToolDisplayOption> _ctDisplayOptions;
         private IOptions<ApplicationForm> _applicationFormOptions;
@@ -55,7 +39,8 @@ namespace Beis.LearningPlatform.Web.Tests.ControllerHelperTests
             _emailService = new Mock<IEmailService>();
             _skillsOneService = new Mock<ISkillsOneService>();
             _skillsTwoService = new Mock<ISkillsTwoService>();
-            
+            _skillsThreeService = new Mock<ISkillsThreeService>();
+
             _emailResponseHelperFactory = new Mock<IEmailResponseHelperFactory>();
             _emailResponseHelper = new Mock<IEmailResponseHelper>();
             _emailDto =  new Mock<IEmailDto>();
@@ -75,6 +60,7 @@ namespace Beis.LearningPlatform.Web.Tests.ControllerHelperTests
                                                                                     _emailService.Object,
                                                                                     _skillsOneService.Object,
                                                                                     _skillsTwoService.Object,
+                                                                                    _skillsThreeService.Object,
                                                                                     _vendorAppOptions,
                                                                                     _emailResponseHelperFactory.Object,
                                                                                     _httpContextAccessor.Object);

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Beis.LearningPlatform.Web.StrapiApi.Models
+﻿namespace Beis.LearningPlatform.Web.StrapiApi.Models
 {
     public class CMSSearchTag
     {
@@ -13,6 +10,7 @@ namespace Beis.LearningPlatform.Web.StrapiApi.Models
         public DateTime created_at { get; set; }
         public DateTime updated_at { get; set; }
         public string displayName { get; set; }
+        public string friendlyDisplayName { get; set; }
         public IList<CMSPageIcon> icon { get; set; }
         public bool? hide { get; set; }
     }

@@ -1,26 +1,24 @@
-﻿using Beis.LearningPlatform.Web.ControllerHelpers.Interfaces;
-using Beis.LearningPlatform.Web.Models;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Diagnostics;
-using System.Threading.Tasks;
-
-namespace Beis.LearningPlatform.Web.Controllers
+﻿namespace Beis.LearningPlatform.Web.Controllers
 {
     public class ComparisonToolController : ControllerBase
     {
         private readonly IComparisonToolControllerHelper _comparisonToolHelper;
-        
-        public ComparisonToolController(ILogger<ComparisonToolController> logger, IComparisonToolControllerHelper comparisonToolHelper) : base(logger)
+        private readonly IHomeControllerHelper _homeControllerHelper;
+
+        public ComparisonToolController(ILogger<ComparisonToolController> logger, 
+            IComparisonToolControllerHelper comparisonToolHelper,
+            IHomeControllerHelper homeControllerHelper) : base(logger)
         {
             _comparisonToolHelper = comparisonToolHelper;
+            _homeControllerHelper = homeControllerHelper;
         }
 
+
         [Route("/comparison-tool")]
-        public async Task<IActionResult> Start()
+        [Route("/comparison-tool/{productCategoryIds}")]
+        public async Task<IActionResult> Start(string productCategoryIds = null)
         {
-            return await GetStartPage(true);
+            return await GetStartPage(true, productCategoryIds);
         }
 
         [Route("/comparison-toolNoJs")]
@@ -41,6 +39,7 @@ namespace Beis.LearningPlatform.Web.Controllers
             }
 
             var viewModel = await _comparisonToolHelper.InitViewModel("filter-by", productCategoryIds);
+            await UpdateCmsPageViewModel(viewModel);
             _comparisonToolHelper.SetViewModelUserJourneyData(viewModel, productCategoryIds, null, "/");
             return View("Start", viewModel);
         }
@@ -53,6 +52,7 @@ namespace Beis.LearningPlatform.Web.Controllers
         public async Task<IActionResult> IncludeProduct(string productIds, string productCategoryIds)
         {
             var viewModel = await _comparisonToolHelper.InitViewModel("include-product", productCategoryIds);
+            await UpdateCmsPageViewModel(viewModel);
             _comparisonToolHelper.SetViewModelUserJourneyData(viewModel, productCategoryIds, productIds, "/");
             return View("Start", viewModel);
         }
@@ -85,7 +85,7 @@ namespace Beis.LearningPlatform.Web.Controllers
         public async Task<IActionResult> GetDiscount(string product_id)
         {
             var voucherJourneyRedirectUrl = await _comparisonToolHelper.GetVoucherJourneyRedirectUrl(Convert.ToInt64(product_id));
-            _logger.LogInformation($"ComparisonTool confirmed selection: {voucherJourneyRedirectUrl}");
+            _logger.LogInformation("ComparisonTool confirmed selection: {voucherJourneyRedirectUrl}", voucherJourneyRedirectUrl);
             return Redirect(voucherJourneyRedirectUrl);
         }
 
@@ -95,17 +95,24 @@ namespace Beis.LearningPlatform.Web.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext?.TraceIdentifier });
         }
 
-        private async Task<ViewResult> GetStartPage(bool jsEnabled)
+        private async Task<ViewResult> GetStartPage(bool jsEnabled, string productCategoryIds = null)
         {
             var viewModel = await _comparisonToolHelper.InitViewModel("start", populateRelationalData: false);
+            await UpdateCmsPageViewModel(viewModel);
+
             _comparisonToolHelper.SetViewModelUserJourneyData(viewModel, null, null, "/");
             viewModel.JavascriptEnabled = jsEnabled;
+            if(!string.IsNullOrWhiteSpace(productCategoryIds))
+            {
+                viewModel.ProductCategoryIds = productCategoryIds.Split(',').ToArray();
+            }
             return View("Start", viewModel);
         }
 
         private async Task<ViewResult> GetCompareDetails(string selectedProductCategoryIds, string selectedProductIds, bool jsEnabled)
         {
             var viewModel = await _comparisonToolHelper.InitViewModel("compare-products", selectedProductCategoryIds, selectedProductIds);
+            await UpdateCmsPageViewModel(viewModel);
             _comparisonToolHelper.SetViewModelUserJourneyData(viewModel, selectedProductCategoryIds, selectedProductIds, "/comparison-tool");
 
             UpdateViewModel(jsEnabled, viewModel);
@@ -120,6 +127,8 @@ namespace Beis.LearningPlatform.Web.Controllers
         private async Task<ViewResult> GetProductDetails(string productId, bool jsEnabled)
         {
             var viewModel = await _comparisonToolHelper.InitViewModelForSelectedProduct(Convert.ToInt64(productId));
+            await UpdateCmsPageViewModel(viewModel, "comparison-tool-product");
+
             UpdateViewModel(jsEnabled, viewModel);
             viewModel.pageTitle = "Help to Grow: Digital - More about this software";
             return View("ProductDetails", viewModel);
@@ -129,6 +138,12 @@ namespace Beis.LearningPlatform.Web.Controllers
         {
             model.JavascriptEnabled = jsEnabled;
             model.Referrer = jsEnabled ? model.Referrer : $"{model.Referrer}NoJs";
+        }
+
+        private async Task UpdateCmsPageViewModel(ComparisonToolPageViewModel model, string customPage = "comparison-tool")
+        {
+            var cmsPageViewModel = await _homeControllerHelper.ProcessGetCustomPageResult($"Custom-pages/{customPage}");
+            model.CMSPageViewModel = cmsPageViewModel;
         }
     }
 }

@@ -1,18 +1,4 @@
-﻿using Beis.LearningPlatform.Web.ComparisonTool.Models;
-using Beis.LearningPlatform.Web.Configuration;
-using Beis.LearningPlatform.Web.ControllerHelpers.Interfaces;
-using Beis.LearningPlatform.Web.Interfaces;
-using Beis.LearningPlatform.Web.Models;
-using Beis.LearningPlatform.Web.Options;
-using Beis.LearningPlatform.Web.Utils;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Beis.LearningPlatform.Web.ControllerHelpers
+﻿namespace Beis.LearningPlatform.Web.ControllerHelpers
 {
     public class ComparisonToolControllerHelper : ControllerHelperBase, IComparisonToolControllerHelper
     {
@@ -109,6 +95,19 @@ namespace Beis.LearningPlatform.Web.ControllerHelpers
             viewModel.VoucherUrl = _voucherAppOption.BaseUrl;
             viewModel.VendorProdLogorUrl = _vendorAppOption.ProdLogoUrl;
             viewModel.ProductCategoryList = _productCategoryDisplaySettings.DisplaySettings;
+
+            if (string.IsNullOrWhiteSpace(productCategoryIds))
+            {
+                foreach (var item in viewModel.ProductCategoryList.ToList())
+                {
+                    // If there are no products exist for any of the tags, then remove it from filter option.
+                    if (!viewModel.products.Any(p => p.product_type == item.id))
+                    {
+                        viewModel.ProductCategoryList.Remove(item);
+                    }
+                }
+            }
+
             viewModel.Referrer = referrerPath;
 
             // If there are one or more category selected, apply the filter and set the ViewModel attribute

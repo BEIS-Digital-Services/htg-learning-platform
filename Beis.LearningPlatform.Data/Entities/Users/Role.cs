@@ -1,8 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
-
-namespace Beis.LearningPlatform.Data.Entities.Users
+﻿namespace Beis.LearningPlatform.Data.Entities.Users
 {
     public class Role : IdentityRole<string>
     {

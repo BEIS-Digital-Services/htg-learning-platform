@@ -7,6 +7,9 @@
         public string copy { get; set; }
         public string header { get; set; }
         public string subheaderColor { get; set; }
+
+        public string AlteredSubHeaderColor => !string.IsNullOrWhiteSpace(subheaderColor) ? CamelCaseConverter.Delimiter(subheaderColor, "-") : string.Empty;
+
         public string backgroundColor { get; set; }
         public string subHeaderColor { get; set; }
         public bool? hide { get; set; }
@@ -14,5 +17,7 @@
         public string subHeaderAlign { get; set; }
         public string contentAlign { get; set; }
         public string copyAlign { get; set; }
+        public CMSPageImage HeaderImage { get; set; }
+
     }
 }

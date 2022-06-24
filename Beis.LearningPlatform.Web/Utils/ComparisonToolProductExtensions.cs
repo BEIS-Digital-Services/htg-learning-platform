@@ -1,9 +1,4 @@
-﻿using Beis.LearningPlatform.Web.ComparisonTool.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace Beis.LearningPlatform.Web.Utils
+﻿namespace Beis.LearningPlatform.Web.Utils
 {
     public static class ComparisonToolProductExtensions
     {

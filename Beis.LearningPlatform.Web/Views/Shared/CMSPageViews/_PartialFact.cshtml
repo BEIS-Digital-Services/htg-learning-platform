@@ -1,51 +1,41 @@
-﻿@using Beis.LearningPlatform.Web.Utils
-@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
+﻿@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
 @{
-    var strclass = (!string.IsNullOrWhiteSpace(Model.background)) ? CamelCaseConverter.Delimiter(Model.background, "-") : "";
     var _pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build();
-    ViewData["linksAlign"] = Model?.linksAlign;
-    var topSpaceClass = Model.topSpace != "nospace" ? "govuk-!-padding-top-6" : "";
-    var bottomSpaceClass = Model.bottomSpace != "nospace" ? "govuk-!-padding-bottom-6" : "";
+    Model.hide = Model.hide.HasValue ? Model.hide : false;
 }
 
-@{
-    Model.hide = Model.hide.HasValue ? Model.hide : false;
+@if (Model.hide == false)
+{
+    <div id="@("anchor" + Model.Index)" class="fact @Model.AlteredPaddingTopSpace  @Model.AlteredPaddingBottomSpace @CamelCaseConverter.Delimiter(@Model.background, "-")">
+        <div class="govuk-width-container">
+            <div class="govuk-grid-column-full">
+                <div class="beis-columns-same-height">
 
-    if (Model.hide == false)
-    {
-        <div id="@("anchor" + ViewData["intCurrComponentIndex"])" class="fact @topSpaceClass  @bottomSpaceClass @CamelCaseConverter.Delimiter(@Model.background, "-")">
-            <div class="govuk-width-container">
-                <div class="govuk-grid-column-full">
-                    <div class="beis-columns-same-height">
-
-                        <div class="left-column">
-                            @if (Model.image != null)
-                            {
-                                <vc:cms-image options='new CmsImageViewModel{ ImageUrl = Model.image.url, CssClass = "hero-mobile-image", CssStyle="display: flex;", Title = Model.image.alternativeText }' />
-                            }
-                        </div>
-
-                        @if (Model.textblocks != null && Model.textblocks.Count > 0)
+                    <div class="left-column">
+                        @if (Model.image != null)
                         {
-                            <div class="right-column @CamelCaseConverter.Delimiter(Model.textblocks[0].backgroundColor, "-")">
-                                @if (!string.IsNullOrWhiteSpace(Model.textblocks[0].subheader))
-                                {
-                                    <h2 class="govuk-heading-xl govuk-!-padding-top-8 @Model.textblocks[0].subHeaderAlign @CamelCaseConverter.Delimiter(Model.textblocks[0].subheaderColor, "-")-text">@Model.textblocks[0].subheader</h2>
-                                }
-
-                                @if (!string.IsNullOrWhiteSpace(Model.textblocks[0].copy))
-                                {
-                                    @Html.Raw(Markdown.ToHtml(Model.textblocks[0].copy, _pipeline).Replace("<p>", "<p class=\"govuk-body govuk-!-margin-top-2 " + Model.textblocks[0].copyAlign +"\">"))
-                                }
-                                
-                                <partial name="CMSPageViews/_PartialTextLinks" model="@Model.links" />
-
-                            </div>
+                            <vc:cms-image options='new CmsImageViewModel{ ImageUrl = Model.image.url, CssClass = "hero-mobile-image", CssStyle="display: flex;", Title = Model.image.alternativeText }' />
                         }
-
                     </div>
+
+                    @if (Model.textblocks != null && Model.textblocks.Count > 0)
+                    {
+                        <div class="right-column @CamelCaseConverter.Delimiter(Model.textblocks[0].backgroundColor, "-")">
+                            @if (!string.IsNullOrWhiteSpace(Model.textblocks[0].subheader))
+                            {
+                                <h2 class="govuk-heading-xl govuk-!-padding-top-8 @Model.textblocks[0].subHeaderAlign @CamelCaseConverter.Delimiter(Model.textblocks[0].subheaderColor, "-")-text">@Model.textblocks[0].subheader</h2>
+                            }
+
+                            @if (!string.IsNullOrWhiteSpace(Model.textblocks[0].copy))
+                            {
+                                @Html.Raw(Markdown.ToHtml(Model.textblocks[0].copy, _pipeline).Replace("<p>", "<p class=\"govuk-body govuk-!-margin-top-2 " + Model.textblocks[0].copyAlign +"\">"))
+                            }
+
+                            <partial name="CMSPageViews/_PartialTextLinks" model="@(Model.links,  Model.linksAlign)" />
+                        </div>
+                    }
                 </div>
             </div>
         </div>
-    }
+    </div>
 }

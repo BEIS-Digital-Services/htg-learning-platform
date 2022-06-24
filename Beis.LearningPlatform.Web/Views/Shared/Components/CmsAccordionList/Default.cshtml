@@ -1,0 +1,36 @@
+﻿@model Beis.LearningPlatform.Web.Models.CmsAccordionListViewModel
+@{
+    if (!Model.HasContent)
+    {
+        return;
+    }
+
+    var _pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build();
+}
+
+<div class="govuk-width-container govuk-!-padding-top-4 govuk-!-padding-bottom-4">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <div class="accordion-wrapper">
+                @foreach (var accordionItem in Model.AccordionItems)
+                {
+                    if (accordionItem.HasContent == false) continue;
+
+                    <div class="accordion-item">
+                        <button class="accordion">@accordionItem.Header</button>
+                        <div class="panel">
+                            <div class="govuk-body">
+                                <div>
+                                    @Html.Raw(Markdown.ToHtml(accordionItem.copy1, _pipeline))
+                                </div>
+                                <div class="graybgpnl">
+                                    @Html.Raw(Markdown.ToHtml(accordionItem.copy2, _pipeline))
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

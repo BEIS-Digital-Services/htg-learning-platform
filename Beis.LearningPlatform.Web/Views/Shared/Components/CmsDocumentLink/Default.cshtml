@@ -1,5 +1,5 @@
 ﻿@model Beis.LearningPlatform.Web.Models.CmsDocumentLinkViewModel
-<div class="beis-text" id="@("anchor" + ViewData["intCurrComponentIndex"])">
+<div class="beis-text" id="@("anchor" + Model.Component.Index)">
     @if (Model.Component.media != null && Model.Component.media.Count > 0)
     {
         <div class="govuk-width-container@(Model.CssClassTopSpace)@(Model.CssClassBottomSpace)">

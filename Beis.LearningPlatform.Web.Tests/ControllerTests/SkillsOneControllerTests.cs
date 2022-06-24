@@ -1,18 +1,4 @@
-﻿using Beis.LearningPlatform.Web.ControllerHelpers;
-using Beis.LearningPlatform.Web.ControllerHelpers.Interfaces;
-using Beis.LearningPlatform.Web.Models.DiagnosticTool;
-using Microsoft.Extensions.Logging;
-using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Beis.LearningPlatform.Web.Controllers;
-using NUnit.Framework;
-using Microsoft.AspNetCore.Mvc;
-
-namespace Beis.LearningPlatform.Web.Tests.ControllerTests
+﻿namespace Beis.LearningPlatform.Web.Tests.ControllerTests
 {
     public class SkillsOneControllerTests : FormControllerBaseTest
     {

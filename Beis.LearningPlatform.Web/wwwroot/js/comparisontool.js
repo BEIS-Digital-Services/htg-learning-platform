@@ -3,11 +3,7 @@ var compareButtonsEnabled = false;
 
 document.addEventListener("DOMContentLoaded", function () {
     var checkBoxes = null;
-
-    var dummySelectedProductCategory = document.querySelector("#dummySelectedProductCategory");
-    if (dummySelectedProductCategory) {
-        dummySelectedProductCategory.style.display = "none";
-    }
+    
 
     document.querySelectorAll("form").forEach(f => f.addEventListener("submit", validateCompareButton));
 
@@ -19,8 +15,10 @@ document.addEventListener("DOMContentLoaded", function () {
         c.disabled = false;
     });
 
-    var productCategoryFilters = document.querySelectorAll(".productCategoryFilter");
-    productCategoryFilters.forEach(pcf => pcf.addEventListener("click", toggleProductsBasedOnCategory));
+    const productCategoryFilters = document.querySelectorAll(".productCategory");
+    productCategoryFilters.forEach(pcf => pcf.addEventListener("change", toggleProductsBasedOnCategory));
+
+    toggleProductsBasedOnCategory();
 
     var previouslySelectedIds = document.querySelector("#selectedProductIds");
     if (previouslySelectedIds && previouslySelectedIds.value !== "") {
@@ -137,51 +135,31 @@ function validateCompareButton(e) {
 
 function toggleProductsBasedOnCategory() {
     document.querySelector("#allProductsDiv").style.display = "none";
-    this.style.display = "none";
 
-    var selectedProductCategory = document.querySelector("#dummySelectedProductCategory").cloneNode(true);
-    var currentCategoryId = this.getAttribute("data-id");
-    var spanNode = document.createElement("span");
-    spanNode.textContent = this.textContent.trim();
-    selectedProductCategory.appendChild(spanNode);
-    selectedProductCategory.id = "selectedCategoryId-" + currentCategoryId;
-    selectedProductCategory.setAttribute("data-id", currentCategoryId);
-    selectedProductCategory.style = "";
-    selectedProductCategory.style.cursor = "pointer";
-    selectedProductCategory.addEventListener("click", toggleSelectedProductsBasedOnCategory);
-    document.querySelector("#selectedProductCategoryDiv").appendChild(selectedProductCategory);
-
-    var selectedCategoriesCount = document.querySelector("#selectedProductCategoryDiv").childElementCount - 1;
     toggleIndividualAndGroupCompareButtons();
     var formDivs = document.querySelectorAll(".formDiv");
-    formDivs.forEach(d => {
-        if (d.id !== "formDiv-" + currentCategoryId && selectedCategoriesCount !== formDivs.length) {
-            d.style.display = "none";
-        } else {
-            d.style.display = "block";
-        }
-    });
-}
 
-function toggleSelectedProductsBasedOnCategory() {
-    var category = document.querySelector("#categoryId" + this.id.substring(this.id.lastIndexOf("-")));
-    category.style = "";
-    category.style.cursor = "pointer";
-    this.remove();
+    const allCategoriesCheckBoxes = document.querySelectorAll(".productCategory");
 
-    var selectedCategoriesCount = document.querySelector("#selectedProductCategoryDiv").childElementCount - 1;
-    toggleIndividualAndGroupCompareButtons();
-    var formDivs = document.querySelectorAll(".formDiv");
-    formDivs.forEach(d => {
-        if (d.id === "formDiv-" + this.getAttribute("data-id") && selectedCategoriesCount !== 0) {
-            d.style.display = "none";
-        } else {
-            d.style.display = "block";
+    const checkedCategoryIds = [];
+    allCategoriesCheckBoxes.forEach(r => {
+        if (r.checked) {
+            checkedCategoryIds.push(r.getAttribute("data-id"));
         }
     });
 
-    if (selectedCategoriesCount === 0) {
-        document.querySelector("#allProductsDiv").style.display = "block";
+    formDivs.forEach(d => {
+        d.style.display = "none";
+    });
+
+    if (checkedCategoryIds.length === 0) {
+        formDivs.forEach(d => {
+            d.style.display = "block";
+        });
+    } else {
+        checkedCategoryIds.forEach(r => {
+            document.querySelector("#formDiv-" + r).style.display = "block";
+        });
     }
 }
 

@@ -1,14 +1,6 @@
-﻿using Beis.LearningPlatform.Web.Models;
-using Beis.LearningPlatform.Web.StrapiApi.Models;
-using Beis.LearningPlatform.Web.ViewComponents;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ViewComponents;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using NUnit.Framework;
-
-namespace Beis.LearningPlatform.Web.Tests.ViewComponentTests
+﻿namespace Beis.LearningPlatform.Web.Tests.ViewComponentTests
 {
-	public class CmsLandingPageHeroComponentTests : BaseViewComponentTest
+    public class CmsLandingPageHeroComponentTests : BaseViewComponentTest
     {
         private const string TestData_ImageUrl = "/imageurl.jpg";
         private const string TestData_Header = "Header";
@@ -70,7 +62,7 @@ namespace Beis.LearningPlatform.Web.Tests.ViewComponentTests
         }
 
         [Test]
-        public void Should_Not_Have_Content_If_No_Link()
+        public void Should_Not_Have_Link_If_No_Link()
         {
             var component = CreateViewComponent();
             
@@ -86,7 +78,7 @@ namespace Beis.LearningPlatform.Web.Tests.ViewComponentTests
             var model = viewComponentData.Model;
             Assert.IsNotNull(model);
 
-            Assert.IsFalse(model.HasContent);
+            Assert.IsFalse(model.HasLink);
         }
 
         [Test]

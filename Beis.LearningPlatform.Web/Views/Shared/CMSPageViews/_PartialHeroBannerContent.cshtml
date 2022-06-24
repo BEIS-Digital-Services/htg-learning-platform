@@ -1,8 +1,7 @@
 ﻿@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageHeroBanner
 @{
     var _pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build();
-    var strcopy = "";
-    var strSubheader = "";
+    var subHeader = string.Empty;
 }
 
 <div class="beis-text">
@@ -21,19 +20,18 @@
                     {
                         if (!string.IsNullOrWhiteSpace(component.header))
                         {
-                            @Html.Raw(Markdown.ToHtml(component.header, _pipeline).Replace("<p>", "").Replace("</p>", ""));
+                            @Html.Raw(Markdown.ToHtml(component.header, _pipeline).Replace("<p>", "").Replace("</p>", string.Empty));
                         }
-                        strSubheader = Markdown.ToHtml(component.subheader.ToString(), _pipeline).Replace("<p>", "").Replace("</p>", "");
-                        strcopy = Markdown.ToHtml(component.copy, _pipeline).Replace("<p>", "<p class=\"govuk-body beis-white-text\">");
-                        if (!string.IsNullOrWhiteSpace(strSubheader))
+                        subHeader = Markdown.ToHtml(component.subheader, _pipeline).Replace("<p>", "").Replace("</p>", string.Empty);
+                        if (!string.IsNullOrWhiteSpace(subHeader))
                         {
-                            @Html.Raw("<h2 class=\"govuk-heading-l beis-white-text\">" + strSubheader + "</h2>"); 
+                            @Html.Raw("<h1 class=\"govuk-heading-l beis-white-text govuk-!-margin-bottom-6\">" + subHeader + "</h1>"); 
                         }
-                        @Html.Raw(strcopy);
+                        @Html.Raw(Markdown.ToHtml(component.copy, _pipeline).Replace("<p>", "<p class=\"govuk-body beis-white-text\">"));
                     }
                     @foreach (var link in Model.HeroContent.links)
                     {
-                        <p>
+                        <p class="govuk-!-margin-top-9">
                             @if (link.icon != null)
                             {
                                 <vc:cms-image options='new CmsImageViewModel{ ImageUrl = link.icon.url, CssClass = "svgimg beis-link-icon" }' />

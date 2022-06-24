@@ -1,8 +1,4 @@
-﻿using Beis.LearningPlatform.Web.ControllerHelpers.Interfaces;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace Beis.LearningPlatform.Web.ControllerHelpers
+﻿namespace Beis.LearningPlatform.Web.ControllerHelpers
 {
     public class EmailResponseHelperFactory : IEmailResponseHelperFactory
     {
@@ -14,7 +10,13 @@ namespace Beis.LearningPlatform.Web.ControllerHelpers
         }
         public IEmailResponseHelper Get(FormTypes formType)
         {
-            return _emailResponseHelpers.Single(x => x.FormType == formType);
+            var helper = _emailResponseHelpers.SingleOrDefault(x => x.FormType == formType);
+            if(helper == null)
+            {
+                helper = _emailResponseHelpers.SingleOrDefault(x => x.FormType.HasFlag(formType));
+            }
+
+            return helper;
         }
     }
 }

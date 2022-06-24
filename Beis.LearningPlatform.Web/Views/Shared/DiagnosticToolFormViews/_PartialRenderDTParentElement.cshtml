@@ -1,24 +1,14 @@
-﻿@using Beis.LearningPlatform.Web.Models.DiagnosticTool
-@model Beis.LearningPlatform.Web.Models.DiagnosticTool.DiagnosticToolForm
+﻿@model Beis.LearningPlatform.Web.Models.DiagnosticTool.DiagnosticToolForm
 @{
     var elementInfo = Model.CurrentElement;
     var currentStep = elementInfo.CurrentStep;
     var currentElement = elementInfo.CurrentElement;
-    var radioButtonParent = elementInfo.RadioButtonParent;
-    var currentFormStep = elementInfo.CurrentFormStep;
-    var z = 0;
-
     var currentFormStepElement = elementInfo.CurrentFormStepElement;
-
-    var hintInBoldCss = "";
-    var hint2InBoldCss = "";
-    if (currentFormStepElement.showHintInBold == true)
-        hintInBoldCss = "govuk-!-font-weight-bold";
-
-    if (currentFormStepElement.showHint2InBold == true)
-        hint2InBoldCss = "govuk-!-font-weight-bold";
-
-
+    
+    var z = 0;
+    var currentFormStep = elementInfo.CurrentFormStep;
+    var hintInBoldCss = currentFormStepElement.showHintInBold ? "govuk-!-font-weight-bold" : string.Empty;
+    var hint2InBoldCss =currentFormStepElement.showHint2InBold ? "govuk-!-font-weight-bold" : string.Empty;
 }
 @{
     switch (currentFormStepElement.controlType)
@@ -149,7 +139,6 @@
             }
             break;
 
-
         case FormDisplayControlType.List:
             <fieldset>
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
@@ -185,7 +174,6 @@
                     }
                 }
             </select>
-            @*<input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].selectedValue" />*@
             @for (z = 0; z < currentFormStepElement.answerOptions.Count; z++)
             {
                 <input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].value" />
@@ -217,6 +205,72 @@
                         @Model.steps[currentStep].elements[currentElement].value
                 </textarea>
             </div>
+
+            break;
+
+
+        case FormDisplayControlType.TextGroup:
+            <fieldset>
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                    <div style="display:flex">
+                        @if (string.IsNullOrWhiteSpace(Model.formLogo) == false)
+                        {
+                            <div style="padding-right:10px;">
+                                <img src="~/assets/images/@Model.formLogo" />
+                            </div>
+                        }
+                        <div style="align-self:center;">
+                            <h1 class="govuk-fieldset__heading">
+                                <span>@currentFormStepElement.text</span>
+                                <span class="govuk-!-font-weight-regular">@currentFormStepElement.text2</span>
+                            </h1>
+                        </div>
+
+                    </div>
+                    @if (string.IsNullOrEmpty(currentFormStepElement.subText) == false)
+                    {
+                        <h3 class="govuk-fieldset__heading govuk-!-font-size-19 govuk-!-margin-top-7 govuk-!-margin-bottom-5">
+                            <span>@currentFormStepElement.subText</span>
+                        </h3>
+                    }
+                    @if (!string.IsNullOrWhiteSpace(currentFormStepElement.hint))
+                    {
+                        <span class="govuk-body @hintInBoldCss"><p>@currentFormStepElement.hint</p></span>
+                    }
+                    @if (!string.IsNullOrWhiteSpace(currentFormStepElement.hint2))
+                    {
+                        <span class="govuk-body @hint2InBoldCss"><p>@currentFormStepElement.hint2</p></span>
+                    }
+                    @if (!string.IsNullOrWhiteSpace(currentFormStepElement.validationError))
+                    {
+                        <span asp-validation-for="@Model.steps[currentStep].elements[currentElement].textControlHtmlId" class="govuk-error-message">
+                            @currentFormStepElement.validationError
+                        </span>
+                    }
+                </legend>
+            </fieldset>
+
+            @if (currentFormStepElement.answerOptions != null)
+            {
+                z = 0;
+                <div class="govuk-body">
+                    @foreach (var child in currentFormStepElement.answerOptions)
+                    {
+                        Model.CurrentElement = new ElementInfo
+                        {
+                            CurrentStep = currentStep,
+                            CurrentElement = currentElement,
+                            RadioButtonParent = currentElement,
+                            CurrentFormStep = currentFormStep,
+                            CurrentFormStepElement = currentFormStepElement,
+                            ChildIndex = z
+                        };
+                        <partial name="DiagnosticToolFormViews/_PartialRenderDTChildElement" model="@Model" />
+                        z++;
+                    }
+                </div>
+
+            }
 
             break;
 

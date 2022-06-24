@@ -1,9 +1,4 @@
-﻿using AutoMapper;
-using Beis.LearningPlatform.Data.Repositories;
-using Microsoft.Extensions.Logging;
-using System.Threading.Tasks;
-
-namespace Beis.LearningPlatform.DAL.Tests
+﻿namespace Beis.LearningPlatform.DAL.Tests
 {
     /// <summary>
     /// A class that defines a mock-up of a Repository Data Service Base for testing purposes.
