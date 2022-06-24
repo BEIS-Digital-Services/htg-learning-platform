@@ -14,7 +14,7 @@
         public async Task<IViewComponentResult> InvokeAsync(CMSPageComponent cmsPageComponent)
         {
             var viewModel = new CmsSearchArticleListingViewModel(cmsPageComponent);
-            
+            viewModel.PageName = _httpContextAccessor.HttpContext.Request.Path.Value.Replace("/", "").Trim();
             // Get the articles selected for the component in the CMS.
             // Note this is a slimmed down version of the Search-Article model, does not have the full display properties.
             var searchArticleIds = viewModel.GetSearchArticleIds(); 
@@ -28,14 +28,19 @@
             // Then filter the full article list by tags (API)
             if (viewModel.SelectedTagIds?.Any() == true)
             {
-                fullSearchArticles = fullSearchArticles 
+                // Set articles based on filtered tags on the viewmodel
+                viewModel.FullSearchArticles = fullSearchArticles
                     .Where(x => viewModel.SelectedTagIds.Intersect(x.tags.Select(x => x.id)).Any())
                     .ToList();
-            }   
+            }
+            else
+            {
+                // Set articles and tags on the viewmodel
+                viewModel.FullSearchArticles = fullSearchArticles;
+            }
+
             
-            // Set articles and tags on the viewmodel
-            viewModel.FullSearchArticles = fullSearchArticles;
-            viewModel.DistinctTags = fullSearchArticles
+           viewModel.DistinctTags = fullSearchArticles
                 .SelectMany(x => x.tags)
                 .GroupBy(x => x.id).Select(x => x.First()) // All tags present in the selected articles, distinct by id
                 .OrderBy(x => x.displayName);

@@ -35,12 +35,16 @@
 
                         </div>
 
-                        <div class="govuk-grid-column-full">
-                            <div class="govuk-width-container govuk-!-margin-top-6 govuk-!-margin-bottom-6">
-                                <div class="govuk-button-group">
-                                    <button type="submit" class="govuk-button primary">Apply filters</button>
-                                    <!-- asp-action="NextStep" -->
-                                    <button class="govuk-button govuk-button--secondary">Reset filters</button>
+                        <div class="govuk-grid-column-full govuk-body">
+                            <div class="govuk-grid-row beis-columns-same-height govuk-!-margin-top-6 govuk-!-margin-bottom-6">
+                                <div class="govuk-grid-column-full">
+                                    <div class="govuk-button-group">
+                                        <button type="submit" class="govuk-button primary">Apply filters</button>
+                                        <a type="button" aria-label="Reset filters" href="@Model.PageName"
+                                           class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                                            Reset filters
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
