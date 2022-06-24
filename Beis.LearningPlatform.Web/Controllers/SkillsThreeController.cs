@@ -45,7 +45,7 @@
             if (response.Result && response.Payload)
             {
                 string completedSessionKey = $"{model.userTypeActionPlanSection}__CompletedLink";
-                HttpContext.Session.SetString(completedSessionKey, "true");
+                _httpContextAccessor.HttpContext.Session.SetString(completedSessionKey, "true");
                 return Redirect($"/learning-completed-{model.GetFormUrlName()}");
             }
             else

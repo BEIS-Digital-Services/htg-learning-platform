@@ -5,6 +5,7 @@
         private readonly Mock<IHttpContextAccessor> _httpContextAccessor = new();
         private readonly Mock<HttpContext> _httpContext = new();
         private readonly Mock<HttpRequest> _httpRequest = new();
+        private Mock<ISession> _session = new();
         private string _currentPath;
         protected override FormTypes GetFormType()
         {
@@ -83,6 +84,7 @@
                 .Returns(_httpRequest.Object);
             _httpContextAccessor.SetupGet(x => x.HttpContext)
                 .Returns(_httpContext.Object);
+            _httpContext.SetupGet(x => x.Session).Returns(_session.Object);
         }
 
         [TestCase("skills-three-newcomer-planning")]
