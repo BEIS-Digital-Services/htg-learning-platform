@@ -42,6 +42,8 @@
                 return _cmsPageComponent.intro;
             }
         }
+        
+        public string IntroHtml { get; set; }
 
         public string ImageUrl
         {
@@ -49,6 +51,6 @@
             {
                 return _cmsPageComponent.image.url;
             }
-        }
+        }        
     }
 }
