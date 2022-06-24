@@ -385,9 +385,13 @@
                                                 </svg>
                                             </button>
                                         }
-                                        else
+                                        else if (Model.FormType == FormTypes.SkillsOne || Model.FormType == FormTypes.SkillsTwo)
                                         {
                                             <button id="btn-diagnostictoolformviews-renderdiagnostictool-next" type="submit" asp-action="Result" class="govuk-button primary"> Next </button>
+                                        }
+                                        else
+                                        {
+                                            <button id="btn-diagnostictoolformviews-renderdiagnostictool-next" type="submit" asp-action="Result" class="govuk-button primary"> Continue </button>
                                         }
                                     }
                                     else
