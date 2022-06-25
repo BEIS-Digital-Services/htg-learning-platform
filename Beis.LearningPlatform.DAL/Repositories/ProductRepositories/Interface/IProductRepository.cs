@@ -1,5 +1,4 @@
-﻿
-namespace Beis.LearningPlatform.DAL.Repositories.ProductRepositories.Interface
+﻿namespace Beis.LearningPlatform.DAL.Repositories.ProductRepositories.Interface
 {
     public interface IProductRepository
     {
@@ -9,6 +8,7 @@ namespace Beis.LearningPlatform.DAL.Repositories.ProductRepositories.Interface
 
         Task<List<product>> GetApprovedProductsFromApprovedVendors();
 
+        Task<product> GetProduct(long productId);
         Task<product> GetApprovedProductFromApprovedVendor(long productId);
     }
 }

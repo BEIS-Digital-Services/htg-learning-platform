@@ -47,6 +47,12 @@
             return productsVm.ToList();
         }
 
+        public async Task<ComparisonToolProduct> GetProduct(long productId)
+        {
+            var product = await _productRepository.GetProduct(productId);
+            return await TransformProductModel(product);
+        }
+
         public async Task<ComparisonToolProduct> GetApprovedProductFromApprovedVendor(long productId)
         {
             var product = await _productRepository.GetApprovedProductFromApprovedVendor(productId);

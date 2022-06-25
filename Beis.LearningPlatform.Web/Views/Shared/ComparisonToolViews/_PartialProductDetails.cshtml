@@ -190,7 +190,7 @@
     </div>
     </div>
 
-    @if (Model.currentProduct.productPriceTransactionFees.Any())
+    @if (Model.currentProduct.productPriceTransactionFees?.Any() == true)
     { 
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds-from-desktop comparison-tool">
@@ -200,7 +200,7 @@
         <partial name="ComparisonToolViews/_PartialProductFees" model="@Model.currentProduct.productPriceTransactionFees" />
     }
 
-    @if (Model.currentProduct.productPriceThirdPartyFees.Any())
+    @if (Model.currentProduct.productPriceThirdPartyFees?.Any() == true)
     { 
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds-from-desktop comparison-tool">

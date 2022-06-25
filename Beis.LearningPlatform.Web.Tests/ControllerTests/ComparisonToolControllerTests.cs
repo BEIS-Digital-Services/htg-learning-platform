@@ -22,16 +22,16 @@ namespace Beis.LearningPlatform.Web.Tests.ControllerTests
         private const string TestValueRequestReferer = "_requestReferer";
         private static readonly IList<ComparisonToolProduct> TestValueComparisonToolProducts = new List<ComparisonToolProduct>()
         {
-            new() { product_type = 2, product_id = 4, product_name = "product-4",
+            new() { product_type = 2, product_id = 4, product_name = "product-4", status = 1,
             },
-            new() { product_type = 1, product_id = 7, product_name = "product-7",
+            new() { product_type = 1, product_id = 7, product_name = "product-7", status = 1,
                 productPriceAddCosts = GetAddCostTestData(),
             },
-            new() { product_type = 2, product_id = 10, product_name = "product-10",
+            new() { product_type = 2, product_id = 10, product_name = "product-10", status = 50,
                 productPriceAddCosts = GetAddCostTestData(),
                 productPriceThirdPartyFees = GetAddCostTestData() 
             },
-            new() { product_type = 1, product_id = 14, product_name = "product-14",
+            new() { product_type = 1, product_id = 14, product_name = "product-14", status = 50,
                 productPriceAddCosts = GetAddCostTestData(),
                 productPriceTransactionFees = GetAddCostTestData(),
             },
@@ -77,15 +77,30 @@ namespace Beis.LearningPlatform.Web.Tests.ControllerTests
                 new object[] { "14" }
             };
 
+        private static IEnumerable<object[]> TestInputApproved =>
+            new List<object[]>
+            {
+                new object[] { "10" },
+                new object[] { "14" }
+            };
+
+        private static IEnumerable<object[]> TestInputNotApproved =>
+            new List<object[]>
+            {
+                new object[] { "4" },
+                new object[] { "7" }
+            };
         #endregion
 
-        private ComparisonToolController CreateController()
+
+        private ComparisonToolController CreateController(IOptions<ComparisonToolDisplayOption> ctDisplayOptions = null)
         {
+            var productCategoryDisplaySettings = ctDisplayOptions == null ? _productCategoryDisplaySettings : new ProductCategoryDisplaySettings(ctDisplayOptions);
             var controlHelper = new ComparisonToolControllerHelper(_helperLogger.Object,
                 _comparisonToolService.Object,
                 _voucherAppOptions,
                 _vendorAppOptions,
-                _productCategoryDisplaySettings,
+                productCategoryDisplaySettings,
                 _httpContextAccessor.Object);
             return new ComparisonToolController(_controllerLogger.Object, controlHelper, _homeControllerHelper.Object);
         }
@@ -272,6 +287,46 @@ namespace Beis.LearningPlatform.Web.Tests.ControllerTests
             var controller = CreateController();
             _comparisonToolService.Setup(x => x.GetApprovedProductFromApprovedVendor(Convert.ToInt64(productId)))
                 .ReturnsAsync(TestValueComparisonToolProducts.First(r => r.product_id == Convert.ToInt64(productId)));
+
+            var viewResult = await controller.ProductDetails(productId) as ViewResult;
+
+            AssertProductDetails(viewResult, productId, true);
+        }
+
+        [TestCaseSource(nameof(TestInputApproved))]
+        public async Task Should_Return_Approved_ProductDetails_Matching_Product_Ids(string productId)
+        {
+            var controller = CreateController();
+            _comparisonToolService.Setup(x => x.GetApprovedProductFromApprovedVendor(Convert.ToInt64(productId)))
+                .ReturnsAsync(TestValueComparisonToolProducts.First(r => r.product_id == Convert.ToInt64(productId) && r.status == 50));
+
+            var viewResult = await controller.ProductDetails(productId) as ViewResult;
+
+            AssertProductDetails(viewResult, productId, true);
+        }
+
+        [TestCaseSource(nameof(TestInputNotApproved))]
+        public async Task Should_Not_Return_UnApproved_ProductDetails_Matching_Product_Ids(string productId)
+        {
+            var controller = CreateController();
+            _comparisonToolService.Setup(x => x.GetApprovedProductFromApprovedVendor(Convert.ToInt64(productId)))
+                .ReturnsAsync(TestValueComparisonToolProducts.FirstOrDefault(r => r.product_id == Convert.ToInt64(productId) && r.status == 50));
+
+            var actionResult = await controller.ProductDetails(productId) as ActionResult;
+            Assert.IsNotNull(actionResult);
+            Assert.IsInstanceOf<NotFoundResult>(actionResult);
+        }
+
+        [TestCaseSource(nameof(TestInputNotApproved))]
+        public async Task Should_Return_UnApproved_ProductDetails_If_Show_All_Statuses_Enabled(string productId)
+        {
+            var ctDisplayOptions = ConfigOptions.Create(new ComparisonToolDisplayOption() {
+                ShowAllProductStatuses = true
+            });
+            var controller = CreateController(ctDisplayOptions);
+
+            _comparisonToolService.Setup(x => x.GetProduct(Convert.ToInt64(productId)))
+                .ReturnsAsync(TestValueComparisonToolProducts.FirstOrDefault(r => r.product_id == Convert.ToInt64(productId)));            
 
             var viewResult = await controller.ProductDetails(productId) as ViewResult;
 
