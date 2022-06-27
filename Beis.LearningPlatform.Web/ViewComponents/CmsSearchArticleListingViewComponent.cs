@@ -14,7 +14,7 @@
         public async Task<IViewComponentResult> InvokeAsync(CMSPageComponent cmsPageComponent)
         {
             var viewModel = new CmsSearchArticleListingViewModel(cmsPageComponent);
-            viewModel.PageName = _httpContextAccessor.HttpContext.Request.Path.Value.Replace("/", "").Trim();
+            viewModel.PageName = _httpContextAccessor.HttpContext.Request.Path.Value.ToLower().Replace("/", "").Trim();
             // Get the articles selected for the component in the CMS.
             // Note this is a slimmed down version of the Search-Article model, does not have the full display properties.
             var searchArticleIds = viewModel.GetSearchArticleIds(); 
