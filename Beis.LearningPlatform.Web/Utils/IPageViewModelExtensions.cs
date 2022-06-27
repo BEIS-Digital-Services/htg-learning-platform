@@ -1,9 +1,4 @@
-﻿using Beis.LearningPlatform.Web.Interfaces;
-using Beis.LearningPlatform.Web.Models;
-using System;
-using System.Linq;
-
-namespace Beis.LearningPlatform.Web.Utils
+﻿namespace Beis.LearningPlatform.Web.Utils
 {
     public static class IPageViewModelExtensions
     {

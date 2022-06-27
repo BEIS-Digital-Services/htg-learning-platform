@@ -1,28 +1,22 @@
 ﻿@model Beis.LearningPlatform.Web.Models.ComparisonToolPageViewModel
+
+<div class="govuk-width-container">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+            <a id="link-comparisontoolviews-productdetails-back-link" href="@Model.Referrer" class="govuk-back-link">Back</a>
+        </div>
+    </div>
+</div>
+
+<partial name="CMSPageViews/_PartialRenderCMSComponents" model="@Model.CMSPageViewModel" />
+@if (Model.CMSPageViewModel.hero_banners != null)
+{
+    <partial name="CMSPageViews/_PartialHeroBanner" model="@Model.CMSPageViewModel" />
+}
+
 @if (Model.currentProduct != null)
 {
     <div class="govuk-width-container comparison-tool-details">
-        <div class="govuk-grid-row">
-            <div class="govuk-grid-column-full">
-                <a id="link-comparisontoolviews-productdetails-back-link" href="@Model.Referrer" class="govuk-back-link">Back</a>
-            </div>
-        </div>
-
-
-        <div class="govuk-grid-row">
-            <div class="govuk-grid-column-full">
-                <h1 class="govuk-heading-xl">More about this software</h1>
-            </div>
-        </div>
-
-        <div class="govuk-grid-row">
-            <div class="govuk-grid-column-two-thirds-from-desktop">
-                <p class="govuk-body-l">
-                    View a breakdown of what your selected software includes and any additional services available from the supplier.
-                </p>
-            </div>
-        </div>
-
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-full">
                 <div class="beis-product-details">
@@ -253,9 +247,6 @@
 
                     </dl>
                 }
-
-
-
             </div>
             </div>
         }

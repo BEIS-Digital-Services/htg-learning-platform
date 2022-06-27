@@ -1,7 +1,4 @@
-﻿using Beis.LearningPlatform.Web.ComparisonTool.Models;
-using System.Collections.Generic;
-
-namespace Beis.LearningPlatform.Web.Models
+﻿namespace Beis.LearningPlatform.Web.Models
 {
     public class ComparisonToolProductCategoryViewModel
     {

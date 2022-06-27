@@ -1,13 +1,4 @@
-﻿using Beis.LearningPlatform.Library.Enums;
-using Beis.LearningPlatform.Web.ControllerHelpers.Interfaces;
-using Beis.LearningPlatform.Web.Models.DiagnosticTool;
-using Beis.LearningPlatform.Web.Utils;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Beis.LearningPlatform.Web.Controllers
+﻿namespace Beis.LearningPlatform.Web.Controllers
 {
     /// <summary>
     /// A class that defines a controller for the Diagnostic Tool.
@@ -73,7 +64,7 @@ namespace Beis.LearningPlatform.Web.Controllers
             if (response.Result && response.Payload)
             {
                 var isNewcomer = model.SkilledModuleTwoResultType == SkilledModuleTwoResultType.DigitalNewComer;
-                return Redirect(isNewcomer ? "/learning-module-one-next-steps" : "/learning-module-two-next-steps");
+                return Redirect(isNewcomer ? "/learning-module-one-newcomer-next-steps" : "/learning-module-two-next-steps");
             }
             else
             {

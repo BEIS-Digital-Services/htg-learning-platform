@@ -1,19 +1,18 @@
-﻿using Beis.LearningPlatform.Web.Models;
-using Beis.LearningPlatform.Web.StrapiApi.Models;
-using Beis.LearningPlatform.Web.ViewComponents;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ViewComponents;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using NUnit.Framework;
-
-namespace Beis.LearningPlatform.Web.Tests.ViewComponentTests
+﻿namespace Beis.LearningPlatform.Web.Tests.ViewComponentTests
 {
     public class CmsLandingPageHeroBannerComponentTests : BaseViewComponentTest
     {
+        private MarkdownPipeline _markdownPipeline;
 
         private CmsLandingPageHeroBannerViewComponent CreateViewComponent()
         {
-            return new CmsLandingPageHeroBannerViewComponent();
+            return new CmsLandingPageHeroBannerViewComponent(_markdownPipeline);
+        }
+
+        [SetUp]
+        public void Setup()
+        {
+            this._markdownPipeline = GetMarkdownPipeline();
         }
 
         private static CMSPageComponent GetValidCmsComponent()
@@ -22,7 +21,8 @@ namespace Beis.LearningPlatform.Web.Tests.ViewComponentTests
             {
                 header = "Header",
                 intro = "Intro",
-                image = new CMSPageImage { 
+                image = new CMSPageImage
+                {
                     url = "imageUrl"
                 }
             };
@@ -64,6 +64,25 @@ namespace Beis.LearningPlatform.Web.Tests.ViewComponentTests
 
         [Test]
         public void Should_Not_Have_Content_If_No_Intro()
+        {
+            var component = CreateViewComponent();
+
+            var invalidComponent = GetValidCmsComponent();
+            invalidComponent.intro = string.Empty;
+
+            var view = component.Invoke(invalidComponent);
+
+            var viewComponentData = GetViewComponentData(view);
+            Assert.IsNotNull(viewComponentData);
+
+            var model = viewComponentData.Model;
+            Assert.IsNotNull(model);
+
+            Assert.IsFalse(model.HasContent);
+        }
+
+        [Test]
+        public void Should_Not_Have_Content_If_No_IntroHtml()
         {
             var component = CreateViewComponent();
 

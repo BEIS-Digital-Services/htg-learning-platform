@@ -1,7 +1,6 @@
 ﻿@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
 @{
     var _pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build();
-    var strcopy = string.Empty;
 }
 
 @if (Model.textblocks.Count >= 1)
@@ -24,8 +23,7 @@
                             {
                                 <h2 class="govuk-heading-l govuk-!-padding-top-8 @*@Model.textblocks[0].subheaderColor*@"> @Model.textblocks[0].subheader</h2>
                             }
-                            @{ strcopy = Markdown.ToHtml(Model.textblocks[0].copy, _pipeline); }
-                            @Html.Raw(strcopy.Replace("<p>", "<p class=\"govuk-body\" style=\"text-align:left;\">").Replace("</p>", "</p>"))
+                            @Html.Raw(Markdown.ToHtml(Model.textblocks[0].copy, _pipeline).Replace("<p>", "<p class=\"govuk-body\" style=\"text-align:left;\">").Replace("</p>", "</p>"))
 
                             @foreach (var link in Model.links)
                             {

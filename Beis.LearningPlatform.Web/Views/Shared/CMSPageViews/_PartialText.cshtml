@@ -1,13 +1,10 @@
 ﻿@model (Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent component, bool showBackButton)
 @{
     var _pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build();
-    var strComponentBg = (!string.IsNullOrWhiteSpace(Model.component.background)) ? CamelCaseConverter.Delimiter(Model.component.background, "-") : "";
-    var topSpaceClass = Model.component.topSpace != "nospace" ? "govuk-!-padding-top-6" : "";
-    var bottomSpaceClass = Model.component.bottomSpace != "nospace" ? "govuk-!-padding-bottom-6" : "";
 }
 
 <div class="beis-text" id="@("anchor" + Model.component.Index)">
-    <div class="@strComponentBg">
+    <div class="@Model.component.AlteredBackground">
         <div class="govuk-width-container">
             <div class="govuk-grid-row">
                 @if (Model.component.textblocks.Count > 0)
@@ -18,7 +15,7 @@
 
                         if (txtBlock.hide == false)
                         {
-                            <div class="govuk-grid-column-full @topSpaceClass  @bottomSpaceClass">
+                            <div class="govuk-grid-column-full @Model.component.AlteredPaddingTopSpace @Model.component.AlteredPaddingBottomSpace">
                                 @if (!string.IsNullOrWhiteSpace(txtBlock.header))
                                 {
                                     @if (Model.showBackButton)

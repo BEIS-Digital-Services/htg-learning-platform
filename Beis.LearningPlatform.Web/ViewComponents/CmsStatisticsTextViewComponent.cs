@@ -1,10 +1,4 @@
-﻿using Beis.LearningPlatform.Web.Models;
-using Beis.LearningPlatform.Web.StrapiApi.Models;
-using Beis.LearningPlatform.Web.Utils;
-using Markdig;
-using Microsoft.AspNetCore.Mvc;
-
-namespace Beis.LearningPlatform.Web.ViewComponents
+﻿namespace Beis.LearningPlatform.Web.ViewComponents
 {
     public class CmsStatisticsTextViewComponent : ViewComponent
     {

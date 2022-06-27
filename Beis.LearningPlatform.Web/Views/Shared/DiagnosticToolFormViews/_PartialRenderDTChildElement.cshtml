@@ -1,16 +1,12 @@
-﻿@using Beis.LearningPlatform.Web.Models.DiagnosticTool
-@model Beis.LearningPlatform.Web.Models.DiagnosticTool.DiagnosticToolForm
+﻿@model Beis.LearningPlatform.Web.Models.DiagnosticTool.DiagnosticToolForm
 @{
     var elementInfo = Model.CurrentElement;
     var currentStep = elementInfo.CurrentStep;
     var currentElement = elementInfo.CurrentElement;
-    var radioButtonParent = elementInfo.RadioButtonParent;
-    var z = elementInfo.ChildIndex;
-
     var currentFormStepElement = elementInfo.CurrentFormStepElement;
-
-    var idPrefix = "steps_" + currentStep.ToString() + "__" + "elements_" + currentElement.ToString() + "__" + "answerOptions_" + z.ToString();
-
+    
+    var z = elementInfo.ChildIndex;
+    var idPrefix = $"steps_{currentStep}__elements_{currentElement}__answerOptions_{z}";
 }
 @{
     switch (currentFormStepElement.answerOptions[z].controlType)
@@ -89,30 +85,35 @@
                     }
                     else
                     {
+                        var dt_checkbox_addinfo_class = currentFormStepElement.answerOptions[z].additionalInfoRequired ? "dt_checkbox_addinfo" : "";
+
+
                         <div class="govuk-checkboxes__item">
-                            <input type="checkbox" asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].value" class="govuk-checkboxes__input" />
+                            <input type="checkbox" asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].value" class="@(dt_checkbox_addinfo_class + " govuk-checkboxes__input")" />
                             <label for="@(idPrefix + "__value")"
                                    id="@(idPrefix + "__value__label")" class="govuk-label govuk-checkboxes__label">@currentFormStepElement.answerOptions[z].hint</label>
                                 @if (currentFormStepElement.answerOptions[z].additionalInfoRequired)
                                 {
-                                    <br>
-                                    <br>
-                                    <label for="@(idPrefix + "__additionalInfo")"
-                                           id="@(idPrefix + "__additionalInfo__label")">@Model.steps[currentStep].elements[currentElement].answerOptions[z].additionalInfoText</label>
-                                        @if (!string.IsNullOrWhiteSpace(Model.steps[currentStep].elements[currentElement].answerOptions[z].validationError))
-                                        {
-                                            <span class="govuk-error-message">
-                                                @Model.steps[currentStep].elements[currentElement].answerOptions[z].validationError
-                                            </span>
-                                        }
-                                        <textarea asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].additionalInfo"
-                                                  id="@(idPrefix + "__additionalInfo")"
-                                                  rows="5" class="govuk-textarea">
-                        @currentFormStepElement.answerOptions[z].additionalInfo
-                    </textarea>
-                                    }
-                            </div>
-                        }
+                                    <div id="div_dt_ckh_additionalInfo">
+                                        
+                                        <br>
+                                        <label for="@(idPrefix + "__additionalInfo")"
+                                               id="@(idPrefix + "__additionalInfo__label")">@Model.steps[currentStep].elements[currentElement].answerOptions[z].additionalInfoText</label>
+                                            @if (!string.IsNullOrWhiteSpace(Model.steps[currentStep].elements[currentElement].answerOptions[z].validationError))
+                                            {
+                                                <span class="govuk-error-message">
+                                                    @Model.steps[currentStep].elements[currentElement].answerOptions[z].validationError
+                                                </span>
+                                            }
+                                            <textarea asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].additionalInfo"
+                                                      id="@(idPrefix + "__additionalInfo")"
+                                                      rows="5" class="govuk-textarea dt_addinfo_txtarea">
+                                                        @currentFormStepElement.answerOptions[z].additionalInfo
+                                            </textarea>
+                                    </div>
+                                }
+                        </div>
+                    }
 
                 break;
 
@@ -140,7 +141,7 @@
                     <input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].strongText" />
                     <input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].text" />
                     @*<input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].value" />*@
-                    <span asp-validation-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].textControlHtmlId" class="govuk-error-message">
+                    <span asp-validation-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].validationError" class="govuk-error-message"> 
                                 @Model.steps[currentStep].elements[currentElement].answerOptions[z].validationError
                     </span>
                     <textarea asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].value"

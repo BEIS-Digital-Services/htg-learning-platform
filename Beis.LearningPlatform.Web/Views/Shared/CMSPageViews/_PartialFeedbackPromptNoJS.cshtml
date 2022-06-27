@@ -1,7 +1,5 @@
 ﻿@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
 @{
-    var controllerName = ViewContext.RouteData.Values["controller"]?.ToString();
-
     string SetButtonType(string btnType, string customClass)
     {
         var className = $"beis-white-{btnType}";

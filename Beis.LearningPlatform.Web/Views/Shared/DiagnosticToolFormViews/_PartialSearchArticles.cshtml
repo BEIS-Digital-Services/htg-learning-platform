@@ -1,7 +1,6 @@
 ﻿@model (IList<Beis.LearningPlatform.Web.StrapiApi.Models.CMSSearchArticle> cmsSearchArticles, string linksAlign)
 @{
     var _pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build();
-    var strcopy = string.Empty;
     var strTopLineBg = string.Empty;
 }
 
@@ -13,14 +12,12 @@
 
         if (article.hide == false)
         {
-            strTopLineBg = (!string.IsNullOrWhiteSpace(article.Article.backgroundColor)) ? CamelCaseConverter.Delimiter(article.Article.backgroundColor, "-") : "";
-
             <div class="govuk-width-container govuk-!-padding-top-4  govuk-!-padding-bottom-8 article">
                 <div class="govuk-grid-row">
                     <div class="govuk-grid-column-full">
                         @if (article.Article != null)
                         {
-                            <div class="top-line @strTopLineBg">
+                            <div class="top-line @article.Article.AlteredBackgroundColor">
                             </div>
                         }
 
@@ -50,16 +47,9 @@
                                             @(string.IsNullOrWhiteSpace(article.Article.header) ? article.Article.subheader : article.Article.header)
                                         </h2>
                                     }
-
-                                    @{
-                                        strcopy = (!string.IsNullOrWhiteSpace(article.Article.copy)) ? Markdown.ToHtml(article.Article.copy, _pipeline).Replace("<p>", "<p class=\"govuk-body\">") : "";
-                                    }
-                                    @Html.Raw(strcopy)
+                                    @Html.Raw(!string.IsNullOrWhiteSpace(article.Article.copy) ? Markdown.ToHtml(article.Article.copy, _pipeline).Replace("<p>", "<p class=\"govuk-body\">") : string.Empty)
 
                                     <partial name="CMSPageViews/_PartialTextLinks" model="@(article.Links, Model.linksAlign)" />
-                                    <div class="stick-to-bottom">
-                                        <vc:article-search-tag search-tags="@article.tags" />
-                                    </div>
                                 </div>
                             </div>
                         </div>

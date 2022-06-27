@@ -1,11 +1,4 @@
-﻿using Beis.LearningPlatform.Web.Models;
-using Beis.LearningPlatform.Web.Options;
-using Beis.LearningPlatform.Web.StrapiApi.Models;
-using Markdig;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
-
-namespace Beis.LearningPlatform.Web.ViewComponents
+﻿namespace Beis.LearningPlatform.Web.ViewComponents
 {
     public class CmsCaseStudyViewComponent : ViewComponent
     {

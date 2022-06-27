@@ -1,6 +1,4 @@
-﻿using Beis.LearningPlatform.Web.StrapiApi.Models;
-
-namespace Beis.LearningPlatform.Web.Models
+﻿namespace Beis.LearningPlatform.Web.Models
 {
     public class CmsLandingPageHeroBannerViewModel
     {
@@ -44,6 +42,8 @@ namespace Beis.LearningPlatform.Web.Models
                 return _cmsPageComponent.intro;
             }
         }
+        
+        public string IntroHtml { get; set; }
 
         public string ImageUrl
         {
@@ -51,6 +51,6 @@ namespace Beis.LearningPlatform.Web.Models
             {
                 return _cmsPageComponent.image.url;
             }
-        }
+        }        
     }
 }

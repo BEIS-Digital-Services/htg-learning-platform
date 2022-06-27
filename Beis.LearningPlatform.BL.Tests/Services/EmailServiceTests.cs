@@ -1,17 +1,7 @@
-﻿using AutoMapper;
-using Beis.LearningPlatform.BL.IntegrationServices;
+﻿using Beis.LearningPlatform.BL.IntegrationServices;
 using Beis.LearningPlatform.BL.IntegrationServices.Options;
 using Beis.LearningPlatform.BL.Models;
-using Beis.LearningPlatform.BL.Services;
-using Beis.LearningPlatform.DAL;
-using Beis.LearningPlatform.Library;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Moq;
-using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace Beis.LearningPlatform.BL.Tests.Services
 {
@@ -171,7 +161,8 @@ namespace Beis.LearningPlatform.BL.Tests.Services
             var getByEmailResult = new List<DiagnosticToolEmailAnswerDto>() { }.ToArray();
             _emailDataServiceMock.Setup(r => r.GetByEmail(TestEmailAddress)).Returns(Task.FromResult(getByEmailResult));
             var result = await _emailService.IsUnsubscribed(Guid.NewGuid(), TestEmailAddress);
-            Assert.That(result.IsValid, Is.False);
+            Assert.That(result.IsValid, Is.True); // Query is still valid even if the email does not exist.
+            Assert.That(result.Payload, Is.False); // User is not unsubscribed if they do not exist.
         }
 
         [Test]

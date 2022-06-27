@@ -41,6 +41,7 @@
 @import "menu-style2.scss";
 @import "navigation-breadcrumb.scss";
 @import "landingPageHero.scss";
+@import "search-article-listing.scss";
 
 .hide-element {
     border: 0;
@@ -844,7 +845,7 @@ a:focus {
 }
 
 .btn-as-link {
-    background: none !important;
+    background: transparent;
     border: none;
     cursor: pointer;
 }
@@ -864,12 +865,28 @@ a:focus {
 .cms-content {
     &.mobile-only {
 
+        @include respond(xl) { /* Gap in our brakpoints between table and desktop (>641 and <769 has no coverage in beis-mixins. Hide mobile for this gap.) */
+            display: none;
+        }
+
         @include respond(desktop) {
             display: none;
+        }
+
+        @include respond(tablet) {
+            display: none;
+        }
+
+        @include respond(mobile) { /* override the xl workaround above */
+            display: block;
         }
     }
 
     &.desktop-only {
+
+        @include respond(tablet) {
+            display: block;
+        }
 
         @include respond(mobile) {
             display: none;
@@ -1030,4 +1047,9 @@ span.govuk-link-divider {
 
 .accordion-wrapper .accordion-item .panel ul li {
     margin-bottom: 20px;
+}
+
+.govuk-header-yellow-line {
+    border-bottom: 10px solid $beis-yellow;
+    margin: 0 15px;
 }

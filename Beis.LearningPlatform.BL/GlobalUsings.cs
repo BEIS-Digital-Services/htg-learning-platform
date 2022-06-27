@@ -1,0 +1,12 @@
+﻿global using AutoMapper;
+global using Beis.LearningPlatform.BL.Domain;
+global using Beis.LearningPlatform.BL.IntegrationServices;
+global using Beis.LearningPlatform.BL.IntegrationServices.GovUkNotify;
+global using Beis.LearningPlatform.BL.IntegrationServices.Options;
+global using Beis.LearningPlatform.BL.Models;
+global using Beis.LearningPlatform.DAL;
+global using Beis.LearningPlatform.Data.Entities.Skills;
+global using Beis.LearningPlatform.Library;
+global using Beis.LearningPlatform.Library.DTO;
+global using Microsoft.Extensions.Logging;
+global using Microsoft.Extensions.Options;

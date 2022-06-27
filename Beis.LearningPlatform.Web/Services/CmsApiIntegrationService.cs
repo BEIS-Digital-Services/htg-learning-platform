@@ -1,12 +1,4 @@
-﻿using Beis.LearningPlatform.Web.Options;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using System;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Threading.Tasks;
-
-namespace Beis.LearningPlatform.Web.Services
+﻿namespace Beis.LearningPlatform.Web.Services
 {
     /// <summary>
     /// A class that implements a service that integrates with a CMS's API.
@@ -70,11 +62,11 @@ namespace Beis.LearningPlatform.Web.Services
                 if (result.IsSuccessStatusCode)
                     returnValue = await result.Content.ReadAsStringAsync();
                 else
-                    _logger.LogWarning($"CMS returned response {result.StatusCode} from call to {url}");
+                    _logger.LogWarning("CMS returned response {result.StatusCode} from call to {url}", result.StatusCode, url);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"Error whilst GET to {url}");
+                _logger.LogError(ex, "Error whilst GET to {url}", url);
                 throw new InvalidOperationException("Unable to GET result from CMS API", ex);
             }
 

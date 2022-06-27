@@ -1,6 +1,6 @@
-﻿using Beis.LearningPlatform.Web.ComparisonTool.Models;
-using Beis.LearningPlatform.Web.Configuration;
+﻿using Beis.LearningPlatform.Web.Configuration;
 using Beis.LearningPlatform.Web.ControllerHelpers;
+using Beis.LearningPlatform.Web.ControllerHelpers.Interfaces;
 using Beis.LearningPlatform.Web.Controllers;
 using Beis.LearningPlatform.Web.Interfaces;
 using Beis.LearningPlatform.Web.Models;
@@ -23,6 +23,7 @@ namespace Beis.LearningPlatform.Web.Tests.ControllerTests
     public class ComparisonToolControllerTests
     {
         private readonly Mock<ILogger<ComparisonToolController>> _controllerLogger = new();
+        private readonly Mock<IHomeControllerHelper> _homeControllerHelper = new();
         private readonly Mock<ILogger<ComparisonToolControllerHelper>> _helperLogger = new();
         private readonly Mock<IComparisonToolService> _comparisonToolService = new();
         private IOptions<VoucherAppOption> _voucherAppOptions;
@@ -78,7 +79,7 @@ namespace Beis.LearningPlatform.Web.Tests.ControllerTests
                 _vendorAppOptions,
                 _productCategoryDisplaySettings,
                 _httpContextAccessor.Object);
-            return new ComparisonToolController(_controllerLogger.Object, controlHelper);
+            return new ComparisonToolController(_controllerLogger.Object, controlHelper, _homeControllerHelper.Object);
         }
 
         [SetUp]

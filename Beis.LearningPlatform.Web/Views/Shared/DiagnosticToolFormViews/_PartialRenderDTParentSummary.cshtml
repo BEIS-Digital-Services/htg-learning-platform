@@ -1,18 +1,14 @@
-﻿@using Beis.LearningPlatform.Web
-@using Beis.LearningPlatform.Web.Models.DiagnosticTool
-@model Beis.LearningPlatform.Web.Models.DiagnosticTool.DiagnosticToolForm
+﻿@model Beis.LearningPlatform.Web.Models.DiagnosticTool.DiagnosticToolForm
 @{
     var elementInfo = Model.CurrentElement;
     var currentStep = elementInfo.CurrentStep;
     var currentElement = elementInfo.CurrentElement;
-    var radioButtonParent = elementInfo.RadioButtonParent;
-
-    var currentFormStep = elementInfo.CurrentFormStep;
     var currentFormStepElement = elementInfo.CurrentFormStepElement;
-
+    
+    var currentFormStep = elementInfo.CurrentFormStep;
     Model.CurrentElement.ChildIndex = 0;
     var additionalClass = Model.FormType == FormTypes.DiagnosticTool ? " " : " govuk-summary-list--no-border";
-    var partialViewPath = "";
+    var partialViewPath = string.Empty;
     switch (Model.FormType)
     {
         case FormTypes.DiagnosticTool:

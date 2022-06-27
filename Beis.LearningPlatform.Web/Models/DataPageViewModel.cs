@@ -1,9 +1,4 @@
-﻿using Beis.LearningPlatform.Web.Interfaces;
-using Beis.LearningPlatform.Web.StrapiApi.Models;
-using Beis.LearningPlatform.Web.Utils;
-using System.Collections.Generic;
-
-namespace Beis.LearningPlatform.Web.Models
+﻿namespace Beis.LearningPlatform.Web.Models
 {
     public class DataPageViewModel<T> : IPageViewModel where T : new()
     {

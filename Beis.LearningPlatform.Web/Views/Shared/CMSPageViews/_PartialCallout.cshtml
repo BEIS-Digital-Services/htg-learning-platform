@@ -1,14 +1,13 @@
 ﻿@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
 @{
     var _pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build();
-    var strComponentBg = (!string.IsNullOrWhiteSpace(Model.background)) ? CamelCaseConverter.Delimiter(Model.background, "-") : string.Empty;
 }
 
 <div class="call-out" id="@("anchor" + Model.Index)">
     <div class="govuk-width-container govuk-!-padding-top-6 govuk-!-padding-bottom-6">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-full">
-                <div class="govuk-inset-text @strComponentBg">
+                <div class="govuk-inset-text @Model.AlteredBackground">
                     @if (Model.textblocks != null)
                     {
                         foreach (var textblock in Model.textblocks)

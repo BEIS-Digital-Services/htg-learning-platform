@@ -1,9 +1,8 @@
-﻿@using Beis.LearningPlatform.Web.Utils
-@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
+﻿@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
 @{
     var _pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build();
-    var strComponentBg = string.Empty;
-    var strSubheaderColor = string.Empty;
+    // TODO: SHOULD BACKGROUND BE SET?
+    var strComponentBg = "";// (!string.IsNullOrWhiteSpace(Model.background)) ? CamelCaseConverter.Delimiter(Model.background, "-") : "";
 }
 
 <div class="phase-banner">
@@ -15,10 +14,9 @@
                     {
                         @foreach (var textblock in Model.textblocks)
                         {
-                            strSubheaderColor = (!string.IsNullOrWhiteSpace(textblock.subheaderColor)) ? CamelCaseConverter.Delimiter(textblock.subheaderColor, "-") : "";
                             @if (!string.IsNullOrWhiteSpace(textblock.subheader))
                             {
-                                <h2 class="govuk-heading-l govuk-!-font-size-24 @strSubheaderColor">
+                                <h2 class="govuk-heading-l govuk-!-font-size-24 @textblock.AlteredSubHeaderColor">
                                     @Html.Raw(Markdown.ToHtml(textblock.subheader, _pipeline).Replace("<p>", "<p>").Replace("</p>", "</p>"))
                                 </h2>
                             }
@@ -36,7 +34,7 @@
 
                                 @if (!string.IsNullOrWhiteSpace(textblock.copy))
                                 {
-                                    <div class="govuk-body @strSubheaderColor">
+                                    <div class="govuk-body @textblock.AlteredSubHeaderColor">
                                         @Html.Raw(Markdown.ToHtml(textblock.copy, _pipeline))
                                     </div>
                                 }

@@ -1,12 +1,4 @@
-﻿using Beis.LearningPlatform.Web.ComparisonTool.Models;
-using Beis.LearningPlatform.Web.Interfaces;
-using Beis.LearningPlatform.Web.StrapiApi.Models;
-using Beis.LearningPlatform.Web.Utils;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Reflection;
+﻿using System.ComponentModel;
 
 namespace Beis.LearningPlatform.Web.Models
 {
@@ -196,5 +188,7 @@ namespace Beis.LearningPlatform.Web.Models
         public string meta { get; } = "going digital, planning, budget";
         public bool? index { get; } = true;
         public bool? follow { get; } = true;
-	}
+        public CMSPageViewModel CMSPageViewModel { get; set; }
+        public string[] ProductCategoryIds { get; set; }
+    }
 }

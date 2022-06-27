@@ -1,21 +1,7 @@
-﻿using Beis.LearningPlatform.Web.ControllerHelpers;
-using Beis.LearningPlatform.Web.Controllers;
-using Beis.LearningPlatform.Web.Models.DiagnosticTool;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using Moq;
-using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Beis.LearningPlatform.Web.Tests.ControllerTests
+﻿namespace Beis.LearningPlatform.Web.Tests.ControllerTests
 {
     public class SkillsTwoControllerTests : FormControllerBaseTest
     {
-
         protected override FormTypes GetFormType()
         {
             return FormTypes.SkillsTwo;
@@ -161,6 +147,24 @@ namespace Beis.LearningPlatform.Web.Tests.ControllerTests
 
             //Act
             var result = await controller.Result();
+
+            //Assert
+            Assert.NotNull(result);
+            Assert.That(result, Is.TypeOf<ViewResult>());
+        }
+
+
+        [Test]
+        public async Task Result_Get_Form_WhenCalled_ReturnsOK()
+        {
+            //Arrange
+            Setup_ControllerHelperCreateForm();
+            _diagnosticToolControllerHelper.Setup(h => h.ProcessResults(It.IsAny<DiagnosticToolForm>(), FormTypes.SkillsTwo))
+                .ReturnsAsync(new ControllerHelperOperationResponse<bool>(Guid.Empty, true));
+            var form = Get_DiagnosticToolForm(1);
+
+            //Act
+            var result = await controller.Result(form);
 
             //Assert
             Assert.NotNull(result);

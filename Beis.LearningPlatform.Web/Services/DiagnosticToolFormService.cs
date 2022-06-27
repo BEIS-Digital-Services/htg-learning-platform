@@ -1,11 +1,4 @@
-﻿using Beis.LearningPlatform.Web.Models.DiagnosticTool;
-using Beis.LearningPlatform.Web.Options;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace Beis.LearningPlatform.Web.Services
+﻿namespace Beis.LearningPlatform.Web.Services
 {
     /// <summary>
     /// A class that implements a Diagnostic Tool Form service.

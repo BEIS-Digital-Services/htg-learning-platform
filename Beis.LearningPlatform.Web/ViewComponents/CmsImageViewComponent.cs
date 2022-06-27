@@ -1,9 +1,4 @@
-﻿using Beis.LearningPlatform.Web.Models;
-using Beis.LearningPlatform.Web.Options;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
-
-namespace Beis.LearningPlatform.Web.ViewComponents
+﻿namespace Beis.LearningPlatform.Web.ViewComponents
 {
     public class CmsImageViewComponent : ViewComponent
     {

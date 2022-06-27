@@ -1,16 +1,4 @@
-﻿using Beis.LearningPlatform.Web.Interfaces;
-using Beis.LearningPlatform.Web.Models;
-using Beis.LearningPlatform.Web.Options;
-using Beis.LearningPlatform.Web.StrapiApi.Models;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Beis.LearningPlatform.Web.Services
+﻿namespace Beis.LearningPlatform.Web.Services
 {
     public class CmsService : ICmsService
     {
@@ -71,7 +59,7 @@ namespace Beis.LearningPlatform.Web.Services
             var tagsNotInCms = currentTagNames.Except(allTagNames, StringComparer.OrdinalIgnoreCase).ToList();
             if (tagsNotInCms.Any())
             {
-                _logger.LogWarning($"Tags not recognised {string.Join(",", tagsNotInCms)}");
+                _logger.LogWarning("Tags not recognised {tagsNotInCms}", string.Join(",", tagsNotInCms));
                 return viewModel;
             }
 
@@ -102,5 +90,22 @@ namespace Beis.LearningPlatform.Web.Services
             return viewModel;
         }
 
+        public async Task<IEnumerable<CMSSearchArticle>> GetSearchArticles(IEnumerable<int> searchArticleIds, bool orderByIds = false)
+        {
+            if (searchArticleIds?.Any() != true) 
+            {
+                return Enumerable.Empty<CMSSearchArticle>();
+            }
+
+            var filterParams = string.Join("&id_in=", searchArticleIds).TrimStart('&');
+            var result = await _apiCallService.GetApiResult(_cmsOption.ApiBaseUrl, $"search-articles?id_in={filterParams}");
+            var viewModel = string.IsNullOrWhiteSpace(result) ? Enumerable.Empty<CMSSearchArticle>() : JsonConvert.DeserializeObject<List<CMSSearchArticle>>(result);
+            if (orderByIds)
+            {
+                var idList = searchArticleIds.ToList();
+                return viewModel.OrderBy(x => idList.IndexOf(x.id));
+            }
+            return viewModel;
+        }
     }
 }

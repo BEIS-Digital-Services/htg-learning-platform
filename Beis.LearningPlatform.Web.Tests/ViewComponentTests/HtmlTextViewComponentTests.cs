@@ -1,12 +1,4 @@
-﻿using Beis.LearningPlatform.Web.Models;
-using Beis.LearningPlatform.Web.Services;
-using Beis.LearningPlatform.Web.ViewComponents;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ViewComponents;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using NUnit.Framework;
-
-namespace Beis.LearningPlatform.Web.Tests.ViewComponentTests
+﻿namespace Beis.LearningPlatform.Web.Tests.ViewComponentTests
 {
     public class HtmlTextViewComponentTests : BaseViewComponentTest
     {

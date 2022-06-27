@@ -1,8 +1,4 @@
-﻿using Beis.LearningPlatform.Web.Models.DiagnosticTool;
-using System;
-using System.Collections.Generic;
-
-namespace Beis.LearningPlatform.Web
+﻿namespace Beis.LearningPlatform.Web
 {
     public class ElementBase
     {

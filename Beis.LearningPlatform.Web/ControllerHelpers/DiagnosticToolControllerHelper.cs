@@ -1,20 +1,4 @@
-﻿using AutoMapper;
-using Beis.LearningPlatform.BL.Services;
-using Beis.LearningPlatform.Data.Entities.Skills;
-using Beis.LearningPlatform.Library;
-using Beis.LearningPlatform.Web.ControllerHelpers.Interfaces;
-using Beis.LearningPlatform.Web.Models.DiagnosticTool;
-using Beis.LearningPlatform.Web.Options;
-using Beis.LearningPlatform.Web.Services;
-using Beis.LearningPlatform.Web.StrapiApi.Models;
-using Beis.LearningPlatform.Web.Utils;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Beis.LearningPlatform.Data.Entities.Skills;
 
 namespace Beis.LearningPlatform.Web.ControllerHelpers
 {
@@ -334,7 +318,14 @@ namespace Beis.LearningPlatform.Web.ControllerHelpers
                 {
                     saveDataResult = await SaveSkillsThreeResponse(form);
                 }
-                if (saveDataResult?.Result == true && form.EmailAnswer.HasEmailAddress)
+
+                if (saveDataResult?.Result != true)
+                { 
+                    // Display save data error
+                    isValid = false;
+                    form.validationErrors.Add(new FormValidationError() { id = 1, errorHeading = "Error Saving Data", errorMessage = saveDataResult.Message });                    
+                }
+                else if (form.EmailAnswer.HasEmailAddress)
                 {
                     // Send the results email to the user
                     var sendEmailResult = await SendResultsEmail(form.EmailAnswer, form);
@@ -397,7 +388,7 @@ namespace Beis.LearningPlatform.Web.ControllerHelpers
                     isSuccessful = true;
                 else
                 {
-                    _logger.LogError(result.Message ?? "Failed to save skills one response");
+                    _logger.LogError("{message}", result.Message ?? "Failed to save skills one response");
                     message = result.Message ?? "Failed to save skills one response";
                 }
             }
@@ -468,7 +459,7 @@ namespace Beis.LearningPlatform.Web.ControllerHelpers
                     isSuccessful = true;
                 else
                 {
-                    _logger.LogError(result.Message ?? "Failed to save skills two response");
+                    _logger.LogError("{message}", result.Message ?? "Failed to save skills two response");
                     message = result.Message ?? "Failed to save skills two response";
                 }
             }
@@ -518,7 +509,7 @@ namespace Beis.LearningPlatform.Web.ControllerHelpers
                     isSuccessful = true;
                 else
                 {
-                    _logger.LogError(result.Message ?? "Failed to save skills three response");
+                    _logger.LogError("{message}", result.Message ?? "Failed to save skills three response");
                     message = result.Message ?? "Failed to save skills three response";
                 }
             }
@@ -621,10 +612,10 @@ namespace Beis.LearningPlatform.Web.ControllerHelpers
             var payload =  await helper.ConvertToResultsEmail(form);
 
             var result = await _emailService.SendResultsRemail(requestID, emailAnswer.UserEmailAddress, payload);
-                if (result.IsValid)
-                    isSuccessful = true;
-                else
-                    message = result.Message;
+            if (result.IsValid)
+                isSuccessful = true;
+            else
+                message = result.Message;
 
             return new ControllerHelperOperationResponse(requestID, isSuccessful, message);
         }

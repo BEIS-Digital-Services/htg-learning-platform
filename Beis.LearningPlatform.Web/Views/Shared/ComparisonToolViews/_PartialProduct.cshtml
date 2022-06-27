@@ -1,60 +1,51 @@
 ﻿@model Beis.LearningPlatform.Web.Models.ComparisonToolPageViewModel
+<partial name="CMSPageViews/_PartialRenderCMSComponents" model="@Model.CMSPageViewModel" />
+@if (Model.CMSPageViewModel.hero_banners != null)
+{
+    <partial name="CMSPageViews/_PartialHeroBanner" model="@Model.CMSPageViewModel" />
+}
+
 <div class="govuk-width-container govuk-!-padding-top-6 govuk-!-padding-bottom-6">
-    <partial name="ComparisonToolViews/_PartialProductCommon" />
 
-    <div class="govuk-!-padding-bottom-3" id="selectedProductCategoryDiv">
-        <strong class="govuk-tag beis-tag" id="dummySelectedProductCategory" style="cursor: pointer">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g>
-                    <path d="M3.75717 10.8284L5.17139 12.2426L12.2425 5.17155L10.8282 3.75733L3.75717 10.8284Z" fill="#0B0C0C" />
-                    <path d="M5.17154 3.75736L3.75732 5.17157L10.8284 12.2426L12.2426 10.8284L5.17154 3.75736Z" fill="#0B0C0C" />
-                    <circle cx="8" cy="8" r="7.5" stroke="black" />
-                </g>
-                <defs>
-                    <clipPath>
-                        <rect width="16" height="16" fill="white" transform="translate(16) rotate(90)" />
-                    </clipPath>
-                </defs>
-            </svg>
-        </strong>
-    </div>
-
-    <div class="details">
-        <div class="beis-white">
-            <details class="govuk-details" data-module="govuk-details" open>
-                <summary class="govuk-details__summary">
-                    <span class="govuk-details__summary-text">
-                        Add tags
-                    </span>
-                </summary>
-                <div class="govuk-details__text">
-                    @foreach (var tag in Model.ProductCategoryList)
-                    {
-                        <strong class="govuk-tag beis-tag productCategoryFilter" id="categoryId-@tag.id" data-id="@tag.id" style="cursor: pointer">
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <g>
-                                    <path d="M7 13L9 13L9 3L7 3L7 13Z" fill="#0B0C0C" />
-                                    <path d="M3 7L3 9L13 9L13 7L3 7Z" fill="#0B0C0C" />
-                                    <circle cx="8" cy="8" r="7.5" stroke="black" />
-                                </g>
-                                <defs>
-                                    <clipPath>
-                                        <rect width="16" height="16" fill="white" transform="translate(16) rotate(90)" />
-                                    </clipPath>
-                                </defs>
-                            </svg>
-                            @tag.displayName
-                        </strong>
-                    }
-                </div>
-            </details>
+    <div class="govuk-grid-row govuk-!-padding-top-6">
+        <div class="govuk-grid-column-full">
+            <h1 class="govuk-heading-xl govuk-!-padding-top-3 govuk-!-margin-0">Filter software</h1>
         </div>
+
     </div>
+    <div class="govuk-header-yellow-line">
+
+    </div>
+
+
+    <div class="govuk-form-group govuk-!-margin-3">
+        <fieldset class="govuk-fieldset">
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                @foreach (var tag in Model.ProductCategoryList)
+                {
+                    <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input productCategory" data-id="@tag.id" name="categoryId-@tag.id" id="categoryId-@tag.id" type="checkbox"
+                            @if(Model.ProductCategoryIds?.Contains(tag.name) == true)
+                            {
+                                <text>checked</text>
+                            }
+                        >
+                        <label class="govuk-label govuk-checkboxes__label" for="categoryId-@tag.id">
+                            @tag.friendlyDisplayName
+                        </label>
+                    </div>
+                }
+
+            </div>
+
+        </fieldset>
+    </div>
+
 </div>
 
 @if (Model.products?.Count > 0)
 {
-    <div id={{id}}} class="govuk-width-container govuk-!-padding-top-8  govuk-!-padding-bottom-8 product">
+    <div class="govuk-width-container govuk-!-padding-top-2  govuk-!-padding-bottom-8 product">
         <div class="govuk-grid-row" id="allProductsDiv">
             <div class="govuk-grid-column-full">
                 <h1 class="govuk-heading-xl govuk-!-padding-top-3">All products</h1>

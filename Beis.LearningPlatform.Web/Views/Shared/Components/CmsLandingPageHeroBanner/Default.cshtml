@@ -9,12 +9,12 @@
             <div class="govuk-grid-column-one-half-text landing-page-hero-left">
                 <div class="govuk-grid-row">
                     <div class="left-column beis-white-text">
-                        <h2 class="govuk-heading-l beis-white-text govuk-!-margin-bottom-3 govuk-!-margin-top-6">
+                        <h1 class="govuk-heading-l beis-white-text govuk-!-margin-bottom-3 govuk-!-margin-top-6">
                             @Model.Header
-                        </h2>
-                        <p class="govuk-body beis-white-text govuk-!-padding-right-8">
-                            @Model.Intro
-                        </p>
+                        </h1>
+                        <div class="govuk-body beis-white-text govuk-!-padding-right-8">
+                            @Html.Raw(@Model.IntroHtml)
+                        </div>
                     </div>
                 </div>
             </div>

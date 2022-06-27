@@ -1,20 +1,7 @@
-﻿using AutoMapper;
-using Beis.LearningPlatform.BL.Configuration;
-using Beis.LearningPlatform.BL.Domain;
-using Beis.LearningPlatform.BL.IntegrationServices;
-using Beis.LearningPlatform.BL.IntegrationServices.Options;
-using Beis.LearningPlatform.BL.Models;
-using Beis.LearningPlatform.DAL;
-using Beis.LearningPlatform.Library;
+﻿using Beis.LearningPlatform.BL.Configuration;
 using Beis.LearningPlatform.Library.Enums;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Mail;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Beis.LearningPlatform.BL.Services
 {
@@ -54,14 +41,12 @@ namespace Beis.LearningPlatform.BL.Services
 
         async Task<IServiceResponse<bool>> IEmailService.IsUnsubscribed(Guid requestID, string emailAddress)
         {
-            var isSuccessful = false;
             string message = default;
             var returnValue = false;
 
             var results = await _emailDataService.GetByEmail(emailAddress);
             if (results.Length > 0)
             {
-                isSuccessful = true;
 
                 if (results.Where(x => x.IsUnsubscribed ?? false).Count() == results.Length)
                     returnValue = true;
@@ -69,7 +54,7 @@ namespace Beis.LearningPlatform.BL.Services
             else
                 message = "The specified email address does not exist";
 
-            return new ServiceResponse<bool>(requestID, isSuccessful, message, returnValue);
+            return new ServiceResponse<bool>(requestID, true, message, returnValue);
         }
 
         IServiceResponse IEmailService.IsValidEmailAddress(Guid requestID, string emailAddress)
@@ -133,48 +118,41 @@ namespace Beis.LearningPlatform.BL.Services
 
         async Task<IServiceResponse> IEmailService.SendResultsRemail(Guid requestID, string emailAddress, IEmailDto dto)
         {
-            var isSuccessful = false;
-            string message = default;
-            
-            if (dto != null)
-            {
-                // Validate email
-                if (_thisInterface.IsValidEmailAddress(requestID, emailAddress).IsValid)
-                {
-                    // Check that email is not unsubscribed
-                    var isUnsubscribedResult = await _thisInterface.IsUnsubscribed(requestID, emailAddress);
-                    if (isUnsubscribedResult.IsValid && isUnsubscribedResult.Payload == false)
-                    {
-                        string templateId;
-                        var personalisation = Map(dto, emailAddress, out templateId);
-                        if (personalisation != null)
-                        {
-                            try
-                            {
-                                await _notifyIntegrationService.SendDiagnosticToolResult(emailAddress, templateId, personalisation);
-                                isSuccessful = true;
-                            }
-                            catch (Exception ex)
-                            {
-                                _logger.LogError(ex, "Unable to send result email");
-                                message = "An error occurred sending the result email";
-                            }
-                        }
-                        else
-                        {
-                            message = $"Failed to map the data";
-                        }
-                    }
-                    else
-                        message = $"The email address \"{emailAddress}\" is unsubscribed";
-                }
-                else
-                    message = $"The email address \"{emailAddress}\" is invalid";
-            }
-            else
-                throw new ArgumentNullException(nameof(IEmailDto));
 
-            return new ServiceResponse(requestID, isSuccessful, message);
+            if (dto == null)
+            {
+                throw new ArgumentNullException(nameof(IEmailDto));
+            }
+
+            // Validate email
+            if (!_thisInterface.IsValidEmailAddress(requestID, emailAddress).IsValid)
+            {
+                return new ServiceResponse(requestID, false, $"The email address \"{emailAddress}\" is invalid");
+            }
+
+            // Check that email is not unsubscribed
+            var isUnsubscribedResult = await _thisInterface.IsUnsubscribed(requestID, emailAddress);
+            if (isUnsubscribedResult.Payload)
+            {
+                return new ServiceResponse(requestID, false, $"The email address \"{emailAddress}\" is unsubscribed");
+            }
+
+            try
+            {
+                var personalisation = Map(dto, emailAddress, out string templateId); // Null ref errors not handled here
+                if (personalisation == null)
+                {
+                    return new ServiceResponse(requestID, false, "Failed to map the data");                    
+                }
+
+                await _notifyIntegrationService.SendDiagnosticToolResult(emailAddress, templateId, personalisation);
+                return new ServiceResponse(requestID, true, string.Empty);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Unable to send result email");
+                return new ServiceResponse(requestID, false, "An error occurred sending the result email");
+            }                                                            
         }
 
         private Dictionary<string, dynamic> Map(IEmailDto dto, string emailAddress, out string templateId)
@@ -336,7 +314,7 @@ namespace Beis.LearningPlatform.BL.Services
                     }
                     else
                     {
-                        _logger.LogWarning($"Inconsistent length of names and values supplied to personalisation - {names.Length} vs {values.Length}");
+                        _logger.LogWarning("Inconsistent length of names and values supplied to personalisation - {names.Length} vs {values.Length}", names.Length, values.Length);
                         throw new ArgumentException("The personalisation names and values must be equal length", nameof(names));
                     }
                 }

@@ -25,12 +25,6 @@
             <h2 class="govuk-heading-l govuk-!-padding-top-3">@Model.subheader</h2>
         }
 
-        @if (Model.tags != null)
-        {
-            <br>
-            <partial name="CMSPageViews/_PartialTag" model="@Model.tags" />
-        }
-
         <ul class="author">
             @if (Model.author != null)
             {

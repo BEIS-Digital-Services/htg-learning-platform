@@ -1,9 +1,6 @@
 ﻿@model (Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent component, bool showBackButton)
 @{
     var _pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build();
-    var strcopy = string.IsNullOrWhiteSpace(Model.component.copy) ? "" : Markdown.ToHtml(Model.component.copy, _pipeline).Replace("<p>", "<p class=\"govuk-body\">");
-    var topSpaceClass = Model.component.topSpace != "nospace" ? "govuk-!-padding-top-6" : string.Empty;
-    var bottomSpaceClass = Model.component.bottomSpace != "nospace" ? "govuk-!-padding-bottom-6" : string.Empty;
     Model.component.hide = Model.component.hide.HasValue ? Model.component.hide : false;
 }
 
@@ -12,7 +9,7 @@
     <div class="govuk-width-container" id="@("anchor" + Model.component.Index)">
         <div class="govuk-grid-row">
             <div class="beis-white govuk-grid-column-two-thirds">
-                <div class="@topSpaceClass  @bottomSpaceClass">
+                <div class="@(Model.component.topSpace != "nospace" ? "govuk-!-padding-top-6" : string.Empty) @(Model.component.bottomSpace != "nospace" ? "govuk-!-padding-bottom-6" : string.Empty)">
                     @if (!string.IsNullOrWhiteSpace(Model.component.header))
                     {
                         @if (Model.showBackButton)
@@ -20,16 +17,16 @@
                             <a id="link-cmspageviews-global-back-link" class="govuk-back-link" style="cursor:pointer;" onclick="history.back()">Back</a>
                         }
 
-                        <h1 class="govuk-heading-xl">@Html.Raw(Markdown.ToHtml(Model.component.header, _pipeline).Replace("<p>", "").Replace("</p>", string.Empty))</h1>
+                        <h1 class="govuk-heading-xl">@Html.Raw(Markdown.ToHtml(Model.component.header, _pipeline).Replace("<p>", string.Empty).Replace("</p>", string.Empty))</h1>
                     }
                     @if (!string.IsNullOrWhiteSpace(Model.component.subheader))
                     {
-                        <h2 class="govuk-heading-l">@Html.Raw(Markdown.ToHtml(Model.component.subheader, _pipeline).Replace("<p>", "").Replace("</p>", string.Empty))</h2>
+                        <h2 class="govuk-heading-l">@Html.Raw(Markdown.ToHtml(Model.component.subheader, _pipeline).Replace("<p>", string.Empty).Replace("</p>", string.Empty))</h2>
                     }
                     @if (!string.IsNullOrWhiteSpace(Model.component.copy))
                     {
                         <div class="govuk-body">
-                            @Html.Raw(strcopy)
+                            @Html.Raw(string.IsNullOrWhiteSpace(Model.component.copy) ? string.Empty : Markdown.ToHtml(Model.component.copy, _pipeline).Replace("<p>", "<p class=\"govuk-body\">"))
                         </div>
                     }
 

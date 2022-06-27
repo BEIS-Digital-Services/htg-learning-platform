@@ -1,10 +1,4 @@
-﻿using Beis.LearningPlatform.Web.ControllerHelpers.Interfaces;
-using Beis.LearningPlatform.Web.Models;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System.Threading.Tasks;
-
-namespace Beis.LearningPlatform.Web.Controllers
+﻿namespace Beis.LearningPlatform.Web.Controllers
 {
     /// <summary>
     /// A class that defines a controller for Email actions.
@@ -27,13 +21,13 @@ namespace Beis.LearningPlatform.Web.Controllers
         [Route("/email/unsubscribe")]
         public async Task<IActionResult> Unsubscribe([FromQuery] string emailAddress)
         {
-            _logger.LogTrace($"Unsubscribe email: {emailAddress}");
+            _logger.LogTrace("Unsubscribe email: {emailAddress}", emailAddress);
 
             var result = await _controllerHelper.Unsubscribe(emailAddress);
             
             if (!result.Result)
             {
-                _logger.LogWarning($"Unsubscried email failed with message: {result.Message}");
+                _logger.LogWarning("Unsubscried email failed with message: {result.Message}", result.Message);
                 return ReturnErrorPage(result.RequestID, result.Message);
             }
 

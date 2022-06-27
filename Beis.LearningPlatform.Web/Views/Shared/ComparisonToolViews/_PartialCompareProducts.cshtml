@@ -1,34 +1,16 @@
 ﻿@using Beis.LearningPlatform.Web.Utils
 @using Beis.LearningPlatform.Web.Constants
 @model Beis.LearningPlatform.Web.Models.ComparisonToolPageViewModel
+
+<partial name="CMSPageViews/_PartialRenderCMSComponents" model="@Model.CMSPageViewModel" />
+@if (Model.CMSPageViewModel.hero_banners != null)
+{
+    <partial name="CMSPageViews/_PartialHeroBanner" model="@Model.CMSPageViewModel" />
+}
+
 @if (Model.products?.Count is > 0 and <= 3)
 {
-    <div class="govuk-width-container">
-        <div class="govuk-grid-row">
-            <div class="govuk-grid-column-full">
-                <a id="link-comparisontoolviews-compareproducts-back-link" href="@Model.Referrer" class="govuk-back-link">Back</a>
-            </div>
-        </div>
-
-        <div class="govuk-grid-row">
-            <div class="govuk-grid-column-full">
-                <h1 class="govuk-heading-l">Side-by-side software comparison</h1>
-            </div>
-        </div>
-
-        <div class="govuk-grid-row govuk-!-margin-bottom-8">
-            <div class="govuk-grid-column-two-thirds-from-desktop">
-                <p class="govuk-body-l">
-                    Comparing products side by side can give you a better overview of what each software can offer your business.
-                </p>
-                <p class="govuk-body-l">
-                    The "See features" button will take you to a more detailed view including the full list of what’s included with the selected software.
-                </p>
-                <p class="govuk-body-l">
-                    Don’t forget … through Help to Grow: Digital, you’ll receive a discount of up to 50% on eligible software for the first 12 months.
-                </p>
-            </div>
-        </div>
+    <div class="govuk-width-container govuk-!-padding-top-6">
 
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-full">

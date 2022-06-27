@@ -1,11 +1,4 @@
-﻿using Beis.LearningPlatform.Web.Interfaces;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Threading.Tasks;
-
-namespace Beis.LearningPlatform.Web.Services
+﻿namespace Beis.LearningPlatform.Web.Services
 {
     public class StrapiMakeApiCallService : IMakeApiCallService
     {
@@ -27,7 +20,7 @@ namespace Beis.LearningPlatform.Web.Services
 
             if (!result.IsSuccessStatusCode)
             {
-                _logger.LogWarning($"Request {strapiAction} returned {result.StatusCode}");
+                _logger.LogWarning("Request {strapiAction} returned {result.StatusCode}", strapiAction, result.StatusCode);
                 return string.Empty;
             }
             return await result.Content.ReadAsStringAsync();

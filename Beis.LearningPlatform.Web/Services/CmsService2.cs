@@ -1,14 +1,4 @@
-﻿using Beis.LearningPlatform.Web.Options;
-using Beis.LearningPlatform.Web.StrapiApi.Models;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text.Json;
-using System.Threading.Tasks;
-
-namespace Beis.LearningPlatform.Web.Services
+﻿namespace Beis.LearningPlatform.Web.Services
 {
     public class CmsService2 : ICmsService2
     {
@@ -33,12 +23,12 @@ namespace Beis.LearningPlatform.Web.Services
             string result;
             bool returnValue = false;
 
-            _logger.LogInformation($"CMS Service Get Page \"{pageReference}\"");
+            _logger.LogInformation("CMS Service Get Page \"{pageReference}\"", pageReference);
 
             result = await _cmsApiIntegrationService.Get(pageReference);
             if (!string.IsNullOrWhiteSpace(result))
             {
-                page = JsonSerializer.Deserialize<T>(result);
+                page = System.Text.Json.JsonSerializer.Deserialize<T>(result);
                 returnValue = true;
             }
 

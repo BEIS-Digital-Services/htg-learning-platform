@@ -1,8 +1,4 @@
-﻿using AutoMapper;
-using Beis.LearningPlatform.BL.Models;
-using Beis.LearningPlatform.Library;
-
-namespace Beis.LearningPlatform.BL.DependencyInjection
+﻿namespace Beis.LearningPlatform.BL.DependencyInjection
 {
     /// <summary>
     /// A class that defines a profile for a Diagnostic Tool results email data.

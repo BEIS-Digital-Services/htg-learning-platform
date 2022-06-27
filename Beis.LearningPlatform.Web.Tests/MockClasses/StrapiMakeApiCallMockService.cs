@@ -1,13 +1,5 @@
-﻿using Beis.LearningPlatform.Web.Interfaces;
-using Beis.LearningPlatform.Web.StrapiApi.Models;
-using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.IO;
-using System.Threading.Tasks;
-
-namespace Beis.LearningPlatform.Web.Tests.MockClasses
+﻿namespace Beis.LearningPlatform.Web.Tests.MockClasses
 {
-
     public class StrapiMakeApiCallMockService : IMakeApiCallService
     {
         private string _StrapiMockJson = "C:\\Data\\BEIS-Veracity\\beis-help-to-grow-web-app\\Web.Tests\\sources\\CustomPagesStrapiMock.json";

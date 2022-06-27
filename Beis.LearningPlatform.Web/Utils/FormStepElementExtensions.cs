@@ -1,9 +1,4 @@
-﻿using Beis.LearningPlatform.Web.Models.DiagnosticTool;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace Beis.LearningPlatform.Web.Utils
+﻿namespace Beis.LearningPlatform.Web.Utils
 {
     /// <summary>
     /// A class that defines extension methods for a Form Step Element.
@@ -11,7 +6,7 @@ namespace Beis.LearningPlatform.Web.Utils
     public static class FormStepElementExtensions
     {
         private const string ERROR_MESSAGE = "Answer the question below to continue";
-        private const string ERROR_HEADING_TEXTCONTROL = "Please enter text";
+        private const string ERROR_HEADING_TEXTCONTROL = "Form incomplete";
         private static void LoadCheckboxGroup(this FormStepElement element, FormStepElementAnswer answer)
         {
             if (element.controlType == FormDisplayControlType.CheckboxGroup)
@@ -101,7 +96,7 @@ namespace Beis.LearningPlatform.Web.Utils
             hasAdditionalInfo = false;
             id = 0;
 
-            if (answerData.Contains("|"))
+            if (answerData.Contains('|'))
             {
                 string[] parts = answerData.Split('|');
                 if (parts?.Length == 3 && int.TryParse(parts[0], out id))
@@ -285,12 +280,23 @@ namespace Beis.LearningPlatform.Web.Utils
                 List<FormValidationError> validationErrorsList = new();
 
                 // Validate suitable child elements
-                foreach (var answer in element.answerOptions.Where(x => x.controlType == FormDisplayControlType.Text))
+                foreach (var answer in element.answerOptions.Where(x => x.controlType == FormDisplayControlType.Text || x.controlType == FormDisplayControlType.Textarea))
                 {
-                    if (!answer.ValidateTextControl(out string errorMessage))
+                    if (answer.controlType == FormDisplayControlType.Textarea)
                     {
-                        element.childHasErrors = true;
-                        validationErrorsList.Add(new FormValidationError() { errorMessage = errorMessage });
+                        if (!answer.ValidateTextareaControl(out string errorMessage))
+                        {
+                            element.childHasErrors = true;
+                            validationErrorsList.Add(new FormValidationError() { errorMessage = errorMessage, errorHeading = ERROR_HEADING_TEXTCONTROL });
+                        }
+                    }
+                    else
+                    {
+                        if (!answer.ValidateTextControl(out string errorMessage))
+                        {
+                            element.childHasErrors = true;
+                            validationErrorsList.Add(new FormValidationError() { errorMessage = errorMessage });
+                        }
                     }
                 }
 
@@ -312,13 +318,28 @@ namespace Beis.LearningPlatform.Web.Utils
         /// <returns>A bool indicating whether the element was valid.</returns>
         public static bool ValidateElementCheckBoxGroup(this FormStepElement element, out FormValidationError[] validationErrors)
         {
-            var childIsSelected = false;
-            string errorMessage = default;
             bool returnValue = true;
-            List<FormValidationError> validationErrorsList = new();
-
+            
             // Defaults
             validationErrors = default;
+
+            element.ValidateElementCheckBoxGroupProc(out List<FormValidationError> validationErrorsList);
+
+            // Output any errors
+            if (validationErrorsList.Count > 0)
+            {
+                returnValue = false;
+                validationErrors = validationErrorsList.ToArray();
+            }
+
+            return returnValue;
+        }
+
+        private static void ValidateElementCheckBoxGroupProc(this FormStepElement element, out List<FormValidationError> validationErrorsList)
+        {
+            var childIsSelected = false;
+            string errorMessage = default;
+            validationErrorsList = new();
 
             if (element.controlType == FormDisplayControlType.CheckboxGroup)
             {
@@ -342,20 +363,13 @@ namespace Beis.LearningPlatform.Web.Utils
                 {
                     element.childHasErrors = true;
                     element.validationError = ERROR_MESSAGE;
-                    validationErrorsList.Add(new FormValidationError() { errorMessage = element.validationError });
+                    if (validationErrorsList.Count == 0)
+                        validationErrorsList.Add(new FormValidationError() { errorMessage = element.validationError });
                 }
             }
             else
                 throw new ArgumentException("The specified element is not a CheckboxGroup-type", nameof(element));
 
-            // Output any errors
-            if (validationErrorsList.Count > 0)
-            {
-                returnValue = false;
-                validationErrors = validationErrorsList.ToArray();
-            }
-
-            return returnValue;
         }
 
         /// <summary>

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Beis.LearningPlatform.BL.Domain
+﻿namespace Beis.LearningPlatform.BL.Domain
 {
     /// <summary>
     /// An interface that defines the base behaviour of a service request response.

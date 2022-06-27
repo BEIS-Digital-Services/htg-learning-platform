@@ -1,15 +1,12 @@
 ﻿@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
 @{
-    var strclass = CamelCaseConverter.Delimiter(Model.background, "-");
     var _pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build();
-    var topSpaceClass = Model.topSpace != "nospace" ? "govuk-!-padding-top-6" : string.Empty;
-    var bottomSpaceClass = Model.bottomSpace != "nospace" ? "govuk-!-padding-bottom-6" : string.Empty;
 }
 <div class="details" id="@("anchor" + Model.Index)">
-    <div class="@strclass">
+    <div class="@CamelCaseConverter.Delimiter(Model.background, "-")">
         <div class="govuk-width-container">
             <div class="govuk-grid-row">
-                <div class="govuk-grid-column-full @topSpaceClass  @bottomSpaceClass">
+                <div class="govuk-grid-column-full @Model.AlteredPaddingTopSpace  @Model.AlteredPaddingBottomSpace">
                     @if (Model.textblocks != null)
                     {
                         foreach (var item in Model.textblocks)
@@ -22,7 +19,6 @@
                                     <summary class="govuk-details__summary">
                                         @if (!string.IsNullOrWhiteSpace(item.subheader))
                                         {
-                                            strclass = CamelCaseConverter.Delimiter(item.subheaderColor, "-");
                                             @Html.Raw(Markdown.ToHtml(item.subheader, _pipeline).Replace("<p>", string.Empty).Replace("</p>", string.Empty))
                                         }
                                     </summary>
