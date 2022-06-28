@@ -20,18 +20,48 @@
                     <div class="govuk-grid-row beis-columns-same-height">
                     <form method="get">
                         <div class="govuk-grid-column-full govuk-body">
-
-                            <div class="govuk-grid-row beis-columns-same-height">
-                                @foreach (var tag in Model.DistinctTags)
-                                {
-                                    <div class="govuk-grid-column-one-half">
-                                        <input class="" id="filter-tag-@tag.id" type="checkbox" value="@tag.id" name="tag-ids" checked="@(Model.IsTagSelected(tag))" >
-                                        <label class="" for="filter-tag-@tag.id">
-                                            @tag.displayName
-                                        </label>
-                                    </div>
-                                }
+                            @{
+                                var distinctTags = Model.DistinctTags.ToList();
+                            }
+                            <div class="govuk-grid-row">
+                              
+                              
                             </div>
+                          @for (int i = 0; i < distinctTags.Count; i++)
+                          {
+                            var tag = distinctTags[i];
+                            
+                            <div class="govuk-grid-row govuk-!-padding-1">
+                                <div class="govuk-grid-column-one-half">
+                                    <div class="govuk-checkboxes__item">
+		                                <input class="govuk-checkboxes__input" id="filter-tag-@tag.id" type="checkbox" value="@tag.id" name="tag-ids" checked="@(Model.IsTagSelected(tag))" >
+		                                <label class="govuk-label govuk-checkboxes__label" for="filter-tag-@tag.id">
+			                                @tag.displayName
+		                                </label>
+	                                </div>
+                                 </div>
+
+                                @{
+                                    i++;
+                                    if(i >= distinctTags.Count)
+                                    {
+                                        break;
+                                    }
+                                    tag = distinctTags[i];
+                                }
+                              <div class="govuk-grid-column-one-half">
+                                <div class="govuk-checkboxes__item">
+		                            <input class="govuk-checkboxes__input" id="filter-tag-@tag.id" type="checkbox" value="@tag.id" name="tag-ids" checked="@(Model.IsTagSelected(tag))" >
+		                            <label class="govuk-label govuk-checkboxes__label" for="filter-tag-@tag.id">
+			                            @tag.displayName
+		                            </label>
+	                            </div>  
+                              </div>
+
+                            </div>
+                           
+                          }
+                          
 
                         </div>
 
@@ -56,8 +86,6 @@
         </div>
     </div>
      </div>
-
-
 
 <div class="landingpage-hero-list" id="@Model.Component.id">
     <div class="govuk-width-container govuk-!-margin-bottom-6 govuk-!-margin-top-6 search-article-listing">
