@@ -20,12 +20,18 @@
     }
 
     .left-column {
-        .beis-white-text{
-            p{
-                a{
-                    color:#fff;
+        .beis-white-text {
+            p {
+                a {
+                    color: #fff;
                 }
             }
+        }
+    }
+
+    .landing-page-hero-right {
+        @include respond(tablet) {
+            display: none;
         }
     }
 }
