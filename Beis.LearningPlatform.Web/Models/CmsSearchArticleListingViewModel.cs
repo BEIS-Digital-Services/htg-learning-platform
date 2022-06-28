@@ -65,5 +65,6 @@
         {
             return SelectedTagIds?.Contains(tag.id) == true;
         }
+        public string PageName { get; set; }
     }
 }
