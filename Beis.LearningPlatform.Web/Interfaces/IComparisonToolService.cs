@@ -27,6 +27,7 @@
         /// <returns>True if successful, false if unsuccessful</returns>
         public Task<bool> SetNavAndFooter(ComparisonToolPageViewModel comparisonToolPage);
 
+        public Task<ComparisonToolProduct> GetProduct(long productId);
         public Task<ComparisonToolProduct> GetApprovedProductFromApprovedVendor(long productId);
     }
 }

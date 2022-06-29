@@ -1,21 +1,4 @@
 ﻿using Beis.LearningPlatform.Web.Configuration;
-using Beis.LearningPlatform.Web.ControllerHelpers;
-using Beis.LearningPlatform.Web.ControllerHelpers.Interfaces;
-using Beis.LearningPlatform.Web.Controllers;
-using Beis.LearningPlatform.Web.Interfaces;
-using Beis.LearningPlatform.Web.Models;
-using Beis.LearningPlatform.Web.Options;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using Moq;
-using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using ConfigOptions = Microsoft.Extensions.Options.Options;
 
 namespace Beis.LearningPlatform.Web.Tests.ControllerTests
@@ -39,11 +22,36 @@ namespace Beis.LearningPlatform.Web.Tests.ControllerTests
         private const string TestValueRequestReferer = "_requestReferer";
         private static readonly IList<ComparisonToolProduct> TestValueComparisonToolProducts = new List<ComparisonToolProduct>()
         {
-            new() { product_type = 2, product_id = 4, product_name = "product-4" },
-            new() { product_type = 1, product_id = 7, product_name = "product-2" },
-            new() { product_type = 2, product_id = 10, product_name = "product-10" },
-            new() { product_type = 1, product_id = 14, product_name = "product-14" }
+            new() { product_type = 2, product_id = 4, product_name = "product-4", status = 1,
+            },
+            new() { product_type = 1, product_id = 7, product_name = "product-7", status = 1,
+                productPriceAddCosts = GetAddCostTestData(),
+            },
+            new() { product_type = 2, product_id = 10, product_name = "product-10", status = 50,
+                productPriceAddCosts = GetAddCostTestData(),
+                productPriceThirdPartyFees = GetAddCostTestData() 
+            },
+            new() { product_type = 1, product_id = 14, product_name = "product-14", status = 50,
+                productPriceAddCosts = GetAddCostTestData(),
+                productPriceTransactionFees = GetAddCostTestData(),
+            },
         };
+
+        private static IList<ComparisonToolAdditionalCost> GetAddCostTestData()
+        {
+            return new List<ComparisonToolAdditionalCost> { 
+                new ComparisonToolAdditionalCost{ 
+                     CostDescription = "AdditionalCost_Desc1",
+                     CostAndFrequency = "AdditionalCost_CostFreq1",
+                     Mandatory = true
+                },
+                new ComparisonToolAdditionalCost{ 
+                     CostDescription = "AdditionalCost_Desc2",
+                     CostAndFrequency = "AdditionalCost_CostFreq2",
+                     Mandatory = true
+                }
+            };
+        }
 
         private static IEnumerable<object[]> CompareProductInput =>
             new List<object[]>
@@ -69,15 +77,30 @@ namespace Beis.LearningPlatform.Web.Tests.ControllerTests
                 new object[] { "14" }
             };
 
+        private static IEnumerable<object[]> TestInputApproved =>
+            new List<object[]>
+            {
+                new object[] { "10" },
+                new object[] { "14" }
+            };
+
+        private static IEnumerable<object[]> TestInputNotApproved =>
+            new List<object[]>
+            {
+                new object[] { "4" },
+                new object[] { "7" }
+            };
         #endregion
 
-        private ComparisonToolController CreateController()
+
+        private ComparisonToolController CreateController(IOptions<ComparisonToolDisplayOption> ctDisplayOptions = null)
         {
+            var productCategoryDisplaySettings = ctDisplayOptions == null ? _productCategoryDisplaySettings : new ProductCategoryDisplaySettings(ctDisplayOptions);
             var controlHelper = new ComparisonToolControllerHelper(_helperLogger.Object,
                 _comparisonToolService.Object,
                 _voucherAppOptions,
                 _vendorAppOptions,
-                _productCategoryDisplaySettings,
+                productCategoryDisplaySettings,
                 _httpContextAccessor.Object);
             return new ComparisonToolController(_controllerLogger.Object, controlHelper, _homeControllerHelper.Object);
         }
@@ -270,6 +293,46 @@ namespace Beis.LearningPlatform.Web.Tests.ControllerTests
             AssertProductDetails(viewResult, productId, true);
         }
 
+        [TestCaseSource(nameof(TestInputApproved))]
+        public async Task Should_Return_Approved_ProductDetails_Matching_Product_Ids(string productId)
+        {
+            var controller = CreateController();
+            _comparisonToolService.Setup(x => x.GetApprovedProductFromApprovedVendor(Convert.ToInt64(productId)))
+                .ReturnsAsync(TestValueComparisonToolProducts.First(r => r.product_id == Convert.ToInt64(productId) && r.status == 50));
+
+            var viewResult = await controller.ProductDetails(productId) as ViewResult;
+
+            AssertProductDetails(viewResult, productId, true);
+        }
+
+        [TestCaseSource(nameof(TestInputNotApproved))]
+        public async Task Should_Not_Return_UnApproved_ProductDetails_Matching_Product_Ids(string productId)
+        {
+            var controller = CreateController();
+            _comparisonToolService.Setup(x => x.GetApprovedProductFromApprovedVendor(Convert.ToInt64(productId)))
+                .ReturnsAsync(TestValueComparisonToolProducts.FirstOrDefault(r => r.product_id == Convert.ToInt64(productId) && r.status == 50));
+
+            var actionResult = await controller.ProductDetails(productId) as ActionResult;
+            Assert.IsNotNull(actionResult);
+            Assert.IsInstanceOf<NotFoundResult>(actionResult);
+        }
+
+        [TestCaseSource(nameof(TestInputNotApproved))]
+        public async Task Should_Return_UnApproved_ProductDetails_If_Show_All_Statuses_Enabled(string productId)
+        {
+            var ctDisplayOptions = ConfigOptions.Create(new ComparisonToolDisplayOption() {
+                ShowAllProductStatuses = true
+            });
+            var controller = CreateController(ctDisplayOptions);
+
+            _comparisonToolService.Setup(x => x.GetProduct(Convert.ToInt64(productId)))
+                .ReturnsAsync(TestValueComparisonToolProducts.FirstOrDefault(r => r.product_id == Convert.ToInt64(productId)));            
+
+            var viewResult = await controller.ProductDetails(productId) as ViewResult;
+
+            AssertProductDetails(viewResult, productId, true);
+        }
+
         [TestCaseSource(nameof(TestInput))]
         public async Task Should_Return_ProductDetailsNoJs_Matching_Product_Ids(string productId)
         {
@@ -294,6 +357,30 @@ namespace Beis.LearningPlatform.Web.Tests.ControllerTests
             var selectedProduct = TestValueComparisonToolProducts.Single(x => x.product_id == Convert.ToInt64(productId));
             var selectionQueryString = $"?product_id={selectedProduct.product_id}&product_type={selectedProduct.product_type}";
             Assert.IsTrue(result.Url.EndsWith(selectionQueryString));
+        }
+
+        [TestCaseSource(nameof(CompareProductInput))]
+        public async Task Should_Have_Additional_Cost_Data(string productCategoryIds, string productIds)
+        {
+            var controller = CreateController();
+            var tempData = new Mock<ITempDataDictionary>();
+            controller.TempData = tempData.Object;
+
+            var viewResult = await controller.CompareProducts(productCategoryIds, productIds) as ViewResult;
+
+            AssertCompareProducts(viewResult, productIds, true);
+
+            var viewModel = viewResult.Model as ComparisonToolPageViewModel;
+            Assert.IsNotNull(viewModel);
+
+            var productIdsParsed = productIds.Split(',').Select(x => long.Parse(x)).ToArray();
+            var testDataProducts = TestValueComparisonToolProducts.Where(x => productIdsParsed.Contains(x.product_id));
+
+            Assert.AreEqual(testDataProducts.Any(x => x.productPriceTransactionFees?.Any() ?? false), viewModel.AnyProductHasTransactionFees);
+            Assert.AreEqual(testDataProducts.Any(x => x.productPriceThirdPartyFees?.Any() ?? false), viewModel.AnyProductHasThirdPartyFees);
+
+            Assert.AreEqual(testDataProducts.Any(x => x.productPriceTransactionFees?.Any() ?? false), viewModel.ComparisonTransactionFeeDescriptions?.Any() ?? false);
+            Assert.AreEqual(testDataProducts.Any(x => x.productPriceThirdPartyFees?.Any() ?? false), viewModel.ComparisonThirdPartyFeeDescriptions?.Any() ?? false);
         }
 
         [Test]
