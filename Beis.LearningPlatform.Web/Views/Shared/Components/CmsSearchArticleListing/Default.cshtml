@@ -1,50 +1,80 @@
 ﻿@model CmsSearchArticleListingViewModel
 
 <div class="govuk-width-container filter-list">
-<div class="details">
-        <div class="beis-white">
+    <div class="details">
+        <div>
             <details class="govuk-details" data-module="govuk-details" open>
                 <summary class="govuk-details__summary govuk-grid-column-full">
                     
                     <div class="govuk-grid-row beis-columns-same-height">
-                    <div class="govuk-grid-column-full">
-                        <h3 class="govuk-heading-l govuk-!-padding-top-5 govuk-!-padding-bottom-0 govuk-!-margin-bottom-0">Filters</h3>
-                        <div class="top-line beis-yellow govuk-!-padding-top-2 govuk-!-margin-bottom-2"></div>
+                        <div class="govuk-grid-column-full">
+                            <h3 class="govuk-heading-l govuk-!-padding-top-5 govuk-!-margin-bottom-1">Filters</h3>
+                            <div class="top-line beis-yellow govuk-!-padding-top-2 govuk-!-margin-bottom-2"></div>
+                        </div>
                     </div>
-                </div>
 
                 </summary>
 
-                <div >
-                  
+                    <div class="govuk-body govuk-!-padding-left-6">
+                        <strong >Filter by subject</strong>
+                    </div>
+
                     <div class="govuk-grid-row beis-columns-same-height">
                     <form method="get">
                         <div class="govuk-grid-column-full govuk-body">
-
-                            <div class="govuk-grid-row beis-columns-same-height">
-                                @foreach (var tag in Model.DistinctTags)
-                                {
-                                    <div class="govuk-grid-column-one-half">
-                                        <input class="" id="filter-tag-@tag.id" type="checkbox" value="@tag.id" name="tag-ids" checked="@(Model.IsTagSelected(tag))" >
-                                        <label class="" for="filter-tag-@tag.id">
-                                            @tag.displayName
-                                        </label>
-                                    </div>
-                                }
+                            @{
+                                var distinctTags = Model.DistinctTags.ToList();
+                            }
+                            <div class="govuk-grid-row">
+                              
+                              
                             </div>
+                          @for (int i = 0; i < distinctTags.Count; i++)
+                          {
+                            var tag = distinctTags[i];
+                            
+                            <div class="govuk-grid-row ">
+                                <div class="govuk-grid-column-one-half govuk-!-margin-bottom-2">
+                                    <div class="govuk-checkboxes__item">
+		                                <input class="govuk-checkboxes__input" id="filter-tag-@tag.id" type="checkbox" value="@tag.id" name="tag-ids" checked="@(Model.IsTagSelected(tag))" >
+		                                <label class="govuk-label govuk-checkboxes__label" for="filter-tag-@tag.id">
+			                                @tag.displayName
+		                                </label>
+	                                </div>
+                                 </div>
+
+                                @{
+                                    i++;
+                                    if(i >= distinctTags.Count)
+                                    {
+                                        break;
+                                    }
+                                    tag = distinctTags[i];
+                                }
+                              <div class="govuk-grid-column-one-half govuk-!-margin-bottom-2">
+                                <div class="govuk-checkboxes__item">
+		                            <input class="govuk-checkboxes__input" id="filter-tag-@tag.id" type="checkbox" value="@tag.id" name="tag-ids" checked="@(Model.IsTagSelected(tag))" >
+		                            <label class="govuk-label govuk-checkboxes__label" for="filter-tag-@tag.id">
+			                            @tag.displayName
+		                            </label>
+	                            </div>  
+                              </div>
+
+                            </div>
+                           
+                          }
+                          
 
                         </div>
 
                         <div class="govuk-grid-column-full govuk-body">
                             <div class="govuk-grid-row beis-columns-same-height govuk-!-margin-top-6 govuk-!-margin-bottom-6">
-                                <div class="govuk-grid-column-full">
-                                    <div class="govuk-button-group">
-                                        <button type="submit" class="govuk-button primary">Apply filters</button>
-                                        <a type="button" aria-label="Reset filters" role="button" href="@Model.PageName"
-                                           class="govuk-button secondary" data-module="govuk-button">
-                                            Reset filters
-                                        </a>
-                                    </div>
+                                <div class="govuk-button-group govuk-phase-banner">
+                                    <button type="submit" class="govuk-button primary">Apply filters</button>
+                                    <a type="button" aria-label="Reset filters" role="button" href="@Model.PageName"
+                                        class="govuk-button secondary" data-module="govuk-button">
+                                        Reset filters
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -55,9 +85,7 @@
             </details>
         </div>
     </div>
-     </div>
-
-
+ </div>
 
 <div class="landingpage-hero-list" id="@Model.Component.id">
     <div class="govuk-width-container govuk-!-margin-bottom-6 govuk-!-margin-top-6 search-article-listing">
