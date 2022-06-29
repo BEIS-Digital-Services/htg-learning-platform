@@ -52,6 +52,7 @@
 	<ItemGroup>
 		<PackageReference Include="AutoMapper" Version="10.1.1" />
 		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
+		<PackageReference Include="Beis.HelpToGrow.Persistence" Version="6.0.1" />
 		<PackageReference Include="Markdig" Version="0.30.2" />
 		<PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.19.0" />
 		<PackageReference Include="Microsoft.AspNetCore.DataProtection.EntityFrameworkCore" Version="5.0.12" />
@@ -76,12 +77,6 @@
 		<ProjectReference Include="..\Beis.LearningPlatform.BL\Beis.LearningPlatform.BL.csproj" />
 		<ProjectReference Include="..\Beis.LearningPlatform.Data\Beis.LearningPlatform.Data.csproj" />
 		<ProjectReference Include="..\Beis.LearningPlatform.Library\Beis.LearningPlatform.Library.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<Reference Include="Beis.Htg.VendorSme.Database">
-			<HintPath>..\Library\Beis.Htg.VendorSme.Database.dll</HintPath>
-		</Reference>
 	</ItemGroup>
 
 	<ItemGroup>
