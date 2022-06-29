@@ -7,17 +7,15 @@
                 <summary class="govuk-details__summary govuk-grid-column-full">
                     
                     <div class="govuk-grid-row beis-columns-same-height">
-                    <div class="govuk-grid-column-full">
-                        <h3 class="govuk-heading-l govuk-!-padding-top-5 govuk-!-padding-bottom-0 govuk-!-margin-bottom-0">Filters</h3>
-                        <div class="top-line beis-yellow govuk-!-padding-top-2 govuk-!-margin-bottom-2"></div>
+                        <div class="govuk-grid-column-full">
+                            <h3 class="govuk-heading-l govuk-!-padding-top-5 govuk-!-margin-bottom-1">Filters</h3>
+                            <div class="top-line beis-yellow govuk-!-padding-top-2 govuk-!-margin-bottom-2"></div>
+                        </div>
                     </div>
-                </div>
 
                 </summary>
 
-                <div >
-
-                    <div class="govuk-body govuk-!-padding-left-7">
+                    <div class="govuk-body govuk-!-padding-left-6">
                         <strong >Filter by subject</strong>
                     </div>
 
@@ -35,8 +33,8 @@
                           {
                             var tag = distinctTags[i];
                             
-                            <div class="govuk-grid-row govuk-!-padding-1">
-                                <div class="govuk-grid-column-one-half">
+                            <div class="govuk-grid-row ">
+                                <div class="govuk-grid-column-one-half govuk-!-margin-bottom-2">
                                     <div class="govuk-checkboxes__item">
 		                                <input class="govuk-checkboxes__input" id="filter-tag-@tag.id" type="checkbox" value="@tag.id" name="tag-ids" checked="@(Model.IsTagSelected(tag))" >
 		                                <label class="govuk-label govuk-checkboxes__label" for="filter-tag-@tag.id">
@@ -53,7 +51,7 @@
                                     }
                                     tag = distinctTags[i];
                                 }
-                              <div class="govuk-grid-column-one-half">
+                              <div class="govuk-grid-column-one-half govuk-!-margin-bottom-2">
                                 <div class="govuk-checkboxes__item">
 		                            <input class="govuk-checkboxes__input" id="filter-tag-@tag.id" type="checkbox" value="@tag.id" name="tag-ids" checked="@(Model.IsTagSelected(tag))" >
 		                            <label class="govuk-label govuk-checkboxes__label" for="filter-tag-@tag.id">
@@ -71,7 +69,7 @@
 
                         <div class="govuk-grid-column-full govuk-body">
                             <div class="govuk-grid-row beis-columns-same-height govuk-!-margin-top-6 govuk-!-margin-bottom-6">
-                                <div class="govuk-button-group govuk-!-padding-left-1 govuk-phase-banner">
+                                <div class="govuk-button-group govuk-phase-banner">
                                     <button type="submit" class="govuk-button primary">Apply filters</button>
                                     <a type="button" aria-label="Reset filters" role="button" href="@Model.PageName"
                                         class="govuk-button secondary" data-module="govuk-button">
