@@ -286,7 +286,7 @@
                         @for (var i = 0; i < Model.currentProduct.productPriceSecondaryMetrics?.Count; i++)
                         {
                             var descRecord = Model.currentProduct.productPriceSecondaryDescriptions.First(item => item.product_price_sec_description_id == Model.currentProduct.productPriceSecondaryMetrics[i].product_price_sec_description_id);
-                            string descValue = $"{(Model.currentProduct.productPriceSecondaryMetrics[i].metric_no > 0 ? ComparisonToolFieldValidator.ParseStringField(Model.currentProduct.productPriceSecondaryMetrics[i].metric_no.ToCurrencyFormat()) : string.Empty)} {ComparisonToolFieldValidator.ParseStringField(Model.currentProduct.productPriceSecondaryMetrics[i].metric_unit)}";
+                            string descValue = $"{(Model.currentProduct.productPriceSecondaryMetrics[i].metric_no > 0 ? ComparisonToolFieldValidator.ParseStringField(Model.currentProduct.productPriceSecondaryMetrics[i].metric_no.ToString("N0")) : string.Empty)} {ComparisonToolFieldValidator.ParseStringField(Model.currentProduct.productPriceSecondaryMetrics[i].metric_unit)}";
 
                             <dl class="govuk-summary-list no-border">
                                 <dt class="govuk-summary-list__key">
