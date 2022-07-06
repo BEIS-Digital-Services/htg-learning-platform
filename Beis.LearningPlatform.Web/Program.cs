@@ -1,4 +1,3 @@
-using Beis.Htg.VendorSme.Database;
 using Beis.LearningPlatform.Web;
 using Microsoft.Extensions.Logging.ApplicationInsights;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
