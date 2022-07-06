@@ -79,7 +79,16 @@
 
             await _comparisonToolService.SetNavAndFooter(viewModel);
 
-            var currentProduct = await _comparisonToolService.GetApprovedProductFromApprovedVendor(productId);
+            var showAllProductStatuses = _productCategoryDisplaySettings.ShowAllProductStatuses ?? false;
+            var currentProduct = showAllProductStatuses ? 
+                                    await _comparisonToolService.GetProduct(productId) :
+                                        await _comparisonToolService.GetApprovedProductFromApprovedVendor(productId);
+
+            if (currentProduct == null)
+            {
+                return null;
+            }
+
             viewModel.ContentKey = $"comparison-tool-product-details-{currentProduct?.product_name.UrlEncode(true)}";
             viewModel.products = new List<ComparisonToolProduct> { currentProduct };
             await _comparisonToolService.PopulateChildRelationships(viewModel.products);

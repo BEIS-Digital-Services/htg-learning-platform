@@ -190,6 +190,27 @@
     </div>
     </div>
 
+    @if (Model.currentProduct.productPriceTransactionFees?.Any() == true)
+    { 
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds-from-desktop comparison-tool">
+                <h2 class="govuk-heading-l beis-blue-text">Transaction fees</h2>
+            </div>
+        </div>        
+        <partial name="ComparisonToolViews/_PartialProductFees" model="@Model.currentProduct.productPriceTransactionFees" />
+    }
+
+    @if (Model.currentProduct.productPriceThirdPartyFees?.Any() == true)
+    { 
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds-from-desktop comparison-tool">
+                <h2 class="govuk-heading-l beis-blue-text">Third-party payment fees</h2>
+            </div>
+        </div>        
+        <partial name="ComparisonToolViews/_PartialProductFees" model="@Model.currentProduct.productPriceThirdPartyFees" />
+    }
+
+
     @if (Model.currentProduct.HasAdditionalDiscounts())
     {
         <div class="govuk-grid-row">
@@ -265,7 +286,7 @@
                         @for (var i = 0; i < Model.currentProduct.productPriceSecondaryMetrics?.Count; i++)
                         {
                             var descRecord = Model.currentProduct.productPriceSecondaryDescriptions.First(item => item.product_price_sec_description_id == Model.currentProduct.productPriceSecondaryMetrics[i].product_price_sec_description_id);
-                            string descValue = $"{(Model.currentProduct.productPriceSecondaryMetrics[i].metric_no > 0 ? ComparisonToolFieldValidator.ParseStringField(Model.currentProduct.productPriceSecondaryMetrics[i].metric_no.ToCurrencyFormat()) : string.Empty)} {ComparisonToolFieldValidator.ParseStringField(Model.currentProduct.productPriceSecondaryMetrics[i].metric_unit)}";
+                            string descValue = $"{(Model.currentProduct.productPriceSecondaryMetrics[i].metric_no > 0 ? ComparisonToolFieldValidator.ParseStringField(Model.currentProduct.productPriceSecondaryMetrics[i].metric_no.ToString("N0")) : string.Empty)} {ComparisonToolFieldValidator.ParseStringField(Model.currentProduct.productPriceSecondaryMetrics[i].metric_unit)}";
 
                             <dl class="govuk-summary-list no-border">
                                 <dt class="govuk-summary-list__key">
@@ -301,9 +322,9 @@
                         for (var i = 0; i < Model.currentProduct.productPriceAddCosts?.Count; i++)
                         {
                             <li>
-                                <div>@(Model.currentProduct.productPriceAddCostDescriptions.Where(x => x.additional_cost_desc_id == Model.currentProduct.productPriceAddCosts[i].additional_cost_desc_id).FirstOrDefault()?.additional_costDesc):</div>
-                                <div>@(Model.currentProduct.productPriceAddCosts[i]?.additionalCost.ToCurrencyFormat() + " " + Model.currentProduct.productPriceAddCosts[i]?.additional_cost_freq)</div>
-                                <div>@(Model.currentProduct.productPriceAddCosts[i].additional_cost_mandatory_flag ? "Mandatory" : "Optional")</div>
+                                <div>@(Model.currentProduct.productPriceAddCosts[i].CostDescription)</div>
+                                <div>@(Model.currentProduct.productPriceAddCosts[i].CostAndFrequency)</div>
+                                <div>@(Model.currentProduct.productPriceAddCosts[i].Mandatory ? "Mandatory" : "Optional")</div>
                             </li>
                         }
                     }

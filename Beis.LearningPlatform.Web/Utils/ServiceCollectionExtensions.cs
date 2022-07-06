@@ -1,5 +1,4 @@
-﻿using Beis.Htg.VendorSme.Database;
-using Beis.LearningPlatform.BL.DependencyInjection;
+﻿using Beis.LearningPlatform.BL.DependencyInjection;
 using Beis.LearningPlatform.BL.IntegrationServices.Options;
 using Beis.LearningPlatform.DAL.Repositories.ProductRepositories;
 using Beis.LearningPlatform.Data;

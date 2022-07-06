@@ -36,7 +36,9 @@
 
         public async Task<List<additional_cost>> GetAdditionalCostsByProductPriceId(long productPriceId)
         {
-            return await _context.additional_costs.Where(x => x.product_price_id == productPriceId).ToListAsync();
+            return await _context.additional_costs
+                .Include(x => x.additional_cost_desc)
+                .Where(x => x.product_price_id == productPriceId).ToListAsync();
         }
 
         public async Task<List<additional_cost_desc>> GetAllAdditionalCostDescriptions()

@@ -50,9 +50,6 @@
                                     @Html.Raw(!string.IsNullOrWhiteSpace(article.Article.copy) ? Markdown.ToHtml(article.Article.copy, _pipeline).Replace("<p>", "<p class=\"govuk-body\">") : string.Empty)
 
                                     <partial name="CMSPageViews/_PartialTextLinks" model="@(article.Links, Model.linksAlign)" />
-                                    <div class="stick-to-bottom">
-                                        <vc:article-search-tag search-tags="@article.tags" />
-                                    </div>
                                 </div>
                             </div>
                         </div>

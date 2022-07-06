@@ -21,6 +21,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="AutoFixture" Version="4.17.0" />
+		<PackageReference Include="Beis.HelpToGrow.Persistence" Version="6.0.1" />
 		<PackageReference Include="FluentAssertions" Version="6.5.1" />
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.2.0" />
 		<PackageReference Include="Moq" Version="4.18.1" />
@@ -32,12 +33,6 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\Beis.LearningPlatform.Web\Beis.LearningPlatform.Web.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<Reference Include="Beis.Htg.VendorSme.Database">
-			<HintPath>..\Library\Beis.Htg.VendorSme.Database.dll</HintPath>
-		</Reference>
 	</ItemGroup>
 
 </Project>
