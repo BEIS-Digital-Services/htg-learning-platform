@@ -124,9 +124,14 @@
             return View("CompareProducts", viewModel);
         }
 
-        private async Task<ViewResult> GetProductDetails(string productId, bool jsEnabled)
+        private async Task<ActionResult> GetProductDetails(string productId, bool jsEnabled)
         {
             var viewModel = await _comparisonToolHelper.InitViewModelForSelectedProduct(Convert.ToInt64(productId));
+            if (viewModel == null)
+            {
+                return NotFound();
+            }
+
             await UpdateCmsPageViewModel(viewModel, "comparison-tool-product");
 
             UpdateViewModel(jsEnabled, viewModel);

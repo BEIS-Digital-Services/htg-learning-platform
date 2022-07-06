@@ -35,6 +35,11 @@
             return await _context.products.Where(p => p.status == (int)approvedStatusId && approvedVendorList.Contains(p.vendor_id)).ToListAsync();
         }
 
+        public async Task<product> GetProduct(long productId)
+        {
+            return await _context.products.SingleOrDefaultAsync(p => p.product_id == productId);
+        }
+
         public async Task<product> GetApprovedProductFromApprovedVendor(long productId)
         {
             const int approvedStatus = 50;

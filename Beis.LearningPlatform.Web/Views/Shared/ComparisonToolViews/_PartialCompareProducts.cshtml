@@ -147,110 +147,161 @@
         <div class="govuk-grid-column-full">
             <dl class="govuk-summary-list">
                 <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                    Minimum contract term
-                </dt>
-                @for (var i = 0; i < Model.products.Count; i++)
-                {
-                    <dd class="govuk-summary-list__product@(i+1) mobile-side-by-side">
-                        <p class="mobile-product-name">@ComparisonToolFieldValidator.ParseStringField(Model.products[i].product_name)</p>
-                        <p>@Model.products[i].contractTerm</p>
-                    </dd>
-                }
-        </div>
-
-        <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-                Payment term
-            </dt>
-            @for (var i = 0; i < Model.products.Count; i++)
-            {
-                <dd class="govuk-summary-list__product@(i+1) mobile-side-by-side">
-                    <p class="mobile-product-name">@ComparisonToolFieldValidator.ParseStringField(Model.products[i].product_name)</p>
-                    <p>@Model.products[i].paymentTerm</p>
-                </dd>
-            }
-        </div>
-        <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-                Minimum number of licences
-            </dt>
-            @for (var i = 0; i < Model.products.Count; i++)
-            {
-                <dd class="govuk-summary-list__product@(i+1) mobile-side-by-side">
-                    <p class="mobile-product-name">@ComparisonToolFieldValidator.ParseStringField(Model.products[i].product_name)</p>
-                    <p>@Model.products[i].minLicences</p>
-                </dd>
-            }
-        </div>
-
-
-        <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-                Free trial
-            </dt>
-            @for (var i = 0; i < Model.products.Count; i++)
-            {
-                <dd class="govuk-summary-list__product@(i+1) mobile-side-by-side">
-                    <p class="mobile-product-name">@ComparisonToolFieldValidator.ParseStringField(Model.products[i].product_name)</p>
-                    <p>@Model.products[i].freeTrial</p>
-                </dd>
-            }
-        </div>
-
-        <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-                Price (excl. VAT)
-            </dt>
-            @for (var i = 0; i < Model.products.Count; i++)
-            {
-                <dd class="govuk-summary-list__product@(i+1) mobile-side-by-side">
-                    <p class="mobile-product-name">@ComparisonToolFieldValidator.ParseStringField(Model.products[i].product_name)</p>
-                    <p>
-                        From @Model.products[i].priceDisplayed
-                        @if (Model.products[i].ProductPriceNumberOfUsers.HasValue)
-                        {
-                            <span> for @Model.products[i].ProductPriceNumberOfUsers user@(Model.products[i].ProductPriceNumberOfUsers > 1 ? "s" : string.Empty)</span>
-                        }
-                    </p>
-                </dd>
-            }
-        </div>
-
-        <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-                Contract discount
-            </dt>
-            @for (var i = 0; i < Model.products.Count; i++)
-            {
-                <dd class="govuk-summary-list__product@(i+1) mobile-side-by-side">
-                    <p class="mobile-product-name">@ComparisonToolFieldValidator.ParseStringField(Model.products[i].product_name)</p>
-                    <p>@Model.products[i].contractDiscount</p>
-                </dd>
-            }
-        </div>
-
-        <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key"></dt>
-            @for (var i = 0; i < Model.products.Count; i++)
-            {
-                IDictionary<string, string> routeData = new Dictionary<string, string>();
-                routeData.Add("product_id", Model.products[i].product_id.ToString());
-
-
-                <dd class="govuk-summary-list__product@(i+1) mobile-side-by-side">
-                    <p class="mobile-product-name">@ComparisonToolFieldValidator.ParseStringField(Model.products[i].product_name)</p>
-                    @{
-                        var actionName = Model.JavascriptEnabled ? ActionConstants.ProductDetails : ActionConstants.ProductDetailsNoJs;
+                    <dt class="govuk-summary-list__key">
+                        Minimum contract term
+                    </dt>
+                    @for (var i = 0; i < Model.products.Count; i++)
+                    {
+                        <dd class="govuk-summary-list__product@(i+1) mobile-side-by-side">
+                            <p class="mobile-product-name">@ComparisonToolFieldValidator.ParseStringField(Model.products[i].product_name)</p>
+                            <p>@Model.products[i].contractTerm</p>
+                        </dd>
                     }
-                    <a id="link-comparisontoolviews-compareproducts-see-features" aria-label="See features of @ComparisonToolFieldValidator.ParseStringField(Model.products[i].product_name)" role="button" asp-controller="comparisonTool" asp-action="@actionName" asp-all-route-data="routeData" class="govuk-button primary-big" data-module="govuk-button">
-                        See features
-                    </a>
-                </dd>
-            }
+                </div>
+
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Payment term
+                    </dt>
+                    @for (var i = 0; i < Model.products.Count; i++)
+                    {
+                        <dd class="govuk-summary-list__product@(i+1) mobile-side-by-side">
+                            <p class="mobile-product-name">@ComparisonToolFieldValidator.ParseStringField(Model.products[i].product_name)</p>
+                            <p>@Model.products[i].paymentTerm</p>
+                        </dd>
+                    }
+                </div>
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Minimum number of licences
+                    </dt>
+                    @for (var i = 0; i < Model.products.Count; i++)
+                    {
+                        <dd class="govuk-summary-list__product@(i+1) mobile-side-by-side">
+                            <p class="mobile-product-name">@ComparisonToolFieldValidator.ParseStringField(Model.products[i].product_name)</p>
+                            <p>@Model.products[i].minLicences</p>
+                        </dd>
+                    }
+                </div>
+
+
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Free trial
+                    </dt>
+                    @for (var i = 0; i < Model.products.Count; i++)
+                    {
+                        <dd class="govuk-summary-list__product@(i+1) mobile-side-by-side">
+                            <p class="mobile-product-name">@ComparisonToolFieldValidator.ParseStringField(Model.products[i].product_name)</p>
+                            <p>@Model.products[i].freeTrial</p>
+                        </dd>
+                    }
+                </div>
+
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Price (excl. VAT)
+                    </dt>
+                    @for (var i = 0; i < Model.products.Count; i++)
+                    {
+                        <dd class="govuk-summary-list__product@(i+1) mobile-side-by-side">
+                            <p class="mobile-product-name">@ComparisonToolFieldValidator.ParseStringField(Model.products[i].product_name)</p>
+                            <p>
+                                From @Model.products[i].priceDisplayed
+                                @if (Model.products[i].ProductPriceNumberOfUsers.HasValue)
+                                {
+                                    <span> for @Model.products[i].ProductPriceNumberOfUsers user@(Model.products[i].ProductPriceNumberOfUsers > 1 ? "s" : string.Empty)</span>
+                                }
+                            </p>
+                        </dd>
+                    }
+                </div>
+
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                        Contract discount
+                    </dt>
+                    @for (var i = 0; i < Model.products.Count; i++)
+                    {
+                        <dd class="govuk-summary-list__product@(i+1) mobile-side-by-side">
+                            <p class="mobile-product-name">@ComparisonToolFieldValidator.ParseStringField(Model.products[i].product_name)</p>
+                            <p>@Model.products[i].contractDiscount</p>
+                        </dd>
+                    }
+                </div>
+
+                @if(Model.AnyProductHasTransactionFees)
+                {
+                    <div class="govuk-summary-list__row">
+                        <div class="govuk-grid-column-two-thirds-from-desktop comparison-tool govuk-!-padding-left-0">
+                            <h2 class="govuk-heading-m beis-blue-text govuk-!-margin-top-8">Transaction fees</h2>
+                        </div>
+                    </div>
+                    @foreach(var transactionFeeDescription in Model.ComparisonTransactionFeeDescriptions)
+                    {
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">
+                                @transactionFeeDescription
+                            </dt>
+                            @for (var i = 0; i < Model.products.Count; i++)
+                            {
+                                var costAndFrequency = Model.products[i].GetTransactionFeeCost(transactionFeeDescription);
+                                <dd class="govuk-summary-list__product@(i+1) mobile-side-by-side">
+                                    <p class="mobile-product-name">@ComparisonToolFieldValidator.ParseStringField(Model.products[i].product_name)</p>
+                                    <p>@(Html.Raw(costAndFrequency ?? "&dash;"))</p>
+                                </dd>                        
+                            }                                    
+                        </div>
+                    }
+                }
+
+                @if(Model.AnyProductHasThirdPartyFees)
+                {
+                    <div class="govuk-summary-list__row">
+                        <div class="govuk-grid-column-two-thirds-from-desktop comparison-tool govuk-!-padding-left-0">
+                            <h2 class="govuk-heading-m beis-blue-text govuk-!-margin-top-8">Third-party payment fees</h2>
+                        </div>
+                    </div>
+                    @foreach(var thirdPartyFeeDescription in Model.ComparisonThirdPartyFeeDescriptions)
+                    {             
+                        <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">
+                                @thirdPartyFeeDescription
+                            </dt>
+                            @for (var i = 0; i < Model.products.Count; i++)
+                            {
+                                var costAndFrequency = Model.products[i].GetThirdPartyFeeCost(thirdPartyFeeDescription);
+                                <dd class="govuk-summary-list__product@(i+1) mobile-side-by-side">
+                                    <p class="mobile-product-name">@ComparisonToolFieldValidator.ParseStringField(Model.products[i].product_name)</p>
+                                    <p>@(Html.Raw(costAndFrequency ?? "&dash;"))</p>
+                                </dd>                        
+                            }                                
+                        </div>
+                    }
+                }
+
+
+                <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key"></dt>
+                    @for (var i = 0; i < Model.products.Count; i++)
+                    {
+                        IDictionary<string, string> routeData = new Dictionary<string, string>();
+                        routeData.Add("product_id", Model.products[i].product_id.ToString());
+
+
+                        <dd class="govuk-summary-list__product@(i+1) mobile-side-by-side">
+                            <p class="mobile-product-name">@ComparisonToolFieldValidator.ParseStringField(Model.products[i].product_name)</p>
+                            @{
+                                var actionName = Model.JavascriptEnabled ? ActionConstants.ProductDetails : ActionConstants.ProductDetailsNoJs;
+                            }
+                            <a id="link-comparisontoolviews-compareproducts-see-features" aria-label="See features of @ComparisonToolFieldValidator.ParseStringField(Model.products[i].product_name)" role="button" asp-controller="comparisonTool" asp-action="@actionName" asp-all-route-data="routeData" class="govuk-button primary-big" data-module="govuk-button">
+                                See features
+                            </a>
+                        </dd>
+                    }
+                </div>
+            </dl>
         </div>
-        </dl>
-    </div>
     </div>
     </div>
 }

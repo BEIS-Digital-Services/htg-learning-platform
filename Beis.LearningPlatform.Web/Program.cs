@@ -1,5 +1,9 @@
+using Beis.Htg.VendorSme.Database;
 using Beis.LearningPlatform.Web;
 using Microsoft.Extensions.Logging.ApplicationInsights;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Beis.HelpToGrow.Common.Helpers;
+using Beis.HelpToGrow.Common.Services.HealthChecks;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Host.ConfigureAppConfiguration(configuration =>
@@ -26,6 +30,12 @@ var hasParsed = bool.TryParse(builder.Configuration["HttpListenerConfig:UseSSL"]
 // Add services to the container.
 builder.Services.AddMvcCore(r => r.EnableEndpointRouting = false);
 builder.Services.RegisterAllServices(builder.Configuration, hasParsed && useSsl);
+
+
+builder.Services.AddHealthChecks()
+    .AddDbContextCheck<HtgVendorSmeDbContext>("VendorSme Database")
+    .AddCheck<DependencyInjectionHealthCheckService>("Dependency Injection")
+    .AddCheck<StrapiHealthCheckService>("Strapi Health");
 
 // Configure the HTTP request pipeline.
 var app = builder.Build();
@@ -62,4 +72,10 @@ app.UseRouting();
 app.UseAuthorization();
 app.UseSession();
 app.UseMvc(r => r.MapRoute("default", "{controller=Home}/{action=Index}"));
+
+app.MapHealthChecks("api/healthz", new HealthCheckOptions
+{
+    ResponseWriter = HealthCheckJsonResponseWriter.Write
+});
+
 app.Run();

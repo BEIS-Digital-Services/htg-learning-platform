@@ -1,6 +1,6 @@
 ﻿global using AutoMapper;
-global using Beis.Htg.VendorSme.Database;
-global using Beis.Htg.VendorSme.Database.Models;
+global using Beis.HelpToGrow.Persistence;
+global using Beis.HelpToGrow.Persistence.Models;
 global using Beis.LearningPlatform.DAL.Repositories.ProductRepositories.Interface;
 global using Beis.LearningPlatform.Data.Entities.DiagnosticTool;
 global using Beis.LearningPlatform.Data.Entities.Feedback;
