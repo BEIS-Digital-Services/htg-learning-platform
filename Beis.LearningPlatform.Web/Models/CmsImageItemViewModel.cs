@@ -3,12 +3,10 @@
 public class CmsImageItemViewModel
 {
     private readonly CMSPageComponent _cmsPageComponent;
-    private readonly bool _applyCompletedLink;
 
-    public CmsImageItemViewModel(CMSPageComponent cmsPageComponent, bool applyCompletedLink)
+    public CmsImageItemViewModel(CMSPageComponent cmsPageComponent)
     {
         _cmsPageComponent = cmsPageComponent;
-        _applyCompletedLink = applyCompletedLink;
     }
 
     public bool HasContent
@@ -50,10 +48,7 @@ public class CmsImageItemViewModel
     {
         get
         {
-            if (_applyCompletedLink && _cmsPageComponent.CompletedLink != null)
-                return _cmsPageComponent.CompletedLink;
-            else
-                return _cmsPageComponent.Link;
+            return _cmsPageComponent.Link;
         }
     }
 
@@ -62,6 +57,32 @@ public class CmsImageItemViewModel
         get
         {
             return _cmsPageComponent;
+        }
+    }
+
+    public CMSPageLink CompletedLink
+    {
+        get
+        {
+            if (_cmsPageComponent.CompletedLink != null)
+                return _cmsPageComponent.CompletedLink;
+            else
+                return _cmsPageComponent.Link;
+        }
+    }
+    public string UniqueActionName
+    {
+        get
+        {
+            return _cmsPageComponent.UniqueActionName;
+        }
+    }
+
+    public string UniqueActionNameWithId
+    {
+        get
+        {
+            return $"{_cmsPageComponent.UniqueActionName}_{_cmsPageComponent.id}";
         }
     }
 }

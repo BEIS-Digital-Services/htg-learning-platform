@@ -10,15 +10,7 @@ public class CmsImageItemViewComponent : ViewComponent
 
     public IViewComponentResult Invoke(CMSPageComponent cmsPageComponent)
     {
-        bool applyCompletedLink = false;
-        string completedLinkSessionKey = $"{cmsPageComponent.UniqueActionName}__CompletedLink";
-        if (!string.IsNullOrWhiteSpace(completedLinkSessionKey))
-        {
-            var completedLinkSessionValue = _httpContextAccessor.HttpContext.Session.GetString(completedLinkSessionKey);
-            applyCompletedLink = completedLinkSessionValue == "true";
-        }
-
-        var viewModel = new CmsImageItemViewModel(cmsPageComponent, applyCompletedLink);
+        var viewModel = new CmsImageItemViewModel(cmsPageComponent);
         return View(viewModel);
     }
 }
