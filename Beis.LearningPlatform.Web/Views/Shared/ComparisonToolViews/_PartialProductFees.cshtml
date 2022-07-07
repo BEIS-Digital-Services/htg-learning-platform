@@ -1,0 +1,19 @@
+﻿@model IList<ComparisonToolAdditionalCost>
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+        <dl class="govuk-summary-list">
+            @foreach (var additionalCost in Model)
+            {
+                <div class="govuk-summary-list__row mobile-side-by-side">
+                    <dt class="govuk-summary-list__key">
+                        @additionalCost.CostDescription
+                    </dt>
+                    <dd class="govuk-summary-list">
+                        <p>@additionalCost.CostAndFrequency</p>
+                    </dd>
+                </div>
+            }
+        </dl>
+    </div>
+</div>

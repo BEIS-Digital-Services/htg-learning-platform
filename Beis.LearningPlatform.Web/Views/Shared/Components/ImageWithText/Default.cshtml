@@ -6,7 +6,7 @@
 <div id="@Model.Component.id" class="govuk-width-container">
     <div class="govuk-grid-row">
         <div class=" govuk-grid-column-two-thirds">
-            <div class="image-with-text">
+            <div class="image-with-text @Model.Component.AlteredPaddingTopSpace @Model.Component.AlteredPaddingBottomSpace">
                 <div class="govuk-body">
                     <img class="@Model.Component.imageSize text-float-@Model.Component.imagePosition" src="@Model.ImageUrl" alt="@Model.ImageAlt" />
                     @Html.Raw(Model.HtmlCopy)

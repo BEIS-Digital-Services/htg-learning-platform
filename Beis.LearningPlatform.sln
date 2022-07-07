@@ -21,11 +21,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Beis.LearningPlatform.BL", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Beis.LearningPlatform.BL.Tests", "Beis.LearningPlatform.BL.Tests\Beis.LearningPlatform.BL.Tests.csproj", "{27691F33-347C-4001-A8EC-DD86A251D950}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Library", "Library", "{609CAF0E-5CCF-472D-B00F-0BF6FC66590C}"
-	ProjectSection(SolutionItems) = preProject
-		Library\Beis.Htg.VendorSme.Database.dll = Library\Beis.Htg.VendorSme.Database.dll
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
