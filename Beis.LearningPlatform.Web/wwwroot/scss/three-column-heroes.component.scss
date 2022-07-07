@@ -4,7 +4,9 @@
 .three-column-heroes {
     .govuk-grid-column-one-third {
         h3 {
-            min-height: 2.7em;
+            @include respond(desktop) {
+                min-height: 2.7em;
+            }
         }
     }
 }
