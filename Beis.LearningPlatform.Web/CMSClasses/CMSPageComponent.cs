@@ -34,17 +34,19 @@ namespace Beis.LearningPlatform.Web.StrapiApi.Models
                 var imageUrl = default(string);
                 if (!string.IsNullOrWhiteSpace(abbr))
                 {
-                    Enum.TryParse(abbr, out ImageAbbrTypes imageAbbr);
-                    imageUrl = imageAbbr switch
+                    if (Enum.TryParse(abbr, out ImageAbbrTypes imageAbbr))
                     {
-                        ImageAbbrTypes.pdf => "/assets/images/pdf.svg",
-                        ImageAbbrTypes.text => "/assets/images/txt.svg",
-                        ImageAbbrTypes.csv => "/assets/images/csv.svg",
-                        ImageAbbrTypes.word => "/assets/images/doc.svg",
-                        ImageAbbrTypes.pp => "/assets/images/ppt.svg",
-                        ImageAbbrTypes.excel => "/assets/images/xls.svg",
-                        _ => "/assets/images/txt.svg"
-                    };
+                        imageUrl = imageAbbr switch
+                        {
+                            ImageAbbrTypes.pdf => "/assets/images/pdf.svg",
+                            ImageAbbrTypes.text => "/assets/images/txt.svg",
+                            ImageAbbrTypes.csv => "/assets/images/csv.svg",
+                            ImageAbbrTypes.word => "/assets/images/doc.svg",
+                            ImageAbbrTypes.pp => "/assets/images/ppt.svg",
+                            ImageAbbrTypes.excel => "/assets/images/xls.svg",
+                            _ => "/assets/images/txt.svg"
+                        };
+                    }
                 }
                 return imageUrl;
             }
