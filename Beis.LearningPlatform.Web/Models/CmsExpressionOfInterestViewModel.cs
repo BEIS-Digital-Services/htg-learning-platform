@@ -3,10 +3,12 @@
     public class CmsExpressionOfInterestViewModel
     {
         private readonly CMSPageComponent _cmsPageComponent;
+        private readonly string _pageName;
 
-        public CmsExpressionOfInterestViewModel(CMSPageComponent cmsPageComponent)
+        public CmsExpressionOfInterestViewModel(IPageViewModel pageViewModel, CMSPageComponent cmsPageComponent)
         {
             _cmsPageComponent = cmsPageComponent;
+            _pageName = pageViewModel.pagename;
         }
 
         public bool HasContent
@@ -39,5 +41,12 @@
             }
         }
 
+        public string PageName
+        {
+            get
+            {
+                return this._pageName;
+            }
+        }
     }
 }

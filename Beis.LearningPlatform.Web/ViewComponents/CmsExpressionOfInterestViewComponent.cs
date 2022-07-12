@@ -10,9 +10,9 @@
         }
 
 
-        public IViewComponentResult Invoke(CMSPageComponent cmsPageComponent)
+        public IViewComponentResult Invoke(IPageViewModel pageViewModel, CMSPageComponent cmsPageComponent)
         {
-            var viewModel = new CmsExpressionOfInterestViewModel(cmsPageComponent);
+            var viewModel = new CmsExpressionOfInterestViewModel(pageViewModel, cmsPageComponent);
 
             if (viewModel.HasContent)
             {
