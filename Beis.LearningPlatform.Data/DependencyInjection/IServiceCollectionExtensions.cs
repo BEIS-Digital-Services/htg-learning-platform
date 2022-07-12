@@ -16,7 +16,6 @@ namespace Beis.LearningPlatform.Data.DependencyInjection
         /// <returns>An IServiceCollection that is the original service collection.</returns>
         public static IServiceCollection AddDataServices(this IServiceCollection serviceCollection)
         {
-            serviceCollection.AddTransient<ILocationRepository, LocationRepository>();
             serviceCollection.AddTransient<IFeedbackProblemReportRepository, FeedbackProblemReportRepository>();
             serviceCollection.AddTransient<IFeedbackPageUsefulRepository, FeedbackPageUsefulRepository>();
             serviceCollection.AddTransient<IDiagnosticToolEmailAnswerRepository, DiagnosticToolEmailAnswerRepository>();
