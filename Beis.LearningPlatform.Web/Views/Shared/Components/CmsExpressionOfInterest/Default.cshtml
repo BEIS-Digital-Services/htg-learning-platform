@@ -1,0 +1,38 @@
+﻿@model CmsExpressionOfInterestViewModel
+
+<div class="feedback-prompt @Model.Component.AlteredMarginTopSpace @Model.Component.AlteredMarginBottomSpace">
+    <div class="feedback-bg-color">
+        <div class="govuk-width-container govuk-!-padding-1">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-full-width @Model.Component.AlteredPaddingTopSpace @Model.Component.AlteredPaddingBottomSpace">
+                    <div style="border:1px dashed red; padding:10px;">
+                        <h1>@Model.CTABannerText</h1>
+                        <p>@Model.CTAButtonText</p>
+                    </div>
+                    <div style="border:1px dashed orange; padding:10px;">
+                        <h1>@Model.FormHeader</h1>
+                        @Html.Raw(Model.FormIntroHtml)
+                    </div>
+                    <div style="border:1px dashed yellow; padding:10px;">
+                        <h1>@Model.ThankYouHeader</h1>
+                        @Html.Raw(Model.ThankYouTextHtml)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    const dto = {
+        pageName: '@(Model.PageName)',
+        userName: '',
+        userEmail: '',
+        userBusinessName: '',
+        userPhone: '',
+        optInMarketing: false,
+        optInReadPrivacy: false
+    };
+
+    console.log(dto.pageName);
+</script>
+
