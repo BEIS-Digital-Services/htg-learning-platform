@@ -1,21 +1,114 @@
 ﻿@model CmsExpressionOfInterestViewModel
 
-<div class="feedback-prompt @Model.Component.AlteredMarginTopSpace @Model.Component.AlteredMarginBottomSpace">
-    <div class="feedback-bg-color">
+<div @Model.Component.AlteredMarginTopSpace @Model.Component.AlteredMarginBottomSpace">
+    @* class="feedback-prompt*@
+    <div>
+        @*class="feedback-bg-color"*@
         <div class="govuk-width-container govuk-!-padding-1">
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-full-width @Model.Component.AlteredPaddingTopSpace @Model.Component.AlteredPaddingBottomSpace">
-                    <div style="border:1px dashed red; padding:10px;">
-                        <h1>@Model.CTABannerText</h1>
-                        <p>@Model.CTAButtonText</p>
+                    <div id="signuprow">
+                        <div class="govuk-grid-column-one-half">
+                            <h1>Get news about the scheme direct to your inbox</h1>
+                        </div>
+                        <div class="govuk-grid-column-one-half govuk-!-padding-6">
+                            <a onClick="signup()" role="button" draggable="false" class="govuk-button govuk-button--start" data-module="govuk-button">
+                                Start now
+                                <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
+                                    <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z" />
+                                </svg>
+                            </a>
+                        </div>
                     </div>
-                    <div style="border:1px dashed orange; padding:10px;">
-                        <h1>@Model.FormHeader</h1>
-                        @Html.Raw(Model.FormIntroHtml)
+                    <div class="govuk-grid-row govuk-!-padding-1" id="detailsrow">
+                        <h1 class="govuk-heading-l govuk-!-font-weight-bold">Enter your details</h1>
+                        <h3 class="govuk-!-padding-4 govuk-!-margin-left-3 govuk-!-font-weight-bold">Get notified about the new software and services as they become available, by entering your details below.</h3>
+                        <div class="govuk-grid-row govuk-!-padding-4">
+                            <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" data-module="govuk-error-summary" id="errorsummary">
+                                <h2 class="govuk-error-summary__title" id="error-summary-title">
+                                    There is a problem
+                                </h2>
+                                <div class="govuk-error-summary__body">
+                                    <ul class="govuk-list govuk-error-summary__list">
+                                        <li>
+                                            <a href="#passport-issued-day">You must enter your name</a>
+                                        </li>
+                                        <li>
+                                            <a href="#postcode-input">Please enter a valid email address. (e.g. name@domain.com)</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+
+                            <div class="govuk-grid-column-one-half govuk-form-group" id="errorname">
+                                <label class="govuk-label" for="name">
+                                    Name
+                                </label>
+                                <p id="name-error" class="govuk-error-message">
+                                    <span class="govuk-visually-hidden">Error:</span> You must enter your name
+                                </p>
+                                <input class="govuk-input" id="name" name="name" type="text">
+                            </div>
+
+                            <div class="govuk-grid-column-one-half" id="erroremail">
+                                <label class="govuk-label" for="email">
+                                    Email address
+                                </label>
+                                 <p id="name-error" class="govuk-error-message">
+                                    <span class="govuk-visually-hidden">Error:</span> Please enter a valid email address.
+                                </p>
+                                <input class="govuk-input" id="email" name="email" type="text">
+                            </div>
+
+                        </div>
+                        <div class="govuk-grid-row govuk-!-padding-4">
+                            <div class="govuk-grid-column-one-half">
+                                <label class="govuk-label" for="business-name">
+                                    Business name (optional)
+                                </label>
+                                <input class="govuk-input" id="business-name" name="business-name" type="text">
+                            </div>
+                            <div class="govuk-grid-column-one-half">
+                                <label class="govuk-label" for="phone-number">
+                                    Phone number (optional)
+                                </label>
+                                <input class="govuk-input" id="phone-number" name="phone-number" type="text">
+                            </div>
+                        </div>
+
+                        <div class="govuk-checkboxes govuk-!-padding-3 govuk-!-margin-left-4" data-module="govuk-checkboxes">
+                            <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" id="waste" name="waste" type="checkbox" value="carcasses">
+                                <label class="govuk-label govuk-checkboxes__label" for="waste">
+                                    I consent to the Department for Business, Energy & Industrial Strategy (BEIS)
+                                    contacting me by email to keep me informed about news and events relating to
+                                    Help to Grow: Digital. I am freely consenting to BEIS holding and processing my
+                                    personal data for marketing communication purposes.
+                                </label>
+                            </div>
+                            <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" id="waste-2" name="waste" type="checkbox" value="mines">
+                                <label class="govuk-label govuk-checkboxes__label" for="waste-2">
+                                    Tick this box to confirm you have read our privacy policy
+                                </label>
+                            </div>
+                            <div class="govuk-grid-row govuk-!-margin-top-8">
+                                <div class="govuk-button-group">
+                                    <button class="govuk-button" data-module="govuk-button" onClick="submit()">
+                                        Submit
+                                    </button>
+
+                                    <button class="govuk-button govuk-button--secondary" data-module="govuk-button" onClick="cancel()">
+                                        Cancel
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div style="border:1px dashed yellow; padding:10px;">
-                        <h1>@Model.ThankYouHeader</h1>
-                        @Html.Raw(Model.ThankYouTextHtml)
+                    <div id="responserow">
+                        <h1>Thank you for your response</h1>
+                        We will email you when we add new software or support to the Help to Grow: Digital scheme
                     </div>
                 </div>
             </div>
@@ -33,6 +126,61 @@
         optInReadPrivacy: false
     };
 
-    console.log(dto.pageName);
+    function signup() {
+        document.getElementById("detailsrow").style.display = "block"
+        document.getElementById("signuprow").style.display = "none"
+    }
+
+    function submit() {
+        debugger;
+
+        var isError = false;
+        if(document.getElementById("name").value == ""){
+            document.getElementById("errorname").classList.add("govuk-form-group--error");
+            document.getElementById("errorsummary").style.display = "block";
+            isError = true;
+        } 
+        if(document.getElementById("email").value == ""){
+            document.getElementById("erroremail").classList.add("govuk-form-group--error");
+            document.getElementById("errorsummary").style.display = "block"
+            isError = true;
+        } 
+
+        if (!isError) {
+              document.getElementById("detailsrow").style.display = "none"
+              document.getElementById("responserow").style.display = "block"
+        }  
+       
+    }
+
+    function cancel() {
+        document.getElementById("signuprow").style.display = "block"
+        document.getElementById("detailsrow").style.display = "none"
+        document.getElementById("errorsummary").style.display = "none";
+        document.getElementById("erroremail").classList.remove("govuk-form-group--error");
+        document.getElementById("errorname").classList.remove("govuk-form-group--error");
+    }
 </script>
+<style>
+    #responserow {
+        display: none;
+    }
+
+    #detailsrow {
+        display: none;
+    }
+
+    #errorsummary {
+        display: none;
+    }
+
+    #errorname p, #erroremail p {
+        display: none;
+    }
+    #errorname.govuk-form-group--error p, #erroremail.govuk-form-group--error p {
+        display : block
+    }
+
+    
+</style>
 
