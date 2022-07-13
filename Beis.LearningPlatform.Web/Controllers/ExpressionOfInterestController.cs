@@ -10,8 +10,8 @@
         }
 
         [HttpPost]
-        [Route("/expressionofinterest", Name = "ExpressionOfInterest")]
-        public async Task<JsonResult> ExpressionOfInterest(ExpressionOfInterestDto expressionOfInterestDto)
+        [Route("/expression-of-interest", Name = "ExpressionOfInterest")]
+        public async Task<JsonResult> ExpressionOfInterest([FromBody] ExpressionOfInterestDto expressionOfInterestDto)
         {
             if (!ModelState.IsValid)
             {

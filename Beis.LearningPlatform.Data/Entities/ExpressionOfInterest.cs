@@ -1,6 +1,6 @@
 ﻿namespace Beis.LearningPlatform.Data.Entities
 {
-    public class ExpressionOfInterestEntity : Entity
+    public class ExpressionOfInterest : Entity
     {
 	    public int Id { get; set; }
 	    public string PageName { get; set; }

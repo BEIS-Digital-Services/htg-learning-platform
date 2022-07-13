@@ -33,6 +33,18 @@
         optInReadPrivacy: false
     };
 
-    console.log(dto.pageName);
+    fetch('/expression-of-interest', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(dto)
+    })
+    .then((response) => {
+        console.log(response);
+    })
+    .catch(error => console.error('Unable to add item.', error));
+
 </script>
 

@@ -12,3 +12,7 @@ global using Microsoft.EntityFrameworkCore;
 global using Microsoft.Extensions.DependencyInjection;
 global using System.Linq.Expressions;
 global using Beis.LearningPlatform.Data.Entities;
+global using Beis.LearningPlatform.Data.Repositories;
+global using Beis.LearningPlatform.Data.Repositories.ExpressionOfInterest;
+global using Beis.LearningPlatform.Data.Repositories.SatisfactionSurvey;
+global using Beis.LearningPlatform.Data.Repositories.Skills;

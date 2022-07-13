@@ -4,7 +4,7 @@
     {
         public ExpressionOfInterestProfile()
         {
-            CreateMap<ExpressionOfInterestDto, ExpressionOfInterestEntity>();
+            CreateMap<ExpressionOfInterestDto, ExpressionOfInterest>();
         }
     }
 }

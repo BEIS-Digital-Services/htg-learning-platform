@@ -8,7 +8,7 @@
 
         public async Task<int> Add(ExpressionOfInterestDto expressionOfInterestDto)
         {
-            var entity = _mapper.Map<ExpressionOfInterestEntity>(expressionOfInterestDto);
+            var entity = _mapper.Map<ExpressionOfInterest>(expressionOfInterestDto);
             entity.RecordCreatedUtc = DateTime.UtcNow;
 
             await _repository.AddAsync(entity);

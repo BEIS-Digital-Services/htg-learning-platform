@@ -84,7 +84,8 @@ namespace Beis.LearningPlatform.Web.Utils
             services.AddScoped<ICookieControllerHelper, CookieControllerHelper>();
             services.AddScoped<IComparisonToolControllerHelper, ComparisonToolControllerHelper>();
             services.AddScoped<IFeedbackControllerHelper, FeedbackControllerHelper>();
-
+            services.AddScoped<IExpressionOfInterestControllerHelper, ExpressionOfInterestControllerHelper>();
+            
             // Local services
             services.AddScoped<ICmsApiIntegrationService, CmsApiIntegrationService>();
             services.AddScoped<ICmsService, CmsService>();
