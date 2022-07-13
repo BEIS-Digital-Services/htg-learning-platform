@@ -16,8 +16,8 @@
                 throw new ArgumentNullException(nameof(expressionOfInterestDto));                
             }
                 
-            var returnValue = await _expressionOfInterestDataService.Add(expressionOfInterestDto);
-            return new ServiceResponse<int>(requestId, true, string.Empty, returnValue);
+            var entityId = await _expressionOfInterestDataService.Add(expressionOfInterestDto);
+            return new ServiceResponse<int>(requestId, entityId != default, string.Empty, entityId);
         }
     }
 }

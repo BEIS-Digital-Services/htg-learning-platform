@@ -66,6 +66,8 @@ namespace Beis.LearningPlatform.Web.Utils
             services.AddAppServices();
             services.RegisterAppOptions(configuration);
 
+            services.AddAntiforgery(x => x.HeaderName = "X-XSRF-TOKEN");
+
             services.AddHsts(options =>
             {
                 options.Preload = true;
