@@ -8,15 +8,18 @@
         .govuk-grid-column-full {
             a {
                 color: $black;
-                font-weight:700;
+            }
+
+            a:first-child {
+                font-weight: 700;
             }
 
             span {
                 color: $black;
             }
 
-            .next-pointer{
-                margin-top:2px;
+            .next-pointer {
+                margin-top: 2px;
             }
         }
     }
