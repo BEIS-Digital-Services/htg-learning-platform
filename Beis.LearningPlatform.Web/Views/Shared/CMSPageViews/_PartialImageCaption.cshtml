@@ -8,7 +8,7 @@
         <div class="img-wrapper govuk-!-padding-bottom-6 @CamelCaseConverter.Delimiter(Model.background, "-")">
             @if (Model.image != null)
             {
-                <vc:cms-image options='new CmsImageViewModel{ ImageUrl = Model.image.url }' />
+                <vc:cms-image options='new CmsImageViewModel{ ImageUrl = Model.image.url, Title = Model.image.alternativeText }' />
             }
         </div>
 
