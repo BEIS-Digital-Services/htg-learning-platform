@@ -15,12 +15,12 @@
     {
         case FormDisplayControlType.Label:
             <fieldset>
-                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <div class="govuk-fieldset__legend govuk-fieldset__legend--l">
                     <h1 class="govuk-fieldset__heading">
                         <span>@currentFormStepElement.text</span>
                         <span class="govuk-!-font-weight-regular">@currentFormStepElement.text2</span>
                     </h1>
-                </legend>
+                </div>
             </fieldset>
 
             @if (currentFormStepElement.answerOptions != null)
@@ -46,25 +46,25 @@
 
         case FormDisplayControlType.CheckboxGroup:
             <fieldset>
-                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <div class="govuk-fieldset__legend govuk-fieldset__legend--l">
                     <h1 class="govuk-fieldset__heading">
                         <span>@currentFormStepElement.text</span>
                         <span class="govuk-!-font-weight-regular">@currentFormStepElement.text2</span>
                     </h1>
                     @if (!string.IsNullOrWhiteSpace(currentFormStepElement.hint))
                     {
-                        <span class="govuk-body @hintInBoldCss"><p>@currentFormStepElement.hint</p></span>
+                        <div class="govuk-body @hintInBoldCss"><p>@currentFormStepElement.hint</p></div>
                     }
                     @if (!string.IsNullOrWhiteSpace(currentFormStepElement.hint2))
                     {
-                        <span class="govuk-body @hint2InBoldCss"><p>@currentFormStepElement.hint2</p></span>
+                        <div class="govuk-body @hint2InBoldCss"><p>@currentFormStepElement.hint2</p></div>
                     }
 
                     @if (!string.IsNullOrWhiteSpace(currentFormStepElement.validationError))
                     {
                         <span asp-validation-for="@Model.steps[currentStep].elements[currentElement].textControlHtmlId" class="govuk-error-message">@currentFormStepElement.validationError</span>
                     }
-                </legend>
+                </div>
             </fieldset>
 
             @if (currentFormStepElement.answerOptions != null)
@@ -92,7 +92,7 @@
 
         case FormDisplayControlType.RadioGroup:
             <fieldset>
-                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <div class="govuk-fieldset__legend govuk-fieldset__legend--l">
                     <h1 class="govuk-fieldset__heading">
                         <span>@currentFormStepElement.text</span>
                         <span class="govuk-!-font-weight-regular">@currentFormStepElement.text2</span>
@@ -105,7 +105,7 @@
                     }
                     @if (!string.IsNullOrWhiteSpace(currentFormStepElement.hint))
                     {
-                        <span class="govuk-body @hintInBoldCss"><p>@currentFormStepElement.hint</p></span>
+                        <div class="govuk-body @hintInBoldCss"><p>@currentFormStepElement.hint</p></div>
                     }
                     @if (!string.IsNullOrWhiteSpace(currentFormStepElement.validationError))
                     {
@@ -113,7 +113,7 @@
                             @currentFormStepElement.validationError
                         </span>
                     }
-                </legend>
+                </div>
             </fieldset>
 
             @if (currentFormStepElement.answerOptions != null)
@@ -141,7 +141,7 @@
 
         case FormDisplayControlType.List:
             <fieldset>
-                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <div class="govuk-fieldset__legend govuk-fieldset__legend--l">
                     <h1 class="govuk-fieldset__heading">
                         <span>@currentFormStepElement.text</span>
                         <span class="govuk-!-font-weight-regular">@currentFormStepElement.text2</span>
@@ -149,7 +149,7 @@
                     <span asp-validation-for="@Model.steps[currentStep].elements[currentElement].textControlHtmlId" class="govuk-error-message">
                         @currentFormStepElement.validationError
                     </span>
-                </legend>
+                </div>
             </fieldset>
 
 
@@ -185,19 +185,19 @@
 
         case FormDisplayControlType.Textarea:
             <fieldset>
-                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <div class="govuk-fieldset__legend govuk-fieldset__legend--l">
                     <h1 class="govuk-fieldset__heading">
                         <span>@currentFormStepElement.text</span>
                         <span class="govuk-!-font-weight-regular">@currentFormStepElement.text2</span>
                     </h1>
                     @if (!string.IsNullOrWhiteSpace(currentFormStepElement.hint))
                     {
-                        <span class="govuk-body @hintInBoldCss"><p>@currentFormStepElement.hint</p></span>
+                        <div class="govuk-body @hintInBoldCss"><p>@currentFormStepElement.hint</p></div>
                     }
                     <span asp-validation-for="@Model.steps[currentStep].elements[currentElement].textControlHtmlId" class="govuk-error-message">
                         @currentFormStepElement.validationError
                     </span>
-                </legend>
+                </div>
             </fieldset>
             <div>
                 <textarea asp-for="@Model.steps[currentStep].elements[currentElement].value"
@@ -211,7 +211,7 @@
 
         case FormDisplayControlType.TextGroup:
             <fieldset>
-                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <div class="govuk-fieldset__legend govuk-fieldset__legend--l">
                     <div style="display:flex">
                         @if (string.IsNullOrWhiteSpace(Model.formLogo) == false)
                         {
@@ -235,11 +235,11 @@
                     }
                     @if (!string.IsNullOrWhiteSpace(currentFormStepElement.hint))
                     {
-                        <span class="govuk-body @hintInBoldCss"><p>@currentFormStepElement.hint</p></span>
+                        <div class="govuk-body @hintInBoldCss"><p>@currentFormStepElement.hint</p></div>
                     }
                     @if (!string.IsNullOrWhiteSpace(currentFormStepElement.hint2))
                     {
-                        <span class="govuk-body @hint2InBoldCss"><p>@currentFormStepElement.hint2</p></span>
+                        <div class="govuk-body @hint2InBoldCss"><p>@currentFormStepElement.hint2</p></div>
                     }
                     @if (!string.IsNullOrWhiteSpace(currentFormStepElement.validationError))
                     {
@@ -247,7 +247,7 @@
                             @currentFormStepElement.validationError
                         </span>
                     }
-                </legend>
+                </div>
             </fieldset>
 
             @if (currentFormStepElement.answerOptions != null)
