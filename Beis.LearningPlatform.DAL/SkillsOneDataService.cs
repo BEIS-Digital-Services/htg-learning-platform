@@ -19,7 +19,7 @@
         public async Task<int> Add(SkillsOneResponseDto skillsOneResponseDto)
         {
             var entity = _mapper.Map<SkillsOneResponse>(skillsOneResponseDto);
-            entity.Date = DateTime.Now;
+            entity.Date = DateTime.UtcNow;
 
             await _repository.AddAsync(entity);
             await SaveAsync();
