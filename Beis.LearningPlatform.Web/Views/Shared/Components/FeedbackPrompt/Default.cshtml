@@ -5,5 +5,12 @@
 }
 else
 {
-    <partial name="CMSPageViews/_PartialFeedbackPromptNoJs" model="@Model.CmsPageComponent" />
+    if (Model.IsFeedbackSubmitted)
+    {
+        <partial name="CMSPageViews/_PartialFeedbackPromptNoJsSubmitted" model="@Model.CmsPageComponent" />
+    }
+    else
+    {
+        <partial name="CMSPageViews/_PartialFeedbackPromptNoJs" model="@Model.CmsPageComponent" />
+    }    
 }
