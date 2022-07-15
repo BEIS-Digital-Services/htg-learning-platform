@@ -164,4 +164,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
+function skillsThreeSubmit(formTypeNum, itemKey) {
+    if (formTypeNum > 2) {
+        localStorage.setItem(itemKey, 'true');
+    }
+}
+
+function setImgItemLinkIcon(itemKey, spn_imgitemicon_std, spn_imgitemicon_completed) {
+
+    var isCompleted = localStorage.getItem(itemKey, 'true');
+    if (isCompleted == 'true') {
+        var spnStd = document.getElementById(spn_imgitemicon_std);
+        spnStd.style.display = "none";
+
+        var spnCompleted = document.getElementById(spn_imgitemicon_completed);
+        spnCompleted.style.display = "inline";
+    }
+}
+
 

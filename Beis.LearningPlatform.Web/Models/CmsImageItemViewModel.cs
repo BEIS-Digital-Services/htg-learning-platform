@@ -1,63 +1,88 @@
-﻿namespace Beis.LearningPlatform.Web.Models
+﻿namespace Beis.LearningPlatform.Web.Models;
+
+public class CmsImageItemViewModel
 {
-    public class CmsImageItemViewModel
+    private readonly CMSPageComponent _cmsPageComponent;
+
+    public CmsImageItemViewModel(CMSPageComponent cmsPageComponent)
     {
-        private readonly CMSPageComponent _cmsPageComponent;
+        _cmsPageComponent = cmsPageComponent;
+    }
 
-        public CmsImageItemViewModel(CMSPageComponent cmsPageComponent)
+    public bool HasContent
+    {
+        get
         {
-            _cmsPageComponent = cmsPageComponent;
+            return !string.IsNullOrEmpty(_cmsPageComponent.header)
+                && !string.IsNullOrEmpty(_cmsPageComponent.Summary)
+                && _cmsPageComponent.image != null
+                && _cmsPageComponent.Link != null;
         }
+    }
 
-        public bool HasContent
+    public string Header
+    {
+        get
         {
-            get
-            {
-                return !string.IsNullOrEmpty(_cmsPageComponent.header)
-                    && !string.IsNullOrEmpty(_cmsPageComponent.Summary)
-                    && _cmsPageComponent.image != null
-                    && _cmsPageComponent.Link != null;
-            }
+            return _cmsPageComponent.header;
         }
+    }
 
-        public string Header
+    public string Summary
+    {
+        get
         {
-            get
-            {
-                return _cmsPageComponent.header;
-            }
+            return _cmsPageComponent.Summary;
         }
+    }
 
-        public string Summary
+    public CMSPageImage Image
+    {
+        get
         {
-            get
-            {
-                return _cmsPageComponent.Summary;
-            }
+            return _cmsPageComponent.image;
         }
+    }
 
-        public CMSPageImage Image
+    public CMSPageLink Link
+    {
+        get
         {
-            get
-            {
-                return _cmsPageComponent.image;
-            }
+            return _cmsPageComponent.Link;
         }
+    }
 
-        public CMSPageLink Link
+    public CMSPageComponent Component
+    {
+        get
         {
-            get
-            {
+            return _cmsPageComponent;
+        }
+    }
+
+    public CMSPageLink CompletedLink
+    {
+        get
+        {
+            if (_cmsPageComponent.CompletedLink != null)
+                return _cmsPageComponent.CompletedLink;
+            else
                 return _cmsPageComponent.Link;
-            }
         }
-
-        public CMSPageComponent Component
+    }
+    public string UniqueActionName
+    {
+        get
         {
-            get
-            {
-                return _cmsPageComponent;
-            }
+            return _cmsPageComponent.UniqueActionName;
+        }
+    }
+
+    public string UniqueActionNameWithId
+    {
+        get
+        {
+            return $"{_cmsPageComponent.UniqueActionName}_{_cmsPageComponent.id}";
         }
     }
 }

@@ -81,7 +81,7 @@
 
         protected override FormTypes GetFormType()
         {
-            var route = _httpContextAccessor.HttpContext.Request.Path.Value.ToLower().Replace("/", "").Trim();
+            var route = _httpContextAccessor.HttpContext.Request.Path.Value?.ToLower().Replace("/", "").Trim();
             var formType = FormTypes.SkillsThreeNewcomerPlanning;
             switch (route)
             {
