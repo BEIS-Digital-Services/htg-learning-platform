@@ -5,7 +5,7 @@
     {
         private readonly IExpressionOfInterestService _expressionOfInterestService;
 
-        public ExpressionOfInterestControllerHelper(ILogger<FeedbackControllerHelper> logger, IExpressionOfInterestService expressionOfInterestService) : base(logger)
+        public ExpressionOfInterestControllerHelper(ILogger<ExpressionOfInterestControllerHelper> logger, IExpressionOfInterestService expressionOfInterestService) : base(logger)
         {
             _expressionOfInterestService = expressionOfInterestService;
         }
