@@ -22,7 +22,7 @@
                             }
 
                             <div class="youtube-container">
-                                <iframe width="560" height="315" src="@Model.url.Replace("youtu.be","www.youtube.com/embed/")" title="YouTube video player" style="border:0px;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                <iframe width="560" height="315" src="@Model.url.Replace("youtu.be","www.youtube.com/embed/")" title="@Model.title" style="border:0px;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                             </div>
 
                             @if (Model.textblock != null)
