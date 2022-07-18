@@ -1,0 +1,33 @@
+@import 'beis-variables.scss';
+@import 'beis-mixins.scss';
+
+
+.expression-of-interest {
+    #step3 {
+        display: none;
+    }
+
+    #step2 {
+        display: none;
+    }
+
+    #errorsummary {
+        display: none;
+    }
+
+    #errorname p, 
+    #erroremail p, 
+    #errorbusinessname p, 
+    #errorphonenumber p, 
+    #errorprivacyPolicy p {
+        display: none;
+    }
+
+    #errorname.govuk-form-group--error p, 
+    #erroremail.govuk-form-group--error p, 
+    #errorbusinessname.govuk-form-group--error p, 
+    #errorphonenumber.govuk-form-group--error p, 
+    #errorprivacyPolicy.govuk-form-group--error p {
+        display: block
+    }
+}
