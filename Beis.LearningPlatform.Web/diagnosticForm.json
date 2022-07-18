@@ -651,7 +651,7 @@
               "showHintInBold": true,
               "id": 200,
               "text": "Question 2:",
-              "text2": "Describe your business' biggest challange that you'd like to fix.",
+              "text2": "Describe your business' biggest challenge that you'd like to fix.",
               "textControlHtmlId": "lblQuestion2",
               "nextButtonText": "Go to question 3",
               "textControlHtmlName": "Question2"
