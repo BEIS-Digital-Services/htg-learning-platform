@@ -1,123 +1,169 @@
 ﻿@model CmsExpressionOfInterestViewModel
 
 <div @Model.Component.AlteredMarginTopSpace @Model.Component.AlteredMarginBottomSpace">
-    @* class="feedback-prompt*@
+
     <div>
-        @*class="feedback-bg-color"*@
-        <div class="govuk-width-container govuk-!-padding-1">
-            <div class="govuk-grid-row">
-                <div class="govuk-grid-column-full-width @Model.Component.AlteredPaddingTopSpace @Model.Component.AlteredPaddingBottomSpace">
-                    <div id="signuprow">
-                        <div class="govuk-grid-column-one-half">
-                            <h1>Get news about the scheme direct to your inbox</h1>
-                        </div>
-                        <div class="govuk-grid-column-one-half govuk-!-padding-6">
-                            <a onClick="signup()" role="button" draggable="false" class="govuk-button govuk-button--start" data-module="govuk-button">
-                                Start now
-                                <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
-                                    <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z" />
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="govuk-grid-row govuk-!-padding-1" id="detailsrow">
-                        <h1 class="govuk-heading-l govuk-!-font-weight-bold">Enter your details</h1>
-                        <h3 class="govuk-!-padding-4 govuk-!-margin-left-3 govuk-!-font-weight-bold">Get notified about the new software and services as they become available, by entering your details below.</h3>
-                        <div class="govuk-grid-row govuk-!-padding-4">
-                            <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" data-module="govuk-error-summary" id="errorsummary">
-                                <h2 class="govuk-error-summary__title" id="error-summary-title">
-                                    There is a problem
-                                </h2>
-                                <div class="govuk-error-summary__body">
-                                    <ul class="govuk-list govuk-error-summary__list">
-                                        <li>
-                                            <a href="#passport-issued-day">You must enter your name</a>
-                                        </li>
-                                        <li>
-                                            <a href="#postcode-input">Please enter a valid email address. (e.g. name@domain.com)</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            
-
-                            <div class="govuk-grid-column-one-half govuk-form-group" id="errorname">
-                                <label class="govuk-label" for="name">
-                                    Name
-                                </label>
-                                <p id="name-error" class="govuk-error-message">
-                                    <span class="govuk-visually-hidden">Error:</span> You must enter your name
-                                </p>
-                                <input class="govuk-input" id="name" name="name" type="text">
-                            </div>
-
-                            <div class="govuk-grid-column-one-half" id="erroremail">
-                                <label class="govuk-label" for="email">
-                                    Email address
-                                </label>
-                                 <p id="name-error" class="govuk-error-message">
-                                    <span class="govuk-visually-hidden">Error:</span> Please enter a valid email address.
-                                </p>
-                                <input class="govuk-input" id="email" name="email" type="text">
-                            </div>
-
-                        </div>
-                        <div class="govuk-grid-row govuk-!-padding-4">
-                            <div class="govuk-grid-column-one-half">
-                                <label class="govuk-label" for="business-name">
-                                    Business name (optional)
-                                </label>
-                                <input class="govuk-input" id="business-name" name="business-name" type="text">
-                            </div>
-                            <div class="govuk-grid-column-one-half">
-                                <label class="govuk-label" for="phone-number">
-                                    Phone number (optional)
-                                </label>
-                                <input class="govuk-input" id="phone-number" name="phone-number" type="text">
-                            </div>
-                        </div>
-
-                        <div class="govuk-checkboxes govuk-!-padding-3 govuk-!-margin-left-4" data-module="govuk-checkboxes">
-                            <div class="govuk-checkboxes__item">
-                                <input class="govuk-checkboxes__input" id="waste" name="waste" type="checkbox" value="carcasses">
-                                <label class="govuk-label govuk-checkboxes__label" for="waste">
-                                    I consent to the Department for Business, Energy & Industrial Strategy (BEIS)
-                                    contacting me by email to keep me informed about news and events relating to
-                                    Help to Grow: Digital. I am freely consenting to BEIS holding and processing my
-                                    personal data for marketing communication purposes.
-                                </label>
-                            </div>
-                            <div class="govuk-checkboxes__item">
-                                <input class="govuk-checkboxes__input" id="waste-2" name="waste" type="checkbox" value="mines">
-                                <label class="govuk-label govuk-checkboxes__label" for="waste-2">
-                                    Tick this box to confirm you have read our privacy policy
-                                </label>
-                            </div>
-                            <div class="govuk-grid-row govuk-!-margin-top-8">
-                                <div class="govuk-button-group">
-                                    <button class="govuk-button" data-module="govuk-button" onClick="submit()">
-                                        Submit
-                                    </button>
-
-                                    <button class="govuk-button govuk-button--secondary" data-module="govuk-button" onClick="cancel()">
-                                        Cancel
-                                    </button>
+        <div>
+            <div class="feedback-prompt">
+                <div class="feedback-bg-color">
+                    <div class="govuk-width-container govuk-!-padding-1" id="step1">
+                        <div class="govuk-grid-row">
+                            <div class="govuk-grid-column-full-width">
+                                <div>
+                                    <div class="govuk-grid-column-two-thirds">
+                                        <h1>Get news and updates about the scheme</h1>
+                                    </div>
+                                    <div class="govuk-grid-column-one-third govuk-!-padding-6">
+                                        <a onClick="goToStep(2)" role="button" draggable="false" class="govuk-button govuk-button--start primary" data-module="govuk-button">
+                                            Sign up
+                                            <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
+                                                <path fill="#FFB000" d="M0 0h13l20 20-20 20H0l20-20z" />
+                                            </svg>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div id="responserow">
-                        <h1>Thank you for your response</h1>
-                        We will email you when we add new software or support to the Help to Grow: Digital scheme
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="govuk-width-container govuk-!-padding-1">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full-width">
+            <div class="govuk-grid-row govuk-!-padding-1" id="step2">
+                <h1 class="govuk-heading-l govuk-!-font-weight-bold">Enter your details</h1>
+                <h3 class="govuk-!-padding-4 govuk-!-margin-left-3 govuk-!-font-weight-bold">Get information about Help to Grow:Digital including news,events and when software becomes available by entering your details below.</h3>
+                <div class="govuk-grid-row govuk-!-padding-4">
+                    <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" data-module="govuk-error-summary" id="errorsummary">
+                        <h2 class="govuk-error-summary__title" id="error-summary-title">
+                            There is a problem
+                        </h2>
+                        <div class="govuk-error-summary__body">
+                            <ul class="govuk-list govuk-error-summary__list">
+                                <li id="name-error">
+                                    <a href="#name">Please enter your name</a>
+                                </li>
+                                <li id="businessname-error">
+                                    <a href="#business-name">Please enter your business name</a>
+                                </li>
+                                <li id="contact-error">
+                                    <a href="#email">You must add either your phone number or valid email address to submit this form</a>
+                                </li>
+                                <li id="privacyPolicy-error">
+                                    <a href="#privacyPolicy">Please tick to confirm you've read our privacy policy</a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
+
+
+                    <div class="govuk-grid-column-one-half govuk-form-group" id="errorname">
+                        <label class="govuk-label" for="name">
+                            Name
+                        </label>
+                        <p id="errorname" class="govuk-error-message">
+                            <span class="govuk-visually-hidden">Error:</span> Please enter your name
+                        </p>
+                        <input class="govuk-input" id="name" name="name" type="text" />
+                    </div>
+
+                    <div class="govuk-grid-column-one-half" id="errorbusinessname">
+                        <label class="govuk-label" for="business-name">
+                            Business name
+                        </label>
+                        <p id="errorbusinessname" class="govuk-error-message">
+                            <span class="govuk-visually-hidden">Error:</span>Please enter your business name
+                        </p>
+                        <input class="govuk-input" id="business-name" name="business-name" type="text">
+                    </div>
+                </div>
+                <h3 class=" govuk-!-margin-left-7 govuk-!-font-weight-bold">Please enter how you would like to be contacted</h3>
+                <div class="govuk-grid-column-two-thirds">
+                    <p class="govuk-body govuk-!-margin-left-4">I consent to the Department for Business, Energy & Industrial Strategy (BEIS) contacting me(including through one or more of the third party recipients identified in the policy) by:</p>
+                </div>
+                <div class="govuk-grid-row govuk-!-padding-4">
+                    <div class="govuk-grid-column-one-half" id="erroremail">
+                        <label class="govuk-label" for="email">
+                            Email address (optional)
+                        </label>
+                        <p id="erroremail" class="govuk-error-message">
+                            <span class="govuk-visually-hidden">Error:</span> Please enter a valid email address.(e.g. name@domain.com)
+                        </p>
+                        <input class="govuk-input" id="email" name="email" type="text">
+                    </div>
+                </div>
+                <div class="govuk-grid-row govuk-!-padding-4">
+                    <div class="govuk-grid-column-one-half" id="errorphonenumber">
+                        <label class="govuk-label" for="phone-number">
+                            Phone number (optional)
+                        </label>
+                        <p id="errorphonenumber" class="govuk-error-message">
+                            <span class="govuk-visually-hidden">Error:</span>Please enter a phone number
+                        </p>
+                        <input class="govuk-input" id="phone-number" name="phone-number" type="number">
+                    </div>
+                </div>
+
+
+                <p class="govuk-body govuk-!-margin-left-4 govuk-grid-column-two-thirds">to keep me informed about news,updated and events relating to Help to Grow: Digital and contact me if I have expressed interest in receiving more information. By filling out the box(es) above I am freely consenting to BEIS(and/or the third party recipients identified in the privacy policy) holding and processing my personal data for these purposes.</p>
+
+
+
+                <div class="govuk-grid-row">
+                    <div class="govuk-grid-column-two-thirds">
+                        <div class="govuk-checkboxes govuk-!-padding-3 govuk-!-margin-left-1" data-module="govuk-checkboxes" id="errorprivacyPolicy">
+                            <p id="errorprivacyPolicy" class="govuk-error-message">
+                                <span class="govuk-visually-hidden">Error:</span>Please tick to confirm you've read our privacy policy
+                            </p>
+                            <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" id="privacyPolicy" name="privacyPolicy" type="checkbox">
+                                <label class="govuk-label govuk-checkboxes__label" for="privacyPolicy">
+                                    Tick this box to confirm you have read our <a href="/privacy">privacy policy</a>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="govuk-grid-row govuk-!-margin-top-8 govuk-!-padding-3 govuk-!-margin-left-4">
+                    <div class="govuk-button-group">
+                        <button class="govuk-button primary" data-module="govuk-button" onClick="submit()">
+                            Submit
+                        </button>
+
+                        <button class="govuk-button secondary" data-module="govuk-button" onClick="goToStep(1)">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+            <div id="step3">
+                <h1 class="govuk-!-padding-4">Thank you for your response</h1>
+                <div class="govuk-body govuk-!-padding-4">
+                    We will email you when we add new software or support to the Help to Grow: Digital scheme
+                </div>
+                <div class="govuk-body govuk-!-padding-4">
+                    You can find more help on how to choose, buy and implement software in our <a class="govuk-link" href="#">articles and case studies</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 <script>
     const dto = {
-        pageName: '@(Model.PageName)',
+        pageName: '(PageName)',
         userName: '',
         userEmail: '',
         userBusinessName: '',
@@ -126,47 +172,164 @@
         optInReadPrivacy: false
     };
 
-    function signup() {
-        document.getElementById("detailsrow").style.display = "block"
-        document.getElementById("signuprow").style.display = "none"
+    function goToStep(stepNo) {
+        ["1", "2", "3"].forEach((step) => {
+            document.getElementById("step" + step).style.display = step == stepNo ? "block" : "none"
+        })
+        if (stepNo == 2) {
+            document.getElementById("name").value = "";
+            document.getElementById("email").value = "";
+            document.getElementById("business-name").value = "";
+            document.getElementById("phone-number").value = "";
+            document.getElementById("erroremail").classList.remove("govuk-form-group--error");
+            document.getElementById("errorname").classList.remove("govuk-form-group--error");
+            document.getElementById("errorbusinessname").classList.remove("govuk-form-group--error");
+            document.getElementById("errorphonenumber").classList.remove("govuk-form-group--error");
+            document.getElementById("errorprivacyPolicy").classList.remove("govuk-form-group--error")
+            document.getElementById("name").classList.remove("govuk-input--error");
+            document.getElementById("email").classList.remove("govuk-input--error");
+            document.getElementById("business-name").classList.remove("govuk-input--error");
+            document.getElementById("phone-number").classList.remove("govuk-input--error");
+            document.getElementById("errorsummary").style.display = "none";
+            document.getElementById("privacyPolicy").checked = false;
+        }
     }
 
     function submit() {
-        debugger;
 
         var isError = false;
-        if(document.getElementById("name").value == ""){
+        if (document.getElementById("name").value == "") {
             document.getElementById("errorname").classList.add("govuk-form-group--error");
+            document.getElementById("name").classList.add("govuk-input--error");
+            document.getElementById("name-error").style.display = "block";
             document.getElementById("errorsummary").style.display = "block";
             isError = true;
-        } 
-        if(document.getElementById("email").value == ""){
+        } else {
+            document.getElementById("name-error").style.display = "none";
+            document.getElementById("errorname").classList.remove("govuk-form-group--error");
+            document.getElementById("name").classList.remove("govuk-input--error");
+        }
+
+        if (document.getElementById("business-name").value == "") {
+            document.getElementById("errorbusinessname").classList.add("govuk-form-group--error");
+            document.getElementById("business-name").classList.add("govuk-input--error");
+            document.getElementById("businessname-error").style.display = "block";
+            document.getElementById("errorsummary").style.display = "block";
+            isError = true;
+        } else {
+            document.getElementById("businessname-error").style.display = "none";
+            document.getElementById("errorbusinessname").classList.remove("govuk-form-group--error");
+            document.getElementById("business-name").classList.remove("govuk-input--error");
+        }
+
+        if (!validateEmail(document.getElementById("email").value) && document.getElementById("phone-number").value == "") {
             document.getElementById("erroremail").classList.add("govuk-form-group--error");
+            document.getElementById("errorphonenumber").classList.add("govuk-form-group--error");
+            document.getElementById("email").classList.add("govuk-input--error");
+            document.getElementById("phone-number").classList.add("govuk-input--error");
+            document.getElementById("contact-error").style.display = "block";
             document.getElementById("errorsummary").style.display = "block"
             isError = true;
-        } 
+        } else {
+            document.getElementById("contact-error").style.display = "none";
+            document.getElementById("erroremail").classList.remove("govuk-form-group--error");
+            document.getElementById("email").classList.remove("govuk-input--error");
+            document.getElementById("errorphonenumber").classList.remove("govuk-form-group--error");
+            document.getElementById("phone-number").classList.remove("govuk-input--error");
+        }
+
+
+
+        if (!document.getElementById("privacyPolicy").checked) {
+            document.getElementById("errorprivacyPolicy").classList.add("govuk-form-group--error")
+            document.getElementById("privacyPolicy-error").style.display = "block";
+            document.getElementById("errorsummary").style.display = "block"
+            isError = true;
+        } else {
+            document.getElementById("errorprivacyPolicy").classList.remove("govuk-form-group--error")
+            document.getElementById("privacyPolicy-error").style.display = "none";
+        }
+
 
         if (!isError) {
-              document.getElementById("detailsrow").style.display = "none"
-              document.getElementById("responserow").style.display = "block"
-        }  
-       
+            document.getElementById("step2").style.display = "none"
+            document.getElementById("step3").style.display = "block"
+            callAPI();
+        }
+
     }
 
-    function cancel() {
-        document.getElementById("signuprow").style.display = "block"
-        document.getElementById("detailsrow").style.display = "none"
-        document.getElementById("errorsummary").style.display = "none";
-        document.getElementById("erroremail").classList.remove("govuk-form-group--error");
-        document.getElementById("errorname").classList.remove("govuk-form-group--error");
+
+    function validateEmail(email) {
+        return email.match(
+            /^(([^<>()[\]\\.,;:\s@@\"]+(\.[^<>()[\]\\.,;:\s@@\"]+)*)|(\".+\"))@@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        );
+    }
+
+    function removeError(processname) {
+
+        if (processname == "contact") {
+            if (document.getElementById("email").value != "" || document.getElementById("phone-number").value != "") {
+                document.getElementById("contact-error").style.display = "none";
+                document.getElementById("erroremail").classList.remove("govuk-form-group--error");
+                document.getElementById("errorphonenumber").classList.remove("govuk-form-group--error");
+                document.getElementById("email").classList.remove("govuk-input--error");
+                document.getElementById("phone-number").classList.remove("govuk-input--error");
+            }
+        } else {
+            document.getElementById("error" + processname).classList.remove("govuk-form-group--error");
+            document.getElementById(processname + "-error").style.display = "none";
+        }
+
+
+        if (document.getElementById("name").value != "" && document.getElementById("business-name").value != "" && (document.getElementById("email").value != "" || document.getElementById("phone-number").value != "") && document.getElementById("privacyPolicy").checked) {
+            document.getElementById("errorsummary").style.display = "none";
+        }
+    }
+
+    function callAPI() {
+        const dto = {
+            pageName: 'PageName',
+            userName: document.getElementById("name").value,
+            userEmail: document.getElementById("email").value,
+            userBusinessName: document.getElementById("business-name").value,
+            userPhone: document.getElementById("phone-number").value,
+            optInMarketingEmail: true,
+            optInMarketingPhone: true,
+            optInReadPrivacy: true
+        };
+
+        //const requestVerificationToken =
+        //    document.querySelector("form[id='expresssion-of-interest-form'] input[name='__RequestVerificationToken']").value;
+        //console.log(requestVerificationToken);
+
+        const requestVerificationToken = "";
+
+        fetch('/expression-of-interest', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'X-XSRF-TOKEN': requestVerificationToken
+            },
+            body: JSON.stringify(dto)
+        })
+            .then((response) => {
+                if (response.status === 200)
+                    console.log(response);
+                else
+                    console.warn(response);
+            })
+            .catch(error => console.error(error)); // TODO: Remove all console log messages - show error using validation UI.
     }
 </script>
+
 <style>
-    #responserow {
+    #step3 {
         display: none;
     }
 
-    #detailsrow {
+    #step2 {
         display: none;
     }
 
@@ -174,13 +337,13 @@
         display: none;
     }
 
-    #errorname p, #erroremail p {
+    #errorname p, #erroremail p, #errorbusinessname p ,#errorphonenumber p,#errorprivacyPolicy p {
         display: none;
     }
-    #errorname.govuk-form-group--error p, #erroremail.govuk-form-group--error p {
-        display : block
-    }
 
-    
+    #errorname.govuk-form-group--error p, #erroremail.govuk-form-group--error p,#errorbusinessname.govuk-form-group--error p,#errorphonenumber.govuk-form-group--error p,#errorprivacyPolicy.govuk-form-group--error p{
+        display: block
+    }
 </style>
+
 
