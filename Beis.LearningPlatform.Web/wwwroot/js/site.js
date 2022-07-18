@@ -161,6 +161,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
+    var anchorElmnts = document.getElementsByTagName("a");
+    for (var i = 0; i < anchorElmnts.length; i++) {
+        if (typeof anchorElmnts[i].onclick === 'function' && !anchorElmnts[i].onkeydown && anchorElmnts[i].getAttribute("data-tabclick")) {
+
+            anchorElmnts[i].onkeydown = function (event) {
+                switch (event.which) {
+                    case 32: { // KEY_SPACE
+                        event.stopPropagation;
+                        this.click();
+                        break;
+                    }
+                }
+                return true;
+            };
+        }
+    }
 
 });
 
@@ -182,4 +198,13 @@ function setImgItemLinkIcon(itemKey, spn_imgitemicon_std, spn_imgitemicon_comple
     }
 }
 
-
+function keyHandler(event, func) {
+    switch (event.which) {
+        case KEY_SPACE: {
+            event.stopPropagation;
+            return func();
+            break;
+        }
+    }
+    return true;
+}

@@ -23,8 +23,8 @@
                             <p id="FeedbackYesNoPanel" class="govuk-button-group">
                                 @if (!string.IsNullOrWhiteSpace(Model.titleYes.url))
                                 {
-                                    <a id="link-cmspageviews-feedbackpromptjs-yes" role="button"
-                                       onclick="feedback('yes')"
+                                    <a id="link-cmspageviews-feedbackpromptjs-yes" role="button" 
+                                       onclick="feedback('yes')" href="javascript:" data-tabclick="true"
                                        class="govuk-button @SetButtonType(Model.titleYes.type, Model.titleYes.custom_class)"
                                        data-module="govuk-button">
                                         @Model.titleYes.label
@@ -34,7 +34,7 @@
                                 @if (!string.IsNullOrWhiteSpace(Model.titleNo.url))
                                 {
                                     <a id="link-cmspageviews-feedbackpromptjs-no" role="button"
-                                       onclick="feedback('no')"
+                                       onclick="feedback('no')" href="javascript:" data-tabclick="true"
                                        class="govuk-button @SetButtonType(Model.titleNo.type, Model.titleNo.custom_class)"
                                        data-module="govuk-button">
                                         @Model.titleNo.label
@@ -49,7 +49,7 @@
                                 @if (!string.IsNullOrWhiteSpace(Model.titleReport.url))
                                 {
                                     <a id="link-cmspageviews-feedbackpromptjs-report" role="button"
-                                       onclick="feedback('report')"
+                                       onclick="feedback('report')" href="javascript:" data-tabclick="true"
                                        class="govuk-button @SetButtonType(Model.titleReport.type, Model.titleReport.custom_class)"
                                        data-module="govuk-button">
                                         @Model.titleReport.label
@@ -65,7 +65,7 @@
                 @if (Model.NoCancelButton != null)
                 {
                     <a id="link-cmspageviews-feedbackpromptjs-not-useful" class="govuk-button secondary"
-                       onclick="feedback('close')"
+                       onclick="feedback('close')" href="javascript:" data-tabclick="true"
                        data-track-category="yesNoFeedbackForm"
                        data-track-action="FormClose"
                        aria-controls="page-is-not-useful"
@@ -121,7 +121,7 @@
             <div class="govuk-width-container">
                  @if (Model.ReportCancelButton != null) {
                     <a id="link-cmspageviews-feedbackpromptjs-page-is-not-useful" class="govuk-button secondary"
-                       onclick="feedback('close')"
+                       onclick="feedback('close')" href="javascript:" data-tabclick="true"
                        data-track-category="yesNoFeedbackForm"
                        data-track-action="fFormClose"
                        aria-controls="page-is-not-useful"
