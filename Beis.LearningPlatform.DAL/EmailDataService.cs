@@ -21,7 +21,7 @@ namespace Beis.LearningPlatform.DAL
         async Task<int> IEmailDataService.Add(DiagnosticToolEmailAnswerDto diagnosticToolEmailAnswer)
         {
             var entity = _mapper.Map<DiagnosticToolEmailAnswer>(diagnosticToolEmailAnswer);
-            entity.Date = DateTime.Now;
+            entity.Date = DateTime.UtcNow;
 
             await _repository.AddAsync(entity);
             await SaveAsync();

@@ -2,6 +2,7 @@
 @{
     var isInstructionsPage = Model.CurrStep == 0 && Model.IsInstructionsPage;
     var nextButtonText = " Next ";
+    int formTypeNum = (int)Model.FormType;
 }
 
 <main id="main-heading" role="main">
@@ -386,7 +387,7 @@
                                         }
                                         else
                                         {
-                                            <button id="btn-diagnostictoolformviews-renderdiagnostictool-next" type="submit" asp-action="Result" class="govuk-button primary"> Continue </button>
+                                            <button id="btn-diagnostictoolformviews-renderdiagnostictool-next" type="submit" onclick="skillsThreeSubmit(@formTypeNum, '_CompletedLink_@Model.userTypeActionPlanSection')" asp-action="Result" class="govuk-button primary"> Continue </button>
                                         }
                                     }
                                     else
