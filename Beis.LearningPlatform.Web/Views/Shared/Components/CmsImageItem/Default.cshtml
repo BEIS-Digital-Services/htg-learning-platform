@@ -18,9 +18,12 @@
                     @Html.Raw(Markdown.ToHtml(Model.Summary, _pipeline).Replace("<p>", "<p class=\"govuk-body\" style=\"text-align:left;\">"))
                     <div class="  ">
                         <div>
-                            <span class="beis-link-icon">
+                            <span id="spn_imgitemicon_std_@Model.UniqueActionNameWithId" class="beis-link-icon">
                                 <vc:cms-image options='new CmsImageViewModel{ ImageUrl = Model.Link.icon.url, CssClass="svgimg" }' />
                             </span>
+                            <span id="spn_imgitemicon_completed_@Model.UniqueActionNameWithId" class="beis-link-icon" style="display:none">
+                                <vc:cms-image options='new CmsImageViewModel{ ImageUrl = Model.CompletedLink.icon.url, CssClass="svgimg" }' />
+                            </span>                            
                             <a class="govuk-link" href="@Model.Link.url">@Model.Link.label</a>
                         </div>
                     </div>
@@ -29,3 +32,9 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function () {
+        setImgItemLinkIcon('_CompletedLink_@Model.UniqueActionName', 'spn_imgitemicon_std_@Model.UniqueActionNameWithId', 'spn_imgitemicon_completed_@Model.UniqueActionNameWithId');            
+    });    
+</script>

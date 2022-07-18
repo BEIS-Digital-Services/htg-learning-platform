@@ -5,6 +5,7 @@
         private readonly Mock<IHttpContextAccessor> _httpContextAccessor = new();
         private readonly Mock<HttpContext> _httpContext = new();
         private readonly Mock<HttpRequest> _httpRequest = new();
+        private Mock<ISession> _session = new();
         private string _currentPath;
         protected override FormTypes GetFormType()
         {
@@ -83,6 +84,7 @@
                 .Returns(_httpRequest.Object);
             _httpContextAccessor.SetupGet(x => x.HttpContext)
                 .Returns(_httpContext.Object);
+            _httpContext.SetupGet(x => x.Session).Returns(_session.Object);
         }
 
         [TestCase("skills-three-newcomer-planning")]
@@ -179,7 +181,22 @@
             Assert.That(result, Is.TypeOf<ViewResult>());
         }
 
-        
+        [Test]
+        public async Task Result_Post_WhenCalled_ReturnsOK()
+        {
+            //Arrange
+            _diagnosticToolControllerHelper.Setup(h => h.ProcessResults(It.IsAny<DiagnosticToolForm>(), It.IsAny<FormTypes>()))
+                .ReturnsAsync(new ControllerHelperOperationResponse<bool>(It.IsAny<Guid>(), true, true));
+
+
+            //Act
+            var result = await controller.Result(Get_DiagnosticToolForm(1));
+
+            //Assert
+            Assert.NotNull(result);
+        }
+
+
         [TestCase("skills-three-newcomer-planning")]
         [TestCase("skills-three-newcomer-communication")]
         [TestCase("skills-three-newcomer-support")]

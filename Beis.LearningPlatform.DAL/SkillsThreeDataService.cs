@@ -18,7 +18,7 @@
 
         public async Task<int> Add(SkillsThreeResponse skillsThreeResponse)
         {
-            skillsThreeResponse.Date = DateTime.Now;
+            skillsThreeResponse.Date = DateTime.UtcNow;
 
             await _repository.AddAsync(skillsThreeResponse);
             await SaveAsync();
