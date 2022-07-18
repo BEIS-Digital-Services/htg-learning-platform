@@ -147,6 +147,6 @@ const eoi = {
                 else
                     this.showSubmitError();
             })
-            .catch(error => console.error(error)); // TODO: Remove all console log messages - show error using validation UI.
+            .catch(error => console.error(error));
         }
 };
