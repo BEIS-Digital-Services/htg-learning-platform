@@ -16,10 +16,10 @@
         case FormDisplayControlType.Label:
             <fieldset>
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                    <h1 class="govuk-fieldset__heading">
+                    <h2 class="govuk-fieldset__heading">
                         <span>@currentFormStepElement.text</span>
                         <span class="govuk-!-font-weight-regular">@currentFormStepElement.text2</span>
-                    </h1>
+                    </h2>
                 </legend>
             </fieldset>
 
@@ -47,10 +47,10 @@
         case FormDisplayControlType.CheckboxGroup:
             <fieldset>
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                    <h1 class="govuk-fieldset__heading">
+                    <h2 class="govuk-fieldset__heading">
                         <span>@currentFormStepElement.text</span>
                         <span class="govuk-!-font-weight-regular">@currentFormStepElement.text2</span>
-                    </h1>
+                    </h2>
                     @if (!string.IsNullOrWhiteSpace(currentFormStepElement.hint))
                     {
                         <span class="govuk-body @hintInBoldCss"><p>@currentFormStepElement.hint</p></span>
@@ -93,10 +93,10 @@
         case FormDisplayControlType.RadioGroup:
             <fieldset>
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                    <h1 class="govuk-fieldset__heading">
+                    <h2 class="govuk-fieldset__heading">
                         <span>@currentFormStepElement.text</span>
                         <span class="govuk-!-font-weight-regular">@currentFormStepElement.text2</span>
-                    </h1>
+                    </h2>
                     @if (string.IsNullOrEmpty(currentFormStepElement.subText) == false)
                     {
                         <h3 class="govuk-fieldset__heading govuk-!-font-size-19 govuk-!-margin-top-7 govuk-!-margin-bottom-5">
@@ -142,10 +142,10 @@
         case FormDisplayControlType.List:
             <fieldset>
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                    <h1 class="govuk-fieldset__heading">
+                    <h2 class="govuk-fieldset__heading">
                         <span>@currentFormStepElement.text</span>
                         <span class="govuk-!-font-weight-regular">@currentFormStepElement.text2</span>
-                    </h1>
+                    </h2>
                     <span asp-validation-for="@Model.steps[currentStep].elements[currentElement].textControlHtmlId" class="govuk-error-message">
                         @currentFormStepElement.validationError
                     </span>
@@ -186,10 +186,10 @@
         case FormDisplayControlType.Textarea:
             <fieldset>
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                    <h1 class="govuk-fieldset__heading">
+                    <h2 class="govuk-fieldset__heading">
                         <span>@currentFormStepElement.text</span>
                         <span class="govuk-!-font-weight-regular">@currentFormStepElement.text2</span>
-                    </h1>
+                    </h2>
                     @if (!string.IsNullOrWhiteSpace(currentFormStepElement.hint))
                     {
                         <span class="govuk-body @hintInBoldCss"><p>@currentFormStepElement.hint</p></span>
@@ -220,10 +220,10 @@
                             </div>
                         }
                         <div style="align-self:center;">
-                            <h1 class="govuk-fieldset__heading">
+                            <h2 class="govuk-fieldset__heading">
                                 <span>@currentFormStepElement.text</span>
                                 <span class="govuk-!-font-weight-regular">@currentFormStepElement.text2</span>
-                            </h1>
+                            </h2>
                         </div>
 
                     </div>
