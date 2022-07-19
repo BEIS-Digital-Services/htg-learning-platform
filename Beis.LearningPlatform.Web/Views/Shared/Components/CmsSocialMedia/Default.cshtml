@@ -101,13 +101,10 @@
 
 <script>
     function onShare() {
-        console.log("onShare");
         if (navigator.share) {
             navigator.share({
                 title: '@Model.ShareTitle',
                 url: '@Model.ShareLink'
-            }).then(() => {
-                console.log('Thanks for sharing!');
             }).catch(console.error);
         } else {
             showElement('toolTip');
@@ -116,11 +113,9 @@
     }
 
     function showElement(el) {
-        console.log('Show', el);
         $('#' + el).removeClass('hide-element');
     }
     function hideElement(el) {
-        console.log('Hide', el);
         $('#' + el).addClass('hide-element')
     }
 
