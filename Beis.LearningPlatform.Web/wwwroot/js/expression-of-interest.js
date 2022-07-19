@@ -22,6 +22,7 @@ const eoi = {
             document.querySelector(".expression-of-interest #eoi-errorsummary").style.display = "none";
             document.querySelector(".expression-of-interest #eoi-privacyPolicy").checked = false;
             document.querySelector(".expression-of-interest #eoi-submission-error").style.display = "none";
+            document.querySelector(".expression-of-interest #eoi-email-error").style.display = "none";
         }
     },
     submit: function (pageName) {
@@ -50,14 +51,23 @@ const eoi = {
             document.querySelector(".expression-of-interest #eoi-errorbusinessname").classList.remove("govuk-form-group--error");
             document.querySelector(".expression-of-interest #eoi-business-name").classList.remove("govuk-input--error");
         }
-
-        if (!this.validateEmail(document.querySelector(".expression-of-interest #eoi-email").value) && document.querySelector(".expression-of-interest #eoi-phone-number").value == "") {
+        var emailInput = document.querySelector(".expression-of-interest #eoi-email");
+        if ((emailInput.value == "") && document.querySelector(".expression-of-interest #eoi-phone-number").value == "") {
             document.querySelector(".expression-of-interest #eoi-erroremail").classList.add("govuk-form-group--error");
             document.querySelector(".expression-of-interest #eoi-errorphonenumber").classList.add("govuk-form-group--error");
             document.querySelector(".expression-of-interest #eoi-email").classList.add("govuk-input--error");
             document.querySelector(".expression-of-interest #eoi-phone-number").classList.add("govuk-input--error");
             document.querySelector(".expression-of-interest #eoi-contact-error").style.display = "block";
-            document.querySelector(".expression-of-interest #eoi-errorsummary").style.display = "block"
+            document.querySelector(".expression-of-interest #eoi-errorsummary").style.display = "block";
+            document.querySelector(".expression-of-interest #eoi-email-error").style.display = "none";
+            isError = true;
+        }
+        else if (emailInput.value != "" && !this.validateEmail(emailInput.value)) {
+            document.querySelector(".expression-of-interest #eoi-erroremail").classList.add("govuk-form-group--error");
+            document.querySelector(".expression-of-interest #eoi-email-error").classList.add("govuk-input--error");
+            document.querySelector(".expression-of-interest #eoi-errorsummary").style.display = "block";
+            document.querySelector(".expression-of-interest #eoi-email-error").style.display = "block";
+            document.querySelector(".expression-of-interest #eoi-contact-error").style.display = "none";
             isError = true;
         } else {
             document.querySelector(".expression-of-interest #eoi-contact-error").style.display = "none";
