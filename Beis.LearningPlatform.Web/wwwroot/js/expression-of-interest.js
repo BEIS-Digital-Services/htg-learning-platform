@@ -24,7 +24,7 @@ const eoi = {
             document.querySelector(".expression-of-interest #eoi-submission-error").style.display = "none";
         }
     },
-    submit: function () {
+    submit: function (pageName) {
 
         var isError = false;
         if (document.querySelector(".expression-of-interest #eoi-name").value == "") {
@@ -81,7 +81,7 @@ const eoi = {
 
 
         if (!isError) {
-            this.callAPI();
+            this.callAPI(pageName);
         }
 
     },
@@ -120,9 +120,9 @@ const eoi = {
         document.querySelector(".expression-of-interest #eoi-step3").style.display = "block";
     },
 
-    callAPI: function () {
+    callAPI: function (pageName) {
         const dto = {
-            pageName: 'PageName',
+            pageName: pageName,
             userName: document.querySelector(".expression-of-interest #eoi-name").value,
             userEmail: document.querySelector(".expression-of-interest #eoi-email").value,
             userBusinessName: document.querySelector(".expression-of-interest #eoi-business-name").value,
