@@ -123,7 +123,6 @@ const eoi = {
     showSubmitError: function () {
         document.querySelector(".expression-of-interest #eoi-submission-error").style.display = "block";
         document.querySelector(".expression-of-interest #eoi-errorsummary").style.display = "block"
-        isError = true;
     },
     showSubmitSuccess: function () {
         document.querySelector(".expression-of-interest #eoi-step2").style.display = "none";
