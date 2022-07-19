@@ -161,11 +161,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
-    var anchorElmnts = document.getElementsByTagName("a");
-    for (var i = 0; i < anchorElmnts.length; i++) {
-        if (typeof anchorElmnts[i].onclick === 'function' && !anchorElmnts[i].onkeydown && anchorElmnts[i].getAttribute("data-tabclick")) {
 
-            anchorElmnts[i].onkeydown = function (event) {
+    setAccessibilityKeydown(document.getElementsByTagName("a"));
+    setAccessibilityKeydown(document.getElementsByTagName("svg"));
+});
+
+function setAccessibilityKeydown(elmnts) {
+    for (var i = 0; i < elmnts.length; i++) {
+        if (elmnts[i].getAttribute("data-tabclick") && !elmnts[i].onkeydown) {
+
+            elmnts[i].onkeydown = function (event) {
                 switch (event.which) {
                     case 32: { // KEY_SPACE
                         event.stopPropagation;
@@ -177,8 +182,7 @@ document.addEventListener("DOMContentLoaded", function () {
             };
         }
     }
-
-});
+}
 
 function skillsThreeSubmit(formTypeNum, itemKey) {
     if (formTypeNum > 2) {
