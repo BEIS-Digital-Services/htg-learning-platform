@@ -161,28 +161,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
-
-    setAccessibilityKeydown(document.getElementsByTagName("a"));
-    setAccessibilityKeydown(document.getElementsByTagName("svg"));
-});
-
-function setAccessibilityKeydown(elmnts) {
+    var elmnts = document.querySelectorAll('[data-tabclick]'); 
     for (var i = 0; i < elmnts.length; i++) {
-        if (elmnts[i].getAttribute("data-tabclick") && !elmnts[i].onkeydown) {
+        if (elmnts[i].getAttribute("data-tabclick") === "true" && !elmnts[i].onkeydown) {
 
             elmnts[i].onkeydown = function (event) {
                 switch (event.which) {
                     case 32: { // KEY_SPACE
                         event.stopPropagation;
                         this.click();
-                        break;
+                        return false;
                     }
                 }
                 return true;
             };
         }
     }
-}
+
+});
 
 function skillsThreeSubmit(formTypeNum, itemKey) {
     if (formTypeNum > 2) {
