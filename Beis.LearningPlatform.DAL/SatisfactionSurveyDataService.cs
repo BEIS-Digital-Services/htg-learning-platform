@@ -12,7 +12,7 @@ namespace Beis.LearningPlatform.DAL
         public async Task<int> Add(SatisfactionSurveyDto satisfactionSurveyDto)
         {
             var entity = _mapper.Map<SatisfactionSurveyEntry>(satisfactionSurveyDto);
-            entity.Date = DateTime.Now;
+            entity.Date = DateTime.UtcNow;
 
             await _repository.AddAsync(entity);
             await SaveAsync();
