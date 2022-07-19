@@ -10,16 +10,30 @@ namespace Beis.LearningPlatform.Library
         [Required]
         public string UserName { get; set; }
 
-        [EmailAddress]
-        public string UserEmail { get; set; }
-
         [Required]
         public string UserBusinessName { get; set; }
 
+        public string UserEmail { get; set; }
+
         public string UserPhone { get; set; }
-        public bool OptInMarketingEmail { get; set; }
-        public bool OptInMarketingPhone { get; set; }
+
         public bool OptInReadPrivacy { get; set; }
+
+        public bool OptInMarketingEmail
+        {
+            get
+            {
+                return !string.IsNullOrEmpty(UserEmail);
+            }
+        }
+
+        public bool OptInMarketingPhone {
+            get
+            {
+                return !string.IsNullOrEmpty(UserPhone);
+            }
+        }
+
         public DateTime RecordCreatedUtc { get; set; }
     }
 }

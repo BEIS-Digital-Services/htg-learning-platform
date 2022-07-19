@@ -127,9 +127,7 @@ const eoi = {
             userEmail: document.querySelector(".expression-of-interest #eoi-email").value,
             userBusinessName: document.querySelector(".expression-of-interest #eoi-business-name").value,
             userPhone: document.querySelector(".expression-of-interest #eoi-phone-number").value,
-            optInMarketingEmail: true,
-            optInMarketingPhone: true,
-            optInReadPrivacy: true
+            optInReadPrivacy: document.querySelector(".expression-of-interest #eoi-privacyPolicy").checked
         };
 
         const requestVerificationToken =
