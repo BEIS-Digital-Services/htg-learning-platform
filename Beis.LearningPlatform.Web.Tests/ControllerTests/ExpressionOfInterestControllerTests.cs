@@ -25,12 +25,12 @@
         public async Task Should_save_eoi_successfully_if_input_model_is_valid()
         {
             var result = await _controller.ExpressionOfInterest(new ExpressionOfInterestDto());
-            var jsonResult = (JsonResult)result;
+            var statusCodeResult = (StatusCodeResult)result;
             
             _expressionOfInterestControllerHelper
                 .Verify(x => x.SaveExpressionOfInterest(It.IsAny<ExpressionOfInterestDto>()),
                         Times.Once);
-            jsonResult.Should().BeOfType(typeof(JsonResult));
+            statusCodeResult.Should().BeOfType(typeof(StatusCodeResult));
         }
 
         [Test]
