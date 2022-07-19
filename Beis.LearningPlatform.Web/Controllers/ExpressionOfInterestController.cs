@@ -12,7 +12,7 @@
         [HttpPost]
         // [ValidateAntiForgeryToken]
         [Route("/expression-of-interest", Name = "ExpressionOfInterest")]
-        public async Task<JsonResult> ExpressionOfInterest([FromBody] ExpressionOfInterestDto expressionOfInterestDto)
+        public async Task<IActionResult> ExpressionOfInterest([FromBody] ExpressionOfInterestDto expressionOfInterestDto)
         {
             if (!ModelState.IsValid)
             {
@@ -20,7 +20,7 @@
             }
 
             var statusCode = await _expressionOfInterestControllerHelper.SaveExpressionOfInterest(expressionOfInterestDto);
-            return Json(statusCode);
+            return StatusCode((int)statusCode);
         }
     }
 }

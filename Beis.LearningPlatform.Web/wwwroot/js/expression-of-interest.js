@@ -110,7 +110,9 @@ const eoi = {
         }
     },
     showSubmitError: function () {
-        //TODO: showSubmitError
+        document.getElementById("submission-error").style.display = "block";
+        document.getElementById("errorsummary").style.display = "block"
+        isError = true;
     },
     showSubmitSuccess: function () {
         document.getElementById("step2").style.display = "none";
