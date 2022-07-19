@@ -115,11 +115,10 @@
             Assert.IsTrue(model.HasContent);
 
             Assert.IsNotNull(model.FormIntroHtml);
-            Assert.AreEqual(model.FormIntroHtml, "<p>Hello <strong>strong</strong> copy1</p>\n");
+            Assert.AreEqual("<p>Hello <strong>strong</strong> copy1</p>\n", model.FormIntroHtml);
 
             Assert.IsNotNull(model.ThankYouTextHtml);
-            Assert.AreEqual(model.ThankYouTextHtml, "<p>Hello <strong>strong</strong> copy2</p>\n");
-
+            Assert.AreEqual("<p>Hello <strong>strong</strong> copy2</p>\n", model.ThankYouTextHtml);
         }
 
 

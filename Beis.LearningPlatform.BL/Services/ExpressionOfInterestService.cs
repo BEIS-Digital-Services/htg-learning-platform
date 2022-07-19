@@ -10,12 +10,7 @@
         }
 
         public async Task<IServiceResponse<int>> SaveExpressionOfInterest(Guid requestId, ExpressionOfInterestDto expressionOfInterestDto)
-        {            
-            if (expressionOfInterestDto == null)
-            {
-                throw new ArgumentNullException(nameof(expressionOfInterestDto));                
-            }
-                
+        {
             var entityId = await _expressionOfInterestDataService.Add(expressionOfInterestDto);
             return new ServiceResponse<int>(requestId, entityId != default, string.Empty, entityId);
         }
