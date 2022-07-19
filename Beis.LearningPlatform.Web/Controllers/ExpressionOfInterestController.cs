@@ -10,7 +10,7 @@
         }
 
         [HttpPost]
-        // [ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken]
         [Route("/expression-of-interest", Name = "ExpressionOfInterest")]
         public async Task<IActionResult> ExpressionOfInterest([FromBody] ExpressionOfInterestDto expressionOfInterestDto)
         {
