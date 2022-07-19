@@ -10,14 +10,12 @@ namespace Beis.LearningPlatform.Library
         [Required]
         public string UserName { get; set; }
 
-        [Required]
         [EmailAddress]
         public string UserEmail { get; set; }
 
         [Required]
         public string UserBusinessName { get; set; }
 
-        [Required]
         public string UserPhone { get; set; }
         public bool OptInMarketingEmail { get; set; }
         public bool OptInMarketingPhone { get; set; }

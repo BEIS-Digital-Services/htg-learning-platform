@@ -3,31 +3,31 @@
 
 
 .expression-of-interest {
-    #step3 {
+    #eoi-step3 {
         display: none;
     }
 
-    #step2 {
+    #eoi-step2 {
         display: none;
     }
 
-    #errorsummary {
+    #eoi-errorsummary {
         display: none;
     }
 
-    #errorname p, 
-    #erroremail p, 
-    #errorbusinessname p, 
-    #errorphonenumber p, 
-    #errorprivacyPolicy p {
+    #eoi-errorname p, 
+    #eoi-erroremail p, 
+    #eoi-errorbusinessname p, 
+    #eoi-errorphonenumber p, 
+    #eoi-errorprivacyPolicy p {
         display: none;
     }
 
-    #errorname.govuk-form-group--error p, 
-    #erroremail.govuk-form-group--error p, 
-    #errorbusinessname.govuk-form-group--error p, 
-    #errorphonenumber.govuk-form-group--error p, 
-    #errorprivacyPolicy.govuk-form-group--error p {
+    #eoi-errorname.govuk-form-group--error p, 
+    #eoi-erroremail.govuk-form-group--error p, 
+    #eoi-errorbusinessname.govuk-form-group--error p, 
+    #eoi-errorphonenumber.govuk-form-group--error p, 
+    #eoi-errorprivacyPolicy.govuk-form-group--error p {
         display: block
     }
 }
