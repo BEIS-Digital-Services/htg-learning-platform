@@ -27,7 +27,7 @@ const eoi = {
     },
     submit: function (pageName) {
 
-        var isError = false;
+        let isError = false;
         if (document.querySelector(".expression-of-interest #eoi-name").value == "") {
             document.querySelector(".expression-of-interest #eoi-errorname").classList.add("govuk-form-group--error");
             document.querySelector(".expression-of-interest #eoi-name").classList.add("govuk-input--error");
@@ -51,7 +51,7 @@ const eoi = {
             document.querySelector(".expression-of-interest #eoi-errorbusinessname").classList.remove("govuk-form-group--error");
             document.querySelector(".expression-of-interest #eoi-business-name").classList.remove("govuk-input--error");
         }
-        var emailInput = document.querySelector(".expression-of-interest #eoi-email");
+        let emailInput = document.querySelector(".expression-of-interest #eoi-email");
         if ((emailInput.value == "") && document.querySelector(".expression-of-interest #eoi-phone-number").value == "") {
             document.querySelector(".expression-of-interest #eoi-erroremail").classList.add("govuk-form-group--error");
             document.querySelector(".expression-of-interest #eoi-errorphonenumber").classList.add("govuk-form-group--error");
