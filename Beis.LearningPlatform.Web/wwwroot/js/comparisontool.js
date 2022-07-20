@@ -16,9 +16,10 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     const productCategoryFilters = document.querySelectorAll(".productCategory");
+    
+    setVisibleCategories();
+    checkVisibleCategories();
     productCategoryFilters.forEach(pcf => pcf.addEventListener("change", toggleProductsBasedOnCategory));
-
-    toggleProductsBasedOnCategory();
 
     var previouslySelectedIds = document.querySelector("#selectedProductIds");
     if (previouslySelectedIds && previouslySelectedIds.value !== "") {
@@ -137,16 +138,42 @@ function toggleProductsBasedOnCategory() {
     document.querySelector("#allProductsDiv").style.display = "none";
 
     toggleIndividualAndGroupCompareButtons();
-    var formDivs = document.querySelectorAll(".formDiv");
 
     const allCategoriesCheckBoxes = document.querySelectorAll(".productCategory");
-
-    const checkedCategoryIds = [];
+        
+    const checkedCategoryIds = GetCheckedCategoryIds();
     allCategoriesCheckBoxes.forEach(r => {
-        if (r.checked) {
-            checkedCategoryIds.push(r.getAttribute("data-id"));
+        const dataId = r.getAttribute("data-id");
+        if (r.checked && !checkedCategoryIds.includes(dataId)) {
+            checkedCategoryIds.push(dataId);
+        } else if (!r.checked && checkedCategoryIds.includes(dataId)) {
+            checkedCategoryIds.splice(checkedCategoryIds.indexOf(dataId), 1); 
         }
+    });    
+    SetCheckedCategoryIds(checkedCategoryIds);
+
+    setVisibleCategories();
+}
+
+function GetCheckedCategoryIds() {
+    return JSON.parse(localStorage.getItem("ct-products-filter")) || [];
+}
+
+function SetCheckedCategoryIds(checkedCategoryIds) {
+    localStorage.setItem("ct-products-filter", JSON.stringify(checkedCategoryIds));
+}
+
+function checkVisibleCategories() {
+    const checkedCategoryIds = GetCheckedCategoryIds();
+
+    document.querySelectorAll(".productCategory").forEach(elmnt => {
+        elmnt.checked = checkedCategoryIds.includes(elmnt.getAttribute("data-id"));
     });
+}
+
+function setVisibleCategories() {
+    const checkedCategoryIds = GetCheckedCategoryIds();
+    const formDivs = document.querySelectorAll(".formDiv");
 
     formDivs.forEach(d => {
         d.style.display = "none";
