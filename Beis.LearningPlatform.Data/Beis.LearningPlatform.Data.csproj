@@ -12,8 +12,7 @@
 		<Compile Remove="Entities\Licenses\**" />
 		<Compile Remove="Entities\Violations\**" />
 		<Compile Remove="Entities\VisitReport\**" />
-		<Compile Remove="Models\Mobile\**" />
-		<Compile Remove="Models\Web\**" />
+		<Compile Remove="Models\**" />
 		<Compile Remove="Repositories\Actions\**" />
 		<Compile Remove="Repositories\Agencies\**" />
 		<Compile Remove="Repositories\AgencyNotices\**" />
@@ -60,8 +59,7 @@
 		<EmbeddedResource Remove="Entities\Licenses\**" />
 		<EmbeddedResource Remove="Entities\Violations\**" />
 		<EmbeddedResource Remove="Entities\VisitReport\**" />
-		<EmbeddedResource Remove="Models\Mobile\**" />
-		<EmbeddedResource Remove="Models\Web\**" />
+		<EmbeddedResource Remove="Models\**" />
 		<EmbeddedResource Remove="Repositories\Actions\**" />
 		<EmbeddedResource Remove="Repositories\Agencies\**" />
 		<EmbeddedResource Remove="Repositories\AgencyNotices\**" />
@@ -108,8 +106,7 @@
 		<None Remove="Entities\Licenses\**" />
 		<None Remove="Entities\Violations\**" />
 		<None Remove="Entities\VisitReport\**" />
-		<None Remove="Models\Mobile\**" />
-		<None Remove="Models\Web\**" />
+		<None Remove="Models\**" />
 		<None Remove="Repositories\Actions\**" />
 		<None Remove="Repositories\Agencies\**" />
 		<None Remove="Repositories\AgencyNotices\**" />
@@ -175,40 +172,6 @@
 		<Compile Remove="Entities\Sector.cs" />
 		<Compile Remove="Entities\SystemFile.cs" />
 		<Compile Remove="Entities\UserHoliday.cs" />
-		<Compile Remove="Mappings\ChecklistItemActionTakenProfile.cs" />
-		<Compile Remove="Mappings\EstablishmentLicenseActivityProfile.cs" />
-		<Compile Remove="Mappings\EstablishmentProfile.cs" />
-		<Compile Remove="Mappings\EstablishmentTypeProfile.cs" />
-		<Compile Remove="Mappings\HolidayProfile.cs" />
-		<Compile Remove="Mappings\InspectionProfile.cs" />
-		<Compile Remove="Mappings\InspectionRequestProfile.cs" />
-		<Compile Remove="Mappings\InspectionSubTypeProfile.cs" />
-		<Compile Remove="Mappings\InspectionTypeProfile.cs" />
-		<Compile Remove="Mappings\LegalFormProfile.cs" />
-		<Compile Remove="Mappings\LicenseClassProfile.cs" />
-		<Compile Remove="Mappings\LicenseStatusProfile.cs" />
-		<Compile Remove="Mappings\LicenseTypeProfile.cs" />
-		<Compile Remove="Mappings\SectorProfile.cs" />
-		<Compile Remove="Models\ChecklistItemActionTakenModel.cs" />
-		<Compile Remove="Models\CityModel.cs" />
-		<Compile Remove="Models\DashboardMapModel.cs" />
-		<Compile Remove="Models\DashboardModel.cs" />
-		<Compile Remove="Models\EstablishmentLicenseActivityModel.cs" />
-		<Compile Remove="Models\EstablishmentModel.cs" />
-		<Compile Remove="Models\EstablishmentTypeModel.cs" />
-		<Compile Remove="Models\EstTypeRiskClassificationModel.cs" />
-		<Compile Remove="Models\InspectionModel.cs" />
-		<Compile Remove="Models\InspectionRequestModel.cs" />
-		<Compile Remove="Models\InspectionRiskClassificationModel.cs" />
-		<Compile Remove="Models\InspectionSubTypeModel.cs" />
-		<Compile Remove="Models\InspectionTypeModel.cs" />
-		<Compile Remove="Models\LegalFormModel.cs" />
-		<Compile Remove="Models\LicenseClassModel.cs" />
-		<Compile Remove="Models\LicenseStatusModel.cs" />
-		<Compile Remove="Models\LicenseTypeModel.cs" />
-		<Compile Remove="Models\PublicHolidayModel.cs" />
-		<Compile Remove="Models\SectorModel.cs" />
-		<Compile Remove="Models\UserHolidayModel.cs" />
 	</ItemGroup>
 
 	<ItemGroup>

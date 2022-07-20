@@ -1,0 +1,33 @@
+@import 'beis-variables.scss';
+@import 'beis-mixins.scss';
+
+
+.expression-of-interest {
+    #eoi-step3 {
+        display: none;
+    }
+
+    #eoi-step2 {
+        display: none;
+    }
+
+    #eoi-errorsummary {
+        display: none;
+    }
+
+    #eoi-errorname p, 
+    #eoi-erroremail p, 
+    #eoi-errorbusinessname p, 
+    #eoi-errorphonenumber p, 
+    #eoi-errorprivacyPolicy p {
+        display: none;
+    }
+
+    #eoi-errorname.govuk-form-group--error p, 
+    #eoi-erroremail.govuk-form-group--error p, 
+    #eoi-errorbusinessname.govuk-form-group--error p, 
+    #eoi-errorphonenumber.govuk-form-group--error p, 
+    #eoi-errorprivacyPolicy.govuk-form-group--error p {
+        display: block
+    }
+}
