@@ -20,11 +20,13 @@
                         <div>
                             <span id="spn_imgitemicon_std_@Model.UniqueActionNameWithId" class="beis-link-icon">
                                 <vc:cms-image options='new CmsImageViewModel{ ImageUrl = Model.Link.icon.url, CssClass="svgimg" }' />
+                                <a class="govuk-link" href="@Model.Link.url">@Model.Link.label</a>
                             </span>
                             <span id="spn_imgitemicon_completed_@Model.UniqueActionNameWithId" class="beis-link-icon" style="display:none">
                                 <vc:cms-image options='new CmsImageViewModel{ ImageUrl = Model.CompletedLink.icon.url, CssClass="svgimg" }' />
+                                <a class="govuk-link" href="@Model.CompletedLink.url">@Model.CompletedLink.label</a>
                             </span>                            
-                            <a class="govuk-link" href="@Model.Link.url">@Model.Link.label</a>
+                            
                         </div>
                     </div>
                 </div>
