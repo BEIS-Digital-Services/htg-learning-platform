@@ -31,6 +31,7 @@ namespace Beis.LearningPlatform.DAL.DependencyInjection
             serviceCollection.AddTransient<ISatisfactionSurveyDataService, SatisfactionSurveyDataService>();
             serviceCollection.AddTransient<IFeedbackUsefulDataService, FeedbackUsefulDataService>();
             serviceCollection.AddTransient<IFeedbackProblemReportDataService, FeedbackProblemReportDataService>();
+            serviceCollection.AddTransient<IExpressionOfInterestDataService, ExpressionOfInterestDataService>();
             
             return serviceCollection;
         }
