@@ -1053,3 +1053,9 @@ span.govuk-link-divider {
     border-bottom: 10px solid $beis-yellow;
     margin: 0 15px;
 }
+
+.card .cards button.number:focus {
+    background: #ffdd00;
+    border: 2px solid #000;
+    color: #000;
+}
