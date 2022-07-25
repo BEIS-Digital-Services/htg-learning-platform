@@ -38,7 +38,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function showJsGoBackLinks() {
-        document.querySelector(".js-go-back-link-container").style.display = "block";
+        const jsLinks = document.querySelector(".js-go-back-link-container");
+        if (jsLinks)
+            jsLinks.style.display = "block";
     }
 
     var oldSelectedCardIds = JSON.parse(localStorage.getItem("selectedCardIds")) || [];
