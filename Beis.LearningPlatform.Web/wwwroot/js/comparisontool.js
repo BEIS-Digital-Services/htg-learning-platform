@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     const productCategoryFilters = document.querySelectorAll(".productCategory");
-    
+
     setVisibleCategories();
     checkVisibleCategories();
     productCategoryFilters.forEach(pcf => pcf.addEventListener("change", toggleProductsBasedOnCategory));
@@ -155,12 +155,13 @@ function toggleProductsBasedOnCategory() {
     setVisibleCategories();
 }
 
-function GetCheckedCategoryIds() {
-    return JSON.parse(localStorage.getItem("ct-products-filter")) || [];
+function GetCheckedCategoryIds() {    
+    const hashValue = location.hash ? location.hash.replace("#", "") : null;
+    return hashValue ? hashValue.split(",") : [];
 }
 
 function SetCheckedCategoryIds(checkedCategoryIds) {
-    localStorage.setItem("ct-products-filter", JSON.stringify(checkedCategoryIds));
+    history.replaceState(null, "", checkedCategoryIds && checkedCategoryIds.length ? "#" + checkedCategoryIds.toString() : "#");
 }
 
 function checkVisibleCategories() {
