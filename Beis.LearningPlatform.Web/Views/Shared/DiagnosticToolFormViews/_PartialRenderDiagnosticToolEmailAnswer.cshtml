@@ -21,7 +21,7 @@
         {
             <span class="govuk-error-message">@Model.emailAnswer.EmailErrorText</span>
         }
-        <input class="govuk-input govuk-input--width-20" id="emailAddress" name="@(controlNameBasePath)userEmailAddress" value="@Model.emailAnswer.UserEmailAddress" type="email" spellcheck="false" aria-describedby="email-hint" autocomplete="on">
+        <input class="govuk-input govuk-input--width-20" id="emailAddress" name="@(controlNameBasePath)userEmailAddress" value="@Model.emailAnswer.UserEmailAddress" type="email" spellcheck="false" aria-describedby="email-hint" autocomplete="on" autocompletetype="email">
     </div>
 
     <div class="govuk-checkboxes">
