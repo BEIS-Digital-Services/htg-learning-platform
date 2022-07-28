@@ -168,6 +168,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
+    var elmnts = document.querySelectorAll('[data-tabclick]'); 
+    for (var i = 0; i < elmnts.length; i++) {
+        if (elmnts[i].getAttribute("data-tabclick") === "true" && !elmnts[i].onkeydown) {
+
+            elmnts[i].onkeydown = function (event) {
+                switch (event.which) {
+                    case 32: { // KEY_SPACE
+                        event.stopPropagation;
+                        this.click();
+                        return false;
+                    }
+                }
+                return true;
+            };
+        }
+    }
 
 });
 
@@ -189,4 +205,13 @@ function setImgItemLinkIcon(itemKey, spn_imgitemicon_std, spn_imgitemicon_comple
     }
 }
 
-
+function keyHandler(event, func) {
+    switch (event.which) {
+        case KEY_SPACE: {
+            event.stopPropagation;
+            return func();
+            break;
+        }
+    }
+    return true;
+}
