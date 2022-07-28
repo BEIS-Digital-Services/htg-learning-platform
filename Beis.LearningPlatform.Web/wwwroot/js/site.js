@@ -6,6 +6,7 @@ var selectedCardIds = [];
 document.addEventListener("DOMContentLoaded", function () {
 
     showAllElements(document.querySelectorAll(".cards"));
+    showJsGoBackLinks();
 
     checkAndAddHandler("#roundel1", "#card1");
     checkAndAddHandler("#roundel2", "#card2");
@@ -34,6 +35,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function showAllElements(elements) {
         elements.forEach(el => { el.classList.remove("no-script-hidden-card"); });
+    }
+
+    function showJsGoBackLinks() {
+        const jsLinks = document.querySelector(".js-go-back-link-container");
+        if (jsLinks)
+            jsLinks.style.display = "block";
     }
 
     var oldSelectedCardIds = JSON.parse(localStorage.getItem("selectedCardIds")) || [];

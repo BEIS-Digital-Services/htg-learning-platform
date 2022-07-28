@@ -31,6 +31,7 @@ namespace Beis.LearningPlatform.BL.DependencyInjection
             serviceCollection.AddTransient<ISkillsThreeService, SkillsThreeService>();
             serviceCollection.AddTransient<ISatisfactionSurveyService, SatisfactionSurveyService>();
             serviceCollection.AddTransient<IFeedbackService, DBFeedbackService>();
+            serviceCollection.AddTransient<IExpressionOfInterestService, ExpressionOfInterestService>();            
 
             // Integration services
             serviceCollection.AddTransient<INotifyIntegrationService, NotifyIntegrationService>();

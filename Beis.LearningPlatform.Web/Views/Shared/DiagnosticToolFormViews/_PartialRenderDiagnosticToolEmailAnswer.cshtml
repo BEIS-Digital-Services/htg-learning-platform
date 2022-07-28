@@ -14,18 +14,18 @@
         <p class="govuk-body-m">Enter your email address and we'll send a copy of this page to your inbox.</p>
 
     <div class="govuk-form-group">
-        <label class="govuk-label govuk-body-m" for="emailAddress">Email Address</label>
+        <label id="email-hint" class="govuk-label govuk-body-m" for="emailAddress">Email Address</label>
         @if (Model.emailAnswer.HasEmailError && !string.IsNullOrWhiteSpace(Model.emailAnswer.EmailErrorText))
         {
             <span class="govuk-error-message">@Model.emailAnswer.EmailErrorText</span>
         }
-        <input class="govuk-input govuk-input--width-20" id="emailAddress" name="@(controlNameBasePath)userEmailAddress" value="@Model.emailAnswer.UserEmailAddress">
+        <input class="govuk-input govuk-input--width-20" id="emailAddress" name="@(controlNameBasePath)userEmailAddress" value="@Model.emailAnswer.UserEmailAddress" type="email" spellcheck="false" aria-describedby="email-hint" autocomplete="on" autocompletetype="email">
     </div>
 
     <div class="govuk-checkboxes">
         <div class="govuk-checkboxes__item">
             <input type="checkbox" class="govuk-checkboxes__input" id="@(controlNameBasePath)hasConsentedToMarketingText" name="@(controlNameBasePath)hasConsentedToMarketingText" value="@Model.emailAnswer.HasConsentedToMarketingText" @(Model.emailAnswer.IsOptedInForMarketing ? "checked" : "")>
-            <label for="HasConsentedToMarketing" class="govuk-label govuk-checkboxes__label">I consent to the Department for Business, Energy & Industrial Strategy (BEIS) contacting me by email to keep me informed about news and events relating to Help to Grow: Digital. I am freely consenting to BEIS holding and processing my personal data for marketing communication purposes.</label>
+            <label for="HasConsentedToMarketing" class="govuk-label govuk-checkboxes__label">I consent to the Department for Business, Energy & Industrial Strategy (BEIS) contacting me (including through one or more of the third party recipients identified in the privacy policy) by email to keep me informed about news, updates and events relating to Help to Grow: Digital. By ticking the box(es) above I am freely consenting to BEIS (and/or the third party recipients identified in the privacy policy) holding and processing my personal data for these purposes.</label>
         </div>
         <div class="govuk-checkboxes__item">
             <input type="checkbox" class="govuk-checkboxes__input" id="@(controlNameBasePath)hasAcceptedPrivacyPolicyText" name="@(controlNameBasePath)hasAcceptedPrivacyPolicyText" value="@Model.emailAnswer.HasAcceptedPrivacyPolicyText" @(Model.emailAnswer.IsPrivacyPolicyAccepted ? "checked" : "")>

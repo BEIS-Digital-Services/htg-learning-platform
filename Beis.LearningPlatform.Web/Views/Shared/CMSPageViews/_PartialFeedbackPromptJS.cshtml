@@ -229,7 +229,7 @@
             type: "GET",
             url: "/feedback/useful",
             data: {
-                "url": location.href,
+                "url": location.pathname,
                 "IsPageUseful": feedback
             },
             success: function () {
@@ -249,7 +249,7 @@
             type: "GET",
             url: "/feedback/report-problem",
             data: {
-                "url": location.href,
+                "url": location.pathname,
                 "whatIWasDoing": doing,
                 "whatWentWrong": wrong
             },

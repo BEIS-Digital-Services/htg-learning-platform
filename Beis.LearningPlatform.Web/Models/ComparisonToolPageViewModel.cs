@@ -170,8 +170,7 @@ namespace Beis.LearningPlatform.Web.Models
                 subheader = subHeader,
                 productsForCurrentCategoryToRender = currentCategoryProducts,
                 CurrentCategoryId = categoryId,
-                CurrentCategoryName = comparisonToolProductCategory.GetType().GetMember(comparisonToolProductCategory.ToString())
-                    .First().GetCustomAttribute<DescriptionAttribute>()?.Description,
+                CurrentCategoryName = $"{comparisonToolProductCategory}".ToLower(),
                 VendorProdLogorUrl = this.VendorProdLogorUrl,
                 productsSelected = this.productsSelected,
                 productsCategorySelected = this.productsCategorySelected,
