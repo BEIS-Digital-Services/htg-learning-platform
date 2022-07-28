@@ -35,7 +35,7 @@
 
             feedback.IsPageUseful = feedback.IsPageUseful.Replace("yes", "true", StringComparison.OrdinalIgnoreCase).Replace("no", "false", StringComparison.OrdinalIgnoreCase);
             var feedbackDto = _mapper.Map<FeedbackPageUsefulDto>(feedback);
-            feedbackDto.Date = DateTime.Now;
+            feedbackDto.Date = DateTime.UtcNow;
 
             var rtn = await _feedbackUsefulDataService.Add(feedbackDto);
             return rtn != default;
@@ -50,7 +50,7 @@
             }
 
             var feedbackDto = _mapper.Map<FeedbackProblemReportDto>(problemReport);
-            feedbackDto.Date = DateTime.Now;
+            feedbackDto.Date = DateTime.UtcNow;
             var rtn = await _feedbackReportProblemDataService.Add(feedbackDto);
             return rtn != default;
         }
