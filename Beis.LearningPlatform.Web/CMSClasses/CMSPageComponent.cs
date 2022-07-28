@@ -20,6 +20,7 @@ namespace Beis.LearningPlatform.Web.StrapiApi.Models
         public CMSPageImage image { get; set; }
         public CMSPageContent content { get; set; }
         public string videoLink { get; set; }
+        public string VideoTitle { get; set; }
         public IList<CMSPageTextblock> textblock { get; set; }
 
         public string url { get; set; }
@@ -31,16 +32,16 @@ namespace Beis.LearningPlatform.Web.StrapiApi.Models
             get
             {
                 var imageUrl = default(string);
-                if (!string.IsNullOrWhiteSpace(abbr))
+                if (!string.IsNullOrWhiteSpace(abbr) && (Enum.TryParse(abbr, out ImageAbbrTypes imageAbbr)))
                 {
-                    imageUrl = abbr.ToLower() switch
+                    imageUrl = imageAbbr switch
                     {
-                        "pdf" => "/assets/images/pdf.svg",
-                        "text" => "/assets/images/txt.svg",
-                        "csv" => "/assets/images/csv.svg",
-                        "word" => "/assets/images/doc.svg",
-                        "pp" => "/assets/images/ppt.svg",
-                        "excel" => "/assets/images/xls.svg",
+                        ImageAbbrTypes.pdf => "/assets/images/pdf.svg",
+                        ImageAbbrTypes.text => "/assets/images/txt.svg",
+                        ImageAbbrTypes.csv => "/assets/images/csv.svg",
+                        ImageAbbrTypes.word => "/assets/images/doc.svg",
+                        ImageAbbrTypes.pp => "/assets/images/ppt.svg",
+                        ImageAbbrTypes.excel => "/assets/images/xls.svg",
                         _ => "/assets/images/txt.svg"
                     };
                 }
