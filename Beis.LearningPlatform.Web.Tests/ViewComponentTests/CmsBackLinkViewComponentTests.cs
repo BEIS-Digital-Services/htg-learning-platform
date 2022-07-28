@@ -27,8 +27,9 @@
             Assert.IsTrue(model.HasContent);
 
             Assert.AreEqual("Back", model.BackLink.LinkText);
-            Assert.AreEqual("javascript:history.go(-1);", model.BackLink.LinkUrl);
+            Assert.AreEqual("javascript:", model.BackLink.LinkUrl);
             Assert.AreEqual($"back-link-{pagename}", model.LinkId);
+            Assert.IsTrue(model.IsJavascriptLink);
         }
 
         [Test]
@@ -54,6 +55,7 @@
             Assert.AreEqual("LinkText", model.BackLink.LinkText);
             Assert.AreEqual("LinkUrl", model.BackLink.LinkUrl);
             Assert.AreEqual($"back-link-{pagename}", model.LinkId);
+            Assert.IsFalse(model.IsJavascriptLink);
         }
 
 

@@ -34,10 +34,18 @@
                     return new CMSSimpleLink
                     {
                         LinkText = "Back",
-                        LinkUrl = "javascript:history.go(-1);"
+                        LinkUrl = "javascript:"
                     };
                 }
 
+            }
+        }
+
+        public bool IsJavascriptLink
+        {
+            get
+            {
+                return _cmsPageComponent.BackLink?.HasContent != true;
             }
         }
 
