@@ -1,4 +1,6 @@
-﻿namespace Beis.LearningPlatform.DAL
+﻿using Beis.LearningPlatform.DAL.Mappers;
+
+namespace Beis.LearningPlatform.DAL
 {
     public class ExpressionOfInterestDataService : RepositoryDataServiceBase<IExpressionOfInterestRepository>, IExpressionOfInterestDataService
     {
@@ -8,7 +10,7 @@
 
         public async Task<int> Add(ExpressionOfInterestDto expressionOfInterestDto)
         {
-            var entity = _mapper.Map<ExpressionOfInterest>(expressionOfInterestDto);
+            var entity = ExpressionOfInterestMapper.GetExpressionOfInterest(expressionOfInterestDto);
             entity.RecordCreatedUtc = DateTime.UtcNow;
 
             await _repository.AddAsync(entity);
