@@ -13,7 +13,7 @@
                 @foreach (var option in Model.RatingOptions)
                 {
                     <div class="govuk-radios__item">
-                        <input class="govuk-radios__input" id="rating-@Model.RatingOptions.IndexOf(option)" asp-for="Rating" type="radio" value="@option">
+                        <input class="govuk-radios__input" asp-for="rating-@Model.RatingOptions.IndexOf(option)" type="radio" value="@option">
                         <label class="govuk-label govuk-radios__label" for="rating-@Model.RatingOptions.IndexOf(option)">
                             @option
                         </label>
