@@ -113,10 +113,10 @@
     }
 
     function showElement(el) {
-        $('#' + el).removeClass('hide-element');
+        document.querySelector('#' + el).classList.remove("hide-element");
     }
     function hideElement(el) {
-        $('#' + el).addClass('hide-element')
+        document.querySelector('#' + el).classList.add("hide-element");
     }
 
     function onClose() {
@@ -129,18 +129,18 @@
     function onCopy() {
         hideElement('copy');
         showElement('linkCopied');
-        navigator.clipboard.writeText('@Model.ShareLink');
+        navigator.clipboard.writeText('@(Model.ShareLink)');
         return false;
     }
 
     function setTabOrder() {
         if (navigator.share) {
-            $('#copy').attr('tabIndex', -1);
-            $('#close').attr('tabIndex', -1);
+            document.querySelector('#copy').setAttribute('tabIndex', -1);
+            document.querySelector('#close').setAttribute('tabIndex', -1);
         }
         else {
-            $('#copy').removeAttr("tabindex");
-            $('#close').removeAttr("tabindex");
+            document.querySelector('#copy').removeAttribute("tabindex");
+            document.querySelector('#close').removeAttribute("tabindex");
         }
     };
 </script>
