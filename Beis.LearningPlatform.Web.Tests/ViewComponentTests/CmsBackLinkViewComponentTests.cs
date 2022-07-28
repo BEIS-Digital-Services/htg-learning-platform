@@ -63,10 +63,5 @@
             var viewComponentData = viewComponentResult.ViewData as ViewDataDictionary<CmsBackLinkViewModel>;
             return viewComponentData;
         }
-
-        private static CMSColumnHero GetValidCmsColumnHero()
-        {
-            return new CMSColumnHero() { Header = "Header", Intro = "Intro", LinkText = "LinkText", LinkUrl = "LinkUrl" };
-        }
     }
 }
