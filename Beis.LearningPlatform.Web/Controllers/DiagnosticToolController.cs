@@ -112,7 +112,10 @@
             ClearSessionEmail();
             var response = await _controllerHelper.CreateForm(FormTypes.DiagnosticTool);
             if (response.Result)
+            {
+                response.Payload.title = "Help to Grow find your software solution - Gov.Uk";
                 return GetViewResult(response.Payload);
+            }
             else
                 return BadRequest();
         }
