@@ -4,13 +4,12 @@
 	{
 		public static string GetGaLinkId(this ICmsPageLink cMSPageLink, string prefix = null)
 		{
-			if (string.IsNullOrWhiteSpace(cMSPageLink?.label))
+			if (string.IsNullOrWhiteSpace(cMSPageLink?.label) && string.IsNullOrWhiteSpace(cMSPageLink?.url))
 			{
 				return $"{prefix}{cMSPageLink?.id}";
 			}
 
-			var labelId = $"{prefix}{cMSPageLink?.label}".Trim().Replace(" ", "-").UrlEncode(true);
-			return $"{labelId}-{cMSPageLink?.id}";
+			return $"{prefix?.Trim()}{cMSPageLink?.label?.Trim()}{cMSPageLink?.url?.Trim()}".Replace("/", "-").Replace(" ", "-").UrlEncode(true);
 		}
 
         internal static string GetCmsLinkUrl(this CMSPageLink cmsPageLink)

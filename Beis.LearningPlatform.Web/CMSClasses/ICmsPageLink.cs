@@ -4,5 +4,6 @@
 	{
 		int id { get; }
 		string label { get; }
+        string url { get; }
 	}
 }

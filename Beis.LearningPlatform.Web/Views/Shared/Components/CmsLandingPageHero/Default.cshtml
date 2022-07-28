@@ -54,7 +54,7 @@
             <div class="govuk-grid-row">
                 <div class="right-column">
                     <h2 class="govuk-heading-l govuk-!-padding-top-3">
-                        <a id="link-landingpagehero-@hero.LinkAria" class="govuk-link" href="@hero.LinkUrl" aria-label="hero.LinkAria">@hero.Header</a>                        
+                        <a id="@hero.GetGaLinkId("link-landingpagehero-header-", hero.Header)" class="govuk-link" href="@hero.LinkUrl" aria-label="hero.LinkAria">@hero.Header</a>
                     </h2>
                     <p class="govuk-body">
                         @hero.Intro
@@ -63,7 +63,7 @@
                     {
                         <div>
                             <img src="/assets/images/link-icon.png" class="link-icon-align" />
-                            <a id="link-landingpagehero-@hero.LinkAria" class="govuk-link" href="@hero.LinkUrl" aria-label="hero.LinkAria">@hero.LinkText</a>
+                            <a id="@hero.GetGaLinkId("link-landingpagehero-", hero.LinkText)" class="govuk-link" href="@hero.LinkUrl" aria-label="hero.LinkAria">@hero.LinkText</a>
                         </div>
                     }
                 </div>

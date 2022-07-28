@@ -4,18 +4,20 @@
     [TestFixture]
     public class CmsPageLinkExtensionsTests
     {
-        [TestCase(null, "prefix10")]
-        [TestCase(" ", "prefix10")]
-        [TestCase("", "prefix10")]
-        [TestCase("Label", "prefixlabel-10")]
-        [TestCase(" Label ", "prefix-label-10")]
-        public void Should_GetGaLinkId(string inputLabel, string expected)
+        [TestCase(null, null, "prefix-10")]
+        [TestCase(" ", null, "prefix-10")]
+        [TestCase("", "", "prefix-10")]
+        [TestCase("Label", "", "prefix-label")]
+        [TestCase(" Label ", "", "prefix-label")]
+        [TestCase("Label", "/some-url", "prefix-label-some-url")]
+        [TestCase(" Label ", "some-url", "prefix-labelsome-url")]
+        public void Should_GetGaLinkId(string inputLabel, string url, string expected)
         {
             // Arrange
-            var model = new CMSPageLink { id = 10, label = inputLabel };
+            var model = new CMSPageLink { id = 10, label = inputLabel, url = url };
 
             // Act
-            var result = model.GetGaLinkId("prefix");
+            var result = model.GetGaLinkId("prefix-");
 
             // Assert
             result.Should().Be(expected);

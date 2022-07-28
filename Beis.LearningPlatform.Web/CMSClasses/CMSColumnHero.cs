@@ -20,5 +20,6 @@
 		}
 
         string ICmsPageLink.label { get { return LinkText; } }
+        string ICmsPageLink.url { get { return LinkUrl; } }
     }
 }

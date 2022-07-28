@@ -30,5 +30,11 @@
             }
         }
 
+        
+        public string GetGaLinkId(string prefix, string linkTitle)
+		{
+			return $"{prefix}{linkTitle}".Trim().Replace(" ", "-").UrlEncode(true);
+		}
+
 	}
 }
