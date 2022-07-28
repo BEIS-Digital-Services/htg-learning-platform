@@ -48,5 +48,21 @@ namespace Beis.LearningPlatform.Web.Tests.ClassTests
             articles.Image3 = null;
             Assert.NotNull(articles);
         }
+
+        [Test]
+        [TestCase("pdf", "pdf.svg")]
+        [TestCase("text", "txt.svg")]
+        [TestCase("csv", "csv.svg")]
+        [TestCase("word", "doc.svg")]
+        [TestCase("pp", "ppt.svg")]
+        [TestCase("excel", "xls.svg")]
+        public void Test_CMSPageComponent_ImageUrl(string format, string resultImgName)
+        {
+            CMSPageComponent component = new CMSPageComponent();
+            component.abbr = format;
+            var imgUrl = component.ImageUrl;
+            Assert.IsNotNull(imgUrl);
+            Assert.That(imgUrl.Contains(resultImgName));
+        }
     }
 }
