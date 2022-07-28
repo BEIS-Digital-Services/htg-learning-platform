@@ -26,11 +26,11 @@
 
     <div class="govuk-checkboxes">
         <div class="govuk-checkboxes__item">
-            <input type="checkbox" class="govuk-checkboxes__input" id="HasConsentedToMarketing" name="@(controlNameBasePath)hasConsentedToMarketingText" value="@Model.emailAnswer.HasConsentedToMarketingText" @(Model.emailAnswer.IsOptedInForMarketing ? "checked" : "")>
+            <input type="checkbox" class="govuk-checkboxes__input" id="@(controlNameBasePath)hasConsentedToMarketingText" name="@(controlNameBasePath)hasConsentedToMarketingText" value="@Model.emailAnswer.HasConsentedToMarketingText" @(Model.emailAnswer.IsOptedInForMarketing ? "checked" : "")>
             <label for="HasConsentedToMarketing" class="govuk-label govuk-checkboxes__label">I consent to the Department for Business, Energy & Industrial Strategy (BEIS) contacting me by email to keep me informed about news and events relating to Help to Grow: Digital. I am freely consenting to BEIS holding and processing my personal data for marketing communication purposes.</label>
         </div>
         <div class="govuk-checkboxes__item">
-            <input type="checkbox" class="govuk-checkboxes__input" id="HasAcceptedPrivacyPolicy" name="@(controlNameBasePath)hasAcceptedPrivacyPolicyText" value="@Model.emailAnswer.HasAcceptedPrivacyPolicyText" @(Model.emailAnswer.IsPrivacyPolicyAccepted ? "checked" : "")>
+            <input type="checkbox" class="govuk-checkboxes__input" id="@(controlNameBasePath)hasAcceptedPrivacyPolicyText" name="@(controlNameBasePath)hasAcceptedPrivacyPolicyText" value="@Model.emailAnswer.HasAcceptedPrivacyPolicyText" @(Model.emailAnswer.IsPrivacyPolicyAccepted ? "checked" : "")>
             <label for="HasAcceptedPrivacyPolicy" class="govuk-label govuk-checkboxes__label">Tick this box to confirm you have read our <a id="link-diagnostictoolformviews-renderdiagnostictoolemailanswer-privacy-policy" href="/privacy" target="_blank">privacy policy</a>.</label>
         </div>
     </div>
