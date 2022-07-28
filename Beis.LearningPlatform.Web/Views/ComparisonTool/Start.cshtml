@@ -10,7 +10,7 @@
     @if (Model.JavascriptEnabled)
     {
         <partial name="ComparisonToolViews/_PartialProduct" model="@Model" />
-        <script src="~/js/comparisontool.js"></script>
+        <script src="~/js/comparisontool.js" asp-append-version="true"></script>
     }
     else
     {

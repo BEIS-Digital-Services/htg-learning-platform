@@ -1,0 +1,69 @@
+@import 'beis-variables.scss';
+@import 'beis-mixins.scss';
+
+
+.expression-of-interest {
+    #eoi-step3 {
+        display: none;
+    }
+
+    #eoi-step2 {
+        display: none;
+    }
+
+    #eoi-errorsummary {
+        display: none;
+    }
+
+    #eoi-errorname p,
+    #eoi-erroremail p,
+    #eoi-errorbusinessname p,
+    #eoi-errorphonenumber p,
+    #eoi-errorprivacyPolicy p {
+        display: none;
+    }
+
+    #eoi-errorname.govuk-form-group--error p,
+    #eoi-erroremail.govuk-form-group--error p,
+    #eoi-errorbusinessname.govuk-form-group--error p,
+    #eoi-errorphonenumber.govuk-form-group--error p,
+    #eoi-errorprivacyPolicy.govuk-form-group--error p {
+        display: block
+    }
+
+    ul.govuk-error-summary__list {
+        list-style-type: circle;
+    }
+
+    .govuk-form-group--error {
+        margin-left: 15px;
+        margin-right: -15px;
+    }
+
+    .govuk-checkboxes {
+        &.govuk-form-group--error {
+            margin-left: 0px;
+            margin-right: 0px;
+        }
+    }
+
+    #eoi-step1 {
+        .govuk-button--start {
+            float: right;
+            margin-top: 72px;
+            margin-left: 30px;
+
+            @include respond(tablet) {
+                float: none;
+                margin-top: 0px;
+                margin-left: 0px;
+            }
+
+            @include respond(mobile) {
+                float: none;
+                margin-top: 0px;
+                margin-left: 0px;
+            }
+        }
+    }
+}
