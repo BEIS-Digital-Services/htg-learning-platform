@@ -1060,3 +1060,7 @@ span.govuk-link-divider {
     margin-bottom: 0.625rem !important;
     margin-left: -1.25rem;
 }
+
+.filter-list .govuk-details[open] > .govuk-details__summary:before {
+    border-width: 20px 12px 0 12px;
+}
