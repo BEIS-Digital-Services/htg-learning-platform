@@ -11,30 +11,32 @@
 
             <div class="govuk-radios">
                 <fieldset>
-                    @if (Model.Radio1HasContent)
-                    {
-                        <div class="govuk-radios__item">
-                            <input id="cms_component_NextPageRadioButton_rdo1" type="radio" value="1" class="govuk-radios__input" checked name="cms_component_NextPageRadioButton_rdo1">
-                            <label for="cms_component_NextPageRadioButton_rdo1_lbl" class="govuk-label govuk-radios__label"><strong>@Model.Radio1BoldLeadText</strong>@Model.Radio1Text</label>
-                        </div>
-                    }
+                    <legend>
+                        @if (Model.Radio1HasContent)
+                        {
+                            <div class="govuk-radios__item">
+                                <input id="cms_component_NextPageRadioButton_rdo1" type="radio" value="1" class="govuk-radios__input" checked name="cms_component_NextPageRadioButton_rdo1">
+                                <label for="cms_component_NextPageRadioButton_rdo1_lbl" class="govuk-label govuk-radios__label"><strong>@Model.Radio1BoldLeadText</strong>@Model.Radio1Text</label>
+                            </div>
+                        }
 
-                    @if (Model.Radio2HasContent)
-                    {
-                        <div class="govuk-radios__item">
-                            <input id="cms_component_NextPageRadioButton_rdo2" type="radio" value="2" class="govuk-radios__input" name="cms_component_NextPageRadioButton_rdo2">
-                            <label for="cms_component_NextPageRadioButton_rdo2_lbl" class="govuk-label govuk-radios__label"><strong>@Model.Radio2BoldLeadText</strong>@Model.Radio2Text</label>
-                        </div>
+                        @if (Model.Radio2HasContent)
+                        {
+                            <div class="govuk-radios__item">
+                                <input id="cms_component_NextPageRadioButton_rdo2" type="radio" value="2" class="govuk-radios__input" name="cms_component_NextPageRadioButton_rdo2">
+                                <label for="cms_component_NextPageRadioButton_rdo2_lbl" class="govuk-label govuk-radios__label"><strong>@Model.Radio2BoldLeadText</strong>@Model.Radio2Text</label>
+                            </div>
 
-                    }
+                        }
 
-                    @if (Model.Radio3HasContent)
-                    {
-                        <div class="govuk-radios__item">
-                            <input id="cms_component_NextPageRadioButton_rdo3" type="radio" value="3" class="govuk-radios__input" name="cms_component_NextPageRadioButton_rdo3">
-                            <label for="cms_component_NextPageRadioButton_rdo3_lbl" class="govuk-label govuk-radios__label"><strong>@Model.Radio3BoldLeadText</strong>@Model.Radio3Text</label>
-                        </div>
-                    }
+                        @if (Model.Radio3HasContent)
+                        {
+                            <div class="govuk-radios__item">
+                                <input id="cms_component_NextPageRadioButton_rdo3" type="radio" value="3" class="govuk-radios__input" name="cms_component_NextPageRadioButton_rdo3">
+                                <label for="cms_component_NextPageRadioButton_rdo3_lbl" class="govuk-label govuk-radios__label"><strong>@Model.Radio3BoldLeadText</strong>@Model.Radio3Text</label>
+                            </div>
+                        }
+                    </legend>
                 </fieldset>
             </div>
 
@@ -42,19 +44,22 @@
                 <div class="">
                     <div class="govuk-width-container">
                         <div class="govuk-grid-row">
-                            <fieldset>
-                                <p class="govuk-button-group">
-                                    <a id="cms_component_NextPageRadioButton_btn1" href="@Model.Radio1Url" style="display:" role="button" draggable="false" class="govuk-button govuk-button--start primary " data-module="govuk-button">
-                                        @Model.ButtonText
-                                    </a>
-                                    <a id="cms_component_NextPageRadioButton_btn2" href="@Model.Radio2Url" style="display:none;" role="button" draggable="false" class="govuk-button govuk-button--start primary " data-module="govuk-button">
-                                        @Model.ButtonText
-                                    </a>
-                                    <a id="cms_component_NextPageRadioButton_btn3" href="@Model.Radio3Url" style="display:none" role="button" draggable="false" class="govuk-button govuk-button--start primary " data-module="govuk-button">
-                                        @Model.ButtonText
-                                    </a>
-                                </p>
-                            </fieldset>
+                            <p class="govuk-button-group">
+                                <fieldset>
+                                    <legend>
+                                        <a id="cms_component_NextPageRadioButton_btn1" href="@Model.Radio1Url" style="display:" role="button" draggable="false" class="govuk-button govuk-button--start primary " data-module="govuk-button">
+                                            @Model.ButtonText
+                                        </a>
+                                        <a id="cms_component_NextPageRadioButton_btn2" href="@Model.Radio2Url" style="display:none;" role="button" draggable="false" class="govuk-button govuk-button--start primary " data-module="govuk-button">
+                                            @Model.ButtonText
+                                        </a>
+                                        <a id="cms_component_NextPageRadioButton_btn3" href="@Model.Radio3Url" style="display:none" role="button" draggable="false" class="govuk-button govuk-button--start primary " data-module="govuk-button">
+                                            @Model.ButtonText
+                                        </a>
+
+                                    </legend>
+                                </fieldset>
+                            </p>
                         </div>
                     </div>
                 </div>
