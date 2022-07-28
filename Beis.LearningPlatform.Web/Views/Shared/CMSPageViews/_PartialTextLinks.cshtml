@@ -22,7 +22,7 @@
                             <span class="beis-link-icon">
                                 @if (link.icon != null)
                                 {
-                                    <vc:cms-image options='new CmsImageViewModel{ ImageUrl = link.icon.url, CssClass = "svgimg beis-link-icon " + linksAlign, Width =  link.icon.width, Height = link.icon.height }' />
+                                    <vc:cms-image options='new CmsImageViewModel{ ImageUrl = link.icon.url, CssClass = "svgimg beis-link-icon " + linksAlign, Width =  link.icon.width, Height = link.icon.height, Title = link.icon.alternativeText }' />
                                 }
                             </span>
                             @if (link.url.StartsWith("http"))
