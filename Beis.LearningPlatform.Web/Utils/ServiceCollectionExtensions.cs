@@ -66,6 +66,8 @@ namespace Beis.LearningPlatform.Web.Utils
             services.AddAppServices();
             services.RegisterAppOptions(configuration);
 
+            services.AddAntiforgery(x => x.HeaderName = "X-XSRF-TOKEN");
+
             services.AddHsts(options =>
             {
                 options.Preload = true;
@@ -84,7 +86,8 @@ namespace Beis.LearningPlatform.Web.Utils
             services.AddScoped<ICookieControllerHelper, CookieControllerHelper>();
             services.AddScoped<IComparisonToolControllerHelper, ComparisonToolControllerHelper>();
             services.AddScoped<IFeedbackControllerHelper, FeedbackControllerHelper>();
-
+            services.AddScoped<IExpressionOfInterestControllerHelper, ExpressionOfInterestControllerHelper>();
+            
             // Local services
             services.AddScoped<ICmsApiIntegrationService, CmsApiIntegrationService>();
             services.AddScoped<ICmsService, CmsService>();
