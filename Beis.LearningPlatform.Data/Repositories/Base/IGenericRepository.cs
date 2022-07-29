@@ -9,8 +9,8 @@
     {
         TEntity Get(int id);
         Task<TEntity> GetAsync(int id);
-        IEnumerable<TEntity> GetAll(int page, int size, bool onlyActive);
-        Task<IEnumerable<TEntity>> GetAllAsync(int page, int size, bool onlyActive);
+        IEnumerable<TEntity> GetAll(int page, int size);
+        Task<IEnumerable<TEntity>> GetAllAsync(int page, int size);
         int Count(Func<TEntity, bool> filterExpression = null, string[] Includes = null);
         void Add(TEntity entity);
         Task AddAsync(TEntity entity);
