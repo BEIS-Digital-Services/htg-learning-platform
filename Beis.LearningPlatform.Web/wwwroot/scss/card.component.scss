@@ -11,6 +11,19 @@
 
     .cards {
 
+        button {
+            &.number {
+                padding: 0 0 0 0;
+                text-decoration: none;
+
+                &:focus {
+                    background: #ffdd00;
+                    border: 2px solid #000;
+                    color: #000;
+                }
+            }
+        }
+
         a.govuk-link,
         p {
             font-size: 24px;
@@ -31,10 +44,9 @@
             width: 50%;
             margin: 0;
         }
-        
+
         .number {
             position: absolute;
-            cursor: pointer;
             top: calc(50% - 32px);
             width: 64px;
             height: 64px;
