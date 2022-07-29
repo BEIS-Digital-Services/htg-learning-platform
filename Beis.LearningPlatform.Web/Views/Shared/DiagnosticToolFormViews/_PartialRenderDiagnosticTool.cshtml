@@ -214,6 +214,7 @@
                             <input type="hidden" asp-for="@Model.steps[x].skippedByElementStepId" />
                             <input type="hidden" asp-for="@Model.steps[x].showInSummary" />
                             var skipStep = Model.steps[x].skipStep;
+                            var renderHtml = true;
 
                             var displayElement = true;
 
@@ -221,19 +222,19 @@
                             {
                                 if (step.id.ToString() != Model.CurrStep.ToString())
                                 {
-                                    displayElement = false;
+                                    renderHtml = false;
                                 }
                             }
                             // Form Complete so hide the form elements and display the summary table
                             if (Model.FormIsCompleted)
                             {
-                                displayElement = false;
+                                renderHtml = false;
                             }
 
-                            @if (!string.IsNullOrWhiteSpace(step.title) && displayElement)
+                            @if (!string.IsNullOrWhiteSpace(step.title) && renderHtml)
                             {
                                 <div class="govuk-form-group govuk-grid-column-two-thirds govuk-!-margin-bottom-0">
-                                    <div class="govuk-fieldset__legend govuk-fieldset__legend--l govuk-!-margin-bottom-0">
+                                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l govuk-!-margin-bottom-0">
                                         <h1 class="govuk-heading-xl govuk-!-padding-top-3 govuk-!-padding-bottom-0">@step.title</h1>
                                     </div>
                                 </div>
@@ -293,7 +294,7 @@
                                     };
 
                                     var childHasErrors = Model.steps[x].elements[i].childHasErrors ? "govuk-form-group--error" : string.Empty;
-                                    if (displayElement)
+                                    if (renderHtml)
                                     {
                                         <div class="govuk-form-group @childHasErrors govuk-grid-column-two-thirds govuk-!-padding-top-0">
                                             <fieldset class="govuk-fieldset">
@@ -301,6 +302,7 @@
                                             </fieldset>
                                         </div>
                                     }
+
                                     @*Display Summary Instead*@
                                     @if (Model.FormIsCompleted && !skipStep && Model.FormType != FormTypes.SkillsTwo)
                                     {
@@ -349,7 +351,7 @@
 
                                 }
                             }
-                            else if (displayElement)
+                            else if (renderHtml)
                             {
                                 <div class="govuk-grid-row govuk-grid-column-two-thirds">
                                     <div class="beis-white govuk-grid-column-full">
