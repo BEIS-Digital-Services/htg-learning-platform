@@ -35,7 +35,7 @@
         {
             var request = _httpContextAccessor.HttpContext?.Request;
             var strBaseUrl = request?.Scheme + "://" + request?.Host;
-            var routeUrl = request?.Headers["Referer"].ToString().Replace(strBaseUrl, "");
+            var routeUrl = request?.Headers["Referer"].ToString().Replace(strBaseUrl, string.Empty) + "?feedback-submitted=true";
             return (routeUrl?.IndexOf("/#feedback-prompt") > -1 ? routeUrl : routeUrl + "/#feedback-prompt").Replace("//#", "/#");
         }
 
