@@ -1143,3 +1143,14 @@ span.govuk-link-divider {
         font-size: 2rem;
     }
 }
+
+.beis-underline {
+    padding-top: 0.625rem !important;
+    background-color: #FFB000;
+    margin-bottom: 0.625rem !important;
+    margin-left: -1.25rem;
+}
+
+.filter-list .govuk-details[open] > .govuk-details__summary:before {
+    border-width: 20px 12px 0 12px;
+}
