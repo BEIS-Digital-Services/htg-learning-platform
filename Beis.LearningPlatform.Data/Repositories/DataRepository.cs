@@ -7,8 +7,6 @@
     {
         private readonly DataContext context;
 
-        public ILocationRepository Locations { get; }
-
         public IFeedbackProblemReportRepository FeedbackProblemReports { get; }
 
         public IFeedbackPageUsefulRepository FeedbackPageUsefuls { get; }
@@ -16,14 +14,11 @@
         public IDiagnosticToolEmailAnswerRepository DiagnosticToolEmailAnswers { get; }
 
         public DataRepository(DataContext context
-            , ILocationRepository locationRepository
             , IFeedbackProblemReportRepository feedbackProblemReportRepository
             , IFeedbackPageUsefulRepository feedbackPageUsefulRepository
             )
         {
             this.context = context;
-
-            Locations = locationRepository;
             FeedbackProblemReports = feedbackProblemReportRepository;
             FeedbackPageUsefuls = feedbackPageUsefulRepository;
         }
