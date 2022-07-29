@@ -39,22 +39,19 @@
         /// <param name="page">zero based page index</param>
         /// <param name="size">size of page</param>
         /// <returns>IEnumerable<TEntity></returns>
-        public virtual IEnumerable<TEntity> GetAll(int page, int size, bool onlyActive)
+        public virtual IEnumerable<TEntity> GetAll(int page, int size)
         {
-            if (onlyActive)
-                return Entities.Where(a => a.IsActive == onlyActive).Skip((page - 1) * size).Take(size).ToList();
             return Entities.Skip((page - 1) * size).Take(size).ToList();
         }
+
         /// <summary>
         /// Get all entities from database async
         /// </summary>
         /// <param name="page">zero based page index</param>
         /// <param name="size">size of page</param>
         /// <returns>IEnumerable<TEntity></returns>
-        public virtual async Task<IEnumerable<TEntity>> GetAllAsync(int page, int size, bool onlyActive)
+        public virtual async Task<IEnumerable<TEntity>> GetAllAsync(int page, int size)
         {
-            if (onlyActive)
-                return await Entities.Where(a => a.IsActive == onlyActive).Skip((page - 1) * size).Take(size).ToListAsync();
             return await Entities.Skip((page - 1) * size).Take(size).ToListAsync();
         }
 
