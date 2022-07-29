@@ -192,7 +192,11 @@
                     </h2>
                     @if (!string.IsNullOrWhiteSpace(currentFormStepElement.hint))
                     {
-                        <span class="govuk-body @hintInBoldCss"><p>@currentFormStepElement.hint</p></span>
+                        <p class="govuk-body govuk-!-margin-top-4 @hintInBoldCss">
+                            <label for="@(Model.steps[currentStep].elements[currentElement].InputCtrlId)">
+                                @currentFormStepElement.hint
+                            </label>
+                        </p>
                     }
                     <span asp-validation-for="@Model.steps[currentStep].elements[currentElement].textControlHtmlId" class="govuk-error-message">
                         @currentFormStepElement.validationError
@@ -200,7 +204,7 @@
                 </legend>
             </fieldset>
             <div>
-                <textarea asp-for="@Model.steps[currentStep].elements[currentElement].value"
+                <textarea asp-for="@Model.steps[currentStep].elements[currentElement].value" id="@(Model.steps[currentStep].elements[currentElement].InputCtrlId)"
                           rows="5" class="govuk-textarea">
                         @Model.steps[currentStep].elements[currentElement].value
                 </textarea>
