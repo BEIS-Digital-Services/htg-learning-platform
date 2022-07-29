@@ -22,7 +22,7 @@
             {
                 var fromPageName = strapiAction.Replace("Custom-pages/", "");
                 var redirectResult = await _apiCallService.GetApiResult(_cmsOption.ApiBaseUrl, $"seo-redirects?from_pagename={fromPageName}");
-                var redirectViewModel = string.IsNullOrWhiteSpace(redirectResult) ? new List<SEORedirectModel>() : JsonConvert.DeserializeObject<List<SEORedirectModel>>(redirectResult);
+                var redirectViewModel = string.IsNullOrWhiteSpace(redirectResult) ? new List<SeoRedirectModel>() : JsonConvert.DeserializeObject<List<SeoRedirectModel>>(redirectResult);
                 if (redirectViewModel.Count > 0)
                 {
                     viewModel.RedirectTo = redirectViewModel.FirstOrDefault().to_pagename;
