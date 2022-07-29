@@ -5,8 +5,6 @@
     /// </summary>
     public interface IDataRepository : IDisposable
     {
-        ILocationRepository Locations { get; }
-
         IFeedbackProblemReportRepository FeedbackProblemReports { get; }
 
         int Save();

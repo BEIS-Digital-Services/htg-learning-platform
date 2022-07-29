@@ -68,87 +68,85 @@
 
                     @if (Model.FormIsCompleted || isInstructionsPage)
                     {
-                        <fieldset>
-                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                @if (Model.FormIsCompleted)
-                                {
-                                    <div class="govuk-grid-column-two-thirds">
-                                        <h1 class="govuk-heading-xl govuk-!-padding-top-3">
-                                            @if (Model.FormType == FormTypes.DiagnosticTool)
-                                            {
-                                                <text>Here’s an overview of your answers</text>
-                                            }
-                                            else
-                                            {
-                                                @Model.summaryHeading
-                                            }
-
-                                        </h1>
-                                    </div>
-                                    @if (Model.FormType == FormTypes.SkillsOne)
+                        @if (Model.FormIsCompleted)
+                        {
+                            <div class="govuk-grid-column-two-thirds">
+                                <h1 class="govuk-heading-xl govuk-!-padding-top-3">
+                                    @if (Model.FormType == FormTypes.DiagnosticTool)
                                     {
-                                        <div class="govuk-grid-column-two-thirds">
-                                            <h3>Summary</h3>
-                                            <p class="govuk-body">
-                                                By thinking about how your business currently uses software, you can start to see where the next step on your digital journey should be.
-                                            </p>
-                                            <p class="govuk-body">
-                                                Here’s a summary of your answers:
-                                            </p>
-                                        </div>
-                                    }
-                                    else if (Model.FormType == FormTypes.SkillsTwo)
-                                    {
-                                        <partial name="SkilledModule2Views/_PartialDigitalMain" model="@Model" />
-                                    }
-                                    else if (Model.FormType == FormTypes.DiagnosticTool)
-                                    {
-                                        <div class="govuk-grid-column-two-thirds">
-                                            <p class="govuk-body">
-                                                You can change what you’ve told us, and get these results sent to you by email before seeing your results.
-                                            </p>
-                                        </div>
+                                        <text>Here’s an overview of your answers</text>
                                     }
                                     else
                                     {
-                                        <div class="govuk-grid-column-two-thirds">
-                                            <p class="govuk-body">
-                                                You’ve completed the @Model.steps[0].elements[0].text.ToLower() section of your action plan.
-                                            </p>
-                                             <p class="govuk-body">
-                                                Here are your answers...
-                                            </p>
-
-
-                                            <div style="display:flex">
-                                                @if (string.IsNullOrEmpty(Model.formLogo) == false)
-                                                {
-                                                    <div style="padding-right:10px;">
-                                                        <img src="~/assets/images/@Model.formLogo" />
-                                                    </div>
-                                                }
-                                                <div style="align-self:center;">
-                                                    <h1 class="govuk-fieldset__heading">
-                                                        <span>@Model.steps[0].elements[0].text</span>
-                                                        <span class="govuk-!-font-weight-regular">@Model.steps[0].elements[0].text2</span>
-                                                    </h1>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
+                                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                                            @Model.summaryHeading
+                                        </legend>
                                     }
-                                }
-                                else if (isInstructionsPage)
-                                {
-                                    <div class="govuk-grid-column-two-thirds">
-                                        <h1 class="govuk-heading-xl govuk-!-padding-top-3">
-                                            @Html.Raw("Take 2 minutes to find your software solution")
-                                        </h1>
+
+                                </h1>
+                            </div>
+                            @if (Model.FormType == FormTypes.SkillsOne)
+                            {
+                                <div class="govuk-grid-column-two-thirds">
+                                    <h3>Summary</h3>
+                                    <p class="govuk-body">
+                                        By thinking about how your business currently uses software, you can start to see where the next step on your digital journey should be.
+                                    </p>
+                                    <p class="govuk-body">
+                                        Here’s a summary of your answers:
+                                    </p>
+                                </div>
+                            }
+                            else if (Model.FormType == FormTypes.SkillsTwo)
+                            {
+                                <partial name="SkilledModule2Views/_PartialDigitalMain" model="@Model" />
+                            }
+                            else if (Model.FormType == FormTypes.DiagnosticTool)
+                            {
+                                <div class="govuk-grid-column-two-thirds">
+                                    <p class="govuk-body">
+                                        You can change what you’ve told us, and get these results sent to you by email before seeing your results.
+                                    </p>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="govuk-grid-column-two-thirds">
+                                    <p class="govuk-body">
+                                        You’ve completed the @Model.steps[0].elements[0].text.ToLower() section of your action plan.
+                                    </p>
+                                    <p class="govuk-body">
+                                        Here are your answers...
+                                    </p>
+
+
+                                    <div style="display:flex">
+                                        @if (string.IsNullOrEmpty(Model.formLogo) == false)
+                                        {
+                                            <div style="padding-right:10px;">
+                                                <img src="~/assets/images/@Model.formLogo" />
+                                            </div>
+                                        }
+                                        <div style="align-self:center;">
+                                            <h1 class="govuk-fieldset__heading">
+                                                <span>@Model.steps[0].elements[0].text</span>
+                                                <span class="govuk-!-font-weight-regular">@Model.steps[0].elements[0].text2</span>
+                                            </h1>
+                                        </div>
+
                                     </div>
-                                }
-                            </legend>
-                        </fieldset>
+
+                                </div>
+                            }
+                        }
+                        else if (isInstructionsPage)
+                        {
+                            <div class="govuk-grid-column-two-thirds">
+                                <h1 class="govuk-heading-xl govuk-!-padding-top-3">
+                                    @Html.Raw("Take 2 minutes to find your software solution")
+                                </h1>
+                            </div>
+                        }
                     }
 
 
@@ -230,12 +228,9 @@
                             @if (!string.IsNullOrWhiteSpace(step.title))
                             {
                                 <div class="govuk-form-group govuk-grid-column-two-thirds govuk-!-margin-bottom-0" @styleString>
-                                    <fieldset>
                                         <legend class="govuk-fieldset__legend govuk-fieldset__legend--l govuk-!-margin-bottom-0">
                                             <h1 class="govuk-heading-xl govuk-!-padding-top-3 govuk-!-padding-bottom-0">@step.title</h1>
                                         </legend>
-                                    </fieldset>
-
                                 </div>
                             }
 
@@ -286,13 +281,13 @@
                                     }
 
                                     Model.CurrentElement = new ElementInfo
-                                    {
-                                        CurrentStep = x,
-                                        CurrentElement = i,
-                                        RadioButtonParent = i,
-                                        CurrentFormStep = Model.steps[x],
-                                        CurrentFormStepElement = Model.steps[x].elements[i],
-                                    };
+                            {
+                                CurrentStep = x,
+                                CurrentElement = i,
+                                RadioButtonParent = i,
+                                CurrentFormStep = Model.steps[x],
+                                CurrentFormStepElement = Model.steps[x].elements[i],
+                            };
 
                                     var childHasErrors = Model.steps[x].elements[i].childHasErrors ? "govuk-form-group--error" : string.Empty;
                                     <div class="govuk-form-group @childHasErrors govuk-grid-column-two-thirds govuk-!-padding-top-0" @styleString>
@@ -367,7 +362,7 @@
                         @if (Model.FormIsCompleted)
                         {
                             @await Html.PartialAsync("DiagnosticToolFormViews/_PartialRenderDiagnosticToolEmailAnswer",
-                                        (Model.EmailAnswer, nameof(Model.EmailAnswer)))
+                    (Model.EmailAnswer, nameof(Model.EmailAnswer)))
                         }
 
                         @if (Model.CurrStep > 0)

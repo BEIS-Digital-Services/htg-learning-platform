@@ -6,6 +6,7 @@ var selectedCardIds = [];
 document.addEventListener("DOMContentLoaded", function () {
 
     showAllElements(document.querySelectorAll(".cards"));
+    showJsGoBackLinks();
 
     checkAndAddHandler("#roundel1", "#card1");
     checkAndAddHandler("#roundel2", "#card2");
@@ -34,6 +35,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function showAllElements(elements) {
         elements.forEach(el => { el.classList.remove("no-script-hidden-card"); });
+    }
+
+    function showJsGoBackLinks() {
+        const jsLinkContainers = document.querySelector(".js-go-back-link-container");
+        if (jsLinkContainers) {
+            jsLinkContainers.style.display = "block";
+
+            const jsLinks = document.querySelector(".js-go-back-link-container a.govuk-back-link");
+            if (jsLinks) {
+                jsLinks.addEventListener("click", () => {
+                    history.go(-1);
+                });
+            }
+        }
     }
 
     var oldSelectedCardIds = JSON.parse(localStorage.getItem("selectedCardIds")) || [];
@@ -161,6 +176,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
+    var elmnts = document.querySelectorAll('[data-tabclick]'); 
+    for (var i = 0; i < elmnts.length; i++) {
+        if (elmnts[i].getAttribute("data-tabclick") === "true" && !elmnts[i].onkeydown) {
+
+            elmnts[i].onkeydown = function (event) {
+                switch (event.which) {
+                    case 32: { // KEY_SPACE
+                        event.stopPropagation;
+                        this.click();
+                        return false;
+                    }
+                }
+                return true;
+            };
+        }
+    }
 
 });
 
@@ -182,4 +213,13 @@ function setImgItemLinkIcon(itemKey, spn_imgitemicon_std, spn_imgitemicon_comple
     }
 }
 
-
+function keyHandler(event, func) {
+    switch (event.which) {
+        case KEY_SPACE: {
+            event.stopPropagation;
+            return func();
+            break;
+        }
+    }
+    return true;
+}

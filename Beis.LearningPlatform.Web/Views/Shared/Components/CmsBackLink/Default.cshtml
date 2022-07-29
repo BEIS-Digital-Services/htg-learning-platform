@@ -1,0 +1,12 @@
+﻿@model CmsBackLinkViewModel
+@if (!Model.HasContent)
+{
+    return;
+}
+<div class="govuk-width-container@(Model.IsJavascriptLink ? " js-go-back-link-container" : "")" style="@(Model.IsJavascriptLink ? "display:none" : "");">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+            <a id="@(Model.LinkId)" href="@(Model.BackLink.LinkUrl)" class="govuk-back-link" data-tabclick="true">@(Model.BackLink.LinkText)</a>
+        </div>
+    </div>
+</div>
