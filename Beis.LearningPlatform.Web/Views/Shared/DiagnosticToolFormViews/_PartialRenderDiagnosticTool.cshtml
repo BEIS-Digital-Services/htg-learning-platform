@@ -80,7 +80,9 @@
                                             }
                                             else
                                             {
+                                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                                                 @Model.summaryHeading
+                                        </legend>
                                             }
 
                                         </h1>
@@ -230,12 +232,9 @@
                             @if (!string.IsNullOrWhiteSpace(step.title))
                             {
                                 <div class="govuk-form-group govuk-grid-column-two-thirds govuk-!-margin-bottom-0" @styleString>
-                                    <fieldset>
                                         <legend class="govuk-fieldset__legend govuk-fieldset__legend--l govuk-!-margin-bottom-0">
                                             <h1 class="govuk-heading-xl govuk-!-padding-top-3 govuk-!-padding-bottom-0">@step.title</h1>
                                         </legend>
-                                    </fieldset>
-
                                 </div>
                             }
 
