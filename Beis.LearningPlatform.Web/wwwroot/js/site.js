@@ -17,6 +17,10 @@ document.addEventListener("DOMContentLoaded", function () {
         if (document.querySelector(currentRoundelId)) {
             document.querySelector(currentRoundelId).addEventListener("click", () => {
                 showElement(document.querySelector(cardId));
+                const link = document.querySelector(cardId + " .card-content a");
+                if (link && link.removeAttribute) {
+                    link.removeAttribute("tabindex")
+                }
             });
         }
     }
