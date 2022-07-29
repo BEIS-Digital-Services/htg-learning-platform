@@ -1306,7 +1306,7 @@
               "text": "Your team and planning",
               "text2": "",
               "subText": "Question 9: Do you use software to share information with other people in the business?",
-              "nextButtonText": "See your result",
+              "nextButtonText": "See your results",
               "textControlHtmlId": "lblMultipleChoice9",
               "textControlHtmlName": "Question9",
               "optionElements": [
