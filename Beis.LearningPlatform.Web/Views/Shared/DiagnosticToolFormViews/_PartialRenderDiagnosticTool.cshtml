@@ -5,7 +5,7 @@
     int formTypeNum = (int)Model.FormType;
 }
 
-<main id="main-heading" role="main">
+<main id="main-heading">
     <div class="govuk-grid-column-full govuk-!-padding-bottom-6" style="min-height: 70vh;">
         <div class="beis-white govuk-grid-column-full">
             <div class="govuk-width-container govuk-!-margin-top-6 govuk-!-margin-bottom-6 ">
@@ -180,7 +180,7 @@
                         <input type="hidden" asp-for="title" id="modelTitle@(Model.id)" />
                         @if (Model.FormType != FormTypes.DiagnosticTool)
                         {
-                            <input type="hidden" asp-for="summaryHeading" id="modelSummaryHeading@(Model.summaryHeading)" />
+                            <input type="hidden" asp-for="summaryHeading" id="modelSummaryHeading@(Model.id)" />
                             <input type="hidden" asp-for="canChangeAnswers" id="modelCanChangeAnswers@(Model.canChangeAnswers)" />
                         }
                         <input type="hidden" asp-for="FormType" id="modelSummaryHeading@(Model.FormType)" />
@@ -214,31 +214,30 @@
                             <input type="hidden" asp-for="@Model.steps[x].skippedByElementStepId" />
                             <input type="hidden" asp-for="@Model.steps[x].showInSummary" />
                             var skipStep = Model.steps[x].skipStep;
-                            var styleString = "style=";
+
+                            var displayElement = true;
 
                             @if (Model.validationErrors.Count != 0 || !Model.FormIsCompleted)
                             {
                                 if (step.id.ToString() != Model.CurrStep.ToString())
                                 {
-                                    styleString = "style=display:none";
+                                    displayElement = false;
                                 }
                             }
                             // Form Complete so hide the form elements and display the summary table
                             if (Model.FormIsCompleted)
                             {
-                                styleString = "style=display:none";
+                                displayElement = false;
                             }
 
-                            @if (!string.IsNullOrWhiteSpace(step.title))
+                            @if (!string.IsNullOrWhiteSpace(step.title) && displayElement)
                             {
-                                <div class="govuk-form-group govuk-grid-column-two-thirds govuk-!-margin-bottom-0" @styleString>
-                                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l govuk-!-margin-bottom-0">
-                                            <h1 class="govuk-heading-xl govuk-!-padding-top-3 govuk-!-padding-bottom-0">@step.title</h1>
-                                        </legend>
+                                <div class="govuk-form-group govuk-grid-column-two-thirds govuk-!-margin-bottom-0">
+                                    <div class="govuk-fieldset__legend govuk-fieldset__legend--l govuk-!-margin-bottom-0">
+                                        <h1 class="govuk-heading-xl govuk-!-padding-top-3 govuk-!-padding-bottom-0">@step.title</h1>
+                                    </div>
                                 </div>
                             }
-
-
 
                             if (step.elements != null)
                             {
@@ -294,12 +293,14 @@
                                     };
 
                                     var childHasErrors = Model.steps[x].elements[i].childHasErrors ? "govuk-form-group--error" : string.Empty;
-                                    <div class="govuk-form-group @childHasErrors govuk-grid-column-two-thirds govuk-!-padding-top-0" @styleString>
-                                        <fieldset class="govuk-fieldset">
-                                            <partial name="DiagnosticToolFormViews/_PartialRenderDTParentElement" model="@Model" />
-                                        </fieldset>
-                                    </div>
-
+                                    if (displayElement)
+                                    {
+                                        <div class="govuk-form-group @childHasErrors govuk-grid-column-two-thirds govuk-!-padding-top-0">
+                                            <fieldset class="govuk-fieldset">
+                                                <partial name="DiagnosticToolFormViews/_PartialRenderDTParentElement" model="@Model" />
+                                            </fieldset>
+                                        </div>
+                                    }
                                     @*Display Summary Instead*@
                                     @if (Model.FormIsCompleted && !skipStep && Model.FormType != FormTypes.SkillsTwo)
                                     {
@@ -348,9 +349,9 @@
 
                                 }
                             }
-                            else
+                            else if (displayElement)
                             {
-                                <div class="govuk-grid-row govuk-grid-column-two-thirds" @styleString>
+                                <div class="govuk-grid-row govuk-grid-column-two-thirds">
                                     <div class="beis-white govuk-grid-column-full">
                                         <div class="govuk-width-container govuk-!-margin-top-6 govuk-!-margin-bottom-6">
                                             <h4 class="govuk-heading-s govuk-!-font-weight-regular">
