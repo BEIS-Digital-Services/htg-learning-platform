@@ -42,9 +42,17 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function showJsGoBackLinks() {
-        const jsLinks = document.querySelector(".js-go-back-link-container");
-        if (jsLinks)
-            jsLinks.style.display = "block";
+        const jsLinkContainers = document.querySelector(".js-go-back-link-container");
+        if (jsLinkContainers) {
+            jsLinkContainers.style.display = "block";
+
+            const jsLinks = document.querySelector(".js-go-back-link-container a.govuk-back-link");
+            if (jsLinks) {
+                jsLinks.addEventListener("click", () => {
+                    history.go(-1);
+                });
+            }
+        }
     }
 
     var oldSelectedCardIds = JSON.parse(localStorage.getItem("selectedCardIds")) || [];
