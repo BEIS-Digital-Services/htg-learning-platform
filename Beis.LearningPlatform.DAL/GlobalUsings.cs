@@ -14,3 +14,5 @@ global using Beis.LearningPlatform.Library.DTO;
 global using Microsoft.EntityFrameworkCore;
 global using Microsoft.Extensions.Logging;
 global using System.Diagnostics.CodeAnalysis;
+global using Beis.LearningPlatform.Data.Entities;
+global using Beis.LearningPlatform.Data.Repositories.ExpressionOfInterest;

@@ -10,7 +10,7 @@
 
 @if (Model.productsForCurrentCategoryToRender?.Any() ?? false)
 {
-    <div class="formDiv" id="formDiv-@Model.CurrentCategoryId">
+    <div class="formDiv" id="formDiv-@Model.CurrentCategoryName">
         @using (Html.BeginForm("CompareProducts", "ComparisonTool", FormMethod.Post, new { id = Model.CurrentCategoryId }))
         {
             <input type="hidden" name="selectedProductCategoryIds" />
