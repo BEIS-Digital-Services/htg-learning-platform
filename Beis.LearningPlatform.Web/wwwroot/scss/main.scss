@@ -1060,3 +1060,7 @@ span.govuk-link-divider {
     border-bottom: 10px solid $beis-yellow;
     margin: 0 15px;
 }
+
+.beis-yellow summary.govuk-details__summary {
+    color: $beis-navy-blue;
+}
