@@ -137,6 +137,8 @@
             var viewModel = await _homeControllerHelper.ProcessGetCustomPageResult("Custom-pages/" + strapiAction);
             if (viewModel.id == default)
             {
+                if (!string.IsNullOrEmpty(viewModel.RedirectTo))
+                    return RedirectPermanent(viewModel.RedirectTo);
                 return GetNotFoundPageResult();
             }
             return GetStrapiCustomPageView(strapiAction, viewModel);
