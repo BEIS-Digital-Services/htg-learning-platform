@@ -31,7 +31,7 @@
             width: 50%;
             margin: 0;
         }
-        
+
         .number {
             position: absolute;
             cursor: pointer;
@@ -48,8 +48,8 @@
             &.one {
                 left: -27px;
                 outline: 10px solid $beis-aqua;
-                border: 2px solid $white;
-                color: $white;
+                border: 2px solid $black;
+                color: $black;
                 z-index: 2;
 
                 @media only screen and (min-width: 769px) {
@@ -65,8 +65,8 @@
             &.two {
                 left: -27px;
                 outline: 10px solid $beis-yellow;
-                border: 2px solid $white;
-                color: $white;
+                border: 2px solid $black;
+                color: $black;
                 z-index: 3;
 
                 @media only screen and (min-width: 769px) {
