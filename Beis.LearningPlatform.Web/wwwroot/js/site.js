@@ -38,9 +38,17 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function showJsGoBackLinks() {
-        const jsLinks = document.querySelector(".js-go-back-link-container");
-        if (jsLinks)
-            jsLinks.style.display = "block";
+        const jsLinkContainers = document.querySelector(".js-go-back-link-container");
+        if (jsLinkContainers) {
+            jsLinkContainers.style.display = "block";
+
+            const jsLinks = document.querySelector(".js-go-back-link-container a.govuk-back-link");
+            if (jsLinks) {
+                jsLinks.addEventListener("click", () => {
+                    history.go(-1);
+                });
+            }
+        }
     }
 
     var oldSelectedCardIds = JSON.parse(localStorage.getItem("selectedCardIds")) || [];
@@ -168,6 +176,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
+    var elmnts = document.querySelectorAll('[data-tabclick]'); 
+    for (var i = 0; i < elmnts.length; i++) {
+        if (elmnts[i].getAttribute("data-tabclick") === "true" && !elmnts[i].onkeydown) {
+
+            elmnts[i].onkeydown = function (event) {
+                switch (event.which) {
+                    case 32: { // KEY_SPACE
+                        event.stopPropagation;
+                        this.click();
+                        return false;
+                    }
+                }
+                return true;
+            };
+        }
+    }
 
 });
 
@@ -189,4 +213,13 @@ function setImgItemLinkIcon(itemKey, spn_imgitemicon_std, spn_imgitemicon_comple
     }
 }
 
-
+function keyHandler(event, func) {
+    switch (event.which) {
+        case KEY_SPACE: {
+            event.stopPropagation;
+            return func();
+            break;
+        }
+    }
+    return true;
+}
