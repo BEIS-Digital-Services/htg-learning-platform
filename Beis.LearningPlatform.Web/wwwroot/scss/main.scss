@@ -42,6 +42,8 @@
 @import "navigation-breadcrumb.scss";
 @import "landingPageHero.scss";
 @import "search-article-listing.scss";
+@import "expression-of-interest.component.scss";
+@import "three-column-heroes.component.scss";
 
 .hide-element {
     border: 0;
@@ -180,6 +182,11 @@ h1, h2, h3,
     &.primary {
         background-color: $primary-blue-btn;
         color: $white;
+
+        &.white-border {
+            border: 1px solid $white;
+            color: $white;
+        }
     }
 
     &.primary-big {
@@ -1052,6 +1059,100 @@ span.govuk-link-divider {
 .govuk-header-yellow-line {
     border-bottom: 10px solid $beis-yellow;
     margin: 0 15px;
+}
+@media screen and (max-width: 375px) {
+
+    .card .cards {
+        margin: 0 !important;
+        padding: 10px 20px 10px 27px;
+    }
+
+    .card .cards .number {
+        width: 25px;
+        height: 25px;
+        font-size: 20px;
+        line-height: 25px;
+    }
+
+    .card .cards a.govuk-link, .card .cards p {
+        font-size: 15px;
+    }
+
+    .card .cards .number.two,
+    .card .cards .number.one,
+    .card .cards .number.three,
+    .card .cards .number.four {
+        left: -15px;
+    }
+
+    .govuk-body a.button-link {
+        word-break: break-all;
+        display: block;
+        font-size: 12px;
+    }
+
+    .social-media .icon {
+        padding-right: 0 !important
+    }
+
+    .resources .resources-intro-text {
+        font-size: 20px
+    }
+
+    .govuk-footer__meta-item {
+        margin-left: 0 !important;
+        margin-right: 0 !important
+    }
+
+    .govuk-footer__meta-item--grow {
+        flex-basis: 100% !important
+    }
+
+    .govuk-footer__meta {
+        margin: 0 !important
+    }
+
+    .quote {
+        overflow: hidden;
+        word-break: break-all;
+        font-size: 16px !important
+    }
+}
+
+@media screen and (max-width: 200px) {
+    .card .cards a.govuk-link, .card .cards p {
+        word-break: break-all;
+    }
+
+    .social-media {
+        overflow: hidden
+    }
+
+    .govuk-width-container {
+        margin: 0 !important;
+    }
+
+    .govuk-footer__meta-item {
+        margin-left: 0;
+        margin-right: 0
+    }
+}
+
+@media screen and (max-width: 1199px) {
+    .govuk-heading-xl {
+        font-size: 2rem;
+    }
+}
+
+.beis-underline {
+    padding-top: 0.625rem !important;
+    background-color: #FFB000;
+    margin-bottom: 0.625rem !important;
+    margin-left: -1.25rem;
+}
+
+.filter-list .govuk-details[open] > .govuk-details__summary:before {
+    border-width: 20px 12px 0 12px;
 }
 
 .beis-yellow summary.govuk-details__summary {
