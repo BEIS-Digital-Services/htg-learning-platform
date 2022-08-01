@@ -11,10 +11,16 @@
 
     .cards {
 
-        a {
+        button {
             &.number {
                 padding: 0 0 0 0;
                 text-decoration: none;
+
+                &:focus {
+                    background: #ffdd00;
+                    border: 2px solid #000;
+                    color: #000;
+                }
             }
         }
 
@@ -54,8 +60,8 @@
             &.one {
                 left: -27px;
                 outline: 10px solid $beis-aqua;
-                border: 2px solid $white;
-                color: $white;
+                border: 2px solid $black;
+                color: $black;
                 z-index: 2;
 
                 @media only screen and (min-width: 769px) {
@@ -71,8 +77,8 @@
             &.two {
                 left: -27px;
                 outline: 10px solid $beis-yellow;
-                border: 2px solid $white;
-                color: $white;
+                border: 2px solid $black;
+                color: $black;
                 z-index: 3;
 
                 @media only screen and (min-width: 769px) {
