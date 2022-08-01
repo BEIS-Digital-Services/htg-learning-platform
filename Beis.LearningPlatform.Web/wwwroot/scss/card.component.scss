@@ -11,6 +11,13 @@
 
     .cards {
 
+        a {
+            &.number {
+                padding: 0 0 0 0;
+                text-decoration: none;
+            }
+        }
+
         a.govuk-link,
         p {
             font-size: 24px;
@@ -31,10 +38,9 @@
             width: 50%;
             margin: 0;
         }
-        
+
         .number {
             position: absolute;
-            cursor: pointer;
             top: calc(50% - 32px);
             width: 64px;
             height: 64px;
