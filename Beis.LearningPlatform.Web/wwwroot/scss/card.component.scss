@@ -11,10 +11,16 @@
 
     .cards {
 
-        a {
+        button {
             &.number {
                 padding: 0 0 0 0;
                 text-decoration: none;
+
+                &:focus {
+                    background: #ffdd00;
+                    border: 2px solid #000;
+                    color: #000;
+                }
             }
         }
 
