@@ -1154,3 +1154,7 @@ span.govuk-link-divider {
 .filter-list .govuk-details[open] > .govuk-details__summary:before {
     border-width: 20px 12px 0 12px;
 }
+
+.beis-yellow summary.govuk-details__summary {
+    color: $beis-navy-blue;
+}
