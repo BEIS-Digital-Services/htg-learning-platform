@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     showAllElements(document.querySelectorAll(".cards"));
     showJsGoBackLinks();
+    toggleJsDisplayElements();
 
     checkAndAddHandler("#roundel1", "#card1");
     checkAndAddHandler("#roundel2", "#card2");
@@ -52,6 +53,16 @@ document.addEventListener("DOMContentLoaded", function () {
                     history.go(-1);
                 });
             }
+        }
+    }
+
+    // Allows showing elements inline/block etc - using attribute js-style-display.
+    function toggleJsDisplayElements() {
+        const jsStyleElmnts = document.querySelectorAll("[data-js-display]");
+        if (jsStyleElmnts) {
+            jsStyleElmnts.forEach(elmnt => {
+                elmnt.style.display = elmnt.getAttribute("data-js-display");
+            });            
         }
     }
 
