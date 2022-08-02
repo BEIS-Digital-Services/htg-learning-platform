@@ -60,10 +60,9 @@ document.addEventListener("DOMContentLoaded", function () {
     function toggleJsDisplayElements() {
         const jsStyleElmnts = document.querySelectorAll("[data-js-display]");
         if (jsStyleElmnts) {
-            for (const elmIndex = 0, elmnt; elmnt = jsStyleElmnts[elmIndex]; elmIndex++) {
+            jsStyleElmnts.forEach(elmnt => {
                 elmnt.style.display = elmnt.getAttribute("data-js-display");
-            }
-            
+            });            
         }
     }
 
