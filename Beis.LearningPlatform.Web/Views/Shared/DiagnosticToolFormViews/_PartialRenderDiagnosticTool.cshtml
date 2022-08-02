@@ -6,6 +6,7 @@
 }
 
 <main id="main-heading" role="main">
+    <div class="govuk-grid-row">
     <div class="govuk-grid-column-full govuk-!-padding-bottom-6" style="min-height: 70vh;">
         <div class="beis-white govuk-grid-column-full">
             <div class="govuk-width-container govuk-!-margin-top-6 govuk-!-margin-bottom-6 ">
@@ -68,8 +69,9 @@
 
                     @if (Model.FormIsCompleted || isInstructionsPage)
                     {
+
                         <fieldset>
-                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                            <div class="govuk-fieldset__legend govuk-fieldset__legend--l">
                                 @if (Model.FormIsCompleted)
                                 {
                                     <div class="govuk-grid-column-two-thirds">
@@ -80,7 +82,9 @@
                                             }
                                             else
                                             {
+                                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                                                 @Model.summaryHeading
+                                        </legend>
                                             }
 
                                         </h1>
@@ -147,7 +151,8 @@
                                         </h1>
                                     </div>
                                 }
-                            </legend>
+
+                            </div>
                         </fieldset>
                     }
 
@@ -185,8 +190,8 @@
                         <input type="hidden" asp-for="htmlId" id="modelHtmlId@(Model.id)" />
                         <input type="hidden" asp-for="created_at" id="modelCreatedAt@(Model.id)" />
                         <input type="hidden" asp-for="published_at" id="modelPublishedAt@(Model.id)" />
-                        <input type="hidden" asp-for="backButton" id="modelTitle@(Model.id)" />
-                        <input type="hidden" asp-for="backLink" id="modelTitle@(Model.id)" />
+                        <input type="hidden" asp-for="backButton" id="modelBackButton@(Model.id)" />
+                        <input type="hidden" asp-for="backLink" id="modelBackLink@(Model.id)" />
                         <input type="hidden" asp-for="backURLfromQ1" />
 
                         @if (((int)Model.FormType) > 2)
@@ -230,12 +235,9 @@
                             @if (!string.IsNullOrWhiteSpace(step.title))
                             {
                                 <div class="govuk-form-group govuk-grid-column-two-thirds govuk-!-margin-bottom-0" @styleString>
-                                    <fieldset>
-                                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l govuk-!-margin-bottom-0">
-                                            <h1 class="govuk-heading-xl govuk-!-padding-top-3 govuk-!-padding-bottom-0">@step.title</h1>
-                                        </legend>
-                                    </fieldset>
-
+                                    <div class="govuk-fieldset__legend govuk-fieldset__legend--l govuk-!-margin-bottom-0">
+                                        <h1 class="govuk-heading-xl govuk-!-padding-top-3 govuk-!-padding-bottom-0">@step.title</h1>
+                                    </div>
                                 </div>
                             }
 
@@ -296,10 +298,10 @@
 
                                     var childHasErrors = Model.steps[x].elements[i].childHasErrors ? "govuk-form-group--error" : string.Empty;
                                     <div class="govuk-form-group @childHasErrors govuk-grid-column-two-thirds govuk-!-padding-top-0" @styleString>
-                                        <fieldset class="govuk-fieldset">
-                                            <partial name="DiagnosticToolFormViews/_PartialRenderDTParentElement" model="@Model" />
-                                        </fieldset>
-                                    </div>
+                                            <fieldset class="govuk-fieldset">
+                                                <partial name="DiagnosticToolFormViews/_PartialRenderDTParentElement" model="@Model" />
+                                            </fieldset>
+                                        </div>
 
                                     @*Display Summary Instead*@
                                     @if (Model.FormIsCompleted && !skipStep && Model.FormType != FormTypes.SkillsTwo)
@@ -413,6 +415,7 @@
                         <partial name="CMSPageViews/_PartialNoContent" model="@Model" />
                     }
                 </form>
+                </div>
             </div>
         </div>
     </div>
