@@ -214,31 +214,31 @@
                             <input type="hidden" asp-for="@Model.steps[x].skippedByElementStepId" />
                             <input type="hidden" asp-for="@Model.steps[x].showInSummary" />
                             var skipStep = Model.steps[x].skipStep;
-                            var renderHtml = true;
-
-                            var displayElement = true;
+                            var styleString = "style=";
 
                             @if (Model.validationErrors.Count != 0 || !Model.FormIsCompleted)
                             {
                                 if (step.id.ToString() != Model.CurrStep.ToString())
                                 {
-                                    renderHtml = false;
+                                    styleString = "style=display:none";
                                 }
                             }
                             // Form Complete so hide the form elements and display the summary table
                             if (Model.FormIsCompleted)
                             {
-                                renderHtml = false;
+                                styleString = "style=display:none";
                             }
 
-                            @if (!string.IsNullOrWhiteSpace(step.title) && renderHtml)
+                            @if (!string.IsNullOrWhiteSpace(step.title))
                             {
-                                <div class="govuk-form-group govuk-grid-column-two-thirds govuk-!-margin-bottom-0">
+                                <div class="govuk-form-group govuk-grid-column-two-thirds govuk-!-margin-bottom-0" @styleString>
                                     <div class="govuk-fieldset__legend govuk-fieldset__legend--l govuk-!-margin-bottom-0">
                                         <h1 class="govuk-heading-xl govuk-!-padding-top-3 govuk-!-padding-bottom-0">@step.title</h1>
                                     </div>
                                 </div>
                             }
+
+
 
                             if (step.elements != null)
                             {
@@ -294,14 +294,12 @@
                                     };
 
                                     var childHasErrors = Model.steps[x].elements[i].childHasErrors ? "govuk-form-group--error" : string.Empty;
-                                    if (renderHtml)
-                                    {
-                                        <div class="govuk-form-group @childHasErrors govuk-grid-column-two-thirds govuk-!-padding-top-0">
+                                    <div class="govuk-form-group @childHasErrors govuk-grid-column-two-thirds govuk-!-padding-top-0" @styleString>
                                             <fieldset class="govuk-fieldset">
                                                 <partial name="DiagnosticToolFormViews/_PartialRenderDTParentElement" model="@Model" />
                                             </fieldset>
                                         </div>
-                                    }
+
 
                                     @*Display Summary Instead*@
                                     @if (Model.FormIsCompleted && !skipStep && Model.FormType != FormTypes.SkillsTwo)
@@ -351,9 +349,9 @@
 
                                 }
                             }
-                            else if (renderHtml)
+                            else
                             {
-                                <div class="govuk-grid-row govuk-grid-column-two-thirds">
+                                <div class="govuk-grid-row govuk-grid-column-two-thirds" @styleString>
                                     <div class="beis-white govuk-grid-column-full">
                                         <div class="govuk-width-container govuk-!-margin-top-6 govuk-!-margin-bottom-6">
                                             <h4 class="govuk-heading-s govuk-!-font-weight-regular">
