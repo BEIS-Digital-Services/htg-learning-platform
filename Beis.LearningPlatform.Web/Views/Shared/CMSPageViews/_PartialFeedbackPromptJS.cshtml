@@ -23,22 +23,22 @@
                             <p id="FeedbackYesNoPanel" class="govuk-button-group">
                                 @if (!string.IsNullOrWhiteSpace(Model.titleYes.url))
                                 {
-                                    <a id="link-cmspageviews-feedbackpromptjs-yes" role="button"
-                                       onclick="feedback('yes')"
+                                    <button id="link-cmspageviews-feedbackpromptjs-yes" role="button"
+                                       onclick="feedback('yes')" data-tabclick="true"
                                        class="govuk-button @SetButtonType(Model.titleYes.type, Model.titleYes.custom_class)"
-                                       data-module="govuk-button">
+                                       data-module="govuk-button" tabindex="0">
                                         @Model.titleYes.label
-                                    </a>
+                                    </button>
                                 }
 
                                 @if (!string.IsNullOrWhiteSpace(Model.titleNo.url))
                                 {
-                                    <a id="link-cmspageviews-feedbackpromptjs-no" role="button"
-                                       onclick="feedback('no')"
+                                    <button id="link-cmspageviews-feedbackpromptjs-no" role="button"
+                                       onclick="feedback('no')" data-tabclick="true"
                                        class="govuk-button @SetButtonType(Model.titleNo.type, Model.titleNo.custom_class)"
-                                       data-module="govuk-button">
+                                       data-module="govuk-button" tabindex="0">
                                         @Model.titleNo.label
-                                    </a>
+                                    </button>
                                 }
                             </p>
                         </div>
@@ -48,12 +48,12 @@
                             <div id="feedback-prompt-6" class="wrapper-right">
                                 @if (!string.IsNullOrWhiteSpace(Model.titleReport.url))
                                 {
-                                    <a id="link-cmspageviews-feedbackpromptjs-report" role="button"
-                                       onclick="feedback('report')"
+                                    <button id="link-cmspageviews-feedbackpromptjs-report" role="button"
+                                       onclick="feedback('report')" data-tabclick="true"
                                        class="govuk-button @SetButtonType(Model.titleReport.type, Model.titleReport.custom_class)"
-                                       data-module="govuk-button">
+                                       data-module="govuk-button" tabindex="0">
                                         @Model.titleReport.label
-                                    </a>
+                                    </button>
                                 }
                             </div>
                     </div>
@@ -64,14 +64,14 @@
             <div class="govuk-width-container">
                 @if (Model.NoCancelButton != null)
                 {
-                    <a id="link-cmspageviews-feedbackpromptjs-not-useful" class="govuk-button secondary"
-                       onclick="feedback('close')"
+                    <button id="link-cmspageviews-feedbackpromptjs-not-useful" class="govuk-button secondary"
+                       onclick="feedback('close')" data-tabclick="true"
                        data-track-category="yesNoFeedbackForm"
                        data-track-action="FormClose"
                        aria-controls="page-is-not-useful"
-                       aria-expanded="False">
+                       aria-expanded="False" tabindex="0">
                         @Model.NoCancelButton.label
-                    </a>
+                    </button>
                 }
 
                 <div class="govuk-grid-row">
@@ -120,14 +120,14 @@
         <div id="FeedbackReportProblemPanel" class="report-poroblem-container beis-white" style="display:none">
             <div class="govuk-width-container">
                  @if (Model.ReportCancelButton != null) {
-                    <a id="link-cmspageviews-feedbackpromptjs-page-is-not-useful" class="govuk-button secondary"
-                       onclick="feedback('close')"
+                    <button id="link-cmspageviews-feedbackpromptjs-page-is-not-useful" class="govuk-button secondary"
+                       onclick="feedback('close')" data-tabclick="true"
                        data-track-category="yesNoFeedbackForm"
                        data-track-action="fFormClose"
                        aria-controls="page-is-not-useful"
                        aria-expanded="False">
                         @Model.ReportCancelButton.label
-                    </a>
+                    </button>
                 }
 
                 <div class="govuk-grid-row">
@@ -158,11 +158,11 @@
                         @if (Model.ReportSubmitButton != null)
                         {
                             <p class="govuk-button-group">
-                                <a id="link-cmspageviews-feedbackpromptjs-submit" role="button"
-                                   onclick="feedback('submit')"
+                                <button id="link-cmspageviews-feedbackpromptjs-submit" role="button"
+                                   onclick="feedback('submit')" data-tabclick="true"
                                    class="govuk-button primary">
                                     @Model.ReportSubmitButton.label
-                                </a>
+                                </button>
                             </p>
                         }
                     </div>
@@ -229,7 +229,7 @@
             type: "GET",
             url: "/feedback/useful",
             data: {
-                "url": location.href,
+                "url": location.pathname,
                 "IsPageUseful": feedback
             },
             success: function () {
@@ -249,7 +249,7 @@
             type: "GET",
             url: "/feedback/report-problem",
             data: {
-                "url": location.href,
+                "url": location.pathname,
                 "whatIWasDoing": doing,
                 "whatWentWrong": wrong
             },
