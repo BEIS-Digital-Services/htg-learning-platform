@@ -17,6 +17,10 @@ document.addEventListener("DOMContentLoaded", function () {
         if (document.querySelector(currentRoundelId)) {
             document.querySelector(currentRoundelId).addEventListener("click", () => {
                 showElement(document.querySelector(cardId));
+                const link = document.querySelector(cardId + " .card-content a");
+                if (link && link.removeAttribute) {
+                    link.removeAttribute("tabindex")
+                }
             });
         }
     }
@@ -38,9 +42,17 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function showJsGoBackLinks() {
-        const jsLinks = document.querySelector(".js-go-back-link-container");
-        if (jsLinks)
-            jsLinks.style.display = "block";
+        const jsLinkContainers = document.querySelector(".js-go-back-link-container");
+        if (jsLinkContainers) {
+            jsLinkContainers.style.display = "block";
+
+            const jsLinks = document.querySelector(".js-go-back-link-container a.govuk-back-link");
+            if (jsLinks) {
+                jsLinks.addEventListener("click", () => {
+                    history.go(-1);
+                });
+            }
+        }
     }
 
     var oldSelectedCardIds = JSON.parse(localStorage.getItem("selectedCardIds")) || [];
@@ -94,7 +106,11 @@ var i;
 for (i = 0; i < acc.length; i++) {
     acc[i].addEventListener("click", function () {
         this.classList.toggle("active");
+        let expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', !expanded);
+        
         var panel = this.nextElementSibling;
+        panel.hidden = expanded;
         if (panel.style.display === "block") {
             panel.style.display = "none";
         } else {
