@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     showAllElements(document.querySelectorAll(".cards"));
     showJsGoBackLinks();
+    toggleJsDisplayElements();
 
     checkAndAddHandler("#roundel1", "#card1");
     checkAndAddHandler("#roundel2", "#card2");
@@ -17,6 +18,10 @@ document.addEventListener("DOMContentLoaded", function () {
         if (document.querySelector(currentRoundelId)) {
             document.querySelector(currentRoundelId).addEventListener("click", () => {
                 showElement(document.querySelector(cardId));
+                const link = document.querySelector(cardId + " .card-content a");
+                if (link && link.removeAttribute) {
+                    link.removeAttribute("tabindex")
+                }
             });
         }
     }
@@ -48,6 +53,16 @@ document.addEventListener("DOMContentLoaded", function () {
                     history.go(-1);
                 });
             }
+        }
+    }
+
+    // Allows showing elements inline/block etc - using attribute js-style-display.
+    function toggleJsDisplayElements() {
+        const jsStyleElmnts = document.querySelectorAll("[data-js-display]");
+        if (jsStyleElmnts) {
+            jsStyleElmnts.forEach(elmnt => {
+                elmnt.style.display = elmnt.getAttribute("data-js-display");
+            });            
         }
     }
 
@@ -102,7 +117,11 @@ var i;
 for (i = 0; i < acc.length; i++) {
     acc[i].addEventListener("click", function () {
         this.classList.toggle("active");
+        let expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', !expanded);
+        
         var panel = this.nextElementSibling;
+        panel.hidden = expanded;
         if (panel.style.display === "block") {
             panel.style.display = "none";
         } else {
