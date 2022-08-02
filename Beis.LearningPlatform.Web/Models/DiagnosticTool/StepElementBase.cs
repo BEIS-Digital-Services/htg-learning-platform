@@ -58,6 +58,12 @@
         [RequiredIfControlTypeOf("controlType", "RadioGroup", "validationError", "Please select at least ONE option.")]
         public string value { get; set; }
 
+        public string InputCtrlId {
+            get {
+                return $"ctrl-input-{controlType}-{id}"?.ToLower();
+            }
+        }
+
         int IComparable.CompareTo(object obj)
         {
             if (obj == null) throw new ArgumentNullException(nameof(obj));
