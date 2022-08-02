@@ -17,8 +17,8 @@
                     if (accordionItem.HasContent == false) continue;
 
                     <div class="accordion-item">
-                        <button class="accordion">@accordionItem.Header</button>
-                        <div class="panel">
+                        <button class="accordion" aria-expanded="false">@accordionItem.Header</button>
+                        <div class="panel" hidden>
                             <div class="govuk-body">
                                 <div>
                                     @Html.Raw(Markdown.ToHtml(accordionItem.copy1, _pipeline))
