@@ -14,7 +14,7 @@
                     {
                         @if (Model.showBackButton)
                         {
-                            <a id="link-cmspageviews-global-back-link" class="govuk-back-link" style="cursor:pointer;" onclick="history.back()">Back</a>
+                            <button id="link-cmspageviews-global-back-link" class="govuk-back-link btn-as-link" onclick="history.back()">Back</button>
                         }
 
                         <h1 class="govuk-heading-xl">@Html.Raw(Markdown.ToHtml(Model.component.header, _pipeline).Replace("<p>", string.Empty).Replace("</p>", string.Empty))</h1>
