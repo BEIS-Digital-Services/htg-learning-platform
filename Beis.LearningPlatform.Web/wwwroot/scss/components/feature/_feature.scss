@@ -1,0 +1,21 @@
+.beis-feature {
+    background-color: #eee;
+    padding-top: $govuk-gutter;
+    padding-bottom: $govuk-gutter;
+}
+
+.beis-feature__img, 
+.beis-feature img {
+    max-width: 100%;
+    margin: 20px auto 0;
+    display: block;
+    @include govuk-media-query (tablet) {
+        margin: 0;
+        display: inline-block;
+    }
+}
+
+.beis-feature .beis-link-icon, 
+.beis-feature__link-icon {
+    display: inline-block;
+}
