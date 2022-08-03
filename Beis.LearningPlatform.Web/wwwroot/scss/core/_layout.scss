@@ -1,0 +1,6 @@
+.beis-row-flex {
+    @include govuk-media-query(tablet) {
+        display: flex;
+        align-items: center;
+    }
+}
