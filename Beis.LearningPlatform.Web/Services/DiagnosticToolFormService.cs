@@ -456,6 +456,7 @@
                 returnValue.backURLfromQ1 = appForm.BackURLfromQ1;
                 returnValue.userTypeActionPlanSection = appForm.UserTypeActionPlanSection;
                 returnValue.formLogo = appForm.FormLogo;
+                returnValue.FormLogoAlternateText = appForm.FormLogoAlternateText;
 
                 foreach (var step in appForm.Steps)
                 {

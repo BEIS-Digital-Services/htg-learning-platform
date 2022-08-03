@@ -22,16 +22,16 @@
                             <span class="beis-link-icon">
                                 @if (link.icon != null)
                                 {
-                                    <vc:cms-image options='new CmsImageViewModel{ ImageUrl = link.icon.url, CssClass = "svgimg beis-link-icon " + linksAlign, Width =  link.icon.width, Height = link.icon.height }' />
+                                    <vc:cms-image options='new CmsImageViewModel{ ImageUrl = link.icon.url, CssClass = "svgimg beis-link-icon " + linksAlign, Width =  link.icon.width, Height = link.icon.height, Title = link.icon.alternativeText }' />
                                 }
                             </span>
                             @if (link.url.StartsWith("http"))
                             {
-                                <a id="link-cmspageviews-textlinks-@(link.GetGaLinkId())" class="govuk-link @link.AlteredCustomClass" href="@linkAction" target="" aria-label="@(string.IsNullOrWhiteSpace(link.aria) ? "Read the article on " + link.id : link.aria)"> @link.label </a>
+                                <a id="link-@(link.GetGaLinkId())" class="govuk-link @link.AlteredCustomClass" href="@linkAction" target="" aria-label="@(string.IsNullOrWhiteSpace(link.aria) ? "Read the article on " + link.id : link.aria)"> @link.label </a>
                             }
                             else
                             {
-                                <a id="link-cmspageviews-textlinks-@(link.GetGaLinkId())" class="govuk-link @link.AlteredCustomClass" href="/@linkAction"
+                                <a id="link-@(link.GetGaLinkId())" class="govuk-link @link.AlteredCustomClass" href="/@linkAction"
                                 aria-label="@(string.IsNullOrWhiteSpace(link.aria) ? "Read the article on " + link.id : link.aria)"> @link.label </a>
                             }
                         </div>

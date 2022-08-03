@@ -44,6 +44,6 @@
         public bool? index { get; set; } = true; // Default to index
         public bool? follow { get; set; } = true; // Default to follow
 		public bool? PreviewSearchArticles { get; internal set; }
-	}
-
+        public string RedirectTo { get; set; }
+    }
 }
