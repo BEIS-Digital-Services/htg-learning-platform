@@ -10,17 +10,17 @@
 
 <div class="govuk-grid-row beis-columns-same-height">
     <div class="govuk-grid-column-one-third">
-        <div class="govuk-grid-row">
+ 
             <div class="left-column">
                 @if (Model.image != null)
                 {
                     <vc:cms-image options='new CmsImageViewModel{ ImageUrl = Model.image.url, Title= Model.image.alternativeText, CssClass = "hero-mobile-image" }' />
                 }
             </div>
-        </div>
+  
     </div>
     <div class="govuk-grid-column-two-thirds">
-        <div class="govuk-grid-row">
+      
             <div class="right-column">
                 @if (!string.IsNullOrEmpty(Model.ReadingTime))
                 {
@@ -36,7 +36,7 @@
                     <a id="@Model.FirstLink?.GetGaLinkId("link-")" class="govuk-link" href="@Model.FirstLink.url" aria-label="hero.LinkAria">@Model.FirstLink.label</a>
                 </div>
             </div>
-        </div>
+        
     </div>
 </div>
 <div class="govuk-grid-row beis-columns-same-height">
