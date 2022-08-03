@@ -1,5 +1,4 @@
 .beis-feature {
-    background-color: #eee;
     padding-top: $govuk-gutter;
     padding-bottom: $govuk-gutter;
 }
@@ -18,4 +17,8 @@
 .beis-feature .beis-link-icon, 
 .beis-feature__link-icon {
     display: inline-block;
+    margin-right: 5px;
+    vertical-align: middle;
+    flex-shrink: 0;
+    align-self: center;
 }
