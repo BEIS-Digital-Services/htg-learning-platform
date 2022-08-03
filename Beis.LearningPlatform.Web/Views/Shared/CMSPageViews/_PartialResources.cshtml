@@ -14,38 +14,40 @@
 }
 
 <div id="@("anchor" + Model.Index)" class="govuk-width-container resources @classToAppend">
-    <div class="govuk-grid-column-two-thirds">
-        @if (!string.IsNullOrWhiteSpace(Model.header))
-        {
-            <h1 class="govuk-heading-xl govuk-!-padding-top-3">@Model.header</h1>
-        }
-
-        @if (!string.IsNullOrWhiteSpace(Model.subheader))
-        {
-            <h2 class="govuk-heading-l govuk-!-padding-top-3">@Model.subheader</h2>
-        }
-
-        <ul class="author">
-            @if (Model.author != null)
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            @if (!string.IsNullOrWhiteSpace(Model.header))
             {
-                foreach (var author in Model.author)
-                {
-                    <li class="govuk-body">
-                        @Html.Raw(author.author)
-                    </li>
-                }
+                <h1 class="govuk-heading-xl govuk-!-padding-top-3">@Model.header</h1>
             }
-        </ul>
 
-        <div class="govuk-body resources-intro-text">
-            @Html.Raw(Markdown.ToHtml(Model.copy, _pipeline).Replace("<p>", string.Empty).Replace("</p>", string.Empty))
-        </div>
+            @if (!string.IsNullOrWhiteSpace(Model.subheader))
+            {
+                <h2 class="govuk-heading-l govuk-!-padding-top-3">@Model.subheader</h2>
+            }
 
-        @if (Model.buttons != null)
-        {
-            <div class="stick-to-bottom">
-                <partial name="CMSPageViews/_PartialTextButtons" model="@Model" />
+            <ul class="author">
+                @if (Model.author != null)
+                {
+                    foreach (var author in Model.author)
+                    {
+                        <li class="govuk-body">
+                            @Html.Raw(author.author)
+                        </li>
+                    }
+                }
+            </ul>
+
+            <div class="govuk-body resources-intro-text">
+                @Html.Raw(Markdown.ToHtml(Model.copy, _pipeline).Replace("<p>", string.Empty).Replace("</p>", string.Empty))
             </div>
-        }
+
+            @if (Model.buttons != null)
+            {
+                <div class="stick-to-bottom">
+                    <partial name="CMSPageViews/_PartialTextButtons" model="@Model" />
+                </div>
+            }
+        </div>
     </div>
 </div>
