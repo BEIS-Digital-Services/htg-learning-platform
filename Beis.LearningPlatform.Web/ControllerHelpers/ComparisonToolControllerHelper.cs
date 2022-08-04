@@ -5,31 +5,35 @@
         private readonly IComparisonToolService _comparisonToolService;
         private readonly VoucherAppOption _voucherAppOption;
         private readonly VendorAppOption _vendorAppOption;
-        private readonly IProductCategoryDisplaySettings _productCategoryDisplaySettings;
+        private readonly ComparisonToolDisplayOption _ctDisplayOption;
+        private readonly ICmsService _cmsService;
         private readonly IHttpContextAccessor _httpContextAccessor;
 
         public ComparisonToolControllerHelper(ILogger<ComparisonToolControllerHelper> logger
             , IComparisonToolService comparisonToolService
             , IOptions<VoucherAppOption> voucherAppOption
             , IOptions<VendorAppOption> vendorAppOption
-            , IProductCategoryDisplaySettings productCategoryDisplaySettings
+            , IOptions<ComparisonToolDisplayOption> ctDisplayOptions
             , IHttpContextAccessor httpContextAccessor
+            , ICmsService cmsService
             ) : base(logger)
         {
             _comparisonToolService = comparisonToolService;
             _voucherAppOption = voucherAppOption.Value;
             _vendorAppOption = vendorAppOption.Value;
-            _productCategoryDisplaySettings = productCategoryDisplaySettings;
+            _ctDisplayOption = ctDisplayOptions.Value;
             _httpContextAccessor = httpContextAccessor;
+            _cmsService = cmsService;
         }
 
         public async Task<IList<ComparisonToolProduct>> ProcessGetProductList(string productCategoryIds)
         {
-            var distinctProductCategoryIds = _productCategoryDisplaySettings.DisplaySettings.Distinct().Select(g => (long)g.id);
+            var displaySettings = await _cmsService.GetDisplaySettings();
+            var distinctProductCategoryIds = displaySettings.Distinct().Select(g => (long)g.id);
             var existingCategoriesList = !string.IsNullOrWhiteSpace(productCategoryIds) ?
-                _productCategoryDisplaySettings.DisplaySettings.Where(pc => productCategoryIds.Split(",").ToList().Contains(pc.name)).Select(g => (long)g.id) : distinctProductCategoryIds;
+                displaySettings.Where(pc => productCategoryIds.Split(",").ToList().Contains(pc.systemName)).Select(g => (long)g.id) : distinctProductCategoryIds;
 
-            if (_productCategoryDisplaySettings.ShowAllProductStatuses ?? false)
+            if (_ctDisplayOption.ShowAllProductStatuses ?? false)
             {
                 var productsVm = await _comparisonToolService.GetProducts();
                 return productsVm.Where(p => existingCategoriesList.Contains(p.product_type)).ToList();
@@ -79,7 +83,7 @@
 
             await _comparisonToolService.SetNavAndFooter(viewModel);
 
-            var showAllProductStatuses = _productCategoryDisplaySettings.ShowAllProductStatuses ?? false;
+            var showAllProductStatuses = _ctDisplayOption.ShowAllProductStatuses ?? false;
             var currentProduct = showAllProductStatuses ? 
                                     await _comparisonToolService.GetProduct(productId) :
                                         await _comparisonToolService.GetApprovedProductFromApprovedVendor(productId);
@@ -101,9 +105,10 @@
 
         public void SetViewModelUserJourneyData(ComparisonToolPageViewModel viewModel, string productCategoryIds, string productIds, string referrerPath)
         {
+            var displaySettings = _cmsService.GetDisplaySettings().Result;
             viewModel.VoucherUrl = _voucherAppOption.BaseUrl;
             viewModel.VendorProdLogorUrl = _vendorAppOption.ProdLogoUrl;
-            viewModel.ProductCategoryList = _productCategoryDisplaySettings.DisplaySettings;
+            viewModel.ProductCategoryList = displaySettings;
 
             if (string.IsNullOrWhiteSpace(productCategoryIds))
             {
@@ -126,7 +131,7 @@
                 var existingCategories = productCategoryIds.Split(",").ToList();
                 if (existingCategories.Count > 0)
                 {
-                    viewModel.products = viewModel.products.Where(x => existingCategories.Contains(_productCategoryDisplaySettings.DisplaySettings.First(c => c.id == x.product_type).name)).ToList();
+                    viewModel.products = viewModel.products.Where(x => existingCategories.Contains(displaySettings.First(c => c.id == x.product_type).systemName)).ToList();
                 }
             }
 

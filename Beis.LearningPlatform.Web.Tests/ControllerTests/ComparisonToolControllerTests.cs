@@ -9,6 +9,7 @@ namespace Beis.LearningPlatform.Web.Tests.ControllerTests
         private readonly Mock<IHomeControllerHelper> _homeControllerHelper = new();
         private readonly Mock<ILogger<ComparisonToolControllerHelper>> _helperLogger = new();
         private readonly Mock<IComparisonToolService> _comparisonToolService = new();
+        private readonly Mock<ICmsService> _cmsService = new();
         private IOptions<VoucherAppOption> _voucherAppOptions;
         private IOptions<VendorAppOption> _vendorAppOptions;
         private IOptions<ComparisonToolDisplayOption> _ctDisplayOptions;
@@ -100,8 +101,9 @@ namespace Beis.LearningPlatform.Web.Tests.ControllerTests
                 _comparisonToolService.Object,
                 _voucherAppOptions,
                 _vendorAppOptions,
-                productCategoryDisplaySettings,
-                _httpContextAccessor.Object);
+                _ctDisplayOptions,
+                _httpContextAccessor.Object,
+                _cmsService.Object);
             return new ComparisonToolController(_controllerLogger.Object, controlHelper, _homeControllerHelper.Object);
         }
 

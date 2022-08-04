@@ -117,5 +117,16 @@
             }
             return viewModel;
         }
+
+        public async Task<IList<CMSComparisonToolSearchTag>> GetDisplaySettings()
+        {
+            var result = await _apiCallService.GetApiResult(_cmsOption.ApiBaseUrl, $"comparison-tool-search-tags");
+
+            var viewModel = string.IsNullOrWhiteSpace(result) ?
+                                new List<CMSComparisonToolSearchTag>() : 
+                                JsonConvert.DeserializeObject<List<CMSComparisonToolSearchTag>>(result);
+
+            return viewModel.Where(tag => tag.isActive).OrderBy(tag => tag.sortOrder).ToList();
+        }
     }
 }
