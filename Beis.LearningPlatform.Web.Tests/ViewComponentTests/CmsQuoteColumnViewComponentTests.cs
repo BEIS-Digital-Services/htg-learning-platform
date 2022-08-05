@@ -129,7 +129,7 @@
             Assert.AreEqual(model.HtmlCopy, "<p>Hello <strong>strong</strong> copy</p>\n");
 
             Assert.IsNotNull(model.HtmlQuote);
-            Assert.AreEqual(model.HtmlQuote, "<p>Quote <strong>strong</strong> text</p>\n");
+            Assert.AreEqual(model.HtmlQuote, "<blockquote>Quote <strong>strong</strong> text</blockquote>\n");
         }
 
         [Test]
