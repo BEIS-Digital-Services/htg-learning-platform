@@ -122,7 +122,7 @@ namespace Beis.LearningPlatform.Web.Models
 
         private (List<ComparisonToolProduct>, int?) GetCategoryProducts(string categoryName)
         {
-            var categoryId = ProductCategoryList?.Where(t => t.systemName == categoryName).FirstOrDefault()?.id;
+            var categoryId = ProductCategoryList?.Where(t => t.systemName == categoryName).FirstOrDefault()?.systemId;
             if (!categoryId.HasValue)
             {
                 return (new List<ComparisonToolProduct>(), 0);

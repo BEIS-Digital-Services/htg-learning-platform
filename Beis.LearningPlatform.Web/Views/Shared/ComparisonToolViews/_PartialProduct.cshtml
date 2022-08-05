@@ -24,7 +24,7 @@
                 @foreach (var tag in Model.ProductCategoryList)
                 {
                     <div class="govuk-checkboxes__item">
-                        <input class="govuk-checkboxes__input productCategory" data-id="@tag.systemName" name="categoryId-@tag.id" id="categoryId-@tag.systemName" type="checkbox"
+                        <input class="govuk-checkboxes__input productCategory" data-id="@tag.systemName" name="categoryId-@tag.systemId" id="categoryId-@tag.systemName" type="checkbox"
                             @if(Model.ProductCategoryIds?.Contains(tag.systemName) == true)
                             {
                                 <text>checked</text>

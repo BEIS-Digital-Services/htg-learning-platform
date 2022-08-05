@@ -29,9 +29,9 @@
         public async Task<IList<ComparisonToolProduct>> ProcessGetProductList(string productCategoryIds)
         {
             var displaySettings = await _cmsService.GetDisplaySettings();
-            var distinctProductCategoryIds = displaySettings.Distinct().Select(g => (long)g.id);
+            var distinctProductCategoryIds = displaySettings.Distinct().Select(g => (long)g.systemId);
             var existingCategoriesList = !string.IsNullOrWhiteSpace(productCategoryIds) ?
-                displaySettings.Where(pc => productCategoryIds.Split(",").ToList().Contains(pc.systemName)).Select(g => (long)g.id) : distinctProductCategoryIds;
+                displaySettings.Where(pc => productCategoryIds.Split(",").ToList().Contains(pc.systemName)).Select(g => (long)g.systemId) : distinctProductCategoryIds;
 
             if (_ctDisplayOption.ShowAllProductStatuses ?? false)
             {
@@ -115,7 +115,7 @@
                 foreach (var item in viewModel.ProductCategoryList.ToList())
                 {
                     // If there are no products exist for any of the tags, then remove it from filter option.
-                    if (!viewModel.products.Any(p => p.product_type == item.id))
+                    if (!viewModel.products.Any(p => p.product_type == item.systemId))
                     {
                         viewModel.ProductCategoryList.Remove(item);
                     }
@@ -131,7 +131,7 @@
                 var existingCategories = productCategoryIds.Split(",").ToList();
                 if (existingCategories.Count > 0)
                 {
-                    viewModel.products = viewModel.products.Where(x => existingCategories.Contains(displaySettings.First(c => c.id == x.product_type).systemName)).ToList();
+                    viewModel.products = viewModel.products.Where(x => existingCategories.Contains(displaySettings.First(c => c.systemId == x.product_type).systemName)).ToList();
                 }
             }
 
