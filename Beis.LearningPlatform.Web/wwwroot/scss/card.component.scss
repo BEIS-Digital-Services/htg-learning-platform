@@ -33,10 +33,10 @@
             }
         }
 
-        margin: 0 80px 40px 40px;
+        margin: 0px 0px 40px 0px;
         box-sizing: border-box;
         position: relative;
-        padding: 10px 20px 10px 60px;
+        padding: 10px 20px 10px 20px;
         font-family: "GDS Transport", arial, sans-serif;
 
 
@@ -90,19 +90,6 @@
         }
     }
 
-    .one,
-    .two,
-    .three,
-    .four {
-        &.hidden-card {
-            background: transparent;
-            color: transparent;
-
-            a {
-                color: transparent;
-            }
-        }
-    }
 
 
     .one {
