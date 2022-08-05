@@ -236,16 +236,15 @@
 
             </div>
 
-            <fieldset>
-                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                    @if (string.IsNullOrEmpty(currentFormStepElement.subText) == false)
-                    {
-                        <h3 class="govuk-fieldset__heading govuk-!-font-size-19 govuk-!-margin-top-7 govuk-!-margin-bottom-5">
-                            <span>@currentFormStepElement.subText</span>
-                        </h3>
-                    }
-                </legend>
-            </fieldset>
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                @if (string.IsNullOrEmpty(currentFormStepElement.subText) == false)
+                {
+                    <h3 class="govuk-fieldset__heading govuk-!-font-size-19 govuk-!-margin-top-7 govuk-!-margin-bottom-5">
+                        <span>@currentFormStepElement.subText</span>
+                    </h3>
+                }
+            </legend>
+
             @if (!string.IsNullOrWhiteSpace(currentFormStepElement.hint))
             {
                 <div class="govuk-body @hintInBoldCss"><p>@currentFormStepElement.hint</p></div>
