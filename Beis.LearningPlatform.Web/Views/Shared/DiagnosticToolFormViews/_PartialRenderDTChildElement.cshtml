@@ -24,8 +24,8 @@
 
         case FormDisplayControlType.Radio:
             <div class="govuk-radios__item">
-                <input type="radio" asp-for="@Model.steps[currentStep].elements[currentElement].value" value="@Model.steps[currentStep].elements[currentElement].answerOptions[z].value" class="govuk-radios__input" />
-                <label for="@(idPrefix + "__value")"
+                <input id="@(idPrefix + "__value")_radio" type="radio" asp-for="@Model.steps[currentStep].elements[currentElement].value" value="@Model.steps[currentStep].elements[currentElement].answerOptions[z].value" class="govuk-radios__input" />
+                <label for="@(idPrefix + "__value")_radio"
                        id="@(idPrefix + "__value__label")" class="govuk-label govuk-radios__label">@Html.Raw(($"<strong>{currentFormStepElement.answerOptions[z].strongText?.Replace("-", "&#8212;")}</strong>{currentFormStepElement.answerOptions[z].text}"))</label>
                     <input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].strongText" />
                     <input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].text" />
