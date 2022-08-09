@@ -30,7 +30,7 @@
         {
             Func<Task> result = () => _controller.Unsubscribe(emailAddress);
 
-            result.Should().ThrowAsync<Exception>().WithMessage("An unsubscribe email address must be specified");
+            result.Should().ThrowAsync<ArgumentNullException>().WithMessage("An unsubscribe email address must be specified");
         }
 
         [Test]
@@ -42,7 +42,7 @@
 
             Func<Task> result = () => _controller.Unsubscribe("test");
 
-            result.Should().ThrowAsync<Exception>().WithMessage("The unsubscribe email must be a valid email address");
+            result.Should().ThrowAsync<InvalidDataException>().WithMessage("The unsubscribe email must be a valid email address");
         }
 
         [Test]

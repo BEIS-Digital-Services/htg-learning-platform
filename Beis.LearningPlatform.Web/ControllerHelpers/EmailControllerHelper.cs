@@ -14,10 +14,10 @@
             var requestId = RecordRequest();
             
             if (string.IsNullOrWhiteSpace(emailAddress))
-                throw new Exception("An unsubscribe email address must be specified");
+                throw new ArgumentNullException(nameof(emailAddress), "An unsubscribe email address must be specified");
 
             if (!_emailService.IsValidEmailAddress(requestId, emailAddress).IsValid)
-                throw new Exception("The unsubscribe email must be a valid email address");
+                throw new InvalidDataException("The unsubscribe email must be a valid email address");
 
             try
             {
