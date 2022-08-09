@@ -23,32 +23,30 @@
             _controller = new EmailController(_logger.Object, _emailControllerHelper);
         }
 
-        [Test]
-        public async Task Should_return_to_error_page_if_email_is_empty()
+        [TestCase("")]
+        [TestCase(null)]
+        [TestCase(" ")]
+        public void Should_throw_when_email_is_empty_null_whitespace(string emailAddress)
         {
-            
-            var result = await _controller.Unsubscribe("");
+            Func<Task> result = () => _controller.Unsubscribe(emailAddress);
 
-            ValidateResult(result);
-
+            result.Should().ThrowAsync<Exception>().WithMessage("An unsubscribe email address must be specified");
         }
 
         [Test]
-        public async Task Should_return_to_error_page_if_email_is_invalid()
+        public void Should_throw_if_email_is_invalid()
         {
-            
             _serviceResponse.Setup(x => x.IsValid).Returns(false);
             _emailService.Setup(x => x.IsValidEmailAddress(It.IsAny<Guid>(), It.IsAny<string>()))
                 .Returns(_serviceResponse.Object);
 
-            var result = await _controller.Unsubscribe("test");
+            Func<Task> result = () => _controller.Unsubscribe("test");
 
-            ValidateResult(result);
-
+            result.Should().ThrowAsync<Exception>().WithMessage("The unsubscribe email must be a valid email address");
         }
 
         [Test]
-        public async Task Should_return_to_error_page_if_service_to_unsubscribe_fails()
+        public void Should_throw_if_service_to_unsubscribe_fails()
         {
             _serviceResponse.Setup(x => x.IsValid).Returns(true);
             _emailService.Setup(x => x.IsValidEmailAddress(It.IsAny<Guid>(), It.IsAny<string>()))
@@ -58,8 +56,15 @@
             _emailService.Setup(x => x.UnsubscribeEmail(It.IsAny<Guid>(), It.IsAny<string>()))
                 .ReturnsAsync(_serviceResponse1.Object);
 
-            var result = await _controller.Unsubscribe("test@test.com");
-            ValidateResult(result);
+            Func<Task> result = () => _controller.Unsubscribe("test@test.com");
+
+            result.Should().ThrowAsync<Exception>().WithMessage("We were unable to unsubscribe your email address.  Please try again")
+                .WithInnerException(typeof(InvalidOperationException)).WithMessage("Failed to unsubscribe email address");
+
+            _emailLogger.Verify(x =>
+                x.Log(LogLevel.Error, It.IsAny<EventId>(),
+                    It.Is<It.IsAnyType>((m, c) => m.ToString() == "Unable to unsubscribe email address"), It.IsAny<Exception>(),
+                    (Func<It.IsAnyType, Exception, string>)It.IsAny<object>()), Times.Once);
         }
 
         [Test]
