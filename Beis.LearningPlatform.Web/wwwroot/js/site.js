@@ -34,14 +34,18 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-    checkAndAddHandler("#header1", "1");
-    checkAndAddHandler("#header2", "2");
-    checkAndAddHandler("#header3", "3");
+    checkAndAddHandler(".levels #header1", "1");
+    checkAndAddHandler(".levels #header2", "2");
+    checkAndAddHandler(".levels #header3", "3");
 
     function checkAndAddHandler(headerId, id) {
         if (document.querySelector(headerId)) {
             document.querySelector(headerId).addEventListener("click", () => {
                 toggleThreeLevelsComponentElement(id);
+                const header = document.querySelector(headerId)
+                if (header) {
+                    header.setAttribute("aria-pressed", header.getAttribute("aria-pressed") === "true" ? "false" : "true");
+                }
             });
         }
     }
