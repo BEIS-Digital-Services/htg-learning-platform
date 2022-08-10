@@ -34,7 +34,7 @@
                                         </div>
                                         <div class="govuk-body govuk-!-font-size-36">
                                             @{
-                                                @Html.Raw(Markdown.ToHtml(textBlock.copy, _pipeline));
+                                                @Html.Raw(Markdown.ToHtml(textBlock.copy, _pipeline)?.Replace("p>", "blockquote>"));
                                             }
                                         </div>
                                     </div>
