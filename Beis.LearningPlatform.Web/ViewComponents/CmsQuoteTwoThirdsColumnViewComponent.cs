@@ -14,7 +14,8 @@
             var viewModel = new CmsQuoteTwoThirdsColumnViewModel(cmsPageComponent);
             if (viewModel.HasContent)
             {
-                viewModel.HtmlQuote = Markdown.ToHtml(viewModel.Component.quote, _markdownPipeline);
+                viewModel.HtmlQuote = Markdown.ToHtml(viewModel.Component.quote, _markdownPipeline)?
+                    .Replace("p>", "blockquote>");
             }
             return View(viewModel);
         }
