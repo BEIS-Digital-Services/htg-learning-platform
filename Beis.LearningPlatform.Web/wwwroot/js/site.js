@@ -5,41 +5,8 @@ document.head.appendChild(imported);
 var selectedCardIds = [];
 document.addEventListener("DOMContentLoaded", function () {
 
-    showAllElements(document.querySelectorAll(".cards"));
     showJsGoBackLinks();
-
-    checkAndAddHandler("#roundel1", "#card1");
-    checkAndAddHandler("#roundel2", "#card2");
-    checkAndAddHandler("#roundel3", "#card3");
-    checkAndAddHandler("#roundel4", "#card4");
-
-    function checkAndAddHandler(currentRoundelId, cardId) {
-        if (document.querySelector(currentRoundelId)) {
-            document.querySelector(currentRoundelId).addEventListener("click", () => {
-                showElement(document.querySelector(cardId));
-                const link = document.querySelector(cardId + " .card-content a");
-                if (link && link.removeAttribute) {
-                    link.removeAttribute("tabindex")
-                }
-            });
-        }
-    }
-
-    function showElement(el) {
-        el.classList.remove("hidden-card");
-        if (selectedCardIds && !selectedCardIds.includes(el.id)) {
-            selectedCardIds.push(el.id);
-            var item = {
-                value: selectedCardIds,
-                expiry: new Date().getTime() + (skillModuleExpiryInMinutes * 60 * 1000)
-            }
-            localStorage.setItem("selectedCardIds", JSON.stringify(item));
-        }
-    }
-
-    function showAllElements(elements) {
-        elements.forEach(el => { el.classList.remove("no-script-hidden-card"); });
-    }
+    toggleJsDisplayElements();
 
     function showJsGoBackLinks() {
         const jsLinkContainers = document.querySelector(".js-go-back-link-container");
@@ -55,32 +22,30 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    var oldSelectedCardIds = JSON.parse(localStorage.getItem("selectedCardIds")) || [];
-
-    var now = new Date();
-    if (now.getTime() > oldSelectedCardIds.expiry) {
-        localStorage.removeItem("selectedCardIds");
-        return;
-    }
-    if (oldSelectedCardIds.value && oldSelectedCardIds.value.length > 0) {
-        selectedCardIds = oldSelectedCardIds.value;
-        oldSelectedCardIds.value.forEach(selectedCardId => {
-            if (document.querySelector("#" + selectedCardId)) {
-                document.querySelector("#" + selectedCardId).classList.remove("hidden-card");
-            }
-        });
+    // Allows showing elements inline/block etc - using attribute js-style-display.
+    function toggleJsDisplayElements() {
+        const jsStyleElmnts = document.querySelectorAll("[data-js-display]");
+        if (jsStyleElmnts) {
+            jsStyleElmnts.forEach(elmnt => {
+                elmnt.style.display = elmnt.getAttribute("data-js-display");
+            });            
+        }
     }
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-    checkAndAddHandler("#header1", "1");
-    checkAndAddHandler("#header2", "2");
-    checkAndAddHandler("#header3", "3");
+    checkAndAddHandler(".levels #header1", "1");
+    checkAndAddHandler(".levels #header2", "2");
+    checkAndAddHandler(".levels #header3", "3");
 
     function checkAndAddHandler(headerId, id) {
         if (document.querySelector(headerId)) {
             document.querySelector(headerId).addEventListener("click", () => {
                 toggleThreeLevelsComponentElement(id);
+                const header = document.querySelector(headerId)
+                if (header) {
+                    header.setAttribute("aria-pressed", header.getAttribute("aria-pressed") === "true" ? "false" : "true");
+                }
             });
         }
     }

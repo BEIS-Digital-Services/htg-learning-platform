@@ -69,7 +69,7 @@
                        data-track-category="yesNoFeedbackForm"
                        data-track-action="FormClose"
                        aria-controls="page-is-not-useful"
-                       aria-expanded="False" tabindex="0">
+                       aria-expanded="false" tabindex="0">
                         @Model.NoCancelButton.label
                     </button>
                 }
@@ -125,7 +125,7 @@
                        data-track-category="yesNoFeedbackForm"
                        data-track-action="fFormClose"
                        aria-controls="page-is-not-useful"
-                       aria-expanded="False">
+                       aria-expanded="false">
                         @Model.ReportCancelButton.label
                     </button>
                 }
@@ -137,13 +137,13 @@
                             <h3>@Model.ReportHeader</h3>
                         }
 
-                        <p id="feedback_explanation" class="govuk-body">
+                        <div id="feedback_explanation" class="govuk-body">
                             @if (!string.IsNullOrWhiteSpace(Model.ReportCopy))
                             {
                                 var reportCopy = Markdown.ToHtml(Model.ReportCopy, _pipeline).Replace("<p>", "<p class=\"govuk-body\">");
                                 @Html.Raw(reportCopy);
                             }
-                        </p>
+                        </div>
 
                         <div class="govuk-form-group">
                             <label for="doing" class="govuk-label">@Model.ReportLabel1</label>
