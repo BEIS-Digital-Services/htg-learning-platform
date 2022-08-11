@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging.ApplicationInsights;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Beis.HelpToGrow.Common.Helpers;
 using Beis.HelpToGrow.Common.Services.HealthChecks;
+using Beis.LearningPlatform.Web.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Host.ConfigureAppConfiguration(configuration =>
@@ -27,7 +28,11 @@ builder.Host.ConfigureAppConfiguration(configuration =>
 var hasParsed = bool.TryParse(builder.Configuration["HttpListenerConfig:UseSSL"], out var useSsl);
 
 // Add services to the container.
-builder.Services.AddMvcCore(r => r.EnableEndpointRouting = false);
+builder.Services.AddMvcCore(r =>
+{
+    r.EnableEndpointRouting = false;
+    r.Filters.Add(new ExceptionInterceptionFilter());
+});
 builder.Services.RegisterAllServices(builder.Configuration, hasParsed && useSsl);
 
 

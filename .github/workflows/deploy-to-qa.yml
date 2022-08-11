@@ -9,7 +9,6 @@ env:
 
 jobs:
   build-qa:
-    if: github.actor == 'JamesChristianson' || github.actor == 'emailtokvk' || github.actor == 'thomaslkp123' || github.actor == 'rajchala' || github.actor == 'TasTasniem' || github.actor == 'kelechi-i'
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
