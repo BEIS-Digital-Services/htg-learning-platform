@@ -1,59 +1,35 @@
 ﻿namespace Beis.LearningPlatform.Web.ControllerHelpers
 {
-    /// <summary>
-    /// A class that defines an implementation of a helper for the Email controller.
-    /// </summary>
     public class EmailControllerHelper : ControllerHelperBase, IEmailControllerHelper
     {
-        /// <summary>
-        /// Creates a new instance of the class with the specified parameters.
-        /// </summary>
-        /// <param name="logger">An ILogger that is the logger to use.</param>
-        /// <param name="emailService">An IEmailService that is the email service to use.</param>
-        public EmailControllerHelper(ILogger<EmailControllerHelper> logger,
-                                     IEmailService emailService)
-            : base(logger)
+        private readonly IEmailService _emailService;
+     
+        public EmailControllerHelper(ILogger<EmailControllerHelper> logger, IEmailService emailService) : base(logger)
         {
             _emailService = emailService;
         }
 
-        private readonly IEmailService _emailService;
-
-        async Task<ControllerHelperOperationResponse> IEmailControllerHelper.Unsubscribe(string emailAddress)
+        public async Task Unsubscribe(string emailAddress)
         {
-            bool isSuccessful = false;
-            string message = default;
-            Guid requestID = RecordRequest();
+            var requestId = RecordRequest();
+            
+            if (string.IsNullOrWhiteSpace(emailAddress))
+                throw new ArgumentNullException(nameof(emailAddress), "An unsubscribe email address must be specified");
 
-            // Validate email address
-            if (!string.IsNullOrWhiteSpace(emailAddress))
+            if (!_emailService.IsValidEmailAddress(requestId, emailAddress).IsValid)
+                throw new InvalidDataException("The unsubscribe email must be a valid email address");
+
+            try
             {
-                // Validate that the email address is valid
-                if (_emailService.IsValidEmailAddress(requestID, emailAddress).IsValid)
-                {
-                    try
-                    {
-                        // Unsubscribe the email address
-                        var result = await _emailService.UnsubscribeEmail(requestID, emailAddress);
-
-                        if (result.IsValid)
-                            isSuccessful = true;
-                        else
-                            throw new InvalidOperationException(result.Message ?? "Failed to unsubscribe email address");
-                    }
-                    catch (Exception ex)
-                    {
-                        _logger.LogError(ex, "Unable to unsubscribe email address");
-                        message = "We were unable to unsubscribe your email address.  Please try again";
-                    }
-                }
-                else
-                    message = "The unsubscribe email must be a valid email address";
+                var serviceResult = await _emailService.UnsubscribeEmail(requestId, emailAddress);
+                if (!serviceResult.IsValid)
+                    throw new InvalidOperationException(serviceResult.Message ?? "Failed to unsubscribe email address");
             }
-            else
-                message = "An unsubscribe email address must be specified";
-
-            return new ControllerHelperOperationResponse(requestID, isSuccessful, message);
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Unable to unsubscribe email address");
+                throw new Exception("We were unable to unsubscribe your email address.  Please try again", ex);
+            }
         }
     }
 }
