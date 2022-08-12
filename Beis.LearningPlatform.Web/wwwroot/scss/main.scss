@@ -865,38 +865,6 @@ a:focus {
     padding-left: 20px;
 }
 
-.cms-content {
-    &.mobile-only {
-
-        @include respond(xl) { /* Gap in our brakpoints between table and desktop (>641 and <769 has no coverage in beis-mixins. Hide mobile for this gap.) */
-            display: none;
-        }
-
-        @include respond(desktop) {
-            display: none;
-        }
-
-        @include respond(tablet) {
-            display: none;
-        }
-
-        @include respond(mobile) { /* override the xl workaround above */
-            display: block;
-        }
-    }
-
-    &.desktop-only {
-
-        @include respond(tablet) {
-            display: block;
-        }
-
-        @include respond(mobile) {
-            display: none;
-        }
-    }
-}
-
 .link-icon-align {
     margin-bottom: -4px;
 }
