@@ -1154,3 +1154,74 @@ span.govuk-link-divider {
 .beis-yellow summary.govuk-details__summary {
     color: $beis-navy-blue;
 }
+
+
+.text-with-arrow-img-col1 {
+    display: inline-block;
+    margin-bottom: 25px;
+    font-size: 28px;
+    font-weight: 700;
+    padding-right: 10px;
+}
+
+.text-with-arrow-img-col2 {
+    display: inline-block;
+    margin-bottom: 25px;
+    vertical-align: middle;
+    padding-top: 20px;
+    align-self: center;
+}
+
+.two-column-text-mobile-divider {
+    display: none;
+}
+
+.two-column-text-desktop-divider {
+    display: block;
+    margin: auto;
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.two-column-text-col1 {
+}
+
+.two-column-text-col2 {
+    padding-left: 25px;
+}
+
+@media screen and (max-width: 40.0525em) {
+
+    .text-with-arrow-img-col1 {
+        display: block;
+        margin: auto;
+        margin-bottom: 20px;
+    }
+
+    .text-with-arrow-img-col2 {
+        display: none;
+    }
+
+    .two-column-text-mobile-divider {
+        display: block;
+        margin: auto;
+        margin-bottom: 20px;
+        margin-top: 20px;
+        text-align: center;
+        font-weight: 700;
+    }
+
+    .two-column-text-desktop-divider {
+        display: none;
+    }
+
+    .two-column-text-col1 {
+        padding-left: 12px;
+    }
+
+    .two-column-text-col2 {
+        padding-left: 12px;
+    }
+}
+
