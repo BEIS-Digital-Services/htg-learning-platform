@@ -3,7 +3,7 @@
 <div class="govuk-grid-row beis-columns-same-height">
     <div class="govuk-grid-column-full">
         <h3 class="govuk-heading-l govuk-!-padding-top-3">
-            <a id="@Model.FirstLink?.GetGaLinkId("header-")" class="govuk-link" href="@Model.FirstLink.url" aria-label="hero.LinkAria">@Model.Article?.subheader</a>
+            <a id="@Model.FirstLink?.GetGaLinkId("header-")" class="govuk-link" href="@Model.FirstLink.url">@Model.Article?.subheader</a>
         </h3>
     </div>
 </div>
@@ -33,7 +33,7 @@
                 </p>
                 <div>
                     <img src="/assets/images/link-icon.png" class="link-icon-align" />
-                    <a id="@Model.FirstLink?.GetGaLinkId("link-")" class="govuk-link" href="@Model.FirstLink.url" aria-label="hero.LinkAria">@Model.FirstLink.label</a>
+                    <a id="@Model.FirstLink?.GetGaLinkId("link-")" class="govuk-link" href="@Model.FirstLink.url">@Model.FirstLink.label</a>
                 </div>
             </div>
         </div>
