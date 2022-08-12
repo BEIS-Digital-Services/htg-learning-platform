@@ -18,6 +18,7 @@ namespace Beis.LearningPlatform.Web.StrapiApi.Models
         public IList<CMSPageLink> links { get; set; }
         public IList<CMSPageHeroBanner> hero_banners { get; set; }
         public CMSPageImage image { get; set; }
+        public string ImageCaption { get; set; }
         public CMSPageContent content { get; set; }
         public string videoLink { get; set; }
         public string VideoTitle { get; set; }
