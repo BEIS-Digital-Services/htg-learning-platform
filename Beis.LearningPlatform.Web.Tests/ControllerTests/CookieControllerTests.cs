@@ -19,20 +19,15 @@ public class CookiesControllerTests
     }
 
     [Test]
-    public async Task Should_return_cookies_view_with_valid_cookies_preference_model()
+    public async Task Should_return_view_with_valid_model()
     {
         UserCookiePreferencesModel payload = new UserCookiePreferencesModel()
         {
             IsCookieBannerClosed = false,
-            IsGaAccepted = false,
-            IsHtgAccepted = false,
-            IsJavascriptEnabled = true,
-            RememberSettings = true,
-            MarketingAccepted = false
         };
-       _helper.Setup(x => x.GetUserCookiePreferences())
-           .Returns(new ControllerHelperOperationResponse<UserCookiePreferencesModel>(new Guid(), payload));
-       _helper.Setup(x => x.ProcessGetCustomPageResult("Custom-pages/cookies"))
+        _helper.Setup(x => x.GetUserCookiePreferences())
+            .Returns(new ControllerHelperOperationResponse<UserCookiePreferencesModel>(new Guid(), payload));
+        _helper.Setup(x => x.ProcessGetCustomPageResult("Custom-pages/cookies"))
             .Returns(Task.FromResult(new CMSPageViewModel()));
         var result = await _controller.Cookies();
         result.Should().BeOfType<ViewResult>();
@@ -67,6 +62,18 @@ public class CookiesControllerTests
         var result = _controller.SaveCookiesPreferences(model);
         result.Should().BeOfType<BadRequestResult>();
     }
+    
+    
+    [Test]
+    public void Should_return_redirect_if_cookie_prefer_save_succeeds()
+    {
+        SaveCookiePreferenceModel model = new SaveCookiePreferenceModel();
+        _helper.Setup(x => x.SaveCookiesPreferences(model))
+            .Returns(new ControllerHelperOperationResponse(new Guid(), true));
+        var result = _controller.SaveCookiesPreferences(model);
+        result.Should().BeOfType<RedirectToActionResult>();
+    }
+    
 
 
 }
