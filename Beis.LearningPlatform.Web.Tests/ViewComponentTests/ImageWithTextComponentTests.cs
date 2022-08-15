@@ -150,6 +150,52 @@ namespace Beis.LearningPlatform.Web.Tests.ViewComponentTests
             Assert.AreEqual(model.HtmlCopy, "<p>Hello <strong>strong</strong> copy</p>\n");
         }
 
+        [Test]
+        public void Should_Match_SpecificCaption()
+        {
+            var component = CreateViewComponent();
+            var cmsPageComponent = new CMSPageComponent
+            {
+                copy = "test",
+                CaptionType = "SpecificCaption",
+                ImageCaption = "specific-caption",
+                image = new CMSPageImage { caption = "img-caption" },
+            };
+            var view = component.Invoke(cmsPageComponent);
+
+
+            var viewComponentData = GetViewComponentData(view);
+            Assert.IsNotNull(viewComponentData);
+
+            var model = viewComponentData.Model;
+            Assert.IsNotNull(model);
+            Assert.AreEqual(model.ImageCaption, cmsPageComponent.ImageCaption);
+
+        }
+
+        [Test]
+        public void Should_Match_ImageLibCaption()
+        {
+            var component = CreateViewComponent();
+            var cmsPageComponent = new CMSPageComponent
+            {
+                copy = "test",
+                CaptionType = "ImageLibCaption",
+                ImageCaption = "specific-caption",
+                image = new CMSPageImage { caption = "img-caption" },
+            };
+            var view = component.Invoke(cmsPageComponent);
+
+
+            var viewComponentData = GetViewComponentData(view);
+            Assert.IsNotNull(viewComponentData);
+
+            var model = viewComponentData.Model;
+            Assert.IsNotNull(model);
+            Assert.AreEqual(model.ImageCaption, cmsPageComponent.image.caption);
+
+        }
+
         private static ViewDataDictionary<ImageWithTextViewModel> GetViewComponentData(IViewComponentResult view)
         {
             var viewComponentResult = view as ViewViewComponentResult;
