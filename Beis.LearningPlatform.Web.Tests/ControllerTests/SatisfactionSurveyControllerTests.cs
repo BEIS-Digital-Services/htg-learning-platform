@@ -2,22 +2,30 @@
 {
     public class SatisfactionSurveyControllerTests
     {
-        private Mock<ISatisfactionSurveyControllerHelper> _satisfactionSurveyControllerHelper;
+        private ISatisfactionSurveyControllerHelper _satisfactionSurveyControllerHelper;
         private Mock<ICmsService2> _cmsService2;
         private Mock<IHttpContextAccessor> _httpContextAccessor;
         private Mock<HttpContext> _httpContext;
         private Mock<HttpRequest> _httpRequest;
+        private Mock<IMapper> _mockMapper;
+        private Mock<ISatisfactionSurveyService> _mockSatisfactionSurveyService;
         private SatisfactionSurveyController _controller;
 
         [SetUp]
         public void Setup()
         {
-            _satisfactionSurveyControllerHelper = new Mock<ISatisfactionSurveyControllerHelper>();
+            _mockMapper = new Mock<IMapper>();
+            _mockSatisfactionSurveyService = new Mock<ISatisfactionSurveyService>();
+            _satisfactionSurveyControllerHelper =
+                new SatisfactionSurveyControllerHelper(
+                    new Mock<ILogger<SatisfactionSurveyControllerHelper>>().Object,
+                    _mockSatisfactionSurveyService.Object,
+                    _mockMapper.Object);
             _cmsService2 = new Mock<ICmsService2>();
             _httpContextAccessor = new Mock<IHttpContextAccessor>();
             _httpContext = new Mock<HttpContext>();
             _httpRequest = new Mock<HttpRequest>();
-            _controller = new SatisfactionSurveyController(_satisfactionSurveyControllerHelper.Object, 
+            _controller = new SatisfactionSurveyController(_satisfactionSurveyControllerHelper,
                 _cmsService2.Object, _httpContextAccessor.Object);
         }
 
@@ -66,12 +74,13 @@
         [Test]
         public async Task Should_return_error_when_submitting_survey_for_api_connection_failure()
         {
-            
             _cmsService2.Setup(x => x.GetPage(It.IsAny<string>()))
                 .ReturnsAsync(new CMSPageViewModel());
 
-            _satisfactionSurveyControllerHelper.Setup(x => x.SaveSatisfactionSurvey(It.IsAny<SatisfactionSurveyViewModel>()))
-                .ReturnsAsync(new ControllerHelperOperationResponse(Guid.NewGuid(), false, "Error Message"));
+            _mockSatisfactionSurveyService
+                .Setup(s => s.SaveSatisfactionSurvey(It.IsAny<Guid>(), It.IsAny<SatisfactionSurveyDto>()))
+                .ReturnsAsync(new ServiceResponse<int>(It.IsAny<Guid>(), false));
+
 
             var result = await _controller.SubmitSurvey(new SatisfactionSurveyViewModel()
             {
@@ -79,6 +88,10 @@
             });
 
             ValidateResult(result);
+
+            _mockSatisfactionSurveyService
+                .Verify(x => x.SaveSatisfactionSurvey(
+                    It.IsAny<Guid>(), It.IsAny<SatisfactionSurveyDto>()), Times.Once);
         }
 
         [Test]
@@ -95,20 +108,23 @@
 
             ValidateResult(result);
 
-            _satisfactionSurveyControllerHelper
-                .Verify(x => x.SaveSatisfactionSurvey(It.IsAny<SatisfactionSurveyViewModel>()), 
-                                    Times.Never);
+            _mockSatisfactionSurveyService
+                .Verify(x => x.SaveSatisfactionSurvey(
+                    It.IsAny<Guid>(), It.IsAny<SatisfactionSurveyDto>()), Times.Never);
         }
 
         [Test]
-        public async Task Should_redirect_to_complete_when_submitting_survey_sucessfully()
+        public async Task Should_redirect_to_complete_when_submitting_survey_successfully()
         {
-
             _cmsService2.Setup(x => x.GetPage(It.IsAny<string>()))
                 .ReturnsAsync(new CMSPageViewModel());
 
-            _satisfactionSurveyControllerHelper.Setup(x => x.SaveSatisfactionSurvey(It.IsAny<SatisfactionSurveyViewModel>()))
-                .ReturnsAsync(new ControllerHelperOperationResponse(Guid.NewGuid(), true));
+            _mockMapper.Setup(m => m.Map<SatisfactionSurveyDto>(It.IsAny<SatisfactionSurveyViewModel>()))
+                .Returns(new SatisfactionSurveyDto());
+
+            _mockSatisfactionSurveyService
+                .Setup(s => s.SaveSatisfactionSurvey(It.IsAny<Guid>(), It.IsAny<SatisfactionSurveyDto>()))
+                .ReturnsAsync(new ServiceResponse<int>(It.IsAny<Guid>(), true));
 
             var result = await _controller.SubmitSurvey(new SatisfactionSurveyViewModel()
             {
