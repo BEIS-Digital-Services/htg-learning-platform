@@ -226,6 +226,9 @@ namespace Beis.LearningPlatform.Web.StrapiApi.Models
         // Workaround in place that uses a list of single content pickers (hence CMSSearchArticlePicker) to create an orderable list of searchArticles.
         public List<CMSSearchArticlePicker> SearchArticles { get; set; }
 
+        // two column text, used with the large image to move text off image to below it.
+        public string DividerText { get; set; }
+
 
 
     }
