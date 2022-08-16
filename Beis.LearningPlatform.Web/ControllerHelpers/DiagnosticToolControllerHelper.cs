@@ -656,11 +656,25 @@ namespace Beis.LearningPlatform.Web.ControllerHelpers
             var currentStep = currentStepId.HasValue ? form.steps.SingleOrDefault(x => x.id == currentStepId) : null;
             if (currentStep != null && !form.FormIsCompleted) // If in a formstep get the title
             {
-                contentKey = $"{contentKey}-{currentStep.title}-{currentStep.id}";
+                if(form.FormType == FormTypes.DiagnosticTool|| form.FormType == FormTypes.SkillsOne || form.FormType == FormTypes.SkillsTwo)
+                {
+                    contentKey = $"{contentKey}-{currentStep.title}-{currentStep.id}";
+                }
+                else
+                {
+                    contentKey = $"{contentKey}-{form.userTypeActionPlanSection}-{currentStep.id}";
+                }
             }
             else if (form.FormIsCompleted) // Form is completed - summary page:
             {
-                contentKey = $"{contentKey}-completed";
+                if (form.FormType == FormTypes.DiagnosticTool || form.FormType == FormTypes.SkillsOne || form.FormType == FormTypes.SkillsTwo)
+                {
+                    contentKey = $"{contentKey}-completed";
+                }
+                else
+                {
+                    contentKey = $"{contentKey}-{form.userTypeActionPlanSection}-completed";
+                }
             }
 
             if (form.GetCustomContentKeyValue(out string customKeyValue))
