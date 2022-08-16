@@ -196,3 +196,8 @@ function keyHandler(event, func) {
     }
     return true;
 }
+
+// eoi
+document.getElementById("eoi-form-start")?.addEventListener('click', function () {
+    eoi.goToStep(2);
+});
