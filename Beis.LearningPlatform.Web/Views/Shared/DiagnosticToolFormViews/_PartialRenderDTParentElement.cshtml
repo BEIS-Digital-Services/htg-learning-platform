@@ -4,11 +4,11 @@
     var currentStep = elementInfo.CurrentStep;
     var currentElement = elementInfo.CurrentElement;
     var currentFormStepElement = elementInfo.CurrentFormStepElement;
-    
+
     var z = 0;
     var currentFormStep = elementInfo.CurrentFormStep;
     var hintInBoldCss = currentFormStepElement.showHintInBold ? "govuk-!-font-weight-bold" : string.Empty;
-    var hint2InBoldCss =currentFormStepElement.showHint2InBold ? "govuk-!-font-weight-bold" : string.Empty;
+    var hint2InBoldCss = currentFormStepElement.showHint2InBold ? "govuk-!-font-weight-bold" : string.Empty;
 }
 @{
     switch (currentFormStepElement.controlType)
@@ -16,10 +16,10 @@
         case FormDisplayControlType.Label:
             <fieldset>
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                    <h1 class="govuk-fieldset__heading">
+                    <h2 class="govuk-fieldset__heading">
                         <span>@currentFormStepElement.text</span>
                         <span class="govuk-!-font-weight-regular">@currentFormStepElement.text2</span>
-                    </h1>
+                    </h2>
                 </legend>
             </fieldset>
 
@@ -29,14 +29,14 @@
                 foreach (var child in currentFormStepElement.answerOptions)
                 {
                     Model.CurrentElement = new ElementInfo
-                    {
-                        CurrentStep = currentStep,
-                        CurrentElement = currentElement,
-                        RadioButtonParent = currentElement,
-                        CurrentFormStep = currentFormStep,
-                        CurrentFormStepElement = currentFormStepElement,
-                        ChildIndex = z
-                    };
+                            {
+                                CurrentStep = currentStep,
+                                CurrentElement = currentElement,
+                                RadioButtonParent = currentElement,
+                                CurrentFormStep = currentFormStep,
+                                CurrentFormStepElement = currentFormStepElement,
+                                ChildIndex = z
+                            };
                     <partial name="DiagnosticToolFormViews/_PartialRenderDTChildElement" model="@Model" />
                     z++;
                 }
@@ -45,27 +45,28 @@
             break;
 
         case FormDisplayControlType.CheckboxGroup:
-            <fieldset>
-                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                    <h1 class="govuk-fieldset__heading">
-                        <span>@currentFormStepElement.text</span>
-                        <span class="govuk-!-font-weight-regular">@currentFormStepElement.text2</span>
-                    </h1>
-                    @if (!string.IsNullOrWhiteSpace(currentFormStepElement.hint))
-                    {
-                        <span class="govuk-body @hintInBoldCss"><p>@currentFormStepElement.hint</p></span>
-                    }
-                    @if (!string.IsNullOrWhiteSpace(currentFormStepElement.hint2))
-                    {
-                        <span class="govuk-body @hint2InBoldCss"><p>@currentFormStepElement.hint2</p></span>
-                    }
+        <fieldset>
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                    <h2 class="govuk-fieldset__heading">
+                    <span>@currentFormStepElement.text</span>
+                    <span class="govuk-!-font-weight-regular">@currentFormStepElement.text2</span>
+                    </h2>
+            </legend>
+            @if (!string.IsNullOrWhiteSpace(currentFormStepElement.hint))
+            {
+                <div class="govuk-body @hintInBoldCss">@currentFormStepElement.hint</div>
+            }
+            @if (!string.IsNullOrWhiteSpace(currentFormStepElement.hint2))
+            {
+                <div class="govuk-body @hint2InBoldCss">@currentFormStepElement.hint2</div>
+            }
 
-                    @if (!string.IsNullOrWhiteSpace(currentFormStepElement.validationError))
-                    {
-                        <span asp-validation-for="@Model.steps[currentStep].elements[currentElement].textControlHtmlId" class="govuk-error-message">@currentFormStepElement.validationError</span>
-                    }
-                </legend>
-            </fieldset>
+            @if (!string.IsNullOrWhiteSpace(currentFormStepElement.validationError))
+            {
+                <span asp-validation-for="@Model.steps[currentStep].elements[currentElement].textControlHtmlId" class="govuk-error-message">@currentFormStepElement.validationError</span>
+            }
+            
+
 
             @if (currentFormStepElement.answerOptions != null)
             {
@@ -74,47 +75,47 @@
                     @foreach (var child in currentFormStepElement.answerOptions)
                     {
                         Model.CurrentElement = new ElementInfo
-                        {
-                            CurrentStep = currentStep,
-                            CurrentElement = currentElement,
-                            RadioButtonParent = currentElement,
-                            CurrentFormStep = currentFormStep,
-                            CurrentFormStepElement = currentFormStepElement,
-                            ChildIndex = z
-                        };
+                            {
+                                CurrentStep = currentStep,
+                                CurrentElement = currentElement,
+                                RadioButtonParent = currentElement,
+                                CurrentFormStep = currentFormStep,
+                                CurrentFormStepElement = currentFormStepElement,
+                                ChildIndex = z
+                            };
                         <partial name="DiagnosticToolFormViews/_PartialRenderDTChildElement" model="@Model" />
                         z++;
                     }
                 </div>
 
             }
+            </fieldset>
             break;
 
         case FormDisplayControlType.RadioGroup:
             <fieldset>
-                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                    <h1 class="govuk-fieldset__heading">
-                        <span>@currentFormStepElement.text</span>
-                        <span class="govuk-!-font-weight-regular">@currentFormStepElement.text2</span>
-                    </h1>
-                    @if (string.IsNullOrEmpty(currentFormStepElement.subText) == false)
-                    {
-                        <h3 class="govuk-fieldset__heading govuk-!-font-size-19 govuk-!-margin-top-7 govuk-!-margin-bottom-5">
-                            <span>@currentFormStepElement.subText</span>
-                        </h3>
-                    }
-                    @if (!string.IsNullOrWhiteSpace(currentFormStepElement.hint))
-                    {
-                        <span class="govuk-body @hintInBoldCss"><p>@currentFormStepElement.hint</p></span>
-                    }
-                    @if (!string.IsNullOrWhiteSpace(currentFormStepElement.validationError))
-                    {
-                        <span asp-validation-for="@Model.steps[currentStep].elements[currentElement].textControlHtmlId" class="govuk-error-message">
-                            @currentFormStepElement.validationError
-                        </span>
-                    }
-                </legend>
-            </fieldset>
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                    <h2 class="govuk-fieldset__heading">
+                    <span>@currentFormStepElement.text</span>
+                    <span class="govuk-!-font-weight-regular">@currentFormStepElement.text2</span>
+                    </h2>
+                @if (string.IsNullOrEmpty(currentFormStepElement.subText) == false)
+                {
+                    <h3 class="govuk-fieldset__heading govuk-!-font-size-19 govuk-!-margin-top-7 govuk-!-margin-bottom-5">
+                        <span>@currentFormStepElement.subText</span>
+                    </h3>
+                }
+            </legend>
+            @if (!string.IsNullOrWhiteSpace(currentFormStepElement.hint))
+            {
+                <div class="govuk-body govuk-!-margin-bottom-8 @hintInBoldCss">@currentFormStepElement.hint</div>
+            }
+            @if (!string.IsNullOrWhiteSpace(currentFormStepElement.validationError))
+            {
+                <span asp-validation-for="@Model.steps[currentStep].elements[currentElement].textControlHtmlId" class="govuk-error-message">
+                    @currentFormStepElement.validationError
+                </span>
+            }             
 
             @if (currentFormStepElement.answerOptions != null)
             {
@@ -123,34 +124,35 @@
                     @foreach (var child in currentFormStepElement.answerOptions)
                     {
                         Model.CurrentElement = new ElementInfo
-                        {
-                            CurrentStep = currentStep,
-                            CurrentElement = currentElement,
-                            RadioButtonParent = currentElement,
-                            CurrentFormStep = currentFormStep,
-                            CurrentFormStepElement = currentFormStepElement,
-                            ChildIndex = z
-                        };
+                            {
+                                CurrentStep = currentStep,
+                                CurrentElement = currentElement,
+                                RadioButtonParent = currentElement,
+                                CurrentFormStep = currentFormStep,
+                                CurrentFormStepElement = currentFormStepElement,
+                                ChildIndex = z
+                            };
                         <partial name="DiagnosticToolFormViews/_PartialRenderDTChildElement" model="@Model" />
                         z++;
                     }
                 </div>
 
             }
+            </fieldset>
             break;
 
         case FormDisplayControlType.List:
             <fieldset>
-                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                    <h1 class="govuk-fieldset__heading">
-                        <span>@currentFormStepElement.text</span>
-                        <span class="govuk-!-font-weight-regular">@currentFormStepElement.text2</span>
-                    </h1>
-                    <span asp-validation-for="@Model.steps[currentStep].elements[currentElement].textControlHtmlId" class="govuk-error-message">
-                        @currentFormStepElement.validationError
-                    </span>
-                </legend>
-            </fieldset>
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                    <h2 class="govuk-fieldset__heading">
+                    <span>@currentFormStepElement.text</span>
+                    <span class="govuk-!-font-weight-regular">@currentFormStepElement.text2</span>
+                    </h2>
+            </legend>            
+            <span asp-validation-for="@Model.steps[currentStep].elements[currentElement].textControlHtmlId" class="govuk-error-message">
+                @currentFormStepElement.validationError
+            </span>
+
 
 
             <select asp-for="@Model.steps[currentStep].elements[currentElement].selectedValue" class="govuk-select">
@@ -161,14 +163,14 @@
                     foreach (var child in currentFormStepElement.answerOptions)
                     {
                         Model.CurrentElement = new ElementInfo
-                        {
-                            CurrentStep = currentStep,
-                            CurrentElement = currentElement,
-                            RadioButtonParent = currentElement,
-                            CurrentFormStep = currentFormStep,
-                            CurrentFormStepElement = currentFormStepElement,
-                            ChildIndex = z
-                        };
+                            {
+                                CurrentStep = currentStep,
+                                CurrentElement = currentElement,
+                                RadioButtonParent = currentElement,
+                                CurrentFormStep = currentFormStep,
+                                CurrentFormStepElement = currentFormStepElement,
+                                ChildIndex = z
+                            };
                         <partial name="DiagnosticToolFormViews/_PartialRenderDTChildElement" model="@Model" />
                         z++;
                     }
@@ -179,76 +181,84 @@
                 <input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].value" />
                 <input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].text" />
             }
-
+            </fieldset>
             break;
 
 
         case FormDisplayControlType.Textarea:
             <fieldset>
-                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                    <h1 class="govuk-fieldset__heading">
-                        <span>@currentFormStepElement.text</span>
-                        <span class="govuk-!-font-weight-regular">@currentFormStepElement.text2</span>
-                    </h1>
-                    @if (!string.IsNullOrWhiteSpace(currentFormStepElement.hint))
-                    {
-                        <span class="govuk-body @hintInBoldCss"><p>@currentFormStepElement.hint</p></span>
-                    }
-                    <span asp-validation-for="@Model.steps[currentStep].elements[currentElement].textControlHtmlId" class="govuk-error-message">
-                        @currentFormStepElement.validationError
-                    </span>
-                </legend>
-            </fieldset>
-            <div>
-                <textarea asp-for="@Model.steps[currentStep].elements[currentElement].value"
-                          rows="5" class="govuk-textarea">
-                        @Model.steps[currentStep].elements[currentElement].value
-                </textarea>
-            </div>
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                    <h2 class="govuk-fieldset__heading">
+                    <span>@currentFormStepElement.text</span>
+                    <span class="govuk-!-font-weight-regular">@currentFormStepElement.text2</span>
+                    </h2>
+            </legend>
+            
+            @if (!string.IsNullOrWhiteSpace(currentFormStepElement.hint))
+            {
+                        <p class="govuk-body govuk-!-margin-top-4 @hintInBoldCss">
+                            <label for="@(Model.steps[currentStep].elements[currentElement].InputCtrlId)">
+                                @currentFormStepElement.hint
+                            </label>
+                        </p>
+            }
+            <span asp-validation-for="@Model.steps[currentStep].elements[currentElement].textControlHtmlId" class="govuk-error-message">
+                @currentFormStepElement.validationError
+            </span>
 
+
+
+            <div>
+                <textarea asp-for="@Model.steps[currentStep].elements[currentElement].value" id="@(Model.steps[currentStep].elements[currentElement].InputCtrlId)"
+              rows="5" class="govuk-textarea">
+                    @Model.steps[currentStep].elements[currentElement].value
+                                                                                                    </textarea>
+            </div>
+            </fieldset>
             break;
 
 
         case FormDisplayControlType.TextGroup:
-            <fieldset>
-                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                    <div style="display:flex">
-                        @if (string.IsNullOrWhiteSpace(Model.formLogo) == false)
-                        {
-                            <div style="padding-right:10px;">
-                                <img src="~/assets/images/@Model.formLogo" />
-                            </div>
-                        }
-                        <div style="align-self:center;">
-                            <h1 class="govuk-fieldset__heading">
-                                <span>@currentFormStepElement.text</span>
-                                <span class="govuk-!-font-weight-regular">@currentFormStepElement.text2</span>
-                            </h1>
-                        </div>
-
+            
+            <div style="display:flex">
+                @if (string.IsNullOrWhiteSpace(Model.formLogo) == false)
+                {
+                    <div style="padding-right:10px;">
+                                <img src="~/assets/images/@Model.formLogo" alt="@Model.FormLogoAlternateText" />
                     </div>
-                    @if (string.IsNullOrEmpty(currentFormStepElement.subText) == false)
-                    {
-                        <h3 class="govuk-fieldset__heading govuk-!-font-size-19 govuk-!-margin-top-7 govuk-!-margin-bottom-5">
-                            <span>@currentFormStepElement.subText</span>
-                        </h3>
-                    }
-                    @if (!string.IsNullOrWhiteSpace(currentFormStepElement.hint))
-                    {
-                        <span class="govuk-body @hintInBoldCss"><p>@currentFormStepElement.hint</p></span>
-                    }
-                    @if (!string.IsNullOrWhiteSpace(currentFormStepElement.hint2))
-                    {
-                        <span class="govuk-body @hint2InBoldCss"><p>@currentFormStepElement.hint2</p></span>
-                    }
-                    @if (!string.IsNullOrWhiteSpace(currentFormStepElement.validationError))
-                    {
-                        <span asp-validation-for="@Model.steps[currentStep].elements[currentElement].textControlHtmlId" class="govuk-error-message">
-                            @currentFormStepElement.validationError
-                        </span>
-                    }
-                </legend>
-            </fieldset>
+                }
+                <div style="align-self:center;" class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                            <h2 class="govuk-fieldset__heading">
+                        <span>@currentFormStepElement.text</span>
+                        <span class="govuk-!-font-weight-regular">@currentFormStepElement.text2</span>
+                            </h2>
+                </div>
+
+            </div>
+
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                @if (string.IsNullOrEmpty(currentFormStepElement.subText) == false)
+                {
+                    <h3 class="govuk-fieldset__heading govuk-!-font-size-19 govuk-!-margin-top-7 govuk-!-margin-bottom-5">
+                        <span>@currentFormStepElement.subText</span>
+                    </h3>
+                }
+            </legend>
+
+            @if (!string.IsNullOrWhiteSpace(currentFormStepElement.hint))
+            {
+                <div class="govuk-body @hintInBoldCss"><p>@currentFormStepElement.hint</p></div>
+            }
+            @if (!string.IsNullOrWhiteSpace(currentFormStepElement.hint2))
+            {
+                <div class="govuk-body @hint2InBoldCss"><p>@currentFormStepElement.hint2</p></div>
+            }
+            @if (!string.IsNullOrWhiteSpace(currentFormStepElement.validationError))
+            {
+                <span asp-validation-for="@Model.steps[currentStep].elements[currentElement].textControlHtmlId" class="govuk-error-message">
+                    @currentFormStepElement.validationError
+                </span>
+            }
 
             @if (currentFormStepElement.answerOptions != null)
             {
@@ -257,14 +267,14 @@
                     @foreach (var child in currentFormStepElement.answerOptions)
                     {
                         Model.CurrentElement = new ElementInfo
-                        {
-                            CurrentStep = currentStep,
-                            CurrentElement = currentElement,
-                            RadioButtonParent = currentElement,
-                            CurrentFormStep = currentFormStep,
-                            CurrentFormStepElement = currentFormStepElement,
-                            ChildIndex = z
-                        };
+                            {
+                                CurrentStep = currentStep,
+                                CurrentElement = currentElement,
+                                RadioButtonParent = currentElement,
+                                CurrentFormStep = currentFormStep,
+                                CurrentFormStepElement = currentFormStepElement,
+                                ChildIndex = z
+                            };
                         <partial name="DiagnosticToolFormViews/_PartialRenderDTChildElement" model="@Model" />
                         z++;
                     }

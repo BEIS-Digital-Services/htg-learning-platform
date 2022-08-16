@@ -118,6 +118,25 @@
             Assert.AreEqual(TestData_ImageUrl, model.Image?.url);
         }
 
+        [Test]
+        public void Should_Have_Valid_GaLinkId_If_Has_Content()
+        {
+            var component = CreateViewComponent();
+            var view = component.Invoke(GetValidViewModel());
+
+            var viewComponentData = GetViewComponentData(view);
+            Assert.IsNotNull(viewComponentData);
+
+            var model = viewComponentData.Model;
+            Assert.IsNotNull(model);
+
+            Assert.IsTrue(model.HasContent);
+
+            var gaLinkId = model.GetGaLinkId("Some prefix-", "Some Title");
+            Assert.IsNotNull(gaLinkId);            
+            Assert.AreEqual("some-prefix-some-title", gaLinkId);
+        }
+
 
 
         private static ViewDataDictionary<CmsLandingPageHeroViewModel> GetViewComponentData(IViewComponentResult view)

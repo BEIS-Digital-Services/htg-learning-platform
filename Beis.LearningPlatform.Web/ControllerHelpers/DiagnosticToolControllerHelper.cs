@@ -54,7 +54,7 @@ namespace Beis.LearningPlatform.Web.ControllerHelpers
             _vendorAppOption = vendorAppOption.Value;
             _emailResponseHelperFactory = emailResponseHelperFactory ?? throw new ArgumentNullException(nameof(emailResponseHelperFactory));
             _httpContextAccessor = httpContextAccessor ?? throw new ArgumentNullException(nameof(httpContextAccessor));
-            _controllerHelperInterface = this;            
+            _controllerHelperInterface = this;
         }
 
 
@@ -119,6 +119,7 @@ namespace Beis.LearningPlatform.Web.ControllerHelpers
                 form.CurrStep = step;
 
             await _controllerHelperInterface.SetNavAndFooter(form);
+            SetPageTitle(form);
 
             return new ControllerHelperOperationResponse<DiagnosticToolForm>(requestID, true, form);
         }
@@ -173,8 +174,8 @@ namespace Beis.LearningPlatform.Web.ControllerHelpers
                     if (isValid)
                     {
                         form.FormIsCompleted = true;
-                        
-                        if((int)form.FormType > 0)
+
+                        if ((int)form.FormType > 0)
                         {
                             //all skills forms, skills1, skills2, and all skills3 forms
                             //add 1 more for last step (summary page), then back btn on summary page gets to the last step
@@ -186,6 +187,7 @@ namespace Beis.LearningPlatform.Web.ControllerHelpers
             }
 
             await _controllerHelperInterface.SetNavAndFooter(form);
+            SetPageTitle(form);
 
             return new ControllerHelperOperationResponse<DiagnosticToolForm>(requestID, true, form);
         }
@@ -212,6 +214,7 @@ namespace Beis.LearningPlatform.Web.ControllerHelpers
             }
 
             await _controllerHelperInterface.SetNavAndFooter(form);
+            SetPageTitle(form);
 
             return new ControllerHelperOperationResponse<DiagnosticToolForm>(requestID, true, form);
         }
@@ -277,22 +280,22 @@ namespace Beis.LearningPlatform.Web.ControllerHelpers
             form.validationErrors.Clear();
             form.FormIsCompleted = true;
 
-                // Process email address if there is one
-                if (form.EmailAnswer.HasEmailAddress)
-                {
-                    // Process the email subscription ie. validate email and check Privacy Policy Accepted
-                    var processEmailResult = _controllerHelperInterface.ProcessEmailAnswer(form);
+            // Process email address if there is one
+            if (form.EmailAnswer.HasEmailAddress)
+            {
+                // Process the email subscription ie. validate email and check Privacy Policy Accepted
+                var processEmailResult = _controllerHelperInterface.ProcessEmailAnswer(form);
                 if (!processEmailResult.Result)
-                    {
+                {
                     isValid = false;
-                        // Display the email processing error
-                        form.validationErrors.Add(new FormValidationError()
-                        {
-                            id = 1,
-                            errorHeading = processEmailResult.Payload.ErrorHeading,
-                            errorMessage = processEmailResult.Message,
-                            htmlId = "email"
-                        });
+                    // Display the email processing error
+                    form.validationErrors.Add(new FormValidationError()
+                    {
+                        id = 1,
+                        errorHeading = processEmailResult.Payload.ErrorHeading,
+                        errorMessage = processEmailResult.Message,
+                        htmlId = "email"
+                    });
                 }
             }
 
@@ -320,10 +323,10 @@ namespace Beis.LearningPlatform.Web.ControllerHelpers
                 }
 
                 if (saveDataResult?.Result != true)
-                { 
+                {
                     // Display save data error
                     isValid = false;
-                    form.validationErrors.Add(new FormValidationError() { id = 1, errorHeading = "Error Saving Data", errorMessage = saveDataResult.Message });                    
+                    form.validationErrors.Add(new FormValidationError() { id = 1, errorHeading = "Error Saving Data", errorMessage = saveDataResult.Message });
                 }
                 else if (form.EmailAnswer.HasEmailAddress)
                 {
@@ -609,7 +612,7 @@ namespace Beis.LearningPlatform.Web.ControllerHelpers
             Guid requestID = RecordRequest();
 
             var helper = _emailResponseHelperFactory.Get(form.FormType);
-            var payload =  await helper.ConvertToResultsEmail(form);
+            var payload = await helper.ConvertToResultsEmail(form);
 
             var result = await _emailService.SendResultsRemail(requestID, emailAnswer.UserEmailAddress, payload);
             if (result.IsValid)
@@ -621,61 +624,76 @@ namespace Beis.LearningPlatform.Web.ControllerHelpers
         }
 
         async Task<ControllerHelperOperationResponse> IDiagnosticToolControllerHelper.SetNavAndFooter(DiagnosticToolForm form)
-		{
-			Guid requestID = RecordRequest();
+        {
+            Guid requestID = RecordRequest();
 
-			var result = await _cmsService.GetPage("diagnostic-tools/start-page");
-			if (result != default)
-			{
-				form.navigations = result.navigations;
-				form.side_navigations = result.side_navigations;
-				form.footers = result.footers;
-			}
+            var result = await _cmsService.GetPage("diagnostic-tools/start-page");
+            if (result != default)
+            {
+                form.navigations = result.navigations;
+                form.side_navigations = result.side_navigations;
+                form.footers = result.footers;
+            }
 
-			form.ContentKey = GetUniqueContentKey(form);
+            form.ContentKey = GetUniqueContentKey(form);
 
-			return new ControllerHelperOperationResponse(requestID, true);
-		}
+            return new ControllerHelperOperationResponse(requestID, true);
+        }
 
         /// <summary>
         /// Slightly convoluted logic to get a unique content key for GA
         /// </summary>
 		public string GetUniqueContentKey(DiagnosticToolForm form)
-		{
-			var contentKey = _httpContextAccessor.HttpContext.Request.Path.Value; // This get the nextstep/previous step actions as well.
+        {
+            var contentKey = _httpContextAccessor.HttpContext.Request.Path.Value; // This get the nextstep/previous step actions as well.
             if (form == null)
             {
                 return contentKey;
             }
 
-			var isPost = _httpContextAccessor.HttpContext.Request.Method == "POST";
-			var currentStepId = (isPost && form.steps != null && form.steps.Any()) ? form.CurrStep : default(int?);
+            var isPost = _httpContextAccessor.HttpContext.Request.Method == "POST";
+            var currentStepId = (isPost && form.steps != null && form.steps.Any()) ? form.CurrStep : default(int?);
             var currentStep = currentStepId.HasValue ? form.steps.SingleOrDefault(x => x.id == currentStepId) : null;
-			if (currentStep != null && !form.FormIsCompleted) // If in a formstep get the title
+            if (currentStep != null && !form.FormIsCompleted) // If in a formstep get the title
             {
-				contentKey = $"{contentKey}-{currentStep.title}-{currentStep.id}";
-			}
-			else if (form.FormIsCompleted) // Form is completed - summary page:
-			{
-				contentKey = $"{contentKey}-completed";
-			}
+                if(form.FormType == FormTypes.DiagnosticTool|| form.FormType == FormTypes.SkillsOne || form.FormType == FormTypes.SkillsTwo)
+                {
+                    contentKey = $"{contentKey}-{currentStep.title}-{currentStep.id}";
+                }
+                else
+                {
+                    contentKey = $"{contentKey}-{form.userTypeActionPlanSection}-{currentStep.id}";
+                }
+            }
+            else if (form.FormIsCompleted) // Form is completed - summary page:
+            {
+                if (form.FormType == FormTypes.DiagnosticTool || form.FormType == FormTypes.SkillsOne || form.FormType == FormTypes.SkillsTwo)
+                {
+                    contentKey = $"{contentKey}-completed";
+                }
+                else
+                {
+                    contentKey = $"{contentKey}-{form.userTypeActionPlanSection}-completed";
+                }
+            }
 
             if (form.GetCustomContentKeyValue(out string customKeyValue))
-            { 
+            {
                 contentKey = $"{contentKey}-{customKeyValue}";
             }
 
-			contentKey = contentKey.Replace('/', '-').Replace(' ', '-').Trim(new char[] { ' ', '-' }).UrlEncode(true);
-			return contentKey;
-		}
+            contentKey = contentKey.Replace('/', '-').Replace(' ', '-').Trim(new char[] { ' ', '-' }).UrlEncode(true);
+            return contentKey;
+        }
 
-		async Task<ControllerHelperOperationResponse> IDiagnosticToolControllerHelper.Start(DiagnosticToolForm form)
+        async Task<ControllerHelperOperationResponse> IDiagnosticToolControllerHelper.Start(DiagnosticToolForm form)
         {
             Guid requestID = RecordRequest();
 
             form.CurrStep = 1;
             form.steps.ClearErrors();
             await _controllerHelperInterface.SetNavAndFooter(form);
+            SetPageTitle(form);
 
             return new ControllerHelperOperationResponse(requestID, true);
         }
@@ -693,15 +711,15 @@ namespace Beis.LearningPlatform.Web.ControllerHelpers
                     if (element != null)
                     {
                         var answerOption = element.answerOptions.FirstOrDefault(option => option.value.Equals(submittedFormStep.elements[0].value));
-                        if(answerOption != null)
+                        if (answerOption != null)
                         {
                             submittedForm.TotalScore = submittedForm.TotalScore + answerOption.score;
-                        }   
+                        }
                     }
                 }
             }
 
-            if(submittedForm.TotalScore <= 14)
+            if (submittedForm.TotalScore <= 14)
             {
                 submittedForm.SkilledModuleTwoResultType = Library.Enums.SkilledModuleTwoResultType.DigitalNewComer;
             }
@@ -715,6 +733,33 @@ namespace Beis.LearningPlatform.Web.ControllerHelpers
             }
 
             return Task.CompletedTask;
+        }
+
+        private void SetPageTitle(DiagnosticToolForm form)
+        {
+            string title = "Help to Grow";
+            string currentStep = "Summary";
+            if (!form.FormIsCompleted)
+                currentStep = $"Question {form.CurrStep}";
+
+            switch (form.FormType)
+            {
+                case FormTypes.DiagnosticTool:
+                    title = $"Help to Grow find your software solution: {currentStep} - Gov.Uk";
+                    break;
+                case FormTypes.SkillsOne:
+                    title = $"Help to Grow Your digital journey: {currentStep} - Gov.Uk";
+                    break;
+                case FormTypes.SkillsTwo:
+                    title = $"Help to Grow Your digital audit: {currentStep} - Gov.Uk";
+                    break;
+                default:
+                    title = $"Help to Grow {form.steps[0].title} - {form.steps[0].elements[0].text}: {currentStep} - Gov.Uk";
+                    break;
+
+            }
+
+            form.title = title;
         }
     }
 }

@@ -651,7 +651,7 @@
               "showHintInBold": true,
               "id": 200,
               "text": "Question 2:",
-              "text2": "Describe your business' biggest challange that you'd like to fix.",
+              "text2": "Describe your business' biggest challenge that you'd like to fix.",
               "textControlHtmlId": "lblQuestion2",
               "nextButtonText": "Go to question 3",
               "textControlHtmlName": "Question2"
@@ -1306,7 +1306,7 @@
               "text": "Your team and planning",
               "text2": "",
               "subText": "Question 9: Do you use software to share information with other people in the business?",
-              "nextButtonText": "See your result",
+              "nextButtonText": "See your results",
               "textControlHtmlId": "lblMultipleChoice9",
               "textControlHtmlName": "Question9",
               "optionElements": [
@@ -1372,6 +1372,7 @@
       "backURLfromQ1": "/learning-module-three-your-action-plan-newcomer",
       "userTypeActionPlanSection": "newcomer-planning",
       "formLogo": "skills-three-action-planning.png",
+      "formLogoAlternateText": "",
       "steps": [
 
         {

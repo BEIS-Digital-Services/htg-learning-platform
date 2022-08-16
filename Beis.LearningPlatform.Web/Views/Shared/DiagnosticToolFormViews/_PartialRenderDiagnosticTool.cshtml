@@ -6,6 +6,7 @@
 }
 
 <main id="main-heading" role="main">
+    <div class="govuk-grid-row">
     <div class="govuk-grid-column-full govuk-!-padding-bottom-6" style="min-height: 70vh;">
         <div class="beis-white govuk-grid-column-full">
             <div class="govuk-width-container govuk-!-margin-top-6 govuk-!-margin-bottom-6 ">
@@ -29,8 +30,8 @@
                     {
                         @if (Model.validationErrors.Count > 0)
                         {
-                            <div aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="govuk-error-summary" class="govuk-error-summary">
-                                <h2 id="error-summary-title" class="govuk-error-summary__title">
+                            <div data-module="govuk-error-summary" class="govuk-error-summary">
+                                <h2 class="govuk-error-summary__title" role="alert">
                                     @if (Model.validationErrors.Any(error => !string.IsNullOrWhiteSpace(error.errorHeading)))
                                     {
                                         @Model.validationErrors.First().errorHeading
@@ -68,8 +69,9 @@
 
                     @if (Model.FormIsCompleted || isInstructionsPage)
                     {
+
                         <fieldset>
-                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                            <div class="govuk-fieldset__legend govuk-fieldset__legend--l">
                                 @if (Model.FormIsCompleted)
                                 {
                                     <div class="govuk-grid-column-two-thirds">
@@ -80,7 +82,9 @@
                                             }
                                             else
                                             {
+                                        <legend class="govuk-heading-xl">
                                                 @Model.summaryHeading
+                                        </legend>
                                             }
 
                                         </h1>
@@ -88,7 +92,7 @@
                                     @if (Model.FormType == FormTypes.SkillsOne)
                                     {
                                         <div class="govuk-grid-column-two-thirds">
-                                            <h3>Summary</h3>
+                                            <h2 class="govuk-heading-l">Summary</h2>
                                             <p class="govuk-body">
                                                 By thinking about how your business currently uses software, you can start to see where the next step on your digital journey should be.
                                             </p>
@@ -124,7 +128,7 @@
                                                 @if (string.IsNullOrEmpty(Model.formLogo) == false)
                                                 {
                                                     <div style="padding-right:10px;">
-                                                        <img src="~/assets/images/@Model.formLogo" />
+                                                        <img src="~/assets/images/@Model.formLogo" alt="@Model.FormLogoAlternateText" />
                                                     </div>
                                                 }
                                                 <div style="align-self:center;">
@@ -147,7 +151,8 @@
                                         </h1>
                                     </div>
                                 }
-                            </legend>
+
+                            </div>
                         </fieldset>
                     }
 
@@ -178,15 +183,15 @@
                         <input type="hidden" asp-for="title" id="modelTitle@(Model.id)" />
                         @if (Model.FormType != FormTypes.DiagnosticTool)
                         {
-                            <input type="hidden" asp-for="summaryHeading" id="modelSummaryHeading@(Model.summaryHeading)" />
+                            <input type="hidden" asp-for="summaryHeading" id="modelSummaryHeading@(Model.id)" />
                             <input type="hidden" asp-for="canChangeAnswers" id="modelCanChangeAnswers@(Model.canChangeAnswers)" />
                         }
                         <input type="hidden" asp-for="FormType" id="modelSummaryHeading@(Model.FormType)" />
                         <input type="hidden" asp-for="htmlId" id="modelHtmlId@(Model.id)" />
                         <input type="hidden" asp-for="created_at" id="modelCreatedAt@(Model.id)" />
                         <input type="hidden" asp-for="published_at" id="modelPublishedAt@(Model.id)" />
-                        <input type="hidden" asp-for="backButton" id="modelTitle@(Model.id)" />
-                        <input type="hidden" asp-for="backLink" id="modelTitle@(Model.id)" />
+                        <input type="hidden" asp-for="backButton" id="modelBackButton@(Model.id)" />
+                        <input type="hidden" asp-for="backLink" id="modelBackLink@(Model.id)" />
                         <input type="hidden" asp-for="backURLfromQ1" />
 
                         @if (((int)Model.FormType) > 2)
@@ -230,12 +235,9 @@
                             @if (!string.IsNullOrWhiteSpace(step.title))
                             {
                                 <div class="govuk-form-group govuk-grid-column-two-thirds govuk-!-margin-bottom-0" @styleString>
-                                    <fieldset>
-                                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l govuk-!-margin-bottom-0">
-                                            <h1 class="govuk-heading-xl govuk-!-padding-top-3 govuk-!-padding-bottom-0">@step.title</h1>
-                                        </legend>
-                                    </fieldset>
-
+                                    <div class="govuk-fieldset__legend govuk-fieldset__legend--l govuk-!-margin-bottom-0">
+                                        <h1 class="govuk-heading-xl govuk-!-padding-top-3 govuk-!-padding-bottom-0">@step.title</h1>
+                                    </div>
                                 </div>
                             }
 
@@ -296,10 +298,11 @@
 
                                     var childHasErrors = Model.steps[x].elements[i].childHasErrors ? "govuk-form-group--error" : string.Empty;
                                     <div class="govuk-form-group @childHasErrors govuk-grid-column-two-thirds govuk-!-padding-top-0" @styleString>
-                                        <fieldset class="govuk-fieldset">
-                                            <partial name="DiagnosticToolFormViews/_PartialRenderDTParentElement" model="@Model" />
-                                        </fieldset>
-                                    </div>
+                                            <fieldset class="govuk-fieldset">
+                                                <partial name="DiagnosticToolFormViews/_PartialRenderDTParentElement" model="@Model" />
+                                            </fieldset>
+                                        </div>
+
 
                                     @*Display Summary Instead*@
                                     @if (Model.FormIsCompleted && !skipStep && Model.FormType != FormTypes.SkillsTwo)
@@ -415,5 +418,6 @@
                 </form>
             </div>
         </div>
+    </div>
     </div>
 </main>

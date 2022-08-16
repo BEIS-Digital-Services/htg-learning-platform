@@ -18,8 +18,10 @@ namespace Beis.LearningPlatform.Web.StrapiApi.Models
         public IList<CMSPageLink> links { get; set; }
         public IList<CMSPageHeroBanner> hero_banners { get; set; }
         public CMSPageImage image { get; set; }
+        public string ImageCaption { get; set; }
         public CMSPageContent content { get; set; }
         public string videoLink { get; set; }
+        public string VideoTitle { get; set; }
         public IList<CMSPageTextblock> textblock { get; set; }
 
         public string url { get; set; }
@@ -31,16 +33,16 @@ namespace Beis.LearningPlatform.Web.StrapiApi.Models
             get
             {
                 var imageUrl = default(string);
-                if (!string.IsNullOrWhiteSpace(abbr))
+                if (!string.IsNullOrWhiteSpace(abbr) && (Enum.TryParse(abbr, out ImageAbbrTypes imageAbbr)))
                 {
-                    imageUrl = abbr.ToLower() switch
+                    imageUrl = imageAbbr switch
                     {
-                        "pdf" => "/assets/images/pdf.svg",
-                        "text" => "/assets/images/txt.svg",
-                        "csv" => "/assets/images/csv.svg",
-                        "word" => "/assets/images/doc.svg",
-                        "pp" => "/assets/images/ppt.svg",
-                        "excel" => "/assets/images/xls.svg",
+                        ImageAbbrTypes.pdf => "/assets/images/pdf.svg",
+                        ImageAbbrTypes.text => "/assets/images/txt.svg",
+                        ImageAbbrTypes.csv => "/assets/images/csv.svg",
+                        ImageAbbrTypes.word => "/assets/images/doc.svg",
+                        ImageAbbrTypes.pp => "/assets/images/ppt.svg",
+                        ImageAbbrTypes.excel => "/assets/images/xls.svg",
                         _ => "/assets/images/txt.svg"
                     };
                 }
@@ -217,10 +219,15 @@ namespace Beis.LearningPlatform.Web.StrapiApi.Models
         public string ThankYouText { get; set; }
 
 
+        // Back Link Component
+        public CMSSimpleLink BackLink { get; set; }
       
         // Search article listings (Strapi workaround here, the direct relation has a confirmed unfixed bug with ordering).
         // Workaround in place that uses a list of single content pickers (hence CMSSearchArticlePicker) to create an orderable list of searchArticles.
         public List<CMSSearchArticlePicker> SearchArticles { get; set; }
+
+        // two column text, used with the large image to move text off image to below it.
+        public string DividerText { get; set; }
 
 
 

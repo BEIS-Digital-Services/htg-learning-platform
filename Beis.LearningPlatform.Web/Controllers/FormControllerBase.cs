@@ -37,8 +37,9 @@
 
         protected ViewResult GetViewResult(DiagnosticToolForm model, bool showResults = false)
         {
-            string viewName = showResults ? "Result" : "Start";
+            var viewName = showResults ? "Result" : "Start";
             model.IsInstructionsPage = model.CurrStep == 0;
+            model.FormLogoAlternateText ??= string.Empty;
             if (showResults)
             {
                 model.pageTitle = "Help to Grow: Digital - Diagnostic Tool - Results";

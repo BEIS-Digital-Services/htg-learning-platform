@@ -1,0 +1,28 @@
+﻿@model Beis.LearningPlatform.Web.Models.CmsTwoColumnTextViewModel
+@{
+    if (!Model.HasContent)
+    {
+        return;
+    }
+
+    var _pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build();
+}
+
+<div class="govuk-width-container govuk-!-padding-top-4 govuk-!-padding-bottom-4">
+    <div class="two-column-text-desktop-divider govuk-grid-row">
+        <div class="govuk-body govuk-grid-column-full govuk-!-font-weight-bold">
+            @Model.Component.DividerText
+        </div>
+    </div>
+    <div class="govuk-grid-row">
+        <div class="govuk-body two-column-text-col1 govuk-grid-column-one-half">
+            @Html.Raw(Markdown.ToHtml(@Model.Component.copy1, _pipeline).Replace("p>", "div>"))
+        </div>
+        <div class="govuk-body two-column-text-mobile-divider">
+            @Model.Component.DividerText
+        </div>
+        <div class="govuk-body two-column-text-col2 govuk-grid-column-one-half">
+            @Html.Raw(Markdown.ToHtml(@Model.Component.copy2, _pipeline).Replace("p>", "div>"))
+        </div>
+    </div>
+</div>

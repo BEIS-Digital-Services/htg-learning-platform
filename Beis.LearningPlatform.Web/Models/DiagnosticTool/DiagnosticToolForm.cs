@@ -51,6 +51,8 @@
         public string userTypeActionPlanSection { get; set; }
         public string formLogo { get; set; }
 
+        public string FormLogoAlternateText { get; set; }
+
         [Required]        
         public string title { get; set; } 
 
