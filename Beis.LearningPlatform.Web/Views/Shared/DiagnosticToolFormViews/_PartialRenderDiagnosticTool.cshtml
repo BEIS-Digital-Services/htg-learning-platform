@@ -277,7 +277,7 @@
                                     <input type="hidden" asp-for="@Model.steps[x].elements[i].textControlHtmlId" />
                                     <input type="hidden" asp-for="@Model.steps[x].elements[i].textControlHtmlName" />
                                     <input type="hidden" asp-for="@Model.steps[x].elements[i].validationError" />
-                                    <input type="hidden" asp-for="@Model.steps[x].elements[i].text" />
+                                    <input type="hidden" asp-for="@Model.steps[x].elements[i].text" id="hdn-step-elements-text-top-@(x)" />
                                     <input type="hidden" asp-for="@Model.steps[x].elements[i].text2" />
                                     <input type="hidden" asp-for="@Model.steps[x].elements[i].subText" />
                                     <input type="hidden" asp-for="@Model.steps[x].elements[i].nextButtonText" />
@@ -328,7 +328,7 @@
                                         {
                                             <input type="hidden" asp-for="@Model.steps[x].elements[i].answerOptions[z].id" />
                                             <input type="hidden" asp-for="@Model.steps[x].elements[i].answerOptions[z].controlType" />
-                                            <input type="hidden" asp-for="@Model.steps[x].elements[i].answerOptions[z].hint" />
+                                            <input type="hidden" asp-for="@Model.steps[x].elements[i].answerOptions[z].hint" id="hdn-step-elements-answerOptions-hint-@(x)-@(i)-@(z)" />
                                             <input type="hidden" asp-for="@Model.steps[x].elements[i].answerOptions[z].textControlHtmlName" />
                                             <input type="hidden" asp-for="@Model.steps[x].elements[i].answerOptions[z].textControlHtmlId" />
                                             <input type="hidden" asp-for="@Model.steps[x].elements[i].answerOptions[z].textControlClass" />
