@@ -88,7 +88,7 @@
                             }
                         </p>
                         <div class="govuk-form-group">
-                            <label for="email" class="govuk-label">@Model.NoLabel1</label>
+                            <label for="email" class="govuk-label">@(String.IsNullOrWhiteSpace(Model.NoLabel1) ? "Email address" : Model.NoLabel1)</label>
                             <input name="email_survey_signup" class="govuk-input" id="email" type="email" autocomplete="email" aria-describedby="survey_explanation">
                         </div>
 

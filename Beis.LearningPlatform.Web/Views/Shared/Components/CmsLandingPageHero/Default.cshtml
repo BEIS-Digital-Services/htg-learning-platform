@@ -12,24 +12,16 @@
 
     <div class="govuk-grid-row beis-columns-same-height">
         @{
-            <div class="cms-content desktop-only">
-                @if (Model.AlternateLayout)
-                {
-                    await RenderText(Model);
-                    await RenderImage(Model);                
-                }
-                else
-                {
-                    await RenderImage(Model);
-                    await RenderText(Model);
-                }
-            </div>
-            <div class="cms-content mobile-only">
-                @{
-                    await RenderImage(Model);
-                    await RenderText(Model);
-                }
-            </div>
+            @if (Model.AlternateLayout)
+            {
+                await RenderText(Model);
+                await RenderImage(Model);                
+            }
+            else
+            {
+                await RenderImage(Model);
+                await RenderText(Model);
+            }
         }
     </div>
 </div>
