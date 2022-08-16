@@ -34,18 +34,4 @@
             display: none;
         }
     }
-
-    .cms-content {
-        &.desktop-only {
-            @include respond(tablet) {
-                display: none;
-            }
-        }
-
-        &.mobile-only {
-            @include respond(tablet) {
-                display: block;
-            }
-        }
-    }
 }

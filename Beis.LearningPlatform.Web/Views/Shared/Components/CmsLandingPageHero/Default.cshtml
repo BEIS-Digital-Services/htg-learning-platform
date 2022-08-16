@@ -12,24 +12,16 @@
 
     <div class="govuk-grid-row beis-columns-same-height">
         @{
-            <div class="cms-content desktop-only">
-                @if (Model.AlternateLayout)
-                {
-                    await RenderText(Model);
-                    await RenderImage(Model);                
-                }
-                else
-                {
-                    await RenderImage(Model);
-                    await RenderText(Model);
-                }
-            </div>
-            <div class="cms-content mobile-only">
-                @{
-                    await RenderImage(Model);
-                    await RenderText(Model);
-                }
-            </div>
+            @if (Model.AlternateLayout)
+            {
+                await RenderText(Model);
+                await RenderImage(Model);                
+            }
+            else
+            {
+                await RenderImage(Model);
+                await RenderText(Model);
+            }
         }
     </div>
 </div>
@@ -62,7 +54,7 @@
                     @if(hero.HasLink)
                     {
                         <div>
-                            <img src="/assets/images/link-icon.png" class="link-icon-align" />
+                            <img src="/assets/images/link-icon.png" class="link-icon-align" alt="" />
                             <a id="@hero.GetGaLinkId("link-landingpagehero-", hero.LinkText)" class="govuk-link" href="@hero.LinkUrl" aria-label="hero.LinkAria">@hero.LinkText</a>
                         </div>
                     }
