@@ -90,12 +90,6 @@ namespace Beis.LearningPlatform.Web.Tests.ServicesTests
         }
 
         [Test]
-        public void Saves_cookies_prefs()
-        {
-            cookieService.SaveCookiesPreferences(new SaveCookiePreferenceModel());
-        }
-
-        [Test]
         public void Should_return_valid_cookie_pref_model()
         {
             httpContext.Request.Cookies = new Mock<IRequestCookieCollection>().Object;
