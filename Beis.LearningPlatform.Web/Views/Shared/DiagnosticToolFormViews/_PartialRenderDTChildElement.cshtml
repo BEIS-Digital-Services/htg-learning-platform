@@ -87,7 +87,7 @@
 
 
                         <div class="govuk-checkboxes__item">
-                            <input type="checkbox" asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].value" class="@(dt_checkbox_addinfo_class + " govuk-checkboxes__input")"  id="cbx-step-elements-answerOptions-value-@(currentStep)-@(currentElement)-@(z)" /> />
+                            <input type="checkbox" asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].value" class="@(dt_checkbox_addinfo_class + " govuk-checkboxes__input")"  id="cbx-step-elements-answerOptions-value-@(currentStep)-@(currentElement)-@(z)" />
                             <label for="cbx-step-elements-answerOptions-value-@(currentStep)-@(currentElement)-@(z)" class="govuk-label govuk-checkboxes__label">@currentFormStepElement.answerOptions[z].hint</label>
                                 @if (currentFormStepElement.answerOptions[z].additionalInfoRequired)
                                 {
