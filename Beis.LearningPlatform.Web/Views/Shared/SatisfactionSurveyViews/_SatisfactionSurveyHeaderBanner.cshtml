@@ -1,29 +1,21 @@
-﻿        <div class="phase-banner">
-            <div>
-                <div class="govuk-width-container">
-                    <div class="govuk-grid-row">
-                        <div class="govuk-grid-column-full">
-                            <div class="banner">
-                                <div class="live-icon">
-                                    <p class="govuk-body">BETA</p>
-                                </div>
-                                <div class="govuk-body">
-                                    @if (Url.ActionContext.RouteData.Values.ContainsKey("controller") && (string)Url.ActionContext.RouteData.Values["controller"] == "SatisfactionSurvey") //??
-                                    { 
-                                        <p>
-                                            This is a new service – your feedback will help us to improve it.
-                                        </p>                                    
-                                    }
-                                    else
-                                    {
-                                        <p>
-                                            This is a new service – your <a id="link-cmspageviews-navigation-satisfaction-survey" asp-controller="SatisfactionSurvey" asp-action="Index" class="govuk-link">feedback</a> will help us to improve it.
-                                        </p>
-                                    }
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+﻿<div class="govuk-width-container">
+    <div class="govuk-phase-banner beis-phase-banner">
+        <p class="govuk-phase-banner__content">
+            <strong class="govuk-tag govuk-phase-banner__content__tag">Beta</strong>
+            <span class="govuk-phase-banner__text">
+                @if (Url.ActionContext.RouteData.Values.ContainsKey("controller") && (string)Url.ActionContext.RouteData.Values["controller"] == "SatisfactionSurvey") //??
+                { 
+                    <text>
+                        This is a new service – your feedback will help us to improve it.
+                    </text>                                    
+                }
+                else
+                {
+                    <text>
+                        This is a new service – your <a id="link-cmspageviews-navigation-satisfaction-survey" asp-controller="SatisfactionSurvey" asp-action="Index" class="govuk-link">feedback</a> will help us to improve it.
+                    </text>
+                }
+            </span>
+        </p>
+    </div>
+</div>

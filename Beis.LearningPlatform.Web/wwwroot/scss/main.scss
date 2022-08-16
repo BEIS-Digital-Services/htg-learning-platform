@@ -1,4 +1,6 @@
 @import "../../node_modules/govuk-frontend/govuk/all";
+@import "settings/all";
+
 @import "article.scss";
 @import "articles.scss";
 @import 'beis-mixins.scss';
@@ -83,7 +85,7 @@ h1, h2, h3,
 }
 
 .beis-white-text {
-    color: $white;
+    color: #fff;
 }
 
 .beis-aqua-text {
@@ -107,7 +109,7 @@ h1, h2, h3,
 }
 
 .beis-black-text {
-    color: $black;
+    color: #000;
 }
 
 .beis-grey-text {
@@ -115,7 +117,7 @@ h1, h2, h3,
 }
 
 .beis-white {
-    background-color: $white;
+    background-color: #fff;
 }
 
 .beis-aqua {
@@ -139,7 +141,7 @@ h1, h2, h3,
 }
 
 .beis-black {
-    background-color: $black;
+    background-color: #000;
 }
 
 .beis-grey {
@@ -155,26 +157,10 @@ h1, h2, h3,
     background-color: $secondary-grey-btn;
 }
 
-.govuk-grid-row {
-    margin-right: initial;
-    margin-left: initial;
-}
-
 .beis-text-margin-bottom-reset {
     margin-bottom: 0;
 }
 
-.govuk-button {
-    color: initial;
-    background-color: initial;
-
-    &:link,
-    &:hover,
-    &:active,
-    &:visited {
-        color: initial;
-    }
-}
 
 .govuk-button {
     &.secondary {
@@ -183,11 +169,11 @@ h1, h2, h3,
 
     &.primary {
         background-color: $primary-blue-btn;
-        color: $white;
+        color: #fff;
 
         &.white-border {
-            border: 1px solid $white;
-            color: $white;
+            border: 1px solid #fff;
+            color: #fff;
         }
     }
 
@@ -196,7 +182,7 @@ h1, h2, h3,
         background-color: $beis-blue-feedback;
         font-size: 22px;
         font-weight: 700;
-        color: $white;
+        color: #fff;
 
         @include respond(tablet) {
             font-size: 19px;
@@ -208,7 +194,7 @@ h1, h2, h3,
 .beis-navy-blue,
 .feedback-prompt {
     h1 {
-        color: $white;
+        color: #fff;
     }
 
     h1.beis-yellow-text {
@@ -220,27 +206,27 @@ h1, h2, h3,
     }
 
     .beis-white-positive {
-        color: $white;
+        color: #fff;
         background: transparent;
-        border-top: 1px solid $white;
-        border-right: 1px solid $white;
-        border-left: 1px solid $white;
-        border-bottom: 2px solid $white;
+        border-top: 1px solid #fff;
+        border-right: 1px solid #fff;
+        border-left: 1px solid #fff;
+        border-bottom: 2px solid #fff;
 
         &:hover {
-            background: $white;
-            color: $black;
+            background: #fff;
+            color: #000;
         }
     }
 
     .beis-white-negative {
-        color: $black;
-        background: $white;
-        border: 2px solid $white;
+        color: #000;
+        background: #fff;
+        border: 2px solid #fff;
 
         &:hover {
-            background: $black;
-            color: $white;
+            background: #000;
+            color: #fff;
         }
     }
 }
@@ -249,44 +235,38 @@ h1, h2, h3,
 .beis-white {
 
     .beis-white-negative {
-        color: $black;
-        background: $white;
-        border: 2px solid $white;
+        color: #000;
+        background: #fff;
+        border: 2px solid #fff;
 
         &:link,
         &:hover,
         &:active,
         &:visited {
-            background: $white;
+            background: #fff;
         }
     }
 
     .beis-black-positive {
-        color: $black;
-        border: 2px solid $black;
+        color: #000;
+        border: 2px solid #000;
 
         &:hover {
-            color: $white;
-            background: $black;
+            color: #fff;
+            background: #000;
         }
     }
 
     .beis-black-negative {
-        color: $white;
-        background: $black;
-        border: 2px solid $black;
+        color: #fff;
+        background: #000;
+        border: 2px solid #000;
 
         &:hover {
-            background: $white;
-            color: $black;
+            background: #fff;
+            color: #000;
         }
     }
-}
-
-a.govuk-link:link,
-a.govuk-link:visited {
-    font-weight: 700;
-    color: $beis-link-default;
 }
 
 .hero-banner {
@@ -309,13 +289,13 @@ a.govuk-link:visited {
         .govuk-body,
         a:link,
         a:visited {
-            color: $white;
+            color: #fff;
             font-size: 19px;
         }
 
         .quote-icon {
             path {
-                fill: $white;
+                fill: #fff;
             }
         }
     }
@@ -342,13 +322,13 @@ a.govuk-link:visited {
         .govuk-body,
         a.quote-link:link,
         a.quote-link:visited {
-            color: $white;
+            color: #fff;
             font-size: 19px;
         }
 
         .quote-icon {
             path {
-                fill: $white;
+                fill: #fff;
             }
         }
     }
@@ -370,7 +350,7 @@ a.govuk-link:visited {
 .articles {
     a.tag-link:link,
     a.tag-link:visited {
-        color: $white;
+        color: #fff;
         font-size: 19px;
         background: $beis-aqua;
         color: $beis-navy-blue;
@@ -396,7 +376,7 @@ a.govuk-link:visited {
 .resources {
     a.tag-link:link,
     a.tag-link:visited {
-        color: $white;
+        color: #fff;
         font-size: 19px;
         background: $beis-aqua;
         color: $beis-navy-blue;
@@ -426,7 +406,7 @@ a.govuk-link:visited {
         .govuk-body,
         a.tag-link:link,
         a.tag-link:visited {
-            color: $white;
+            color: #fff;
             font-size: 19px;
         }
 
@@ -490,7 +470,7 @@ a.govuk-link:visited {
         .govuk-body,
         a.tag-link:link,
         a.tag-link:visited {
-            color: $white;
+            color: #fff;
             font-size: 19px;
         }
 
@@ -554,19 +534,6 @@ a.govuk-link:visited {
             font-size: 19px;
             font-weight: 700;
             color: $beis-link-default;
-        }
-    }
-}
-
-.phase-banner {
-    .govuk-body {
-        color: $black;
-
-        p {
-            a:link,
-            a:visited {
-                color: $beis-link-default;
-            }
         }
     }
 }
@@ -727,7 +694,7 @@ button:focus {
             text-transform: uppercase;
 
             p {
-                color: $white;
+                color: #fff;
                 background: $beis-link-default;
                 padding: 2px 16px 6px 16px;
                 font-weight: 700;
@@ -839,7 +806,7 @@ a:focus {
         text-decoration: underline;
 
         &:focus {
-            color: $black;
+            color: #000;
         }
     }
 }
