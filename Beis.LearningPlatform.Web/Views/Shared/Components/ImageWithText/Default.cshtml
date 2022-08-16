@@ -8,7 +8,13 @@
         <div class=" govuk-grid-column-two-thirds">
             <div class="image-with-text @Model.Component.AlteredPaddingTopSpace @Model.Component.AlteredPaddingBottomSpace">
                 <div class="govuk-body">
-                    <img class="@Model.Component.imageSize text-float-@Model.Component.imagePosition" src="@Model.ImageUrl" alt="@Model.ImageAlt" />
+                    <div class="text-float-@Model.Component.imagePosition">
+                        <img class="@Model.Component.imageSize" src="@Model.ImageUrl" alt="@Model.ImageAlt" />
+                        @if (!string.IsNullOrEmpty(@Model.Component.ImageCaption))
+                        {
+                            <div style="color: #767676;font-size: 16px;padding: 10px 2px;">@Model.Component.ImageCaption</div>    
+                        }                       
+                    </div>
                     @Html.Raw(Model.HtmlCopy)
                 </div>
             </div>

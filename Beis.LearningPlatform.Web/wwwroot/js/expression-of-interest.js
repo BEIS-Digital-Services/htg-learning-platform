@@ -24,6 +24,7 @@ const eoi = {
             document.querySelector("#eoi-privacyPolicy").checked = false;
             document.querySelector("#eoi-submission-error").style.display = "none";
             document.querySelector("#eoi-email-error").style.display = "none";
+            document.querySelector("#eoi-name").focus();
         }
     },
     submit: function (pageName) {

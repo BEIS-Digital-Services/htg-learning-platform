@@ -18,6 +18,7 @@ namespace Beis.LearningPlatform.Web.StrapiApi.Models
         public IList<CMSPageLink> links { get; set; }
         public IList<CMSPageHeroBanner> hero_banners { get; set; }
         public CMSPageImage image { get; set; }
+        public string ImageCaption { get; set; }
         public CMSPageContent content { get; set; }
         public string videoLink { get; set; }
         public string VideoTitle { get; set; }
@@ -224,6 +225,9 @@ namespace Beis.LearningPlatform.Web.StrapiApi.Models
         // Search article listings (Strapi workaround here, the direct relation has a confirmed unfixed bug with ordering).
         // Workaround in place that uses a list of single content pickers (hence CMSSearchArticlePicker) to create an orderable list of searchArticles.
         public List<CMSSearchArticlePicker> SearchArticles { get; set; }
+
+        // two column text, used with the large image to move text off image to below it.
+        public string DividerText { get; set; }
 
 
 

@@ -128,7 +128,7 @@
                                                 @if (string.IsNullOrEmpty(Model.formLogo) == false)
                                                 {
                                                     <div style="padding-right:10px;">
-                                                        <img src="~/assets/images/@Model.formLogo" />
+                                                        <img src="~/assets/images/@Model.formLogo" alt="@Model.FormLogoAlternateText" />
                                                     </div>
                                                 }
                                                 <div style="align-self:center;">
@@ -179,19 +179,19 @@
 
                         <input type="hidden" asp-for="CurrStep" value="@Model.CurrStep" />
 
-                        <input type="hidden" asp-for="id" id="modelId@(Model.id)" />
-                        <input type="hidden" asp-for="title" id="modelTitle@(Model.id)" />
+                        <input type="hidden" asp-for="id" />
+                        <input type="hidden" asp-for="title" />
                         @if (Model.FormType != FormTypes.DiagnosticTool)
                         {
-                            <input type="hidden" asp-for="summaryHeading" id="modelSummaryHeading@(Model.id)" />
-                            <input type="hidden" asp-for="canChangeAnswers" id="modelCanChangeAnswers@(Model.canChangeAnswers)" />
+                            <input type="hidden" asp-for="summaryHeading" />
+                            <input type="hidden" asp-for="canChangeAnswers" />
                         }
-                        <input type="hidden" asp-for="FormType" id="modelSummaryHeading@(Model.FormType)" />
-                        <input type="hidden" asp-for="htmlId" id="modelHtmlId@(Model.id)" />
-                        <input type="hidden" asp-for="created_at" id="modelCreatedAt@(Model.id)" />
-                        <input type="hidden" asp-for="published_at" id="modelPublishedAt@(Model.id)" />
-                        <input type="hidden" asp-for="backButton" id="modelBackButton@(Model.id)" />
-                        <input type="hidden" asp-for="backLink" id="modelBackLink@(Model.id)" />
+                        <input type="hidden" asp-for="FormType" />
+                        <input type="hidden" asp-for="htmlId" />
+                        <input type="hidden" asp-for="created_at" />
+                        <input type="hidden" asp-for="published_at" />
+                        <input type="hidden" asp-for="backButton" />
+                        <input type="hidden" asp-for="backLink" />
                         <input type="hidden" asp-for="backURLfromQ1" />
 
                         @if (((int)Model.FormType) > 2)
@@ -277,7 +277,7 @@
                                     <input type="hidden" asp-for="@Model.steps[x].elements[i].textControlHtmlId" />
                                     <input type="hidden" asp-for="@Model.steps[x].elements[i].textControlHtmlName" />
                                     <input type="hidden" asp-for="@Model.steps[x].elements[i].validationError" />
-                                    <input type="hidden" asp-for="@Model.steps[x].elements[i].text" />
+                                    <input type="hidden" asp-for="@Model.steps[x].elements[i].text" id="hdn-step-elements-text-top-@(x)" />
                                     <input type="hidden" asp-for="@Model.steps[x].elements[i].text2" />
                                     <input type="hidden" asp-for="@Model.steps[x].elements[i].subText" />
                                     <input type="hidden" asp-for="@Model.steps[x].elements[i].nextButtonText" />
@@ -328,7 +328,7 @@
                                         {
                                             <input type="hidden" asp-for="@Model.steps[x].elements[i].answerOptions[z].id" />
                                             <input type="hidden" asp-for="@Model.steps[x].elements[i].answerOptions[z].controlType" />
-                                            <input type="hidden" asp-for="@Model.steps[x].elements[i].answerOptions[z].hint" />
+                                            <input type="hidden" asp-for="@Model.steps[x].elements[i].answerOptions[z].hint" id="hdn-step-elements-answerOptions-hint-@(x)-@(i)-@(z)" />
                                             <input type="hidden" asp-for="@Model.steps[x].elements[i].answerOptions[z].textControlHtmlName" />
                                             <input type="hidden" asp-for="@Model.steps[x].elements[i].answerOptions[z].textControlHtmlId" />
                                             <input type="hidden" asp-for="@Model.steps[x].elements[i].answerOptions[z].textControlClass" />
