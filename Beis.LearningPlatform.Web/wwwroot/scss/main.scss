@@ -45,6 +45,8 @@
 @import "expression-of-interest.component.scss";
 @import "three-column-heroes.component.scss";
 
+@import "components/all";
+
 .hide-element {
     border: 0;
     clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
