@@ -8,7 +8,7 @@
 <div class="govuk-width-container govuk-!-padding-top-4 govuk-!-padding-bottom-2">
     <div class="govuk-grid-row">
         <fieldset id="cms_component_NextPageRadioButton_divjsenabled" style="display:none;" class="beis-white govuk-grid-column-two-thirds">
-            <legend class="govuk-heading-l">Where next?</legend>
+            <legend class="govuk-heading-l">@(Model.Component?.header ?? "Where next?")</legend>
             <div class="govuk-radios">
                 <div>
                     @if (Model.Radio1HasContent)
