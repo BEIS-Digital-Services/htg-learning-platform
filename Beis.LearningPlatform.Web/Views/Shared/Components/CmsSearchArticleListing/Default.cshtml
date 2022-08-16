@@ -35,7 +35,7 @@
                             <div class="govuk-grid-row ">
                                 <div class="govuk-grid-column-one-half govuk-!-margin-bottom-2">
                                     <div class="govuk-checkboxes__item">
-		                                <input class="govuk-checkboxes__input" id="filter-tag-@tag.id" type="checkbox" value="@tag.id" name="filter-tag-@tag.id" checked="@(Model.IsTagSelected(tag))" >
+		                                <input class="govuk-checkboxes__input" id="filter-tag-@tag.id" type="checkbox" value="@tag.id" name="tag-ids" checked="@(Model.IsTagSelected(tag))" >
 		                                <label class="govuk-label govuk-checkboxes__label" for="filter-tag-@tag.id">
 			                                @tag.displayName
 		                                </label>
@@ -52,7 +52,7 @@
                                 }
                               <div class="govuk-grid-column-one-half govuk-!-margin-bottom-2">
                                 <div class="govuk-checkboxes__item">
-		                            <input class="govuk-checkboxes__input" id="filter-tag-@tag.id" type="checkbox" value="@tag.id" name="filter-tag-@tag.id" checked="@(Model.IsTagSelected(tag))" >
+		                            <input class="govuk-checkboxes__input" id="filter-tag-@tag.id" type="checkbox" value="@tag.id" name="tag-ids" checked="@(Model.IsTagSelected(tag))" >
 		                            <label class="govuk-label govuk-checkboxes__label" for="filter-tag-@tag.id">
 			                            @tag.displayName
 		                            </label>
