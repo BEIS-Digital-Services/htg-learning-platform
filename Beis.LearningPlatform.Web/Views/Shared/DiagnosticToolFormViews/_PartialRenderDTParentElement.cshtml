@@ -189,8 +189,15 @@
             <fieldset>
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                     <h2 class="govuk-fieldset__heading">
-                    <span>@currentFormStepElement.text</span>
-                    <span class="govuk-!-font-weight-regular">@currentFormStepElement.text2</span>
+                        <span>@currentFormStepElement.text</span>
+                        @if (string.IsNullOrWhiteSpace(currentFormStepElement.hint))
+                        {
+                            <label for="@(Model.steps[currentStep].elements[currentElement].InputCtrlId)" class="govuk-!-font-weight-regular">@currentFormStepElement.text2</label>
+                        }
+                        else
+                        {
+                            <span class="govuk-!-font-weight-regular">@currentFormStepElement.text2</span>
+                        }
                     </h2>
             </legend>
             
