@@ -68,7 +68,7 @@
             Assert.IsTrue(model.HasContent);
 
             Assert.IsNotNull(model.HtmlQuote);
-            Assert.AreEqual("<p>Quote <strong>strong</strong> text</p>\n", model.HtmlQuote);
+            Assert.AreEqual("<blockquote>Quote <strong>strong</strong> text</blockquote>\n", model.HtmlQuote);
         }
 
         [Test]

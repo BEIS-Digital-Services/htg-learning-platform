@@ -24,11 +24,11 @@
 
         case FormDisplayControlType.Radio:
             <div class="govuk-radios__item">
-                <input id="@(idPrefix + "__value")" type="radio" asp-for="@Model.steps[currentStep].elements[currentElement].value" value="@Model.steps[currentStep].elements[currentElement].answerOptions[z].value" class="govuk-radios__input" />
-                <label for="@(idPrefix + "__value")"
+                <input id="@(idPrefix + "__value")_radio" type="radio" asp-for="@Model.steps[currentStep].elements[currentElement].value" value="@Model.steps[currentStep].elements[currentElement].answerOptions[z].value" class="govuk-radios__input" />
+                <label for="@(idPrefix + "__value")_radio"
                        id="@(idPrefix + "__value__label")" class="govuk-label govuk-radios__label">@Html.Raw(($"<strong>{currentFormStepElement.answerOptions[z].strongText?.Replace("-", "&#8212;")}</strong>{currentFormStepElement.answerOptions[z].text}"))</label>
                     <input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].strongText" />
-                    <input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].text" />
+                    <input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].text" id="hdn-step-elements-answerOptions-text-@(currentStep)-@(currentElement)-@(z)" />
                     <input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].value"
                            id="@(idPrefix + "__value__hidden")" />
                     @if (currentFormStepElement.answerOptions[z].additionalInfoRequired)
@@ -41,7 +41,6 @@
                                 @Model.steps[currentStep].elements[currentElement].answerOptions[z].validationError
                             </span>
                             <textarea asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].additionalInfo"
-                                      id="@(idPrefix + "__additionalInfo")"
                                       rows="5" class="govuk-textarea">
                         @currentFormStepElement.answerOptions[z].additionalInfo
                     </textarea>
@@ -74,7 +73,6 @@
                                             </span>
                                         }
                                         <textarea asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].additionalInfo"
-                                                  id="@(idPrefix + "__additionalInfo")"
                                                   rows="5" class="govuk-textarea">
                                                     @currentFormStepElement.answerOptions[z].additionalInfo
                                                 </textarea>
@@ -89,9 +87,8 @@
 
 
                         <div class="govuk-checkboxes__item">
-                            <input type="checkbox" asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].value" class="@(dt_checkbox_addinfo_class + " govuk-checkboxes__input")" />
-                            <label for="@(idPrefix + "__value")"
-                                   id="@(idPrefix + "__value__label")" class="govuk-label govuk-checkboxes__label">@currentFormStepElement.answerOptions[z].hint</label>
+                            <input type="checkbox" asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].value" class="@(dt_checkbox_addinfo_class + " govuk-checkboxes__input")"  id="cbx-step-elements-answerOptions-value-@(currentStep)-@(currentElement)-@(z)" />
+                            <label for="cbx-step-elements-answerOptions-value-@(currentStep)-@(currentElement)-@(z)" class="govuk-label govuk-checkboxes__label">@currentFormStepElement.answerOptions[z].hint</label>
                                 @if (currentFormStepElement.answerOptions[z].additionalInfoRequired)
                                 {
                                     <div id="div_dt_ckh_additionalInfo">
@@ -106,7 +103,6 @@
                                                 </span>
                                             }
                                             <textarea asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].additionalInfo"
-                                                      id="@(idPrefix + "__additionalInfo")"
                                                       rows="5" class="govuk-textarea dt_addinfo_txtarea">
                                                         @currentFormStepElement.answerOptions[z].additionalInfo
                                             </textarea>
@@ -145,8 +141,7 @@
                                 @Model.steps[currentStep].elements[currentElement].answerOptions[z].validationError
                     </span>
                     <textarea asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].value"
-                                      id="@(idPrefix + "__textareactrl")"
-                                      rows="5" class="govuk-textarea">
+                                      rows="5" class="govuk-textarea" id="@(idPrefix + "__textareactrl")">
                         @currentFormStepElement.answerOptions[z].value
                     </textarea>
                 

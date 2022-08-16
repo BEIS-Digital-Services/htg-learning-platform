@@ -1,6 +1,4 @@
 @import "../../node_modules/govuk-frontend/govuk/all";
-@import "settings/all";
-
 @import "article.scss";
 @import "articles.scss";
 @import 'beis-mixins.scss';
@@ -47,7 +45,6 @@
 @import "expression-of-interest.component.scss";
 @import "three-column-heroes.component.scss";
 
-@import "core/all";
 @import "components/all";
 
 .hide-element {
@@ -69,6 +66,13 @@ fieldset {
     outline: 0;
 }
 
+h1, h2, h3,
+.govuk-body,
+.govuk-heading-xl,
+.govuk-heading-l {
+    color: $beis-blue;
+}
+
 .govuk-header {
     border-bottom: 10px solid $beis-yellow;
     padding-bottom: 10px;
@@ -79,7 +83,7 @@ fieldset {
 }
 
 .beis-white-text {
-    color: #fff;
+    color: $white;
 }
 
 .beis-aqua-text {
@@ -103,7 +107,7 @@ fieldset {
 }
 
 .beis-black-text {
-    color: #000;
+    color: $black;
 }
 
 .beis-grey-text {
@@ -111,7 +115,7 @@ fieldset {
 }
 
 .beis-white {
-    background-color: #fff;
+    background-color: $white;
 }
 
 .beis-aqua {
@@ -135,7 +139,7 @@ fieldset {
 }
 
 .beis-black {
-    background-color: #000;
+    background-color: $black;
 }
 
 .beis-grey {
@@ -149,6 +153,11 @@ fieldset {
 
 .beis-grey-secondary {
     background-color: $secondary-grey-btn;
+}
+
+.govuk-grid-row {
+    margin-right: initial;
+    margin-left: initial;
 }
 
 .beis-text-margin-bottom-reset {
@@ -174,11 +183,11 @@ fieldset {
 
     &.primary {
         background-color: $primary-blue-btn;
-        color: #fff;
+        color: $white;
 
         &.white-border {
-            border: 1px solid #fff;
-            color: #fff;
+            border: 1px solid $white;
+            color: $white;
         }
     }
 
@@ -187,7 +196,7 @@ fieldset {
         background-color: $beis-blue-feedback;
         font-size: 22px;
         font-weight: 700;
-        color: #fff;
+        color: $white;
 
         @include respond(tablet) {
             font-size: 19px;
@@ -199,7 +208,7 @@ fieldset {
 .beis-navy-blue,
 .feedback-prompt {
     h1 {
-        color: #fff;
+        color: $white;
     }
 
     h1.beis-yellow-text {
@@ -211,27 +220,27 @@ fieldset {
     }
 
     .beis-white-positive {
-        color: #fff;
+        color: $white;
         background: transparent;
-        border-top: 1px solid #fff;
-        border-right: 1px solid #fff;
-        border-left: 1px solid #fff;
-        border-bottom: 2px solid #fff;
+        border-top: 1px solid $white;
+        border-right: 1px solid $white;
+        border-left: 1px solid $white;
+        border-bottom: 2px solid $white;
 
         &:hover {
-            background: #fff;
-            color: #000;
+            background: $white;
+            color: $black;
         }
     }
 
     .beis-white-negative {
-        color: #000;
-        background: #fff;
-        border: 2px solid #fff;
+        color: $black;
+        background: $white;
+        border: 2px solid $white;
 
         &:hover {
-            background: #000;
-            color: #fff;
+            background: $black;
+            color: $white;
         }
     }
 }
@@ -240,36 +249,36 @@ fieldset {
 .beis-white {
 
     .beis-white-negative {
-        color: #000;
-        background: #fff;
-        border: 2px solid #fff;
+        color: $black;
+        background: $white;
+        border: 2px solid $white;
 
         &:link,
         &:hover,
         &:active,
         &:visited {
-            background: #fff;
+            background: $white;
         }
     }
 
     .beis-black-positive {
-        color: #000;
-        border: 2px solid #000;
+        color: $black;
+        border: 2px solid $black;
 
         &:hover {
-            color: #fff;
-            background: #000;
+            color: $white;
+            background: $black;
         }
     }
 
     .beis-black-negative {
-        color: #fff;
-        background: #000;
-        border: 2px solid #000;
+        color: $white;
+        background: $black;
+        border: 2px solid $black;
 
         &:hover {
-            background: #fff;
-            color: #000;
+            background: $white;
+            color: $black;
         }
     }
 }
@@ -300,13 +309,13 @@ a.govuk-link:visited {
         .govuk-body,
         a:link,
         a:visited {
-            color: #fff;
+            color: $white;
             font-size: 19px;
         }
 
         .quote-icon {
             path {
-                fill: #fff;
+                fill: $white;
             }
         }
     }
@@ -333,13 +342,13 @@ a.govuk-link:visited {
         .govuk-body,
         a.quote-link:link,
         a.quote-link:visited {
-            color: #fff;
+            color: $white;
             font-size: 19px;
         }
 
         .quote-icon {
             path {
-                fill: #fff;
+                fill: $white;
             }
         }
     }
@@ -361,7 +370,7 @@ a.govuk-link:visited {
 .articles {
     a.tag-link:link,
     a.tag-link:visited {
-        color: #fff;
+        color: $white;
         font-size: 19px;
         background: $beis-aqua;
         color: $beis-navy-blue;
@@ -387,7 +396,7 @@ a.govuk-link:visited {
 .resources {
     a.tag-link:link,
     a.tag-link:visited {
-        color: #fff;
+        color: $white;
         font-size: 19px;
         background: $beis-aqua;
         color: $beis-navy-blue;
@@ -417,7 +426,7 @@ a.govuk-link:visited {
         .govuk-body,
         a.tag-link:link,
         a.tag-link:visited {
-            color: #fff;
+            color: $white;
             font-size: 19px;
         }
 
@@ -481,7 +490,7 @@ a.govuk-link:visited {
         .govuk-body,
         a.tag-link:link,
         a.tag-link:visited {
-            color: #fff;
+            color: $white;
             font-size: 19px;
         }
 
@@ -551,7 +560,7 @@ a.govuk-link:visited {
 
 .phase-banner {
     .govuk-body {
-        color: #000;
+        color: $black;
 
         p {
             a:link,
@@ -718,7 +727,7 @@ button:focus {
             text-transform: uppercase;
 
             p {
-                color: #fff;
+                color: $white;
                 background: $beis-link-default;
                 padding: 2px 16px 6px 16px;
                 font-weight: 700;
@@ -798,6 +807,10 @@ a:focus {
     text-decoration: none;
 }
 
+.govuk-details__summary {
+    padding: 20px;
+}
+
 .right {
     text-align: right;
 }
@@ -826,7 +839,7 @@ a:focus {
         text-decoration: underline;
 
         &:focus {
-            color: #000;
+            color: $black;
         }
     }
 }
@@ -834,10 +847,6 @@ a:focus {
 .govuk-header__navigation-item--active a:active {
     color: $beis-yellow;
     text-decoration: underline;
-}
-
-.no-script-hidden-card {
-    display: none;
 }
 
 .btn-as-link {
@@ -856,38 +865,6 @@ a:focus {
 
 .p-left-20 {
     padding-left: 20px;
-}
-
-.cms-content {
-    &.mobile-only {
-
-        @include respond(xl) { /* Gap in our brakpoints between table and desktop (>641 and <769 has no coverage in beis-mixins. Hide mobile for this gap.) */
-            display: none;
-        }
-
-        @include respond(desktop) {
-            display: none;
-        }
-
-        @include respond(tablet) {
-            display: none;
-        }
-
-        @include respond(mobile) { /* override the xl workaround above */
-            display: block;
-        }
-    }
-
-    &.desktop-only {
-
-        @include respond(tablet) {
-            display: block;
-        }
-
-        @include respond(mobile) {
-            display: none;
-        }
-    }
 }
 
 .link-icon-align {
@@ -1127,6 +1104,12 @@ span.govuk-link-divider {
     }
 }
 
+@media screen and (max-width: 1199px) {
+    .govuk-heading-xl {
+        font-size: 2rem;
+    }
+}
+
 .beis-underline {
     padding-top: 0.625rem !important;
     background-color: #FFB000;
@@ -1141,3 +1124,72 @@ span.govuk-link-divider {
 .beis-yellow summary.govuk-details__summary {
     color: $beis-navy-blue;
 }
+
+
+.text-with-arrow-img-col1 {
+    display: inline-block;
+    margin-bottom: 25px;
+    font-size: 28px;
+    font-weight: 700;
+    padding-right: 10px;
+}
+
+.text-with-arrow-img-col2 {
+    display: inline-block;
+    margin-bottom: 25px;
+    vertical-align: middle;
+    padding-top: 20px;
+    align-self: center;
+}
+
+.two-column-text-mobile-divider {
+    display: none;
+}
+
+.two-column-text-desktop-divider {
+    display: block;
+    margin: auto;
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+
+.two-column-text-col2 {
+    padding-left: 25px;
+}
+
+@media screen and (max-width: 40.0525em) {
+
+    .text-with-arrow-img-col1 {
+        display: block;
+        margin: auto;
+        margin-bottom: 20px;
+    }
+
+    .text-with-arrow-img-col2 {
+        display: none;
+    }
+
+    .two-column-text-mobile-divider {
+        display: block;
+        margin: auto;
+        margin-bottom: 20px;
+        margin-top: 20px;
+        text-align: center;
+        font-weight: 700;
+    }
+
+    .two-column-text-desktop-divider {
+        display: none;
+    }
+
+    .two-column-text-col1 {
+        padding-left: 12px;
+    }
+
+    .two-column-text-col2 {
+        padding-left: 12px;
+    }
+}
+

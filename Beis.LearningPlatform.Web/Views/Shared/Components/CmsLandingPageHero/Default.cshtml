@@ -3,30 +3,25 @@
 {
     return;
 }
-<div class="govuk-!-padding-bottom-8 article landing-page-hero">
-    
-    <div class="top-line beis-yellow"></div>
+<div class="govuk-width-container govuk-!-padding-top-4  govuk-!-padding-bottom-8 article landing-page-hero">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+            <div class="top-line beis-yellow"></div>
+        </div>
+    </div>
 
     <div class="govuk-grid-row beis-columns-same-height">
         @{
-            <div class="cms-content desktop-only">
-                @if (Model.AlternateLayout)
-                {
-                    await RenderText(Model);
-                    await RenderImage(Model);                
-                }
-                else
-                {
-                    await RenderImage(Model);
-                    await RenderText(Model);
-                }
-            </div>
-            <div class="cms-content mobile-only">
-                @{
-                    await RenderImage(Model);
-                    await RenderText(Model);
-                }
-            </div>
+            @if (Model.AlternateLayout)
+            {
+                await RenderText(Model);
+                await RenderImage(Model);                
+            }
+            else
+            {
+                await RenderImage(Model);
+                await RenderText(Model);
+            }
         }
     </div>
 </div>
@@ -34,29 +29,37 @@
     async Task RenderImage(CmsLandingPageHeroViewModel hero) 
     {
         <div class="govuk-grid-column-one-half">
-        @if (hero.Image != null)
-        {
-            <vc:cms-image options='new CmsImageViewModel{ ImageUrl = hero.Image.url, Title= hero.Image.alternativeText, CssClass = "hero-mobile-image" }' />
-        }
+            <div class="govuk-grid-row">
+                <div class="left-column ">
+                    @if (hero.Image != null)
+                    {
+                        <vc:cms-image options='new CmsImageViewModel{ ImageUrl = hero.Image.url, Title= hero.Image.alternativeText, CssClass = "hero-mobile-image" }' />
+                    }
+                </div>
+            </div>
         </div>
     }
 
     async Task RenderText(CmsLandingPageHeroViewModel hero)
     {
         <div class="govuk-grid-column-one-half beis-stretch-content">
-            <h2 class="govuk-heading-l govuk-!-padding-top-3">
-                <a id="@hero.GetGaLinkId("link-landingpagehero-header-", hero.Header)" class="govuk-link" href="@hero.LinkUrl" aria-label="hero.LinkAria">@hero.Header</a>
-            </h2>
-            <p class="govuk-body">
-                @hero.Intro
-            </p>
-            @if(hero.HasLink)
-            {
-                <div>
-                    <img src="/assets/images/link-icon.png" class="link-icon-align" />
-                    <a id="@hero.GetGaLinkId("link-landingpagehero-", hero.LinkText)" class="govuk-link" href="@hero.LinkUrl" aria-label="hero.LinkAria">@hero.LinkText</a>
+            <div class="govuk-grid-row">
+                <div class="right-column">
+                    <h2 class="govuk-heading-l govuk-!-padding-top-3">
+                        <a id="@hero.GetGaLinkId("link-landingpagehero-header-", hero.Header)" class="govuk-link" href="@hero.LinkUrl">@hero.Header</a>
+                    </h2>
+                    <p class="govuk-body">
+                        @hero.Intro
+                    </p>
+                    @if(hero.HasLink)
+                    {
+                        <div>
+                            <img src="/assets/images/link-icon.png" class="link-icon-align" alt="" />
+                            <a id="@hero.GetGaLinkId("link-landingpagehero-", hero.LinkText)" class="govuk-link" href="@hero.LinkUrl">@hero.LinkText</a>
+                        </div>
+                    }
                 </div>
-            }
+            </div>
         </div>
     }
 }

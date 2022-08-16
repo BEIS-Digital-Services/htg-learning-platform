@@ -421,5 +421,84 @@ namespace Beis.LearningPlatform.Web.Tests.ControllerHelperTests
             Assert.IsNotNull(result.Payload.ContentKey);
             Assert.AreEqual("diagnostic-tool-controller-helper-tests", result.Payload.ContentKey);
         }
+
+        [TestCase("test-url", FormTypes.DiagnosticTool)]
+        [TestCase("test-url", FormTypes.SkillsOne)]
+        [TestCase("test-url", FormTypes.SkillsTwo)]
+        [Test]
+        public void GetUniqueContentKey_Populate_Content_Key_FormCompleted(string path, FormTypes formType)
+        {
+            _httpRequest.SetupGet(x => x.Path).Returns("/" + path);
+            var form = GetForm(1, formType);
+            form.FormIsCompleted = true;
+
+            //Act
+            var result = _diagnosticToolControllerHelper.GetUniqueContentKey(form);
+
+            //Assert
+            result.Should().Be(path + "-completed");
+        }
+
+        [TestCase("test-url", FormTypes.DiagnosticTool)]
+        [TestCase("test-url", FormTypes.SkillsOne)]
+        [TestCase("test-url", FormTypes.SkillsTwo)]
+        [Test]
+        public void GetUniqueContentKey_Populate_Content_Key_Form_Is_Not_Completed(string path, FormTypes formType)
+        {
+            _httpRequest.SetupGet(x => x.Path).Returns("/" + path);
+            var form = GetForm(1, formType);
+            form.FormIsCompleted = false;
+
+            //Act
+            var result = _diagnosticToolControllerHelper.GetUniqueContentKey(form);
+
+            //Assert
+            var currentStep = form.steps.SingleOrDefault(x => x.id == form.CurrStep);
+            var contentKey = $"{path}-{currentStep.title}-{currentStep.id}";
+            var expected = contentKey.Replace('/', '-').Replace(' ', '-').Trim(new char[] { ' ', '-' }).UrlEncode(true).ToLower();
+            result.Should().Be(expected);
+        }
+
+        [Test]
+        public void GetUniqueContentKey_Populate_Content_Key_Skilled_Three_FormCompleted()
+        {
+            var url = "newcomer-planning";
+            var userTypeActionPlanSection = url;
+            _httpRequest.SetupGet(x => x.Path).Returns("/test-url");
+            var form = GetForm(1, FormTypes.SkillsThreeNewcomerPlanning);
+            form.FormIsCompleted = true;
+            form.userTypeActionPlanSection = userTypeActionPlanSection;
+
+            //Act
+            var result = _diagnosticToolControllerHelper.GetUniqueContentKey(form);
+
+            //Assert
+            result.Should().Be("test-url-newcomer-planning-completed");
+        }
+
+        [Test]
+        public void GetUniqueContentKey_Populate_Content_Key_Skilled_Three_Form_Is_Not_Completed()
+        {
+            var url = "newcomer-planning";
+            var userTypeActionPlanSection = url;
+            _httpRequest.SetupGet(x => x.Path).Returns("/test-url");
+            var form = GetForm(1, FormTypes.SkillsThreeNewcomerPlanning);
+            form.FormIsCompleted = false;
+            form.userTypeActionPlanSection = userTypeActionPlanSection;
+
+            //Act
+            var result = _diagnosticToolControllerHelper.GetUniqueContentKey(form);
+
+            //Assert
+            result.Should().Be("test-url-newcomer-planning-1");
+        }
+
+        private DiagnosticToolForm GetForm(int currentStep, FormTypes formtype)
+        {
+            var diagnosticToolFormService = new DiagnosticToolFormService(_loggerDiagnosticToolFormService.Object, _ctDisplayOptions, _applicationFormOptions);
+            var diagnosticToolForm = diagnosticToolFormService.LoadNewForm(formtype);
+            diagnosticToolForm.CurrStep = currentStep;
+            return diagnosticToolForm;
+        }
     }
 }

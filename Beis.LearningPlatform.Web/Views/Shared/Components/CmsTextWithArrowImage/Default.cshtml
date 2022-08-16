@@ -1,0 +1,16 @@
+﻿@model Beis.LearningPlatform.Web.Models.CmsTextWithArrowImageViewModel
+@{
+    if (!Model.HasContent)
+    {
+        return;
+    }
+}
+
+<div class="govuk-width-container govuk-!-padding-top-4 govuk-!-padding-bottom-4">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+            <div class="govuk-body text-with-arrow-img-col1">@Model.Component.text</div>
+            <div class="text-with-arrow-img-col2"><img src="/assets/images/progress-arrow.png" alt="Progress Arrow" /></div>
+        </div>
+    </div>
+</div>

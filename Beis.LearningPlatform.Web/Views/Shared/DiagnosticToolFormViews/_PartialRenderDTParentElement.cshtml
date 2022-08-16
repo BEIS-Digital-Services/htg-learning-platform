@@ -108,7 +108,7 @@
             </legend>
             @if (!string.IsNullOrWhiteSpace(currentFormStepElement.hint))
             {
-                <div style="margin-top: -15px; margin-bottom: 30px;" class="govuk-body @hintInBoldCss">@currentFormStepElement.hint</div>
+                <div class="govuk-body govuk-!-margin-bottom-8 @hintInBoldCss">@currentFormStepElement.hint</div>
             }
             @if (!string.IsNullOrWhiteSpace(currentFormStepElement.validationError))
             {
@@ -189,8 +189,15 @@
             <fieldset>
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                     <h2 class="govuk-fieldset__heading">
-                    <span>@currentFormStepElement.text</span>
-                    <span class="govuk-!-font-weight-regular">@currentFormStepElement.text2</span>
+                        <span>@currentFormStepElement.text</span>
+                        @if (string.IsNullOrWhiteSpace(currentFormStepElement.hint))
+                        {
+                            <label for="@(Model.steps[currentStep].elements[currentElement].InputCtrlId)" class="govuk-!-font-weight-regular">@currentFormStepElement.text2</label>
+                        }
+                        else
+                        {
+                            <span class="govuk-!-font-weight-regular">@currentFormStepElement.text2</span>
+                        }
                     </h2>
             </legend>
             
@@ -236,19 +243,18 @@
 
             </div>
 
-            <fieldset>
-                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                    @if (string.IsNullOrEmpty(currentFormStepElement.subText) == false)
-                    {
-                        <h3 class="govuk-fieldset__heading govuk-!-font-size-19 govuk-!-margin-top-7 govuk-!-margin-bottom-5">
-                            <span>@currentFormStepElement.subText</span>
-                        </h3>
-                    }
-                </legend>
-            </fieldset>
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                @if (string.IsNullOrEmpty(currentFormStepElement.subText) == false)
+                {
+                    <h3 class="govuk-fieldset__heading govuk-!-font-size-19 govuk-!-margin-top-7 govuk-!-margin-bottom-5">
+                        <span>@currentFormStepElement.subText</span>
+                    </h3>
+                }
+            </legend>
+
             @if (!string.IsNullOrWhiteSpace(currentFormStepElement.hint))
             {
-                <div style="margin-top: -20px;" class="govuk-body @hintInBoldCss"><p>@currentFormStepElement.hint</p></div>
+                <div class="govuk-body @hintInBoldCss"><p>@currentFormStepElement.hint</p></div>
             }
             @if (!string.IsNullOrWhiteSpace(currentFormStepElement.hint2))
             {
