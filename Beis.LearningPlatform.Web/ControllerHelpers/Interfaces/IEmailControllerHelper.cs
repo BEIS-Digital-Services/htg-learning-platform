@@ -10,6 +10,6 @@
         /// </summary>
         /// <param name="emailAddress">A string containing the email address to unsubscribe.</param>
         /// <returns>A Task representing the asynchronous operation.  A ControllerHelperOperationResponse containing the result.</returns>
-        Task<ControllerHelperOperationResponse> Unsubscribe(string emailAddress);
+        Task Unsubscribe(string emailAddress);
     }
 }

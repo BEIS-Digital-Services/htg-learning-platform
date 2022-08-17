@@ -27,12 +27,11 @@
                             </span>
                             @if (link.url.StartsWith("http"))
                             {
-                                <a id="link-cmspageviews-textlinks-@(link.GetGaLinkId())" class="govuk-link @link.AlteredCustomClass" href="@linkAction" target="" aria-label="@(string.IsNullOrWhiteSpace(link.aria) ? "Read the article on " + link.id : link.aria)"> @link.label </a>
+                                <a id="link-@(link.GetGaLinkId())" class="govuk-link @link.AlteredCustomClass" href="@linkAction" target=""> @link.label </a>
                             }
                             else
                             {
-                                <a id="link-cmspageviews-textlinks-@(link.GetGaLinkId())" class="govuk-link @link.AlteredCustomClass" href="/@linkAction"
-                                aria-label="@(string.IsNullOrWhiteSpace(link.aria) ? "Read the article on " + link.id : link.aria)"> @link.label </a>
+                                <a id="link-@(link.GetGaLinkId())" class="govuk-link @link.AlteredCustomClass" href="/@linkAction"> @link.label </a>
                             }
                         </div>
                     </div>

@@ -45,6 +45,8 @@
 @import "expression-of-interest.component.scss";
 @import "three-column-heroes.component.scss";
 
+@import "components/all";
+
 .hide-element {
     border: 0;
     clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
@@ -847,10 +849,6 @@ a:focus {
     text-decoration: underline;
 }
 
-.no-script-hidden-card {
-    display: none;
-}
-
 .btn-as-link {
     background: transparent;
     border: none;
@@ -867,38 +865,6 @@ a:focus {
 
 .p-left-20 {
     padding-left: 20px;
-}
-
-.cms-content {
-    &.mobile-only {
-
-        @include respond(xl) { /* Gap in our brakpoints between table and desktop (>641 and <769 has no coverage in beis-mixins. Hide mobile for this gap.) */
-            display: none;
-        }
-
-        @include respond(desktop) {
-            display: none;
-        }
-
-        @include respond(tablet) {
-            display: none;
-        }
-
-        @include respond(mobile) { /* override the xl workaround above */
-            display: block;
-        }
-    }
-
-    &.desktop-only {
-
-        @include respond(tablet) {
-            display: block;
-        }
-
-        @include respond(mobile) {
-            display: none;
-        }
-    }
 }
 
 .link-icon-align {
@@ -1060,6 +1026,173 @@ span.govuk-link-divider {
     border-bottom: 10px solid $beis-yellow;
     margin: 0 15px;
 }
+@media screen and (max-width: 375px) {
+
+    .card .cards {
+        margin: 0 !important;
+        padding: 10px 20px 10px 27px;
+    }
+
+    .card .cards .number {
+        width: 25px;
+        height: 25px;
+        font-size: 20px;
+        line-height: 25px;
+    }
+
+    .card .cards a.govuk-link, .card .cards p {
+        font-size: 15px;
+    }
+
+    .card .cards .number.two,
+    .card .cards .number.one,
+    .card .cards .number.three,
+    .card .cards .number.four {
+        left: -15px;
+    }
+
+    .govuk-body a.button-link {
+        word-break: break-all;
+        display: block;
+        font-size: 12px;
+    }
+
+    .social-media .icon {
+        padding-right: 0 !important
+    }
+
+    .resources .resources-intro-text {
+        font-size: 20px
+    }
+
+    .govuk-footer__meta-item {
+        margin-left: 0 !important;
+        margin-right: 0 !important
+    }
+
+    .govuk-footer__meta-item--grow {
+        flex-basis: 100% !important
+    }
+
+    .govuk-footer__meta {
+        margin: 0 !important
+    }
+
+    .quote {
+        overflow: hidden;
+        word-break: break-all;
+        font-size: 16px !important
+    }
+}
+
+@media screen and (max-width: 200px) {
+    .card .cards a.govuk-link, .card .cards p {
+        word-break: break-all;
+    }
+
+    .social-media {
+        overflow: hidden
+    }
+
+    .govuk-width-container {
+        margin: 0 !important;
+    }
+
+    .govuk-footer__meta-item {
+        margin-left: 0;
+        margin-right: 0
+    }
+}
+
+@media screen and (max-width: 1199px) {
+    .govuk-heading-xl {
+        font-size: 2rem;
+    }
+}
+
+.beis-underline {
+    padding-top: 0.625rem !important;
+    background-color: #FFB000;
+    margin-bottom: 0.625rem !important;
+    margin-left: -1.25rem;
+}
+
+.filter-list .govuk-details[open] > .govuk-details__summary:before {
+    border-width: 20px 12px 0 12px;
+}
+
+.beis-yellow summary.govuk-details__summary {
+    color: $beis-navy-blue;
+}
+
+
+.text-with-arrow-img-col1 {
+    display: inline-block;
+    margin-bottom: 25px;
+    font-size: 28px;
+    font-weight: 700;
+    padding-right: 10px;
+}
+
+.text-with-arrow-img-col2 {
+    display: inline-block;
+    margin-bottom: 25px;
+    vertical-align: middle;
+    padding-top: 20px;
+    align-self: center;
+}
+
+.two-column-text-mobile-divider {
+    display: none;
+}
+
+.two-column-text-desktop-divider {
+    display: block;
+    margin: auto;
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+
+.two-column-text-col2 {
+    padding-left: 25px;
+}
+
+@media screen and (max-width: 40.0525em) {
+
+    .text-with-arrow-img-col1 {
+        display: block;
+        margin: auto;
+        margin-bottom: 20px;
+    }
+
+    .text-with-arrow-img-col2 {
+        display: none;
+    }
+
+    .two-column-text-mobile-divider {
+        display: block;
+        margin: auto;
+        margin-bottom: 20px;
+        margin-top: 20px;
+        text-align: center;
+        font-weight: 700;
+    }
+
+    .two-column-text-desktop-divider {
+        display: none;
+    }
+
+    .two-column-text-col1 {
+        padding-left: 12px;
+    }
+
+    .two-column-text-col2 {
+        padding-left: 12px;
+    }
+}
+
 
 button.govuk-back-link {
     background-color: transparent;
