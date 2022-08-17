@@ -20,7 +20,6 @@
 @import "imagecaption.scss";
 @import "image-with-text.component.scss";
 @import "business-card.component.scss";
-@import "phasebanner.scss";
 @import "product.scss";
 @import "quotes.scss";
 @import "resources.scss";
@@ -45,7 +44,6 @@
 @import "landingPageHero.scss";
 @import "search-article-listing.scss";
 @import "expression-of-interest.component.scss";
-@import "three-column-heroes.component.scss";
 
 @import "components/all";
 
@@ -66,22 +64,6 @@ fieldset {
     margin: 0;
     padding: 0;
     outline: 0;
-}
-
-h1, h2, h3,
-.govuk-body,
-.govuk-heading-xl,
-.govuk-heading-l {
-    color: $beis-blue;
-}
-
-.govuk-header {
-    border-bottom: 10px solid $beis-yellow;
-    padding-bottom: 10px;
-}
-
-.govuk-header__container {
-    border-bottom: 0;
 }
 
 .beis-white-text {
