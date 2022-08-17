@@ -44,7 +44,6 @@ $govuk-global-styles: true;
 @import "three-levels.component.scss";
 @import "menu-style2.scss";
 @import "navigation-breadcrumb.scss";
-@import "search-article-listing.scss";
 @import "expression-of-interest.component.scss";
 
 @import "components/all";
@@ -1040,7 +1039,7 @@ span.govuk-link-divider {
     .card .cards a.govuk-link, .card .cards p {
         word-break: break-all;
     }
-    
+
     .govuk-footer__meta-item {
         margin-left: 0;
         margin-right: 0
