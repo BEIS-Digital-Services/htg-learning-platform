@@ -1,28 +1,25 @@
 ﻿@model CmsSearchArticleListingViewModel
 
-<div class="govuk-width-container filter-list">
-    <div class="details">
-        <details class="govuk-details" data-module="govuk-details" open>
-            <summary class="govuk-details__summary">
-                <h3 class="govuk-heading-l govuk-!-padding-top-5 govuk-!-margin-bottom-1">Filters</h3>
-                <div class="beis-underline"></div>
-            </summary>
+<div class="govuk-width-container">
+    <details class="govuk-details" data-module="govuk-details" open>
+        <summary class="govuk-details__summary beis-details__summary">
+            <span class="beis-details__summary-text">Filters</span>
+        </summary>
 
-            <form method="get">
-    
-                <fieldset class="govuk-fieldset">
-                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s govuk-!-margin-bottom-4">Filter by subject</legend>
-                
+        <form method="get">
+
+            <fieldset class="govuk-fieldset">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--s govuk-!-margin-top-4">Filter by subject</legend>
 
                 @{
                     var distinctTags = Model.DistinctTags.ToList();
                 }
 
-                    @for (int i = 0; i < distinctTags.Count; i++)
-                    {
+                @for (int i = 0; i < distinctTags.Count; i++)
+                {
                     var tag = distinctTags[i];
                     
-                    <div class="govuk-grid-row ">
+                    <div class="govuk-grid-row">
                         <div class="govuk-grid-column-one-half govuk-!-margin-bottom-2">
                             <div class="govuk-checkboxes__item">
                                 <input class="govuk-checkboxes__input" id="filter-tag-@tag.id" type="checkbox" value="@tag.id" name="tag-ids" checked="@(Model.IsTagSelected(tag))" >
@@ -30,8 +27,7 @@
                                     @tag.displayName
                                 </label>
                             </div>
-                            </div>
-
+                        </div>
                         @{
                             i++;
                             if(i >= distinctTags.Count)
@@ -41,34 +37,24 @@
                             tag = distinctTags[i];
                         }
                         <div class="govuk-grid-column-one-half govuk-!-margin-bottom-2">
-                        <div class="govuk-checkboxes__item">
-                            <input class="govuk-checkboxes__input" id="filter-tag-@tag.id" type="checkbox" value="@tag.id" name="tag-ids" checked="@(Model.IsTagSelected(tag))" >
-                            <label class="govuk-label govuk-checkboxes__label" for="filter-tag-@tag.id">
-                                @tag.displayName
-                            </label>
-                        </div>  
+                            <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" id="filter-tag-@tag.id" type="checkbox" value="@tag.id" name="tag-ids" checked="@(Model.IsTagSelected(tag))" >
+                                <label class="govuk-label govuk-checkboxes__label" for="filter-tag-@tag.id">
+                                    @tag.displayName
+                                </label>
+                            </div>  
                         </div>
 
                     </div>
-                    
-                    }
-
-                  </fieldset>  
-                
-                <div class="govuk-!-margin-top-6 govuk-!-margin-bottom-6">
-                    <div class="govuk-button-group">
-                        <button type="submit" class="govuk-button beis-button--primary">Apply filters</button>
-                        <a type="button" aria-label="Reset filters" role="button" href="@Model.PageName"
-                            class="govuk-button govuk-button--secondary" data-module="govuk-button">
-                            Reset filters
-                        </a>
-                    </div>
-                </div>
-
-                <hr class="govuk-section-break govuk-section-break--visible">
-            </form>
-        </details>
-    </div>
+                }
+            </fieldset>  
+            <div class="govuk-button-group govuk-!-margin-top-4">
+                <button type="submit" class="govuk-button beis-button--primary">Apply filters</button>
+                <a type="button" role="button" href="@Model.PageName" class="govuk-button govuk-button--secondary" data-module="govuk-button">Reset filters</a>
+            </div>
+        </form>
+        <hr class="govuk-section-break govuk-section-break--visible">
+    </details>
  </div>
 
 <div class="landingpage-hero-list" id="@Model.Component.id">
