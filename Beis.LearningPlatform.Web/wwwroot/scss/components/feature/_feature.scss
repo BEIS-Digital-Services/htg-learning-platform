@@ -3,6 +3,21 @@
     padding-bottom: $govuk-gutter;
 }
 
+.beis-feature__row {
+    @include govuk-media-query (mobile) {
+        display: flex;
+        align-items: center;
+    }
+}
+
+.beis-feature__heading {
+    color: $beis-blue;
+}
+
+.beis-feature__sub-heading {
+    color: $beis-blue;
+}
+
 .beis-feature__img, 
 .beis-feature img {
     max-width: 100%;
