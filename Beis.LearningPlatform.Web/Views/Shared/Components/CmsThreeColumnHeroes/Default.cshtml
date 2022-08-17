@@ -3,18 +3,22 @@
 {
     return;
 }
-<div class="three-column-heroes" id="@Model.Component.id">
-    <div class="govuk-width-container govuk-!-margin-bottom-4 govuk-!-margin-top-6">
-        <div class="govuk-grid-row beis-columns-same-height">
-            @foreach (var column in Model.Columns)
-            {
-                <div class="govuk-grid-column-one-third govuk-body">
-                    <h3 class="govuk-!-margin-bottom-2">@column.Header</h3>
-                    <p class="govuk-!-margin-top-2">@column.Intro</p>
-                    <img src="/assets/images/link-arrow.svg" class="beis-link-icon link-icon-align govuk-!-margin-right-1" width="20" height="20" alt="" />
-                    <a id="@column.GetGaLinkId("three-col-link-")" href="@column.LinkUrl" title="@column.LinkText" class="govuk-link">@column.LinkText</a>
-                </div>
-            }
-        </div>
+<div class="govuk-width-container beis-three-column-hero" id="@Model.Component.id">
+    <div class="govuk-grid-row">
+        @foreach (var column in Model.Columns)
+        {
+            <div class="govuk-grid-column-one-third">
+                <h3 class="govuk-heading-m beis-three-column-hero__heading">@column.Header</h3>
+                <p class="govuk-body beis-three-column-hero__content">@column.Intro</p>
+                <a id="@column.GetGaLinkId("three-col-link-")" href="@column.LinkUrl" title="@column.LinkText" class="beis-icon-link">
+                    <svg width="23" height="24" viewBox="0 0 23 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="beis-icon-link__icon">
+                        <path d="M11.5 23.9524C17.8513 23.9524 23 18.8037 23 12.4524C23 6.10112 17.8513 0.952393 11.5 0.952393C5.14873 0.952393 0 6.10112 0 12.4524C0 18.8037 5.14873 23.9524 11.5 23.9524Z" fill="currentColor"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M15.503 12.4473L11 7.94434L12.293 6.65234L18.088 12.4473L12.293 18.2423L11 16.9503L15.503 12.4473Z" fill="white"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M4.62012 11.5325H16.1051V13.3605H4.62012V11.5325Z" fill="white"/>
+                    </svg>
+                    @column.LinkText
+                </a>
+            </div>
+        }
     </div>
 </div>
