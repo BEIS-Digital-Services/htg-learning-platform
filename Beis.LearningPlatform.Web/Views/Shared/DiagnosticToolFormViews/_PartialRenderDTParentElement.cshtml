@@ -14,14 +14,14 @@
     switch (currentFormStepElement.controlType)
     {
         case FormDisplayControlType.Label:
-            <fieldset>
+           
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                     <h2 class="govuk-fieldset__heading">
                         <span>@currentFormStepElement.text</span>
                         <span class="govuk-!-font-weight-regular">@currentFormStepElement.text2</span>
                     </h2>
                 </legend>
-            </fieldset>
+       
 
             @if (currentFormStepElement.answerOptions != null)
             {
@@ -45,7 +45,7 @@
             break;
 
         case FormDisplayControlType.CheckboxGroup:
-        <fieldset>
+     
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                     <h2 class="govuk-fieldset__heading">
                     <span>@currentFormStepElement.text</span>
@@ -89,11 +89,11 @@
                 </div>
 
             }
-            </fieldset>
+    
             break;
 
         case FormDisplayControlType.RadioGroup:
-            <fieldset>
+         
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                     <h2 class="govuk-fieldset__heading">
                     <span>@currentFormStepElement.text</span>
@@ -138,11 +138,11 @@
                 </div>
 
             }
-            </fieldset>
+       
             break;
 
         case FormDisplayControlType.List:
-            <fieldset>
+     
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                     <h2 class="govuk-fieldset__heading">
                     <span>@currentFormStepElement.text</span>
@@ -181,7 +181,7 @@
                 <input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].value" />
                 <input type="hidden" asp-for="@Model.steps[currentStep].elements[currentElement].answerOptions[z].text" />
             }
-            </fieldset>
+
             break;
 
 
