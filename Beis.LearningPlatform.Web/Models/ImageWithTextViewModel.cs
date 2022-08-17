@@ -27,5 +27,20 @@
         public string ImageUrl { get; set; }
         public string HtmlCopy { get; set; }
 		public string ImageAlt { get; set; }
-	}
+
+        public string ImageCaption
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(_cmsPageComponent.CaptionType) && (Enum.TryParse(_cmsPageComponent.CaptionType, out CaptionTypes captionType)))
+                {
+                    if (captionType == CaptionTypes.SpecificCaption)
+                        return _cmsPageComponent.ImageCaption;
+                    else if (captionType == CaptionTypes.ImageLibCaption)
+                        return _cmsPageComponent.image.caption;
+                }
+                return String.Empty;
+            }
+        }
+    }
 }
