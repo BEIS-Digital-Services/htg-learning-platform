@@ -1,5 +1,8 @@
+$govuk-global-styles: true;
+
 @import "../../node_modules/govuk-frontend/govuk/all";
 @import "settings/all";
+@import "core/all";
 
 @import "article.scss";
 @import "articles.scss";

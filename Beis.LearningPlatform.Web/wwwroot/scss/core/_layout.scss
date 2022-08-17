@@ -4,3 +4,9 @@
         align-items: center;
     }
 }
+
+.beis-float-right-from-tablet {
+    @include govuk-media-query(tablet) {
+        float: right;
+    }
+}
