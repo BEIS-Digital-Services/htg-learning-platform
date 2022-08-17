@@ -1060,3 +1060,9 @@ span.govuk-link-divider {
     border-bottom: 10px solid $beis-yellow;
     margin: 0 15px;
 }
+
+button.govuk-back-link {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
