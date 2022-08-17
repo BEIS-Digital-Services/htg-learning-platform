@@ -5,6 +5,13 @@
     color: #fff;
 }
 
+.beis-landing-page-hero__row {
+    @include govuk-media-query (desktop) {
+        display: flex;
+        align-items: center;
+    }
+}
+
 .beis-landing-page-hero__heading {
     color: inherit;
 }
