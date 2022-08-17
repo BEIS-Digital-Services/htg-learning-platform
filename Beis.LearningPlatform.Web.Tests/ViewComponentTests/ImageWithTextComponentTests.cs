@@ -157,7 +157,7 @@ namespace Beis.LearningPlatform.Web.Tests.ViewComponentTests
             var cmsPageComponent = new CMSPageComponent
             {
                 copy = "test",
-                CaptionType = "SpecificCaption",
+                CaptionType = CaptionTypes.SpecificCaption.ToString(),
                 ImageCaption = "specific-caption",
                 image = new CMSPageImage { caption = "img-caption" },
             };
@@ -180,7 +180,7 @@ namespace Beis.LearningPlatform.Web.Tests.ViewComponentTests
             var cmsPageComponent = new CMSPageComponent
             {
                 copy = "test",
-                CaptionType = "ImageLibCaption",
+                CaptionType = CaptionTypes.ImageLibCaption.ToString(),
                 ImageCaption = "specific-caption",
                 image = new CMSPageImage { caption = "img-caption" },
             };

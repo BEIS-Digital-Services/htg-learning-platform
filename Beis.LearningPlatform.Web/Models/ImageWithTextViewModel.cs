@@ -32,11 +32,11 @@
         {
             get
             {
-                if (!string.IsNullOrEmpty(_cmsPageComponent.CaptionType))
+                if (!string.IsNullOrEmpty(_cmsPageComponent.CaptionType) && (Enum.TryParse(_cmsPageComponent.CaptionType, out CaptionTypes captionType)))
                 {
-                    if (_cmsPageComponent.CaptionType == "SpecificCaption")
+                    if (captionType == CaptionTypes.SpecificCaption)
                         return _cmsPageComponent.ImageCaption;
-                    else if (_cmsPageComponent.CaptionType == "ImageLibCaption")
+                    else if (captionType == CaptionTypes.ImageLibCaption)
                         return _cmsPageComponent.image.caption;
                 }
                 return String.Empty;

@@ -7,13 +7,13 @@
             {
                 <vc:cms-image options='new CmsImageViewModel{ ImageUrl = Model.image.url, Title = Model.image.alternativeText }' />
 
-                @if (!string.IsNullOrEmpty(Model.CaptionType))
+                @if (!string.IsNullOrEmpty(Model.CaptionType) && (Enum.TryParse(Model.CaptionType, out CaptionTypes captionType)))
                 {
-                    @if (Model.CaptionType == "SpecificCaption")
+                    @if (captionType == CaptionTypes.SpecificCaption)
                     {
                         <div style="margin: 10px 2px;" class="govuk-body beis-image-caption">@Model.ImageCaption</div>
                     }
-                    else if (Model.CaptionType == "ImageLibCaption")
+                    else if (captionType == CaptionTypes.ImageLibCaption)
                     {
                         <div style="margin: 10px 2px;" class="govuk-body beis-image-caption">@Model.image.caption</div>
                     }
