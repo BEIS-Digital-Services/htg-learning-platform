@@ -1,8 +1,16 @@
 $govuk-global-styles: true;
 
 @import "../../node_modules/govuk-frontend/govuk/all";
+
 @import "settings/all";
 @import "core/all";
+
+%govuk-heading-xl,
+%govuk-heading-l, 
+%govuk-heading-m,
+%govuk-fieldset__legend {
+    color: $beis-blue;
+}
 
 @import "article.scss";
 @import "articles.scss";
@@ -47,6 +55,7 @@ $govuk-global-styles: true;
 
 @import "objects/all";
 @import "components/all";
+
 
 .hide-element {
     border: 0;
