@@ -98,6 +98,7 @@ namespace Beis.LearningPlatform.Web.Utils
             services.AddScoped<IFileSystem, FileSystem>();
             services.AddScoped<IMakeApiCallService, StrapiMakeApiCallService>();
             services.AddScoped<ICookieService, CookieService>();
+            services.AddScoped<ISessionService, SessionService>();
             services.AddSingleton<IHtmlTextService, HtmlTextService>();
             RegisterEmailHelpers(services);
 
