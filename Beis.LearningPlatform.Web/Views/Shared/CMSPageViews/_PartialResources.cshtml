@@ -13,36 +13,38 @@
     }
 }
 
-<div id="@("anchor" + Model.Index)" class="govuk-width-container resources @classToAppend">
+<div id="@("anchor" + Model.Index)" class="govuk-width-container beis-article-header @classToAppend">
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
             @if (!string.IsNullOrWhiteSpace(Model.header))
             {
-                <h1 class="govuk-heading-xl govuk-!-padding-top-3">@Model.header</h1>
+                <h1 class="govuk-heading-xl govuk-!-padding-top-3 beis-article-header__heading">@Model.header</h1>
             }
 
             @if (!string.IsNullOrWhiteSpace(Model.subheader))
             {
-                <h2 class="govuk-heading-l govuk-!-padding-top-3">@Model.subheader</h2>
+                <h2 class="govuk-heading-l govuk-!-padding-top-3 beis-article-header__sub-heading">@Model.subheader</h2>
             }
 
-            <ul class="author">
-                @if (Model.author != null)
+            @if (Model.author != null && Model.author.Any())
+            {
+                <ul class="govuk-list beis-article-header__author-list">
+
+                @foreach (var author in Model.author)
                 {
-                    foreach (var author in Model.author)
-                    {
-                        <li class="govuk-body">
-                            @Html.Raw(author.author)
-                        </li>
-                    }
+                    <li class="beis-article-header__author">
+                       
+                        @Html.Raw(author.author)
+                    </li>
                 }
-            </ul>
-
-            <div class="govuk-body resources-intro-text">
+                </ul>
+            }
+            
+            <p class="govuk-body-l beis-article-header__intro">
                 @Html.Raw(Markdown.ToHtml(Model.copy, _pipeline).Replace("<p>", string.Empty).Replace("</p>", string.Empty))
-            </div>
+            </p>
 
-            @if (Model.buttons != null)
+            @if (Model.buttons != null && Model.buttons.Any())
             {
                 <div class="stick-to-bottom">
                     <partial name="CMSPageViews/_PartialTextButtons" model="@Model" />
