@@ -10,9 +10,9 @@
                 <div class="govuk-body">
                     <div class="text-float-@Model.Component.imagePosition">
                         <img class="@Model.Component.imageSize" src="@Model.ImageUrl" alt="@Model.ImageAlt" />
-                        @if (!string.IsNullOrEmpty(@Model.Component.ImageCaption))
+                        @if (!string.IsNullOrEmpty(@Model.ImageCaption))
                         {
-                            <div style="color: #767676;font-size: 16px;padding: 10px 2px;">@Model.Component.ImageCaption</div>    
+                            <div style="color: #767676;font-size: 16px;padding: 10px 2px;">@Model.ImageCaption</div>    
                         }                       
                     </div>
                     @Html.Raw(Model.HtmlCopy)

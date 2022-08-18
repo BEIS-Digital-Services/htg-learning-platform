@@ -1,7 +1,4 @@
 ﻿@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
-@{
-    var _pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build();
-}
 
 <div class="govuk-width-container @Model.AlteredPaddingTopSpace @Model.AlteredPaddingBottomSpace" id="@("anchor" + Model.Index)">
     <div class="govuk-grid-row">
@@ -11,15 +8,19 @@
                 {
                     <vc:cms-image options='new CmsImageViewModel{ ImageUrl = Model.image.url, Title = Model.image.alternativeText, CssClass="beis-image" }' />
                 }
-            </div>
-
-            @if(Model.textblocks?.Count > 0)
-            {
-                if (Model.textblocks[0].copy?.Length > 0)
+                @if (!string.IsNullOrEmpty(Model.CaptionType) && (Enum.TryParse(Model.CaptionType, out CaptionTypes captionType)))
                 {
-                    <p class="govuk-body beis-image-caption">@Markdown.ToHtml(Model.textblocks[0].copy, _pipeline).Replace("<p>", string.Empty).Replace("</p>", string.Empty)</p>
+                    @if (captionType == CaptionTypes.SpecificCaption)
+                    {
+                        <div style="margin: 10px 2px;" class="govuk-body beis-image-caption">@Model.ImageCaption</div>
+                    }
+                    else if (captionType == CaptionTypes.ImageLibCaption)
+                    {
+                        <div style="margin: 10px 2px;" class="govuk-body beis-image-caption">@Model.image.caption</div>
+                    }
                 }
-            }
+            
+            </div>
         </div>
     </div>
 </div>
