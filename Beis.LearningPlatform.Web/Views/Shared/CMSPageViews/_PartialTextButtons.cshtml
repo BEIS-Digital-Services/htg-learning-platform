@@ -79,25 +79,25 @@
     Model.hide = Model.hide.HasValue ? Model.hide : false;
     if (Model.hide == false)
     {
-        <p class="govuk-button-group">
-            @if (Model.buttons != null)
+        @if (Model.buttons != null)
+        {
+            @if (Model.buttons.Count > 0)
             {
-                @if (Model.buttons.Count > 0)
+                <p class="govuk-button-group">
+                @foreach (var button in Model.buttons)
                 {
-                    @foreach (var button in Model.buttons)
-                    {
-                        var customClass = SetButtonType(button.type, Model.background, button.custom_class);
-                        <a id="link-cmspageviews-textbuttons-@(button.GetGaLinkId())" href="@button.url" style="display:@(string.Empty)" role="button" draggable="false" class="govuk-button @customClass" data-module="govuk-button">
-                            @button.label
-                            @if (button.icon != null)
-                            {
-                                <svg xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false" class="govuk-button__start-icon">
-                                <path fill="@currentColor" d="M0 0h13l20 20-20 20H0l20-20z"></path></svg>
-                            }
-                        </a>
-                    }
+                    var customClass = SetButtonType(button.type, Model.background, button.custom_class);
+                    <a id="link-cmspageviews-textbuttons-@(button.GetGaLinkId())" href="@button.url" style="display:@(string.Empty)" role="button" draggable="false" class="govuk-button @customClass" data-module="govuk-button">
+                        @button.label
+                        @if (button.icon != null)
+                        {
+                            <svg xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false" class="govuk-button__start-icon">
+                            <path fill="@currentColor" d="M0 0h13l20 20-20 20H0l20-20z"></path></svg>
+                        }
+                    </a>
                 }
+                    </p>
             }
-        </p>
+        }
     }
 }
