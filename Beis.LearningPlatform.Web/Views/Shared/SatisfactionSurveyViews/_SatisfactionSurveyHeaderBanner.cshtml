@@ -1,21 +1,23 @@
-﻿<div class="govuk-width-container">
-    <div class="govuk-phase-banner beis-phase-banner">
-        <p class="govuk-phase-banner__content">
-            <strong class="govuk-tag govuk-phase-banner__content__tag">Beta</strong>
-            <span class="govuk-phase-banner__text">
-                @if (Url.ActionContext.RouteData.Values.ContainsKey("controller") && (string)Url.ActionContext.RouteData.Values["controller"] == "SatisfactionSurvey") //??
-                { 
-                    <text>
-                        This is a new service – your feedback will help us to improve it.
-                    </text>                                    
-                }
-                else
-                {
-                    <text>
-                        This is a new service – your <a id="link-cmspageviews-navigation-satisfaction-survey" asp-controller="SatisfactionSurvey" asp-action="Index" class="govuk-link">feedback</a> will help us to improve it.
-                    </text>
-                }
-            </span>
-        </p>
+﻿<div class="beis-phase-banner">
+    <div class="govuk-width-container">
+        <div class="govuk-phase-banner beis-phase-banner__wrap">
+            <p class="govuk-phase-banner__content">
+                <strong class="govuk-tag govuk-phase-banner__content__tag">Beta</strong>
+                <span class="govuk-phase-banner__text">
+                    @if (Url.ActionContext.RouteData.Values.ContainsKey("controller") && (string)Url.ActionContext.RouteData.Values["controller"] == "SatisfactionSurvey") //??
+                    { 
+                        <text>
+                            This is a new service – your feedback will help us to improve it.
+                        </text>                                    
+                    }
+                    else
+                    {
+                        <text>
+                            This is a new service – your <a id="link-cmspageviews-navigation-satisfaction-survey" asp-controller="SatisfactionSurvey" asp-action="Index" class="govuk-link">feedback</a> will help us to improve it.
+                        </text>
+                    }
+                </span>
+            </p>
+        </div>
     </div>
 </div>
