@@ -5,21 +5,11 @@
     <partial name="CMSPageViews/_PartialHeroBanner" model="@Model.CMSPageViewModel" />
 }
 
-<div class="govuk-width-container govuk-!-padding-top-6 govuk-!-padding-bottom-6">
+<div class="govuk-width-container">
 
-    <div class="govuk-grid-row govuk-!-padding-top-6">
-        <div class="govuk-grid-column-full">
-            <h1 class="govuk-heading-xl govuk-!-padding-top-3 govuk-!-margin-0">Filter software</h1>
-        </div>
-
-    </div>
-    <div class="govuk-header-yellow-line">
-
-    </div>
-
-
-    <div class="govuk-form-group govuk-!-margin-3">
+    <div class="govuk-form-group">
         <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">Filter software</legend>
             <div class="govuk-checkboxes" data-module="govuk-checkboxes">
                 @foreach (var tag in Model.ProductCategoryList)
                 {
@@ -37,23 +27,21 @@
                 }
 
             </div>
-
         </fieldset>
     </div>
-
 </div>
 
 @if (Model.products?.Count > 0)
 {
-    <div class="govuk-width-container govuk-!-padding-top-2  govuk-!-padding-bottom-8 product">
-        <div class="govuk-grid-row" id="allProductsDiv">
-            <div class="govuk-grid-column-full">
-                <h1 class="govuk-heading-xl govuk-!-padding-top-3">All products</h1>
-            </div>
+    <div class="govuk-width-container product">
+        <div id="allProductsDiv">
+            <h1 class="govuk-heading-xl govuk-!-padding-top-3">All products</h1>
         </div>
 
         <partial name="ComparisonToolViews/_PartialProductCategory" model="Model.ProductCategoryAccountingViewModel" />
         <partial name="ComparisonToolViews/_PartialProductCategory" model="Model.ProductCategoryCrmViewModel" />
         <partial name="ComparisonToolViews/_PartialProductCategory" model="Model.ProductCategoryEcommerceViewModel" />
+
     </div>
+
 }
