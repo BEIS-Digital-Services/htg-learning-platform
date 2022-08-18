@@ -45,6 +45,7 @@ $govuk-global-styles: true;
 @import "menu-style2.scss";
 @import "expression-of-interest.component.scss";
 
+@import "objects/all";
 @import "components/all";
 
 .hide-element {
@@ -741,17 +742,6 @@ button:focus {
     }
 }
 
-a:focus {
-    outline: 3px solid transparent;
-    color: #0b0c0c !important;
-    background-color: #ffdd00;
-    box-shadow: 0 -2px #ffdd00, 0 4px #0b0c0c;
-    text-decoration: none;
-}
-
-.govuk-details__summary {
-    padding: 20px;
-}
 
 .right {
     text-align: right;
