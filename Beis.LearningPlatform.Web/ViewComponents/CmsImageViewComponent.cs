@@ -13,10 +13,10 @@
         /// <remarks>
         /// We are passing in a CmsImageViewModel because aspnet mvc currently does not support optional parameters (or overloaded ctors) on ViewComponents.
         /// </remarks>
-        public IViewComponentResult Invoke(CmsImageViewModel options)
+        public IViewComponentResult Invoke(CmsImageViewModel viewModel)
         {
-            options.BaseUrl = _cmsBaseUrl;
-            return View(options);
+            viewModel.BaseUrl = _cmsBaseUrl;
+            return View(viewModel);
         }
     }
 }
