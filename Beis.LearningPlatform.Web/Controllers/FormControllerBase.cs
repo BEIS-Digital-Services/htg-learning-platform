@@ -6,11 +6,13 @@
     public class FormControllerBase : ControllerBase
     {
         private readonly IDiagnosticToolControllerHelper _controllerHelper;
+        private readonly ISessionService _sessionService;
 
         public FormControllerBase(ILogger<ControllerBase> logger,
-            IDiagnosticToolControllerHelper controllerHelper) : base(logger)
+            IDiagnosticToolControllerHelper controllerHelper, ISessionService sessionService) : base(logger)
         {
             _controllerHelper = controllerHelper;
+            _sessionService = sessionService;
         }
 
         protected virtual string SessionEmailAnswer => "emailAnswer";
@@ -27,12 +29,12 @@
 
         protected void ClearSessionEmail()
         {
-            HttpContext.Session.ClearSessionData(SessionEmailAnswer);
+            _sessionService.Remove(SessionEmailAnswer, HttpContext);
         }
 
         protected void ClearSessionForm()
         {
-            HttpContext.Session.ClearSessionData(SessionDiagnosticToolForm);
+            _sessionService.Remove(SessionDiagnosticToolForm, HttpContext);
         }
 
         protected ViewResult GetViewResult(DiagnosticToolForm model, bool showResults = false)
@@ -49,18 +51,19 @@
 
         protected void SetSessionEmail(EmailAnswer emailAnswer)
         {
-            HttpContext.Session.SetSessionData(SessionEmailAnswer, emailAnswer);
+            _sessionService.Set(SessionEmailAnswer, emailAnswer, HttpContext);
         }
 
         protected void SetSessionForm(DiagnosticToolForm diagnosticToolForm)
         {
             var answerData = diagnosticToolForm.Save();
-            HttpContext.Session.SetSessionData(SessionDiagnosticToolForm, answerData);
+            _sessionService.Set(SessionDiagnosticToolForm, answerData, HttpContext);
         }
 
         protected bool TryGetSessionData(out EmailAnswer emailAnswer)
         {
-            return HttpContext.Session.TryGetSessionData(SessionEmailAnswer, out emailAnswer);
+            _sessionService.TryGet(SessionEmailAnswer, HttpContext, out emailAnswer);
+            return true;
         }
 
         protected async Task<DiagnosticToolForm> TryGetSessionForm()

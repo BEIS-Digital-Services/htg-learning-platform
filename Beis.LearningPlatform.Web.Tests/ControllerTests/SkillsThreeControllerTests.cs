@@ -68,6 +68,7 @@
 
         private Mock<ILogger<DiagnosticToolController>> _logger;
         private SkillsThreeController controller;
+        private Mock<ISessionService> _sessionService;
 
         [SetUp]
         public void Setup()
@@ -76,8 +77,9 @@
             _diagnosticToolControllerHelper = new();
             _ctDisplayOptions.Value.LoadFormFromJson = true;
             _currentPath = string.Empty;
+            _sessionService = new Mock<ISessionService>();
 
-            controller = new SkillsThreeController(_logger.Object, _diagnosticToolControllerHelper.Object, _httpContextAccessor.Object);
+            controller = new SkillsThreeController(_logger.Object, _diagnosticToolControllerHelper.Object, _httpContextAccessor.Object, _sessionService.Object);
             SetHttpContext(controller.ControllerContext);
 
             _httpContext.SetupGet(x => x.Request)

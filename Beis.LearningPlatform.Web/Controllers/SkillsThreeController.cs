@@ -13,8 +13,9 @@
         /// </summary>
         public SkillsThreeController(ILogger<DiagnosticToolController> logger,
                                         IDiagnosticToolControllerHelper controllerHelper,
-                                        IHttpContextAccessor httpContextAccessor)
-            : base(logger, controllerHelper)
+                                        IHttpContextAccessor httpContextAccessor,
+                                        ISessionService sessionService)
+            : base(logger, controllerHelper, sessionService)
         {
             _controllerHelper = controllerHelper;
             _httpContextAccessor = httpContextAccessor;

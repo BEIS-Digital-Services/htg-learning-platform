@@ -18,8 +18,9 @@
         public DiagnosticToolController(ILogger<DiagnosticToolController> logger,
                                         IDiagnosticToolControllerHelper controllerHelper,
                                         IComparisonToolService comparisonToolService,
-                                        IOptions<ComparisonToolDisplayOption> ctDisplayOption)
-            : base(logger, controllerHelper)
+                                        IOptions<ComparisonToolDisplayOption> ctDisplayOption,
+                                        ISessionService sessionService)
+            : base(logger, controllerHelper, sessionService)
         {
             _controllerHelper = controllerHelper;
             _comparisonToolService = comparisonToolService;
