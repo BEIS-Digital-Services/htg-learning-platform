@@ -70,7 +70,7 @@
         {
             DiagnosticToolForm returnValue = default;
 
-            if (HttpContext.Session.TryGetSessionData(SessionDiagnosticToolForm, out FormStepAnswer[] answers))
+            if (_sessionService.TryGet(SessionDiagnosticToolForm, HttpContext, out FormStepAnswer[] answers))
             {
                 var createFormResponse = await _controllerHelper.CreateForm(GetFormType());
                 if (createFormResponse.Result)
