@@ -17,16 +17,29 @@
             <div class="govuk-grid-column-one-half @(string.IsNullOrWhiteSpace(heroBanner.leftBackgroundColor)? "": @CamelCaseConverter.Delimiter(heroBanner.leftBackgroundColor, "-"))" @styleStringLeft>
 
                 @if (heroBanner.HeroImageLocation.Equals("right", StringComparison.OrdinalIgnoreCase))
-                            {
-                                <partial name="CMSPageViews/_PartialHeroBannerContent" model="@heroBanner" /> }
-                            else
-                            {
-                                <partial name="CMSPageViews/_PartialHeroBannerImage" model="@heroBanner" />}
+                {
+                    <partial name="CMSPageViews/_PartialHeroBannerContent" model="@heroBanner" /> 
+                }
+                else
+                {
+                    <partial name="CMSPageViews/_PartialHeroBannerImage" model="@heroBanner" />
+                }
                 
             </div>
             <div class="govuk-grid-column-one-half @(string.IsNullOrWhiteSpace(heroBanner.rightBackgroundColor)? "": @CamelCaseConverter.Delimiter(heroBanner.rightBackgroundColor, "-"))"
-                 style="background:@(heroBanner.HeroImageLocation.Equals("right", StringComparison.OrdinalIgnoreCase)? "url(" + landingPageImageUrl + ") 0% 0% / cover no-repeat" : string.Empty);">
-                
+                 style="background:@(heroBanner.HeroImageLocation.Equals("right", StringComparison.OrdinalIgnoreCase)? "url(" + landingPageImageUrl + ") top center / cover no-repeat" : string.Empty);">
+                @if (heroBanner.HeroImageLocation.Equals("left", StringComparison.OrdinalIgnoreCase))
+                {
+            
+                    <partial name="CMSPageViews/_PartialHeroBannerContent" model="@heroBanner" />
+               
+                }
+                else
+                {
+              
+                    <partial name="CMSPageViews/_PartialHeroBannerImage" model="@heroBanner" />
+               
+                }
             </div>
         </div>
     </div>
