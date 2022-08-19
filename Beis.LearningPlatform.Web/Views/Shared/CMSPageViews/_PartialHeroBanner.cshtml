@@ -11,42 +11,23 @@
     }
     landingPageImageUrl = Model.CmsBaseUrl + (heroBanner.HeroImage != null ? heroBanner.HeroImage.url : string.Empty);
 
-    <div class="hero-banner">
-        <div class="govuk-grid-row beis-columns-same-height">
+
+    <div class="beis-hero-banner">
+        <div class="govuk-grid-row beis-hero-banner__row">
             <div class="govuk-grid-column-one-half @(string.IsNullOrWhiteSpace(heroBanner.leftBackgroundColor)? "": @CamelCaseConverter.Delimiter(heroBanner.leftBackgroundColor, "-"))" @styleStringLeft>
-                <div class="govuk-grid-row">
-                    <div class="left-column">
-                        <div class="beis-columns">
-                            @if (heroBanner.HeroImageLocation.Equals("right", StringComparison.OrdinalIgnoreCase))
+
+                @if (heroBanner.HeroImageLocation.Equals("right", StringComparison.OrdinalIgnoreCase))
                             {
                                 <partial name="CMSPageViews/_PartialHeroBannerContent" model="@heroBanner" /> }
                             else
                             {
                                 <partial name="CMSPageViews/_PartialHeroBannerImage" model="@heroBanner" />}
-                        </div>
-                    </div>
-                </div>
+                
             </div>
             <div class="govuk-grid-column-one-half @(string.IsNullOrWhiteSpace(heroBanner.rightBackgroundColor)? "": @CamelCaseConverter.Delimiter(heroBanner.rightBackgroundColor, "-"))"
                  style="background:@(heroBanner.HeroImageLocation.Equals("right", StringComparison.OrdinalIgnoreCase)? "url(" + landingPageImageUrl + ") 0% 0% / cover no-repeat" : string.Empty);">
-                <div class="govuk-grid-row">
-                    <div class="right-column">
-                        @if (heroBanner.HeroImageLocation.Equals("left", StringComparison.OrdinalIgnoreCase))
-                        {
-                            <div class="beis-columns">
-                                <partial name="CMSPageViews/_PartialHeroBannerContent" model="@heroBanner" />
-                            </div>
-                        }
-                        else
-                        {
-                            <div class="beis-columns">
-                                <partial name="CMSPageViews/_PartialHeroBannerImage" model="@heroBanner" />
-                            </div>
-                        }
-                    </div>
-                </div>
+                
             </div>
         </div>
-
     </div>
 }
