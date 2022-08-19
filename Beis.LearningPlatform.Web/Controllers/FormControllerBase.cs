@@ -62,8 +62,7 @@
 
         protected bool TryGetSessionData(out EmailAnswer emailAnswer)
         {
-            _sessionService.TryGet(SessionEmailAnswer, HttpContext, out emailAnswer);
-            return true;
+            return _sessionService.TryGet(SessionEmailAnswer, HttpContext, out emailAnswer);
         }
 
         protected async Task<DiagnosticToolForm> TryGetSessionForm()
@@ -97,7 +96,7 @@
 
         public async virtual Task<IActionResult> NextStep(DiagnosticToolForm model)
         {
-            if (TryGetSessionData(out EmailAnswer emailAnswer))
+            if (TryGetSessionData(out EmailAnswer emailAnswer)) 
                 model.EmailAnswer = emailAnswer;
 
             var response = await _controllerHelper.NextStep(model, ModelState.IsValid, GetModelErrors());
