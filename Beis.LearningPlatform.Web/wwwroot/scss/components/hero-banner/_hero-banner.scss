@@ -19,3 +19,13 @@
 .beis-hero-banner__row {
     display: flex;
 }
+
+.beis-hero-banner .hero-links,
+.beis-hero-banner .hero-links:link,
+.beis-hero-banner .hero-links:visited {
+    color: $beis-yellow;
+}
+
+.beis-hero-banner .hero-links:focus {
+    color: $govuk-focus-text-colour;
+}
