@@ -5,42 +5,8 @@ document.head.appendChild(imported);
 var selectedCardIds = [];
 document.addEventListener("DOMContentLoaded", function () {
 
-    showAllElements(document.querySelectorAll(".cards"));
     showJsGoBackLinks();
     toggleJsDisplayElements();
-
-    checkAndAddHandler("#roundel1", "#card1");
-    checkAndAddHandler("#roundel2", "#card2");
-    checkAndAddHandler("#roundel3", "#card3");
-    checkAndAddHandler("#roundel4", "#card4");
-
-    function checkAndAddHandler(currentRoundelId, cardId) {
-        if (document.querySelector(currentRoundelId)) {
-            document.querySelector(currentRoundelId).addEventListener("click", () => {
-                showElement(document.querySelector(cardId));
-                const link = document.querySelector(cardId + " .card-content a");
-                if (link && link.removeAttribute) {
-                    link.removeAttribute("tabindex")
-                }
-            });
-        }
-    }
-
-    function showElement(el) {
-        el.classList.remove("hidden-card");
-        if (selectedCardIds && !selectedCardIds.includes(el.id)) {
-            selectedCardIds.push(el.id);
-            var item = {
-                value: selectedCardIds,
-                expiry: new Date().getTime() + (skillModuleExpiryInMinutes * 60 * 1000)
-            }
-            localStorage.setItem("selectedCardIds", JSON.stringify(item));
-        }
-    }
-
-    function showAllElements(elements) {
-        elements.forEach(el => { el.classList.remove("no-script-hidden-card"); });
-    }
 
     function showJsGoBackLinks() {
         const jsLinkContainers = document.querySelector(".js-go-back-link-container");
@@ -64,22 +30,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 elmnt.style.display = elmnt.getAttribute("data-js-display");
             });            
         }
-    }
-
-    var oldSelectedCardIds = JSON.parse(localStorage.getItem("selectedCardIds")) || [];
-
-    var now = new Date();
-    if (now.getTime() > oldSelectedCardIds.expiry) {
-        localStorage.removeItem("selectedCardIds");
-        return;
-    }
-    if (oldSelectedCardIds.value && oldSelectedCardIds.value.length > 0) {
-        selectedCardIds = oldSelectedCardIds.value;
-        oldSelectedCardIds.value.forEach(selectedCardId => {
-            if (document.querySelector("#" + selectedCardId)) {
-                document.querySelector("#" + selectedCardId).classList.remove("hidden-card");
-            }
-        });
     }
 });
 
@@ -246,3 +196,8 @@ function keyHandler(event, func) {
     }
     return true;
 }
+
+// eoi
+document.getElementById("eoi-form-start")?.addEventListener('click', function () {
+    eoi.goToStep(2);
+});

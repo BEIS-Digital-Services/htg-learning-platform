@@ -406,3 +406,4 @@ FodyWeavers.xsd
 .idea/
 *.sln.iml
 /Web/htg-lp/key-b0638593-8b52-4343-8c6c-41ec990200f8.xml
+.DS_Store
