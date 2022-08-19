@@ -83,7 +83,7 @@
         {
             @if (Model.buttons.Count > 0)
             {
-                <p class="govuk-button-group">
+                <div class="govuk-button-group">
                 @foreach (var button in Model.buttons)
                 {
                     var customClass = SetButtonType(button.type, Model.background, button.custom_class);
@@ -96,7 +96,7 @@
                         }
                     </a>
                 }
-                    </p>
+                </div>
             }
         }
     }
