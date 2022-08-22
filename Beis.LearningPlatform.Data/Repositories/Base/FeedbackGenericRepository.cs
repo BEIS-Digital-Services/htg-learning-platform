@@ -71,7 +71,7 @@
 
         public virtual async Task AddAsync(TEntity entity)
         {
-            await Entities.AddAsync(entity);
+            await Entities.AddAsync(entity, default);
         }
 
         public virtual void AddRange(IEnumerable<TEntity> entities)

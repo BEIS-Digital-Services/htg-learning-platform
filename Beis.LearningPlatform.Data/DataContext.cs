@@ -14,6 +14,10 @@ namespace Beis.LearningPlatform.Data
     {
         public static readonly LoggerFactory loggerFactory = new LoggerFactory(new[] { new DebugLoggerProvider() });
         private readonly IHttpContextAccessor httpContextAccessor;
+        public DataContext()
+        {
+            
+        }
 
         public DataContext(DbContextOptions<DataContext> options, IHttpContextAccessor httpContextAccessor) : base(options)
         {
@@ -47,14 +51,14 @@ namespace Beis.LearningPlatform.Data
             return base.SaveChangesAsync(cancellationToken);
         }
 
-        public DbSet<DataProtectionKey> DataProtectionKeys { get; set; }
-        public DbSet<FeedbackProblemReport> FeedbackProblemReport { get; set; }
-        public DbSet<FeedbackPageUseful> FeedbackPageUseful { get; set; }
-        public DbSet<DiagnosticToolEmailAnswer> DiagnosticToolEmailAnswer { get; set; }
-        public DbSet<SkillsOneResponse> SkillsOneResponse { get; set; }
-        public DbSet<SkillsTwoResponse> SkillsTwoResponse { get; set; }
-        public DbSet<SkillsThreeResponse> SkillsThreeResponse { get; set; }
-        public DbSet<SatisfactionSurveyEntry> SatisfactionSurveyEntry { get; set; }
+        public virtual DbSet<DataProtectionKey> DataProtectionKeys { get; set; }
+        public virtual DbSet<FeedbackProblemReport> FeedbackProblemReport { get; set; }
+        public virtual DbSet<FeedbackPageUseful> FeedbackPageUseful { get; set; }
+        public virtual DbSet<DiagnosticToolEmailAnswer> DiagnosticToolEmailAnswer { get; set; }
+        public virtual DbSet<SkillsOneResponse> SkillsOneResponse { get; set; }
+        public virtual DbSet<SkillsTwoResponse> SkillsTwoResponse { get; set; }
+        public virtual DbSet<SkillsThreeResponse> SkillsThreeResponse { get; set; }
+        public virtual DbSet<SatisfactionSurveyEntry> SatisfactionSurveyEntry { get; set; }
 
         private void AddTimestamps()
         {

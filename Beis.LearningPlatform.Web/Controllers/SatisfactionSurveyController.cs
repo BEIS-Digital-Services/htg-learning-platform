@@ -4,14 +4,13 @@
     {
         private readonly ISatisfactionSurveyControllerHelper _satisfactionSurveyControllerHelper;
         private readonly ICmsService2 _cmsService2;
-        protected readonly IHttpContextAccessor _httpContextAccessor;
 
-        public SatisfactionSurveyController(ISatisfactionSurveyControllerHelper satisfactionSurveyControllerHelper,
-                                        ICmsService2 cmsService2, IHttpContextAccessor httpContextAccessor)
+        public SatisfactionSurveyController(
+            ISatisfactionSurveyControllerHelper satisfactionSurveyControllerHelper,
+            ICmsService2 cmsService2)
         {
             _satisfactionSurveyControllerHelper = satisfactionSurveyControllerHelper;
             _cmsService2 = cmsService2;
-            _httpContextAccessor = httpContextAccessor;
         }
 
         [Route("/satisfaction-survey")]
@@ -21,7 +20,7 @@
             cmsPage.SetPageTitle("Help to Grow: Digital - Satisfaction Survey");
             return View(new DataPageViewModel<SatisfactionSurveyViewModel>(cmsPage, new SatisfactionSurveyViewModel
             {
-                Url = _httpContextAccessor.HttpContext.GetRefererUrl()
+                Url = HttpContext.GetRefererUrl()
             }, "satisfaction-survey"));
         }
 
@@ -42,7 +41,7 @@
             {
                 if (!viewModel.RatingOptions.Contains(viewModel.Rating))
                 {
-                    return BadRequest(); // Invalid data posted
+                    return BadRequest(); //Invalid data posted
                 }
 
                 var result = await _satisfactionSurveyControllerHelper.SaveSatisfactionSurvey(viewModel);

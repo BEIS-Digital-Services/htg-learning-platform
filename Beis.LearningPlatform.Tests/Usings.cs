@@ -1,0 +1,15 @@
+global using AutoMapper;
+global using Beis.LearningPlatform.BL.Services;
+global using Beis.LearningPlatform.Web.ControllerHelpers;
+global using Beis.LearningPlatform.Web.Controllers;
+global using Beis.LearningPlatform.Web.Models;
+global using Beis.LearningPlatform.Web.Services;
+global using Beis.LearningPlatform.Web.StrapiApi.Models;
+global using FluentAssertions;
+global using Microsoft.AspNetCore.Http;
+global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.Extensions.Logging;
+global using Moq;
+global using NUnit.Framework;
+global using System.Net;

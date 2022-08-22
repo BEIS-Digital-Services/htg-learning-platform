@@ -21,6 +21,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Beis.LearningPlatform.BL", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Beis.LearningPlatform.BL.Tests", "Beis.LearningPlatform.BL.Tests\Beis.LearningPlatform.BL.Tests.csproj", "{27691F33-347C-4001-A8EC-DD86A251D950}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Beis.LearningPlatform.Tests", "Beis.LearningPlatform.Tests\Beis.LearningPlatform.Tests.csproj", "{0C41F8E2-59FB-468D-AAB8-AB7422F9A363}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,10 @@ Global
 		{27691F33-347C-4001-A8EC-DD86A251D950}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{27691F33-347C-4001-A8EC-DD86A251D950}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{27691F33-347C-4001-A8EC-DD86A251D950}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C41F8E2-59FB-468D-AAB8-AB7422F9A363}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C41F8E2-59FB-468D-AAB8-AB7422F9A363}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C41F8E2-59FB-468D-AAB8-AB7422F9A363}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C41F8E2-59FB-468D-AAB8-AB7422F9A363}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -67,6 +73,7 @@ Global
 		{9AF75C8A-D2D0-4257-8A43-87F42EB33AD8} = {DE9FF5EE-2ADF-44AC-A3F4-F7F7FE731CF9}
 		{A2A62366-B249-4CA1-B6BA-3D1A276BE59F} = {DE9FF5EE-2ADF-44AC-A3F4-F7F7FE731CF9}
 		{27691F33-347C-4001-A8EC-DD86A251D950} = {DE9FF5EE-2ADF-44AC-A3F4-F7F7FE731CF9}
+		{0C41F8E2-59FB-468D-AAB8-AB7422F9A363} = {DE9FF5EE-2ADF-44AC-A3F4-F7F7FE731CF9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {571B9A34-29C5-4A1A-B416-DF165DC90814}
