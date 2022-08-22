@@ -98,10 +98,12 @@
 	</ItemGroup>
   
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+		<Exec Command="npm install" />
 		<Exec Command="npm run compile-sass" />
 	</Target>
 
 	<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+		<Exec Command="npm install" />
 		<Exec Command="npm run compile-sass" />
 	</Target>
 
