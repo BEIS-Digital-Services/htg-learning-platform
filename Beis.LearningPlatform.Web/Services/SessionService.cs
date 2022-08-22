@@ -5,16 +5,16 @@ namespace Beis.LearningPlatform.Web.Services
 {
     public class SessionService : ISessionService
     {
-        public void Set(string key, object value, HttpContext currentContext)
+        public void Set(string key, object value, HttpContext httpContext)
         {
             var serialized = JsonConvert.SerializeObject(value);
             var bytes = Encoding.UTF8.GetBytes(serialized);
-            currentContext.Session.Set(key, bytes);
+            httpContext.Session.Set(key, bytes);
         }
 
-        public bool TryGet<T>(string key, HttpContext currentContext, out T value)
+        public bool TryGet<T>(string key, HttpContext httpContext, out T value)
         {
-            if (!currentContext.Session.TryGetValue(key, out var bytes))
+            if (!httpContext.Session.TryGetValue(key, out var bytes))
             {
                 value = default;
                 return false;
@@ -41,16 +41,16 @@ namespace Beis.LearningPlatform.Web.Services
             return false;
         }
 
-        public bool HasValidSession(HttpContext currentContext)
+        public bool HasValidSession(HttpContext httpContext)
         {
-            var isAvailable = currentContext?.Session.IsAvailable ?? false;
+            var isAvailable = httpContext?.Session.IsAvailable ?? false;
 
-            return isAvailable && currentContext.Session.Keys.Any();
+            return isAvailable && httpContext.Session.Keys.Any();
         }
     
-        public void Remove(string key, HttpContext currentContext)
+        public void Remove(string key, HttpContext httpContext)
         {
-            currentContext.Session.Remove(key);
+            httpContext.Session.Remove(key);
         }
     }
 }

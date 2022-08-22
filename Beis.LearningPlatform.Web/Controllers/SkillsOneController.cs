@@ -6,7 +6,6 @@
     public class SkillsOneController : FormControllerBase
     {
         private readonly IDiagnosticToolControllerHelper _controllerHelper;
-        private readonly ISessionService _sessionService;
 
         /// <summary>
         /// Creates a new instance of the class with the specified parameters.
