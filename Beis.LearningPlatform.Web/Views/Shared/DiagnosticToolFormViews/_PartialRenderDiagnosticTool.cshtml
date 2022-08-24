@@ -111,7 +111,7 @@
                                     }
                                     else
                                     {
-                                        <div class="govuk-grid-column-two-thirds">
+                                    
                                             <p class="govuk-body">
                                                 You’ve completed the @Model.steps[0].elements[0].text.ToLower() section of your action plan.
                                             </p>
@@ -128,15 +128,15 @@
                                                     </div>
                                                 }
                                                 <div style="align-self:center;">
-                                                    <h1 class="govuk-fieldset__heading">
+                                                    <h2 class="govuk-fieldset__heading">
                                                         <span>@Model.steps[0].elements[0].text</span>
                                                         <span class="govuk-!-font-weight-regular">@Model.steps[0].elements[0].text2</span>
-                                                    </h1>
+                                                    </h2>
                                                 </div>
 
                                             </div>
 
-                                        </div>
+                                     
                                     }
                                 }
                                 else if (isInstructionsPage)
