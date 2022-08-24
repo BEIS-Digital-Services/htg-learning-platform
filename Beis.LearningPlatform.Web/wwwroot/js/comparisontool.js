@@ -3,7 +3,7 @@ var compareButtonsEnabled = false;
 
 document.addEventListener("DOMContentLoaded", function () {
     var checkBoxes = null;
-    
+
 
     document.querySelectorAll("form").forEach(f => f.addEventListener("submit", validateCompareButton));
 
@@ -15,11 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
         c.disabled = false;
     });
 
-    const productCategoryFilters = document.querySelectorAll(".productCategory");
-
-    setVisibleCategories();
-    checkVisibleCategories();
-    productCategoryFilters.forEach(pcf => pcf.addEventListener("change", toggleProductsBasedOnCategory));
+    ctProductFilter.init();
 
     var previouslySelectedIds = document.querySelector("#selectedProductIds");
     if (previouslySelectedIds && previouslySelectedIds.value !== "") {
@@ -134,75 +130,89 @@ function validateCompareButton(e) {
     return true;
 }
 
-function toggleProductsBasedOnCategory() {
-    document.querySelector("#allProductsDiv").style.display = "none";
+const ctProductFilter = {
+    productCategoryFilters: [],
+    expectedProductCategories: [],
+    init: function () {
+        this.productCategoryFilters = Array.from(document.querySelectorAll(".productCategory"));
+        this.expectedProductCategories = this.productCategoryFilters.map(x => x.getAttribute("data-id"));
 
-    toggleIndividualAndGroupCompareButtons();
+        this.setVisibleCategories();
+        this.checkVisibleCategories();
+        this.productCategoryFilters.forEach(pcf => pcf.addEventListener("change", ctProductFilter.toggleProductsBasedOnCategory));
+    },
 
-    const allCategoriesCheckBoxes = document.querySelectorAll(".productCategory");
-        
-    const checkedCategoryIds = GetCheckedCategoryIds();
-    allCategoriesCheckBoxes.forEach(r => {
-        const dataId = r.getAttribute("data-id");
-        if (r.checked && !checkedCategoryIds.includes(dataId)) {
-            checkedCategoryIds.push(dataId);
-        } else if (!r.checked && checkedCategoryIds.includes(dataId)) {
-            checkedCategoryIds.splice(checkedCategoryIds.indexOf(dataId), 1); 
+    GetCheckedCategoryIds: function () {
+        const hashValue = location.hash ? location.hash.replace("#", "") : null;
+        if (!hashValue) {
+            return [];
         }
-    });    
-    SetCheckedCategoryIds(checkedCategoryIds);
+        return hashValue.split(",").filter(x => this.expectedProductCategories.includes(x));
+    },
 
-    setVisibleCategories();
-}
+    setCheckedCategoryIds: function (checkedCategoryIds) {
+        history.replaceState(null, "", checkedCategoryIds && checkedCategoryIds.length ? "#" + checkedCategoryIds.toString() : "#");
+    },
 
-function GetCheckedCategoryIds() {    
-    const hashValue = location.hash ? location.hash.replace("#", "") : null;
-    return hashValue ? hashValue.split(",") : [];
-}
+    checkVisibleCategories: function () {
+        const checkedCategoryIds = this.GetCheckedCategoryIds();
 
-function SetCheckedCategoryIds(checkedCategoryIds) {
-    history.replaceState(null, "", checkedCategoryIds && checkedCategoryIds.length ? "#" + checkedCategoryIds.toString() : "#");
-}
-
-function checkVisibleCategories() {
-    const checkedCategoryIds = GetCheckedCategoryIds();
-
-    document.querySelectorAll(".productCategory").forEach(elmnt => {
-        elmnt.checked = checkedCategoryIds.includes(elmnt.getAttribute("data-id"));
-    });
-}
-
-function setVisibleCategories() {
-    const checkedCategoryIds = GetCheckedCategoryIds();
-    const formDivs = document.querySelectorAll(".formDiv");
-
-    formDivs.forEach(d => {
-        d.style.display = "none";
-    });
-
-    if (checkedCategoryIds.length === 0) {
-        formDivs.forEach(d => {
-            d.style.display = "block";
+        this.productCategoryFilters.forEach(elmnt => {
+            elmnt.checked = checkedCategoryIds.includes(elmnt.getAttribute("data-id"));
         });
-    } else {
-        checkedCategoryIds.forEach(r => {
-            document.querySelector("#formDiv-" + r).style.display = "block";
+    },
+
+    setVisibleCategories: function () {
+        const checkedCategoryIds = this.GetCheckedCategoryIds();
+        const formDivs = document.querySelectorAll(".formDiv");
+
+        formDivs.forEach(d => {
+            d.style.display = "none";
+        });
+
+        if (checkedCategoryIds.length === 0) {
+            formDivs.forEach(d => {
+                d.style.display = "block";
+            });
+        } else {
+            checkedCategoryIds.forEach(r => {
+                document.querySelector("#formDiv-" + r).style.display = "block";
+            });
+        }
+    },
+
+    toggleProductsBasedOnCategory: function () {
+        document.querySelector("#allProductsDiv").style.display = "none";
+
+        ctProductFilter.toggleIndividualAndGroupCompareButtons();
+
+        const checkedCategoryIds = ctProductFilter.GetCheckedCategoryIds();
+        ctProductFilter.productCategoryFilters.forEach(r => {
+            const dataId = r.getAttribute("data-id");
+            if (r.checked && !checkedCategoryIds.includes(dataId)) {
+                checkedCategoryIds.push(dataId);
+            } else if (!r.checked && checkedCategoryIds.includes(dataId)) {
+                checkedCategoryIds.splice(checkedCategoryIds.indexOf(dataId), 1);
+            }
+        });
+        ctProductFilter.setCheckedCategoryIds(checkedCategoryIds);
+
+        ctProductFilter.setVisibleCategories();
+    },
+
+    toggleIndividualAndGroupCompareButtons: function () {
+        document.querySelectorAll(".formDiv").forEach(f => {
+            selectedIds = [];
+            f.querySelectorAll(".button__input").forEach(c => {
+                c.className = "govuk-button button__input compare";
+                c.removeAttribute("disabled");
+            });
+            f.querySelectorAll(".compareButton").forEach(b => {
+                b.value = "Compare products";
+                b.disabled = "disabled";
+                b.className = b.className + " govuk-button--disabled";
+            });
+            compareButtonsEnabled = false;
         });
     }
-}
-
-function toggleIndividualAndGroupCompareButtons() {
-    document.querySelectorAll(".formDiv").forEach(f => {
-        selectedIds = [];
-        f.querySelectorAll(".button__input").forEach(c => {
-            c.className = "govuk-button button__input compare";
-            c.removeAttribute("disabled");
-        });
-        f.querySelectorAll(".compareButton").forEach(b => {
-            b.value = "Compare products";
-            b.disabled = "disabled";
-            b.className = b.className + " govuk-button--disabled";
-        });
-        compareButtonsEnabled = false;
-    });
 }
