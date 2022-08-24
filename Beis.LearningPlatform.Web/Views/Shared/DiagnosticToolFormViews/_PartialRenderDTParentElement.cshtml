@@ -186,7 +186,6 @@
 
 
         case FormDisplayControlType.Textarea:
-            <fieldset>
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                     <h2 class="govuk-fieldset__heading">
                         <span>@currentFormStepElement.text</span>
@@ -212,16 +211,11 @@
             <span asp-validation-for="@Model.steps[currentStep].elements[currentElement].textControlHtmlId" class="govuk-error-message">
                 @currentFormStepElement.validationError
             </span>
-
-
-
-            <div>
-                <textarea asp-for="@Model.steps[currentStep].elements[currentElement].value" id="@(Model.steps[currentStep].elements[currentElement].InputCtrlId)"
-              rows="5" class="govuk-textarea">
-                    @Model.steps[currentStep].elements[currentElement].value
-                                                                                                    </textarea>
-            </div>
-            </fieldset>
+            
+            <textarea asp-for="@Model.steps[currentStep].elements[currentElement].value" id="@(Model.steps[currentStep].elements[currentElement].InputCtrlId)"
+              rows="5" class="govuk-textarea">@Model.steps[currentStep].elements[currentElement].value</textarea>
+          
+            
             break;
 
 
