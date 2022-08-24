@@ -14,7 +14,7 @@
             var viewModel = new CmsQuoteColumnViewModel(cmsPageComponent);
             if (viewModel.HasContent)
             {
-                viewModel.HtmlQuote = Markdown.ToHtml(viewModel.Component.quote, _markdownPipeline);
+                viewModel.HtmlQuote = Markdown.ToHtml(viewModel.Component.quote, _markdownPipeline)?.Replace("p>", "blockquote>");
                 viewModel.HtmlCopy = Markdown.ToHtml(viewModel.Component.copy, _markdownPipeline);
                 viewModel.QuoteAriaText = viewModel.Component.aria;
             }

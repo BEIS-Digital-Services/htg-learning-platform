@@ -1,6 +1,9 @@
 @import 'beis-variables.scss';
 @import 'beis-mixins.scss';
 
+.nojs .expression-of-interest {
+    display: none;
+}
 
 .expression-of-interest {
     #eoi-step3 {

@@ -17,7 +17,7 @@
                     @if (!string.IsNullOrWhiteSpace(Model.Component.videoLink))
                     {
                         <div class="youtube-container">
-                            <iframe width="560" height="315" src="@Model.Component.videoLink" title="@Model.Component.VideoTitle" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <iframe width="560" height="315" src="@Model.Component.videoLink" title="@Model.Component.VideoTitle" style="border:none;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
                     }
                     <div class="govuk-body beis-white-text govuk-!-margin-top-6">
@@ -40,7 +40,7 @@
                     {
                         <div class="img">
                             <div class="youtube-container">
-                                <iframe width="560" height="315" src="@Model.Component.videoLink" title="@Model.Component.VideoTitle" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                <iframe width="560" height="315" src="@Model.Component.videoLink" title="@Model.Component.VideoTitle" style="border:none;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                             </div>
                         </div>
                     }
