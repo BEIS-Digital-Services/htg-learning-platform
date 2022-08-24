@@ -14,16 +14,16 @@
                 <form asp-action="Index" method="post" class="form-horizontal">
                     @if (Model.CurrStep > 1 && Model.backLink)
                     {
-                        <div class="p-left-20">
+                       
                             <button id="btn-diagnostictoolformviews-renderdiagnostictool-prevstep" type="submit" asp-action="PrevStep" class="govuk-back-link btn-as-link">Back</button>
-                        </div>
+                   
                     }
 
                     @if (Model.CurrStep == 1 && string.IsNullOrEmpty(Model.backURLfromQ1) == false)
                     {
-                        <div class="p-left-20">
+                        
                             <a id="link-diagnostictoolformviews-renderdiagnostictool-back" href="@Model.backURLfromQ1" class="govuk-back-link">Back</a>
-                        </div>
+                     
                     }
 
                     @if (Model.validationErrors != null)
