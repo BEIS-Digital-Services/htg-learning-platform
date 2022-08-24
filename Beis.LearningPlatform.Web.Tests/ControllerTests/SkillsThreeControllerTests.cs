@@ -1,11 +1,13 @@
-﻿namespace Beis.LearningPlatform.Web.Tests.ControllerTests
+﻿using Beis.HelpToGrow.Common.Interfaces;
+
+namespace Beis.LearningPlatform.Web.Tests.ControllerTests
 {
     public class SkillsThreeControllerTests : FormControllerBaseTest
     {
         private readonly Mock<IHttpContextAccessor> _httpContextAccessor = new();
         private readonly Mock<HttpContext> _httpContext = new();
         private readonly Mock<HttpRequest> _httpRequest = new();
-        private Mock<ISession> _session = new();
+        private readonly Mock<ISession> _session = new();
         private string _currentPath;
         protected override FormTypes GetFormType()
         {

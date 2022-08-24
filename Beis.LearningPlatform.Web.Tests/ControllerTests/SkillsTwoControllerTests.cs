@@ -1,4 +1,6 @@
-﻿namespace Beis.LearningPlatform.Web.Tests.ControllerTests
+﻿using Beis.HelpToGrow.Common.Interfaces;
+
+namespace Beis.LearningPlatform.Web.Tests.ControllerTests
 {
     public class SkillsTwoControllerTests : FormControllerBaseTest
     {

@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.DataProtection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using System.IO.Abstractions;
+using Beis.HelpToGrow.Common.Interfaces;
+using Beis.HelpToGrow.Common.Services;
 
 namespace Beis.LearningPlatform.Web.Utils
 {

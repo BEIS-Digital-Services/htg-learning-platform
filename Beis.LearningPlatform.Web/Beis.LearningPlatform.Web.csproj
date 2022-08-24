@@ -29,6 +29,8 @@
 		<TypeScriptCompile Remove="node_modules\**" />
 		<TypeScriptCompile Remove="Views\Shared\DigitalToolFormViews\**" />
 		<TypeScriptCompile Remove="Views\Shared\SkillsToolFormViews\**" />
+		<Compile Remove="Services\SessionService.cs" />
+		<Compile Remove="Interfaces\ISessionService.cs" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -52,7 +54,7 @@
 	<ItemGroup>
 		<PackageReference Include="AutoMapper" Version="10.1.1" />
 		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
-		<PackageReference Include="Beis.HelpToGrow.Persistence" Version="6.0.1" />
+		<PackageReference Include="Beis.HelpToGrow.Persistence" Version="6.0.8" />
 		<PackageReference Include="Markdig" Version="0.30.2" />
 		<PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.19.0" />
 		<PackageReference Include="Microsoft.AspNetCore.DataProtection.EntityFrameworkCore" Version="5.0.12" />
@@ -71,7 +73,7 @@
 		</PackageReference>
 		<PackageReference Include="OpenCover" Version="4.7.1221" />
 		<PackageReference Include="System.IO.Abstractions" Version="13.2.47" />
-    <PackageReference Include="Beis.HelpToGrow.Common" Version="6.1.14" />
+    <PackageReference Include="Beis.HelpToGrow.Common" Version="6.1.26" />
 	</ItemGroup>
 
 	<ItemGroup>
