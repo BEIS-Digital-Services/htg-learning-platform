@@ -1,16 +1,17 @@
 $govuk-global-styles: true;
 
-@import "../../node_modules/govuk-frontend/govuk/all";
-
 @import "settings/all";
-@import "core/all";
+@import "../../node_modules/govuk-frontend/govuk/all";
 
 %govuk-heading-xl,
 %govuk-heading-l, 
 %govuk-heading-m,
-%govuk-fieldset__legend {
+.govuk-fieldset__legend {
     color: $beis-blue;
 }
+
+@import "core/all";
+
 
 @import "article.scss";
 @import "articles.scss";
