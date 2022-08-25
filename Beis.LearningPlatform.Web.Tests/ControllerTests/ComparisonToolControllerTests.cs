@@ -9,6 +9,7 @@ namespace Beis.LearningPlatform.Web.Tests.ControllerTests
         private readonly Mock<IHomeControllerHelper> _homeControllerHelper = new();
         private readonly Mock<ILogger<ComparisonToolControllerHelper>> _helperLogger = new();
         private readonly Mock<IComparisonToolService> _comparisonToolService = new();
+        private readonly Mock<ICmsService> _cmsService = new();
         private IOptions<VoucherAppOption> _voucherAppOptions;
         private IOptions<VendorAppOption> _vendorAppOptions;
         private IOptions<ComparisonToolDisplayOption> _ctDisplayOptions;
@@ -16,7 +17,7 @@ namespace Beis.LearningPlatform.Web.Tests.ControllerTests
         private readonly Mock<HttpContext> _httpContext = new();
         private readonly Mock<HttpRequest> _httpRequest = new();
         private IProductCategoryDisplaySettings _productCategoryDisplaySettings;
-
+        
         #region Test Values 
 
         private const string TestValueRequestReferer = "_requestReferer";
@@ -100,8 +101,9 @@ namespace Beis.LearningPlatform.Web.Tests.ControllerTests
                 _comparisonToolService.Object,
                 _voucherAppOptions,
                 _vendorAppOptions,
-                productCategoryDisplaySettings,
-                _httpContextAccessor.Object);
+                _ctDisplayOptions,
+                _httpContextAccessor.Object,
+                _cmsService.Object);
             return new ComparisonToolController(_controllerLogger.Object, controlHelper, _homeControllerHelper.Object);
         }
 
@@ -121,6 +123,15 @@ namespace Beis.LearningPlatform.Web.Tests.ControllerTests
             _productCategoryDisplaySettings = new ProductCategoryDisplaySettings(_ctDisplayOptions);
             _comparisonToolService.Setup(x => x.GetApprovedProductsFromApprovedVendors())
                 .Returns(Task.FromResult(TestValueComparisonToolProducts));
+
+            var displaySettings = new List<CMSComparisonToolSearchTag>()
+            {
+                new () { systemId = 1, systemName = "accounting", displayName = "DIGITAL ACCOUNTING SOFTWARE", friendlyDisplayName = "Digital Accounting", isActive = true },
+                new () { systemId = 2, systemName = "crm", displayName = "CUSTOMER RELATIONSHIP MANAGEMENT (CRM) SOFTWARE", friendlyDisplayName = "Customer Relationship Management", isActive = true },
+                new () { systemId = 3, systemName = "ecommerce", displayName = "ECOMMERCE", friendlyDisplayName= "eCommerce", isActive = true },
+                new () { systemId = 4, systemName = "cyberSecurity", displayName = "CYBER SECURITY", friendlyDisplayName = "Cyber Security" , isActive = true},
+            };
+            _cmsService.Setup(x => x.GetDisplaySettings()).ReturnsAsync(displaySettings);
         }
 
         [Test]
@@ -176,9 +187,15 @@ namespace Beis.LearningPlatform.Web.Tests.ControllerTests
             Assert.IsNotNull(viewModel.products);
             Assert.IsTrue(viewModel.products.Any());
 
+            var displaySettings = new List<CMSComparisonToolSearchTag>()
+            {
+                new () { systemId = 2, systemName = "crm", displayName = "CUSTOMER RELATIONSHIP MANAGEMENT (CRM) SOFTWARE", friendlyDisplayName = "Customer Relationship Management", isActive = true },
+                new () { systemId = 1, systemName = "accounting", displayName = "DIGITAL ACCOUNTING SOFTWARE", friendlyDisplayName = "Digital Accounting", isActive = true },
+                new () { systemId = 4, systemName = "cyberSecurity", displayName = "CYBER SECURITY", friendlyDisplayName = "Cyber Security" , isActive = true},
+            };
 
             var productCategoryIdList = productCategoryNames.Split(',').Select(categoryName =>
-                _productCategoryDisplaySettings.DisplaySettings.FirstOrDefault(_ => _.name == categoryName).id.ToString()).ToList();
+                displaySettings.FirstOrDefault(_ => _.systemName == categoryName).systemId.ToString()).ToList();
 
             var productTypeList = viewModel.products.Select(x => x.product_type.ToString()).ToList();
 
@@ -265,7 +282,7 @@ namespace Beis.LearningPlatform.Web.Tests.ControllerTests
             var controller = CreateController();
             var tempData = new Mock<ITempDataDictionary>();
             controller.TempData = tempData.Object;
-
+            
             var viewResult = await controller.CompareProducts(productCategoryIds, productIds) as ViewResult;
 
             AssertCompareProducts(viewResult, productIds, true);
