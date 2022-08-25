@@ -2,6 +2,7 @@
     padding: 20px;
     @include govuk-font($size: 24);
     box-sizing: border-box;
+    margin-bottom: 20px;
     @include govuk-media-query (tablet) {
         padding: 30px;
         margin-bottom: 30px;
