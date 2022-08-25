@@ -1,8 +1,7 @@
 .beis-icon-link {
     @include govuk-link-common;
     @include govuk-link-style-no-visited-state;
-    @include govuk-font($size: 19);
-    font-weight: $govuk-font-weight-bold;
+    @include govuk-font($size: 16, $weight: bold);
     display: inline-flex;
     align-items: center;
 }
@@ -11,5 +10,11 @@
     display: inline-block;
     align-self: center;
     vertical-align: middle;
-    margin-right: 7px;
+    margin-right: .3em;
+    width: 1.4em;
+    height: 1.4em;
+}
+
+.beis-icon-link--l {
+    @include govuk-font($size: 19, $weight: bold);
 }
