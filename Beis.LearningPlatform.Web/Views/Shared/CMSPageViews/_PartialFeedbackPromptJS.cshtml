@@ -11,7 +11,7 @@
 
 <div id="feedback-prompt" class="feedback-prompt">
     <div id="feedback-prompt-0" class="feedback-bg-color">
-        <div id="feedback-prompt-1" class="govuk-width-container govuk-!-padding-1">
+        <div id="feedback-prompt-1" class="govuk-width-container govuk-!-padding-top-1 govuk-!-padding-bottom-1">
             <div id="FeedbackYesNoContainer" class="govuk-grid-row">
                     <div id="feedback-prompt-3" class="govuk-grid-column-one-half">
                         <div id="FeedbackYesNoDiv" class="wrapper-left">
@@ -20,7 +20,7 @@
                                 <h2 id="FeedbackYesNoMessage" class="message">@Model.message</h2>
                             }
                             
-                            <p id="FeedbackYesNoPanel" class="govuk-button-group">
+                            <div id="FeedbackYesNoPanel" class="govuk-button-group govuk-!-margin-bottom-0">
                                 @if (!string.IsNullOrWhiteSpace(Model.titleYes.url))
                                 {
                                     <button id="link-cmspageviews-feedbackpromptjs-yes" role="button"
@@ -40,7 +40,7 @@
                                         @Model.titleNo.label
                                     </button>
                                 }
-                            </p>
+                            </div>
                         </div>
                     </div>
 
@@ -64,7 +64,7 @@
             <div class="govuk-width-container">
                 @if (Model.NoCancelButton != null)
                 {
-                    <button id="link-cmspageviews-feedbackpromptjs-not-useful" class="govuk-button govuk-button--secondary"
+                    <button id="link-cmspageviews-feedbackpromptjs-not-useful" class="govuk-button govuk-button--secondary govuk-!-margin-top-4 beis-float-right-from-tablet"
                        onclick="feedback('close')" data-tabclick="true"
                        data-track-category="yesNoFeedbackForm"
                        data-track-action="FormClose"
@@ -120,7 +120,7 @@
         <div id="FeedbackReportProblemPanel" class="report-poroblem-container beis-white" style="display:none">
             <div class="govuk-width-container">
                  @if (Model.ReportCancelButton != null) {
-                    <button id="link-cmspageviews-feedbackpromptjs-page-is-not-useful" class="govuk-button secondary"
+                    <button id="link-cmspageviews-feedbackpromptjs-page-is-not-useful" class="govuk-button govuk-button--secondary govuk-!-margin-top-4 beis-float-right-from-tablet"
                        onclick="feedback('close')" data-tabclick="true"
                        data-track-category="yesNoFeedbackForm"
                        data-track-action="fFormClose"
