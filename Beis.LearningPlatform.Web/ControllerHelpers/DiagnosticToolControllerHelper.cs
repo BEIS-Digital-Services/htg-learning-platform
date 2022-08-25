@@ -362,6 +362,11 @@ namespace Beis.LearningPlatform.Web.ControllerHelpers
             {
                 var dto = new SkillsOneResponseDto();
 
+                dto.IsPrivacyPolicyAccepted = form.EmailAnswer?.IsPrivacyPolicyAccepted;
+                dto.IsOptedInForMarketing = form.EmailAnswer?.IsOptedInForMarketing;
+                dto.UserEmailAddress = form.EmailAnswer?.UserEmailAddress;
+                dto.SessionId = _httpContextAccessor?.HttpContext?.Session?.Id;
+
                 //step 1
                 dto.InterestedInNewOpportunities = boolStrToYesNo(form.steps[0].elements[0].answerOptions[0].value);
                 dto.InterestedInIncreasingSales = boolStrToYesNo(form.steps[0].elements[0].answerOptions[1].value);
@@ -418,6 +423,11 @@ namespace Beis.LearningPlatform.Web.ControllerHelpers
             try
             {
                 var skillsTwoResponse = new SkillsTwoResponse();
+
+                skillsTwoResponse.IsPrivacyPolicyAccepted = form.EmailAnswer?.IsPrivacyPolicyAccepted;
+                skillsTwoResponse.IsOptedInForMarketing = form.EmailAnswer?.IsOptedInForMarketing;
+                skillsTwoResponse.UserEmailAddress = form.EmailAnswer?.UserEmailAddress;
+                skillsTwoResponse.SessionId = _httpContextAccessor?.HttpContext?.Session?.Id;
 
                 //step 1
                 skillsTwoResponse.UseTechnologyForCommunication = form.steps[0].elements[0].value;
@@ -489,6 +499,12 @@ namespace Beis.LearningPlatform.Web.ControllerHelpers
             try
             {
                 var skillsThreeResponse = new SkillsThreeResponse();
+
+                skillsThreeResponse.IsPrivacyPolicyAccepted = form.EmailAnswer?.IsPrivacyPolicyAccepted;
+                skillsThreeResponse.IsOptedInForMarketing = form.EmailAnswer?.IsOptedInForMarketing;
+                skillsThreeResponse.UserEmailAddress = form.EmailAnswer?.UserEmailAddress;
+                skillsThreeResponse.SessionId = _httpContextAccessor?.HttpContext?.Session?.Id;
+
                 skillsThreeResponse.Questionnaire = form.userTypeActionPlanSection;
 
                 //step 1
