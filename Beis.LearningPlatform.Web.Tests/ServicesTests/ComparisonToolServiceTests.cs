@@ -53,42 +53,107 @@ public class ComparisonToolServiceTests
     [Test]
     public async Task Should_return_populated_products_list()
     {
-        _productRepository.Setup(x => x.GetProducts()).ReturnsAsync(
-            new List<product>()
-            {
-                new product()
-                {
-                    product_id = 1,
-                    vendor_id = 2
-                }
-            }
-        );
-        _pricingRepository.Setup(x => x.GetAllProductPricesForProductId(1)).ReturnsAsync(
-                new List<product_price>()
-                {
-                    new product_price()
-                    {
-                        productid = 1,
-                        product_price_id = 1
-                    }
-                }
-            );
-        _pricingRepository.Setup(x => x.GetAllProductBaseMetricPricesByProductPriceId(1)).ReturnsAsync(
-            new List<product_price_base_metric_price>()
-            {
-                new product_price_base_metric_price()
-                {
-                    product_price_id = 1
-                }
-            }
+        _productRepository.Setup(x => x.GetProducts())
+            .ReturnsAsync(new List<product>() { new() { product_id = 1, vendor_id = 2 } });
+        _pricingRepository.Setup(x => x.GetAllProductPricesForProductId(1))
+            .ReturnsAsync(new List<product_price>() { new() { productid = 1, product_price_id = 1 } });
+        _pricingRepository.Setup(x => x.GetAllProductBaseMetricPricesByProductPriceId(1))
+            .ReturnsAsync(new List<product_price_base_metric_price>() { new() { product_price_id = 1 } }
         );
         _mapper.Setup(x => x.Map<ComparisonToolProduct>(It.IsAny<product[]>()))
-            .Returns(
-                new ComparisonToolProduct()
-            );
+            .Returns(new ComparisonToolProduct(){ product_id = 1, vendor_id = 2});
         var result = await _comparisonToolService.GetProducts();
         result.Should().NotBeNull();
         result.Should().BeOfType<List<ComparisonToolProduct>>();
-        result.Count().Should().Be(1);
+    }
+
+    [Test]
+    public async Task Should_return_product()
+    {
+        _productRepository.Setup(x => x.GetProduct(1)).ReturnsAsync(
+             new product() { product_id = 1, vendor_id = 2 }
+        );
+        _pricingRepository.Setup(x => x.GetAllProductPricesForProductId(1))
+            .ReturnsAsync(new List<product_price>() { new() { productid = 1, product_price_id = 1 } });
+        _pricingRepository.Setup(x => x.GetAllProductBaseMetricPricesByProductPriceId(1))
+            .ReturnsAsync(new List<product_price_base_metric_price>() { new() { product_price_id = 1 } }
+            );
+        _mapper.Setup(x => x.Map<ComparisonToolProduct>(It.IsAny<product>()))
+            .Returns(new ComparisonToolProduct(){ product_id = 1, vendor_id = 2});
+        var result = await _comparisonToolService.GetProduct(1);
+        result.Should().NotBeNull();
+        result.product_id.Should().Be(1);
+    }
+    
+    [Test]
+    public async Task Should_return_populated_approved_products_list()
+    {
+        _productRepository.Setup(x => x.GetApprovedProductsFromApprovedVendors())
+            .ReturnsAsync(new List<product>() { new() { product_id = 1, vendor_id = 2 } });
+        _pricingRepository.Setup(x => x.GetAllProductPricesForProductId(1))
+            .ReturnsAsync(new List<product_price>() { new() { productid = 1, product_price_id = 1 } });
+        _pricingRepository.Setup(x => x.GetAllProductBaseMetricPricesByProductPriceId(1))
+            .ReturnsAsync(new List<product_price_base_metric_price>() { new() { product_price_id = 1 } }
+            );
+        _mapper.Setup(x => x.Map<ComparisonToolProduct>(It.IsAny<product>()))
+            .Returns(new ComparisonToolProduct());
+        var result = await _comparisonToolService.GetApprovedProductsFromApprovedVendors();
+        result.Should().NotBeNull();
+        result.Should().BeOfType<List<ComparisonToolProduct>>();
+    }
+
+    [Test]
+    public async Task Should_return_approved_product()
+    {
+        _productRepository.Setup(x => x.GetApprovedProductFromApprovedVendor(1)).ReturnsAsync(
+            new product() { product_id = 1, vendor_id = 2 });
+        _pricingRepository.Setup(x => x.GetAllProductPricesForProductId(1))
+            .ReturnsAsync(new List<product_price>() { new() { productid = 1, product_price_id = 1 } });
+        _pricingRepository.Setup(x => x.GetAllProductBaseMetricPricesByProductPriceId(1))
+            .ReturnsAsync(new List<product_price_base_metric_price>() { new() { product_price_id = 1 } }
+            );
+        _mapper.Setup(x => x.Map<ComparisonToolProduct>(It.IsAny<product>()))
+            .Returns(new ComparisonToolProduct(){ product_id = 1, vendor_id = 2});
+        var result = await _comparisonToolService.GetApprovedProductFromApprovedVendor(1);
+        result.Should().NotBeNull();
+        result.product_id.Should().Be(1);
+    }
+
+    [Test]
+    public async Task Should_populate_nav_footer_from_CMS()
+    {
+        _cmsService.Setup(x => x.GetComparisonToolPageResult("Comparison-tools"))
+            .ReturnsAsync(new List<ComparisonToolPageViewModel>()
+            {
+                new ComparisonToolPageViewModel()
+                {
+                    footers =new List<CMSPageFooter>(){ new CMSPageFooter()},
+                    navigations = new List<CMSPageNavigation>(){ new CMSPageNavigation()}
+                }
+            });
+        var view = new ComparisonToolPageViewModel();
+        var result = await _comparisonToolService.SetNavAndFooter(view);
+        result.Should().BeTrue();
+        view.navigations.Should().NotBeNull();
+        view.footers.Should().NotBeNull();
+    }
+
+    [Test]
+    public async Task Should_populate_product_details()
+    {
+        _settingsProductCapabilitiesRepository.Setup(x => x.GetSettingsProductCapabilities())
+            .ReturnsAsync(new List<settings_product_capability>() { new() { product_type = 1 } });
+        _productFiltersRepository.Setup(x => x.GetProductFilters(1))
+            .ReturnsAsync(new List<product_filter>() { new() { filter_id = 1, product_id = 1 } });
+        _settingsProductFiltersRepository.Setup(x => x.GetSettingsProductFilters(It.IsAny<long>()))
+            .ReturnsAsync(new List<settings_product_filter>() { new() { filter_id = 1} });
+        var products = new List<ComparisonToolProduct>()
+            { new ComparisonToolProduct() { product_id = 1, 
+                vendor_id = 1, 
+                product_type = 1, 
+                productPrices = new List<product_price>() }};
+        await _comparisonToolService.PopulateChildRelationships(products);
+        products.Should().NotBeNull();
+        products[0].Should().BeOfType<ComparisonToolProduct>();
     }
 }
