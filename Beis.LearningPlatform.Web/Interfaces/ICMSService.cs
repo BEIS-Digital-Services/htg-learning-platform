@@ -16,5 +16,6 @@
 
         /// <param name="orderByIds">Return in same order as Id params</param>
         Task<IEnumerable<CMSSearchArticle>> GetSearchArticles(IEnumerable<int> searchArticleIds, bool orderByIds = false);
+        Task<IList<CMSComparisonToolSearchTag>> GetDisplaySettings();
     }
 }

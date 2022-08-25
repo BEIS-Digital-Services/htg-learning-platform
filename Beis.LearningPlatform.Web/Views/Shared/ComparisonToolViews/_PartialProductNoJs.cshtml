@@ -19,7 +19,7 @@
 
             @foreach (var tag in Model.productsCategorySelected)
             {
-                var displayTag = Model.ProductCategoryList.Where(x => x.name == tag).FirstOrDefault();
+                var displayTag = Model.ProductCategoryList.Where(x => x.systemName == tag).FirstOrDefault();
                 if (displayTag != null)
                 {
                     var clipId = "clip" + productsCategorySelectedCount++;
@@ -66,20 +66,20 @@
                         var clipId = "lowerclip" + productsCategorySelectedCount;
 
                         // Check to ensure it hasn't been selected for filtering
-                        if (!Model.productsCategorySelected.Contains(tag.name))
+                        if (!Model.productsCategorySelected.Contains(tag.systemName))
                         {
 
                             IDictionary<string, string> routeData = new Dictionary<string, string>();
                             if (!string.IsNullOrWhiteSpace(Model.SelectedProductCategoryId))
                             {
-                                routeData.Add("productCategoryIds", Model.SelectedProductCategoryId + "," + tag.name);
+                                routeData.Add("productCategoryIds", Model.SelectedProductCategoryId + "," + tag.systemName);
                             }
                             else
                             {
-                                routeData.Add("productCategoryIds", tag.name);
+                                routeData.Add("productCategoryIds", tag.systemName);
                             }
 
-                            <a id="link-comparisontoolviews-productnojs--tag-select-@(tag?.name?.ToLowerInvariant())" style="text-decoration: none" asp-controller="comparisonTool" asp-action="FilterBy" asp-all-route-data="routeData">
+                            <a id="link-comparisontoolviews-productnojs--tag-select-@(tag?.systemName?.ToLowerInvariant())" style="text-decoration: none" asp-controller="comparisonTool" asp-action="FilterBy" asp-all-route-data="routeData">
                                 <strong class="govuk-tag beis-tag">
                                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <g clip-path="url(#@clipId)">
