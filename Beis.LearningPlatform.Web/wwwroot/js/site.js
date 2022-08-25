@@ -184,7 +184,7 @@ function setImgItemLinkIcon(itemKey, spn_imgitemicon_std, spn_imgitemicon_comple
         var spnCompleted = document.getElementById(spn_imgitemicon_completed);
         spnCompleted.style.display = "inline";
 
-        var txtCompleted = document.getElementById(txt_imgitemicon_completed);
+        const txtCompleted = document.getElementById(txt_imgitemicon_completed);
         txtCompleted.setAttribute("value", uniqueId);
     }
 }
