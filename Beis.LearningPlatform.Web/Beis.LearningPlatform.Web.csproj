@@ -29,8 +29,6 @@
 		<TypeScriptCompile Remove="node_modules\**" />
 		<TypeScriptCompile Remove="Views\Shared\DigitalToolFormViews\**" />
 		<TypeScriptCompile Remove="Views\Shared\SkillsToolFormViews\**" />
-		<Compile Remove="Services\SessionService.cs" />
-		<Compile Remove="Interfaces\ISessionService.cs" />
 	</ItemGroup>
 
 	<ItemGroup>
