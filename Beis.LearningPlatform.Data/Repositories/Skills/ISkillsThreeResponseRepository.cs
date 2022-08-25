@@ -5,5 +5,6 @@
     /// </summary>
     public interface ISkillsThreeResponseRepository : IFeedbackGenericRepository<SkillsThreeResponse>
     {
+        public SkillsThreeResponse FindByUniqueId(string uniqueId);
     }
 }

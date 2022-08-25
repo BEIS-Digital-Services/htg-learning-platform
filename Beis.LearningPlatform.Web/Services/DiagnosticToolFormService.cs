@@ -455,6 +455,7 @@
                 returnValue.backLink = appForm.BackLink;
                 returnValue.backURLfromQ1 = appForm.BackURLfromQ1;
                 returnValue.userTypeActionPlanSection = appForm.UserTypeActionPlanSection;
+                returnValue.UniqueId = System.Guid.NewGuid().ToString();
                 returnValue.formLogo = appForm.FormLogo;
                 returnValue.FormLogoAlternateText = appForm.FormLogoAlternateText;
 

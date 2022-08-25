@@ -85,4 +85,6 @@ public class CmsImageItemViewModel
             return $"{_cmsPageComponent.UniqueActionName}_{_cmsPageComponent.id}";
         }
     }
+
+    public string UniqueIdJS { get; set; }
 }
