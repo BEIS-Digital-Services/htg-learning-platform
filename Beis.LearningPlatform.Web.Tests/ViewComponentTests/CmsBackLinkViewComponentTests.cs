@@ -26,8 +26,7 @@
 
             Assert.IsTrue(model.HasContent);
 
-            Assert.AreEqual("Back", model.BackLink.LinkText);
-            Assert.AreEqual("javascript:", model.BackLink.LinkUrl);
+            Assert.IsNull(model.BackLink);
             Assert.AreEqual($"back-link-{pagename}", model.LinkId);
             Assert.IsTrue(model.IsJavascriptLink);
         }
