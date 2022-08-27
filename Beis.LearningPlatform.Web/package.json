@@ -11,6 +11,6 @@
   "dependencies": {
     "dart-sass": "^1.25.0",
     "govuk-frontend": "^3.13.0",
-    "sass": "^1.37.5"
+    "sass": "^1.54.3"
   }
 }
