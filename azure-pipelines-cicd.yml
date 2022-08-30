@@ -21,4 +21,5 @@ extends:
     projectToPublish: 'Beis.LearningPlatform.Web.csproj'
     webApplicationNameSuffix: 'webapp-app'
     webApplicationResourceGroupFormat: 'webapp'
+    requireSass: true
     
