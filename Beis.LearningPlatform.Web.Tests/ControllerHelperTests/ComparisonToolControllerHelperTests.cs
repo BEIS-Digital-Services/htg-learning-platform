@@ -13,6 +13,7 @@ public class ComparisonToolControllerHelperTests
     private ProductCategoryDisplaySettings _productCategoryDisplaySettings;
     private Mock<IHttpContextAccessor> _httpContextAccessor;
     private IOptions<ComparisonToolDisplayOption> _displayOption;
+    private Mock<ICmsService> _cmsService;
 
 
     [SetUp]
@@ -23,6 +24,7 @@ public class ComparisonToolControllerHelperTests
         _voucherOption = ConfigOptions.Create(new VoucherAppOption());
         _vendorOption = ConfigOptions.Create(new VendorAppOption());
         _displayOption = ConfigOptions.Create(new ComparisonToolDisplayOption());
+        _cmsService = new Mock<ICmsService>();
         _productCategoryDisplaySettings =
             new ProductCategoryDisplaySettings(_displayOption);
         _httpContextAccessor = new Mock<IHttpContextAccessor>();
@@ -41,13 +43,18 @@ public class ComparisonToolControllerHelperTests
                 }
             });
 
+        _cmsService.Setup(x => x.GetDisplaySettings()).ReturnsAsync(
+            new List<CMSComparisonToolSearchTag>(){ new() {id = 1, systemId = 1}}
+            );
+
         _controllerHelper = new ComparisonToolControllerHelper(
             _logger.Object,
             _comparisonToolService.Object,
             _voucherOption,
             _vendorOption,
-            _productCategoryDisplaySettings,
-            _httpContextAccessor.Object
+            _displayOption,
+            _httpContextAccessor.Object,
+            _cmsService.Object
             );
     }
 
