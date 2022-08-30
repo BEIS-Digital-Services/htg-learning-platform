@@ -22,4 +22,3 @@ extends:
     webApplicationNameSuffix: 'webapp-app'
     webApplicationResourceGroupFormat: 'webapp'
     requireSass: true
-    
