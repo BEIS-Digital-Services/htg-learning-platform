@@ -15,8 +15,7 @@
         {
             get
             {
-                return BackLink.HasContent
-                    && !string.IsNullOrEmpty(LinkId);
+                return !string.IsNullOrEmpty(LinkId);
             }
         }
 
@@ -29,15 +28,7 @@
                 {
                     return _cmsPageComponent.BackLink;
                 }
-                else
-                {
-                    return new CMSSimpleLink
-                    {
-                        LinkText = "Back",
-                        LinkUrl = "javascript:"
-                    };
-                }
-
+                return null;
             }
         }
 

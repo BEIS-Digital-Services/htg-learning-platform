@@ -29,5 +29,20 @@
             var ex = Assert.ThrowsAsync<ArgumentNullException>(() => _satisfactionSurveyService.SaveSatisfactionSurvey(Guid.NewGuid(), null));
             Assert.That(ex.ParamName == "satisfactionSurveyDto");
         }
+
+        [Test]
+        public async Task SavesSatisfactionSurvey_Successfully()
+        {
+            _satisfactionSurveyDataServiceMock.Setup(s => 
+                s.Add(It.IsAny<SatisfactionSurveyDto>())).ReturnsAsync(1);
+
+            var result = await _satisfactionSurveyService.SaveSatisfactionSurvey(Guid.NewGuid(),
+                new SatisfactionSurveyDto());
+
+            Assert.IsNotNull(result);
+            Assert.True(result.IsValid);
+            Assert.AreEqual(1, result.Payload);
+            Assert.AreEqual("satisfactionSurveyDto", result.Message);
+        }
     }
 }

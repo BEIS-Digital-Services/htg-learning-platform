@@ -50,7 +50,7 @@ namespace Beis.LearningPlatform.Web.Models
         /// <summary>
         /// Gets or Sets the list of Product Category Search Tags
         /// </summary>
-        public IList<CMSSearchTag> ProductCategoryList { get; set; }
+        public IList<CMSComparisonToolSearchTag> ProductCategoryList { get; set; }
 
 
         /// <summary>
@@ -122,7 +122,7 @@ namespace Beis.LearningPlatform.Web.Models
 
         private (List<ComparisonToolProduct>, int?) GetCategoryProducts(string categoryName)
         {
-            var categoryId = ProductCategoryList?.Where(t => t.name == categoryName).FirstOrDefault()?.id;
+            var categoryId = ProductCategoryList?.Where(t => t.systemName == categoryName).FirstOrDefault()?.systemId;
             if (!categoryId.HasValue)
             {
                 return (new List<ComparisonToolProduct>(), 0);
