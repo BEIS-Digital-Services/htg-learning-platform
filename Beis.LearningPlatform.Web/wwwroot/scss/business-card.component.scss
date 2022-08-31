@@ -4,6 +4,7 @@
 .business-card{
     .grey {
         background: #f3f2f1;
+        padding: 20px 0;
     }
     .optional {
         padding: 20px 0;
@@ -20,7 +21,7 @@
     }
 
     .business-card-image {
-        margin: 76px 0;
+        margin: 40px 0;
         width: 296px;
 
         @include respond(mobile) {
