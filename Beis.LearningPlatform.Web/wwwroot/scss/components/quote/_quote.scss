@@ -2,3 +2,54 @@ blockquote {
     padding: 0;
     margin: 0;
 }
+
+/* Inline articles quotes */
+
+.beis-article-quote {
+    @include govuk-font($size: 19);
+    margin: 40px 20px;
+    color: $beis-blue;
+    @include govuk-media-query (tablet) {
+        margin-bottom: 30px;
+    }
+}
+
+.beis-article-quote__quote-icon {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.beis-article-quote__quote-icon--right {
+    text-align: right;
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+
+@include govuk-media-query (tablet) {
+
+    .beis-article-quote--pull-left, 
+    .beis-article-quote--pull-right {
+        width: 33%;
+        margin: 5px 0 30px;
+    }
+
+    .beis-article-quote--pull-left {
+        float: left;
+        margin-right: 30px;
+        padding-right: 30px;
+        border-right: 1px solid $beis-blue;
+    }
+
+    .beis-article-quote--pull-right {
+        float: right;
+        margin-left: 30px;
+        padding-left: 30px;
+        border-left: 1px solid $beis-blue;
+    }
+
+}
+
+.beis-article-quote__author {
+    @include govuk-font($size: 16, $weight: bold);
+    margin-bottom: 0;
+}
