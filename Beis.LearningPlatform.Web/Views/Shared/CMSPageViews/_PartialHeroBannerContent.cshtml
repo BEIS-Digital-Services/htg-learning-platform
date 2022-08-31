@@ -4,58 +4,51 @@
     var subHeader = string.Empty;
 }
 
-<div class="beis-text">
-    <div class="">
-        <div class="govuk-width-container">
-            <div class="govuk-grid-row">
-                <div class="govuk-grid-column-full govuk-!-padding-top-6 govuk-!-padding-bottom-6">
-                    @if (Model.logo != null)
+<div class="beis-hero-banner__content">
+
+            @if (Model.logo != null)
+            {
+                <vc:cms-image options='new CmsImageViewModel{ ImageUrl = Model.logo.url, CssClass = "beis-hero-banner__logo", Title = Model.logo.alternativeText }' />
+            }
+
+            @foreach (var component in Model.HeroContent.textblocks)
+            {
+                if (!string.IsNullOrWhiteSpace(component.header))
+                {
+                    @Html.Raw(Markdown.ToHtml(component.header, _pipeline).Replace("<p>", "").Replace("</p>", string.Empty));
+                }
+                subHeader = Markdown.ToHtml(component.subheader, _pipeline).Replace("<p>", "").Replace("</p>", string.Empty);
+                if (!string.IsNullOrWhiteSpace(subHeader))
+                {
+                    @Html.Raw("<h1 class=\"govuk-heading-l beis-white-text govuk-!-margin-bottom-6\">" + subHeader + "</h1>"); 
+                }
+                @Html.Raw(Markdown.ToHtml(component.copy, _pipeline).Replace("<p>", "<p class=\"govuk-body beis-white-text\">"));
+            }
+            @foreach (var link in Model.HeroContent.links)
+            {
+                <p class="govuk-!-margin-top-9">
+                    @if (link.anchorlink != null)
                     {
-                        <div class="govuk-!-padding-top-8 govuk-!-padding-bottom-4">
-                            <vc:cms-image options='new CmsImageViewModel{ ImageUrl = Model.logo.url, CssClass = "beis-htg-logo", Title = Model.logo.alternativeText }' />
-                        </div>
+                        <a id="link-cmspageviews-herobannercontent-@(link.GetGaLinkId())" class="beis-icon-link @link.custom_class"
+                            href="@link.anchorlink">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="beis-icon-link__icon">
+                                <path fill="currentColor" d="M11.15,0C4.99,0,0,4.99,0,11.15s4.99,11.15,11.15,11.15s11.15-4.99,11.15-11.15S17.31,0,11.15,0z M17.45,11.16 l-5.72,5.72l-1.25-1.25l3.59-3.59h-9.6v-1.77h9.6l-3.59-3.59l1.25-1.25L17.45,11.16L17.45,11.16L17.45,11.16z"/>
+                            </svg>
+                            @Html.Raw(link.label)
+                        </a>
                     }
 
-                    @foreach (var component in Model.HeroContent.textblocks)
+                    @if (link.url != null)
                     {
-                        if (!string.IsNullOrWhiteSpace(component.header))
-                        {
-                            @Html.Raw(Markdown.ToHtml(component.header, _pipeline).Replace("<p>", "").Replace("</p>", string.Empty));
-                        }
-                        subHeader = Markdown.ToHtml(component.subheader, _pipeline).Replace("<p>", "").Replace("</p>", string.Empty);
-                        if (!string.IsNullOrWhiteSpace(subHeader))
-                        {
-                            @Html.Raw("<h1 class=\"govuk-heading-l beis-white-text govuk-!-margin-bottom-6\">" + subHeader + "</h1>"); 
-                        }
-                        @Html.Raw(Markdown.ToHtml(component.copy, _pipeline).Replace("<p>", "<p class=\"govuk-body beis-white-text\">"));
+                        <a id="link-cmspageviews-herobannercontent-@(link.GetGaLinkId())" class="beis-icon-link @link.custom_class"
+                            href="@link.url">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="beis-icon-link__icon">
+                                <path fill="currentColor" d="M11.15,0C4.99,0,0,4.99,0,11.15s4.99,11.15,11.15,11.15s11.15-4.99,11.15-11.15S17.31,0,11.15,0z M17.45,11.16 l-5.72,5.72l-1.25-1.25l3.59-3.59h-9.6v-1.77h9.6l-3.59-3.59l1.25-1.25L17.45,11.16L17.45,11.16L17.45,11.16z"/>
+                            </svg>
+                            @Html.Raw(link.label)
+                        </a>
                     }
-                    @foreach (var link in Model.HeroContent.links)
-                    {
-                        <p class="govuk-!-margin-top-9">
-                            @if (link.icon != null)
-                            {
-                                <vc:cms-image options='new CmsImageViewModel{ ImageUrl = link.icon.url, CssClass = "svgimg beis-link-icon" }' />
-                            }
-
-                            @if (link.anchorlink != null)
-                            {
-                                <a id="link-cmspageviews-herobannercontent-@(link.GetGaLinkId())" class="govuk-link @link.custom_class"
-                                   href="@link.anchorlink">
-                                    @Html.Raw(link.label)
-                                </a>
-                            }
-
-                            @if (link.url != null)
-                            {
-                                <a id="link-cmspageviews-herobannercontent-@(link.GetGaLinkId())" class="govuk-link @link.custom_class"
-                                   href="@link.url">
-                                    @Html.Raw(link.label)
-                                </a>
-                            }
-                        </p>
-                    }
-                </div>
-            </div>
-        </div>
-    </div>
+                </p>
+            }
+ 
 </div>

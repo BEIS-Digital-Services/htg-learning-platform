@@ -9,12 +9,11 @@
 
     if (Model.hide == false)
     {
-    <div class="columns" id="@("anchor" +  Model.Index)">
+    <div class="columns govuk-!-margin-top-5" id="@("anchor" +  Model.Index)">
         <div class="govuk-width-container">
             <div class="govuk-grid-row beis-columns-same-height">
-                <div class="govuk-grid-column-one-half @CamelCaseConverter.Delimiter(Model.textblocks[0].subheaderColor, "-")-text">
-                    <div class="govuk-grid-row">
-                        <div class="left-column">
+                <div class="@CamelCaseConverter.Delimiter(Model.textblocks[0].subheaderColor, "-")-text govuk-grid-column-one-half ">
+                   
                             @if (!string.IsNullOrWhiteSpace(Model.textblocks[0].header))
                             {
                                 <div style="display:flex">
@@ -55,16 +54,14 @@
                                     </a>
                                 }
                             }
-                        </div>
-                    </div>
+                 
+                 
                 </div>
 
                 <div class="govuk-grid-column-one-half">
-                    <div class="govuk-grid-row">
-                        <div class="right-column">
+             
                             <vc:cms-image options='new CmsImageViewModel{ ImageUrl = Model.image.url, CssClass = "hero-mobile-image", Title = Model.image.alternativeText  }' />
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>

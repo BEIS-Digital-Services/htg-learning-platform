@@ -3,63 +3,43 @@
 {
     return;
 }
-<div class="govuk-width-container govuk-!-padding-top-4  govuk-!-padding-bottom-8 article landing-page-hero">
+<div class="beis-landing-page-list__item">
     <div class="govuk-grid-row">
-        <div class="govuk-grid-column-full">
-            <div class="top-line beis-yellow"></div>
-        </div>
-    </div>
-
-    <div class="govuk-grid-row beis-columns-same-height">
         @{
-            @if (Model.AlternateLayout)
-            {
-                await RenderText(Model);
-                await RenderImage(Model);                
-            }
-            else
-            {
-                await RenderImage(Model);
-                await RenderText(Model);
-            }
+            await RenderImage(Model);
+            await RenderText(Model);
         }
     </div>
 </div>
 @{
     async Task RenderImage(CmsLandingPageHeroViewModel hero) 
     {
-        <div class="govuk-grid-column-one-half">
-            <div class="govuk-grid-row">
-                <div class="left-column ">
-                    @if (hero.Image != null)
-                    {
-                        <vc:cms-image options='new CmsImageViewModel{ ImageUrl = hero.Image.url, Title= hero.Image.alternativeText, CssClass = "hero-mobile-image" }' />
-                    }
-                </div>
-            </div>
+        <div class="govuk-grid-column-one-half @(hero.AlternateLayout ? "beis-float-right-from-tablet" : "")">
+            @if (hero.Image != null)
+            {
+                <vc:cms-image options='new CmsImageViewModel{ ImageUrl = hero.Image.url, Title= hero.Image.alternativeText, CssClass = "beis-landing-page-list__image hero-mobile-image" }' />
+            }     
         </div>
     }
 
     async Task RenderText(CmsLandingPageHeroViewModel hero)
     {
-        <div class="govuk-grid-column-one-half beis-stretch-content">
-            <div class="govuk-grid-row">
-                <div class="right-column">
-                    <h2 class="govuk-heading-l govuk-!-padding-top-3">
-                        <a id="@hero.GetGaLinkId("link-landingpagehero-header-", hero.Header)" class="govuk-link" href="@hero.LinkUrl">@hero.Header</a>
-                    </h2>
-                    <p class="govuk-body">
-                        @hero.Intro
-                    </p>
-                    @if(hero.HasLink)
-                    {
-                        <div>
-                            <img src="/assets/images/link-icon.png" class="link-icon-align" alt="" />
-                            <a id="@hero.GetGaLinkId("link-landingpagehero-", hero.LinkText)" class="govuk-link" href="@hero.LinkUrl">@hero.LinkText</a>
-                        </div>
-                    }
-                </div>
-            </div>
+        <div class="govuk-grid-column-one-half">
+            <h2 class="govuk-heading-l beis-landing-page-list__heading">
+                <a id="@hero.GetGaLinkId("link-landingpagehero-header-", hero.Header)" class="govuk-link beis-landing-page-list__link" href="@hero.LinkUrl">@hero.Header</a>
+            </h2>
+            <p class="govuk-body beis-landing-page-list__content">
+                @hero.Intro
+            </p>
+            @if(hero.HasLink)
+            {
+                <a id="@hero.GetGaLinkId("link-landingpagehero-", hero.LinkText)" class="beis-icon-link" href="@hero.LinkUrl">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="beis-icon-link__icon">
+                        <path fill="currentColor" d="M11.15,0C4.99,0,0,4.99,0,11.15s4.99,11.15,11.15,11.15s11.15-4.99,11.15-11.15S17.31,0,11.15,0z M17.45,11.16 l-5.72,5.72l-1.25-1.25l3.59-3.59h-9.6v-1.77h9.6l-3.59-3.59l1.25-1.25L17.45,11.16L17.45,11.16L17.45,11.16z"/>
+                    </svg>
+                    @hero.LinkText
+                </a>
+            }    
         </div>
     }
 }
