@@ -2,7 +2,7 @@
 @import 'beis-variables.scss';
 
 .feedback-prompt {
-    border-bottom: 1px solid $white;
+    border-bottom: 1px solid #fff;
 
     .secondary {
         float: right;
@@ -86,6 +86,6 @@
     .message {
         margin: 30px 20px;
         font-weight: 700;
-        color: $white;
+        color: #fff;
     }
 }

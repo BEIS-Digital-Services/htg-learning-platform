@@ -1,0 +1,15 @@
+.beis-statistics__panel {
+    text-align: center;
+    padding: 20px;
+}
+
+.beis-statistics__number {
+    @include govuk-font($size: 48);
+    font-weight: $govuk-font-weight-bold;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.beis-statistics__content * {
+    color: inherit;
+}

@@ -11,148 +11,102 @@
     <partial name="CMSPageViews/_PartialSideNavigation" model="@Model" />
 }
 
-<hr class="beis-grey divider" aria-hidden="true">
-
-<main id="main-heading" role="main">
+<main id="main-heading" role="main" class="govuk-main-wrapper">
     <form asp-action="SaveCookiesPreferences" method="post" class="form-horizontal">
 
         <div class="govuk-width-container">
             <div class="govuk-grid-row">
                 <div class="beis-white govuk-grid-column-two-thirds">
-                    <div class="govuk-!-margin-top-6 govuk-!-margin-bottom-6">
-                        <h1 class="govuk-heading-xl">
-                            Cookies on Help to Grow: Digital
-                        </h1>
+            
+                    <h1 class="govuk-heading-xl">
+                        Cookies on Help to Grow: Digital
+                    </h1>
 
-                        @if (Model.Data.CookieProcessed)
-                        {
-                            <div class="govuk-notification-banner--success govuk-!-padding-top-1 govuk-!-padding-bottom-1 govuk-!-padding-left-1 govuk-!-padding-right-1 govuk-!-margin-bottom-3">
-                                <div class="beis-white">
-                                    <p class="govuk-body govuk-!-padding-top-2 govuk-!-padding-bottom-2 govuk-!-padding-left-2 govuk-!-padding-right-2 govuk-!-margin-bottom-0">
-                                        Your cookie preferences have been saved. You can change them at any time by using this page.
-                                    </p>
+                    @if (Model.Data.CookieProcessed)
+                    {
+                        <div class="govuk-notification-banner--success govuk-!-padding-top-1 govuk-!-padding-bottom-1 govuk-!-padding-left-1 govuk-!-padding-right-1 govuk-!-margin-bottom-3">
+                            <div class="beis-white">
+                                <p class="govuk-body govuk-!-padding-top-2 govuk-!-padding-bottom-2 govuk-!-padding-left-2 govuk-!-padding-right-2 govuk-!-margin-bottom-0">
+                                    Your cookie preferences have been saved. You can change them at any time by using this page.
+                                </p>
+                            </div>
+                        </div>
+                    }
+
+                    <p class="govuk-body">Cookies are files saved on your phone, tablet or computer when you visit a website.</p>
+                    <p class="govuk-body">We use cookies to store information about how you use the Help to Grow: Digital website, such as the pages you visit.</p>
+
+                    <h2 class="govuk-heading-l">Cookie settings</h2>
+                    <h3 class="govuk-heading-m beis-blue-text" id="strictly-necessary-cookies">Strictly necessary cookies</h3>
+                    <p class="govuk-body">These essential cookies do things like remember your progress through an application. These will include information you submit during the software product selection and licence application.</p>
+                    <p class="govuk-body">They always need to be on.</p>
+                                            
+                    <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset">
+                            <legend class="govuk-heading-m beis-blue-text" id="cookies-that-measure-website-use">Cookies that measure website use</legend>
+
+                            <p class="govuk-body">We use Google Analytics to measure how you use the website so we can improve it based on user needs. We do not allow Google Analytics to use or share the data about your site usage  anywhere else.</p>
+                            <p class="govuk-body">Google Analytics sets cookies that store anonymised information about:</p>
+                            <ul class="govuk-list govuk-list--bullet">
+                                <li>How you got to the site</li>
+                                <li>The pages you visit, how long you spend on each page and data about your journey through Help to Grow: Digital and its associated sites</li>
+                                <li>What you click on while you’re visiting the site</li>
+                                <li>What pages you leave the site from</li>
+                                <li>Any downloads you access</li>
+                            </ul>
+
+                            <div class="govuk-radios">
+                                <div class="govuk-radios__item">
+                                    <input id="UseGoogleAnalytics" @(isGaAccepted.HasValue ? (isGaAccepted.Value ? Html.Raw(" checked ") : @Html.Raw("")) : Html.Raw("")) type="radio" value="true" class="govuk-radios__input input-validation-error" name="GoogleAnalyticsCookies">
+                                    <label for="UseGoogleAnalytics" id="UseGoogleAnalytics_label" class="govuk-label govuk-radios__label">Use cookies that measure my website use</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input id="DontUseGoogleAnalytics" @(isGaAccepted.HasValue ? (!isGaAccepted.Value ? Html.Raw(" checked ") : @Html.Raw("")) : Html.Raw(" checked ")) type="radio" value="false" class="govuk-radios__input input-validation-error" name="GoogleAnalyticsCookies">
+                                    <label for="DontUseGoogleAnalytics" id="DontUseGoogleAnalytics_label" class="govuk-label govuk-radios__label">Do not use cookies that measure my website use</label>
                                 </div>
                             </div>
-                        }
-
-                        <div class="govuk-body">
-                            <p class="govuk-body">Cookies are files saved on your phone, tablet or computer when you visit a website.</p>
-                            <p class="govuk-body">We use cookies to store information about how you use the Help to Grow: Digital website, such as the pages you visit.</p>
-
-                        </div>
+                        </fieldset>
                     </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="govuk-width-container">
-            <div class="govuk-grid-row">
-                <div class="beis-white govuk-grid-column-two-thirds">
-                    <div class="govuk-!-margin-top-6 govuk-!-margin-bottom-6">
-                        <div class="govuk-body">
-                            <h2 class="govuk-heading-l">Cookie settings</h2>
-                            <h3 class="govuk-heading-m beis-blue-text" id="strictly-necessary-cookies">Strictly necessary cookies</h3>
-                            <p class="govuk-body">These essential cookies do things like remember your progress through an application. These will include information you submit during the software product selection and licence application.</p>
-                            <p class="govuk-body">They always need to be on.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="govuk-width-container">
-            <div class="govuk-grid-row">
-                <div class="beis-white govuk-grid-column-two-thirds">
-                    <div class="govuk-!-margin-top-6 govuk-!-margin-bottom-6">
-
-                        <div class="govuk-body">
-                            <fieldset>
-                                <legend class="govuk-heading-m beis-blue-text" id="cookies-that-measure-website-use">Cookies that measure website use</legend>
-
-                                <p class="govuk-body">We use Google Analytics to measure how you use the website so we can improve it based on user needs. We do not allow Google Analytics to use or share the data about your site usage  anywhere else.</p>
-                                <p class="govuk-body">Google Analytics sets cookies that store anonymised information about:</p>
-                                <ul>
-                                    <li class="govuk-body">How you got to the site</li>
-                                    <li class="govuk-body">The pages you visit, how long you spend on each page and data about your journey through Help to Grow: Digital and its associated sites</li>
-                                    <li class="govuk-body">What you click on while you’re visiting the site</li>
-                                    <li class="govuk-body">What pages you leave the site from</li>
-                                    <li class="govuk-body">Any downloads you access</li>
-                                </ul>
-
-                                <div class="govuk-radios">
-                                    <div class="govuk-radios__item">
-                                        <input id="UseGoogleAnalytics" @(isGaAccepted.HasValue ? (isGaAccepted.Value ? Html.Raw(" checked ") : @Html.Raw("")) : Html.Raw("")) type="radio" value="true" class="govuk-radios__input input-validation-error" name="GoogleAnalyticsCookies">
-                                        <label for="UseGoogleAnalytics" id="UseGoogleAnalytics_label" class="govuk-label govuk-radios__label">Use cookies that measure my website use</label>
-                                    </div>
-                                    <div class="govuk-radios__item">
-                                        <input id="DontUseGoogleAnalytics" @(isGaAccepted.HasValue ? (!isGaAccepted.Value ? Html.Raw(" checked ") : @Html.Raw("")) : Html.Raw(" checked ")) type="radio" value="false" class="govuk-radios__input input-validation-error" name="GoogleAnalyticsCookies">
-                                        <label for="DontUseGoogleAnalytics" id="DontUseGoogleAnalytics_label" class="govuk-label govuk-radios__label">Do not use cookies that measure my website use</label>
-                                    </div>
+                    <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset">
+                            <legend class="govuk-heading-m beis-blue-text" id="cookies-that-help-with-our-communications-and-marketing">Cookies that help with our communications and marketing</legend>
+                            <p class="govuk-body">These cookies may be set by third party websites and do things like measure how you view YouTube videos that are on Help to Grow: Digital.</p>
+                            <div class="govuk-radios">
+                                <div class="govuk-radios__item">
+                                    <input id="UseMarketingCookies" @(isMarketingAccepted.HasValue ? (isMarketingAccepted.Value ? @Html.Raw(" checked ") : @Html.Raw("")) : @Html.Raw("")) type="radio" value="true" class="govuk-radios__input input-validation-error" name="MarketingCookies">
+                                    <label for="UseMarketingCookies" id="UseMarketingCookies_label" class="govuk-label govuk-radios__label">Use cookies that help with communications and marketing</label>
                                 </div>
-                            </fieldset>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="govuk-width-container">
-            <div class="govuk-grid-row">
-                <div class="beis-white govuk-grid-column-two-thirds">
-                    <div class="govuk-!-margin-top-6 govuk-!-margin-bottom-6">
-                        <div class="govuk-body">
-                            <fieldset>
-                                <legend class="govuk-heading-m beis-blue-text" id="cookies-that-help-with-our-communications-and-marketing">Cookies that help with our communications and marketing</legend>
-                                <p class="govuk-body">These cookies may be set by third party websites and do things like measure how you view YouTube videos that are on Help to Grow: Digital.</p>
-                                <div class="govuk-radios">
-                                    <div class="govuk-radios__item">
-                                        <input id="UseMarketingCookies" @(isMarketingAccepted.HasValue ? (isMarketingAccepted.Value ? @Html.Raw(" checked ") : @Html.Raw("")) : @Html.Raw("")) type="radio" value="true" class="govuk-radios__input input-validation-error" name="MarketingCookies">
-                                        <label for="UseMarketingCookies" id="UseMarketingCookies_label" class="govuk-label govuk-radios__label">Use cookies that help with communications and marketing</label>
-                                    </div>
-                                    <div class="govuk-radios__item">
-                                        <input id="DontUseMarketingCookies" @(isMarketingAccepted.HasValue ? (!isMarketingAccepted.Value ? @Html.Raw(" checked ") : @Html.Raw("")) : @Html.Raw(" checked ")) type="radio" value="false" class="govuk-radios__input input-validation-error" name="MarketingCookies">
-                                        <label for="DontUseMarketingCookies" id="DontUseMarketingCookies_label" class="govuk-label govuk-radios__label">Do not use cookies that help with communications and marketing</label>
-                                    </div>
+                                <div class="govuk-radios__item">
+                                    <input id="DontUseMarketingCookies" @(isMarketingAccepted.HasValue ? (!isMarketingAccepted.Value ? @Html.Raw(" checked ") : @Html.Raw("")) : @Html.Raw(" checked ")) type="radio" value="false" class="govuk-radios__input input-validation-error" name="MarketingCookies">
+                                    <label for="DontUseMarketingCookies" id="DontUseMarketingCookies_label" class="govuk-label govuk-radios__label">Do not use cookies that help with communications and marketing</label>
                                 </div>
-                            </fieldset>
-                        </div>
+                            </div>
+                        </fieldset>
                     </div>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="govuk-width-container">
-            <div class="govuk-grid-row">
-                <div class="beis-white govuk-grid-column-two-thirds">
-                    <div class="govuk-!-margin-top-6 govuk-!-margin-bottom-6">
-                        <div class="govuk-body">
-                            <fieldset>
-                                <legend class="govuk-heading-m beis-blue-text" id="cookies-that-remember-your-settings">Cookies that remember your settings</legend>
-                                <p class="govuk-body">These cookies do things like remember your preferences, such as when you choose a software product, to personalise your experience of using the site.</p>
-                                <div class="govuk-radios">
-                                    <div class="govuk-radios__item">
-                                        <input id="UseRememberSettingsCookies" @(isRememberSettingsAccepted.HasValue ? (isRememberSettingsAccepted.Value ? @Html.Raw(" checked ") : @Html.Raw("")) : @Html.Raw(" ")) type="radio" value="true" class="govuk-radios__input input-validation-error" name="RememberSettingsCookies">
-                                        <label for="UseRememberSettingsCookies" id="UseRememberSettingsCookies_label" class="govuk-label govuk-radios__label">Use cookies that remember my settings on the site</label>
-                                    </div>
-                                    <div class="govuk-radios__item">
-                                        <input id="DontUseRememberSettingsCookies" @(isRememberSettingsAccepted.HasValue ? (!isRememberSettingsAccepted.Value ? @Html.Raw(" checked ") : @Html.Raw("")) : @Html.Raw(" checked ")) type="radio" value="false" class="govuk-radios__input input-validation-error" name="RememberSettingsCookies">
-                                        <label for="DontUseRememberSettingsCookies" id="DontUseRememberSettingsCookies_label" class="govuk-label govuk-radios__label">Do not use cookies that remember my settings on the site</label>
-                                    </div>
+                    <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset">
+                            <legend class="govuk-heading-m beis-blue-text" id="cookies-that-remember-your-settings">Cookies that remember your settings</legend>
+                            <p class="govuk-body">These cookies do things like remember your preferences, such as when you choose a software product, to personalise your experience of using the site.</p>
+                            <div class="govuk-radios">
+                                <div class="govuk-radios__item">
+                                    <input id="UseRememberSettingsCookies" @(isRememberSettingsAccepted.HasValue ? (isRememberSettingsAccepted.Value ? @Html.Raw(" checked ") : @Html.Raw("")) : @Html.Raw(" ")) type="radio" value="true" class="govuk-radios__input input-validation-error" name="RememberSettingsCookies">
+                                    <label for="UseRememberSettingsCookies" id="UseRememberSettingsCookies_label" class="govuk-label govuk-radios__label">Use cookies that remember my settings on the site</label>
                                 </div>
-                                <p class="govuk-body"><a id="link-cookies-find-out-more" href="https://www.gov.uk/help/cookies">Find out more about cookies on GOV.UK </a></p>
-                            </fieldset>
-                            <button id="btn-cookies-save-preferences" type="submit" class="govuk-button govuk-button--start primary">
-                                Save Preferences
-                            </button>
-                        </div>
+                                <div class="govuk-radios__item">
+                                    <input id="DontUseRememberSettingsCookies" @(isRememberSettingsAccepted.HasValue ? (!isRememberSettingsAccepted.Value ? @Html.Raw(" checked ") : @Html.Raw("")) : @Html.Raw(" checked ")) type="radio" value="false" class="govuk-radios__input input-validation-error" name="RememberSettingsCookies">
+                                    <label for="DontUseRememberSettingsCookies" id="DontUseRememberSettingsCookies_label" class="govuk-label govuk-radios__label">Do not use cookies that remember my settings on the site</label>
+                                </div>
+                            </div>
+                            <p class="govuk-body govuk-!-margin-top-5"><a id="link-cookies-find-out-more" href="https://www.gov.uk/help/cookies">Find out more about cookies on GOV.UK </a></p>
+                        </fieldset>
                     </div>
+                    
+                    <button id="btn-cookies-save-preferences" type="submit" class="govuk-button govuk-button--start primary">
+                        Save preferences
+                    </button>
+                  
                 </div>
             </div>
         </div>
-
     </form>
 </main>

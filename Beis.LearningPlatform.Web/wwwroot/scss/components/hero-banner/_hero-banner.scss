@@ -1,0 +1,47 @@
+.beis-hero-banner {
+    padding: 0 15px;
+}
+
+.beis-hero-banner__content {
+    max-width: 465px;
+    float: right;
+    padding: 20px 0;
+}
+
+.beis-hero-banner__logo {
+    max-width: 100%;
+    width: 80%;
+    height: auto;
+    display: block;
+    margin-top: 0;
+    margin-bottom: 20px;
+    @include govuk-media-query (tablet) {
+        margin-top: 40px;
+    }
+}
+
+.beis-hero-banner__row {
+    display: flex;
+    flex-direction: column-reverse;
+    @include govuk-media-query (tablet) {
+        flex-direction: row;
+    }
+}
+
+.beis-hero-banner__mobile-image {
+    max-width: 100%;
+    margin: 0 -15px;
+    @include govuk-media-query (tablet) {
+        display: none;
+    }
+}
+
+.beis-hero-banner .hero-links,
+.beis-hero-banner .hero-links:link,
+.beis-hero-banner .hero-links:visited {
+    color: $beis-yellow;
+}
+
+.beis-hero-banner .hero-links:focus {
+    color: $govuk-focus-text-colour;
+}

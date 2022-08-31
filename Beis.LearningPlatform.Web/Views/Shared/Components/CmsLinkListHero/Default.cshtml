@@ -3,20 +3,14 @@
 {
     return;
 }
-<div class="link-list-hero" id="@("hero-link-container" + Model.Component.id)">
-    <div class="govuk-width-container govuk-!-margin-bottom-2 govuk-!-margin-top-6">
-        <div class="govuk-grid-row beis-columns-same-height">
-            <div class="govuk-grid-column-full govuk-body">
-                <h3>@Model.Component.header</h3>
-                @foreach (var heroLink in Model.HeroLinks)
-                {
-                    <a id="@heroLink.GetGaLinkId("hero-link-")" href="@heroLink.LinkUrl" title="@heroLink.LinkText" class="govuk-link">@heroLink.LinkText</a> 
-                    if(Model.HeroLinks.IndexOf(heroLink) < Model.HeroLinks.Count -1)
-                    {
-                        <span class="govuk-link-divider"> | </span>
-                    }
-                }
-            </div>
-        </div>
+<div class="beis-link-list" id="@("hero-link-container" + Model.Component.id)">
+    <div class="govuk-width-container">
+        <h3 class="govuk-heading-m beis-link-list__heading">@Model.Component.header</h3>
+        <ul class="beis-link-list__list">
+        @foreach (var heroLink in Model.HeroLinks)
+        {
+            <li><a id="@heroLink.GetGaLinkId("hero-link-")" href="@heroLink.LinkUrl" title="@heroLink.LinkText" class="govuk-link beis-link-list__link">@heroLink.LinkText</a></li>
+        }
+        </ul>
     </div>
 </div>

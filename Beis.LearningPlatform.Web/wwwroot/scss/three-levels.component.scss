@@ -55,7 +55,7 @@
         padding: 14px;
         display: block;
         width: initial;
-        color: $black;
+        color: #000;
 
         @include respond(tablet) {
             display: inline-flex;
