@@ -7,7 +7,7 @@
                             "related_articles", "unsubscribe_link" };
 
         public static string[] SkillsModule1 = new[] { "q1_benefits", "q2_friction_point_description", "q3_current_software_usage",
-                            "q4_information_share", "q5_benefit_description", "unsubscribe_link", "skilled_module2_link" };
+                            "q4_information_share", "q5_benefit_description", "unsubscribe_link", "skilled_module3_link" };
 
         public static string[] SkillsModule2 = new[] { "priorities", "unsubscribe_link", "skilled_module3_link" };
 
