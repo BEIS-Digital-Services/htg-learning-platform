@@ -9,6 +9,7 @@
         public DateTime created_at { get; set; }
         public DateTime updated_at { get; set; }
         public string articleType { get; set; }
+        public string PageName { get; set; }
         public CMSSearchArticleDoc Article { get; set; }
         public IList<CMSPageLink> Links { get; set; }
         public IList<CMSPageButton> Buttons { get; set; }

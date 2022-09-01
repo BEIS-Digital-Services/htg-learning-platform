@@ -57,6 +57,6 @@
     <h2 class="govuk-heading-l beis-article-list__heading">@Model.Header</h2>
     @foreach (var article in Model.FullSearchArticles)
     {
-        <vc:full-search-article full-search-article="@article" />
+        <vc:full-search-article full-search-article="@article" page-name="@Model.PageName" />
     }
 </div>
