@@ -48,27 +48,6 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" rel="stylesheet" />
     <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-
-    <script>
-        var $mobileHeaderNav = $("#MobileNavigation");
-        var $menuBtn = $("#MobileNavigationToggle");
-        var isMenuActive = false;
-        toggleTopMenu(isMenuActive);
-        $menuBtn.on("click", function () {
-            this.isMenuActive = !this.isMenuActive;
-            toggleTopMenu(this.isMenuActive);
-        });
-        function toggleTopMenu(active) {
-            if (active === true) {
-                $menuBtn.addClass("govuk-header__menu-button--open");
-                $mobileHeaderNav.addClass("govuk-header__navigation--open");
-            } else {
-                $menuBtn.removeClass("govuk-header__menu-button--open");
-                $mobileHeaderNav.removeClass("govuk-header__navigation--open");
-            }
-            $menuBtn.attr('aria-expanded', active);
-        }
-    </script>
     <script src="/js/govuk.js" asp-append-version="true"></script>
     <script src="/js/site.js" asp-append-version="true"></script>
     <script src="/js/expression-of-interest.js" asp-append-version="true"></script>
