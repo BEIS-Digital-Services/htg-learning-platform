@@ -234,16 +234,32 @@
                 @if (Model.currentProduct.productPrices[0].contract_duration_discount_flag)
                 {
                     <p class="govuk-body beis-black-text govuk-!-font-size-24 govuk-!-font-weight-bold"><strong>Per length of contract</strong></p>
-                    <dl class="beis-discrount-table govuk-body beis-black-text">
-                        <dd>
-                            <strong>Contract Description</strong>
-                            <span>@(Model.currentProduct.productPrices.Count > 0 ? ComparisonToolFieldValidator.ParseStringField(Model.currentProduct.productPrices[0].contract_duration_discount_description) : "No ProductPrice record")</span>
-                        </dd>
-                        <dd>
-                            <strong>Discount</strong>
-                            <span>@Model.currentProduct.contractDurationDiscount</span>
-                        </dd>
-                    </dl>
+                    @if(Model.currentProduct.HasContractDurationDiscountUnitAndPercentage)
+                    {                        
+                        <dl class="beis-discrount-table govuk-body beis-black-text">
+                            <dd>
+                                <strong>Contract Description</strong>
+                                <span>@(Model.currentProduct.productPrices.Count > 0 ? ComparisonToolFieldValidator.ParseStringField(Model.currentProduct.productPrices[0].contract_duration_discount_description) : "No ProductPrice record")</span>
+                            </dd>
+                            <dd>
+                                <strong>Discount</strong>
+                                <span>@Model.currentProduct.contractDurationDiscount</span>
+                            </dd>
+                        </dl>
+                    }
+                    else
+                    {
+                        <dl class="govuk-summary-list">
+                            <div class="govuk-summary-list__row mobile-side-by-side">
+                                <dt class="govuk-summary-list__key">
+                                    Contract duration discount
+                                </dt>
+                                <dd class="govuk-summary-list">
+                                    <p>@ComparisonToolFieldValidator.ParseStringField(Model.currentProduct.productPrices[0].contract_duration_discount_description)</p>
+                                </dd>
+                            </div>
+                        </dl>
+                    }
                 }
 
                 @if (Model.currentProduct.productPrices[0].user_discount_flag && Model.currentProduct.productUserDiscount?.Count > 0)

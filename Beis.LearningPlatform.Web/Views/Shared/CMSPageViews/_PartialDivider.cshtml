@@ -14,10 +14,10 @@ else
 {
     if (string.IsNullOrWhiteSpace(Model.color))
     {
-        @Html.Raw("<hr aria-hidden=\"true\" id=\"anchor" + Model.Index + "\" class=\"beis-navy-blue\" />")
+        @Html.Raw("<hr aria-hidden=\"true\" id=\"anchor" + Model.Index + "\" class=\"ovuk-section-break govuk-section-break--visible beis-section-break beis-navy-blue\" />")
     }
     else
     {
-        @Html.Raw("<hr aria-hidden=\"true\" id=\"anchor" + Model.Index + "\" class=\"" + @CamelCaseConverter.Delimiter(Model.color, "-") + " " + Model.type + "\">")
+        @Html.Raw("<hr aria-hidden=\"true\" id=\"anchor" + Model.Index + "\" class=\"govuk-section-break govuk-section-break--visible beis-section-break " + @CamelCaseConverter.Delimiter(Model.color, "-") + " " + Model.type + "\">")
     }    
 }

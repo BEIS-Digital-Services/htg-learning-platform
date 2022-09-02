@@ -4,92 +4,28 @@
 {
     return;
 }
-<div class="quote-callout" id="@Model.Component.id">
-    <div class="govuk-width-container govuk-!-margin-bottom-6 govuk-!-margin-top-6">
-        <div class="govuk-grid-row">
-            <div class="govuk-grid-column-two-thirds @Model.Component.AlteredPaddingTopSpace @Model.Component.AlteredPaddingBottomSpace">
 
-                @if (Model.Component.quotePosition == AlignmentValue.Left)
+<div class="govuk-width-container" id="@Model.Component.id">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <div class="beis-article-quote beis-article-quote--pull-@(Model.Component.quotePosition == AlignmentValue.Left ? "left" : "right")">
+                <span class="beis-article-quote__quote-icon">
+                    <svg width="36" height="22" viewBox="0 0 36 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M28.9884 22C32.8605 22 36 18.9159 36 15.1122C36 11.2056 32.9651 8.42991 29.093 8.42991H28.2558V8.12149C28.2558 5.3458 30.8721 4.42056 33.593 4.00935L34.8488 3.80374L34.5349 0L33.0698 0.102809C23.7558 0.719629 20.8256 7.40187 20.8256 13.1589C20.8256 18.5047 24.3837 22 28.9884 22ZM8.16279 22C12.0349 22 15.1744 18.9159 15.1744 15.1122C15.1744 11.2056 12.1395 8.42991 8.26744 8.42991H7.43023V8.12149C7.43023 5.3458 10.0465 4.42056 12.7674 4.00935L14.0233 3.80374L13.7093 0L12.2442 0.102809C2.93023 0.719629 0 7.40187 0 13.1589C0 18.5047 3.55814 22 8.16279 22Z" fill="#1D3A64" />
+                    </svg>
+                </span>
+                @Html.Raw(Model.HtmlQuote)
+                <span class="beis-article-quote__quote-icon beis-article-quote__quote-icon--right">
+                    <svg width="36" height="22" viewBox="0 0 36 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7.01163 -2.53424e-06C3.13954 -2.87275e-06 1.65368e-06 3.08411 1.32115e-06 6.88785C9.79626e-07 10.7944 3.03488 13.5701 6.90698 13.5701L7.74419 13.5701L7.74419 13.8785C7.74419 16.6542 5.12791 17.5794 2.40698 17.9906L1.15116 18.1963L1.46512 22L2.93023 21.8972C12.2442 21.2804 15.1744 14.5981 15.1744 8.84112C15.1744 3.49533 11.6163 -2.13169e-06 7.01163 -2.53424e-06ZM27.8372 -7.13614e-07C23.9651 -1.05212e-06 20.8256 3.08411 20.8256 6.88785C20.8256 10.7944 23.8605 13.5701 27.7326 13.5701L28.5698 13.5701L28.5698 13.8785C28.5698 16.6542 25.9535 17.5794 23.2326 17.9906L21.9767 18.1963L22.2907 22L23.7558 21.8972C33.0698 21.2804 36 14.5981 36 8.84112C36 3.49533 32.4419 -3.11062e-07 27.8372 -7.13614e-07Z" fill="#1D3A64" />
+                    </svg>
+                </span>
+                @if (Model.HasQuoteColumnAuthor)
                 {
-                    <div class="govuk-grid-row beis-columns-same-height">
-                        <div class="govuk-grid-column-one-third">
-                            <div class="govuk-grid-row">
-                                <div class="left-column">
-                                    <div class="beis-columns quote-left" aria-label="@Model.Component.aria">
-                                        <div class="quote-icon">
-                                            <svg width="36" height="22" viewBox="0 0 36 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M28.9884 22C32.8605 22 36 18.9159 36 15.1122C36 11.2056 32.9651 8.42991 29.093 8.42991H28.2558V8.12149C28.2558 5.3458 30.8721 4.42056 33.593 4.00935L34.8488 3.80374L34.5349 0L33.0698 0.102809C23.7558 0.719629 20.8256 7.40187 20.8256 13.1589C20.8256 18.5047 24.3837 22 28.9884 22ZM8.16279 22C12.0349 22 15.1744 18.9159 15.1744 15.1122C15.1744 11.2056 12.1395 8.42991 8.26744 8.42991H7.43023V8.12149C7.43023 5.3458 10.0465 4.42056 12.7674 4.00935L14.0233 3.80374L13.7093 0L12.2442 0.102809C2.93023 0.719629 0 7.40187 0 13.1589C0 18.5047 3.55814 22 8.16279 22Z" fill="#1D3A64" />
-                                            </svg>
-                                        </div>
-                                        <div class="govuk-body  govuk-!-font-size-19">
-                                            @Html.Raw(Model.HtmlQuote)
-                                        </div>
-                                        <div class="quote-icon right">
-                                            <svg width="36" height="22" viewBox="0 0 36 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M7.01163 -2.53424e-06C3.13954 -2.87275e-06 1.65368e-06 3.08411 1.32115e-06 6.88785C9.79626e-07 10.7944 3.03488 13.5701 6.90698 13.5701L7.74419 13.5701L7.74419 13.8785C7.74419 16.6542 5.12791 17.5794 2.40698 17.9906L1.15116 18.1963L1.46512 22L2.93023 21.8972C12.2442 21.2804 15.1744 14.5981 15.1744 8.84112C15.1744 3.49533 11.6163 -2.13169e-06 7.01163 -2.53424e-06ZM27.8372 -7.13614e-07C23.9651 -1.05212e-06 20.8256 3.08411 20.8256 6.88785C20.8256 10.7944 23.8605 13.5701 27.7326 13.5701L28.5698 13.5701L28.5698 13.8785C28.5698 16.6542 25.9535 17.5794 23.2326 17.9906L21.9767 18.1963L22.2907 22L23.7558 21.8972C33.0698 21.2804 36 14.5981 36 8.84112C36 3.49533 32.4419 -3.11062e-07 27.8372 -7.13614e-07Z" fill="#1D3A64" />
-                                            </svg>
-                                        </div>
-                                        @if (Model.HasQuoteColumnAuthor)
-                                        {
-                                            <p class="govuk-body author govuk-!-font-size-19">- @Model.Component.quoteColumnAuthor</p>
-                                        }
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="govuk-grid-column-two-thirds">
-                            <div class="govuk-grid-row">
-                                <div class="right-column">
-                                    <div class="govuk-body plain-text">
-                                        @Html.Raw(Model.HtmlCopy)
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <p class="beis-article-quote__author">- @Model.Component.quoteColumnAuthor</p>
                 }
-
-                @if (Model.Component.quotePosition == AlignmentValue.Right)
-                {
-                    <div class="govuk-grid-row beis-columns-same-height">
-                        <div class="govuk-grid-column-two-thirds">
-                            <div class="govuk-grid-row">
-                                <div class="left-column">
-                                    <div class="govuk-body plain-text">
-                                        @Html.Raw(Model.HtmlCopy)
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="govuk-grid-column-one-third">
-                            <div class="govuk-grid-row">
-                                <div class="right-column">
-                                    <div class="beis-columns quote-right" aria-label="@Model.Component.aria">
-                                        <div class="quote-icon">
-                                            <svg width="36" height="22" viewBox="0 0 36 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M28.9884 22C32.8605 22 36 18.9159 36 15.1122C36 11.2056 32.9651 8.42991 29.093 8.42991H28.2558V8.12149C28.2558 5.3458 30.8721 4.42056 33.593 4.00935L34.8488 3.80374L34.5349 0L33.0698 0.102809C23.7558 0.719629 20.8256 7.40187 20.8256 13.1589C20.8256 18.5047 24.3837 22 28.9884 22ZM8.16279 22C12.0349 22 15.1744 18.9159 15.1744 15.1122C15.1744 11.2056 12.1395 8.42991 8.26744 8.42991H7.43023V8.12149C7.43023 5.3458 10.0465 4.42056 12.7674 4.00935L14.0233 3.80374L13.7093 0L12.2442 0.102809C2.93023 0.719629 0 7.40187 0 13.1589C0 18.5047 3.55814 22 8.16279 22Z" fill="#1D3A64" />
-                                            </svg>
-                                        </div>
-                                        <div class="govuk-body govuk-!-font-size-19">
-                                            @Html.Raw(Model.HtmlQuote)
-                                        </div>
-                                        <div class="quote-icon right">
-                                            <svg width="36" height="22" viewBox="0 0 36 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M7.01163 -2.53424e-06C3.13954 -2.87275e-06 1.65368e-06 3.08411 1.32115e-06 6.88785C9.79626e-07 10.7944 3.03488 13.5701 6.90698 13.5701L7.74419 13.5701L7.74419 13.8785C7.74419 16.6542 5.12791 17.5794 2.40698 17.9906L1.15116 18.1963L1.46512 22L2.93023 21.8972C12.2442 21.2804 15.1744 14.5981 15.1744 8.84112C15.1744 3.49533 11.6163 -2.13169e-06 7.01163 -2.53424e-06ZM27.8372 -7.13614e-07C23.9651 -1.05212e-06 20.8256 3.08411 20.8256 6.88785C20.8256 10.7944 23.8605 13.5701 27.7326 13.5701L28.5698 13.5701L28.5698 13.8785C28.5698 16.6542 25.9535 17.5794 23.2326 17.9906L21.9767 18.1963L22.2907 22L23.7558 21.8972C33.0698 21.2804 36 14.5981 36 8.84112C36 3.49533 32.4419 -3.11062e-07 27.8372 -7.13614e-07Z" fill="#1D3A64" />
-                                            </svg>
-                                        </div>
-                                        @if (Model.HasQuoteColumnAuthor)
-                                        {
-                                            <p class="govuk-body author govuk-!-font-size-19">- @Model.Component.quoteColumnAuthor</p>
-                                        }
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                }
-
             </div>
+            @Html.Raw(Model.HtmlCopy)
         </div>
     </div>
 </div>

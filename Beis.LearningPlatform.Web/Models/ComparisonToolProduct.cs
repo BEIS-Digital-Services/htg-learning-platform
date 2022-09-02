@@ -213,8 +213,16 @@
                 }
                 else
                 { 
-                    return $"{discountTerm} {discountUnit} at £{productPrices[0].discount_price:f2} off";                
+                    return $"{discountTerm} {discountUnit} at £{productPrices[0].discount_price:f2}";                
                 }
+            }
+        }
+
+        public bool HasContractDurationDiscountUnitAndPercentage
+        {
+            get
+            {
+                return !string.IsNullOrEmpty(contractDurationDiscount);
             }
         }
 
@@ -227,7 +235,17 @@
             // INCORRECT DATA OR DATA MAPPING. This is meant to be a Temporary feature. Please check with Pritesh Patel when to depricate the feature
             get
             {
-                return (productPrices.Count > 0 ? $"{ComparisonToolFieldValidator.ParseStringField(productPrices[0].contract_duration_discount_unit)} at {ComparisonToolFieldValidator.ParseStringField(productPrices[0].contract_duration_discount_percentage.ToString())}% off" : "No ProductPrice Record");
+                if (productPrices?.Any() != true)
+                {
+                    return null;
+                }
+
+                if (string.IsNullOrEmpty(productPrices[0].contract_duration_discount_unit) || productPrices[0].contract_duration_discount_percentage == default)
+                { 
+                    return null;
+                }
+
+                return $"{ComparisonToolFieldValidator.ParseStringField(productPrices[0].contract_duration_discount_unit)} at {ComparisonToolFieldValidator.ParseStringField(productPrices[0].contract_duration_discount_percentage.ToString())}% off";
             }
         }
 

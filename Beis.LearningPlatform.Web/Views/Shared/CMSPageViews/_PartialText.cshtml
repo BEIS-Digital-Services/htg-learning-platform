@@ -6,45 +6,45 @@
 <div class="beis-text" id="@("anchor" + Model.component.Index)">
     <div class="@Model.component.AlteredBackground">
         <div class="govuk-width-container">
-            <div class="govuk-grid-row">
-                @if (Model.component.textblocks.Count > 0)
+
+            @if (Model.component.textblocks.Count > 0)
+            {
+                foreach (var txtBlock in Model.component.textblocks)
                 {
-                    foreach (var txtBlock in Model.component.textblocks)
+                    txtBlock.hide = txtBlock.hide.HasValue ? txtBlock.hide : false;
+
+                    if (txtBlock.hide == false)
                     {
-                        txtBlock.hide = txtBlock.hide.HasValue ? txtBlock.hide : false;
-
-                        if (txtBlock.hide == false)
-                        {
-                            <div class="govuk-grid-column-full @Model.component.AlteredPaddingTopSpace @Model.component.AlteredPaddingBottomSpace">
-                                @if (!string.IsNullOrWhiteSpace(txtBlock.header))
+                        <div class="@Model.component.AlteredPaddingTopSpace @Model.component.AlteredPaddingBottomSpace">
+                            @if (!string.IsNullOrWhiteSpace(txtBlock.header))
+                            {
+                                @if (Model.showBackButton)
                                 {
-                                    @if (Model.showBackButton)
-                                    {
-                                        <button id="link-cmspageviews-text-back-link" class="govuk-back-link btn-as-link" onclick="history.back()">Back</button>
-                                    }
-                                    @Html.Raw("<h1 class=\"govuk-heading-xl \">");
-                                    @Html.Raw(Markdown.ToHtml(txtBlock.header).Replace("<p>", "<span>").Replace("</p>", "</span><br/>"))
-                                    @Html.Raw("</h1>");
+                                    <button id="link-cmspageviews-text-back-link" class="govuk-back-link btn-as-link" onclick="history.back()">Back</button>
                                 }
+                                @Html.Raw("<h1 class=\"govuk-heading-xl \">");
+                                @Html.Raw(Markdown.ToHtml(txtBlock.header).Replace("<p>", "<span>").Replace("</p>", "</span><br/>"))
+                                @Html.Raw("</h1>");
+                            }
 
-                                @if (!string.IsNullOrWhiteSpace(txtBlock.subheader))
-                                {
-                                    @Html.Raw("<h2 class=\"govuk-heading-m \">");
-                                    @Html.Raw(Markdown.ToHtml(txtBlock.subheader).Replace("<p>", "<span>").Replace("</p>", "</span><br/>"))
-                                    @Html.Raw("</h2>");
-                                }
+                            @if (!string.IsNullOrWhiteSpace(txtBlock.subheader))
+                            {
+                                @Html.Raw("<h2 class=\"govuk-heading-m \">");
+                                @Html.Raw(Markdown.ToHtml(txtBlock.subheader).Replace("<p>", "<span>").Replace("</p>", "</span><br/>"))
+                                @Html.Raw("</h2>");
+                            }
 
-                                @if (!string.IsNullOrWhiteSpace(txtBlock.copy))
-                                {
-                                    @Html.Raw("<div class=\"govuk-body\">" + Markdown.ToHtml(txtBlock.copy, _pipeline) + "</div>")
-                                }
-                            </div>
-                        }
+                            @if (!string.IsNullOrWhiteSpace(txtBlock.copy))
+                            {
+                                @Html.Raw("<div class=\"govuk-body\">" + Markdown.ToHtml(txtBlock.copy, _pipeline) + "</div>")
+                            }
+                        </div>
                     }
                 }
-                <partial name="CMSPageViews/_PartialTextButtons" model="@Model.component" />
-                <partial name="CMSPageViews/_PartialTextLinks" model="@(Model.component.links, Model.component.linksAlign)" />
-            </div>
+            }
+            <partial name="CMSPageViews/_PartialTextButtons" model="@Model.component" />
+            <partial name="CMSPageViews/_PartialTextLinks" model="@(Model.component.links, Model.component.linksAlign)" />
+            
         </div>
     </div>
 </div>

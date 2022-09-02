@@ -1,14 +1,8 @@
 ﻿@model CmsLandingPageHeroListViewModel
-<div class="landingpage-hero-list" id="@Model.Component.id">
-    <div class="govuk-width-container govuk-!-margin-bottom-6 govuk-!-margin-top-6">
-        <div class="govuk-grid-row">
-            <div class="govuk-grid-column-full">
-                @foreach(var hero in Model.Heroes)
-                {
-                    hero.AlternateLayout = Model.Heroes.IndexOf(hero) % 2 != 0;
-                    <vc:cms-landing-page-hero landing-page-hero="@hero" />
-                }
-            </div>
-        </div>
-    </div>
+<div class="govuk-width-container beis-landing-page-list" id="@Model.Component.id">
+    @foreach(var hero in Model.Heroes)
+    {
+        hero.AlternateLayout = Model.Heroes.IndexOf(hero) % 2 != 0;
+        <vc:cms-landing-page-hero landing-page-hero="@hero" />
+    }
 </div>

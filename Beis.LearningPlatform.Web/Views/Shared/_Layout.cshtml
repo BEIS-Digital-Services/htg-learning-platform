@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 @using Beis.LearningPlatform.Web.Utils
 @model Beis.LearningPlatform.Web.Interfaces.IPageViewModel
-<html lang="en">
+<html lang="en" class="govuk-template">
 <head>
     <vc:google-analytics-tag />
     <vc:google-analytics-data-layer page-view-model="@Model" />
@@ -34,10 +34,8 @@
     <vc:cookie-banner />
     @if (Model.ShowLayoutNavigation)
     {
-        <div role="banner">
-            <vc:site-navigation page-view-model="@Model" /> 
-            <partial name="SatisfactionSurveyViews/_SatisfactionSurveyHeaderBanner" />
-        </div>
+        <vc:site-navigation page-view-model="@Model" /> 
+        <partial name="SatisfactionSurveyViews/_SatisfactionSurveyHeaderBanner" />
     }
     @RenderBody()
 

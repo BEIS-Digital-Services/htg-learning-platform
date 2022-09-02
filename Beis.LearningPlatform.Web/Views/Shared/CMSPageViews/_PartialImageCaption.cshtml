@@ -1,12 +1,13 @@
 ﻿@model Beis.LearningPlatform.Web.StrapiApi.Models.CMSPageComponent
 
-<div class="beis-image-caption" id="@("anchor" + Model.Index)">
-    <div class="govuk-width-container @Model.AlteredPaddingTopSpace @Model.AlteredPaddingBottomSpace">
-        <div class="img-wrapper govuk-!-padding-bottom-6 @CamelCaseConverter.Delimiter(Model.background, "-")">
-            @if (Model.image != null)
-            {
-                <vc:cms-image options='new CmsImageViewModel{ ImageUrl = Model.image.url, Title = Model.image.alternativeText }' />
-
+<div class="govuk-width-container @Model.AlteredPaddingTopSpace @Model.AlteredPaddingBottomSpace" id="@("anchor" + Model.Index)">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <div class="govuk-!-padding-bottom-6 @CamelCaseConverter.Delimiter(Model.background, "-")">
+                @if (Model.image != null)
+                {
+                    <vc:cms-image options='new CmsImageViewModel{ ImageUrl = Model.image.url, Title = Model.image.alternativeText, CssClass="beis-image" }' />
+                }
                 @if (!string.IsNullOrEmpty(Model.CaptionType) && (Enum.TryParse(Model.CaptionType, out CaptionTypes captionType)))
                 {
                     @if (captionType == CaptionTypes.SpecificCaption)
@@ -18,8 +19,8 @@
                         <div style="margin: 10px 2px;" class="govuk-body beis-image-caption">@Model.image.caption</div>
                     }
                 }
-            }
+            
+            </div>
         </div>
-
     </div>
 </div>
