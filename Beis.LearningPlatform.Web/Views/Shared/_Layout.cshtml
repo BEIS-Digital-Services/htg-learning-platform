@@ -30,6 +30,7 @@
     <script>
         document.body.classList.remove('nojs');
         document.body.classList.add('js');
+        document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
     </script>
     <vc:cookie-banner />
     @if (Model.ShowLayoutNavigation)
@@ -68,6 +69,7 @@
             $menuBtn.attr('aria-expanded', active);
         }
     </script>
+    <script src="/js/govuk.js" asp-append-version="true"></script>
     <script src="/js/site.js" asp-append-version="true"></script>
     <script src="/js/expression-of-interest.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
