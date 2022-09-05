@@ -3,47 +3,28 @@
 {
     return;
 }
-<div class="case-studies">
-    <div class="govuk-width-container govuk-!-padding-top-6 govuk-!-padding-bottom-6">
-        <div class="govuk-grid-row">
-            <div class="govuk-grid-column-full">
-                <div class="mobile">
-                    <h1 class="beis-yellow-text govuk-heading-xl">@Model.Component.content.header</h1>
-                    <h2 class="govuk-heading-xl beis-white-text">@Model.Component.content.subheader</h2>
-                    @if (!string.IsNullOrWhiteSpace(Model.ImageUrl))
-                    {
-                        <img class="img" src="@Model.ImageUrl" alt="">
-                    }
-                    @if (!string.IsNullOrWhiteSpace(Model.Component.videoLink))
-                    {
-                        <div class="youtube-container">
+<div class="beis-case-study">
+    <div class="govuk-width-container">
+        <h1 class="govuk-heading-xl beis-case-study__heading">@Model.Component.content.header</h1>
+        <h2 class="govuk-heading-l beis-case-study__sub-heading">@Model.Component.content.subheader</h2>
+        <div class="govuk-grid-row">                                                                              
+            <div class="govuk-grid-column-one-half beis-float-right-from-tablet">
+                @if (!string.IsNullOrWhiteSpace(Model.ImageUrl))
+                {
+                    <img class="beis-case-study__image" src="@Model.ImageUrl" alt="">
+                }
+                @if (!string.IsNullOrWhiteSpace(Model.Component.videoLink))
+                {
+                    <div class="beis-case-study__video-wrap">
+                        <div class="beis-case-study__video">
                             <iframe width="560" height="315" src="@Model.Component.videoLink" title="@Model.Component.VideoTitle" style="border:none;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
-                    }
-                    <div class="govuk-body beis-white-text govuk-!-margin-top-6">
-                        @Html.Raw(Model.HtmlCopy)
                     </div>
-                </div>
-                <div class="desktop">
-                    <div class="text-wrapper">
-                        <h1 class="beis-yellow-text govuk-heading-xl">@Model.Component.content.header</h1>
-                        <h2 class="govuk-heading-xl beis-white-text">@Model.Component.content.subheader</h2>
-                        <div class="govuk-body beis-white-text govuk-!-margin-top-6">
-                            @Html.Raw(Model.HtmlCopy)
-                        </div>
-                    </div>
-                    @if (!string.IsNullOrWhiteSpace(Model.ImageUrl))
-                    {
-                        <img class="img" src="@Model.ImageUrl" alt="">
-                    }
-                    @if (!string.IsNullOrWhiteSpace(Model.Component.videoLink))
-                    {
-                        <div class="img">
-                            <div class="youtube-container">
-                                <iframe width="560" height="315" src="@Model.Component.videoLink" title="@Model.Component.VideoTitle" style="border:none;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                    }
+                }
+            </div>
+            <div class="govuk-grid-column-one-half">
+                <div class="beis-case-study__content">
+                    @Html.Raw(Model.HtmlCopy)
                 </div>
             </div>
         </div>

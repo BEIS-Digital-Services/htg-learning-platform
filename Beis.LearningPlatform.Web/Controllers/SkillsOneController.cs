@@ -51,7 +51,7 @@ namespace Beis.LearningPlatform.Web.Controllers
             var response = await _controllerHelper.ProcessResults(model, FormTypes.SkillsOne);
             if (response.Result && response.Payload)
             {
-                return Redirect("/learning-module-one-next-steps");
+                return Redirect("/your-digital-journey-next-steps");
             }
             else
             {

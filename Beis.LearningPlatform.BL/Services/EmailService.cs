@@ -179,12 +179,12 @@ namespace Beis.LearningPlatform.BL.Services
                 var emailData = (SkillsResultsEmailDataDto)dto;
                 
                 templateId = _notifyServiceOption.Templates.SkillsModule1;
-                var linkToSkilledModule2 = _notifyServiceOption.SkilledModule2Link;
+                var linkToSkilledModule3 = _notifyServiceOption.SkilledModule3Link;
 
                 personalisation = GeneratePersonalisation(EmailPersonalisationNames.SkillsModule1, 
                                                 new[] { emailData.DigitalAdoptionBenefits, emailData.DigitalAdoptionFrictionPointDescription, 
                                                     emailData.SoftwareUsage, emailData.InformationSharingMode, emailData.DigitalAdoptionBenefitsDescription, 
-                                                    GetUnsubscribeLink(emailAddress), linkToSkilledModule2 }, 
+                                                    GetUnsubscribeLink(emailAddress), linkToSkilledModule3 }, 
                                                 false);
 
                 return personalisation;
@@ -194,10 +194,10 @@ namespace Beis.LearningPlatform.BL.Services
                 var emailData = (SkilledModuleTwoDto)dto;
 
                 templateId = GetTemplateID(emailData.SkilledModuleTwoResultType);
-                var linkToSkilledModule2 = _notifyServiceOption.SkilledModule2Link;
+                var linkToSkilledModule3 = _notifyServiceOption.SkilledModule2Link;
 
                 personalisation = GeneratePersonalisation(EmailPersonalisationNames.SkillsModule2,
-                                                new[] { emailData.Priorities, GetUnsubscribeLink(emailAddress), linkToSkilledModule2 },
+                                                new[] { emailData.Priorities, GetUnsubscribeLink(emailAddress), linkToSkilledModule3 },
                                                 false);
 
                 return personalisation;

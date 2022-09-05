@@ -1,0 +1,39 @@
+.beis-feature {
+    padding-top: $govuk-gutter;
+    padding-bottom: $govuk-gutter;
+}
+
+.beis-feature__row {
+    @include govuk-media-query (mobile) {
+        display: flex;
+        align-items: center;
+    }
+}
+
+.beis-feature__heading {
+    color: $beis-blue;
+}
+
+.beis-feature__sub-heading {
+    color: $beis-blue;
+}
+
+.beis-feature__img, 
+.beis-feature img {
+    max-width: 100%;
+    margin: 20px auto 0;
+    display: block;
+    @include govuk-media-query (tablet) {
+        margin: 0;
+        display: inline-block;
+    }
+}
+
+.beis-feature .beis-link-icon, 
+.beis-feature__link-icon {
+    display: inline-block;
+    margin-right: 5px;
+    vertical-align: middle;
+    flex-shrink: 0;
+    align-self: center;
+}
