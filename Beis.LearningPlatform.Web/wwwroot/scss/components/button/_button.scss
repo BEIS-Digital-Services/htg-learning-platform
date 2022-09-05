@@ -1,0 +1,6 @@
+.beis-button--primary {
+    background-color: $beis-primary-button;
+    &:hover {
+        background-color: $beis-primary-button-hover;
+    }
+}

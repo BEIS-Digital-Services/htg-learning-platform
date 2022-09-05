@@ -104,7 +104,7 @@ $screen-sm: 40.0625em;
 }
 
 .page-sub-menu-wrapper {
-    border-bottom: 2px solid #dedfe0;
+    border-bottom: 1px solid $govuk-border-colour;
     min-height: 44px; // 50px;
 
     @media screen and (max-width: $screen-xs) {

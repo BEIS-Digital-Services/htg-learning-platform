@@ -12,48 +12,35 @@
 
         if (article.hide == false)
         {
-            <div class="govuk-width-container govuk-!-padding-top-4  govuk-!-padding-bottom-8 article">
-                <div class="govuk-grid-row">
-                    <div class="govuk-grid-column-full">
+            <div class="govuk-width-container">
+                <div class="beis-landing-page-list__item">
+                    <div class="govuk-grid-row">
+                        <div class="govuk-grid-column-one-half">
+                            
+                            @if (article.image != null)
+                            {
+                                <vc:cms-image options='new CmsImageViewModel{ ImageUrl = article.image.url, CssClass = "beis-landing-page-list__image" }' />
+                            }
+                            
+                        </div>
+
                         @if (article.Article != null)
                         {
-                            <div class="top-line @article.Article.AlteredBackgroundColor">
+                            <div class="govuk-grid-column-one-half">
+                                
+                                @if (!string.IsNullOrWhiteSpace(article.Article.subheader) || !string.IsNullOrWhiteSpace(article.Article.header))
+                                {
+                                    <h2 class="govuk-heading-l beis-landing-page-list__heading">
+                                        @(string.IsNullOrWhiteSpace(article.Article.header) ? article.Article.subheader : article.Article.header)
+                                    </h2>
+                                }
+                                @Html.Raw(!string.IsNullOrWhiteSpace(article.Article.copy) ? Markdown.ToHtml(article.Article.copy, _pipeline).Replace("<p>", "<p class=\"govuk-body\">") : string.Empty)
+
+                                <partial name="CMSPageViews/_PartialTextLinks" model="@(article.Links, Model.linksAlign)" />
+                            
                             </div>
                         }
-
                     </div>
-                </div>
-
-                <div class="govuk-grid-row beis-columns-same-height">
-                    <div class="govuk-grid-column-one-half">
-                        <div class="govuk-grid-row">
-                            <div class="left-column ">
-                                @if (article.image != null)
-                                {
-                                    <vc:cms-image options='new CmsImageViewModel{ ImageUrl = article.image.url, CssClass = "hero-mobile-image" }' />
-                                }
-                            </div>
-                        </div>
-                    </div>
-
-                    @if (article.Article != null)
-                    {
-                        <div class="govuk-grid-column-one-half beis-stretch-content">
-                            <div class="govuk-grid-row">
-                                <div class="right-column">
-                                    @if (!string.IsNullOrWhiteSpace(article.Article.subheader) || !string.IsNullOrWhiteSpace(article.Article.header))
-                                    {
-                                        <h2 class="govuk-heading-l govuk-!-padding-top-3">
-                                            @(string.IsNullOrWhiteSpace(article.Article.header) ? article.Article.subheader : article.Article.header)
-                                        </h2>
-                                    }
-                                    @Html.Raw(!string.IsNullOrWhiteSpace(article.Article.copy) ? Markdown.ToHtml(article.Article.copy, _pipeline).Replace("<p>", "<p class=\"govuk-body\">") : string.Empty)
-
-                                    <partial name="CMSPageViews/_PartialTextLinks" model="@(article.Links, Model.linksAlign)" />
-                                </div>
-                            </div>
-                        </div>
-                    }
                 </div>
             </div>
         }
