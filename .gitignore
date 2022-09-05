@@ -9,7 +9,7 @@
 # minified js
 *.min.js
 
-/node_modules
+#/node_modules
 
 # Visual Studio
 *.suo
