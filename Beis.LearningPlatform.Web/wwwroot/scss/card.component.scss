@@ -3,8 +3,6 @@
 
 .card {
 
-    $beis-yellow-light: #FFF7BF;
-
     .reverse-block {
         display: inline-block;
     }
@@ -55,8 +53,8 @@
             &.one {
                 left: -27px;
                 outline: 10px solid $beis-aqua;
-                border: 2px solid $black;
-                color: $black;
+                border: 2px solid #000;
+                color: #000;
                 z-index: 2;
 
             }
@@ -64,8 +62,8 @@
             &.two {
                 left: -27px;
                 outline: 10px solid $beis-yellow;
-                border: 2px solid $black;
-                color: $black;
+                border: 2px solid #000;
+                color: #000;
                 z-index: 3;
 
             }
@@ -73,8 +71,8 @@
             &.three {
                 left: -27px;
                 outline: 10px solid $beis-blue-feedback;
-                border: 2px solid $white;
-                color: $white;
+                border: 2px solid #fff;
+                color: #fff;
                 z-index: 2;
 
 
@@ -83,8 +81,8 @@
             &.four {
                 left: -27px;
                 outline: 10px solid $beis-yellow-light;
-                border: 2px solid $black;
-                color: $black;
+                border: 2px solid #000;
+                color: #000;
 
             }
         }
@@ -94,20 +92,20 @@
 
     .one {
         background: $beis-aqua;
-        color: $black;
+        color: #000;
 
     }
 
     .two {
         background: $beis-yellow;
-        color: $black;
+        color: #000;
 
 
     }
 
     .three {
         background: $beis-blue-feedback;
-        color: $white;
+        color: #fff;
 
         .govuk-link {
             color: $beis-yellow;
@@ -117,7 +115,7 @@
 
     .four {
         background: $beis-yellow-light;
-        color: $black;
+        color: #000;
 
         
     }

@@ -1,6 +1,6 @@
 ﻿namespace Beis.LearningPlatform.Data.Entities.Skills
 {
-    public class SkillsThreeResponse : FeedbackEntity
+    public class SkillsThreeResponse : SkilledDataResponse
     {
         public string UserEmailAddress { get; set; }
         public string Questionnaire { get; set; }

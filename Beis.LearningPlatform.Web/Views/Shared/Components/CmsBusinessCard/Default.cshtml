@@ -6,36 +6,30 @@
 <div class="business-card" id="@Model.Component.id">
     <div class="grey">
         <div class="govuk-width-container">
-            <div class="govuk-grid-row business-card-wrapper">
+            <div class="govuk-grid-row beis-row-flex">
                 <div class="govuk-grid-column-one-half">
-                    <div class="govuk-grid-row">
-                        <ul class="left-column">
-                            <li class="govuk-body"><strong>Business name:</strong> @Model.Component.businessName</li>
-                            @if (!string.IsNullOrWhiteSpace(Model.Component.sector))
-                            {
-                                <li class="govuk-body"><strong>Sector:</strong> @Model.Component.sector</li>
-                            }
-                            @if (!string.IsNullOrWhiteSpace(Model.Component.location))
-                            {
-                                <li class="govuk-body"><strong>Location:</strong> @Model.Component.location</li>
-                            }
-                            @if (!string.IsNullOrWhiteSpace(Model.Component.businessFounded))
-                            {
-                                <li class="govuk-body"><strong>Business founded:</strong> @Model.Component.businessFounded</li>
-                            }
-                            @if (!string.IsNullOrWhiteSpace(Model.VisitUrl))
-                            {
-                                <li class="govuk-body"><strong>Visit: </strong> <a id="link-cmsbusinesscard-visit" class="button-link" href="@Model.VisitUrl"> @Model.Component.visit</a></li>
-                            }
-                        </ul>
-                    </div>
+                    <ul class="govuk-list">
+                        <li class="govuk-body"><strong>Business name:</strong> @Model.Component.businessName</li>
+                        @if (!string.IsNullOrWhiteSpace(Model.Component.sector))
+                        {
+                            <li class="govuk-body"><strong>Sector:</strong> @Model.Component.sector</li>
+                        }
+                        @if (!string.IsNullOrWhiteSpace(Model.Component.location))
+                        {
+                            <li class="govuk-body"><strong>Location:</strong> @Model.Component.location</li>
+                        }
+                        @if (!string.IsNullOrWhiteSpace(Model.Component.businessFounded))
+                        {
+                            <li class="govuk-body"><strong>Business founded:</strong> @Model.Component.businessFounded</li>
+                        }
+                        @if (!string.IsNullOrWhiteSpace(Model.VisitUrl))
+                        {
+                            <li class="govuk-body"><strong>Visit: </strong> <a id="link-cmsbusinesscard-visit" class="button-link" href="@Model.VisitUrl"> @Model.Component.visit</a></li>
+                        }
+                    </ul>
                 </div>
                 <div class="govuk-grid-column-one-half">
-                    <div class="govuk-grid-row">
-                        <div class="right-column">
-                            <img class="business-card-image" src="@Model.ImageUrl" alt="@Model.Component.image.alternativeText" />
-                        </div>
-                    </div>
+                    <img class="business-card-image" src="@Model.ImageUrl" alt="@Model.Component.image.alternativeText" />
                 </div>
             </div>
         </div>
@@ -43,15 +37,11 @@
     @if (Model.Component.contactSMEOptional ?? false)
     {
         <div class="govuk-width-container">
-            <div class="govuk-grid-row">
-                <div class="govuk-grid-column-full">
-                    <p class="govuk-body optional">Do you have a tech adoption success story you'd like to share? <br>
-                        Contact <a id="link-cmsbusinesscard-contact" href="mailto:sme.helptogrow@beis.gov.uk" class="button-link">
-                            sme.helptogrow@beis.gov.uk
-                        </a>
-                    </p>
-                </div>
-            </div>
+            <p class="govuk-body optional">Do you have a tech adoption success story you'd like to share? <br>
+                Contact <a id="link-cmsbusinesscard-contact" href="mailto:sme.helptogrow@beis.gov.uk" class="button-link">
+                    sme.helptogrow@beis.gov.uk
+                </a>
+            </p>
         </div>
     }
 </div>

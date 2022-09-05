@@ -1,0 +1,35 @@
+.beis-article-list {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    @include govuk-media-query (desktop) {
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+}
+
+.beis-article-list__heading {
+    border-bottom: 10px solid $beis-yellow;
+    color: $beis-blue;
+    padding-bottom: 10px;
+}
+
+.beis-article-list__article {
+    padding: 20px 0;
+}
+
+.beis-article-list__article-heading {
+    margin-bottom: 15px;
+}
+
+.beis-article-list__article-link {
+    @include govuk-link-style-no-visited-state;
+}
+
+.beis-article-list__article-image {
+    max-width: 100%;
+    margin-bottom: 20px;
+    display: block;
+    @include govuk-media-query (desktop) {
+        margin: 0;
+    }
+}

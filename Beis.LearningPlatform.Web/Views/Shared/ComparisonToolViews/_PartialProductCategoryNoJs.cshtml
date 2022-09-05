@@ -120,7 +120,7 @@
                         IDictionary<string, string> routeDataSoftware = new Dictionary<string, string>();
                         routeDataSoftware.Add("product_id", Model.productsForCurrentCategoryToRender[i].product_id.ToString());
                     }
-                    <a id="link-comparisontoolviews-productcategorynojs-get-discount-link-@(Model.productsForCurrentCategoryToRender[i]?.GetGaLinkId())" role="button" aria-label="Select @ComparisonToolFieldValidator.ParseStringField(Model.productsForCurrentCategoryToRender[i].product_name)" asp-controller="comparisonTool" asp-action="GetDiscount" asp-all-route-data="routeDataSoftware" class="govuk-button secondary" data-module="govuk-button">
+                    <a id="link-comparisontoolviews-productcategorynojs-get-discount-link-@(Model.productsForCurrentCategoryToRender[i]?.GetGaLinkId())" role="button" aria-label="Select @ComparisonToolFieldValidator.ParseStringField(Model.productsForCurrentCategoryToRender[i].product_name)" asp-controller="comparisonTool" asp-action="GetDiscount" asp-all-route-data="routeDataSoftware" class="govuk-button govuk-button--secondary" data-module="govuk-button">
                         Get discount
                     </a>
                 </div>
