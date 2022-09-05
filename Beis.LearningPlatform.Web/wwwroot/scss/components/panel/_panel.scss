@@ -1,0 +1,49 @@
+.beis-panel {
+    padding: 20px;
+    @include govuk-font($size: 24);
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    @include govuk-media-query (tablet) {
+        padding: 30px;
+        margin-bottom: 30px;
+    }
+}
+
+.beis-panel__content p {
+    font-size: inherit;
+    color: #000;
+}
+
+.beis-panel__content p:last-child {
+    margin-bottom: 0;
+}
+
+.beis-panel__content p a {
+    @include govuk-link-style-text;
+    font-weight: $govuk-font-weight-bold;
+}
+
+
+.beis-panel--aqua {
+    background: $beis-aqua;
+}
+
+.beis-panel--gold {
+    background: $beis-yellow;
+}
+
+.beis-panel--blue {
+    background: $beis-blue;
+}
+
+.beis-panel--blue .beis-panel__content p {
+    color: #fff;
+}
+
+.beis-panel--blue .beis-panel__content p a {
+    @include govuk-link-style-inverse
+}
+
+.beis-panel--yellow {
+    background: $beis-yellow-light;
+}

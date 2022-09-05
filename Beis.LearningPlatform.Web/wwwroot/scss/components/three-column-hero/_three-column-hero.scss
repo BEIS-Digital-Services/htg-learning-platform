@@ -1,0 +1,17 @@
+.beis-three-column-hero {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    @include govuk-media-query (tablet) {
+        margin-top: 30px;
+        margin-bottom: 40px;
+    }
+}
+
+.beis-three-column-hero__heading {
+    color: $beis-blue;
+    margin-top: 20px;
+}
+
+.beis-three-column-hero__content {
+    color: $beis-blue;
+}

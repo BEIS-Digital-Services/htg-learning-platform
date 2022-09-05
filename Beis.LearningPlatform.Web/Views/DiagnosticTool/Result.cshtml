@@ -11,14 +11,12 @@
     var eCommerceProducts = Model.GetECommerceProducts();
 }
 
-<hr class="beis-grey divider" aria-hidden="true">
-
 @if (Model.side_navigations != null)
 {
     <partial name="CMSPageViews/_PartialSideNavigation" model="@Model.side_navigations" />
 }
 
-<main id="main-heading" role="main">
+<main id="main-heading" role="main" class="beis-main-wrapper">
     <div class="govuk-width-container govuk-!-padding-top-6 govuk-!-padding-bottom-6">
         <div class="govuk-grid-row govuk-!-margin-bottom-6">
             <div class="govuk-grid-column-two-thirds">

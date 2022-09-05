@@ -1,0 +1,14 @@
+.beis-product-listing {
+    margin: 20px 0;
+    border: 1px solid $govuk-border-colour;
+    border-top: 10px solid $beis-blue;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    flex-direction: column;
+    @include govuk-media-query (tablet) {
+        flex-direction: row;
+    }
+}
+

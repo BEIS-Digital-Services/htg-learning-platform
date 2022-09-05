@@ -2,6 +2,9 @@
 {
     public class SkillsOneResponseDto : DtoBase
     {
+        public bool? IsPrivacyPolicyAccepted { get; set; }
+        public bool? IsOptedInForMarketing { get; set; }
+
         public string UserEmailAddress { get; set; }
         public string InterestedInNewOpportunities { get; set; }
         public string InterestedInIncreasingSales { get; set; }
