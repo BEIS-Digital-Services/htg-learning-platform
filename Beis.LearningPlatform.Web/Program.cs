@@ -36,10 +36,7 @@ builder.Services.AddMvcCore(r =>
 builder.Services.RegisterAllServices(builder.Configuration, hasParsed && useSsl);
 
 
-builder.Services.AddHealthChecks()
-    .AddDbContextCheck<HtgVendorSmeDbContext>("VendorSme Database")
-    .AddCheck<DependencyInjectionHealthCheckService>("Dependency Injection")
-    .AddCheck<StrapiHealthCheckService>("Strapi Health");
+builder.Services.RegisterHealthcheckServices();
 
 // Configure the HTTP request pipeline.
 var app = builder.Build();
@@ -77,9 +74,9 @@ app.UseAuthorization();
 app.UseSession();
 app.UseMvc(r => r.MapRoute("default", "{controller=Home}/{action=Index}"));
 
-app.MapHealthChecks("api/healthz", new HealthCheckOptions
+app.UseEndpoints(endpoints =>
 {
-    ResponseWriter = HealthCheckJsonResponseWriter.Write
+    endpoints.MapSMEHealthChecks();
 });
 
 app.Run();
