@@ -1,9 +1,6 @@
 using Beis.LearningPlatform.Web;
-using Microsoft.Extensions.Logging.ApplicationInsights;
-using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-using Beis.HelpToGrow.Common.Helpers;
-using Beis.HelpToGrow.Common.Services.HealthChecks;
 using Beis.LearningPlatform.Web.Filters;
+using Microsoft.Extensions.Logging.ApplicationInsights;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Host.ConfigureAppConfiguration(configuration =>

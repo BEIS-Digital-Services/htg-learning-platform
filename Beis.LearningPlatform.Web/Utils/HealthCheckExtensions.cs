@@ -1,9 +1,4 @@
-﻿using Beis.HelpToGrow.Common.Helpers;
-using Beis.HelpToGrow.Common.Services.HealthChecks;
-using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-using Microsoft.Extensions.Diagnostics.HealthChecks;
-
-namespace Beis.LearningPlatform.Web.Utils;
+﻿namespace Beis.LearningPlatform.Web.Utils;
 
 public static class HealthCheckExtensions
 {
