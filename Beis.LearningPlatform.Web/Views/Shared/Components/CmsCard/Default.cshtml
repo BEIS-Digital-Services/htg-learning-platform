@@ -4,22 +4,22 @@
     <div class="govuk-width-container govuk-!-padding-top-6 govuk-!-padding-bottom-6">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-full">
-                <div id="card1" class="beis-panel beis-panel--aqua">
+                <div id="@(Model.OneTitle + "-card")" class="beis-panel beis-panel--aqua">
                     <div class="beis-panel__content">
                         @Html.Raw(Model.One)
                     </div>
                 </div>
-                <div id="card2" class="beis-panel beis-panel--gold">
+                <div id="@(Model.TwoTitle + "-card")" class="beis-panel beis-panel--gold">
                     <div class="beis-panel__content">
                         @Html.Raw(Model.Two)
                     </div>
                 </div>
-                <div id="card3" class="beis-panel beis-panel--blue">
+                <div id="@(Model.ThreeTitle + "-card")" class="beis-panel beis-panel--blue">
                     <div class="beis-panel__content">
                         @Html.Raw(Model.Three)
                     </div>
                 </div>
-                <div id="card4" class="beis-panel beis-panel--yellow">
+                <div id="@(Model.FourTitle + "-card")" class="beis-panel beis-panel--yellow">
                     <div class="beis-panel__content">
                         @Html.Raw(Model.Four)
                     </div>

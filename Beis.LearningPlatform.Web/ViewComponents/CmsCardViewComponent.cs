@@ -16,6 +16,10 @@
             viewModel.Two = Markdown.ToHtml(viewModel.Component.two, _markdownPipeline);
             viewModel.Three = Markdown.ToHtml(viewModel.Component.three, _markdownPipeline);
             viewModel.Four = Markdown.ToHtml(viewModel.Component.four, _markdownPipeline);
+            viewModel.OneTitle = viewModel.Component.OneTitle;
+            viewModel.TwoTitle = viewModel.Component.TwoTitle;
+            viewModel.ThreeTitle = viewModel.Component.ThreeTitle;
+            viewModel.FourTitle = viewModel.Component.FourTitle;
             return View(viewModel);
         }
     }

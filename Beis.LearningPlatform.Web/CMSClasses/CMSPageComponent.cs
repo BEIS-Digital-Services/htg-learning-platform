@@ -112,6 +112,10 @@ namespace Beis.LearningPlatform.Web.StrapiApi.Models
         public string two { get; set; }
         public string three { get; set; }
         public string four { get; set; }
+        public string OneTitle { get; set; }
+        public string TwoTitle { get; set; }
+        public string ThreeTitle { get; set; }
+        public string FourTitle { get; set; }
         public IList<CMSPageTableRow> rows { get; set; }
         public string imagePosition { get; set; }
         public string imageSize { get; set; }

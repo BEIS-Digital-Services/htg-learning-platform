@@ -13,6 +13,11 @@
         public string Three { get; set; }
         public string Four { get; set; }
         
+        public string OneTitle { get; set; }
+        public string TwoTitle { get; set; }
+        public string ThreeTitle { get; set; }
+        public string FourTitle { get; set; }
+
         public CMSPageComponent Component
         {
             get
