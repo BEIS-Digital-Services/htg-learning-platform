@@ -33,7 +33,7 @@ public static class HealthCheckExtensions
 			});
 	}
 
-	internal static void MapSMEHealthChecks(this IEndpointRouteBuilder endpoints)
+	internal static void MapHealthChecks(this IEndpointRouteBuilder endpoints)
 	{
 		// base healthcheck
 		endpoints.MapHealthChecks("/healthz", new HealthCheckOptions()
