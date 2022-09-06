@@ -4,13 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "compile-sass": "sass wwwroot/scss/main.scss wwwroot/css/main.css"
+    "compile-sass": "sass wwwroot/scss/main.scss wwwroot/css/main.css",
+    "watch-sass": "sass --watch wwwroot/scss/main.scss wwwroot/css/main.css"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "dart-sass": "^1.25.0",
-    "govuk-frontend": "^3.13.0",
-    "sass": "^1.37.5"
+    "govuk-frontend": "^4.3.1",
+    "sass": "^1.54.4"
   }
 }
