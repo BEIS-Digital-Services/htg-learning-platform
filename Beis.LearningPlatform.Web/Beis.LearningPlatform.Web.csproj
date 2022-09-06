@@ -96,12 +96,13 @@
 			<_Parameter1>Beis.LearningPlatform.Web.Tests</_Parameter1>
 		</AssemblyAttribute>
 	</ItemGroup>
-  
-	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-		<Exec Command="npm run compile-sass" />
-	</Target>
 
 	<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+		<Exec Command="npm install" />
+		<Exec Command="npm run compile-sass" />
+	</Target>
+  
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
 		<Exec Command="npm run compile-sass" />
 	</Target>
 
