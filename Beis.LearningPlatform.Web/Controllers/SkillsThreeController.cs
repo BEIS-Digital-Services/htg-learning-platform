@@ -1,4 +1,6 @@
-﻿namespace Beis.LearningPlatform.Web.Controllers
+﻿using Beis.HelpToGrow.Common.Interfaces;
+
+namespace Beis.LearningPlatform.Web.Controllers
 {
     /// <summary>
     /// A class that defines a controller for the Diagnostic Tool.
@@ -13,8 +15,9 @@
         /// </summary>
         public SkillsThreeController(ILogger<DiagnosticToolController> logger,
                                         IDiagnosticToolControllerHelper controllerHelper,
-                                        IHttpContextAccessor httpContextAccessor)
-            : base(logger, controllerHelper)
+                                        IHttpContextAccessor httpContextAccessor,
+                                        ISessionService sessionService)
+            : base(logger, controllerHelper, sessionService)
         {
             _controllerHelper = controllerHelper;
             _httpContextAccessor = httpContextAccessor;

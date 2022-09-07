@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (jsLinkContainers && history.length > 1) {
             jsLinkContainers.style.display = "block";
 
-            const jsLinks = document.querySelector(".js-go-back-link-container button.govuk-back-link");
+            const jsLinks = document.querySelector(".js-go-back-link-container .govuk-back-link");
             if (jsLinks) {
                 jsLinks.addEventListener("click", () => {
                     history.go(-1);
@@ -204,3 +204,7 @@ function keyHandler(event, func) {
 document.getElementById("eoi-form-start")?.addEventListener('click', function () {
     eoi.goToStep(2);
 });
+
+
+// GOVUK Frontend Modules 
+window.GOVUKFrontend.initAll()
