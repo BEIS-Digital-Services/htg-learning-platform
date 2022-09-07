@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.DataProtection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using System.IO.Abstractions;
+using Beis.HelpToGrow.Common.Interfaces;
+using Beis.HelpToGrow.Common.Services;
 
 namespace Beis.LearningPlatform.Web.Utils
 {
@@ -98,6 +100,7 @@ namespace Beis.LearningPlatform.Web.Utils
             services.AddScoped<IFileSystem, FileSystem>();
             services.AddScoped<IMakeApiCallService, StrapiMakeApiCallService>();
             services.AddScoped<ICookieService, CookieService>();
+            services.AddScoped<ISessionService, SessionService>();
             services.AddSingleton<IHtmlTextService, HtmlTextService>();
             RegisterEmailHelpers(services);
 
