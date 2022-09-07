@@ -20,10 +20,16 @@
         {
             skillsThreeResponse.Date = DateTime.UtcNow;
 
-            await _repository.AddAsync(skillsThreeResponse);
+            //it will add in case of new otherwise update
+            _repository.Update(skillsThreeResponse);
             await SaveAsync();
 
             return skillsThreeResponse.Id;
+        }
+        public SkillsThreeResponse FindByUniqueId(string uniqueId)
+        {
+            var result = _repository.FindByUniqueId(uniqueId);
+            return result;
         }
     }
 }

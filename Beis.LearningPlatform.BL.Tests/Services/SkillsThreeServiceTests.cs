@@ -37,10 +37,18 @@ namespace Beis.LearningPlatform.BL.Tests.Services
                 RiskStart = "RiskStart test value",
                 RiskNext = "RiskNext test value",
                 RiskFinally = "RiskFinally test value",
+                UniqueId = "test_id",
             };
 
             _skills3Service.SaveSkillsThreeResponse(Guid.NewGuid(), response);
             _skills3DataServiceMock.Verify(x => x.Add(It.IsAny<SkillsThreeResponse>()));
+        }
+
+        [Test]
+        public void FindByUniqueId_WhenCalled_Success()
+        {
+            _skills3Service.FindByUniqueId(It.IsAny<string>());
+            _skills3DataServiceMock.Verify(x => x.FindByUniqueId(It.IsAny<string>()));
         }
     }
 }

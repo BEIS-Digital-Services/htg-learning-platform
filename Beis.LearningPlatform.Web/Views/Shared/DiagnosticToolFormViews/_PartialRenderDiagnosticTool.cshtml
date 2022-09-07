@@ -188,10 +188,11 @@
                         <input type="hidden" asp-for="backLink" />
                         <input type="hidden" asp-for="backURLfromQ1" />
 
-                        @if (((int)Model.FormType) > 2)
+                        @if (((int)Model.FormType) >= 8)
                         {
                             //skills3 forms
                             <input type="hidden" asp-for="userTypeActionPlanSection" />
+                            <input type="hidden" asp-for="UniqueId" />
                             <input type="hidden" asp-for="formLogo" />
                         }
 
@@ -382,7 +383,7 @@
                                         }
                                         else
                                         {
-                                            <button id="btn-diagnostictoolformviews-renderdiagnostictool-next" type="submit" onclick="skillsThreeSubmit(@formTypeNum, '_CompletedLink_@Model.userTypeActionPlanSection')" asp-action="Result" class="govuk-button primary"> Continue </button>
+                                            <button id="btn-diagnostictoolformviews-renderdiagnostictool-next" type="submit" onclick="skillsThreeSubmit(@formTypeNum, '@Model.UniqueId', '_CompletedLink_@Model.userTypeActionPlanSection')" asp-action="Result" class="govuk-button primary"> Continue </button>
                                         }
                                     }
                                     else

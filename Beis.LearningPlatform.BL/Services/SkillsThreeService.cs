@@ -33,5 +33,9 @@
 
             return new ServiceResponse<int>(requestID, isSuccessful, message, returnValue);
         }
+        public SkillsThreeResponse FindByUniqueId(string uniqueId)
+        {
+            return _skillsThreeDataService.FindByUniqueId(uniqueId);
+        }
     }
 }

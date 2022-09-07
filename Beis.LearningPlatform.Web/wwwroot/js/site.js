@@ -168,21 +168,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
-function skillsThreeSubmit(formTypeNum, itemKey) {
-    if (formTypeNum > 2) {
-        localStorage.setItem(itemKey, 'true');
+function skillsThreeSubmit(formTypeNum, uniqueId, itemKey) {
+    if (formTypeNum >= 8) {
+        localStorage.setItem(itemKey, uniqueId);
     }
 }
 
-function setImgItemLinkIcon(itemKey, spn_imgitemicon_std, spn_imgitemicon_completed) {
+function setImgItemLinkIcon(itemKey, spn_imgitemicon_std, spn_imgitemicon_completed, txt_imgitemicon_completed) {
 
-    var isCompleted = localStorage.getItem(itemKey, 'true');
-    if (isCompleted == 'true') {
+    var uniqueId = localStorage.getItem(itemKey);
+    if (uniqueId != null) {
         var spnStd = document.getElementById(spn_imgitemicon_std);
         spnStd.style.display = "none";
 
         var spnCompleted = document.getElementById(spn_imgitemicon_completed);
         spnCompleted.style.display = "inline";
+
+        const txtCompleted = document.getElementById(txt_imgitemicon_completed);
+        txtCompleted.setAttribute("value", uniqueId);
     }
 }
 
