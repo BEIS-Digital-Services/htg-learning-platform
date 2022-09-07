@@ -1,0 +1,30 @@
+.beis-business-card {
+    background-color: $beis-grey-light;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    @include govuk-media-query (tablet) {
+        padding-top: 30px;
+        padding-bottom: 30px;
+        margin-bottom: 30px;
+    }
+}
+
+.beis-business-card__list {
+    color: $beis-blue;
+    margin-bottom: 0;
+}
+
+.beis-business-card__logo {
+    display: block;
+    max-width: 100%;
+    margin-top: 15px;
+    @include govuk-media-query (tablet) {
+        max-width: 70%;
+        margin: 0;
+    }
+}
+
+.beis-business-card__contact {
+    margin-bottom: 30px;
+}

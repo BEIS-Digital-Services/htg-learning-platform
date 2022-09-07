@@ -6,13 +6,13 @@
 <div id="@Model.Component.id" class="govuk-width-container">
     <div class="govuk-grid-row">
         <div class=" govuk-grid-column-two-thirds">
-            <div class="image-with-text @Model.Component.AlteredPaddingTopSpace @Model.Component.AlteredPaddingBottomSpace">
-                <div class="govuk-body">
-                    <div class="text-float-@Model.Component.imagePosition">
-                        <img class="@Model.Component.imageSize" src="@Model.ImageUrl" alt="@Model.ImageAlt" />
+            <div class="beis-article-image @Model.Component.AlteredPaddingBottomSpace">
+
+                    <div class="beis-article-image--pull-@Model.Component.imagePosition">
+                        <img class="beis-article-image__image @Model.Component.imageSize" src="@Model.ImageUrl" alt="@Model.ImageAlt" />
                         @if (!string.IsNullOrEmpty(@Model.ImageCaption))
                         {
-                            <div style="color: #767676;font-size: 16px;padding: 10px 2px;">@Model.ImageCaption</div>    
+                            <span class="beis-article-image__caption">@Model.ImageCaption</span>    
                         }                       
                     </div>
                     @Html.Raw(Model.HtmlCopy)
