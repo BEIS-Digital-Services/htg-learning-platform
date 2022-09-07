@@ -1,11 +1,13 @@
-﻿namespace Beis.LearningPlatform.Web.Tests.ControllerTests
+﻿using Beis.HelpToGrow.Common.Interfaces;
+
+namespace Beis.LearningPlatform.Web.Tests.ControllerTests
 {
     public class SkillsThreeControllerTests : FormControllerBaseTest
     {
         private readonly Mock<IHttpContextAccessor> _httpContextAccessor = new();
         private readonly Mock<HttpContext> _httpContext = new();
         private readonly Mock<HttpRequest> _httpRequest = new();
-        private Mock<ISession> _session = new();
+        private readonly Mock<ISession> _session = new();
         private string _currentPath;
         protected override FormTypes GetFormType()
         {
@@ -68,6 +70,7 @@
 
         private Mock<ILogger<DiagnosticToolController>> _logger;
         private SkillsThreeController controller;
+        private Mock<ISessionService> _sessionService;
 
         [SetUp]
         public void Setup()
@@ -76,8 +79,9 @@
             _diagnosticToolControllerHelper = new();
             _ctDisplayOptions.Value.LoadFormFromJson = true;
             _currentPath = string.Empty;
+            _sessionService = new Mock<ISessionService>();
 
-            controller = new SkillsThreeController(_logger.Object, _diagnosticToolControllerHelper.Object, _httpContextAccessor.Object);
+            controller = new SkillsThreeController(_logger.Object, _diagnosticToolControllerHelper.Object, _httpContextAccessor.Object, _sessionService.Object);
             SetHttpContext(controller.ControllerContext);
 
             _httpContext.SetupGet(x => x.Request)

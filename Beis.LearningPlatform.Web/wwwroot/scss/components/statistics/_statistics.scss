@@ -1,6 +1,7 @@
 .beis-statistics__panel {
     text-align: center;
     padding: 20px;
+    margin-bottom: 20px;
 }
 
 .beis-statistics__number {
@@ -12,4 +13,8 @@
 
 .beis-statistics__content * {
     color: inherit;
+}
+
+.beis-statistics__content :last-child {
+    margin-bottom: 0;
 }
