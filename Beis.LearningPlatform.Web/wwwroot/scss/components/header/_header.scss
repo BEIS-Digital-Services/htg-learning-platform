@@ -1,0 +1,102 @@
+.beis-header {
+    border-bottom: 10px solid $beis-yellow;
+    position: relative;
+    margin-bottom: -1px;
+}
+
+.beis-header--has-sub-nav {
+    @include govuk-media-query (tablet) {
+        margin-bottom: 40px;
+    }
+}
+
+.beis-header__container {
+    border: none;
+    padding-bottom: 10px;
+}
+
+.beis-header__row {
+    @include govuk-clearfix
+}
+
+.beis-header__logo,
+.beis-header__content {
+    width: auto;
+}
+
+.beis-header__navigation-item--active > a:link, 
+.beis-header__navigation-item--active > a:hover, 
+.beis-header__navigation-item--active > a:visited {
+    color: $beis-yellow;
+}
+
+.beis-header__navigation-item--active > a:focus {
+    @include govuk-focused-text;
+}
+
+.beis-header__sub-navigation {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 5px 20px;
+    @include govuk-media-query (tablet) {
+        margin: 0;
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+    }
+}
+
+.beis-header__sub-navigation-list-item {
+    padding: 5px 0;
+    @include govuk-media-query (tablet) {
+        padding: 10px 0;
+        display: inline-block;
+        margin-right: 15px;
+    }
+}
+
+.beis-header__sub-navigation-link {
+    @include govuk-link-style-inverse;
+    @include govuk-media-query (tablet) {
+        &:link,
+        &:visited {
+          color: $beis-navy-blue
+        }
+        &:hover,
+        &:active {
+          color: $beis-navy-blue;
+        }
+        &:focus {
+          color: $govuk-focus-text-colour;
+        }
+    }
+}
+
+.beis-header__sub-navigation-link--active {
+    @include govuk-media-query (tablet) {
+        position: relative;
+        &:link,
+        &:visited {
+          color: $govuk-link-colour;
+        }
+        &:hover,
+        &:active {
+          color: $govuk-link-hover-colour;
+        }
+        &:focus {
+          color: $govuk-focus-text-colour;
+        }
+        &:after {
+            content: "";
+            display: block;
+            background: govuk-colour("blue");
+            height: 4px;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            left: 0;
+            margin-top: 7px;
+        }
+    }
+}
