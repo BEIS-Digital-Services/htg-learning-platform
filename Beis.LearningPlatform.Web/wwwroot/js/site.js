@@ -201,3 +201,7 @@ function keyHandler(event, func) {
 document.getElementById("eoi-form-start")?.addEventListener('click', function () {
     eoi.goToStep(2);
 });
+
+
+// GOVUK Frontend Modules 
+window.GOVUKFrontend.initAll()

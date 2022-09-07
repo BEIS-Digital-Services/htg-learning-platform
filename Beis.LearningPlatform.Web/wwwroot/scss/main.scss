@@ -27,7 +27,6 @@ $govuk-global-styles: true;
 @import "fact.scss";
 @import "footer.scss";
 @import "feedbackPrompt.scss";
-@import "header.scss";
 @import "heroBanner.scss";
 @import "imagecaption.scss";
 @import "image-with-text.component.scss";
@@ -50,7 +49,6 @@ $govuk-global-styles: true;
 @import "card.component.scss";
 @import "adaptive-image.component.scss";
 @import "three-levels.component.scss";
-@import "menu-style2.scss";
 @import "expression-of-interest.component.scss";
 
 @import "objects/all";
@@ -657,45 +655,6 @@ button:focus {
     }
 }
 
-.phase-banner {
-    .hr {
-        height: 1px;
-        border: 0;
-        background: #B1B4B6;
-    }
-
-    .banner {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-
-        .govuk-body {
-            margin: 0px;
-        }
-
-        .live-icon {
-            display: inline-block;
-            margin: 20px 15px 0 0;
-            text-transform: uppercase;
-
-            p {
-                color: #fff;
-                background: $beis-link-default;
-                padding: 2px 16px 6px 16px;
-                font-weight: 700;
-                font-size: 16px;
-            }
-
-            @include respond(tablet) {
-                margin: 30px 15px 0 0;
-            }
-        }
-
-        .govuk-body {
-        }
-    }
-}
-
 .button-link {
     font-weight: 700;
     color: #1D70B8;
@@ -714,44 +673,6 @@ button:focus {
     background: transparent;
 }
 
-
-.accessibility-skip-to-content-link {
-    position: absolute;
-    overflow: hidden;
-    margin: 0;
-    width: 1px;
-    height: 1px;
-    -webkit-clip-path: inset(100%);
-    clip-path: inset(100%);
-    clip: rect(1px, 1px, 1px, 1px);
-    white-space: nowrap;
-
-    &:focus {
-        position: static;
-        overflow: visible;
-        width: auto;
-        height: auto;
-        -webkit-clip-path: none;
-        clip-path: none;
-        clip: auto;
-        white-space: inherit;
-        font-weight: 700;
-        font-feature-settings: '';
-        display: block;
-        position: absolute;
-        top: 3rem;
-        left: 0;
-        z-index: 1;
-        padding: 1rem;
-        color: #3F3F42;
-        background: #FFFFFF;
-        border: 1px solid #BABABA;
-        -webkit-text-decoration: none;
-        text-decoration: none;
-    }
-}
-
-
 .right {
     text-align: right;
 }
@@ -766,28 +687,6 @@ button:focus {
 
 .justify {
     text-align: justify;
-}
-
-@media (min-width: 48.0625em) {
-    .govuk-header__navigation-item {
-        margin-right: 11px;
-    }
-}
-
-.govuk-header__navigation-item.govuk-header__navigation-item--active {
-    .govuk-header__link {
-        color: $beis-yellow;
-        text-decoration: underline;
-
-        &:focus {
-            color: #000;
-        }
-    }
-}
-
-.govuk-header__navigation-item--active a:active {
-    color: $beis-yellow;
-    text-decoration: underline;
 }
 
 .btn-as-link {
@@ -963,10 +862,6 @@ span.govuk-link-divider {
     margin-bottom: 20px;
 }
 
-.govuk-header-yellow-line {
-    border-bottom: 10px solid $beis-yellow;
-    margin: 0 15px;
-}
 @media screen and (max-width: 375px) {
 
     .card .cards {
