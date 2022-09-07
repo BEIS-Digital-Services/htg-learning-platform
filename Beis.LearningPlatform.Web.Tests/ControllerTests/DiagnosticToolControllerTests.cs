@@ -1,3 +1,5 @@
+using Beis.HelpToGrow.Common.Interfaces;
+
 namespace Beis.LearningPlatform.Web.Tests.ControllerTests
 {
     public class DiagnosticToolControllerTests : FormControllerBaseTest
@@ -5,6 +7,7 @@ namespace Beis.LearningPlatform.Web.Tests.ControllerTests
         private Mock<ILogger<DiagnosticToolController>> _logger;
         private Mock<IComparisonToolService> _comparisonToolService;
         private DiagnosticToolController controller;
+        private Mock<ISessionService> _sessionService;
 
 
         [SetUp]
@@ -13,9 +16,10 @@ namespace Beis.LearningPlatform.Web.Tests.ControllerTests
             _logger = new Mock<ILogger<DiagnosticToolController>>();
             _diagnosticToolControllerHelper = new();
             _comparisonToolService = new();
+            _sessionService = new Mock<ISessionService>();
             _ctDisplayOptions.Value.LoadFormFromJson = true;
             
-            controller = new DiagnosticToolController(_logger.Object, _diagnosticToolControllerHelper.Object, _comparisonToolService.Object, _ctDisplayOptions);
+            controller = new DiagnosticToolController(_logger.Object, _diagnosticToolControllerHelper.Object, _comparisonToolService.Object, _ctDisplayOptions, _sessionService.Object);
             SetHttpContext(controller.ControllerContext);
         }
 
