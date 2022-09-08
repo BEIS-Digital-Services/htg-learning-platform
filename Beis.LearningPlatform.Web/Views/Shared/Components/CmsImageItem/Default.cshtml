@@ -18,15 +18,21 @@
                     @Html.Raw(Markdown.ToHtml(Model.Summary, _pipeline).Replace("<p>", "<p class=\"govuk-body\" style=\"text-align:left;\">"))
                     <div class="  ">
                         <div>
-                            <span id="spn_imgitemicon_std_@Model.UniqueActionNameWithId" class="beis-link-icon">
-                                <vc:cms-image options='new CmsImageViewModel{ ImageUrl = Model.Link.icon.url, CssClass="svgimg", Title="" }' />
-                                <a class="govuk-link" href="@Model.Link.url">@Model.Link.label</a>
-                            </span>
-                            <span id="spn_imgitemicon_completed_@Model.UniqueActionNameWithId" class="beis-link-icon" style="display:none">
-                                <vc:cms-image options='new CmsImageViewModel{ ImageUrl = Model.CompletedLink.icon.url, CssClass="svgimg", Title="" }' />
-                                <a class="govuk-link" href="@Model.CompletedLink.url">@Model.CompletedLink.label</a>
-                            </span>                            
-                            
+                            <form method="post" action="/skills-three-@Model.UniqueActionName">
+                                <input type="hidden" id="txt_imgitemicon_completed_@Model.UniqueActionNameWithId" asp-for="UniqueIdJS" />
+                                <span id="spn_imgitemicon_std_@Model.UniqueActionNameWithId" class="beis-link-icon">
+                                    <vc:cms-image options='new CmsImageViewModel{ ImageUrl = Model.Link.icon.url, CssClass="svgimg" }' />
+                                    <button type="submit" style="font-size:17px; cursor:pointer" class="govuk-link button-link">
+                                        @Model.Link.label
+                                    </button>
+                                </span>
+                                <span id="spn_imgitemicon_completed_@Model.UniqueActionNameWithId" class="beis-link-icon" style="display:none">
+                                    <vc:cms-image options='new CmsImageViewModel{ ImageUrl = Model.CompletedLink.icon.url, CssClass="svgimg" }' />
+                                    <button type="submit" style="font-size:17px; cursor:pointer" class="govuk-link button-link">
+                                        @Model.CompletedLink.label
+                                    </button>
+                                </span>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -36,7 +42,7 @@
 </div>
 
 <script type="text/javascript">
-    document.addEventListener("DOMContentLoaded", function () {
-        setImgItemLinkIcon('_CompletedLink_@Model.UniqueActionName', 'spn_imgitemicon_std_@Model.UniqueActionNameWithId', 'spn_imgitemicon_completed_@Model.UniqueActionNameWithId');            
-    });    
+    document.addEventListener("DOMContentLoaded", function() {
+        setImgItemLinkIcon('_CompletedLink_@Model.UniqueActionName', 'spn_imgitemicon_std_@Model.UniqueActionNameWithId', 'spn_imgitemicon_completed_@Model.UniqueActionNameWithId', 'txt_imgitemicon_completed_@Model.UniqueActionNameWithId');
+    });
 </script>

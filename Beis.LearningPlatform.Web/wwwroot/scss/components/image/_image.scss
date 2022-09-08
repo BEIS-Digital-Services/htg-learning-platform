@@ -1,0 +1,52 @@
+.beis-image {
+    display: block;
+    max-width: 100%;
+}
+
+.beis-article-image--pull-left, 
+.beis-article-image--pull-right {
+    @include govuk-media-query (tablet) {
+        width: 50%;
+        box-sizing: border-box;
+        margin-top: 5px;
+    }
+}
+
+.beis-article-image--pull-left {
+    @include govuk-media-query (tablet) {
+        margin-right: 30px;
+        float: left;
+        margin-left: -15px;
+        padding-left: 15px;
+    }
+}
+
+.beis-article-image--pull-right {
+    @include govuk-media-query (tablet) {
+        margin-left: 15px;
+        float: right;
+        margin-right: -15px;
+        padding-right: 15px;
+    }
+}
+
+.beis-article-image__image {
+    display: block;
+    max-width: 100%;
+    margin-bottom: 15px;
+    @include govuk-media-query (tablet) {
+        margin-bottom: 30px;
+    }
+}
+
+.beis-article-image__caption {
+    @include govuk-font($size: 16);
+    color: $govuk-secondary-text-colour;
+    display: inline-block;
+    padding: 5px 0 10px;
+    position: relative;
+    top: -15px;
+    @include govuk-media-query (tablet) {
+        top: -30px;
+    }
+}

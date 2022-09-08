@@ -7,7 +7,7 @@
     }
 }
 
-<div class="govuk-form-group govuk-grid-column-two-thirds govuk-!-margin-bottom-0 govuk-!-margin-top-3 govuk-footer__heading @(Model.emailAnswer.HasEmailError ? "govuk-form-group--error" : string.Empty)" id="email">
+<div class="govuk-form-group govuk-grid-column-two-thirds govuk-!-margin-bottom-0 govuk-!-margin-top-3 govuk-footer__heading @(Model.emailAnswer?.HasEmailError == true ? "govuk-form-group--error" : string.Empty)" id="email">
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <h2 class="govuk-fieldset__heading ">Want to review your results later?</h2>
         </legend>
@@ -15,7 +15,7 @@
 
     <div class="govuk-form-group">
         <label id="email-hint" class="govuk-label govuk-body-m" for="emailAddress">Email Address</label>
-        @if (Model.emailAnswer.HasEmailError && !string.IsNullOrWhiteSpace(Model.emailAnswer.EmailErrorText))
+        @if (Model.emailAnswer?.HasEmailError == true && !string.IsNullOrWhiteSpace(Model.emailAnswer.EmailErrorText))
         {
             <span class="govuk-error-message">@Model.emailAnswer.EmailErrorText</span>
         }
@@ -32,4 +32,4 @@
             <label for="@(controlNameBasePath)hasAcceptedPrivacyPolicyText" class="govuk-label govuk-checkboxes__label">Tick this box to confirm you have read our <a id="link-diagnostictoolformviews-renderdiagnostictoolemailanswer-privacy-policy" href="/privacy" target="_blank">privacy policy</a>.</label>
         </div>
     </div>
-</div>
+</fieldset>

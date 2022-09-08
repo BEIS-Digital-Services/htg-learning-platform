@@ -1,11 +1,13 @@
-﻿namespace Beis.LearningPlatform.Web.Tests.ControllerTests
+﻿using Beis.HelpToGrow.Common.Interfaces;
+
+namespace Beis.LearningPlatform.Web.Tests.ControllerTests
 {
     public class SkillsThreeControllerTests : FormControllerBaseTest
     {
         private readonly Mock<IHttpContextAccessor> _httpContextAccessor = new();
         private readonly Mock<HttpContext> _httpContext = new();
         private readonly Mock<HttpRequest> _httpRequest = new();
-        private Mock<ISession> _session = new();
+        private readonly Mock<ISession> _session = new();
         private string _currentPath;
         protected override FormTypes GetFormType()
         {
@@ -68,6 +70,7 @@
 
         private Mock<ILogger<DiagnosticToolController>> _logger;
         private SkillsThreeController controller;
+        private Mock<ISessionService> _sessionService;
 
         [SetUp]
         public void Setup()
@@ -76,8 +79,9 @@
             _diagnosticToolControllerHelper = new();
             _ctDisplayOptions.Value.LoadFormFromJson = true;
             _currentPath = string.Empty;
+            _sessionService = new Mock<ISessionService>();
 
-            controller = new SkillsThreeController(_logger.Object, _diagnosticToolControllerHelper.Object, _httpContextAccessor.Object);
+            controller = new SkillsThreeController(_logger.Object, _diagnosticToolControllerHelper.Object, _httpContextAccessor.Object, _sessionService.Object);
             SetHttpContext(controller.ControllerContext);
 
             _httpContext.SetupGet(x => x.Request)
@@ -326,23 +330,23 @@
             Assert.That(result, Is.TypeOf<ViewResult>());
         }
 
-        [TestCase("skills-three-newcomer-planning", "/learning-module-three-your-action-plan-newcomer")]
-        [TestCase("skills-three-newcomer-communication", "/learning-module-three-your-action-plan-newcomer")]
-        [TestCase("skills-three-newcomer-support", "/learning-module-three-your-action-plan-newcomer")]
-        [TestCase("skills-three-newcomer-training", "/learning-module-three-your-action-plan-newcomer")]
-        [TestCase("skills-three-newcomer-testing", "/learning-module-three-your-action-plan-newcomer")]
+        [TestCase("skills-three-newcomer-planning", "/your-digital-newcomer-action-plan")]
+        [TestCase("skills-three-newcomer-communication", "/your-digital-newcomer-action-plan")]
+        [TestCase("skills-three-newcomer-support", "/your-digital-newcomer-action-plan")]
+        [TestCase("skills-three-newcomer-training", "/your-digital-newcomer-action-plan")]
+        [TestCase("skills-three-newcomer-testing", "/your-digital-newcomer-action-plan")]
 
-        [TestCase("skills-three-mover-planning", "/learning-module-three-your-action-plan-digital-mover")]
-        [TestCase("skills-three-mover-communication", "/learning-module-three-your-action-plan-digital-mover")]
-        [TestCase("skills-three-mover-support", "/learning-module-three-your-action-plan-digital-mover")]
-        [TestCase("skills-three-mover-training", "/learning-module-three-your-action-plan-digital-mover")]
-        [TestCase("skills-three-mover-testing", "/learning-module-three-your-action-plan-digital-mover")]
+        [TestCase("skills-three-mover-planning", "/your-digital-mover-action-plan")]
+        [TestCase("skills-three-mover-communication", "/your-digital-mover-action-plan")]
+        [TestCase("skills-three-mover-support", "/your-digital-mover-action-plan")]
+        [TestCase("skills-three-mover-training", "/your-digital-mover-action-plan")]
+        [TestCase("skills-three-mover-testing", "/your-digital-mover-action-plan")]
 
-        [TestCase("skills-three-performer-planning", "/learning-module-three-your-action-plan-digital-performer")]
-        [TestCase("skills-three-performer-communication", "/learning-module-three-your-action-plan-digital-performer")]
-        [TestCase("skills-three-performer-support", "/learning-module-three-your-action-plan-digital-performer")]
-        [TestCase("skills-three-performer-training", "/learning-module-three-your-action-plan-digital-performer")]
-        [TestCase("skills-three-performer-testing", "/learning-module-three-your-action-plan-digital-performer")]
+        [TestCase("skills-three-performer-planning", "/your-digital-performer-action-plan")]
+        [TestCase("skills-three-performer-communication", "/your-digital-performer-action-plan")]
+        [TestCase("skills-three-performer-support", "/your-digital-performer-action-plan")]
+        [TestCase("skills-three-performer-training", "/your-digital-performer-action-plan")]
+        [TestCase("skills-three-performer-testing", "/your-digital-performer-action-plan")]
         public async Task Result_backURLfromQ1_Correctly_Configured(string path, string expectedBackURLfromQ1)
         {
             //Arrange

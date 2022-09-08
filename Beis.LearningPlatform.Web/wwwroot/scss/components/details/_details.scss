@@ -1,0 +1,13 @@
+.beis-details__summary {
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    border-bottom: 10px solid $beis-yellow;
+}
+
+.beis-details__summary-text {
+    @include govuk-font($size: 36);
+    font-weight: $govuk-font-weight-bold;
+    color: $beis-blue;
+}

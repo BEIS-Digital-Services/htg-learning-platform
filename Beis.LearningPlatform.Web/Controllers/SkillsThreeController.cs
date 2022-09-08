@@ -1,4 +1,6 @@
-﻿namespace Beis.LearningPlatform.Web.Controllers
+﻿using Beis.HelpToGrow.Common.Interfaces;
+
+namespace Beis.LearningPlatform.Web.Controllers
 {
     /// <summary>
     /// A class that defines a controller for the Diagnostic Tool.
@@ -13,8 +15,9 @@
         /// </summary>
         public SkillsThreeController(ILogger<DiagnosticToolController> logger,
                                         IDiagnosticToolControllerHelper controllerHelper,
-                                        IHttpContextAccessor httpContextAccessor)
-            : base(logger, controllerHelper)
+                                        IHttpContextAccessor httpContextAccessor,
+                                        ISessionService sessionService)
+            : base(logger, controllerHelper, sessionService)
         {
             _controllerHelper = controllerHelper;
             _httpContextAccessor = httpContextAccessor;
@@ -78,6 +81,49 @@
             return await base.Start();
         }
 
+        [HttpPost]
+
+        [Route("/skills-three-newcomer-planning")]
+        [Route("/skills-three-newcomer-communication")]
+        [Route("/skills-three-newcomer-support")]
+        [Route("/skills-three-newcomer-training")]
+        [Route("/skills-three-newcomer-testing")]
+
+        [Route("/skills-three-mover-planning")]
+        [Route("/skills-three-mover-communication")]
+        [Route("/skills-three-mover-support")]
+        [Route("/skills-three-mover-training")]
+        [Route("/skills-three-mover-testing")]
+
+        [Route("/skills-three-performer-planning")]
+        [Route("/skills-three-performer-communication")]
+        [Route("/skills-three-performer-support")]
+        [Route("/skills-three-performer-training")]
+        [Route("/skills-three-performer-testing")]
+        public async Task<IActionResult> Start(SkillsThreeStartModel model)
+        {
+            ClearSessionForm();
+            ClearSessionEmail();
+            var createFormResponse = await _controllerHelper.CreateForm(GetFormType());
+            if (createFormResponse.Result)
+            {
+                var startResponse = await _controllerHelper.Start(createFormResponse.Payload);
+                if (startResponse.Result)
+                {
+                    string uniqueId = System.Guid.NewGuid().ToString();
+                    if (Guid.TryParse(model.UniqueIdJS, out var guid))
+                    {
+                        uniqueId = guid.ToString();
+                        _controllerHelper.LoadSkillsThreeResponseByUniqueId(uniqueId, createFormResponse.Payload);
+                    }
+
+                    createFormResponse.Payload.UniqueId = uniqueId;
+                    return GetViewResult(createFormResponse.Payload);
+                }
+            }
+
+            return BadRequest();
+        }
 
         protected override FormTypes GetFormType()
         {

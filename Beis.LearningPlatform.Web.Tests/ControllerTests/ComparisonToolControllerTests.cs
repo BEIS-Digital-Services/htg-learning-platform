@@ -376,6 +376,18 @@ namespace Beis.LearningPlatform.Web.Tests.ControllerTests
             Assert.IsTrue(result.Url.EndsWith(selectionQueryString));
         }
 
+        [TestCaseSource(nameof(TestInput))]
+        public async Task Should_Have_Contract_Duration_Discount_Matching_Product_Prices(string productId)
+        {
+            var controller = CreateController();
+            
+            var result = await controller.GetDiscount(productId) as RedirectResult;
+
+            Assert.IsNotNull(result);
+            var selectedProduct = TestValueComparisonToolProducts.Single(x => x.product_id == Convert.ToInt64(productId));
+            Assert.AreEqual(selectedProduct.productPrices?.Any() == true, selectedProduct.HasContractDurationDiscountUnitAndPercentage);
+        }
+
         [TestCaseSource(nameof(CompareProductInput))]
         public async Task Should_Have_Additional_Cost_Data(string productCategoryIds, string productIds)
         {

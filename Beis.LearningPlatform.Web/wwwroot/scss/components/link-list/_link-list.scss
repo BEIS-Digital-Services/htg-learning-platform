@@ -1,0 +1,33 @@
+.beis-link-list {
+    margin: 30px 0;
+}
+
+.beis-link-list__heading {
+    margin-bottom: 0;
+    font-weight: $govuk-font-weight-regular;
+}
+
+.beis-link-list__list {
+    @include govuk-font($size: 19);
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px;
+    color: govuk-colour("mid-grey");
+    & > li {
+      display: inline-block;
+      &:after {
+        padding-left: 8px;
+        padding-right: 4px;
+        content: "|";
+      }
+      &:last-child:after {
+        content: "";
+      }
+    }
+  }
+
+.beis-link-list__link {
+    font-weight: $govuk-font-weight-bold;
+    @include govuk-link-style-no-visited-state;
+}
+  

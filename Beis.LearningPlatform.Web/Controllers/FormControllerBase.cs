@@ -1,4 +1,6 @@
-﻿namespace Beis.LearningPlatform.Web.Controllers
+﻿using Beis.HelpToGrow.Common.Interfaces;
+
+namespace Beis.LearningPlatform.Web.Controllers
 {
     /// <summary>
     /// A class that defines the base functionality of a controller.
@@ -6,11 +8,13 @@
     public class FormControllerBase : ControllerBase
     {
         private readonly IDiagnosticToolControllerHelper _controllerHelper;
+        private readonly ISessionService _sessionService;
 
         public FormControllerBase(ILogger<ControllerBase> logger,
-            IDiagnosticToolControllerHelper controllerHelper) : base(logger)
+            IDiagnosticToolControllerHelper controllerHelper, ISessionService sessionService) : base(logger)
         {
             _controllerHelper = controllerHelper;
+            _sessionService = sessionService;
         }
 
         protected virtual string SessionEmailAnswer => "emailAnswer";
@@ -27,12 +31,12 @@
 
         protected void ClearSessionEmail()
         {
-            HttpContext.Session.ClearSessionData(SessionEmailAnswer);
+            _sessionService.Remove(SessionEmailAnswer, HttpContext);
         }
 
         protected void ClearSessionForm()
         {
-            HttpContext.Session.ClearSessionData(SessionDiagnosticToolForm);
+            _sessionService.Remove(SessionDiagnosticToolForm, HttpContext);
         }
 
         protected ViewResult GetViewResult(DiagnosticToolForm model, bool showResults = false)
@@ -49,25 +53,25 @@
 
         protected void SetSessionEmail(EmailAnswer emailAnswer)
         {
-            HttpContext.Session.SetSessionData(SessionEmailAnswer, emailAnswer);
+            _sessionService.Set(SessionEmailAnswer, emailAnswer, HttpContext);
         }
 
         protected void SetSessionForm(DiagnosticToolForm diagnosticToolForm)
         {
             var answerData = diagnosticToolForm.Save();
-            HttpContext.Session.SetSessionData(SessionDiagnosticToolForm, answerData);
+            _sessionService.Set(SessionDiagnosticToolForm, answerData, HttpContext);
         }
 
         protected bool TryGetSessionData(out EmailAnswer emailAnswer)
         {
-            return HttpContext.Session.TryGetSessionData(SessionEmailAnswer, out emailAnswer);
+            return _sessionService.TryGet(SessionEmailAnswer, HttpContext, out emailAnswer);
         }
 
         protected async Task<DiagnosticToolForm> TryGetSessionForm()
         {
             DiagnosticToolForm returnValue = default;
 
-            if (HttpContext.Session.TryGetSessionData(SessionDiagnosticToolForm, out FormStepAnswer[] answers))
+            if (_sessionService.TryGet(SessionDiagnosticToolForm, HttpContext, out FormStepAnswer[] answers))
             {
                 var createFormResponse = await _controllerHelper.CreateForm(GetFormType());
                 if (createFormResponse.Result)
@@ -94,7 +98,7 @@
 
         public async virtual Task<IActionResult> NextStep(DiagnosticToolForm model)
         {
-            if (TryGetSessionData(out EmailAnswer emailAnswer))
+            if (TryGetSessionData(out EmailAnswer emailAnswer)) 
                 model.EmailAnswer = emailAnswer;
 
             var response = await _controllerHelper.NextStep(model, ModelState.IsValid, GetModelErrors());

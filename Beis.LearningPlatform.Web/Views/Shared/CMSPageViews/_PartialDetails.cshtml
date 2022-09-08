@@ -2,39 +2,37 @@
 @{
     var _pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build();
 }
-<div class="details" id="@("anchor" + Model.Index)">
+<div class="govuk-!-margin-bottom-4" id="@("anchor" + Model.Index)">
     <div class="@CamelCaseConverter.Delimiter(Model.background, "-")">
         <div class="govuk-width-container">
-            <div class="govuk-grid-row">
-                <div class="govuk-grid-column-full @Model.AlteredPaddingTopSpace  @Model.AlteredPaddingBottomSpace">
-                    @if (Model.textblocks != null)
+            <div class="govuk-!-padding-bottom-1">
+            @if (Model.textblocks != null)
+            {
+                foreach (var item in Model.textblocks)
+                {
+                    item.hide = item.hide.HasValue ? item.hide : false;
+
+                    if (item.hide == false)
                     {
-                        foreach (var item in Model.textblocks)
-                        {
-                            item.hide = item.hide.HasValue ? item.hide : false;
+                        <details class="govuk-details">
+                            <summary class="govuk-details__summary">
+                                @if (!string.IsNullOrWhiteSpace(item.subheader))
+                                {
+                                    @Html.Raw(Markdown.ToHtml(item.subheader, _pipeline).Replace("<p>", string.Empty).Replace("</p>", string.Empty))
+                                }
+                            </summary>
 
-                            if (item.hide == false)
+                            @if (!string.IsNullOrWhiteSpace(item.copy))
                             {
-                                <details class="govuk-details">
-                                    <summary class="govuk-details__summary">
-                                        @if (!string.IsNullOrWhiteSpace(item.subheader))
-                                        {
-                                            @Html.Raw(Markdown.ToHtml(item.subheader, _pipeline).Replace("<p>", string.Empty).Replace("</p>", string.Empty))
-                                        }
-                                    </summary>
-
-                                    @if (!string.IsNullOrWhiteSpace(item.copy))
-                                    {
-                                        <div class="govuk-details__text">
-                                            @Html.Raw(Markdown.ToHtml(item.copy, _pipeline).Replace("<p>", "<p>").Replace("</p>", "</p>"))
-                                        </div>
-                                    }
-                                </details>
+                                <div class="govuk-details__text">
+                                    @Html.Raw(Markdown.ToHtml(item.copy, _pipeline).Replace("<p>", "<p>").Replace("</p>", "</p>"))
+                                </div>
                             }
-                        }
+                        </details>
                     }
-                    <partial name="CMSPageViews/_PartialTextLinks" model="@(Model.links, Model.linksAlign)" />
-                </div>
+                }
+            }
+            <partial name="CMSPageViews/_PartialTextLinks" model="@(Model.links, Model.linksAlign)" />
             </div>
         </div>
     </div>
