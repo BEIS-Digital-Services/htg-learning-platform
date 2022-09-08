@@ -16,9 +16,9 @@
         case FormDisplayControlType.Label:
             <fieldset>
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                    <h2 class="govuk-fieldset__heading">
+                    <h2 class="govuk-fieldset__heading govuk-!-font-weight-regular">
                         <span>@currentFormStepElement.text</span>
-                        <span class="govuk-!-font-weight-regular">@currentFormStepElement.text2</span>
+                        <span>@currentFormStepElement.text2</span>
                     </h2>
                 </legend>
             </fieldset>
@@ -47,9 +47,9 @@
         case FormDisplayControlType.CheckboxGroup:
         <fieldset>
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                    <h2 class="govuk-fieldset__heading">
+                    <h2 class="govuk-fieldset__heading govuk-!-font-weight-regular">
                     <span>@currentFormStepElement.text</span>
-                    <span class="govuk-!-font-weight-regular">@currentFormStepElement.text2</span>
+                    <span>@currentFormStepElement.text2</span>
                     </h2>
             </legend>
             @if (!string.IsNullOrWhiteSpace(currentFormStepElement.hint))
@@ -95,9 +95,9 @@
         case FormDisplayControlType.RadioGroup:
             <fieldset>
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                    <h2 class="govuk-fieldset__heading">
+                    <h2 class="govuk-fieldset__heading govuk-!-font-weight-regular">
                     <span>@currentFormStepElement.text</span>
-                    <span class="govuk-!-font-weight-regular">@currentFormStepElement.text2</span>
+                    <span>@currentFormStepElement.text2</span>
                     </h2>
                 @if (string.IsNullOrEmpty(currentFormStepElement.subText) == false)
                 {
@@ -144,9 +144,9 @@
         case FormDisplayControlType.List:
             <fieldset>
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                    <h2 class="govuk-fieldset__heading">
+                    <h2 class="govuk-fieldset__heading govuk-!-font-weight-regular">
                     <span>@currentFormStepElement.text</span>
-                    <span class="govuk-!-font-weight-regular">@currentFormStepElement.text2</span>
+                    <span>@currentFormStepElement.text2</span>
                     </h2>
             </legend>            
             <span asp-validation-for="@Model.steps[currentStep].elements[currentElement].textControlHtmlId" class="govuk-error-message">
@@ -188,15 +188,15 @@
         case FormDisplayControlType.Textarea:
             <fieldset>
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                    <h2 class="govuk-fieldset__heading">
+                    <h2 class="govuk-fieldset__heading govuk-!-font-weight-regular">
                         <span>@currentFormStepElement.text</span>
                         @if (string.IsNullOrWhiteSpace(currentFormStepElement.hint))
                         {
-                            <label for="@(Model.steps[currentStep].elements[currentElement].InputCtrlId)" class="govuk-!-font-weight-regular">@currentFormStepElement.text2</label>
+                            <label for="@(Model.steps[currentStep].elements[currentElement].InputCtrlId)">@currentFormStepElement.text2</label>
                         }
                         else
                         {
-                            <span class="govuk-!-font-weight-regular">@currentFormStepElement.text2</span>
+                            <span>@currentFormStepElement.text2</span>
                         }
                     </h2>
             </legend>
@@ -235,9 +235,9 @@
                     </div>
                 }
                 <div style="align-self:center;" class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                            <h2 class="govuk-fieldset__heading">
+                            <h2 class="govuk-fieldset__heading govuk-!-font-weight-regular">
                         <span>@currentFormStepElement.text</span>
-                        <span class="govuk-!-font-weight-regular">@currentFormStepElement.text2</span>
+                        <span>@currentFormStepElement.text2</span>
                             </h2>
                 </div>
 
