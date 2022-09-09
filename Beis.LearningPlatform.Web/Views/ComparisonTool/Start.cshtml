@@ -3,8 +3,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     var selectedProductIds = TempData["SelectedProductIds"]?.ToString() ?? string.Empty;
 }
-<main id="main-heading" role="main">
-    <hr class="beis-grey divider" aria-hidden="true">
+<main id="main-heading" role="main" class="beis-main-wrapper">
     <input type="hidden" id="selectedProductIds" value="@selectedProductIds" />
 
     @if (Model.JavascriptEnabled)

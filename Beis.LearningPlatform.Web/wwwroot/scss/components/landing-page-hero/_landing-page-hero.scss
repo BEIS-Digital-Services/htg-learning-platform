@@ -1,0 +1,40 @@
+.beis-landing-page-hero {
+    background-color: $beis-navy-blue;
+    padding-top: $govuk-gutter-half;
+    padding-bottom: $govuk-gutter-half;
+    color: #fff;
+}
+
+.beis-landing-page-hero__row {
+    @include govuk-media-query (desktop) {
+        display: flex;
+        align-items: center;
+    }
+}
+
+.beis-landing-page-hero__heading {
+    color: inherit;
+}
+
+.beis-landing-page-hero__content * {
+    color: inherit;
+}
+
+.beis-landing-page-hero__content a,
+.beis-landing-page-hero__content a:link,
+.beis-landing-page-hero__content a:hover,
+.beis-landing-page-hero__content a:visited {
+    color: inherit;
+} 
+
+.beis-landing-page-hero__content a:focus {
+    @include govuk-focused-text;
+}
+
+.beis-landing-page-hero__image {
+    display: none;
+    max-width: 100%;
+    @include govuk-media-query (tablet) {
+        display: inline-block;
+    }
+}

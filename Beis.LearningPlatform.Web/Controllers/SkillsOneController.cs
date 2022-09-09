@@ -1,4 +1,6 @@
-﻿namespace Beis.LearningPlatform.Web.Controllers
+﻿using Beis.HelpToGrow.Common.Interfaces;
+
+namespace Beis.LearningPlatform.Web.Controllers
 {
     /// <summary>
     /// A class that defines a controller for the Diagnostic Tool.
@@ -11,8 +13,9 @@
         /// Creates a new instance of the class with the specified parameters.
         /// </summary>
         public SkillsOneController(ILogger<DiagnosticToolController> logger,
-                                        IDiagnosticToolControllerHelper controllerHelper)
-            : base(logger, controllerHelper)
+                                        IDiagnosticToolControllerHelper controllerHelper,
+                                        ISessionService sessionService)
+            : base(logger, controllerHelper, sessionService)
         {
             _controllerHelper = controllerHelper;
         }
@@ -48,7 +51,7 @@
             var response = await _controllerHelper.ProcessResults(model, FormTypes.SkillsOne);
             if (response.Result && response.Payload)
             {
-                return Redirect("/learning-module-one-next-steps");
+                return Redirect("/your-digital-journey-next-steps");
             }
             else
             {

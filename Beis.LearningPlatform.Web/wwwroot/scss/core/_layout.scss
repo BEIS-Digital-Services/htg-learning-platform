@@ -1,0 +1,17 @@
+.beis-row-flex {
+    @include govuk-media-query(tablet) {
+        display: flex;
+        align-items: center;
+    }
+}
+
+.beis-float-right-from-tablet {
+    @include govuk-media-query(tablet) {
+        float: right;
+    }
+}
+
+.beis-main-wrapper {
+    padding-bottom: 1px;
+    margin-bottom: -1px;
+}

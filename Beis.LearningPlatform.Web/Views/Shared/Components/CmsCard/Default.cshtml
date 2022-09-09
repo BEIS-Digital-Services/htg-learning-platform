@@ -1,54 +1,27 @@
 ﻿@model Beis.LearningPlatform.Web.Models.CmsCardViewModel
 
 <div class="card">
-
     <div class="govuk-width-container govuk-!-padding-top-6 govuk-!-padding-bottom-6">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-full">
-                <noscript>
-                    <div class="cards one">
-                        <div class="card-content">
-                            @Html.Raw(Model.One)
-                        </div>
-                    </div>
-                    <div class="cards two">
-                        <div class="card-content">
-                            @Html.Raw(Model.Two)
-                        </div>
-                    </div>
-                    <div class="reverse-block">
-                        <div class="cards three">
-                            <div class="card-content">
-                                @Html.Raw(Model.Three)
-                            </div>
-                        </div>
-                        <div class="cards four">
-                            <div class="card-content">
-                                @Html.Raw(Model.Four)
-                            </div>
-                        </div>
-                    </div>
-                </noscript>
-                <div id="card1" class="cards one hidden-card">
-                    <div class="card-content">
+                <div id="card1" class="beis-panel beis-panel--aqua">
+                    <div class="beis-panel__content">
                         @Html.Raw(Model.One)
                     </div>
                 </div>
-                <div id="card2" class="cards two hidden-card">
-                    <div class="card-content">
+                <div id="card2" class="beis-panel beis-panel--gold">
+                    <div class="beis-panel__content">
                         @Html.Raw(Model.Two)
                     </div>
                 </div>
-                <div class="reverse-block">
-                    <div id="card3" class="cards three hidden-card">
-                        <div class="card-content">
-                            @Html.Raw(Model.Three)
-                        </div>
+                <div id="card3" class="beis-panel beis-panel--blue">
+                    <div class="beis-panel__content">
+                        @Html.Raw(Model.Three)
                     </div>
-                    <div id="card4" class="cards four hidden-card">
-                        <div class="card-content">
-                            @Html.Raw(Model.Four)
-                        </div>
+                </div>
+                <div id="card4" class="beis-panel beis-panel--yellow">
+                    <div class="beis-panel__content">
+                        @Html.Raw(Model.Four)
                     </div>
                 </div>
             </div>
