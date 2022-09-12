@@ -571,7 +571,7 @@
         },
 
         "skillsOne": {
-            "summaryHeading": "Your digital journey",
+            "summaryHeading": "How digital is your business?",
             "canChangeAnswers": false,
             "backButton": false,
             "backLink": true,
@@ -581,8 +581,8 @@
                 {
                     "id": 1,
                     "order": 1,
-                    "title": "Your digital journey",
-                    "summaryTitle": "You are most interested in digital adoption that helps you to",
+                    "title": "How digital is your business?",
+                    "summaryTitle": "You are most interested in digital working that helps you to",
                     "elements": [
                         {
                             "controlType": "CheckboxGroup",
@@ -590,7 +590,7 @@
                             "showHintInBold": true,
                             "id": 110,
                             "text": "Question 1:",
-                            "text2": "Which benefits(s) of digital working are you most interested in?",
+                            "text2": "Which benefits of digital working are you interested in? Choose all the options that you'd like to explore",
                             "textControlHtmlId": "lblMultipleChoice",
                             "textControlHtmlName": "Question1",
                             "nextButtonText": "Go to question 2",
@@ -642,7 +642,7 @@
                 {
                     "id": 2,
                     "order": 2,
-                    "title": "Your digital journey",
+                    "title": "How digital is your business?",
                     "summaryTitle": "The most time-consuming task(s) or area of your business that you’d like to simplify are...",
                     "elements": [
                         {
@@ -661,16 +661,16 @@
                 {
                     "id": 3,
                     "order": 3,
-                    "title": "Your digital journey",
-                    "summaryTitle": "Thinking about how your business currently uses software, you said ",
+                    "title": "How digital is your business?",
+                    "summaryTitle": "Thinking about how your business currently uses technology, you said ",
                     "elements": [
                         {
                             "controlType": "RadioGroup",
-                            "hint": "This could include using email, video calls, accounting software or taking online payments for your goods/services.",
+                            "hint": "This might include: email, video calls, accounting software or taking payments for goods and services online.",
                             "showHintInBold": true,
                             "id": 300,
                             "text": "Question 3:",
-                            "text2": "To what extent does your business currently use software and digital ways of working?",
+                            "text2": "How much technology does your business currently use?",
                             "textControlHtmlId": "lblMultipleChoice",
                             "textControlHtmlName": "Question5",
                             "nextButtonText": "Go to question 4",
@@ -686,7 +686,7 @@
                                 {
                                     "controlType": "Radio",
                                     "id": 302,
-                                    "text": "We use some software, but would like to use more",
+                                    "text": "We use some technology, but would like to use more",
                                     "textControlHtmlId": "Question5Option2",
                                     "textControlHtmlName": "Question5",
                                     "ResultPageLabel": "we use some software and want more"
@@ -694,7 +694,7 @@
                                 {
                                     "controlType": "Radio",
                                     "id": 303,
-                                    "text": "We use lots of software packages, but are considering alternatives",
+                                    "text": "We use lots, but are considering alternatives",
                                     "textControlHtmlId": "Question5Option3",
                                     "textControlHtmlName": "Question5",
                                     "ResultPageLabel": "we use lots of software. We’re considering replacements"
@@ -707,7 +707,7 @@
                 {
                     "id": 4,
                     "order": 4,
-                    "title": "Your digital journey",
+                    "title": "How digital is your business?",
                     "summaryTitle": "You currently use the following methods to share or store information...",
                     //"showInSummary": false,
                     //"skippedByElementStepId": 6,
@@ -716,11 +716,11 @@
                             "controlType": "CheckboxGroup",
                             "hint": "Think about the job roles in your business and how you store and share your important information.",
                             "showHintInBold": true,
-                            "hint2": "Select all the options you use.",
+                            "hint2": "Select all options that apply",
                             "showHint2InBold": true,
                             "id": 400,
                             "text": "Question 4:",
-                            "text2": "How do you / your team currently store and share information?",
+                            "text2": "How does your business currently store and share information?",
                             "textControlHtmlId": "chkBoxGroup1",
                             "textControlHtmlName": "chkBoxGroup1",
                             "nextButtonText": "Go to question 5",
@@ -784,17 +784,17 @@
                 {
                     "id": 5,
                     "order": 5,
-                    "title": "Your digital journey",
-                    "summaryTitle": "Finally, when asked what you considered the biggest benefit to your business would be from digital adoption, you said...",
+                    "title": "How digital is your business?",
+                    "summaryTitle": "Finally, you said you’d like digital ways of working / software to help you by...",
                     "elements": [
                         {
                             "controlType": "Textarea",
                             //"hint": "",
                             "id": 500,
                             "text": "Question 5:",
-                            "text2": "Describe below the benefits you think digital adoption would bring for your business.",
+                            "text2": "Describe how you’d like digital ways of working or software to help your business",
                             "textControlHtmlId": "lblQuestion5",
-                            "nextButtonText": "View Summary",
+                            "nextButtonText": "View summary",
                             "textControlHtmlName": "Question5"
                         }
                     ]
@@ -824,7 +824,7 @@
                             "id": 110,
                             "text": "Communication, data storage and payments",
                             "text2": "",
-                            "subText": "Question 1: Do you currently use technology to communicate with customers, suppliers and your team?  ",
+                            "subText": "Question1: Do you currently use technology to communicate with customers, suppliers and your team?  ",
                             "nextButtonText": "Go to question 2",
                             "textControlHtmlId": "lblMultipleChoice1",
                             "textControlHtmlName": "Question1",
