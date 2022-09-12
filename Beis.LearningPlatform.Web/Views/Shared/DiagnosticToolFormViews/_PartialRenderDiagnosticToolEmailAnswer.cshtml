@@ -14,7 +14,7 @@
         <p class="govuk-body-m">Enter your email address and we'll send a copy of this page to your inbox.</p>
 
     <div class="govuk-form-group">
-        <label id="email-hint" class="govuk-label govuk-body-m" for="emailAddress">Email Address</label>
+        <label id="email-hint" class="govuk-label govuk-body-m" for="emailAddress">Email address</label>
         @if (Model.emailAnswer?.HasEmailError == true && !string.IsNullOrWhiteSpace(Model.emailAnswer.EmailErrorText))
         {
             <span class="govuk-error-message">@Model.emailAnswer.EmailErrorText</span>
