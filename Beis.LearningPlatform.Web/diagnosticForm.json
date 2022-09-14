@@ -569,15 +569,13 @@
         }
       ]
     },
-
     "skillsOne": {
       "summaryHeading": "Your digital journey",
       "canChangeAnswers": false,
       "backButton": false,
-      "backLink": true,
+      "backLink": false,
       "backURLfromQ1": "/your-digital-journey",
       "steps": [
-
         {
           "id": 1,
           "order": 1,
@@ -803,16 +801,13 @@
 
       ]
     },
-
-
     "skillsTwo": {
       "summaryHeading": "Your digital audit",
       "canChangeAnswers": false,
       "backButton": false,
-      "backLink": true,
+      "backLink": false,
       "backURLfromQ1": "/your-digital-audit",
       "steps": [
-
         {
           "id": 1,
           "order": 1,
@@ -1362,19 +1357,16 @@
 
       ]
     },
-
-
     "skillsThreeNewcomerPlanning": {
       "summaryHeading": "Your digital newcomer action plan",
       "canChangeAnswers": false,
       "backButton": false,
-      "backLink": true,
+      "backLink": false,
       "backURLfromQ1": "/your-digital-newcomer-action-plan",
       "userTypeActionPlanSection": "newcomer-planning",
       "formLogo": "skills-three-action-planning.png",
       "formLogoAlternateText": "",
       "steps": [
-
         {
           "id": 1,
           "order": 1,
@@ -1530,17 +1522,15 @@
 
       ]
     },
-
     "skillsThreeNewcomerCommunication": {
       "summaryHeading": "Your digital newcomer action plan",
       "canChangeAnswers": false,
       "backButton": false,
-      "backLink": true,
+      "backLink": false,
       "backURLfromQ1": "/your-digital-newcomer-action-plan",
       "userTypeActionPlanSection": "newcomer-communication",
       "formLogo": "skills-three-action-communication.png",
       "steps": [
-
         {
           "id": 1,
           "order": 1,
@@ -1692,12 +1682,11 @@
 
       ]
     },
-
     "skillsThreeNewcomerSupport": {
       "summaryHeading": "Your digital newcomer action plan",
       "canChangeAnswers": false,
       "backButton": false,
-      "backLink": true,
+      "backLink": false,
       "backURLfromQ1": "/your-digital-newcomer-action-plan",
       "userTypeActionPlanSection": "newcomer-support",
       "formLogo": "skills-three-action-support.png",
@@ -1854,17 +1843,15 @@
 
       ]
     },
-
     "skillsThreeNewcomerTraining": {
       "summaryHeading": "Your digital newcomer action plan",
       "canChangeAnswers": false,
       "backButton": false,
-      "backLink": true,
+      "backLink": false,
       "backURLfromQ1": "/your-digital-newcomer-action-plan",
       "userTypeActionPlanSection": "newcomer-training",
       "formLogo": "skills-three-action-training.png",
       "steps": [
-
         {
           "id": 1,
           "order": 1,
@@ -2016,17 +2003,15 @@
 
       ]
     },
-
     "skillsThreeNewcomerTesting": {
       "summaryHeading": "Your digital newcomer action plan",
       "canChangeAnswers": false,
       "backButton": false,
-      "backLink": true,
+      "backLink": false,
       "backURLfromQ1": "/your-digital-newcomer-action-plan",
       "userTypeActionPlanSection": "newcomer-testing",
       "formLogo": "skills-three-action-testing.png",
       "steps": [
-
         {
           "id": 1,
           "order": 1,
@@ -2178,20 +2163,15 @@
 
       ]
     },
-
-
-
-
     "skillsThreeMoverPlanning": {
       "summaryHeading": "Your digital mover action plan",
       "canChangeAnswers": false,
       "backButton": false,
-      "backLink": true,
+      "backLink": false,
       "backURLfromQ1": "/your-digital-mover-action-plan",
       "userTypeActionPlanSection": "mover-planning",
       "formLogo": "skills-three-action-planning.png",
       "steps": [
-
         {
           "id": 1,
           "order": 1,
@@ -2347,17 +2327,15 @@
 
       ]
     },
-
     "skillsThreeMoverCommunication": {
       "summaryHeading": "Your digital mover action plan",
       "canChangeAnswers": false,
       "backButton": false,
-      "backLink": true,
+      "backLink": false,
       "backURLfromQ1": "/your-digital-mover-action-plan",
       "userTypeActionPlanSection": "mover-communication",
       "formLogo": "skills-three-action-communication.png",
       "steps": [
-
         {
           "id": 1,
           "order": 1,
@@ -2509,17 +2487,15 @@
 
       ]
     },
-
     "skillsThreeMoverSupport": {
       "summaryHeading": "Your digital mover action plan",
       "canChangeAnswers": false,
       "backButton": false,
-      "backLink": true,
+      "backLink": false,
       "backURLfromQ1": "/your-digital-mover-action-plan",
       "userTypeActionPlanSection": "mover-support",
       "formLogo": "skills-three-action-support.png",
       "steps": [
-
         {
           "id": 1,
           "order": 1,
@@ -2671,17 +2647,15 @@
 
       ]
     },
-
     "skillsThreeMoverTraining": {
       "summaryHeading": "Your digital mover action plan",
       "canChangeAnswers": false,
       "backButton": false,
-      "backLink": true,
+      "backLink": false,
       "backURLfromQ1": "/your-digital-mover-action-plan",
       "userTypeActionPlanSection": "mover-training",
       "formLogo": "skills-three-action-training.png",
       "steps": [
-
         {
           "id": 1,
           "order": 1,
@@ -2833,17 +2807,15 @@
 
       ]
     },
-
     "skillsThreeMoverTesting": {
       "summaryHeading": "Your digital mover action plan",
       "canChangeAnswers": false,
       "backButton": false,
-      "backLink": true,
+      "backLink": false,
       "backURLfromQ1": "/your-digital-mover-action-plan",
       "userTypeActionPlanSection": "mover-testing",
       "formLogo": "skills-three-action-testing.png",
       "steps": [
-
         {
           "id": 1,
           "order": 1,
@@ -2995,20 +2967,15 @@
 
       ]
     },
-
-
-
-
     "skillsThreePerformerPlanning": {
       "summaryHeading": "Your digital performer action plan",
       "canChangeAnswers": false,
       "backButton": false,
-      "backLink": true,
+      "backLink": false,
       "backURLfromQ1": "/your-digital-performer-action-plan",
       "userTypeActionPlanSection": "performer-planning",
       "formLogo": "skills-three-action-planning.png",
       "steps": [
-
         {
           "id": 1,
           "order": 1,
@@ -3164,17 +3131,15 @@
 
       ]
     },
-
     "skillsThreePerformerCommunication": {
       "summaryHeading": "Your digital performer action plan",
       "canChangeAnswers": false,
       "backButton": false,
-      "backLink": true,
+      "backLink": false,
       "backURLfromQ1": "/your-digital-performer-action-plan",
       "userTypeActionPlanSection": "performer-communication",
       "formLogo": "skills-three-action-communication.png",
       "steps": [
-
         {
           "id": 1,
           "order": 1,
@@ -3326,17 +3291,15 @@
 
       ]
     },
-
     "skillsThreePerformerSupport": {
       "summaryHeading": "Your digital performer action plan",
       "canChangeAnswers": false,
       "backButton": false,
-      "backLink": true,
+      "backLink": false,
       "backURLfromQ1": "/your-digital-performer-action-plan",
       "userTypeActionPlanSection": "performer-support",
       "formLogo": "skills-three-action-support.png",
       "steps": [
-
         {
           "id": 1,
           "order": 1,
@@ -3488,17 +3451,15 @@
 
       ]
     },
-
     "skillsThreePerformerTraining": {
       "summaryHeading": "Your digital performer action plan",
       "canChangeAnswers": false,
       "backButton": false,
-      "backLink": true,
+      "backLink": false,
       "backURLfromQ1": "/your-digital-performer-action-plan",
       "userTypeActionPlanSection": "performer-training",
       "formLogo": "skills-three-action-training.png",
       "steps": [
-
         {
           "id": 1,
           "order": 1,
@@ -3650,17 +3611,15 @@
 
       ]
     },
-
     "skillsThreePerformerTesting": {
       "summaryHeading": "Your digital performer action plan",
       "canChangeAnswers": false,
       "backButton": false,
-      "backLink": true,
+      "backLink": false,
       "backURLfromQ1": "/your-digital-performer-action-plan",
       "userTypeActionPlanSection": "performer-testing",
       "formLogo": "skills-three-action-testing.png",
       "steps": [
-
         {
           "id": 1,
           "order": 1,
@@ -3812,9 +3771,5 @@
 
       ]
     }
-
-
-
-
   }
 }
