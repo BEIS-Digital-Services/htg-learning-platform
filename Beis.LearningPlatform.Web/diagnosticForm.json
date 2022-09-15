@@ -590,7 +590,7 @@
                             "showHintInBold": true,
                             "id": 110,
                             "text": "Question 1:",
-                            "text2": "Which benefits of digital working are you interested in? Choose all the options that you'd like to explore",
+                            "text2": "Which benefits of digital working are you interested in? Choose all the options that you’d like to explore",
                             "textControlHtmlId": "lblMultipleChoice",
                             "textControlHtmlName": "Question1",
                             "nextButtonText": "Go to question 2",
@@ -824,7 +824,7 @@
                             "id": 110,
                             "text": "Communication, data storage and payments",
                             "text2": "",
-                            "subText": "Question1: Do you currently use technology to communicate with customers, suppliers and your team?  ",
+                            "subText": "Question 1: Do you currently use technology to communicate with customers, suppliers and your team?  ",
                             "nextButtonText": "Go to question 2",
                             "textControlHtmlId": "lblMultipleChoice1",
                             "textControlHtmlName": "Question1",
@@ -881,7 +881,7 @@
                     "elements": [
                         {
                             "controlType": "RadioGroup",
-                            "hint": "A Server would include an in-house or off-site hard drives that you and your team access. Cloud relates to virtual storage available through your hardware.",
+                            "hint": "A Server would include an in-house or off-site hard drives that you and your team access.",
                             "id": 210,
                             "text": "Communication, data storage and payments",
                             "text2": "",
@@ -1783,7 +1783,7 @@
                                     "controlType": "Textarea",
                                     "id": 112,
                                     "strongText": "Next, ",
-                                    "text": "consider what type of support you'll need. Will it be in-house or from an external supplier?",
+                                    "text": "consider what type of support you’ll need. Will it be in-house or from an external supplier?",
                                     "textControlHtmlId": "Question2Text2",
                                     "textControlHtmlName": "Question2Text2_",
                                     "ResultPageLabel": "You said the type of support you’ll need will be:"
@@ -1792,7 +1792,7 @@
                                     "controlType": "Textarea",
                                     "id": 113,
                                     "strongText": "Finally ",
-                                    "text": "consider who will report bugs, and how they'll be recorded?",
+                                    "text": "consider who will report bugs, and how they’ll be recorded?",
                                     "textControlHtmlId": "Question2Text3",
                                     "textControlHtmlName": "Question2Text3_",
                                     "ResultPageLabel": "You’ve identified the following person/people will be responsible for reporting bugs and this is how they’ll be recorded:"
@@ -1824,7 +1824,7 @@
                                     "controlType": "Textarea",
                                     "id": 211,
                                     "strongText": "Start ",
-                                    "text": "by thinking about how much maintenance you'll likely need for your new software. This could include updates and how you tackle cyber security. Information provided by your supplier will help here.",
+                                    "text": "by thinking about how much maintenance you’ll likely need for your new software. This could include updates and how you tackle cyber security. Information provided by your supplier will help here.",
                                     "textControlHtmlId": "Question3Text1",
                                     "textControlHtmlName": "Question3Text1_",
                                     "ResultPageLabel": "Here’s the areas of maintenance you’ve identified:"
@@ -1833,7 +1833,7 @@
                                     "controlType": "Textarea",
                                     "id": 112,
                                     "strongText": "Next, ",
-                                    "text": "review the list you’ve made above and see if you can allocate responsibility for tasks to anyone in your team(s). Does the software you're buying include automatic updates for the areas mentioned above?",
+                                    "text": "review the list you’ve made above and see if you can allocate responsibility for tasks to anyone in your team(s). Does the software you’re buying include automatic updates for the areas mentioned above?",
                                     "textControlHtmlId": "Question2Text2",
                                     "textControlHtmlName": "Question2Text2_",
                                     "ResultPageLabel": "These are the people in your business who could take responsibility for maintenance:"
@@ -1890,7 +1890,7 @@
                                     "text": "by making a list of who needs training. Decide whether it will be for both software and hardware.",
                                     "textControlHtmlId": "Question1Text1",
                                     "textControlHtmlName": "Question1Text1_",
-                                    "ResultPageLabel": "This is what you said about whether you would use someone from your team, or if you'll need external support."
+                                    "ResultPageLabel": "This is what you said about whether you would use someone from your team, or if you’ll need external support."
                                 },
                                 {
                                     "controlType": "Textarea",
@@ -1899,7 +1899,7 @@
                                     "text": "look for opportunities where people in your team can be trained to train others. Then, make a list of who you’ll need to arrange external training for.",
                                     "textControlHtmlId": "Question1Text2",
                                     "textControlHtmlName": "Question1Text2_",
-                                    "ResultPageLabel": "Here's a list of the people who need training and whether it will be for software, hardware or both."
+                                    "ResultPageLabel": "Here’s a list of the people who need training and whether it will be for software, hardware or both."
                                 },
                                 {
                                     "controlType": "Textarea",
@@ -1939,7 +1939,7 @@
                                     "text": "by thinking about how you want to train your team. Write down a list of pros and cons for each format (i.e. online, in person - on-site or off-site)",
                                     "textControlHtmlId": "Question2Text1",
                                     "textControlHtmlName": "Question2Text1_",
-                                    "ResultPageLabel": "Here's your list of pros and cons for each type of training."
+                                    "ResultPageLabel": "Here’s your list of pros and cons for each type of training."
                                 },
                                 {
                                     "controlType": "Textarea",
@@ -1957,7 +1957,7 @@
                                     "text": "look into what training is available for your new software. Review this against the budget you’ve set aside for training to find out what’s realistic.",
                                     "textControlHtmlId": "Question2Text3",
                                     "textControlHtmlName": "Question2Text3_",
-                                    "ResultPageLabel": "Here is the type(s) of training your team would prefer, whether it's available, and how much it would cost:"
+                                    "ResultPageLabel": "Here is the type(s) of training your team would prefer, whether it’s available, and how much it would cost:"
                                 }
                             ]
                         }
@@ -2007,7 +2007,7 @@
                                     "text": "make a list of the experience an ideal new starter would have. Also, how many hours training you want to include in an induction period.",
                                     "textControlHtmlId": "Question3Text3",
                                     "textControlHtmlName": "Question3Text3_",
-                                    "ResultPageLabel": "Here's what experience you'd like a new starter to have, and what training would be included in their induction."
+                                    "ResultPageLabel": "Here’s what experience you’d like a new starter to have, and what training would be included in their induction."
                                 }
                             ]
                         }
