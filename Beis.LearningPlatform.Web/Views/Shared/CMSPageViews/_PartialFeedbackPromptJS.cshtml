@@ -9,15 +9,15 @@
     }
 }
 
-<div id="feedback-prompt" class="feedback-prompt">
-    <div id="feedback-prompt-0" class="feedback-bg-color">
+<div id="feedback-prompt" class="beis-feedback-prompt">
+    <div id="feedback-prompt-0" class="feedback-prompt">
         <div id="feedback-prompt-1" class="govuk-width-container govuk-!-padding-top-1 govuk-!-padding-bottom-1">
             <div id="FeedbackYesNoContainer" class="govuk-grid-row">
                     <div id="feedback-prompt-3" class="govuk-grid-column-one-half">
                         <div id="FeedbackYesNoDiv" class="wrapper-left">
                             @if (!string.IsNullOrWhiteSpace(Model.message))
                             {
-                                <h2 id="FeedbackYesNoMessage" class="message">@Model.message</h2>
+                                <p id="FeedbackYesNoMessage" class="beis-feedback-prompt__message">@Model.message</p>
                             }
                             
                             <div id="FeedbackYesNoPanel" class="govuk-button-group govuk-!-margin-bottom-0">
