@@ -7,7 +7,7 @@
     }
 }
 
-<fieldset class="govuk-form-group govuk-grid-column-two-thirds govuk-!-margin-bottom-0 govuk-!-margin-top-3 govuk-footer__heading @(Model.emailAnswer?.HasEmailError == true ? "govuk-form-group--error" : string.Empty)" id="email">
+<fieldset class="govuk-fieldset @(Model.emailAnswer.HasEmailError ? "govuk-form-group--error" : string.Empty)" id="email">
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <h2 class="govuk-fieldset__heading ">Want us to email your results to you?</h2>
         </legend>
