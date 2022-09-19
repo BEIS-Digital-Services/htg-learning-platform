@@ -1,0 +1,42 @@
+.beis-global {
+    background-color: #fff;
+}
+
+.beis-global__sub-heading {
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+// Content coming from CMS
+
+.beis-global__content > h2:not([class]) {
+    @extend %govuk-heading-l;
+}
+
+.beis-global__content > h3:not([class]) {
+    @extend %govuk-heading-m;
+}
+
+.beis-global__content > h4:not([class]) {
+    @extend %govuk-heading-s;
+}
+
+.beis-global__content > h5:not([class]) {
+    @extend %govuk-body-xs;
+}
+
+.beis-global__content > h6:not([class]) {
+    @extend %govuk-body-xs;
+}
+
+.beis-global__content > p:not([class]) {
+    @extend %govuk-body-m;
+    color: inherit;
+}
+
+.beis-global__content > ul:not([class]) {
+    @extend %govuk-list;
+    @extend %govuk-list--bullet;
+    color: $beis-text-colour;
+  }
+  

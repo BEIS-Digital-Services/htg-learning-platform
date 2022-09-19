@@ -7,11 +7,10 @@ $govuk-global-styles: true;
 %govuk-heading-l, 
 %govuk-heading-m,
 .govuk-fieldset__legend {
-    color: $beis-blue;
+    color: $beis-text-colour
 }
 
 @import "core/all";
-
 
 @import "article.scss";
 @import "articles.scss";
@@ -53,7 +52,6 @@ $govuk-global-styles: true;
 
 @import "objects/all";
 @import "components/all";
-
 
 .hide-element {
     border: 0;
