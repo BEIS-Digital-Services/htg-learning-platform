@@ -12,5 +12,9 @@
         public SkillsThreeResponseRepository(DataContext context)
             : base(context)
         { }
+        public SkillsThreeResponse FindByUniqueId(string uniqueId)
+        {
+            return context.SkillsThreeResponse.OrderByDescending(x => x.Id).FirstOrDefault(x => x.UniqueId == uniqueId);
+        }
     }
 }

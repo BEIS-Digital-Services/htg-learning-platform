@@ -1,4 +1,5 @@
-﻿using ConfigOptions = Microsoft.Extensions.Options.Options;
+﻿using Beis.LearningPlatform.Data.Entities.Skills;
+using ConfigOptions = Microsoft.Extensions.Options.Options;
 
 namespace Beis.LearningPlatform.Web.Tests.ControllerHelperTests
 {
@@ -499,6 +500,93 @@ namespace Beis.LearningPlatform.Web.Tests.ControllerHelperTests
             var diagnosticToolForm = diagnosticToolFormService.LoadNewForm(formtype);
             diagnosticToolForm.CurrStep = currentStep;
             return diagnosticToolForm;
+        }
+
+        [Test]
+        public void LoadSkillsThreeResponseByUniqueId_WhenCalled_Success()
+        {
+            //Arrange 
+            DiagnosticToolForm formInput = new DiagnosticToolForm
+            {
+                steps = {
+                    new FormStep
+                    {
+                        id = 1,
+                        elements = {
+                            new FormStepElement
+                            {
+                                answerOptions =
+                                {
+                                    new FormAnswerOptionElement(),
+                                    new FormAnswerOptionElement(),
+                                    new FormAnswerOptionElement(),
+                                }
+                            }
+                        }
+                    },
+                    new FormStep
+                    {
+                        id = 2,
+                        elements = {
+                            new FormStepElement
+                            {
+                                answerOptions =
+                                {
+                                    new FormAnswerOptionElement(),
+                                    new FormAnswerOptionElement(),
+                                    new FormAnswerOptionElement(),
+                                }
+                            }
+                        }
+                    },
+                    new FormStep
+                    {
+                        id = 3,
+                        elements = {
+                            new FormStepElement
+                            {
+                                answerOptions =
+                                {
+                                    new FormAnswerOptionElement(),
+                                    new FormAnswerOptionElement(),
+                                    new FormAnswerOptionElement(),
+                                }
+                            }
+                        }
+                    },
+                }
+            };
+
+            SkillsThreeResponse response = new SkillsThreeResponse
+            {
+                WhyNeedStart = "WhyNeedStart answer",
+                WhyNeedNext = "WhyNeedNext answer",
+                WhyNeedFinally = "WhyNeedFinally answer",
+                HowAccessStart = "HowAccessStart answer",
+                HowAccessNext = "HowAccessNext answer",
+                HowAccessFinally = "HowAccessFinally answer",
+                RiskStart = "RiskStart answer",
+                RiskNext = "RiskStart answer",
+                RiskFinally = "RiskStart answer"
+            };
+
+            string uniqueId = System.Guid.NewGuid().ToString();
+            _skillsThreeService.Setup(x => x.FindByUniqueId(uniqueId)).Returns(response);
+            //Act
+            _diagnosticToolControllerHelper.LoadSkillsThreeResponseByUniqueId(uniqueId, formInput);
+
+            //Assert
+            Assert.AreEqual(formInput.steps[0].elements[0].answerOptions[0].value, response.WhyNeedStart);
+            Assert.AreEqual(formInput.steps[0].elements[0].answerOptions[1].value, response.WhyNeedNext);
+            Assert.AreEqual(formInput.steps[0].elements[0].answerOptions[2].value, response.WhyNeedFinally);
+
+            Assert.AreEqual(formInput.steps[1].elements[0].answerOptions[0].value, response.HowAccessStart);
+            Assert.AreEqual(formInput.steps[1].elements[0].answerOptions[1].value, response.HowAccessNext);
+            Assert.AreEqual(formInput.steps[1].elements[0].answerOptions[2].value, response.HowAccessFinally);
+
+            Assert.AreEqual(formInput.steps[2].elements[0].answerOptions[0].value, response.RiskStart);
+            Assert.AreEqual(formInput.steps[2].elements[0].answerOptions[1].value, response.RiskNext);
+            Assert.AreEqual(formInput.steps[2].elements[0].answerOptions[2].value, response.RiskFinally);
         }
     }
 }

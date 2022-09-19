@@ -9,8 +9,6 @@
 # minified js
 *.min.js
 
-/node_modules
-
 # Visual Studio
 *.suo
 *.user

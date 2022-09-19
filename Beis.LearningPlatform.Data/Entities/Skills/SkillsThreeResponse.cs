@@ -13,5 +13,6 @@
         public string RiskStart { get; set; }
         public string RiskNext { get; set; }
         public string RiskFinally { get; set; }
+        public string UniqueId { get; set; }
     }
 }
