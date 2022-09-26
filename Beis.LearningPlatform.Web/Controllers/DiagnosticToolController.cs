@@ -1,4 +1,6 @@
-﻿namespace Beis.LearningPlatform.Web.Controllers
+﻿using Beis.HelpToGrow.Common.Interfaces;
+
+namespace Beis.LearningPlatform.Web.Controllers
 {
     /// <summary>
     /// A class that defines a controller for the Diagnostic Tool.
@@ -18,8 +20,9 @@
         public DiagnosticToolController(ILogger<DiagnosticToolController> logger,
                                         IDiagnosticToolControllerHelper controllerHelper,
                                         IComparisonToolService comparisonToolService,
-                                        IOptions<ComparisonToolDisplayOption> ctDisplayOption)
-            : base(logger, controllerHelper)
+                                        IOptions<ComparisonToolDisplayOption> ctDisplayOption,
+                                        ISessionService sessionService)
+            : base(logger, controllerHelper, sessionService)
         {
             _controllerHelper = controllerHelper;
             _comparisonToolService = comparisonToolService;

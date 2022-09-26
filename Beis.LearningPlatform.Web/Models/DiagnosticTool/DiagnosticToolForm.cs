@@ -49,6 +49,7 @@
         public bool backLink { get; set; }
         public string backURLfromQ1 { get; set; }
         public string userTypeActionPlanSection { get; set; }
+        public string UniqueId { get; set; }
         public string formLogo { get; set; }
 
         public string FormLogoAlternateText { get; set; }

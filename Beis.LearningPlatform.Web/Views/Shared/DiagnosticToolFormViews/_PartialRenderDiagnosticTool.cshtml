@@ -93,7 +93,7 @@
                                     {
                                         <h2 class="govuk-heading-l">Summary</h2>
                                         <p class="govuk-body">
-                                            By thinking about how your business currently uses software, you can start to see where the next step on your digital journey should be.
+                                                By thinking about how your business currently uses software and digital ways of working, you can start to see where the next step on your digital journey should be.
                                         </p>
                                         <p class="govuk-body">
                                             Here’s a summary of your answers:
@@ -116,7 +116,7 @@
                                                 You’ve completed the @Model.steps[0].elements[0].text.ToLower() section of your action plan.
                                             </p>
                                              <p class="govuk-body">
-                                                Here are your answers...
+                                                Here are your answers:
                                             </p>
 
 
@@ -128,9 +128,9 @@
                                                     </div>
                                                 }
                                                 <div style="align-self:center;">
-                                                    <h2 class="govuk-fieldset__heading">
+                                                    <h2 class="govuk-fieldset__heading govuk-!-font-weight-regular">
                                                         <span>@Model.steps[0].elements[0].text</span>
-                                                        <span class="govuk-!-font-weight-regular">@Model.steps[0].elements[0].text2</span>
+                                                        <span>@Model.steps[0].elements[0].text2</span>
                                                     </h2>
                                                 </div>
 
@@ -188,10 +188,11 @@
                         <input type="hidden" asp-for="backLink" />
                         <input type="hidden" asp-for="backURLfromQ1" />
 
-                        @if (((int)Model.FormType) > 2)
+                        @if (((int)Model.FormType) >= 8)
                         {
                             //skills3 forms
                             <input type="hidden" asp-for="userTypeActionPlanSection" />
+                            <input type="hidden" asp-for="UniqueId" />
                             <input type="hidden" asp-for="formLogo" />
                         }
 
@@ -382,7 +383,7 @@
                                         }
                                         else
                                         {
-                                            <button id="btn-diagnostictoolformviews-renderdiagnostictool-next" type="submit" onclick="skillsThreeSubmit(@formTypeNum, '_CompletedLink_@Model.userTypeActionPlanSection')" asp-action="Result" class="govuk-button primary"> Continue </button>
+                                            <button id="btn-diagnostictoolformviews-renderdiagnostictool-next" type="submit" onclick="skillsThreeSubmit(@formTypeNum, '@Model.UniqueId', '_CompletedLink_@Model.userTypeActionPlanSection')" asp-action="Result" class="govuk-button primary"> Continue </button>
                                         }
                                     }
                                     else

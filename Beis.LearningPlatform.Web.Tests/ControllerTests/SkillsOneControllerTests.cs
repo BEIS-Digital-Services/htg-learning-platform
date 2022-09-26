@@ -1,8 +1,11 @@
-﻿namespace Beis.LearningPlatform.Web.Tests.ControllerTests
+﻿using Beis.HelpToGrow.Common.Interfaces;
+
+namespace Beis.LearningPlatform.Web.Tests.ControllerTests
 {
     public class SkillsOneControllerTests : FormControllerBaseTest
     {
         private Mock<ILogger<DiagnosticToolController>> _logger;
+        private Mock<ISessionService> _sessionService;
         private SkillsOneController controller;
 
         [SetUp]
@@ -11,8 +14,9 @@
             _logger = new Mock<ILogger<DiagnosticToolController>>();
             _diagnosticToolControllerHelper = new();
             _ctDisplayOptions.Value.LoadFormFromJson = true;
+            _sessionService = new Mock<ISessionService>();
 
-            controller = new SkillsOneController(_logger.Object, _diagnosticToolControllerHelper.Object);
+            controller = new SkillsOneController(_logger.Object, _diagnosticToolControllerHelper.Object, _sessionService.Object);
             SetHttpContext(controller.ControllerContext);
         }
 

@@ -317,7 +317,7 @@ namespace Beis.LearningPlatform.Web.ControllerHelpers
                     await _controllerHelperInterface.UpdateScore(form);
                     saveDataResult = await SaveSkillsTwoResponse(form);
                 }
-                else if ((int)formType > 2)
+                else if ((int)formType >= 8)
                 {
                     saveDataResult = await SaveSkillsThreeResponse(form);
                 }
@@ -499,6 +499,11 @@ namespace Beis.LearningPlatform.Web.ControllerHelpers
             try
             {
                 var skillsThreeResponse = new SkillsThreeResponse();
+                var dbResult = _skillsThreeService.FindByUniqueId(form.UniqueId);
+                if (dbResult != null)
+                    skillsThreeResponse = dbResult;
+
+
 
                 skillsThreeResponse.IsPrivacyPolicyAccepted = form.EmailAnswer?.IsPrivacyPolicyAccepted;
                 skillsThreeResponse.IsOptedInForMarketing = form.EmailAnswer?.IsOptedInForMarketing;
@@ -506,6 +511,7 @@ namespace Beis.LearningPlatform.Web.ControllerHelpers
                 skillsThreeResponse.SessionId = _httpContextAccessor?.HttpContext?.Session?.Id;
 
                 skillsThreeResponse.Questionnaire = form.userTypeActionPlanSection;
+                skillsThreeResponse.UniqueId = form.UniqueId;
 
                 //step 1
                 skillsThreeResponse.WhyNeedStart = form.steps[0].elements[0].answerOptions[0].value;
@@ -539,6 +545,28 @@ namespace Beis.LearningPlatform.Web.ControllerHelpers
             }
 
             return new ControllerHelperOperationResponse<EmailAnswer>(requestID, isSuccessful, message, emailAnswer);
+        }
+        public void LoadSkillsThreeResponseByUniqueId(string uniqueId, DiagnosticToolForm form)
+        {
+            var dbResult = _skillsThreeService.FindByUniqueId(uniqueId);
+            if (dbResult != null)
+            {
+                //step1
+                form.steps[0].elements[0].answerOptions[0].value = dbResult.WhyNeedStart;
+                form.steps[0].elements[0].answerOptions[1].value = dbResult.WhyNeedNext;
+                form.steps[0].elements[0].answerOptions[2].value = dbResult.WhyNeedFinally;
+
+                //step2
+                form.steps[1].elements[0].answerOptions[0].value = dbResult.HowAccessStart;
+                form.steps[1].elements[0].answerOptions[1].value = dbResult.HowAccessNext;
+                form.steps[1].elements[0].answerOptions[2].value = dbResult.HowAccessFinally;
+
+                //step3
+                form.steps[2].elements[0].answerOptions[0].value = dbResult.RiskStart;
+                form.steps[2].elements[0].answerOptions[1].value = dbResult.RiskNext;
+                form.steps[2].elements[0].answerOptions[2].value = dbResult.RiskFinally;
+
+            }
         }
         private async Task<ControllerHelperOperationResponse<EmailAnswer>> SaveDiagnosticToolData(DiagnosticToolForm form)
         {

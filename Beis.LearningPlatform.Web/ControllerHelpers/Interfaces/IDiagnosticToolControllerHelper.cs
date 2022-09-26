@@ -68,5 +68,6 @@
         Task UpdateScore(DiagnosticToolForm form);
 
         string GetUniqueContentKey(DiagnosticToolForm form);
+        public void LoadSkillsThreeResponseByUniqueId(string uniqueId, DiagnosticToolForm form);
     }
 }
