@@ -54,8 +54,8 @@
 
         public string FormLogoAlternateText { get; set; }
 
-        [Required]        
-        public string title { get; set; } 
+        [Required]
+        public string title { get; set; }
 
         public string summaryHeading { get; set; }
 
@@ -76,7 +76,7 @@
         /// Gets or sets the register your interest block to display on the Diagnostic Tool results page.
         /// </summary>
         public CMSPageComponent RegisterYourInterestBlock { get; set; }
-        public IList<ComparisonToolProduct> ComparisonToolProducts { get; set; }        
+        public IList<ComparisonToolProduct> ComparisonToolProducts { get; set; }
 
         public string pageTitle { get; set; } = "Help to Grow: Digital - Diagnostic Tool";
         public string pagename { get; set; } = "Find your software";
@@ -96,13 +96,13 @@
         public bool? index { get; } = true;
         public bool? follow { get; } = true;
 
-		public string ContentKey { get; set; }
-		public FormTypes FormType { get; set; }
+        public string ContentKey { get; set; }
+        public FormTypes FormType { get; set; }
 
         public int TotalScore { get; set; }
 
         public SkilledModuleTwoResultType SkilledModuleTwoResultType { get; set; }
-        
+
         public IList<CMSSearchTag> Tags => ProductCategories?.Any() == true ? ProductCategories : new List<CMSSearchTag>();
 
         public IList<ComparisonToolProduct> GetAccountingProducts()
@@ -121,14 +121,25 @@
             return ComparisonToolProducts?.Where(item => item.product_type == productType).ToList();
         }
 
-        public IList<CMSSearchArticle> GetRelatedArticles()
+        private IList<CMSSearchArticle> _relatedArticles;
+        public IList<CMSSearchArticle> RelatedArticles
         {
-            // Collect distinct tags
-            var distinctTags = selectedTags.Distinct().Select(g => g.ToString()).ToList();
-            if (!distinctTags.Any()) return default;
-
-            bool TagToMatch(CMSSearchTag tag) => distinctTags.Contains(tag.name);
-            return Articles?.Where(article => article.tags.Exists(TagToMatch)).OrderBy(x => x.order).ToList();
+            get
+            {
+                if (_relatedArticles == null)
+                {
+                    // Collect distinct tags
+                    var distinctTags = selectedTags.Distinct().Select(g => g.ToString()).ToList();
+                    if (!distinctTags.Any())
+                    {
+                        _relatedArticles = new List<CMSSearchArticle>();
+                        return default;
+                    }
+                    bool TagToMatch(CMSSearchTag tag) => distinctTags.Contains(tag.name);
+                    _relatedArticles = Articles?.Where(article => article.tags.Exists(TagToMatch)).OrderBy(x => x.order).ToList();
+                }
+                return _relatedArticles;
+            }
         }
 
         public IList<FormSearchTags> GetDistinctTagsFromQuestion7()
