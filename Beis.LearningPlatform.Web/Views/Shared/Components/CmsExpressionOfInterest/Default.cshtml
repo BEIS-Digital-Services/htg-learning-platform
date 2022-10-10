@@ -6,138 +6,133 @@
         <div class="feedback-bg-color">
         </div>
     </div>
-    <div class="govuk-width-container govuk-!-padding-top-3">
-        <div class="govuk-grid-row">
-            <div class="govuk-grid-column-full-width">
-                <div class="govuk-grid-row" id="eoi-step2">
-                    <h1 class="govuk-heading-l govuk-!-font-weight-bold govuk-!-margin-top-2 govuk-!-margin-bottom-0">Enter your details</h1>
-                    <div class="govuk-error-summary govuk-!-margin-top-4  govuk-!-margin-bottom-3" aria-labelledby="error-summary-title" role="alert" data-module="govuk-error-summary" id="eoi-errorsummary">
-                        <h2 class="govuk-error-summary__title" id="eoi-error-summary-title">
-                            There is a problem
-                        </h2>
-                        <div class="govuk-error-summary__body">
-                            <ul class="govuk-list govuk-error-summary__list">
-                                <li id="eoi-name-error">
-                                    <a href="#eoi-name">Please enter your name</a>
-                                </li>
-                                <li id="eoi-businessname-error">
-                                    <a href="#eoi-business-name">Please enter your business name</a>
-                                </li>
-                                <li id="eoi-contact-error">
-                                    <a href="#eoi-email">You must add either your phone number or valid email address to submit this form</a>
-                                </li>
-                                <li id="eoi-privacyPolicy-error">
-                                    <a href="#eoi-privacyPolicy">Please tick to confirm you've read our privacy policy</a>
-                                </li>
-                                <li id="eoi-email-error">
-                                    <a href="#eoi-email">Please enter a valid email address.(e.g. name@domain.com)</a>
-                                </li>
-                                <li id="eoi-submission-error">
-                                    <a href="#">Failed to submit. Please try again.</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="govuk-grid-row govuk-!-padding-4">
-                        <div class="govuk-grid-column-full-width govuk-!-padding-left-3">
-                            <h3 class="govuk-!-font-weight-bold">Get information about Help to Grow: Digital including news, events and when software becomes available by entering your details below.</h3>
-                        </div>
-                        <div class="govuk-grid-column-one-half govuk-form-group" id="eoi-errorname-container">
-                            <label class="govuk-label" for="name">
-                                Name
-                            </label>
-                            <p id="eoi-errorname" class="govuk-error-message govuk-visually-hidden">
-                                Please enter your name
-                            </p>
-                            <input class="govuk-input" id="eoi-name" name="name" type="text" />
-                        </div>
-
-                        <div class="govuk-grid-column-one-half" id="eoi-errorbusinessname-container">
-                            <label class="govuk-label" for="business-name">
-                                Business name
-                            </label>
-                            <p id="eoi-errorbusinessname" class="govuk-error-message govuk-visually-hidden">
-                                Please enter your business name
-                            </p>
-                            <input class="govuk-input" id="eoi-business-name" name="business-name" type="text">
-                        </div>
-                        <div class="govuk-grid-column-two-thirds">
-                            <h3 class="govuk-!-font-weight-bold">Please enter how you would like to be contacted</h3>
-                            <p class="">I consent to the Department for Business, Energy & Industrial Strategy (BEIS) contacting me (including through one or more of the third party recipients identified in the policy) by:</p>
-                        </div>
-                    </div>
-                    <div class="govuk-grid-row govuk-!-padding-left-4 govuk-!-padding-bottom-4">
-                        <div class="govuk-grid-column-one-half" id="eoi-erroremail-container">
-                            <label class="govuk-label" for="email">
-                                Email address (optional)
-                            </label>
-                            <p id="eoi-erroremail" class="govuk-error-message govuk-visually-hidden">
-                                Please enter a valid email address.(e.g. name@domain.com)
-                            </p>
-                            <input class="govuk-input" id="eoi-email" name="email" type="text">
-                        </div>
-                    </div>
-                    <div class="govuk-grid-row govuk-!-padding-4">
-                        <div class="govuk-grid-column-one-half" id="eoi-errorphonenumber-container">
-                            <label class="govuk-label" for="phone-number">
-                                Phone number (optional)
-                            </label>
-                            <p id="eoi-errorphonenumber" class="govuk-error-message govuk-visually-hidden">
-                                Please enter a phone number
-                            </p>
-                            <input class="govuk-input" id="eoi-phone-number" name="phone-number" type="number">
-                        </div>
-                    </div>
-                    <div class="govuk-grid-row govuk-!-padding-4">
-                        <div class="govuk-grid-column-two-thirds">
-                            <p class="govuk-body">to keep me informed about news, updates and events relating to Help to Grow: Digital and contact me if I have expressed interest in receiving more information. By filling out the box(es) above I am freely consenting to BEIS (and/or the third party recipients identified in the privacy policy) holding and processing my personal data for these purposes.</p>
-                        </div>
-                    </div>
-                    <div class="govuk-grid-row govuk-!-padding-left-4">
-                        <div class="govuk-grid-column-one-half">
-                            <div class="govuk-checkboxes" data-module="govuk-checkboxes" id="eoi-errorprivacyPolicy-container">
-                                <p id="eoi-errorprivacyPolicy" class="govuk-error-message govuk-visually-hidden">
-                                    Please tick to confirm you've read our privacy policy
-                                </p>
-                                <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="eoi-privacyPolicy" name="privacyPolicy" type="checkbox">
-                                    <label class="govuk-label govuk-checkboxes__label" for="privacyPolicy">
-                                        Tick this box to confirm you have read our <a href="/privacy">privacy policy</a>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="govuk-grid-row govuk-!-margin-top-6 govuk-!-padding-3 govuk-!-margin-left-4">
-                        <div class="govuk-button-group">
-                            <form method="post" id="eoi-expresssion-of-interest-form" style="display:none;">@* <!-- __RequestVerificationToken autogenerated here --> *@</form>
-                            <button id="eoi-form-submit" class="govuk-button primary" data-module="govuk-button" onClick="eoi.submit('@(@Model.PageName)')">
-                                Submit
-                            </button>
-
-                            <button id="eoi-form-cancel" class="govuk-button govuk-button--secondary" data-module="govuk-button" onClick="eoi.goToStep(1)">
-                                Cancel
-                            </button>
-                        </div>
-                    </div>
-
+    <div class="govuk-width-container ">
+        <div id="eoi-step2">
+            <h2 class="govuk-heading-l govuk-!-margin-top-7">Enter your details</h2>
+            <div class="govuk-error-summary govuk-!-margin-top-4  govuk-!-margin-bottom-3" aria-labelledby="error-summary-title" role="alert" data-module="govuk-error-summary" id="eoi-errorsummary">
+                <h3 class="govuk-error-summary__title" id="eoi-error-summary-title">
+                    There is a problem
+                </h3>
+                <div class="govuk-error-summary__body">
+                    <ul class="govuk-list govuk-error-summary__list">
+                    <li id="eoi-name-error">
+                        <a href="#eoi-name">Please enter your name</a>
+                    </li>
+                    <li id="eoi-businessname-error">
+                        <a href="#eoi-business-name">Please enter your business name</a>
+                    </li>
+                    <li id="eoi-contact-error">
+                        <a href="#eoi-email">You must add either your phone number or valid email address to submit this form</a>
+                    </li>
+                    <li id="eoi-privacyPolicy-error">
+                        <a href="#eoi-privacyPolicy">Please tick to confirm you've read our privacy policy</a>
+                    </li>
+                    <li id="eoi-email-error">
+                        <a href="#eoi-email">Please enter a valid email address.(e.g. name@domain.com)</a>
+                    </li>
+                    <li id="eoi-submission-error">
+                        <a href="#">Failed to submit. Please try again.</a>
+                    </li>
+                    </ul>
                 </div>
-                <div id="eoi-step3">
-                    <div class="govuk-grid-row govuk-!-padding-bottom-6">
-                        <div class="govuk-grid-column-full-width">
-                            <h1 class="govuk-heading-l govuk-!-font-weight-bold govuk-!-margin-top-2 govuk-!-margin-bottom-0">Thank you for your response</h1>
-                            <p>
-                                We will email you when we add new software or support to the Help to Grow: Digital scheme
+            </div>
+            <h3 class="govuk-heading-m">Get information about Help to Grow: Digital including news, events and when software becomes available by entering your details below.</h3>
+            <div class="govuk-grid-row govuk-!-margin-bottom-4">
+                <div class="govuk-grid-column-one-half">
+                    <div class="govuk-form-group" id="eoi-errorname-container">
+                        <label class="govuk-label" for="eoi-name">
+                            Name
+                        </label>
+                        <p id="eoi-errorname" class="govuk-error-message govuk-visually-hidden" aria-hidden="true">
+                            Please enter your name
+                        </p>
+                        <input class="govuk-input" id="eoi-name" name="name" type="text" />
+                    </div>
+                </div>
+                <div class="govuk-grid-column-one-half">
+                    <div class="govuk-form-group" id="eoi-errorbusinessname-container">
+                        <label class="govuk-label" for="eoi-business-name">
+                            Business name
+                        </label>
+                        <p id="eoi-errorbusinessname" class="govuk-error-message govuk-visually-hidden">
+                            Please enter your business name
+                        </p>
+                        <input class="govuk-input" id="eoi-business-name" name="business-name" type="text">
+                    </div>
+                </div>
+            </div>
+            <div class="govuk-grid-row govuk-!-margin-bottom-4">
+                <div class="govuk-grid-column-two-thirds">
+                    <h3 class="govuk-heading-m">Please enter how you would like to be contacted</h3>
+                    <p class="govuk-body">I consent to the Department for Business, Energy & Industrial Strategy (BEIS) contacting me (including through one or more of the third party recipients identified in the policy) by:</p>
+                </div>
+            </div>
+            <div class="govuk-grid-row govuk-!-margin-bottom-4">
+                <div class="govuk-grid-column-one-half">
+                    <div class="govuk-form-group" id="eoi-erroremail-container">
+                        <label class="govuk-label" for="eoi-email">
+                            Email address (optional)
+                        </label>
+                        <p id="eoi-erroremail" class="govuk-error-message govuk-visually-hidden">
+                            Please enter a valid email address (e.g. name@domain.com)
+                        </p>
+                        <input class="govuk-input" id="eoi-email" name="email" type="text">
+                    </div>
+                </div>
+                <div class="govuk-grid-column-one-half">
+                    <div class="govuk-form-group" id="eoi-errorphonenumber-container">
+                        <label class="govuk-label" for="eoi-phone-number">
+                            Phone number (optional)
+                        </label>
+                        <p id="eoi-errorphonenumber" class="govuk-error-message govuk-visually-hidden">
+                            Please enter a phone number
+                        </p>
+                        <input class="govuk-input" id="eoi-phone-number" name="phone-number" type="number">
+                    </div>
+                </div>
+            </div>
+            <div class="govuk-grid-row govuk-!-margin-bottom-4">
+                <div class="govuk-grid-column-two-thirds">
+                    <p class="govuk-body">to keep me informed about news, updates and events relating to Help to Grow: Digital and contact me if I have expressed interest in receiving more information. By filling out the box(es) above I am freely consenting to BEIS (and/or the third party recipients identified in the privacy policy) holding and processing my personal data for these purposes.</p>
+                </div>
+            </div>
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-half">
+                    <div class="govuk-form-group">
+                        <div class="govuk-checkboxes" data-module="govuk-checkboxes" id="eoi-errorprivacyPolicy-container">
+                            <p id="eoi-errorprivacyPolicy" class="govuk-error-message govuk-visually-hidden">
+                                Please tick to confirm you've read our privacy policy
                             </p>
-                            <p>
-                                You can find more help on how to choose, buy and implement software in our <a id="eoi-form-read-more" class="govuk-link" href="/business-advice-and-learning">articles and case studies</a>
-                            </p>
+                            <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" id="eoi-privacyPolicy" name="privacyPolicy" type="checkbox">
+                                <label class="govuk-label govuk-checkboxes__label" for="eoi-privacyPolicy">
+                                    Tick this box to confirm you have read our <a href="/privacy" class="govuk-link">privacy policy</a>
+                                </label>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="govuk-button-group">
+                <form method="post" id="eoi-expresssion-of-interest-form" style="display:none;">
+                    @* <!-- __RequestVerificationToken autogenerated here --> *@
+                </form>
+                <button id="eoi-form-submit" class="govuk-button primary" data-module="govuk-button" onClick="eoi.submit('@(@Model.PageName)')">
+                    Submit
+                </button>
+                <button id="eoi-form-cancel" class="govuk-button govuk-button--secondary" data-module="govuk-button" onClick="eoi.goToStep(1)">
+                    Cancel
+                </button>
+            </div>
+        </div>
+        <div id="eoi-step3">
+            <h2 class="govuk-heading-l govuk-!-margin-top-7">Thank you for your response</h2>
+            <p class="govuk-body">
+                We will email you when we add new software or support to the Help to Grow: Digital scheme
+            </p>
+            <p class="govuk-body govuk-!-margin-bottom-7">
+                You can find more help on how to choose, buy and implement software in our <a id="eoi-form-read-more" class="govuk-link" href="/business-advice-and-learning">articles and case studies</a>
+            </p>
         </div>
     </div>
     <div class="feedback-prompt" id="eoi-step1">
