@@ -57,6 +57,7 @@ function manageProducts(e) {
 
     toggleGroupCompareButtons(this);
     toggleFormDivElements(this);
+    e.preventDefault()
 }
 
 function toggleGroupCompareButtons(currentButton) {
