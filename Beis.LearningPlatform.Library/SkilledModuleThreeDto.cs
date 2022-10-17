@@ -1,8 +1,11 @@
-﻿namespace Beis.LearningPlatform.Library
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace Beis.LearningPlatform.Library
 {
     /// <summary>
     /// A class that defines a DTO for a Skills modeul three results email data.
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public class SkilledModuleThreeDto : DtoBase, IEmailDto
     {
         public string QuestionOneStart { get; set; }

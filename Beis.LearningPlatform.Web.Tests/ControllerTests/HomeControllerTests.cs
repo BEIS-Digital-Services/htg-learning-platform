@@ -215,5 +215,116 @@ namespace Beis.LearningPlatform.Web.Tests.ControllerTests
             Assert.True(result.ControllerName == "ComparisonTool");
             Assert.True(result.ActionName == "StartNoJs");
         }
+
+        [Test]
+        public void Test_HomeController_Diagnostic_Tool_redirects_DiagnosticTool_Start()
+        {
+            var controller = CreateController();
+
+            var result = controller.Diagnostic_Tool() as RedirectToActionResult;
+            Assert.IsNotNull(result);
+            Assert.True(result.ControllerName == "DiagnosticTool");
+            Assert.True(result.ActionName == "Start");
+        }
+
+        [Test]
+        public async Task Test_HelpAndSupport_RendersCorrectly()
+        {
+            var controller = CreateController();
+            
+            var result = await controller.Help_and_support();
+            Assert.IsNotNull(result);
+            Assert.That(result, Is.TypeOf<ViewResult>());
+
+            var viewResult = (ViewResult)result;
+            Assert.That(viewResult.ViewName, Is.EqualTo("Help"));
+            Assert.IsNotNull(viewResult.Model);
+            Assert.That(viewResult.Model, Is.TypeOf<CMSPageViewModel>());
+            
+            var pageViewModel = viewResult.Model as CMSPageViewModel;
+            Assert.IsNotNull(pageViewModel);
+            Assert.That(pageViewModel.pageTitle, Is.EqualTo("Help to Grow: Digital - Help and Support"));
+            Assert.That(pageViewModel.ShowBackButton, Is.False);
+        }
+
+        [Test]
+        public async Task Test_Privacy_RendersCorrectly()
+        {
+            var controller = CreateController();
+            
+            var result = await controller.Privacy();
+            Assert.IsNotNull(result);
+            Assert.That(result, Is.TypeOf<ViewResult>());
+
+            var viewResult = (ViewResult)result;
+            Assert.That(viewResult.ViewName, Is.EqualTo("Privacy"));
+            Assert.IsNotNull(viewResult.Model);
+            Assert.That(viewResult.Model, Is.TypeOf<CMSPageViewModel>());
+            
+            var pageViewModel = viewResult.Model as CMSPageViewModel;
+            Assert.IsNotNull(pageViewModel);
+            Assert.That(pageViewModel.pageTitle, Is.EqualTo("Help to Grow: Digital - Privacy"));
+            Assert.That(pageViewModel.ShowBackButton, Is.True);
+        }
+
+        [Test]
+        public async Task Test_About_RendersCorrectly()
+        {
+            var controller = CreateController();
+            
+            var result = await controller.About();
+            Assert.IsNotNull(result);
+            Assert.That(result, Is.TypeOf<ViewResult>());
+
+            var viewResult = (ViewResult)result;
+            Assert.That(viewResult.ViewName, Is.EqualTo("About"));
+            Assert.IsNotNull(viewResult.Model);
+            Assert.That(viewResult.Model, Is.TypeOf<CMSPageViewModel>());
+            
+            var pageViewModel = viewResult.Model as CMSPageViewModel;
+            Assert.IsNotNull(pageViewModel);
+            Assert.That(pageViewModel.pagename, Is.EqualTo("About"));
+            Assert.That(pageViewModel.ShowBackButton, Is.False);
+        }
+
+        [Test]
+        public async Task Test_About2_RendersCorrectly()
+        {
+            var controller = CreateController();
+            
+            var result = await controller.about2();
+            Assert.IsNotNull(result);
+            Assert.That(result, Is.TypeOf<ViewResult>());
+
+            var viewResult = (ViewResult)result;
+            Assert.That(viewResult.ViewName, Is.EqualTo("Sidenav"));
+            Assert.IsNotNull(viewResult.Model);
+            Assert.That(viewResult.Model, Is.TypeOf<CMSPageViewModel>());
+            
+            var pageViewModel = viewResult.Model as CMSPageViewModel;
+            Assert.IsNotNull(pageViewModel);
+            Assert.That(pageViewModel.pagename, Is.EqualTo("About"));
+            Assert.That(pageViewModel.ShowBackButton, Is.False);
+        }
+
+        [Test]
+        public async Task Test_AccessibilityStatement_RendersCorrectly()
+        {
+            var controller = CreateController();
+            
+            var result = await controller.Accessibility_Statement();
+            Assert.IsNotNull(result);
+            Assert.That(result, Is.TypeOf<ViewResult>());
+
+            var viewResult = (ViewResult)result;
+            Assert.That(viewResult.ViewName, Is.EqualTo("Privacy"));
+            Assert.IsNotNull(viewResult.Model);
+            Assert.That(viewResult.Model, Is.TypeOf<CMSPageViewModel>());
+            
+            var pageViewModel = viewResult.Model as CMSPageViewModel;
+            Assert.IsNotNull(pageViewModel);
+            Assert.That(pageViewModel.pageTitle, Is.EqualTo("Help to Grow: Digital - Accessibility Statement"));
+            Assert.That(pageViewModel.ShowBackButton, Is.True);
+        }
     }
 }

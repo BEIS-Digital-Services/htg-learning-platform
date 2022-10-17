@@ -1,8 +1,11 @@
-﻿namespace Beis.LearningPlatform.Library.DTO.Base
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace Beis.LearningPlatform.Library.DTO.Base
 {
     /// <summary>
     /// A class that defines the base properties of a DTO.
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public abstract class DtoBase
     {
         /// <summary>

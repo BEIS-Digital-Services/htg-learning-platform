@@ -1,5 +1,8 @@
-﻿namespace Beis.LearningPlatform.Library
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace Beis.LearningPlatform.Library
 {
+    [ExcludeFromCodeCoverage]
     public class SkillsOneResponseDto : DtoBase
     {
         public bool? IsPrivacyPolicyAccepted { get; set; }

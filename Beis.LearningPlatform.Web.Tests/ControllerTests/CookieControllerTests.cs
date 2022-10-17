@@ -34,6 +34,17 @@ public class CookiesControllerTests
     }
 
     [Test]
+    public async Task Should_return_bad_request_if_no_cookie_preferences()
+    {
+        _helper
+            .Setup(x => x.GetUserCookiePreferences())
+            .Returns(new ControllerHelperOperationResponse<UserCookiePreferencesModel>(new Guid(), false, ""));
+        
+        var result = await _controller.Cookies();
+        result.Should().BeOfType<BadRequestResult>();
+    }
+
+    [Test]
     public void Should_process_valid_cookie_request_and_redirect_valid_referrer()
     {
         _helper.Setup(x => x.ProcessCookie("close", true)).Returns(new ControllerHelperOperationResponse(new Guid()));
@@ -51,6 +62,18 @@ public class CookiesControllerTests
         _helper.Setup(x => x.SafeRedirectToReferer(out redirectUrl)).Returns(false);
         var result = _controller.ProcessCookie(null, null, "close", true);
         result.Should().BeOfType<RedirectToActionResult>();
+    }
+    
+    [Test]
+    public void Should_return_bad_request_if_processing_cookie_fails()
+    {
+        _helper
+            .Setup(x => x.ProcessCookie("close", true))
+            .Returns(new ControllerHelperOperationResponse(new Guid(), false));
+        
+        var result = _controller.ProcessCookie(null, null, "close", true);
+        
+        result.Should().BeOfType<BadRequestResult>();
     }
 
     [Test]
