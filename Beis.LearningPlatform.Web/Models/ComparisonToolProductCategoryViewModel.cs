@@ -13,6 +13,6 @@
 
         public int? CurrentCategoryId { get; set; }
 
-        public string CurrentCategoryName { get; internal set; }
+        public string CurrentCategoryName { get; set; }
     }
 }
