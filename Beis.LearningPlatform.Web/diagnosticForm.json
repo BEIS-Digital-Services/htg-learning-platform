@@ -584,11 +584,11 @@
           "elements": [
             {
               "controlType": "CheckboxGroup",
-                            "hint": "Choose all the options that you’d like to explore",
+              "hint": "Choose all the options that you'd like to explore",
               "showHintInBold": true,
               "id": 110,
               "text": "Question 1:",
-                            "text2": "Which benefits of digital working are you interested in? Choose all the options that you’d like to explore",
+              "text2": "Which benefits of digital working are you interested in?",
               "textControlHtmlId": "lblMultipleChoice",
               "textControlHtmlName": "Question1",
               "nextButtonText": "Go to question 2",
