@@ -1,0 +1,13 @@
+﻿@model CmsHomePageWarningViewModel
+@if (!Model.HasContent || Model.Hide)
+{
+    return;
+}
+<div class="beis-homepage-hero-banner">
+    <div class="govuk-width-container">
+        <h1 class="govuk-heading-l beis-homepage-hero-banner__heading">@Model.Header</h1>
+        <div class="beis-homepage-hero-banner__content">
+            @Html.Raw(Model.IntroHtml)
+        </div>
+    </div>
+</div> 

@@ -1,0 +1,29 @@
+.beis-homepage-hero-banner {
+    background: $beis-navy-blue;
+    color: #fff;
+    padding: 15px 0;
+    @include govuk-media-query (tablet) {
+        padding: 30px 0;
+    }
+}
+
+.beis-homepage-hero-banner__heading {
+    margin-top: 15px;
+    color: inherit;
+}
+
+.beis-homepage-hero-banner__content * {
+    @include govuk-font($size: 24);
+    color: inherit;
+}
+
+.beis-homepage-hero-banner__content a,
+.beis-homepage-hero-banner__content a:link,
+.beis-homepage-hero-banner__content a:visited {
+    color: $beis-yellow;
+    font-weight: $govuk-font-weight-bold;
+}
+
+.beis-homepage-hero-banner__content a:focus {
+    color: $govuk-focus-text-colour;
+}
