@@ -21,5 +21,13 @@
                     && !string.IsNullOrEmpty(Intro);
             }
         }
+
+        public bool Hide
+        {
+            get
+            {
+                return _cmsPageComponent?.hide ?? false;
+            }
+        }
     }
 }

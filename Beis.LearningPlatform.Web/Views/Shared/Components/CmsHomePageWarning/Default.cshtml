@@ -1,5 +1,5 @@
 ﻿@model CmsHomePageWarningViewModel
-@if (!Model.HasContent)
+@if (!Model.HasContent || Model.Hide)
 {
     return;
 }
