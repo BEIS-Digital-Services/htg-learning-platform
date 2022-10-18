@@ -3,7 +3,11 @@
 {
     return;
 }
-<div>
-    <h2>@Model.Header</h2>
-    @Html.Raw(Model.IntroHtml)
-</div>
+<div class="beis-homepage-hero-banner">
+    <div class="govuk-width-container">
+        <h1 class="govuk-heading-l beis-homepage-hero-banner__heading">@Model.Header</h1>
+        <div class="beis-homepage-hero-banner__content">
+            @Html.Raw(Model.IntroHtml)
+        </div>
+    </div>
+</div> 
