@@ -12,8 +12,10 @@
         public IViewComponentResult Invoke(CMSPageComponent cmsPageComponent)
         {
             var viewModel = new CmsHomePageWarningViewModel(cmsPageComponent);
-            viewModel.IntroHtml = Markdown.ToHtml(viewModel.Intro, _markdownPipeline);
-
+            if (viewModel.HasContent)
+            {
+                viewModel.IntroHtml = Markdown.ToHtml(viewModel.Intro, _markdownPipeline);
+            }
             return View(viewModel);
         }
     }
