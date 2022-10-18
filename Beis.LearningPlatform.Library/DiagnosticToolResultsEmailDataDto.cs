@@ -5,7 +5,7 @@ namespace Beis.LearningPlatform.Library
     /// <summary>
     /// A class that defines a DTO for a Diagnostic Tool results email data.
     /// </summary>
-    [ExcludeFromCodeCoverage]
+    [ExcludeFromCodeCoverage(Justification = "Basic DTO - only data fields, no functions")]
     public class DiagnosticToolResultsEmailDataDto : DtoBase, IEmailDto
     {
         /// <summary>

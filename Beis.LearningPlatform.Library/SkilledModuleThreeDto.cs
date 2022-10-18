@@ -5,7 +5,7 @@ namespace Beis.LearningPlatform.Library
     /// <summary>
     /// A class that defines a DTO for a Skills modeul three results email data.
     /// </summary>
-    [ExcludeFromCodeCoverage]
+    [ExcludeFromCodeCoverage(Justification = "Basic DTO - only data fields, no functions")]
     public class SkilledModuleThreeDto : DtoBase, IEmailDto
     {
         public string QuestionOneStart { get; set; }
