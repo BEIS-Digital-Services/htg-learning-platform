@@ -1,0 +1,9 @@
+﻿@model CmsHomePageWarningViewModel
+@if (!Model.HasContent)
+{
+    return;
+}
+<div>
+    <h2>@Model.Header</h2>
+    @Html.Raw(Model.IntroHtml)
+</div>
