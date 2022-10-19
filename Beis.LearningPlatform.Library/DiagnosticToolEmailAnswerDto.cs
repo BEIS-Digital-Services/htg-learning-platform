@@ -6,7 +6,7 @@ namespace Beis.LearningPlatform.Library
     /// A class that defines a DTO for a Diagnostic Tool Email Answer.
     /// </summary>
     /// 
-    [ExcludeFromCodeCoverage(Justification = "To be sorted by ticket LP-1722 which needs to sort code coverage for whole class ")]
+    [ExcludeFromCodeCoverage(Justification = "Basic DTO - only data fields, no functions")]
     public class DiagnosticToolEmailAnswerDto : DtoBase
     {
         /// <summary>

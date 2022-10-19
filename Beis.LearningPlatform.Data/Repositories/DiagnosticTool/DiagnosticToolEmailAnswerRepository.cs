@@ -1,8 +1,11 @@
-﻿namespace Beis.LearningPlatform.Data.Repositories.DiagnosticTool
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace Beis.LearningPlatform.Data.Repositories.DiagnosticTool
 {
     /// <summary>
     /// A class that defines an implementation of a Diagnostic Tool Email Answer repository.
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public class DiagnosticToolEmailAnswerRepository : FeedbackGenericRepository<DiagnosticToolEmailAnswer>, IDiagnosticToolEmailAnswerRepository
     {
         /// <summary>
