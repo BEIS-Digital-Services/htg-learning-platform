@@ -32,13 +32,17 @@
         document.body.classList.add('js');
         document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
     </script>
-    <vc:cookie-banner />    
+    <vc:cookie-banner />        
     @if (Model.ShowLayoutNavigation)
     {
-        <vc:site-navigation page-view-model="@Model" /> 
+        <vc:site-navigation page-view-model="@Model" />         
         <partial name="SatisfactionSurveyViews/_SatisfactionSurveyHeaderBanner" />
+        <vc:cms-global-warning page-view-model="@Model" />
     }
-    <vc:cms-global-warning />
+    else
+    {
+        <vc:cms-global-warning page-view-model="@Model" />
+    }    
     @RenderBody()
 
     @if (Model.footers != null)

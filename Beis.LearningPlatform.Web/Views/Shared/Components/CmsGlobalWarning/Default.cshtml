@@ -1,8 +1,12 @@
-﻿<div class="beis-global-hero-banner">
-    <div class="govuk-width-container">
-        <h1 class="govuk-heading-l beis-global-hero-banner__heading">Header</h1>
-        <div class="beis-global-hero-banner__content">
-            <p>Hello CmsglobalWarningViewModel <a href="link">Test link</a></p>
+﻿@model IEnumerable<GlobalWarningMessageModel>
+@foreach(var globalWarning in Model)
+{
+    <div class="beis-global-hero-banner">
+        <div class="govuk-width-container">
+            <h1 class="govuk-heading-l beis-global-hero-banner__heading">@globalWarning.Header</h1>
+            <div class="beis-global-hero-banner__content">
+                @Html.Raw(globalWarning.BodyHtml)
+            </div>
         </div>
-    </div>
-</div> 
+    </div> 
+}
