@@ -27,3 +27,11 @@
 .beis-homepage-hero-banner__content a:focus {
     color: $govuk-focus-text-colour;
 }
+
+.beis-icon-link.beis-homepage-hero-banner__cta {
+    font-size: 18px;
+    margin-top: 10px;
+    @include govuk-media-query (tablet) {
+        font-size: 24px;
+    }
+}
