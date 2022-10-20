@@ -222,6 +222,7 @@ namespace Beis.LearningPlatform.Web.StrapiApi.Models
 
         // Back Link Component
         public CMSSimpleLink BackLink { get; set; }
+        public CMSSimpleLink CTALink { get; set; }
       
         // Search article listings (Strapi workaround here, the direct relation has a confirmed unfixed bug with ordering).
         // Workaround in place that uses a list of single content pickers (hence CMSSearchArticlePicker) to create an orderable list of searchArticles.

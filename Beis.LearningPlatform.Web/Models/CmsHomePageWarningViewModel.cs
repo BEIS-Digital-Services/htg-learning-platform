@@ -12,7 +12,7 @@
         public string Header { get { return _cmsPageComponent?.header; } }
         public string Intro { get { return _cmsPageComponent?.intro; } }
         public string IntroHtml { get; set; }
-        public CMSSimpleLink CTALink { get; set; }
+        public CMSSimpleLink CTALink { get { return _cmsPageComponent?.CTALink; } }
 
         public bool HasContent
         {
