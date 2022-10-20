@@ -8,13 +8,15 @@
         <h1 class="govuk-heading-l beis-homepage-hero-banner__heading">@Model.Header</h1>
         <div class="beis-homepage-hero-banner__content">
             @Html.Raw(Model.IntroHtml)
-            
-            <a id="" class="beis-icon-link beis-homepage-hero-banner__cta" href="#">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="beis-icon-link__icon">
-                    <path fill="currentColor" d="M11.15,0C4.99,0,0,4.99,0,11.15s4.99,11.15,11.15,11.15s11.15-4.99,11.15-11.15S17.31,0,11.15,0z M17.45,11.16 l-5.72,5.72l-1.25-1.25l3.59-3.59h-9.6v-1.77h9.6l-3.59-3.59l1.25-1.25L17.45,11.16L17.45,11.16L17.45,11.16z"/>
-                </svg>
-                Link text
-            </a>
+            @if (Model.CTALink?.HasContent == true)
+            {
+                <a id="home-page-warning-cta-link" class="beis-icon-link beis-homepage-hero-banner__cta" href="@Model.CTALink.LinkUrl">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="beis-icon-link__icon">
+                        <path fill="currentColor" d="M11.15,0C4.99,0,0,4.99,0,11.15s4.99,11.15,11.15,11.15s11.15-4.99,11.15-11.15S17.31,0,11.15,0z M17.45,11.16 l-5.72,5.72l-1.25-1.25l3.59-3.59h-9.6v-1.77h9.6l-3.59-3.59l1.25-1.25L17.45,11.16L17.45,11.16L17.45,11.16z" />
+                    </svg>
+                    @Model.CTALink.LinkText
+                </a>
+            }
         </div>
     </div>
 </div> 
