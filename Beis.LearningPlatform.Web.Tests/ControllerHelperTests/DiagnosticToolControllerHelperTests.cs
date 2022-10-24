@@ -588,5 +588,72 @@ namespace Beis.LearningPlatform.Web.Tests.ControllerHelperTests
             Assert.AreEqual(formInput.steps[2].elements[0].answerOptions[1].value, response.RiskNext);
             Assert.AreEqual(formInput.steps[2].elements[0].answerOptions[2].value, response.RiskFinally);
         }
+
+        [Test]
+        public async Task ProcessResults_ForASaveSkillsThreeResponse_WhenCalled_Success()
+        {
+            DiagnosticToolForm form = new()
+            {
+                steps = new List<FormStep>
+                {
+                    new()
+                    {
+                        id = 1,
+                        elements = new List<FormStepElement>
+                        {
+                            new()
+                            {
+                                answerOptions = new List<FormAnswerOptionElement>
+                                {
+                                    new() { value = "why need start" },
+                                    new() { value = "why need next" },
+                                    new() { value = "why need finally" },
+                                }
+                            }
+                        }
+                    },
+                    new()
+                    {
+                        id = 2,
+                        elements = new List<FormStepElement>
+                        {
+                            new()
+                            {
+                                answerOptions = new List<FormAnswerOptionElement>
+                                {
+                                    new() { value = "how access start" },
+                                    new() { value = "how access next" },
+                                    new() { value = "how access finally" },
+                                }
+                            }
+                        }
+                    },
+                    new()
+                    {
+                        id = 3,
+                        elements = new List<FormStepElement>
+                        {
+                            new()
+                            {
+                                answerOptions = new List<FormAnswerOptionElement>
+                                {
+                                    new() { value = "risk start" },
+                                    new() { value = "risk next" },
+                                    new() { value = "risk finally" },
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+
+            _skillsThreeService
+                .Setup(x => x.SaveSkillsThreeResponse(It.IsAny<Guid>(), It.IsAny<SkillsThreeResponse>()))
+                .ReturnsAsync(new ServiceResponse<int>(Guid.NewGuid(), true, "", 0));
+
+            var result = await _diagnosticToolControllerHelper.ProcessResults(form, FormTypes.SkillsThreeMoverCommunication);
+
+            result.Payload.Should().Be(true);
+        }
     }
 }
