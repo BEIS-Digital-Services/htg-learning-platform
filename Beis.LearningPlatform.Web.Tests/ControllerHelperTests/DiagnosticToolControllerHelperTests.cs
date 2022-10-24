@@ -590,70 +590,27 @@ namespace Beis.LearningPlatform.Web.Tests.ControllerHelperTests
         }
 
         [Test]
-        public async Task ProcessResults_ForASaveSkillsThreeResponse_WhenCalled_Success()
+        public async Task ProcessResults_SkillsOneForm_InvalidData()
         {
-            DiagnosticToolForm form = new()
-            {
-                steps = new List<FormStep>
-                {
-                    new()
-                    {
-                        id = 1,
-                        elements = new List<FormStepElement>
-                        {
-                            new()
-                            {
-                                answerOptions = new List<FormAnswerOptionElement>
-                                {
-                                    new() { value = "why need start" },
-                                    new() { value = "why need next" },
-                                    new() { value = "why need finally" },
-                                }
-                            }
-                        }
-                    },
-                    new()
-                    {
-                        id = 2,
-                        elements = new List<FormStepElement>
-                        {
-                            new()
-                            {
-                                answerOptions = new List<FormAnswerOptionElement>
-                                {
-                                    new() { value = "how access start" },
-                                    new() { value = "how access next" },
-                                    new() { value = "how access finally" },
-                                }
-                            }
-                        }
-                    },
-                    new()
-                    {
-                        id = 3,
-                        elements = new List<FormStepElement>
-                        {
-                            new()
-                            {
-                                answerOptions = new List<FormAnswerOptionElement>
-                                {
-                                    new() { value = "risk start" },
-                                    new() { value = "risk next" },
-                                    new() { value = "risk finally" },
-                                }
-                            }
-                        }
-                    }
-                }
-            };
+            var result = await _diagnosticToolControllerHelper.ProcessResults(new DiagnosticToolForm(), FormTypes.SkillsOne);
 
-            _skillsThreeService
-                .Setup(x => x.SaveSkillsThreeResponse(It.IsAny<Guid>(), It.IsAny<SkillsThreeResponse>()))
-                .ReturnsAsync(new ServiceResponse<int>(Guid.NewGuid(), true, "", 0));
+            result.Payload.Should().Be(false);
+        }
+        
+        [Test]
+        public async Task ProcessResults_SkillsTwoForm_InvalidData()
+        {
+            var result = await _diagnosticToolControllerHelper.ProcessResults(new DiagnosticToolForm(), FormTypes.SkillsTwo);
 
-            var result = await _diagnosticToolControllerHelper.ProcessResults(form, FormTypes.SkillsThreeMoverCommunication);
+            result.Payload.Should().Be(false);
+        }
+        
+        [Test]
+        public async Task ProcessResults_SkillsThreeForm_InvalidData()
+        {
+            var result = await _diagnosticToolControllerHelper.ProcessResults(new DiagnosticToolForm(), FormTypes.SkillsThreeMoverCommunication);
 
-            result.Payload.Should().Be(true);
+            result.Payload.Should().Be(false);
         }
     }
 }
