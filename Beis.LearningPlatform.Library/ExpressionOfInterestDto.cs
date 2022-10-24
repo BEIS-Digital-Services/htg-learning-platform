@@ -1,22 +1,29 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Beis.LearningPlatform.Library
 {
     public class ExpressionOfInterestDto
     {
         [Required]
+        [ExcludeFromCodeCoverage]
         public string PageName { get; set; }
 
         [Required]
+        [ExcludeFromCodeCoverage]
         public string UserName { get; set; }
 
         [Required]
+        [ExcludeFromCodeCoverage]
         public string UserBusinessName { get; set; }
 
+        [ExcludeFromCodeCoverage]
         public string UserEmail { get; set; }
 
+        [ExcludeFromCodeCoverage]
         public string UserPhone { get; set; }
 
+        [ExcludeFromCodeCoverage]
         public bool OptInReadPrivacy { get; set; }
 
         public bool OptInMarketingEmail
@@ -34,6 +41,7 @@ namespace Beis.LearningPlatform.Library
             }
         }
 
+        [ExcludeFromCodeCoverage]
         public DateTime RecordCreatedUtc { get; set; }
     }
 }

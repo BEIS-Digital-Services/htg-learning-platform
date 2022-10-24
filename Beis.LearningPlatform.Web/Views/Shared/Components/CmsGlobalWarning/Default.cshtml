@@ -1,0 +1,12 @@
+﻿@model IEnumerable<GlobalWarningMessageModel>
+@foreach(var globalWarning in Model)
+{
+    <div class="beis-global-hero-banner">
+        <div class="govuk-width-container">
+            <h1 class="govuk-heading-l beis-global-hero-banner__heading">@globalWarning.Header</h1>
+            <div class="beis-global-hero-banner__content">
+                @Html.Raw(globalWarning.BodyHtml)
+            </div>
+        </div>
+    </div> 
+}
