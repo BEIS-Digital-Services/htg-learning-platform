@@ -570,7 +570,7 @@
       ]
     },
     "skillsOne": {
-            "summaryHeading": "How digital is your business?",
+      "summaryHeading": "How digital is your business?",
       "canChangeAnswers": false,
       "backButton": false,
       "backLink": false,
@@ -579,16 +579,16 @@
         {
           "id": 1,
           "order": 1,
-                    "title": "How digital is your business?",
-                    "summaryTitle": "You are most interested in digital working that helps you to",
+          "title": "How digital is your business?",
+          "summaryTitle": "You are most interested in digital working that helps you to",
           "elements": [
             {
               "controlType": "CheckboxGroup",
               "hint": "Choose all the options that you'd like to explore",
               "showHintInBold": true,
               "id": 110,
-              "text": "Question 1:",
-              "text2": "Which benefits of digital working are you interested in?",
+              "text": "Which benefits of digital working are you interested in?",
+              "text2": "",
               "textControlHtmlId": "lblMultipleChoice",
               "textControlHtmlName": "Question1",
               "nextButtonText": "Go to question 2",
@@ -640,16 +640,16 @@
         {
           "id": 2,
           "order": 2,
-                    "title": "How digital is your business?",
-                    "summaryTitle": "The most time-consuming task(s) or area of your business that you’d like to simplify are:",
+          "title": "How digital is your business?",
+          "summaryTitle": "The most time-consuming task(s) or area of your business that you’d like to simplify are:",
           "elements": [
             {
               "controlType": "Textarea",
-                            "hint": "Think about how you / your team work at the moment. What are the most time-consuming tasks or parts of the business that you’d like to make easier.",
+              "hint": "Think about how you / your team work at the moment. What are the most time-consuming tasks or parts of the business that you’d like to make easier.",
               "showHintInBold": true,
               "id": 200,
-              "text": "Question 2:",
-                            "text2": "Describe your business’ biggest challenge that you’d like to fix.",
+              "text": "Describe your business’ biggest challenge that you’d like to fix.",
+              "text2": "",
               "textControlHtmlId": "lblQuestion2",
               "nextButtonText": "Go to question 3",
               "textControlHtmlName": "Question2"
@@ -664,11 +664,11 @@
           "elements": [
             {
               "controlType": "RadioGroup",
-                            "hint": "This might include: email, video calls, accounting software or taking payments for goods and services online.",
+              "hint": "This might include: email, video calls, accounting software or taking payments for goods and services online.",
               "showHintInBold": true,
               "id": 300,
-              "text": "Question 3:",
-                            "text2": "How much technology does your business currently use?",
+              "text": "How much technology does your business currently use?",
+              "text2": "",
               "textControlHtmlId": "lblMultipleChoice",
               "textControlHtmlName": "Question5",
               "nextButtonText": "Go to question 4",
@@ -676,15 +676,15 @@
                 {
                   "controlType": "Radio",
                   "id": 301,
-                                    "text": "We don’t use any software at all",
+                  "text": "We don’t use any software at all",
                   "textControlHtmlId": "Question5Option1",
                   "textControlHtmlName": "Question5",
-                                    "ResultPageLabel": "we don’t use any software"
+                  "ResultPageLabel": "we don’t use any software"
                 },
                 {
                   "controlType": "Radio",
                   "id": 302,
-                                    "text": "We use some technology, but would like to use more",
+                  "text": "We use some technology, but would like to use more",
                   "textControlHtmlId": "Question5Option2",
                   "textControlHtmlName": "Question5",
                   "ResultPageLabel": "we use some software and want more"
@@ -692,10 +692,10 @@
                 {
                   "controlType": "Radio",
                   "id": 303,
-                                    "text": "We use lots, but are considering alternatives",
+                  "text": "We use lots, but are considering alternatives",
                   "textControlHtmlId": "Question5Option3",
                   "textControlHtmlName": "Question5",
-                                    "ResultPageLabel": "we use lots of software. We’re considering replacements"
+                  "ResultPageLabel": "we use lots of software. We’re considering replacements"
                 }
               ]
             }
@@ -705,20 +705,18 @@
         {
           "id": 4,
           "order": 4,
-                    "title": "How digital is your business?",
-                    "summaryTitle": "You currently use the following methods to share or store information:",
-          //"showInSummary": false,
-          //"skippedByElementStepId": 6,
+          "title": "How digital is your business?",
+          "summaryTitle": "You currently use the following methods to share or store information:",
           "elements": [
             {
               "controlType": "CheckboxGroup",
               "hint": "Think about the job roles in your business and how you store and share your important information.",
               "showHintInBold": true,
-                            "hint2": "Select all options that apply",
+              "hint2": "Select all options that apply",
               "showHint2InBold": true,
               "id": 400,
-              "text": "Question 4:",
-                            "text2": "How does your business currently store and share information?",
+              "text": "How does your business currently store and share information?",
+              "text2": "",
               "textControlHtmlId": "chkBoxGroup1",
               "textControlHtmlName": "chkBoxGroup1",
               "nextButtonText": "Go to question 5",
@@ -782,17 +780,16 @@
         {
           "id": 5,
           "order": 5,
-                    "title": "How digital is your business?",
-                    "summaryTitle": "Finally, you said you’d like digital ways of working / software to help you by:",
+          "title": "How digital is your business?",
+          "summaryTitle": "Finally, you said you’d like digital ways of working / software to help you by:",
           "elements": [
             {
               "controlType": "Textarea",
-              //"hint": "",
               "id": 500,
-              "text": "Question 5:",
-                            "text2": "Describe how you’d like digital ways of working or software to help your business",
+              "text": "Describe how you’d like digital ways of working or software to help your business",
+              "text2": "",
               "textControlHtmlId": "lblQuestion5",
-                            "nextButtonText": "View summary",
+              "nextButtonText": "View summary",
               "textControlHtmlName": "Question5"
             }
           ]
@@ -815,11 +812,11 @@
           "elements": [
             {
               "controlType": "RadioGroup",
-                            "hint": "Technology could be software like Customer Relationship Management (CRM), and/or standard office tools like spreadsheets, email or video calls.",
+              "hint": "Technology could be software like Customer Relationship Management (CRM), and/or standard office tools like spreadsheets, email or video calls.",
               "id": 110,
-              "text": "Communication, data storage and payments",
+              "text": "Do you currently use technology to communicate with customers, suppliers and your team?",
               "text2": "",
-              "subText": "Question1: Do you currently use technology to communicate with customers, suppliers and your team?  ",
+              "subText": "",
               "nextButtonText": "Go to question 2",
               "textControlHtmlId": "lblMultipleChoice1",
               "textControlHtmlName": "Question1",
@@ -878,9 +875,9 @@
               "controlType": "RadioGroup",
                             "hint": "A Server would include an in-house or off-site hard drives that you and your team access.",
               "id": 210,
-              "text": "Communication, data storage and payments",
+              "text": "Do you use Servers or the Cloud to store your data?",
               "text2": "",
-              "subText": "Question 2: Do you use Servers or the Cloud to store your data? ",
+              "subText": "",
               "nextButtonText": "Go to question 3",
               "textControlHtmlId": "lblMultipleChoice2",
               "textControlHtmlName": "Question2",
@@ -936,11 +933,11 @@
           "elements": [
             {
               "controlType": "RadioGroup",
-                            "hint": "This may include software that allows you to take payment through your website, or merchants like PayPal. It could also include accounting software that automatically raises invoices.",
+              "hint": "This may include software that allows you to take payment through your website, or merchants like PayPal. It could also include accounting software that automatically raises invoices.",
               "id": 310,
-              "text": "Communication, data storage and payments",
+              "text": "Do you use software to take payments online, or raise and send invoices?",
               "text2": "",
-              "subText": "Question 3: Do you use software to take payments online, or raise and send invoices?",
+              "subText": "",
               "nextButtonText": "Go to question 4",
               "textControlHtmlId": "lblMultipleChoice3",
               "textControlHtmlName": "Question3",
@@ -998,9 +995,9 @@
               "controlType": "RadioGroup",
               "hint": "This could be social media, blogging, advertising on other industry websites and/or directory listings.",
               "id": 410,
-              "text": "Marketing and advertising",
+              "text": "Does your business advertise online?",
               "text2": "",
-              "subText": "Question 4: Does your business advertise online?",
+              "subText": "",
               "nextButtonText": "Go to question 5",
               "textControlHtmlId": "lblMultipleChoice4",
               "textControlHtmlName": "Question4",
@@ -1009,7 +1006,7 @@
                   "controlType": "Radio",
                   "id": 401,
                   "strongText": "Yes - ",
-                                    "text": "we regularly use a range of online marketing tools; it’s a big part of our advertising.",
+                  "text": "we regularly use a range of online marketing tools; it’s a big part of our advertising.",
                   "value": "Yes",
                   "textControlHtmlId": "Question4Option1",
                   "textControlHtmlName": "Question401",
@@ -1019,7 +1016,7 @@
                   "controlType": "Radio",
                   "id": 402,
                   "strongText": "Sometimes - ",
-                                    "text": "we have social media accounts and have advertised in the past, but don’t do it regularly.",
+                  "text": "we have social media accounts and have advertised in the past, but don’t do it regularly.",
                   "value": "Sometimes",
                   "textControlHtmlId": "Question4Option2",
                   "textControlHtmlName": "Question402",
@@ -1029,7 +1026,7 @@
                   "controlType": "Radio",
                   "id": 403,
                   "strongText": "No - ",
-                                    "text": "we don’t use online marketing tools. ",
+                  "text": "we don’t use online marketing tools. ",
                   "value": "No",
                   "textControlHtmlId": "Question4Option3",
                   "textControlHtmlName": "Question403",
@@ -1039,8 +1036,8 @@
                   "controlType": "Checkbox",
                   "id": 404,
                   "topDownBorder": true,
-                                    "text": "Is improving your online marketing a priority?",
-                                    "hint": "Is improving your online marketing a priority?",
+                  "text": "Is improving your online marketing a priority?",
+                  "hint": "Is improving your online marketing a priority?",
                   "ResultPageLabel": "Improving online marketing",
                   "textControlHtmlId": "Question4Option4",
                   "textControlHtmlName": "Question404"
@@ -1056,11 +1053,11 @@
           "elements": [
             {
               "controlType": "RadioGroup",
-                            "hint": "This could be a single page that explains what your business does, or a website that advertises your full range of products and services.",
+              "hint": "This could be a single page that explains what your business does, or a website that advertises your full range of products and services.",
               "id": 510,
-              "text": "Marketing and advertising",
+              "text": "Do you have an online shop front or website that promotes your business?",
               "text2": "",
-              "subText": "Question 5: Do you have an online shop front or website that promotes your business?",
+              "subText": "",
               "nextButtonText": "Go to question 6",
               "textControlHtmlId": "lblMultipleChoice5",
               "textControlHtmlName": "Question5",
@@ -1069,7 +1066,7 @@
                   "controlType": "Radio",
                   "id": 501,
                   "strongText": "Yes - ",
-                                    "text": "we have an online presence that we update regularly.",
+                  "text": "we have an online presence that we update regularly.",
                   "value": "Yes",
                   "textControlHtmlId": "Question5Option1",
                   "textControlHtmlName": "Question501",
@@ -1099,8 +1096,8 @@
                   "controlType": "Checkbox",
                   "id": 504,
                   "topDownBorder": true,
-                                    "text": "Is creating and updating an online presence a priority?",
-                                    "hint": "Is creating and updating an online presence a priority?",
+                  "text": "Is creating and updating an online presence a priority?",
+                  "hint": "Is creating and updating an online presence a priority?",
                   "ResultPageLabel": "Create/expand your online presence",
                   "textControlHtmlId": "Question5Option4",
                   "textControlHtmlName": "Question504"
@@ -1116,11 +1113,11 @@
           "elements": [
             {
               "controlType": "RadioGroup",
-                            "hint": "For example, software that creates a newsletter or promotional email, and automatically fills in the customer’s name for a personal touch.",
+              "hint": "For example, software that creates a newsletter or promotional email, and automatically fills in the customer’s name for a personal touch.",
               "id": 610,
-              "text": "Marketing and advertising",
+              "text": "Does your business use software to personalise messages to your customers?",
               "text2": "",
-              "subText": "Question 6: Does your business use software to personalise messages to your customers?",
+              "subText": "",
               "nextButtonText": "Go to question 7",
               "textControlHtmlId": "lblMultipleChoice6",
               "textControlHtmlName": "Question6",
@@ -1178,9 +1175,9 @@
               "controlType": "RadioGroup",
               "hint": "These tasks could include: managing appointments; planning an event calendar; monitoring staff holidays; or recording how long it takes to complete a job.",
               "id": 710,
-              "text": "Your team and planning",
+              "text": "Do you use software to carry out business and task planning?",
               "text2": "",
-                            "subText": "Question 7: Do you use software to carry out business and task planning?",
+              "subText": "",
               "nextButtonText": "Go to question 8",
               "textControlHtmlId": "lblMultipleChoice7",
               "textControlHtmlName": "Question7",
@@ -1236,11 +1233,11 @@
           "elements": [
             {
               "controlType": "RadioGroup",
-                            "hint": "This might include training to use software for a day-to-day job, or specialist learning such as fire safety or risk assessment.",
+              "hint": "This might include training to use software for a day-to-day job, or specialist learning such as fire safety or risk assessment.",
               "id": 810,
-              "text": "Your team and planning",
+              "text": "Do you/your team use online learning to gain new skills?",
               "text2": "",
-                            "subText": "Question 8: Do you/your team use online learning to gain new skills?",
+              "subText": "",
               "nextButtonText": "Go to question 9",
               "textControlHtmlId": "lblMultipleChoice8",
               "textControlHtmlName": "Question8",
@@ -1296,11 +1293,11 @@
           "elements": [
             {
               "controlType": "RadioGroup",
-                            "hint": "This includes any form of technology, including spreadsheets, email, CRM or via shared documents. If you work alone, think about how you record data should you need to share it in the future.",
+              "hint": "This includes any form of technology, including spreadsheets, email, CRM or via shared documents. If you work alone, think about how you record data should you need to share it in the future.",
               "id": 910,
-              "text": "Your team and planning",
+              "text": "Do you/your team use software to share information?",
               "text2": "",
-                            "subText": "Question 9: Do you/your team use software to share information?",
+              "subText": "",
               "nextButtonText": "See your results",
               "textControlHtmlId": "lblMultipleChoice9",
               "textControlHtmlName": "Question9",
@@ -1358,7 +1355,7 @@
       ]
     },
     "skillsThreeNewcomerPlanning": {
-            "summaryHeading": "Your Digital newcomer action plan",
+      "summaryHeading": "Your Digital newcomer action plan",
       "canChangeAnswers": false,
       "backButton": false,
       "backLink": false,
@@ -1425,7 +1422,7 @@
           "elements": [
             {
               "controlType": "TextGroup",
-                            "hint": "Making sure that your team can access new software is vital to its success. This may mean buying new hardware, reviewing how you store information, and the checking speed of your internet connection.",
+              "hint": "Making sure that your team can access new software is vital to its success. This may mean buying new hardware, reviewing how you store information, and the checking speed of your internet connection.",
               "hint2": "",
               "id": 210,
               "text": "Planning",
