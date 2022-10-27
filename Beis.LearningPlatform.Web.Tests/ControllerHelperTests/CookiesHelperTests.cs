@@ -86,5 +86,41 @@ public class CookiesHelperTests
         redirectUrl.Should().Be("/cookies");
 
     }
-    
+
+    [Test]
+    public void Should_LogWarning_And_Return_False()
+    {
+        var refererUrl = "";
+
+        _httpContextAccessor.SetupGet(x => x.HttpContext)
+            .Returns(_httpContext.Object);
+        _httpContext.SetupGet(x => x.Request)
+            .Returns(_httpRequest.Object);
+        _httpRequest.SetupGet(x => x.Headers)
+            .Returns(new HeaderDictionary { { "Referer", refererUrl } });
+
+        string redirectUrl;
+        var result = _helper.SafeRedirectToReferer(out redirectUrl);
+        result.Should().Be(false);
+        redirectUrl.Should().BeNull();
+    }
+
+    [Test]
+    public void Should_LogWarning_When_Url_Kind_Is_Relative()
+    {
+        var refererUrl = "rwr:dsffs";
+
+        _httpContextAccessor.SetupGet(x => x.HttpContext)
+            .Returns(_httpContext.Object);
+        _httpContext.SetupGet(x => x.Request)
+            .Returns(_httpRequest.Object);
+        _httpRequest.SetupGet(x => x.Headers)
+            .Returns(new HeaderDictionary { { "Referer", refererUrl } });
+
+        string redirectUrl;        
+        var result = _helper.SafeRedirectToReferer(out redirectUrl);
+        result.Should().Be(false);
+        redirectUrl.Should().BeNull();
+    }
+
 }   
