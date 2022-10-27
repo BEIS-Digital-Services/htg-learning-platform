@@ -4,7 +4,6 @@
     var nextButtonText = " Next ";
     int formTypeNum = (int)Model.FormType;
 }
-
 <main id="main-heading" role="main" class="govuk-main-wrapper">
     <div class="govuk-width-container">
         <div class="govuk-grid-row">
@@ -15,14 +14,14 @@
                     @if (Model.CurrStep > 1 && Model.backLink)
                     {
                        
-                            <button id="btn-diagnostictoolformviews-renderdiagnostictool-prevstep" type="submit" asp-action="PrevStep" class="govuk-back-link btn-as-link">Back</button>
+                            <button id="btn-diagnostictoolformviews-renderdiagnostictool-prevstep" type="submit" asp-action="PrevStep" class="govuk-back-link btn-as-link govuk-!-margin-top-0 govuk-!-margin-bottom-7">Back</button>
                    
                     }
 
                     @if (Model.CurrStep == 1 && string.IsNullOrEmpty(Model.backURLfromQ1) == false)
                     {
                         
-                            <a id="link-diagnostictoolformviews-renderdiagnostictool-back" href="@Model.backURLfromQ1" class="govuk-back-link">Back</a>
+                            <a id="link-diagnostictoolformviews-renderdiagnostictool-back" href="@Model.backURLfromQ1" class="govuk-back-link govuk-!-margin-top-0 govuk-!-margin-bottom-7">Back</a>
                      
                     }
 
@@ -229,9 +228,7 @@
 
                             @if (!string.IsNullOrWhiteSpace(step.title))
                             {
-                                <div @styleString>
-                                    <h1 class="govuk-heading-xl govuk-!-padding-top-3 govuk-!-padding-bottom-0">@step.title</h1>
-                                </div>
+                                <span class="govuk-caption-xl" @styleString>@step.title</span>
                             }
 
 

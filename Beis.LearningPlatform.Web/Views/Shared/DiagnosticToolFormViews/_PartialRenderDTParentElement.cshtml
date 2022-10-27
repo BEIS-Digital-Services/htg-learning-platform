@@ -46,19 +46,20 @@
 
         case FormDisplayControlType.CheckboxGroup:
      
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                    <h2 class="govuk-fieldset__heading govuk-!-font-weight-regular">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l govuk-!-margin-bottom-8">
+                <h1 class="govuk-fieldset__heading">
                     <span>@currentFormStepElement.text</span>
                     <span>@currentFormStepElement.text2</span>
-                    </h2>
+                </h1>
             </legend>
+
             @if (!string.IsNullOrWhiteSpace(currentFormStepElement.hint))
             {
-                <div class="govuk-body @hintInBoldCss">@currentFormStepElement.hint</div>
+                <div class="govuk-hint">@currentFormStepElement.hint</div>
             }
             @if (!string.IsNullOrWhiteSpace(currentFormStepElement.hint2))
             {
-                <div class="govuk-body @hint2InBoldCss">@currentFormStepElement.hint2</div>
+                <div class="govuk-hint">@currentFormStepElement.hint2</div>
             }
 
             @if (!string.IsNullOrWhiteSpace(currentFormStepElement.validationError))
@@ -71,7 +72,7 @@
             @if (currentFormStepElement.answerOptions != null)
             {
                 z = 0;
-                <div class="govuk-checkboxes">
+                <div class="govuk-checkboxes" data-module="govuk-checkboxes">
                     @foreach (var child in currentFormStepElement.answerOptions)
                     {
                         Model.CurrentElement = new ElementInfo
@@ -95,20 +96,20 @@
         case FormDisplayControlType.RadioGroup:
          
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                    <h2 class="govuk-fieldset__heading govuk-!-font-weight-regular">
+                <h1 class="govuk-fieldset__heading">
                     <span>@currentFormStepElement.text</span>
                     <span>@currentFormStepElement.text2</span>
-                    </h2>
-                @if (string.IsNullOrEmpty(currentFormStepElement.subText) == false)
-                {
-                    <h3 class="govuk-fieldset__heading govuk-!-font-size-19 govuk-!-margin-top-7 govuk-!-margin-bottom-5">
-                        <span>@currentFormStepElement.subText</span>
-                    </h3>
-                }
+                </h1>
             </legend>
+            @if (string.IsNullOrEmpty(currentFormStepElement.subText) == false)
+            {
+                <h2 class="govuk-heading-m">
+                    <span>@currentFormStepElement.subText</span>
+                </h2>
+            }
             @if (!string.IsNullOrWhiteSpace(currentFormStepElement.hint))
             {
-                <div class="govuk-body govuk-!-margin-bottom-8 @hintInBoldCss">@currentFormStepElement.hint</div>
+                <div class="govuk-hint govuk-!-margin-top-6 govuk-!-margin-bottom-4">@currentFormStepElement.hint</div>
             }
             @if (!string.IsNullOrWhiteSpace(currentFormStepElement.validationError))
             {
@@ -120,7 +121,7 @@
             @if (currentFormStepElement.answerOptions != null)
             {
                 z = 0;
-                <div class="govuk-radios">
+                <div class="govuk-radios govuk-!-margin-top-4" data-module="govuk-radios">
                     @foreach (var child in currentFormStepElement.answerOptions)
                     {
                         Model.CurrentElement = new ElementInfo
@@ -144,16 +145,17 @@
         case FormDisplayControlType.List:
      
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                    <h2 class="govuk-fieldset__heading govuk-!-font-weight-regular">
-                    <span>@currentFormStepElement.text</span>
-                    <span>@currentFormStepElement.text2</span>
-                    </h2>
+                <h1 class="govuk-label-wrapper">
+                    <label class="govuk-label govuk-label--l" asp-for="@Model.steps[currentStep].elements[currentElement].selectedValue">
+                        <span>@currentFormStepElement.text</span>
+                        <span>@currentFormStepElement.text2</span>
+                    </label>
+                </h1>
             </legend>            
+
             <span asp-validation-for="@Model.steps[currentStep].elements[currentElement].textControlHtmlId" class="govuk-error-message">
                 @currentFormStepElement.validationError
             </span>
-
-
 
             <select asp-for="@Model.steps[currentStep].elements[currentElement].selectedValue" class="govuk-select">
                 <option value="">Select @currentFormStepElement.hint</option>
@@ -186,35 +188,27 @@
 
 
         case FormDisplayControlType.Textarea:
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                    <h2 class="govuk-fieldset__heading govuk-!-font-weight-regular">
-                        <span>@currentFormStepElement.text</span>
-                        @if (string.IsNullOrWhiteSpace(currentFormStepElement.hint))
-                        {
-                            <label for="@(Model.steps[currentStep].elements[currentElement].InputCtrlId)">@currentFormStepElement.text2</label>
-                        }
-                        else
-                        {
-                            <span>@currentFormStepElement.text2</span>
-                        }
-                    </h2>
-            </legend>
-            
-            @if (!string.IsNullOrWhiteSpace(currentFormStepElement.hint))
-            {
-                        <p class="govuk-body govuk-!-margin-top-4 @hintInBoldCss">
-                            <label for="@(Model.steps[currentStep].elements[currentElement].InputCtrlId)">
-                                @currentFormStepElement.hint
-                            </label>
-                        </p>
-            }
-            <span asp-validation-for="@Model.steps[currentStep].elements[currentElement].textControlHtmlId" class="govuk-error-message">
-                @currentFormStepElement.validationError
-            </span>
-            
-            <textarea asp-for="@Model.steps[currentStep].elements[currentElement].value" id="@(Model.steps[currentStep].elements[currentElement].InputCtrlId)"
-              rows="5" class="govuk-textarea">@Model.steps[currentStep].elements[currentElement].value</textarea>
-          
+            <div class="govuk-form-group">
+                <h1 class="govuk-label-wrapper govuk-!-margin-bottom-4">
+                    <label class="govuk-label govuk-label--l" for="@(Model.steps[currentStep].elements[currentElement].InputCtrlId)">
+                        @currentFormStepElement.text
+                    </label>
+                </h1>
+                
+                @if (!string.IsNullOrWhiteSpace(currentFormStepElement.hint))
+                {
+                    <div class="govuk-hint">
+                        @currentFormStepElement.hint
+                    </div>
+                }
+                <span asp-validation-for="@Model.steps[currentStep].elements[currentElement].textControlHtmlId" class="govuk-error-message">
+                    @currentFormStepElement.validationError
+                </span>
+                
+                <textarea asp-for="@Model.steps[currentStep].elements[currentElement].value" id="@(Model.steps[currentStep].elements[currentElement].InputCtrlId)"
+                rows="5" class="govuk-textarea">@Model.steps[currentStep].elements[currentElement].value</textarea>
+
+            </div>
             
             break;
 
