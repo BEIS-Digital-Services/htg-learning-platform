@@ -31,18 +31,17 @@
         }
 
         [Test]
-        public async Task SavesSatisfactionSurvey_Successfully()
+        public void SaveEmailAddress_ValidData_Success()
         {
-            _satisfactionSurveyDataServiceMock.Setup(s => 
-                s.Add(It.IsAny<SatisfactionSurveyDto>())).ReturnsAsync(1);
+            SatisfactionSurveyDto dto = new SatisfactionSurveyDto
+            {
+                Url = "testurl",
+                Rating = "5"
 
-            var result = await _satisfactionSurveyService.SaveSatisfactionSurvey(Guid.NewGuid(),
-                new SatisfactionSurveyDto());
+            };
 
-            Assert.IsNotNull(result);
-            Assert.True(result.IsValid);
-            Assert.AreEqual(1, result.Payload);
-            Assert.AreEqual("satisfactionSurveyDto", result.Message);
+            _satisfactionSurveyService.SaveSatisfactionSurvey(Guid.NewGuid(), dto);
+            _satisfactionSurveyDataServiceMock.Verify(x => x.Add(It.IsAny<SatisfactionSurveyDto>()));
         }
     }
 }
