@@ -40,6 +40,14 @@ namespace Beis.LearningPlatform.BL.Tests.Services
                 RecommendedSoftware = "",
             };
         }
+        
+        private SkillsResultsEmailDataDto CreateDto_SkillsResultsEmailData()
+        {
+            return new()
+            {
+                Id = 0
+            };
+        }
 
         private DiagnosticToolEmailAnswerDto[] GetByEmail_Result(string emailAddress, bool? isUnsubscribed)
         {
@@ -60,7 +68,7 @@ namespace Beis.LearningPlatform.BL.Tests.Services
             _loggerMock = new();
             _mapperMock = new();
             _notifyIntegrationService = new();
-            _options = Options.Create(new NotifyServiceOption { Templates = new Templates { DtResultPageQ6Yes = Guid.NewGuid().ToString(), DtResultPageQ6No = Guid.NewGuid().ToString() } });
+            _options = Options.Create(new NotifyServiceOption { Templates = new Templates { DtResultPageQ6Yes = Guid.NewGuid().ToString(), DtResultPageQ6No = Guid.NewGuid().ToString(), SkillsModuleThree = new SkillsModuleThree() { MoverTesting = Guid.NewGuid().ToString()} } });
 
             _emailService = new EmailService(_loggerMock.Object, _mapperMock.Object, _notifyIntegrationService.Object, 
                 _emailDataServiceMock.Object, _options);
@@ -217,6 +225,60 @@ namespace Beis.LearningPlatform.BL.Tests.Services
              var result = await _emailService.SendResultsRemail(Guid.NewGuid(), TestEmailAddress, dto);
             Assert.That(result.IsValid, Is.True);
         }
+        
+        [Test]
+        public async Task SendSkilledResultsEmail_ValidSubscribedEmail_Success()
+        {
+            var templateId = Guid.NewGuid().ToString();
+            var getByEmailResult = GetByEmail_Result(TestEmailAddress, default);
+            var dto = CreateDto_SkillsResultsEmailData();
+
+            _emailDataServiceMock.Setup(e => e.GetByEmail(TestEmailAddress)).Returns(Task.FromResult(getByEmailResult));
+            _notifyIntegrationService.Setup(n => n.SendDiagnosticToolResult(TestEmailAddress, templateId, It.IsAny<Dictionary<string, dynamic>>())).Verifiable();
+
+            _mapperMock.Setup(x => x.Map<SkillsResultsEmailDataDto>(It.IsAny<SkillsResultsEmailDataDto>()))
+                .Returns<DiagnosticToolResultsEmailDataDto>((source) => new SkillsResultsEmailDataDto());
+            
+            var result = await _emailService.SendResultsRemail(Guid.NewGuid(), TestEmailAddress, dto);
+            Assert.That(result.IsValid, Is.True);
+        }
+        
+        [Test]
+        public async Task SendSkilledModuleTwoEmail_ValidSubscribedEmail_Success()
+        {
+            var templateId = Guid.NewGuid().ToString();
+            var getByEmailResult = GetByEmail_Result(TestEmailAddress, default);
+            var dto = new SkilledModuleTwoDto();
+
+            _emailDataServiceMock.Setup(e => e.GetByEmail(TestEmailAddress)).Returns(Task.FromResult(getByEmailResult));
+            _notifyIntegrationService.Setup(n => n.SendDiagnosticToolResult(TestEmailAddress, templateId, It.IsAny<Dictionary<string, dynamic>>())).Verifiable();
+
+            _mapperMock.Setup(x => x.Map<SkilledModuleTwoDto>(It.IsAny<SkilledModuleTwoDto>()))
+                .Returns<SkilledModuleTwoDto>((source) => new SkilledModuleTwoDto());
+            
+            var result = await _emailService.SendResultsRemail(Guid.NewGuid(), TestEmailAddress, dto);
+            Assert.That(result.IsValid, Is.True);
+        }
+        
+        [Test]
+        public async Task SendSkilledModuleThreeEmail_ValidSubscribedEmail_Success()
+        {
+            var templateId = Guid.NewGuid().ToString();
+            var getByEmailResult = GetByEmail_Result(TestEmailAddress, default);
+            var dto = new SkilledModuleThreeDto()
+            {
+                UserTypeActionPlanSection = "mover-testing"
+            };
+
+            _emailDataServiceMock.Setup(e => e.GetByEmail(TestEmailAddress)).Returns(Task.FromResult(getByEmailResult));
+            _notifyIntegrationService.Setup(n => n.SendDiagnosticToolResult(TestEmailAddress, templateId, It.IsAny<Dictionary<string, dynamic>>())).Verifiable();
+
+            _mapperMock.Setup(x => x.Map<SkilledModuleThreeDto>(It.IsAny<SkilledModuleThreeDto>()))
+                .Returns<SkilledModuleThreeDto>((source) => new SkilledModuleThreeDto());
+            
+            var result = await _emailService.SendResultsRemail(Guid.NewGuid(), TestEmailAddress, dto);
+            Assert.That(result.IsValid, Is.True);
+        }
 
         [Test]
         public async Task UnsubscribeEmail_EmailNotExist_Unsuccessful()
@@ -269,5 +331,12 @@ namespace Beis.LearningPlatform.BL.Tests.Services
             Assert.That(result.IsValid, Is.False);
             Assert.That(result.Message.ToLower().Contains("already unsubscribed"));
         }
+
+        /*[Test]
+
+        public void InvalidModuleThree_TemplateType_Throws()
+        {
+            Assert.Throws<>(() => _emailService.SendResultsRemail());
+        }*/
     }
 }
