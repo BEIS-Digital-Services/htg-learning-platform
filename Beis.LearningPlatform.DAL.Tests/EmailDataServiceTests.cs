@@ -57,5 +57,21 @@ namespace Beis.LearningPlatform.DAL.Tests
             _repository.Verify(x => x.AddAsync(It.IsAny<DiagnosticToolEmailAnswer>()));
             _dataRepository.Verify(x => x.SaveAsync());
         }
+        
+        [Test]
+        public async Task UpdateEntity_ValidData_Successful()
+        {
+            var dto = CreateDto();
+            var service = CreateService();
+            await service.Add(dto);
+
+            dto.IsUnsubscribed = true;
+
+            await service.Update(dto);
+
+            _mapper.Verify(x => x.Map<DiagnosticToolEmailAnswer>(dto));
+            _repository.Verify(x => x.Update(It.IsAny<DiagnosticToolEmailAnswer>()));
+            _dataRepository.Verify(x => x.SaveAsync());
+        }
     }
 }
