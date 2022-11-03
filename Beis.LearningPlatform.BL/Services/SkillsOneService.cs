@@ -34,19 +34,14 @@
 
         public async Task<IServiceResponse<int>> SaveSkillsOneResponse(Guid requestID, SkillsOneResponseDto skillsOneResponseDto)
         {
-            bool isSuccessful = false;
-            string message = default;
-            int returnValue = default;
-
-            if (skillsOneResponseDto != default)
+            if (skillsOneResponseDto == default)
             {
-                returnValue = await _skillsOneDataService.Add(skillsOneResponseDto);
-                isSuccessful = true;
-            }
-            else
                 throw new ArgumentNullException(nameof(skillsOneResponseDto));
+            }
 
-            return new ServiceResponse<int>(requestID, isSuccessful, message, returnValue);
+            var returnValue = await _skillsOneDataService.Add(skillsOneResponseDto);
+            
+            return new ServiceResponse<int>(requestID, true, null, returnValue);
         }
     }
 }

@@ -1,8 +1,11 @@
-﻿namespace Beis.LearningPlatform.Library
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace Beis.LearningPlatform.Library
 {
     /// <summary>
     /// A class that defines a DTO for a Diagnostic Tool results email related article.
     /// </summary>
+    [ExcludeFromCodeCoverage(Justification = "Basic DTO - only data fields, no functions")]
     public class DiagnosticToolResultsEmailRelatedArticleDto : DtoBase
     {
         /// <summary>

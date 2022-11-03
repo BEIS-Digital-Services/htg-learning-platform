@@ -26,7 +26,7 @@
                 <div class="details">
                     <div class="beis-white">
                         <div>
-                            <p class="govuk-body"><strong>What you've told us...</strong></p>
+                            <p class="govuk-body"><strong>What you’ve told us...</strong></p>
                             <p class="govuk-body">
                                 Your business is in the <strong class="">@(Model.IsQuestion2Correct? Model.steps[1].elements[0].selectedValue : "<error: Question 2 changed>")</strong> sector and you mostly trade
                                 <strong class="">@(Model.IsQuestion1Correct? Model.steps[0].elements[0].value : "<error: Question 1 changed>")</strong>.
@@ -157,14 +157,17 @@
             <script src="~/js/comparisontool.js" asp-append-version="true"></script>
         }
 
-        <div class="govuk-grid-row govuk-!-padding-bottom-0">
-            <div class="govuk-grid-column-full">
-                <h2 class="govuk-heading-l govuk-!-padding-top-8 ">
-                    Expert guidance matching your answers
-                </h2>
+        @if(Model.RelatedArticles.Any())
+        {
+            <div class="govuk-grid-row govuk-!-padding-bottom-0">
+                <div class="govuk-grid-column-full">
+                    <h2 class="govuk-heading-l govuk-!-padding-top-8 ">
+                        Expert guidance matching your answers
+                    </h2>
+                </div>
             </div>
-        </div>
-        <partial name="DiagnosticToolFormViews/_PartialSearchArticles" model="@(Model.GetRelatedArticles(), string.Empty)" />
+            <partial name="DiagnosticToolFormViews/_PartialSearchArticles" model="@(Model.RelatedArticles, string.Empty)" />
+        }
 
         @if (Model.RegisterYourInterestBlock != default)
         {

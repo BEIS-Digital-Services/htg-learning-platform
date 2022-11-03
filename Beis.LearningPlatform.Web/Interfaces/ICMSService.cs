@@ -13,6 +13,7 @@
         public Task<IList<ComparisonToolPageViewModel>> GetComparisonToolPageResult(string strapiAction);
 
         Task<IEnumerable<SiteNavigationModel>> GetSiteNavigation();
+        Task<IEnumerable<GlobalWarningMessageModel>> GetGlobalWarningMessages(bool enabledOnly = true);
 
         /// <param name="orderByIds">Return in same order as Id params</param>
         Task<IEnumerable<CMSSearchArticle>> GetSearchArticles(IEnumerable<int> searchArticleIds, bool orderByIds = false);

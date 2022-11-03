@@ -1,0 +1,13 @@
+.beis-feedback-prompt {
+    background: $beis-blue-feedback;
+}
+
+.beis-feedback-prompt__message {
+    color: #fff;
+    margin: 30px 20px;
+    font-weight: $govuk-font-weight-bold;
+}
+
+.beis-feedback-prompt__message > a {
+    @include govuk-link-style-inverse
+}

@@ -1,4 +1,6 @@
 ﻿global using AutoMapper;
+global using Beis.HelpToGrow.Common.Helpers;
+global using Beis.HelpToGrow.Common.Services.HealthChecks;
 global using Beis.HelpToGrow.Persistence;
 global using Beis.HelpToGrow.Persistence.Models;
 global using Beis.LearningPlatform.BL.Models;
@@ -20,7 +22,9 @@ global using Beis.LearningPlatform.Web.Services;
 global using Beis.LearningPlatform.Web.StrapiApi.Models;
 global using Beis.LearningPlatform.Web.Utils;
 global using Markdig;
+global using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.Extensions.Diagnostics.HealthChecks;
 global using Microsoft.Extensions.Options;
 global using Newtonsoft.Json;
 global using System.ComponentModel.DataAnnotations;

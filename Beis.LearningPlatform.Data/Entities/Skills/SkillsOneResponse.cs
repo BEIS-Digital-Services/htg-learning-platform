@@ -1,5 +1,8 @@
-﻿namespace Beis.LearningPlatform.Data.Entities.Skills
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace Beis.LearningPlatform.Data.Entities.Skills
 {
+    [ExcludeFromCodeCoverage]
     public class SkillsOneResponse : SkilledDataResponse
     {
         public string UserEmailAddress { get; set; }

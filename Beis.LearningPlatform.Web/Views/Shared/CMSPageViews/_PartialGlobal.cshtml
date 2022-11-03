@@ -6,33 +6,33 @@
 
 @if (Model.component.hide == false)
 {
-    <div class="govuk-width-container" id="@("anchor" + Model.component.Index)">
+    <div class="govuk-width-container beis-global @(Model.component.topSpace != "nospace" ? "govuk-!-padding-top-6" : string.Empty) @(Model.component.bottomSpace != "nospace" ? "govuk-!-padding-bottom-6" : string.Empty)" id="@("anchor" + Model.component.Index)">
         <div class="govuk-grid-row">
-            <div class="beis-white govuk-grid-column-two-thirds">
-                <div class="@(Model.component.topSpace != "nospace" ? "govuk-!-padding-top-6" : string.Empty) @(Model.component.bottomSpace != "nospace" ? "govuk-!-padding-bottom-6" : string.Empty)">
-                    @if (!string.IsNullOrWhiteSpace(Model.component.header))
+            <div class="govuk-grid-column-two-thirds">
+                @if (!string.IsNullOrWhiteSpace(Model.component.header))
+                {
+                    @if (Model.showBackButton)
                     {
-                        @if (Model.showBackButton)
-                        {
-                            <button id="link-cmspageviews-global-back-link" class="govuk-back-link btn-as-link" onclick="history.back()">Back</button>
-                        }
-
-                        <h1 class="govuk-heading-xl">@Html.Raw(Markdown.ToHtml(Model.component.header, _pipeline).Replace("<p>", string.Empty).Replace("</p>", string.Empty))</h1>
-                    }
-                    @if (!string.IsNullOrWhiteSpace(Model.component.subheader))
-                    {
-                        <h2 class="govuk-heading-l">@Html.Raw(Markdown.ToHtml(Model.component.subheader, _pipeline).Replace("<p>", string.Empty).Replace("</p>", string.Empty))</h2>
-                    }
-                    @if (!string.IsNullOrWhiteSpace(Model.component.copy))
-                    {
-                        <div class="govuk-body">
-                            @Html.Raw(string.IsNullOrWhiteSpace(Model.component.copy) ? string.Empty : Markdown.ToHtml(Model.component.copy, _pipeline).Replace("<p>", "<p class=\"govuk-body\">"))
-                        </div>
+                        <button id="link-cmspageviews-global-back-link" class="govuk-back-link btn-as-link" onclick="history.back()">Back</button>
                     }
 
-                    <partial name="CMSPageViews/_PartialTextButtons" model="@Model.component" />
-                    <partial name="CMSPageViews/_PartialTextLinks" model="@(Model.component.links, Model.component.linksAlign)" />
-                </div>
+                    <h1 class="govuk-heading-xl beis-global__heading">@Html.Raw(Markdown.ToHtml(Model.component.header, _pipeline).Replace("<p>", string.Empty).Replace("</p>", string.Empty))</h1>
+                }
+                @if (!string.IsNullOrWhiteSpace(Model.component.subheader))
+                {
+                    <h2 class="govuk-heading-l beis-global__sub-heading">@Html.Raw(Markdown.ToHtml(Model.component.subheader, _pipeline).Replace("<p>", string.Empty).Replace("</p>", string.Empty))</h2>
+                }
+                
+                @if (!string.IsNullOrWhiteSpace(Model.component.copy))
+                {
+                    <div class="beis-global__content">
+                        @Html.Raw(string.IsNullOrWhiteSpace(Model.component.copy) ? string.Empty : Markdown.ToHtml(Model.component.copy, _pipeline).Replace("<p>", "<p class=\"govuk-body\">"))
+                    </div>
+                }
+                
+                <partial name="CMSPageViews/_PartialTextButtons" model="@Model.component" />
+                <partial name="CMSPageViews/_PartialTextLinks" model="@(Model.component.links, Model.component.linksAlign)" />
+   
             </div>
         </div>
     </div>

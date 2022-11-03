@@ -1,5 +1,8 @@
-﻿namespace Beis.LearningPlatform.Data.Entities.Skills
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace Beis.LearningPlatform.Data.Entities.Skills
 {
+    [ExcludeFromCodeCoverage]
     public class SkilledDataResponse : FeedbackEntity
     {
         public bool? IsPrivacyPolicyAccepted { get; set; }

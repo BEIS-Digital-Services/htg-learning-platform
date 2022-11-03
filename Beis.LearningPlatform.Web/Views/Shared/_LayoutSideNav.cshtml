@@ -33,7 +33,12 @@
         <div role="banner">
             <vc:site-navigation page-view-model="@Model" /> 
             <partial name="SatisfactionSurveyViews/_SatisfactionSurveyHeaderBanner" />
+            <vc:cms-global-warning page-view-model="@Model" />
         </div>
+    }
+    else
+    {
+        <vc:cms-global-warning page-view-model="@Model" />
     }
     @RenderBody()
 

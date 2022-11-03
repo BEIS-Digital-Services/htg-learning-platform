@@ -588,5 +588,29 @@ namespace Beis.LearningPlatform.Web.Tests.ControllerHelperTests
             Assert.AreEqual(formInput.steps[2].elements[0].answerOptions[1].value, response.RiskNext);
             Assert.AreEqual(formInput.steps[2].elements[0].answerOptions[2].value, response.RiskFinally);
         }
+
+        [Test]
+        public async Task ProcessResults_SkillsOneForm_InvalidData()
+        {
+            var result = await _diagnosticToolControllerHelper.ProcessResults(new DiagnosticToolForm(), FormTypes.SkillsOne);
+
+            result.Payload.Should().Be(false);
+        }
+        
+        [Test]
+        public async Task ProcessResults_SkillsTwoForm_InvalidData()
+        {
+            var result = await _diagnosticToolControllerHelper.ProcessResults(new DiagnosticToolForm(), FormTypes.SkillsTwo);
+
+            result.Payload.Should().Be(false);
+        }
+        
+        [Test]
+        public async Task ProcessResults_SkillsThreeForm_InvalidData()
+        {
+            var result = await _diagnosticToolControllerHelper.ProcessResults(new DiagnosticToolForm(), FormTypes.SkillsThreeMoverCommunication);
+
+            result.Payload.Should().Be(false);
+        }
     }
 }

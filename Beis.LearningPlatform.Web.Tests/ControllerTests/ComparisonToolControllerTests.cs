@@ -141,7 +141,17 @@ namespace Beis.LearningPlatform.Web.Tests.ControllerTests
 
             var viewResult = await controller.Start() as ViewResult;
 
-            AssertStart(viewResult, true);
+            AssertStart(viewResult, true, null);
+        }
+
+        [Test]
+        public async Task Should_Return_Valid_Start_View_With_Product_Category_Ids()
+        {
+            var controller = CreateController();
+
+            var viewResult = await controller.Start("cat1,cat2") as ViewResult;
+
+            AssertStart(viewResult, true, new [] { "cat1", "cat2" });
         }
 
         [Test]
@@ -151,7 +161,7 @@ namespace Beis.LearningPlatform.Web.Tests.ControllerTests
 
             var viewResult = await controller.StartNoJs() as ViewResult;
             
-            AssertStart(viewResult, false);
+            AssertStart(viewResult, false, null);
         }
 
         [Test]
@@ -427,7 +437,7 @@ namespace Beis.LearningPlatform.Web.Tests.ControllerTests
             Assert.IsTrue(viewResult.Model is ErrorViewModel);            
         }
 
-        private static void AssertStart(ViewResult viewResult, bool expectedJavascriptEnabled)
+        private static void AssertStart(ViewResult viewResult, bool expectedJavascriptEnabled, string[] expectedCategoryIds)
         {
             Assert.IsNotNull(viewResult);
             Assert.AreEqual("Start", viewResult.ViewName);
@@ -435,6 +445,7 @@ namespace Beis.LearningPlatform.Web.Tests.ControllerTests
             Assert.NotNull(model);
             Assert.IsNotEmpty(model.ContentKey);
             Assert.AreEqual(expectedJavascriptEnabled, model.JavascriptEnabled);
+            Assert.AreEqual(model.ProductCategoryIds, expectedCategoryIds);
         }
 
         private static void AssertCompareProducts(ViewResult viewResult, string productIds, bool expectedJavascriptEnabled)

@@ -1,8 +1,11 @@
-﻿namespace Beis.LearningPlatform.Data.Repositories.Skills
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace Beis.LearningPlatform.Data.Repositories.Skills
 {
     /// <summary>
     /// A class that defines an implementation of a Skills Two Response repository.
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public class SkillsTwoResponseRepository : FeedbackGenericRepository<SkillsTwoResponse>, ISkillsTwoResponseRepository
     {
         /// <summary>
