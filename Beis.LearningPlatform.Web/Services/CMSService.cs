@@ -100,6 +100,12 @@
             return viewModel;
         }
 
+        public async Task<IEnumerable<GlobalWarningMessageModel>> GetGlobalWarningMessages(bool enabledOnly = true)
+        {
+            var result = await _apiCallService.GetApiResult(_cmsOption.ApiBaseUrl, $"global-warning-messages{(enabledOnly ? "?Enabled=true" : String.Empty)}");
+            return string.IsNullOrWhiteSpace(result) ? Enumerable.Empty<GlobalWarningMessageModel>() : JsonConvert.DeserializeObject<List<GlobalWarningMessageModel>>(result);
+        }
+
         public async Task<IEnumerable<CMSSearchArticle>> GetSearchArticles(IEnumerable<int> searchArticleIds, bool orderByIds = false)
         {
             if (searchArticleIds?.Any() != true) 

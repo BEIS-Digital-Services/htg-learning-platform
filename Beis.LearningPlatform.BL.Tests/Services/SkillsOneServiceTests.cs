@@ -20,14 +20,14 @@ namespace Beis.LearningPlatform.BL.Tests.Services
             _skills1DataServiceMock = new();
             _skills1Service = new SkillsOneService(_logger.Object,_mapper.Object,_notifyIntegrationService.Object, _skills1DataServiceMock.Object);
         }
-        
+
         [Test]
         public void SaveSkillsOneResponse_ValidData_Success()
         {
             SkillsOneResponseDto response = new SkillsOneResponseDto
-            {
+        {
                 UserEmailAddress = "test@test.com",
-                
+            
             };
             _skills1Service.SaveSkillsOneResponse(Guid.NewGuid(), response);
             _skills1DataServiceMock.Verify(x => x.Add(It.IsAny<SkillsOneResponseDto>()));

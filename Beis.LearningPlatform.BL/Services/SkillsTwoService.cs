@@ -32,19 +32,15 @@
 
         public async Task<IServiceResponse<int>> SaveSkillsTwoResponse(Guid requestID, SkillsTwoResponse skillsTwoResponse)
         {
-            bool isSuccessful = false;
-            string message = default;
-            int returnValue = default;
-
-            if (skillsTwoResponse != default)
+            if (skillsTwoResponse == default)
             {
-                returnValue = await _skillsTwoDataService.Add(skillsTwoResponse);
-                isSuccessful = true;
-            }
-            else
                 throw new ArgumentNullException(nameof(skillsTwoResponse));
+                
+            }
+            
+            int returnValue = await _skillsTwoDataService.Add(skillsTwoResponse);
 
-            return new ServiceResponse<int>(requestID, isSuccessful, message, returnValue);
+            return new ServiceResponse<int>(requestID, true, null, returnValue);
         }
     }
 }

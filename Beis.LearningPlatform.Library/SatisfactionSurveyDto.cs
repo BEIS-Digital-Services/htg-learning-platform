@@ -2,7 +2,7 @@
 
 namespace Beis.LearningPlatform.Library
 {
-    [ExcludeFromCodeCoverage]
+    [ExcludeFromCodeCoverage(Justification = "Basic DTO - only data fields, no functions")]
     public class SatisfactionSurveyDto : DtoBase
     {
         public string Rating { get; set; }

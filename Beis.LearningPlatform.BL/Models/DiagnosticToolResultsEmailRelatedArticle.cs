@@ -1,8 +1,11 @@
-﻿namespace Beis.LearningPlatform.BL.Models
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace Beis.LearningPlatform.BL.Models
 {
     /// <summary>
     /// A class that defines a related article for a Diagnostic Tool results email.
     /// </summary>
+    [ExcludeFromCodeCoverage(Justification = "Basic DTO - only data fields, no functions")]
     public class DiagnosticToolResultsEmailRelatedArticle
     {
         /// <summary>

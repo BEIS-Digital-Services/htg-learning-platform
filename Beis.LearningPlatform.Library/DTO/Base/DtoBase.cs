@@ -5,7 +5,7 @@ namespace Beis.LearningPlatform.Library.DTO.Base
     /// <summary>
     /// A class that defines the base properties of a DTO.
     /// </summary>
-    [ExcludeFromCodeCoverage]
+    [ExcludeFromCodeCoverage(Justification = "Basic DTO - only data fields, no functions")]
     public abstract class DtoBase
     {
         /// <summary>
