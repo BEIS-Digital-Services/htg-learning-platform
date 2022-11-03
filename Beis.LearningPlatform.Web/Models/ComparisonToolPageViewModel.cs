@@ -179,6 +179,19 @@ namespace Beis.LearningPlatform.Web.Models
             };
         }
 
+        public string CategoryName {
+            get
+            {
+                if (this.ProductCategoryList.Count > 1)
+                {
+                    return "Softwares";
+                }
+
+                var displayName = this.ProductCategoryList.FirstOrDefault()?.friendlyDisplayName;
+                return string.IsNullOrWhiteSpace(displayName) ? "Software" : $"{displayName} software";
+            }
+        }
+
         public bool AnyProductHasTransactionFees
         {
             get 

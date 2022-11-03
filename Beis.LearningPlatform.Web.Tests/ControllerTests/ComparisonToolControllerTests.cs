@@ -57,16 +57,16 @@ namespace Beis.LearningPlatform.Web.Tests.ControllerTests
         private static IEnumerable<object[]> CompareProductInput =>
             new List<object[]>
             {
-                new object[] { null, "4,10" },
-                new object[] { null, "7,14" },
-                new object[] { null, "4,7,10,14" },
-                new object[] { "accounting", "7" },
-                new object[] { "accounting", "14" },
-                new object[] { "accounting", "7,14" },
-                new object[] { "crm", "4" },
-                new object[] { "crm", "10" },
-                new object[] { "crm", "4,10" },
-                new object[] { "crm,accounting", "4,7,10,14" }
+                new object[] { null, "4,10", "Customer Relationship Management software" },
+                new object[] { null, "7,14", "Digital Accounting software" },
+                new object[] { null, "4,7,10,14", "Softwares" },
+                new object[] { "accounting", "7", "Softwares" },
+                new object[] { "accounting", "14", "Softwares" },
+                new object[] { "accounting", "7,14", "Softwares" },
+                new object[] { "crm", "4", "Softwares" },
+                new object[] { "crm", "10", "Softwares" },
+                new object[] { "crm", "4,10", "Softwares" },
+                new object[] { "crm,accounting", "4,7,10,14", "Softwares" }
             };
 
         private static IEnumerable<object[]> TestInput =>
@@ -287,7 +287,7 @@ namespace Beis.LearningPlatform.Web.Tests.ControllerTests
         }
 
         [TestCaseSource(nameof(CompareProductInput))]
-        public async Task Should_Return_CompareProducts_Matching_Category_And_Product_Ids(string productCategoryIds, string productIds)
+        public async Task Should_Return_CompareProducts_Matching_Category_And_Product_Ids(string productCategoryIds, string productIds, string categoryName)
         {
             var controller = CreateController();
             var tempData = new Mock<ITempDataDictionary>();
@@ -295,17 +295,17 @@ namespace Beis.LearningPlatform.Web.Tests.ControllerTests
             
             var viewResult = await controller.CompareProducts(productCategoryIds, productIds) as ViewResult;
 
-            AssertCompareProducts(viewResult, productIds, true);
+            AssertCompareProducts(viewResult, productIds, categoryName, true);
         }
 
         [TestCaseSource(nameof(CompareProductInput))]
-        public async Task Should_Return_CompareProductsNoJs_Matching_Category_And_Product_Ids(string productCategoryIds, string productIds)
+        public async Task Should_Return_CompareProductsNoJs_Matching_Category_And_Product_Ids(string productCategoryIds, string productIds, string categoryName)
         {
             var controller = CreateController();
 
             var viewResult = await controller.CompareProductsNoJs(productCategoryIds, productIds) as ViewResult;
 
-            AssertCompareProducts(viewResult, productIds, false);
+            AssertCompareProducts(viewResult, productIds, categoryName, false);
         }
 
         [TestCaseSource(nameof(TestInput))]
@@ -399,7 +399,7 @@ namespace Beis.LearningPlatform.Web.Tests.ControllerTests
         }
 
         [TestCaseSource(nameof(CompareProductInput))]
-        public async Task Should_Have_Additional_Cost_Data(string productCategoryIds, string productIds)
+        public async Task Should_Have_Additional_Cost_Data(string productCategoryIds, string productIds, string categoryName)
         {
             var controller = CreateController();
             var tempData = new Mock<ITempDataDictionary>();
@@ -407,7 +407,7 @@ namespace Beis.LearningPlatform.Web.Tests.ControllerTests
 
             var viewResult = await controller.CompareProducts(productCategoryIds, productIds) as ViewResult;
 
-            AssertCompareProducts(viewResult, productIds, true);
+            AssertCompareProducts(viewResult, productIds, categoryName, true);
 
             var viewModel = viewResult.Model as ComparisonToolPageViewModel;
             Assert.IsNotNull(viewModel);
@@ -448,7 +448,7 @@ namespace Beis.LearningPlatform.Web.Tests.ControllerTests
             Assert.AreEqual(model.ProductCategoryIds, expectedCategoryIds);
         }
 
-        private static void AssertCompareProducts(ViewResult viewResult, string productIds, bool expectedJavascriptEnabled)
+        private static void AssertCompareProducts(ViewResult viewResult, string productIds, string categoryName, bool expectedJavascriptEnabled)
         {
             Assert.IsNotNull(viewResult);
             var viewModel = viewResult.Model as ComparisonToolPageViewModel;
@@ -464,6 +464,7 @@ namespace Beis.LearningPlatform.Web.Tests.ControllerTests
             Assert.AreEqual("CompareProducts", viewResult.ViewName);
             Assert.IsNotEmpty(viewModel.ContentKey);
             Assert.AreEqual(expectedJavascriptEnabled, viewModel.JavascriptEnabled);
+            Assert.AreEqual(categoryName, viewModel.CategoryName);
         }
 
         private static void AssertProductDetails(ViewResult viewResult, string productId, bool expectedJavascriptEnabled)
