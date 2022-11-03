@@ -1,57 +1,43 @@
-using Beis.LearningPlatform.BL.IntegrationServices;
+﻿using Beis.LearningPlatform.BL.IntegrationServices;
+using Beis.LearningPlatform.Data.Entities.Skills;
 
 namespace Beis.LearningPlatform.BL.Tests.Services
 {
     public class SkillsOneServiceTests
     {
-        private ISkillsOneService _service;
-        private Mock<ISkillsOneDataService> _dataService;
+        private ISkillsOneService _skills1Service;
+        private Mock<ILogger<EmailService>> _logger;
+        private Mock<INotifyIntegrationService> _notifyIntegrationService;
+        private Mock<ISkillsOneDataService> _skills1DataServiceMock;
+        private Mock<IMapper> _mapper;
 
         [SetUp]
         public void Setup()
         {
-            var logger = new Mock<ILogger<EmailService>>();
-            var mapper = new Mock<IMapper>();
-            var notifyService = new Mock<INotifyIntegrationService>();
-            
-            _dataService = new Mock<ISkillsOneDataService>();
-
-            _service = new SkillsOneService(
-                logger.Object,
-                mapper.Object,
-                notifyService.Object,
-                _dataService.Object
-            );
+            _logger = new Mock<ILogger<EmailService>>();
+            _mapper = new Mock<IMapper>();
+            _notifyIntegrationService = new Mock<INotifyIntegrationService>();
+            _skills1DataServiceMock = new();
+            _skills1Service = new SkillsOneService(_logger.Object,_mapper.Object,_notifyIntegrationService.Object, _skills1DataServiceMock.Object);
         }
 
         [Test]
-        public void SaveSkillsOneResponse_NullData_ThrowsException()
+        public void SaveSkillsOneResponse_ValidData_Success()
         {
-            var ex = Assert.ThrowsAsync<ArgumentNullException>(() =>
-                _service.SaveSkillsOneResponse(Guid.NewGuid(), null)
-            );
+            SkillsOneResponseDto response = new SkillsOneResponseDto
+        {
+                UserEmailAddress = "test@test.com",
             
-            Assert.That(ex.ParamName, Is.EqualTo("skillsOneResponseDto"));
+            };
+            _skills1Service.SaveSkillsOneResponse(Guid.NewGuid(), response);
+            _skills1DataServiceMock.Verify(x => x.Add(It.IsAny<SkillsOneResponseDto>()));
         }
 
         [Test]
-        public async Task SaveSkillsOneResponse_ValidData_Success()
+        public void SaveSkillsOneResponse_NullData_Success()
         {
-            var responseInt = 123;
-            
-            _dataService
-                .Setup(d => d.Add(It.IsAny<SkillsOneResponseDto>()))
-                .ReturnsAsync(responseInt);
-
-            var requestId = Guid.NewGuid();
-            var data = new SkillsOneResponseDto();
-
-            var result = await _service.SaveSkillsOneResponse(requestId, data);
-            
-            Assert.That(result.RequestID, Is.EqualTo(requestId));
-            Assert.That(result.IsValid, Is.True);
-            Assert.That(result.Message, Is.Null);
-            Assert.That(result.Payload, Is.EqualTo(responseInt));
+            var ex = Assert.ThrowsAsync<ArgumentNullException>(() => _skills1Service.SaveSkillsOneResponse(Guid.NewGuid(), null));
+            Assert.That(ex.ParamName == "skillsOneResponseDto");
         }
     }
 }
