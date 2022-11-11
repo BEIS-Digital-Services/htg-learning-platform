@@ -20,9 +20,28 @@
         [Route("/email/unsubscribe")]
         public async Task<IActionResult> Unsubscribe([FromQuery] string emailAddress)
         {
-            _logger.LogTrace("Unsubscribe email: {emailAddress}", emailAddress);
+            _logger.LogTrace($"Unsubscribe email request: {emailAddress}");
 
-            await _controllerHelper.Unsubscribe(emailAddress);
+            try
+            {
+                await _controllerHelper.Unsubscribe(emailAddress);
+            }
+            catch (ArgumentNullException ex)
+            { 
+                _logger.LogDebug($"Unsubscribe email {emailAddress} error.", ex);
+            }
+            catch (InvalidDataException ex)
+            { 
+                _logger.LogDebug($"Unsubscribe email {emailAddress} error.", ex);
+            }
+            catch (InvalidOperationException ex)
+            { 
+                _logger.LogWarning($"Unsubscribe email {emailAddress} error.", ex);
+            }
+            catch (Exception ex)
+            { 
+                _logger.LogError($"Unsubscribe email {emailAddress} error.", ex);
+            }
             
             return View("Unsubscribe", new PageViewModel
             {
